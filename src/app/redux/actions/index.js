@@ -12,6 +12,9 @@ import {
 import {
   fetchFichesParCanalDataIfNeeded
 }                                 from './stats/fichesParCanal';
+import {
+  fetchPrincipauxMotifsDataIfNeeded
+}                                 from './stats/principauxMotifs';
 
 import {
   fetchTeamMatesDataIfNeeded
@@ -37,6 +40,7 @@ export {
   // stats:
   fetchFichesTraiteeDataIfNeeded,
   fetchFichesParCanalDataIfNeeded,
+  fetchPrincipauxMotifsDataIfNeeded,
 
   // sideMenu
   openSideMenu,

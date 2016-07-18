@@ -19,6 +19,7 @@ class Home extends Component {
 
     this.handlesOnFichesTraiteesRefreshClick = this.handlesOnFichesTraiteesRefreshClick.bind(this);
     this.handlesOnFichesParCanalRefreshClick = this.handlesOnFichesParCanalRefreshClick.bind(this);
+    this.handlesOnPrincipauxMotifRefreshClick = this.handlesOnPrincipauxMotifRefreshClick.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,7 @@ class Home extends Component {
     actions.enterHome();
     actions.fetchFichesTraiteeDataIfNeeded();
     actions.fetchFichesParCanalDataIfNeeded();
+    actions.fetchPrincipauxMotifsDataIfNeeded();
   }
 
   componentWillUnmount() {
@@ -36,6 +38,7 @@ class Home extends Component {
     const { animated } = this.state;
     const { fichesTraiteesLabels, fichesTraiteesDataset, fichesTraiteesIsFetching, fichesTraiteesLastFetch } = this.props;
     const { fichesParCanalData, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
+    const { principauxMotifsLabels, principauxMotifsDataset, principauxMotifsIsFetching, principauxMotifsLastFetch } = this.props;
     return(
       <section
         className={cx({
@@ -104,14 +107,14 @@ class Home extends Component {
             />
           </div>
           <div className="col-md-4">
-            {/*<PrincipauxMotifs
+            <PrincipauxMotifs
               headerText={'Principaux motifs'}
-              isFetching={fichesTraiteesIsFetching}
-              dateMaj={fichesTraiteesLastFetch}
-              labels={fichesTraiteesLabels}
-              datasets={fichesTraiteesDataset}
-              onRefreshClick={this.handlesOnRefreshClick}
-            />*/}
+              isFetching={principauxMotifsIsFetching}
+              dateMaj={principauxMotifsLastFetch}
+              labels={principauxMotifsLabels}
+              datasets={principauxMotifsDataset}
+              onRefreshClick={this.handlesOnPrincipauxMotifRefreshClick}
+            />
           </div>
         </div>
       </section>
@@ -129,6 +132,12 @@ class Home extends Component {
     event.preventDefault();
     actions.fetchFichesParCanalDataIfNeeded();
   }
+
+  handlesOnPrincipauxMotifRefreshClick(event) {
+    const { actions } = this.props;
+    event.preventDefault();
+    actions.fetchPrincipauxMotifsDataIfNeeded();
+  }
 }
 
 Home.propTypes = {
@@ -141,13 +150,20 @@ Home.propTypes = {
   fichesParCanalIsFetching: PropTypes.bool,
   fichesParCanalLastFetch: PropTypes.string,
 
+  principauxMotifsLabels: PropTypes.arrayOf(PropTypes.string),
+  principauxMotifsDataset: PropTypes.arrayOf(PropTypes.object),
+  principauxMotifsIsFetching: PropTypes.bool,
+  principauxMotifsLastFetch: PropTypes.string,
+
   actions: PropTypes.shape({
     enterHome: PropTypes.func,
     leaveHome: PropTypes.func,
 
     fetchFichesTraiteeDataIfNeeded: PropTypes.func,
 
-    fetchFichesParCanalDataIfNeeded: PropTypes.func
+    fetchFichesParCanalDataIfNeeded: PropTypes.func,
+
+    fetchPrincipauxMotifsDataIfNeeded: PropTypes.func
   })
 };
 

@@ -4,7 +4,8 @@ import {
 }                       from '../../models';
 import {
   fichetraitee,
-  ficheparcanal
+  ficheparcanal,
+  principauxmotifs
 }                       from '../../mocks';
 
 export const fetchMockUserInfosData = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
@@ -34,6 +35,17 @@ export const fetchMockFichesParCanalData = (timeToWait = appConfig.FAKE_ASYNC_DE
     resolve => {
       setTimeout(
        () => resolve({...ficheparcanal}),
+       timeToWait
+     );
+    }
+ );
+};
+
+export const fetchMockPrincipauxMotifsData = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({...principauxmotifs}),
        timeToWait
      );
     }

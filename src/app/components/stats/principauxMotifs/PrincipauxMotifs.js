@@ -1,12 +1,11 @@
 import React, {
   PropTypes
 }                       from 'react';
-import Chart         from 'react-chartjs';
+import Chart            from 'react-chartjs';
 import cx               from 'classnames';
 import {IsFetching}     from '../../../components';
 import Header           from './header/Header';
 import Body             from './body/Body';
-
 
 const dimensions = {
   width: '300',
@@ -49,7 +48,7 @@ const PrincipauxMotifs = ({isFetching, dateMaj, headerText, onRefreshClick, labe
               'fadeIn': true,
               'center-block': true
             })}>
-            <Chart.Radar
+            <Chart.Line
               data={{labels, datasets}}
               className="center-block"
               options={{

@@ -40,6 +40,12 @@ export const appConfig = {
       API: 'api/fichesparcanal'
     }
   },
+  // princiapux motifs stats API
+  principauxMotifs: {
+    data: {
+      API: 'api/principauxmotifs'
+    }
+  },
   // eaningGraph config
   earningGraph: {
     data: {
