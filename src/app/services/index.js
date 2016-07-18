@@ -7,7 +7,8 @@ import {
 }                     from './utils/fetchTools';
 import {
   fetchMockUserInfosData,
-  fetchMockFichesTraiteesData
+  fetchMockFichesTraiteesData,
+  fetchMockFichesParCanalData
 }                     from './fetchMock/fetchMocks';
 import {
   getLastThreeMonthNames
@@ -20,9 +21,12 @@ export {
   parseJSON,
   getLocationOrigin,
   encodeBase64,
-  // fecth mocks:
+
+  // fetch mocks:
   fetchMockUserInfosData,
   fetchMockFichesTraiteesData,
+  fetchMockFichesParCanalData,
+
   // date tools
   getLastThreeMonthNames
 };

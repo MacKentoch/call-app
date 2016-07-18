@@ -2,7 +2,7 @@ import {
   REQUEST_FICHES_TRAITEES_DATA,
   RECEIVED_FICHES_TRAITEES_DATA,
   ERROR_FICHES_TRAITEES_DATA
-} from '../actions/fichesTraitees';
+} from '../../actions/stats/fichesTraitees';
 
 const initialState = {
   isFetching: false,

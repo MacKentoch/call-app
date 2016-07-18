@@ -1,12 +1,14 @@
+// views
 import {
   enterHome,
   leaveHome,
   enterRecherche,
   leaveRecherche
 }                                 from './views';
+// stats
 import {
   fetchFichesTraiteeDataIfNeeded
-}                                 from './fichesTraitees';
+}                                 from './stats/fichesTraitees';
 import {
   fetchTeamMatesDataIfNeeded
 }                                 from './teamMates';

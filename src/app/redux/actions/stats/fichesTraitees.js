@@ -1,13 +1,13 @@
 /* eslint consistent-return:0 */
 import moment         from 'moment';
-import { appConfig }  from '../../config';
+import { appConfig }  from '../../../config';
 import {
   defaultOptions,
   checkStatus,
   parseJSON,
   getLocationOrigin,
   fetchMockFichesTraiteesData
-}                     from '../../services';
+}                     from '../../../services';
 
 moment.locale('fr');
 
