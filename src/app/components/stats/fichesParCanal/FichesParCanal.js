@@ -13,7 +13,7 @@ const dimensions = {
   height: '250'
 };
 
-const FichesParCanal = ({isFetching, dateMaj, headerText, onRefreshClick, labels, datasets}) => {
+const FichesParCanal = ({isFetching, dateMaj, headerText, onRefreshClick, data}) => {
   return (
     <section className="panel">
       <Header
@@ -50,7 +50,7 @@ const FichesParCanal = ({isFetching, dateMaj, headerText, onRefreshClick, labels
               'center-block': true
             })}>
             <Chart.Doughnut
-              data={{labels, datasets}}
+              data={data}
               className="center-block"
               options={{
                 responsive : true,
@@ -70,8 +70,7 @@ FichesParCanal.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   dateMaj: PropTypes.string.isRequired, // deja formatte en string: DD/MM/YYYY HH:ss:mm
   headerText: PropTypes.string.isRequired,
-  labels: PropTypes.arrayOf(PropTypes.string).isRequired,
-  datasets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   onRefreshClick: PropTypes.func.isRequired
 };
 

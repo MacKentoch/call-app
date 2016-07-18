@@ -17,14 +17,14 @@ class Home extends Component {
       animated: true
     };
 
-    this.handlesOnRefreshClick = this.handlesOnRefreshClick.bind(this);
+    this.handlesOnFichesTraiteesRefreshClick = this.handlesOnFichesTraiteesRefreshClick.bind(this);
+    this.handlesOnFichesParCanalRefreshClick = this.handlesOnFichesParCanalRefreshClick.bind(this);
   }
 
   componentDidMount() {
     const  { actions } =  this.props;
     actions.enterHome();
     actions.fetchFichesTraiteeDataIfNeeded();
-    console.log('actions.fetchFichesParCanalDataIfNeeded: ', actions.fetchFichesParCanalDataIfNeeded);
     actions.fetchFichesParCanalDataIfNeeded();
   }
 
@@ -35,7 +35,7 @@ class Home extends Component {
   render() {
     const { animated } = this.state;
     const { fichesTraiteesLabels, fichesTraiteesDataset, fichesTraiteesIsFetching, fichesTraiteesLastFetch } = this.props;
-    const { fichesParCanalLabels, fichesParCanalDataset, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
+    const { fichesParCanalData, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
     return(
       <section
         className={cx({
@@ -91,7 +91,7 @@ class Home extends Component {
               dateMaj={fichesTraiteesLastFetch}
               labels={fichesTraiteesLabels}
               datasets={fichesTraiteesDataset}
-              onRefreshClick={this.handlesOnRefreshClick}
+              onRefreshClick={this.handlesOnFichesTraiteesRefreshClick}
             />
           </div>
           <div className="col-md-4">
@@ -99,9 +99,8 @@ class Home extends Component {
               headerText={'Fiches par canal'}
               isFetching={fichesParCanalIsFetching}
               dateMaj={fichesParCanalLastFetch}
-              labels={fichesParCanalLabels}
-              datasets={fichesParCanalDataset}
-              onRefreshClick={this.handlesOnRefreshClick}
+              data={fichesParCanalData}
+              onRefreshClick={this.handlesOnFichesParCanalRefreshClick}
             />
           </div>
           <div className="col-md-4">
@@ -119,10 +118,16 @@ class Home extends Component {
     );
   }
 
-  handlesOnRefreshClick(event) {
+  handlesOnFichesTraiteesRefreshClick(event) {
     const { actions } = this.props;
     event.preventDefault();
     actions.fetchFichesTraiteeDataIfNeeded();
+  }
+
+  handlesOnFichesParCanalRefreshClick(event) {
+    const { actions } = this.props;
+    event.preventDefault();
+    actions.fetchFichesParCanalDataIfNeeded();
   }
 }
 
@@ -132,8 +137,7 @@ Home.propTypes = {
   fichesTraiteesIsFetching: PropTypes.bool,
   fichesTraiteesLastFetch: PropTypes.string,
 
-  fichesParCanalLabels: PropTypes.arrayOf(PropTypes.string),
-  fichesParCanalDataset: PropTypes.arrayOf(PropTypes.object),
+  fichesParCanalData: PropTypes.arrayOf(PropTypes.object),
   fichesParCanalIsFetching: PropTypes.bool,
   fichesParCanalLastFetch: PropTypes.string,
 

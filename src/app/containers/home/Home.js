@@ -12,8 +12,7 @@ const mapStateToProps = (state) => {
     fichesTraiteesIsFetching: state.fichesTraitees.isFetching,
     fichesTraiteesLastFetch: state.fichesTraitees.time,
 
-    fichesParCanalLabels: state.fichesParCanal.labels,
-    fichesParCanalDataset: state.fichesParCanal.datasets,
+    fichesParCanalData: state.fichesParCanal.data,
     fichesParCanalIsFetching: state.fichesParCanal.isFetching,
     fichesParCanalLastFetch: state.fichesParCanal.time
   };

@@ -1,48 +1,30 @@
 const cannaux = ['tel', 'email', 'courrier', 'sans'];
 
 export const ficheparcanal = {
-  labels: cannaux,
-
-  datasets: [
+  data: [
     {
-      data: [100, 200, 300, 40],
-      backgroundColor: [
-        "#FF6384",
-        "#36A2EB",
-        "#FFCE56",
-        "#BABECA"
-      ],
-      hoverBackgroundColor: [
-        "#FF6384",
-        "#36A2EB",
-        "#FFCE56",
-        "#BABECA"
-      ]
+      value:      100,
+      color:      'rgba(217,30,24,0.8)',
+      highlight:  'rgba(217,30,24,0.2)',
+      label:      cannaux[0]
+    },
+    {
+      value:      70,
+      color:      'rgba(31,58,147,0.8)',
+      highlight:  'rgba(31,58,147,0.2)',
+      label:      cannaux[1]
+    },
+    {
+      value:      200,
+      color:      'rgba(51,110,123,0.8)',
+      highlight:  'rgba(51,110,123,0.2)',
+      label:      cannaux[2]
+    },
+    {
+      value:      20,
+      color:      'rgba(249,191,59,0.8)',
+      highlight:  'rgba(249,191,59,0.2)',
+      label:      cannaux[3]
     }
   ]
-  //
-  // datasets: [
-  //   {
-  //     label: 'Total',
-  //     backgroundColor: 'rgba(31,58,147,0.8)',
-  //     fillColor: 'rgba(31,58,147,0.4)',
-  //     strokeColor: 'rgba(31,58,147,0.8)',
-  //     pointColor: 'rgba(31,58,147,0.8)',
-  //     pointStrokeColor: '#fff',
-  //     pointHighlightFill: '#fff',
-  //     pointHighlightStroke: 'rgba(31,58,147,0.8)',
-  //     data: [65, 59, 80]
-  //   },
-  //   {
-  //     label: 'Retard',
-  //     backgroundColor: 'rgba(217,30,24,0.8)',
-  //     fillColor: 'rgba(217,30,24,0.4)',
-  //     strokeColor: 'rgba(217,30,24,0.8)',
-  //     pointColor: 'rgba(217,30,24,0.8)',
-  //     pointStrokeColor: '#fff',
-  //     pointHighlightFill: '#fff',
-  //     pointHighlightStroke: 'rgba(217,30,24,0.8)',
-  //     data: [15, 9, 10]
-  //   }
-  // ]
 };

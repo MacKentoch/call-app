@@ -6,8 +6,7 @@ import {
 
 const initialState = {
   isFetching: false,
-  labels:     [],
-  datasets:   [],
+  data:       [],
   time:       ''
 };
 
@@ -25,8 +24,7 @@ const fichesParCanal = (state = initialState, action) => {
     return {
       ...state,
       isFetching: action.isFetching,
-      labels:     [...action.labels],
-      datasets:   [...action.datasets],
+      data:       [...action.data],
       time:       action.time
     };
 
