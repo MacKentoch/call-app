@@ -34,6 +34,12 @@ export const appConfig = {
       API: 'api/fichestraitees'
     }
   },
+  // fiche par canal API
+  fichesParCanal: {
+    data: {
+      API: 'api/fichesparcanal'
+    }
+  },
   // eaningGraph config
   earningGraph: {
     data: {

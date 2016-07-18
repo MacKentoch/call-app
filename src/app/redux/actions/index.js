@@ -10,11 +10,17 @@ import {
   fetchFichesTraiteeDataIfNeeded
 }                                 from './stats/fichesTraitees';
 import {
+  fetchFichesParCanalDataIfNeeded
+}                                 from './stats/fichesParCanal';
+
+import {
   fetchTeamMatesDataIfNeeded
 }                                 from './teamMates';
 import {
   fetchUserInfoDataIfNeeded
-}                                 from './userInfos';
+}
+                                  from './userInfos';
+// sideMenu
 import {
   openSideMenu,
   closeSideMenu,
@@ -22,14 +28,21 @@ import {
 }                                 from './sideMenu';
 
 export {
+  // views:
   enterHome,
   leaveHome,
   enterRecherche,
   leaveRecherche,
+
+  // stats:
   fetchFichesTraiteeDataIfNeeded,
+  fetchFichesParCanalDataIfNeeded,
+
+  // sideMenu
   openSideMenu,
   closeSideMenu,
   toggleSideMenu,
+
   fetchUserInfoDataIfNeeded,
   fetchTeamMatesDataIfNeeded
 };

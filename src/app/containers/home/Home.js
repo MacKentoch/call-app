@@ -10,7 +10,12 @@ const mapStateToProps = (state) => {
     fichesTraiteesLabels: state.fichesTraitees.labels,
     fichesTraiteesDataset: state.fichesTraitees.datasets,
     fichesTraiteesIsFetching: state.fichesTraitees.isFetching,
-    fichesTraiteesLastFetch: state.fichesTraitees.time
+    fichesTraiteesLastFetch: state.fichesTraitees.time,
+
+    fichesParCanalLabels: state.fichesParCanal.labels,
+    fichesParCanalDataset: state.fichesParCanal.datasets,
+    fichesParCanalIsFetching: state.fichesParCanal.isFetching,
+    fichesParCanalLastFetch: state.fichesParCanal.time
   };
 };
 
@@ -21,7 +26,9 @@ const mapDispatchToProps = (dispatch) => {
         enterHome: actions.enterHome,
         leaveHome: actions.leaveHome,
 
-        fetchFichesTraiteeDataIfNeeded: actions.fetchFichesTraiteeDataIfNeeded
+        fetchFichesTraiteeDataIfNeeded: actions.fetchFichesTraiteeDataIfNeeded,
+
+        fetchFichesParCanalDataIfNeeded: actions.fetchFichesParCanalDataIfNeeded
       },
       dispatch)
   };

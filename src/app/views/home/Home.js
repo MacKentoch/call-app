@@ -24,6 +24,8 @@ class Home extends Component {
     const  { actions } =  this.props;
     actions.enterHome();
     actions.fetchFichesTraiteeDataIfNeeded();
+    console.log('actions.fetchFichesParCanalDataIfNeeded: ', actions.fetchFichesParCanalDataIfNeeded);
+    actions.fetchFichesParCanalDataIfNeeded();
   }
 
   componentWillUnmount() {
@@ -33,6 +35,7 @@ class Home extends Component {
   render() {
     const { animated } = this.state;
     const { fichesTraiteesLabels, fichesTraiteesDataset, fichesTraiteesIsFetching, fichesTraiteesLastFetch } = this.props;
+    const { fichesParCanalLabels, fichesParCanalDataset, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
     return(
       <section
         className={cx({
@@ -94,10 +97,10 @@ class Home extends Component {
           <div className="col-md-4">
             <FichesParCanal
               headerText={'Fiches par canal'}
-              isFetching={fichesTraiteesIsFetching}
-              dateMaj={fichesTraiteesLastFetch}
-              labels={fichesTraiteesLabels}
-              datasets={fichesTraiteesDataset}
+              isFetching={fichesParCanalIsFetching}
+              dateMaj={fichesParCanalLastFetch}
+              labels={fichesParCanalLabels}
+              datasets={fichesParCanalDataset}
               onRefreshClick={this.handlesOnRefreshClick}
             />
           </div>
@@ -123,15 +126,24 @@ class Home extends Component {
   }
 }
 
-Home.propTypes= {
+Home.propTypes = {
   fichesTraiteesLabels: PropTypes.arrayOf(PropTypes.string),
   fichesTraiteesDataset: PropTypes.arrayOf(PropTypes.object),
   fichesTraiteesIsFetching: PropTypes.bool,
   fichesTraiteesLastFetch: PropTypes.string,
+
+  fichesParCanalLabels: PropTypes.arrayOf(PropTypes.string),
+  fichesParCanalDataset: PropTypes.arrayOf(PropTypes.object),
+  fichesParCanalIsFetching: PropTypes.bool,
+  fichesParCanalLastFetch: PropTypes.string,
+
   actions: PropTypes.shape({
     enterHome: PropTypes.func,
     leaveHome: PropTypes.func,
-    fetchFichesTraiteeDataIfNeeded: PropTypes.func
+
+    fetchFichesTraiteeDataIfNeeded: PropTypes.func,
+
+    fetchFichesParCanalDataIfNeeded: PropTypes.func
   })
 };
 
