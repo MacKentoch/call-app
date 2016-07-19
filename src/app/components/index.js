@@ -14,6 +14,10 @@ import {
   FichesParCanal,
   PrincipauxMotifs
 }                 from './stats';
+import {
+  MailsLink,
+  EmailsLink
+}                 from './shortcuts';
 
 export {
   Header,
@@ -32,5 +36,9 @@ export {
   // stats
   FichesTraitee,
   FichesParCanal,
-  PrincipauxMotifs
+  PrincipauxMotifs,
+
+  // shortcuts
+  MailsLink,
+  EmailsLink
 };

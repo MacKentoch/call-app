@@ -6,7 +6,9 @@ import {
   StatsCard,
   FichesTraitee,
   FichesParCanal,
-  PrincipauxMotifs
+  PrincipauxMotifs,
+  MailsLink,
+  EmailsLink
 }                                       from '../../components';
 
 class Home extends Component {
@@ -50,19 +52,19 @@ class Home extends Component {
           className="row"
           style={{marginBottom: '5px'}}>
           <div className="col-md-3">
-            <StatsCard
-              statValue={'3200'}
-              statLabel={'Total Tasks'}
-              icon={<i className="fa fa-check-square-o"></i>}
-              backColor={'red'}
+            <MailsLink
+              title={'Courier'}
+              details={'Créer une fiche contact courier'}
+              icon={<i className="fa fa-envelope-o" aria-hidden="true"></i>}
+              backColor={'#F9690E'}
             />
           </div>
           <div className="col-md-3">
-            <StatsCard
-              statValue={'2200'}
-              statLabel={'Total Messages'}
-              icon={<i className="fa fa-envelope-o"></i>}
-              backColor={'violet'}
+            <EmailsLink
+              title={'Mails'}
+              details={'Créer une fiche contact mail'}
+              icon={<i className="fa fa-paper-plane-o"></i>}
+              backColor={'#F9690E'}
             />
           </div>
           <div className="col-md-3">
