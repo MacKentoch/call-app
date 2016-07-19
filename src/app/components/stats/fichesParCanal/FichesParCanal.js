@@ -6,6 +6,7 @@ import cx               from 'classnames';
 import {IsFetching}     from '../../../components';
 import Header           from './header/Header';
 import Body             from './body/Body';
+import Legend           from './legend/Legend';
 
 
 const dimensions = {
@@ -58,6 +59,9 @@ const FichesParCanal = ({isFetching, dateMaj, headerText, onRefreshClick, data})
               }}
               width={dimensions.width}
               height={dimensions.height}
+            />
+            <Legend
+              data={[{label: 'test', color: 'blue'}]}
             />
           </div>
         }
