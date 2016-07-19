@@ -6,6 +6,9 @@ import TwitterFeed from './twitterFeed/TwitterFeed';
 import WorkProgress from './workProgress/WorkProgress';
 import StatsCard from './statsCard/StatsCard';
 import IsFetching from './isFetching/IsFetching';
+import ActiviteGroupe from './activiteGroupe/ActiviteGroupe';
+import ListBoitesMails from './listBoitesMails/ListBoitesMails';
+
 import {
   FichesTraitee,
   FichesParCanal,
@@ -19,6 +22,7 @@ import {
 }                 from './shortcuts';
 
 export {
+  // common components
   TodoList,
   Footer,
   Notifications,
@@ -27,6 +31,8 @@ export {
   WorkProgress,
   StatsCard,
   IsFetching,
+  ActiviteGroupe,
+  ListBoitesMails,
 
   // stats
   FichesTraitee,

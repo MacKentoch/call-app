@@ -9,7 +9,9 @@ import {
   MailsLink,
   EmailsLink,
   TelephoneLink,
-  PersonnesLink
+  PersonnesLink,
+  ActiviteGroupe,
+  ListBoitesMails
 }                                       from '../../components';
 import { appConfig }                    from '../../config';
 
@@ -93,7 +95,7 @@ class Home extends Component {
             />
           </div>
         </div>
-        
+
         {/* activité ces 3 derniers mois */}
         <h1>
           Mon activité ces 3 derniers mois
@@ -139,11 +141,23 @@ class Home extends Component {
             <h1>
               Activité de mes groupes
             </h1>
+            <ActiviteGroupe
+              isFetching={false}
+              dateMaj={'01/01/2016 12:00'}
+              headerText={'Mes groupes'}
+              onRefreshClick={()=>console.log('todo')}
+            />
           </div>
           <div className="col-md-6">
             <h1>
               Mes boîtes mails
             </h1>
+            <ListBoitesMails
+              isFetching={false}
+              dateMaj={'01/01/2016 12:00'}
+              headerText={'Boîtes Mail'}
+              onRefreshClick={()=>console.log('todo')}
+            />
           </div>
         </div>
 
