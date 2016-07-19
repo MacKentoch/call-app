@@ -14,7 +14,7 @@ const dimensions = {
   height: '250'
 };
 
-const FichesParCanal = ({isFetching, dateMaj, headerText, onRefreshClick, data}) => {
+const FichesParCanal = ({isFetching, dateMaj, headerText, onRefreshClick, data, legend}) => {
   return (
     <section className="panel">
       <Header
@@ -61,7 +61,7 @@ const FichesParCanal = ({isFetching, dateMaj, headerText, onRefreshClick, data})
               height={dimensions.height}
             />
             <Legend
-              data={[{label: 'test', color: 'blue'}]}
+              data={legend}
             />
           </div>
         }
@@ -75,6 +75,7 @@ FichesParCanal.propTypes = {
   dateMaj: PropTypes.string.isRequired, // deja formatte en string: DD/MM/YYYY HH:ss:mm
   headerText: PropTypes.string.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  legend: PropTypes.arrayOf(PropTypes.object).isRequired,
   onRefreshClick: PropTypes.func.isRequired
 };
 

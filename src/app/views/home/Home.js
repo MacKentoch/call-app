@@ -37,7 +37,7 @@ class Home extends Component {
   render() {
     const { animated } = this.state;
     const { fichesTraiteesLabels, fichesTraiteesDataset, fichesTraiteesIsFetching, fichesTraiteesLastFetch } = this.props;
-    const { fichesParCanalData, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
+    const { fichesParCanalData, fichesParCanalLegend, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
     const { principauxMotifsLabels, principauxMotifsDataset, principauxMotifsIsFetching, principauxMotifsLastFetch } = this.props;
     return(
       <section
@@ -103,6 +103,7 @@ class Home extends Component {
               isFetching={fichesParCanalIsFetching}
               dateMaj={fichesParCanalLastFetch}
               data={fichesParCanalData}
+              legend={fichesParCanalLegend}
               onRefreshClick={this.handlesOnFichesParCanalRefreshClick}
             />
           </div>
@@ -147,6 +148,7 @@ Home.propTypes = {
   fichesTraiteesLastFetch: PropTypes.string,
 
   fichesParCanalData: PropTypes.arrayOf(PropTypes.object),
+  fichesParCanalLegend: PropTypes.arrayOf(PropTypes.object),
   fichesParCanalIsFetching: PropTypes.bool,
   fichesParCanalLastFetch: PropTypes.string,
 

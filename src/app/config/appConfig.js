@@ -57,6 +57,16 @@ export const appConfig = {
       API: 'api/teamMates'
     }
   },
+  // stats config
+  stats: {
+    // pas de donnee de legende ou initialState
+    legendeInit: [{
+      label: 'légende non disponible',
+      color: '#ECECEC'
+    }],
+    labelNonDef: 'non défini',
+    colorNonDef: '#ECECEC'
+  },
 
   // userInfos config
   userInfos: {

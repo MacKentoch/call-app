@@ -2,11 +2,14 @@ import {
   REQUEST_FICHES_PAR_CANAL_DATA,
   RECEIVED_FICHES_PAR_CANAL_DATA,
   ERROR_FICHES_PAR_CANAL_DATA
-} from '../../actions/stats/fichesParCanal';
+}                                 from '../../actions/stats/fichesParCanal';
+import { appConfig }              from '../../../config';
+
 
 const initialState = {
   isFetching: false,
   data:       [],
+  legend:     [...appConfig.stats.legendeInit],
   time:       ''
 };
 
@@ -25,6 +28,7 @@ const fichesParCanal = (state = initialState, action) => {
       ...state,
       isFetching: action.isFetching,
       data:       [...action.data],
+      legend:     [...action.legend],
       time:       action.time
     };
 

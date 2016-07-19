@@ -26,10 +26,13 @@ const requestFichesParCanalData = (time = moment().format(formatDate)) => {
   };
 };
 const receivedFichesParCanalData = (data, time = moment().format(formatDate)) => {
+  const legend = extractLegend(data);
+
   return {
     type:       RECEIVED_FICHES_PAR_CANAL_DATA,
     isFetching: false,
     data:       data.data,
+    legend:     legend,
     time
   };
 };
@@ -84,4 +87,26 @@ function shouldFetchFichesParCanalData(state) {
   } else {
     return true;
   }
+}
+
+function extractLegend(data) {
+  if (data && data.data && Array.isArray(data.data)) {
+    return extractNeededProperties(data.data);
+  }
+
+  return [...appConfig.stats.legendeInit];
+}
+
+function extractNeededProperties(data) {
+  return data.map(
+    item => {
+      const defaultColor = appConfig.stats.colorNonDef;
+      const defaultLabel = appConfig.stats.labelNonDef;
+
+      return {
+        label: item.label ? item.label : defaultLabel,
+        color: item.color ? item.color : defaultColor
+      };
+    }
+  );
 }
