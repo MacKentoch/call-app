@@ -1,5 +1,4 @@
 import TodoList from './todoList/TodoList';
-import Footer from './footer/Footer';
 import Notifications from './notifications/Notifications';
 import TeamMates from './teamMates/TeamMates';
 import TwitterFeed from './twitterFeed/TwitterFeed';
@@ -24,7 +23,6 @@ import {
 export {
   // common components
   TodoList,
-  Footer,
   Notifications,
   TeamMates,
   TwitterFeed,

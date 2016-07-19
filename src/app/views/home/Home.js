@@ -11,7 +11,8 @@ import {
   TelephoneLink,
   PersonnesLink,
   ActiviteGroupe,
-  ListBoitesMails
+  ListBoitesMails,
+  Footer
 }                                       from '../../components';
 import { appConfig }                    from '../../config';
 
@@ -160,8 +161,6 @@ class Home extends Component {
             />
           </div>
         </div>
-
-
       </section>
     );
   }
