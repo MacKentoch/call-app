@@ -16,7 +16,9 @@ import {
 }                 from './stats';
 import {
   MailsLink,
-  EmailsLink
+  EmailsLink,
+  TelephoneLink,
+  PersonnesLink
 }                 from './shortcuts';
 
 export {
@@ -40,5 +42,7 @@ export {
 
   // shortcuts
   MailsLink,
-  EmailsLink
+  EmailsLink,
+  TelephoneLink,
+  PersonnesLink
 };

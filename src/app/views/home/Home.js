@@ -3,12 +3,13 @@
 import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 import {
-  StatsCard,
   FichesTraitee,
   FichesParCanal,
   PrincipauxMotifs,
   MailsLink,
-  EmailsLink
+  EmailsLink,
+  TelephoneLink,
+  PersonnesLink
 }                                       from '../../components';
 
 class Home extends Component {
@@ -63,24 +64,24 @@ class Home extends Component {
             <EmailsLink
               title={'Mails'}
               details={'Créer une fiche contact mail'}
-              icon={<i className="fa fa-paper-plane-o"></i>}
+              icon={<i className="fa fa-paper-plane-o" aria-hidden="true"></i>}
               backColor={'#F9690E'}
             />
           </div>
           <div className="col-md-3">
-            <StatsCard
-              statValue={'100,320'}
-              statLabel={'Total Profit'}
-              icon={<i className="fa fa-dollar"></i>}
-              backColor={'blue'}
+            <TelephoneLink
+              title={'Téléphone'}
+              details={'Créer une fiche contact téléphone'}
+              icon={<i className="fa fa-phone" aria-hidden="true"></i>}
+              backColor={'#F9690E'}
             />
           </div>
           <div className="col-md-3">
-            <StatsCard
-              statValue={'4567'}
-              statLabel={'Total Documents'}
-              icon={<i className="fa fa-paperclip"></i>}
-              backColor={'green'}
+            <PersonnesLink
+              title={'Personnes'}
+              details={'Créer une fiche contact personne'}
+              icon={<i className="fa fa-users" aria-hidden="true"></i>}
+              backColor={'#F9690E'}
             />
           </div>
         </div>
