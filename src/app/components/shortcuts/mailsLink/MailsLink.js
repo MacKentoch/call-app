@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 
 const EmailsLink = ({title, details, icon, backColor}) => {
   return (
-    <div className="sm-st clearfix">
+    <div className="sm-st clearfix shortcut">
       <span
         className="sm-st-icon"
         style={{backgroundColor: `${backColor}`}}>
