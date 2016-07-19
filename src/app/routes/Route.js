@@ -6,8 +6,8 @@ import {
   Route,
   IndexRoute,
   // useRouterHistory,
-  // hashHistory,
-  browserHistory
+  hashHistory // static app
+  // browserHistory // with server
  }                              from 'react-router';
 import { Provider }             from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -27,7 +27,7 @@ import { appConfig }            from '../config';
 // });
 
 const store         = configureStore();
-const syncedHistory = syncHistoryWithStore(browserHistory, store);
+const syncedHistory = syncHistoryWithStore(hashHistory, store);
 const { home, createFicheContactCourier, createFicheContactMail, createFicheContactTelephone, createFicheContactPersonnes } = appConfig.views;
 
 export const Routes = () => {
@@ -37,10 +37,10 @@ export const Routes = () => {
         <Router history={syncedHistory}>
           <Route path={home.path} component={App} >
             <IndexRoute component={HomeConnected} />
-            <Route path={createFicheContactCourier} component={HomeConnected} />
-            <Route path={createFicheContactMail} component={HomeConnected} />
-            <Route path={createFicheContactTelephone} component={HomeConnected} />
-            <Route path={createFicheContactPersonnes} component={HomeConnected} />
+            <Route path={createFicheContactCourier.path} component={HomeConnected} />
+            <Route path={createFicheContactMail.path} component={HomeConnected} />
+            <Route path={createFicheContactTelephone.path} component={HomeConnected} />
+            <Route path={createFicheContactPersonnes.path} component={HomeConnected} />
           </Route>
         </Router>
         { process.env.NODE_ENV !== 'production' ? <DevTools /> : null }
