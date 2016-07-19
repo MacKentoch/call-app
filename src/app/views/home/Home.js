@@ -11,6 +11,7 @@ import {
   TelephoneLink,
   PersonnesLink
 }                                       from '../../components';
+import { appConfig }                    from '../../config';
 
 class Home extends Component {
   constructor(props) {
@@ -42,6 +43,8 @@ class Home extends Component {
     const { fichesTraiteesLabels, fichesTraiteesDataset, fichesTraiteesLegend, fichesTraiteesIsFetching, fichesTraiteesLastFetch } = this.props;
     const { fichesParCanalData, fichesParCanalLegend, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
     const { principauxMotifsLabels, principauxMotifsDataset, principauxMotifsLegend, principauxMotifsIsFetching, principauxMotifsLastFetch } = this.props;
+    const { createFicheContactCourier, createFicheContactMail, createFicheContactTelephone, createFicheContactPersonnes } = appConfig.views;
+
     return(
       <section
         className={cx({
@@ -54,6 +57,7 @@ class Home extends Component {
           style={{marginBottom: '5px'}}>
           <div className="col-md-3">
             <MailsLink
+              linkTo={createFicheContactCourier.path}
               title={'Courier'}
               details={'Créer une fiche contact courier'}
               icon={<i className="fa fa-envelope-o" aria-hidden="true"></i>}
@@ -62,6 +66,7 @@ class Home extends Component {
           </div>
           <div className="col-md-3">
             <EmailsLink
+              linkTo={createFicheContactMail.path}
               title={'Mails'}
               details={'Créer une fiche contact mail'}
               icon={<i className="fa fa-paper-plane-o" aria-hidden="true"></i>}
@@ -70,6 +75,7 @@ class Home extends Component {
           </div>
           <div className="col-md-3">
             <TelephoneLink
+              linkTo={createFicheContactTelephone.path}
               title={'Téléphone'}
               details={'Créer une fiche contact téléphone'}
               icon={<i className="fa fa-phone" aria-hidden="true"></i>}
@@ -78,6 +84,7 @@ class Home extends Component {
           </div>
           <div className="col-md-3">
             <PersonnesLink
+              linkTo={createFicheContactPersonnes.path}
               title={'Personnes'}
               details={'Créer une fiche contact personne'}
               icon={<i className="fa fa-users" aria-hidden="true"></i>}

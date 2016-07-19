@@ -12,10 +12,28 @@ export const appConfig = {
   // views (pour config redux views actions et store view.currentView)
   views: {
     home: {
-      viewName: 'Accueil'
+      viewName: 'Accueil',
+      path: '/'
     },
     recherche: {
-      viewName: 'Recherche'
+      viewName: 'Recherche',
+      path: '/recherche'
+    },
+    createFicheContactCourier: {
+      viewName: 'Céation Fiche Contact Courier',
+      path: '/create/ficheContactCourier'
+    },
+    createFicheContactMail: {
+      viewName: 'Céation Fiche Contact Mail',
+      path: '/create/ficheContactMail'
+    },
+    createFicheContactTelephone: {
+      viewName: 'Céation Fiche Contact Telephone',
+      path: '/create/ficheContactTelephone'
+    },
+    createFicheContactPersonnes: {
+      viewName: 'Céation Fiche Contact Personnes',
+      path: '/create/ficheContactPersonnes'
     }
   },
 
