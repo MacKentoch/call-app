@@ -44,7 +44,6 @@ const AsideLeft = ({ currentView, connectionStatus, userIsConnected, username, h
                 </span>
               </Link>
             </li>
-
             {/* Menu recherche détaillées */}
             <li className={currentView === rechercheView ? 'active' : '' }>
               <Link to="/recherche">

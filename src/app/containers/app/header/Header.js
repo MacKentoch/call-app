@@ -1,24 +1,23 @@
 import React, { PropTypes } from 'react';
-import UserMenu from './userMenu/UserMenu';
-import TaskMenu from './taskMenu/TaskMenu';
-import MessageMenu from './messageMenu/MessageMenu';
-import SuperAdminMenu from './superAdminMenu/SuperAdminMenu';
+import UserMenu             from './userMenu/UserMenu';
+import TaskMenu             from './taskMenu/TaskMenu';
+import MessageMenu          from './messageMenu/MessageMenu';
+import SuperAdminMenu       from './superAdminMenu/SuperAdminMenu';
 
-const Header = (props) => {
-  const { userLogin, userFirstname, userLastname, userPicture, showPicture } = props;
+const Header = ({ appName, toggleSideMenu, userLogin, userFirstname, userLastname, userPicture, showPicture }) => {
   return (
     <header
       className="header fixed--header">
       <a href="#"
         className="logo">
-        { props.appName }
+        { appName }
       </a>
       <nav
         className="navbar navbar-static-top"
         role="navigation">
         <a
           href="#"
-          onClick={(e)=>props.toggleSideMenu(e)}
+          onClick={toggleSideMenu}
           className="navbar-btn sidebar-toggle"
           data-toggle="offcanvas"
           role="button">
@@ -29,8 +28,8 @@ const Header = (props) => {
         </a>
         <div className="navbar-right">
           <ul className="nav navbar-nav">
-            <MessageMenu />
-            <TaskMenu />
+            {/*<MessageMenu />*/}
+            {/*<TaskMenu />*/}
             <SuperAdminMenu
               title={'Menu Super Administrateur'}
             />
