@@ -5,11 +5,11 @@ import React, {
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 import * as actions           from '../../redux/actions';
+import Header                 from './header/Header.js';
 import {
-  Header,
   AsideLeft,
   AsideRight
-}                             from '../../components';
+}                             from './aside';
 import { Modals }             from '../../views';
 import { appConfig }          from '../../config';
 
@@ -21,6 +21,7 @@ class App extends Component {
       connectionStatus: appConfig.CONNECTION_STATUS,
       helloWord: appConfig.HELLO_WORD
     };
+    this.handlesMenuButtonClick = this.handlesMenuButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ class App extends Component {
 
   render() {
     const { appName, connectionStatus, helloWord } = this.state;
-    const { userInfos, userIsConnected } = this.props;
+    const { userInfos, userIsConnected, currentView, children, sideMenuIsCollapsed } = this.props;
     const userFullName = `${userInfos.firstname} ${userInfos.lastname.toUpperCase()}`;
     return (
       <div>
@@ -40,14 +41,14 @@ class App extends Component {
           userLastname={userInfos.lastname}
           userPicture={userInfos.picture}
           showPicture={userInfos.showPicture}
-          currentView={this.props.currentView}
-          toggleSideMenu={(e)=>this.handlesMenuButtonClick(e)}
+          currentView={currentView}
+          toggleSideMenu={this.handlesMenuButtonClick}
         />
         <div className="wrapper row-offcanvas row-offcanvas-left">
           <AsideLeft
             isAnimated={true}
-            currentView={this.props.currentView}
-            isCollapsed={this.props.sideMenuIsCollapsed}
+            currentView={currentView}
+            isCollapsed={sideMenuIsCollapsed}
             helloWord={helloWord}
             connectionStatus={connectionStatus}
             userIsConnected={userIsConnected}
@@ -57,9 +58,9 @@ class App extends Component {
           />
           <AsideRight
             isAnimated={true}
-            isExpanded={this.props.sideMenuIsCollapsed}>
+            isExpanded={sideMenuIsCollapsed}>
             <div>
-              { this.props.children }
+              { children }
             </div>
           </AsideRight>
         </div>
@@ -74,7 +75,7 @@ class App extends Component {
     const {location} = this.props;
     this.props.actions.toggleSideMenu();
 
-    // refresh stats (to get responsive sizes) if current view is Home
+    // refresh stats (to get responsive charts) if current view is Home
     if (location.pathname === '/') {
       this.props.actions.fetchFichesTraiteeDataIfNeeded();
       this.props.actions.fetchFichesParCanalDataIfNeeded();

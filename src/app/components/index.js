@@ -1,5 +1,3 @@
-import Header from './header/Header.js';
-import { AsideLeft, AsideRight } from './aside';
 import TodoList from './todoList/TodoList';
 import EarningGraph from './earningGraph/EarningGraph';
 import Footer from './footer/Footer';
@@ -22,9 +20,6 @@ import {
 }                 from './shortcuts';
 
 export {
-  Header,
-  AsideLeft,
-  AsideRight,
   TodoList,
   EarningGraph,
   Footer,

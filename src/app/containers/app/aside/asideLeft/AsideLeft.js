@@ -1,27 +1,26 @@
 /* eslint no-console: 0 */
 import React, {
-  PropTypes
+PropTypes
 }                     from 'react';
-import { appConfig }  from '../../../config';
-import classNames     from 'classnames';
+import { appConfig }  from '../../../../config';
+import cx             from 'classnames';
 import { Link }       from 'react-router';
 import UserPanel      from './userPanel/UserPanel';
 import SearchForm     from './searchForm/SearchForm';
 
-const AsideLeft = (props) => {
-  const sideMenuClasses = classNames({
-    'left-side': true,
-    'aside-left--fixed': true,
-    'sidebar-offcanvas': true,
-    'sidebar-animated': props.isAnimated,
-    'collapse-left':    props.isCollapsed
-  });
-  const { connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture } = props;
-  const homeView      = appConfig.views.home.viewName;
-  const rechercheView = appConfig.views.recherche.viewName;
+const homeView      = appConfig.views.home.viewName;
+const rechercheView = appConfig.views.recherche.viewName;
 
+const AsideLeft = ({ currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed }) => {
   return (
-    <aside className={sideMenuClasses}>
+    <aside
+      className={cx({
+        'left-side': true,
+        'aside-left--fixed': true,
+        'sidebar-offcanvas': true,
+        'sidebar-animated': isAnimated,
+        'collapse-left':    isCollapsed
+      })}>
         <section className="sidebar">
           <UserPanel
             hello={helloWord}
@@ -31,14 +30,12 @@ const AsideLeft = (props) => {
             userPicture={userPicture}
             showUserPicture={showPicture}
           />
-
           <SearchForm
             onSearchSubmit={(value) => console.log('searching: ', value)}
           />
           <ul className="sidebar-menu sidebar-menu__marginTop">
-
             {/* Menu accueil */}
-            <li className={props.currentView === homeView ? 'active' : '' }>
+            <li className={currentView === homeView ? 'active' : '' }>
               <Link
                 to="/">
                 <i className="fa fa-home"></i>
@@ -49,7 +46,7 @@ const AsideLeft = (props) => {
             </li>
 
             {/* Menu recherche détaillées */}
-            <li className={props.currentView === rechercheView ? 'active' : '' }>
+            <li className={currentView === rechercheView ? 'active' : '' }>
               <Link to="/recherche">
                 <i className="fa fa-search"></i>
                 <span>
@@ -57,13 +54,9 @@ const AsideLeft = (props) => {
                 </span>
               </Link>
             </li>
-
           </ul>
-
         </section>
-
     </aside>
-
   );
 };
 
