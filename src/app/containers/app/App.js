@@ -71,7 +71,15 @@ class App extends Component {
 
   handlesMenuButtonClick(event) {
     event.preventDefault();
+    const {location} = this.props;
     this.props.actions.toggleSideMenu();
+
+    // refresh stats (to get responsive sizes) if current view is Home
+    if (location.pathname === '/') {
+      this.props.actions.fetchFichesTraiteeDataIfNeeded();
+      this.props.actions.fetchFichesParCanalDataIfNeeded();
+      this.props.actions.fetchPrincipauxMotifsDataIfNeeded();
+    }
   }
 }
 
@@ -96,6 +104,9 @@ App.propTypes = {
     enterHome: PropTypes.func,
     leaveHome: PropTypes.func,
     fetchUserInfoDataIfNeeded: PropTypes.func,
+    fetchFichesTraiteeDataIfNeeded: PropTypes.func,
+    fetchFichesParCanalDataIfNeeded: PropTypes.func,
+    fetchPrincipauxMotifsDataIfNeeded: PropTypes.func,
     openSideMenu:   PropTypes.func,
     closeSideMenu:  PropTypes.func,
     toggleSideMenu: PropTypes.func
