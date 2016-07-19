@@ -36,7 +36,7 @@ class Home extends Component {
 
   render() {
     const { animated } = this.state;
-    const { fichesTraiteesLabels, fichesTraiteesDataset, fichesTraiteesIsFetching, fichesTraiteesLastFetch } = this.props;
+    const { fichesTraiteesLabels, fichesTraiteesDataset, fichesTraiteesLegend, fichesTraiteesIsFetching, fichesTraiteesLastFetch } = this.props;
     const { fichesParCanalData, fichesParCanalLegend, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
     const { principauxMotifsLabels, principauxMotifsDataset, principauxMotifsIsFetching, principauxMotifsLastFetch } = this.props;
     return(
@@ -94,6 +94,7 @@ class Home extends Component {
               dateMaj={fichesTraiteesLastFetch}
               labels={fichesTraiteesLabels}
               datasets={fichesTraiteesDataset}
+              legend={fichesTraiteesLegend}
               onRefreshClick={this.handlesOnFichesTraiteesRefreshClick}
             />
           </div>
@@ -144,6 +145,7 @@ class Home extends Component {
 Home.propTypes = {
   fichesTraiteesLabels: PropTypes.arrayOf(PropTypes.string),
   fichesTraiteesDataset: PropTypes.arrayOf(PropTypes.object),
+  fichesTraiteesLegend: PropTypes.arrayOf(PropTypes.object),
   fichesTraiteesIsFetching: PropTypes.bool,
   fichesTraiteesLastFetch: PropTypes.string,
 

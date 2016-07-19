@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
 
     fichesTraiteesLabels: state.fichesTraitees.labels,
     fichesTraiteesDataset: state.fichesTraitees.datasets,
+    fichesTraiteesLegend: state.fichesTraitees.legend,
     fichesTraiteesIsFetching: state.fichesTraitees.isFetching,
     fichesTraiteesLastFetch: state.fichesTraitees.time,
 

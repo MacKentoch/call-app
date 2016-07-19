@@ -26,11 +26,14 @@ const requestFichesTraiteesData = (time = moment().format(formatDate)) => {
   };
 };
 const receivedFichesTraiteesData = (data, time = moment().format(formatDate)) => {
+  const legend = extractLegend(data);
+
   return {
     type:       RECEIVED_FICHES_TRAITEES_DATA,
     isFetching: false,
     labels:     data.labels,
     datasets:   data.datasets,
+    legend,
     time
   };
 };
@@ -85,4 +88,26 @@ function shouldFetchFichesTraiteeData(state) {
   } else {
     return true;
   }
+}
+
+function extractLegend(data) {
+  if (data && data.datasets && Array.isArray(data.datasets)) {
+    return extractNeededProperties(data.datasets);
+  }
+
+  return [...appConfig.stats.legendeInit];
+}
+
+function extractNeededProperties(data) {
+  return data.map(
+    item => {
+      const defaultColor = appConfig.stats.colorNonDef;
+      const defaultLabel = appConfig.stats.labelNonDef;
+
+      return {
+        label: item.label ? item.label : defaultLabel,
+        color: item.strokeColor ? item.strokeColor : defaultColor
+      };
+    }
+  );
 }

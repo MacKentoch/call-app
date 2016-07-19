@@ -13,7 +13,7 @@ const dimensions = {
   height: '250'
 };
 
-const FichesTraitee = ({isFetching, dateMaj, headerText, onRefreshClick, labels, datasets}) => {
+const FichesTraitee = ({isFetching, dateMaj, headerText, onRefreshClick, labels, datasets, legend}) => {
   return (
     <section className="panel">
       <Header
@@ -63,7 +63,7 @@ const FichesTraitee = ({isFetching, dateMaj, headerText, onRefreshClick, labels,
             <Legend
               align={'right'}
               isInLine={true}
-              data={[{label: 'test', color: 'red'}]}
+              data={legend}
             />
           </div>
         }
@@ -78,6 +78,7 @@ FichesTraitee.propTypes = {
   headerText: PropTypes.string.isRequired,
   labels: PropTypes.arrayOf(PropTypes.string).isRequired,
   datasets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  legend: PropTypes.arrayOf(PropTypes.object).isRequired,
   onRefreshClick: PropTypes.func.isRequired
 };
 

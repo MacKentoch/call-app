@@ -32,7 +32,7 @@ const receivedFichesParCanalData = (data, time = moment().format(formatDate)) =>
     type:       RECEIVED_FICHES_PAR_CANAL_DATA,
     isFetching: false,
     data:       data.data,
-    legend:     legend,
+    legend,
     time
   };
 };
