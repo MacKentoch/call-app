@@ -36,6 +36,7 @@ const PrincipauxMotifs = ({isFetching, dateMaj, headerText, onRefreshClick, labe
               style={{
                 marginTop: '50px'
               }}
+              showText={true}
               size={24}
               color={'#f9690e'}
             />

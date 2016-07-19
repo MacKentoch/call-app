@@ -36,6 +36,7 @@ const FichesTraitee = ({isFetching, dateMaj, headerText, onRefreshClick, labels,
               style={{
                 marginTop: '50px'
               }}
+              showText={true}
               size={24}
               color={'#f9690e'}
             />
