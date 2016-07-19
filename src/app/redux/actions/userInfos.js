@@ -58,7 +58,9 @@ const fetchUserInfosData = () => dispatch => {
       err => {
         dispatch(errorUserInfosData());
         if (appConfig.DEBUG_ENABLED) {
+          /* eslint-disable no-console */
           console.warn('fetchUserInfosData error: ', err);
+          /* eslint-enable no-console */
         }
       }
     );

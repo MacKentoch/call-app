@@ -1,34 +1,45 @@
-'use strict';
-
 import React, { PropTypes } from 'react';
 import OnlineStatus         from './onlineStatus/OnlineStatus';
+import NameLoading          from './nameLoading/NameLoading';
 
-const UserPanel = (props) => {
+const UserPanel = ({isFetching, showUserPicture, userPicture, hello, username}) => {
   return (
     <div className="user-panel">
       {
-        props.showUserPicture &&
+        showUserPicture &&
         <div className="pull-left image">
           <img
-            src={props.userPicture}
+            src={userPicture}
             className="img-circle"
             alt="User Image"
           />
         </div>
       }
-      <div className="pull-left info">
-        <p>
-          { `${props.hello} ${props.username}` }
-        </p>
-        <OnlineStatus
-          showStatus={false}
-        />
-      </div>
+      {
+        isFetching &&
+        <div
+          className="center-block"
+          style={{width: '60px'}}>
+          <NameLoading />
+        </div>
+      }
+      {
+        !isFetching &&
+        <div className="pull-left info">
+          <p>
+            { `${hello} ${username}` }
+          </p>
+          <OnlineStatus
+            showStatus={false}
+          />
+        </div>
+      }
     </div>
   );
 };
 
 UserPanel.propTypes = {
+  isFetching: PropTypes.bool,
   hello: PropTypes.string,
   username: PropTypes.string,
   showUserPicture: PropTypes.bool,
@@ -41,6 +52,7 @@ UserPanel.propTypes = {
 };
 
 UserPanel.defaultProps = {
+  isFetching: true,
   hello: 'Hello',
   username: 'Jane',
   connectionStatus: {
@@ -48,7 +60,7 @@ UserPanel.defaultProps = {
     disconnected: 'Disconnected'
   },
   online: false,
-  showUserPicture: true
+  showUserPicture: false
 };
 
 export default UserPanel;

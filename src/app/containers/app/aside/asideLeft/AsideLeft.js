@@ -11,7 +11,7 @@ import { Horloge }    from '../../../../components';
 const homeView      = appConfig.views.home.viewName;
 const rechercheView = appConfig.views.recherche.viewName;
 
-const AsideLeft = ({ currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed }) => {
+const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed }) => {
   return (
     <aside
       className={cx({
@@ -29,6 +29,7 @@ const AsideLeft = ({ currentView, connectionStatus, userIsConnected, username, h
           online={userIsConnected}
           userPicture={userPicture}
           showUserPicture={showPicture}
+          isFetching={isFetching}
         />
         <Horloge />
         {/*
@@ -63,6 +64,7 @@ const AsideLeft = ({ currentView, connectionStatus, userIsConnected, username, h
 };
 
 AsideLeft.propTypes = {
+  isFetching: PropTypes.bool,
   isAnimated: PropTypes.bool,
   isCollapsed: PropTypes.bool,
   currentView: PropTypes.string,
@@ -79,7 +81,8 @@ AsideLeft.propTypes = {
 
 AsideLeft.defaultProps = {
   isAnimated: false,
-  isCollapsed: false
+  isCollapsed: false,
+  isFetching: true
 };
 
 export default AsideLeft;

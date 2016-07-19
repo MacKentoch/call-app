@@ -30,7 +30,7 @@ class App extends Component {
 
   render() {
     const { appName, connectionStatus, helloWord } = this.state;
-    const { userInfos, userIsConnected, currentView, children, sideMenuIsCollapsed } = this.props;
+    const { userInfos, userInfoFetching, userIsConnected, currentView, children, sideMenuIsCollapsed } = this.props;
     const userFullName = `${userInfos.firstname} ${userInfos.lastname.toUpperCase()}`;
     return (
       <div>
@@ -55,6 +55,7 @@ class App extends Component {
             username={userFullName}
             userPicture={userInfos.picture}
             showPicture={userInfos.showPicture}
+            isFetching={userInfoFetching}
           />
           <AsideRight
             isAnimated={true}
@@ -119,6 +120,7 @@ const mapStateToProps = (state) => {
     currentView:          state.views.currentView,
     sideMenuIsCollapsed:  state.sideMenu.isCollapsed,
     userInfos:            state.userInfos.data,
+    userInfoFetching:     state.userInfos.isFetching,
     userIsConnected:      state.userInfos.isConnected
   };
 };
