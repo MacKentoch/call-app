@@ -2,12 +2,15 @@ import {
   REQUEST_PRINCIPAUX_MOTIFS_DATA,
   RECEIVED_PRINCIPAUX_MOTIFS_DATA,
   ERROR_PRINCIPAUX_MOTIFS_DATA
-} from '../../actions/stats/principauxMotifs';
+}                                 from '../../actions/stats/principauxMotifs';
+import { appConfig }              from '../../../config';
+
 
 const initialState = {
   isFetching: false,
   labels:     [],
   datasets:   [],
+  legend:     [...appConfig.stats.legendeInit],
   time:       ''
 };
 
@@ -27,6 +30,7 @@ const principauxMotifs = (state = initialState, action) => {
       isFetching: action.isFetching,
       labels:     [...action.labels],
       datasets:   [...action.datasets],
+      legend:     [...action.legend],
       time:       action.time
     };
 

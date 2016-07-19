@@ -20,6 +20,7 @@ const mapStateToProps = (state) => {
 
     principauxMotifsLabels: state.principauxMotifs.labels,
     principauxMotifsDataset: state.principauxMotifs.datasets,
+    principauxMotifsLegend: state.principauxMotifs.legend,
     principauxMotifsIsFetching: state.principauxMotifs.isFetching,
     principauxMotifsLastFetch: state.principauxMotifs.time
   };

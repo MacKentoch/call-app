@@ -38,7 +38,7 @@ class Home extends Component {
     const { animated } = this.state;
     const { fichesTraiteesLabels, fichesTraiteesDataset, fichesTraiteesLegend, fichesTraiteesIsFetching, fichesTraiteesLastFetch } = this.props;
     const { fichesParCanalData, fichesParCanalLegend, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
-    const { principauxMotifsLabels, principauxMotifsDataset, principauxMotifsIsFetching, principauxMotifsLastFetch } = this.props;
+    const { principauxMotifsLabels, principauxMotifsDataset, principauxMotifsLegend, principauxMotifsIsFetching, principauxMotifsLastFetch } = this.props;
     return(
       <section
         className={cx({
@@ -115,6 +115,7 @@ class Home extends Component {
               dateMaj={principauxMotifsLastFetch}
               labels={principauxMotifsLabels}
               datasets={principauxMotifsDataset}
+              legend={principauxMotifsLegend}
               onRefreshClick={this.handlesOnPrincipauxMotifRefreshClick}
             />
           </div>
@@ -156,6 +157,7 @@ Home.propTypes = {
 
   principauxMotifsLabels: PropTypes.arrayOf(PropTypes.string),
   principauxMotifsDataset: PropTypes.arrayOf(PropTypes.object),
+  principauxMotifsLegend: PropTypes.arrayOf(PropTypes.object),
   principauxMotifsIsFetching: PropTypes.bool,
   principauxMotifsLastFetch: PropTypes.string,
 

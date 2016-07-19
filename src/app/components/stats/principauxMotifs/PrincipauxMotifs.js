@@ -6,13 +6,14 @@ import cx               from 'classnames';
 import {IsFetching}     from '../../../components';
 import Header           from './header/Header';
 import Body             from './body/Body';
+import Legend           from './legend/Legend';
 
 const dimensions = {
   width: '300',
   height: '250'
 };
 
-const PrincipauxMotifs = ({isFetching, dateMaj, headerText, onRefreshClick, labels, datasets}) => {
+const PrincipauxMotifs = ({isFetching, dateMaj, headerText, onRefreshClick, labels, datasets, legend}) => {
   return (
     <section className="panel">
       <Header
@@ -58,6 +59,12 @@ const PrincipauxMotifs = ({isFetching, dateMaj, headerText, onRefreshClick, labe
               width={dimensions.width}
               height={dimensions.height}
             />
+            <div className="spacer_20"></div>
+            <Legend
+              align={'right'}
+              isInLine={true}
+              data={legend}
+            />
           </div>
         }
       </Body>
@@ -71,6 +78,7 @@ PrincipauxMotifs.propTypes = {
   headerText: PropTypes.string.isRequired,
   labels: PropTypes.arrayOf(PropTypes.string).isRequired,
   datasets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  legend: PropTypes.arrayOf(PropTypes.object).isRequired,
   onRefreshClick: PropTypes.func.isRequired
 };
 
