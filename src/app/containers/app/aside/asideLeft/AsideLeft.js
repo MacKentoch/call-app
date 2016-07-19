@@ -6,7 +6,7 @@ import { appConfig }  from '../../../../config';
 import cx             from 'classnames';
 import { Link }       from 'react-router';
 import UserPanel      from './userPanel/UserPanel';
-import SearchForm     from './searchForm/SearchForm';
+import { Horloge }    from '../../../../components';
 
 const homeView      = appConfig.views.home.viewName;
 const rechercheView = appConfig.views.recherche.viewName;
@@ -21,40 +21,43 @@ const AsideLeft = ({ currentView, connectionStatus, userIsConnected, username, h
         'sidebar-animated': isAnimated,
         'collapse-left':    isCollapsed
       })}>
-        <section className="sidebar">
-          <UserPanel
-            hello={helloWord}
-            username={username}
-            connectionStatus={connectionStatus}
-            online={userIsConnected}
-            userPicture={userPicture}
-            showUserPicture={showPicture}
-          />
-          <SearchForm
-            onSearchSubmit={(value) => console.log('searching: ', value)}
-          />
-          <ul className="sidebar-menu sidebar-menu__marginTop">
-            {/* Menu accueil */}
-            <li className={currentView === homeView ? 'active' : '' }>
-              <Link
-                to="/">
-                <i className="fa fa-home"></i>
-                <span>
-                  Accueil
-                </span>
-              </Link>
-            </li>
-            {/* Menu recherche détaillées */}
-            <li className={currentView === rechercheView ? 'active' : '' }>
-              <Link to="/recherche">
-                <i className="fa fa-search"></i>
-                <span>
-                  Recherche
-                </span>
-              </Link>
-            </li>
-          </ul>
-        </section>
+      <section className="sidebar">
+        <UserPanel
+          hello={helloWord}
+          username={username}
+          connectionStatus={connectionStatus}
+          online={userIsConnected}
+          userPicture={userPicture}
+          showUserPicture={showPicture}
+        />
+        <Horloge />
+        {/*
+        <SearchForm
+          onSearchSubmit={(value) => console.log('searching: ', value)}
+        />
+        */}
+        <ul className="sidebar-menu sidebar-menu__marginTop">
+          {/* Menu accueil */}
+          <li className={cx({'active': currentView === homeView})}>
+            <Link
+              to="/">
+              <i className="fa fa-home"></i>
+              <span>
+                {homeView}
+              </span>
+            </Link>
+          </li>
+          {/* Menu recherche détaillées */}
+          <li className={cx({'active': currentView === rechercheView})}>
+            <Link to="/recherche">
+              <i className="fa fa-search"></i>
+              <span>
+                {rechercheView}
+              </span>
+            </Link>
+          </li>
+        </ul>
+      </section>
     </aside>
   );
 };
