@@ -31,7 +31,9 @@ class Horloge extends Component {
   render() {
     const { time, date } = this.state;
     return (
-      <div className="row horlogeContainer dateAndTimeContainer text-center">
+      <div
+        className="row horlogeContainer dateAndTimeContainer text-center"
+        style={{marginLeft: 0, marginRight: 0}}>
         <div className="col-xs-12 dateAndTimeContainer">
           <h2 className="text-center">
             <span className="horlogeTime">
