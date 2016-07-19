@@ -52,6 +52,7 @@ class Home extends Component {
           'animatedViews':  animated,
           'view-enter':     animated
         })}>
+        {/* shortcuts */}
         <div
           className="row"
           style={{marginBottom: '5px'}}>
@@ -92,7 +93,8 @@ class Home extends Component {
             />
           </div>
         </div>
-
+        
+        {/* activité ces 3 derniers mois */}
         <h1>
           Mon activité ces 3 derniers mois
         </h1>
@@ -130,6 +132,22 @@ class Home extends Component {
             />
           </div>
         </div>
+
+        {/* activité groupe et boîtes mails */}
+        <div className="row">
+          <div className="col-md-6">
+            <h1>
+              Activité de mes groupes
+            </h1>
+          </div>
+          <div className="col-md-6">
+            <h1>
+              Mes boîtes mails
+            </h1>
+          </div>
+        </div>
+
+
       </section>
     );
   }

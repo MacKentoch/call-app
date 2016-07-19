@@ -1,5 +1,4 @@
 import TodoList from './todoList/TodoList';
-import EarningGraph from './earningGraph/EarningGraph';
 import Footer from './footer/Footer';
 import Notifications from './notifications/Notifications';
 import TeamMates from './teamMates/TeamMates';
@@ -21,7 +20,6 @@ import {
 
 export {
   TodoList,
-  EarningGraph,
   Footer,
   Notifications,
   TeamMates,
