@@ -60,7 +60,10 @@ const FichesParCanal = ({isFetching, dateMaj, headerText, onRefreshClick, data, 
               width={dimensions.width}
               height={dimensions.height}
             />
+            <div className="spacer_20"></div>
             <Legend
+              align={'right'}
+              isInLine={true}
               data={legend}
             />
           </div>

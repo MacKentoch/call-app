@@ -1,12 +1,12 @@
 import React, {
   PropTypes
 }                       from 'react';
-import Chart         from 'react-chartjs';
+import Chart            from 'react-chartjs';
 import cx               from 'classnames';
 import {IsFetching}     from '../../../components';
 import Header           from './header/Header';
 import Body             from './body/Body';
-
+import Legend           from './legend/Legend';
 
 const dimensions = {
   width: '300',
@@ -58,6 +58,12 @@ const FichesTraitee = ({isFetching, dateMaj, headerText, onRefreshClick, labels,
               }}
               width={dimensions.width}
               height={dimensions.height}
+            />
+            <div className="spacer_20"></div>
+            <Legend
+              align={'right'}
+              isInLine={true}
+              data={[{label: 'test', color: 'red'}]}
             />
           </div>
         }
