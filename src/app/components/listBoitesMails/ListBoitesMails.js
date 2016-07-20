@@ -5,6 +5,7 @@ import cx               from 'classnames';
 import { IsFetching }   from '../../components';
 import Header           from './header/Header';
 import Body             from './body/Body';
+import Liste            from './liste/Liste';
 
 const dimensions = {
   width: '300',
@@ -51,9 +52,7 @@ const ListBoitesMails = ({isFetching, headerText, dateMaj, onRefreshClick}) => {
               'fadeIn': true,
               'center-block': true
             })}>
-            <h3>
-              ici liste boites mail
-            </h3>
+            <Liste />
           </div>
         }
       </Body>

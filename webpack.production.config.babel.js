@@ -36,7 +36,8 @@ const config = {
   ]},
   plugins: [
     getImplicitGlobals(),
-    setNodeEnv()
+    setNodeEnv(),
+    uglifyJS()
   ],
   postcss: function () {
     return [precss, autoprefixer];
@@ -57,6 +58,15 @@ function setNodeEnv() {
     'process.env': {
       'NODE_ENV': JSON.stringify('production')
     }
+  });
+}
+
+// eliminate dead code
+function uglifyJS() {
+  return new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false,
+    warnings: false
+    // mangle: false
   });
 }
 

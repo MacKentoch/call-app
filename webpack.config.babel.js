@@ -39,7 +39,8 @@ const config = {
   },
   plugins: [
     getImplicitGlobals(),
-    setNodeEnv()
+    setNodeEnv(),
+    uglifyJS()
   ]
 };
 
@@ -60,5 +61,12 @@ function setNodeEnv() {
     }
   });
 }
-
+// eliminate dead code
+function uglifyJS() {
+  return new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false,
+    warnings: false
+    // mangle: false
+  });
+}
 export default config;
