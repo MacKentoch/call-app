@@ -1,4 +1,4 @@
-const userGroupActivityMock = [
+export const userGroupActivityMock = [
   {
     groupId: 1,
     groupName: 'group1',

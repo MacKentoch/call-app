@@ -3,7 +3,8 @@ import {
   fichetraitee,
   ficheparcanal,
   principauxmotifs,
-  userInfosMockData
+  userInfosMockData,
+  userGroupActivityMock
 }                       from '../../mocks';
 
 export const fetchMockUserInfosData = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
@@ -11,6 +12,17 @@ export const fetchMockUserInfosData = (timeToWait = appConfig.FAKE_ASYNC_DELAY) 
     resolve => {
       setTimeout(
        () => resolve({...userInfosMockData}),
+       timeToWait
+     );
+    }
+ );
+};
+
+export const fetchMockUserGroupActivityData = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({...userGroupActivityMock}),
        timeToWait
      );
     }

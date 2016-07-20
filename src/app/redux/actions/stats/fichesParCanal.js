@@ -10,7 +10,6 @@ import {
 }                     from '../../../services';
 
 moment.locale('fr');
-
 const formatDate = appConfig.formatDate.defaut;
 
 export const REQUEST_FICHES_PAR_CANAL_DATA   = 'REQUEST_FICHES_PAR_CANAL_DATA';

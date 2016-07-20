@@ -1,13 +1,15 @@
 // views:
-import views from './views';
+import views              from './views';
 // stats:
-import fichesTraitees from './stats/fichesTraitees';
-import fichesParCanal from './stats/fichesParCanal';
-import principauxMotifs from './stats/principauxMotifs';
-
-import userInfos from './userInfos';
-import sideMenu from './sideMenu';
-import teamMates from './teamMates';
+import fichesTraitees     from './stats/fichesTraitees';
+import fichesParCanal     from './stats/fichesParCanal';
+import principauxMotifs   from './stats/principauxMotifs';
+// user
+import userInfos          from './user/userInfos';
+import userGroupActivity  from './user/userGroupActivity';
+// UI
+import sideMenu           from './sideMenu';
+import teamMates          from './teamMates';
 
 export {
   // views:
@@ -16,8 +18,10 @@ export {
   fichesTraitees,
   fichesParCanal,
   principauxMotifs,
-
-  sideMenu,
+  // user
   userInfos,
+  userGroupActivity,
+  // UI
+  sideMenu,
   teamMates
 };

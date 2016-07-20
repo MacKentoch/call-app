@@ -22,7 +22,11 @@ import {
 import {
   fetchUserInfoDataIfNeeded
 }
-                                  from './userInfos';
+                                  from './user/userInfos';
+import {
+  fetchUserGroupActivityDataIfNeeded
+}
+                                  from './user/userGroupActivity';
 // sideMenu
 import {
   openSideMenu,
@@ -46,7 +50,9 @@ export {
   openSideMenu,
   closeSideMenu,
   toggleSideMenu,
-
+  // user
   fetchUserInfoDataIfNeeded,
+  fetchUserGroupActivityDataIfNeeded,
+  
   fetchTeamMatesDataIfNeeded
 };

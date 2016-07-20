@@ -1,28 +1,29 @@
-'use strict';
-
 import moment         from 'moment';
-import { appConfig }  from '../../config';
+import { appConfig }  from '../../../config';
 import {
   defaultOptions,
   checkStatus,
   parseJSON,
   getLocationOrigin,
   fetchMockUserInfosData
-}                     from '../../services';
+}                     from '../../../services';
+
+moment.locale('fr');
+const formatDate = appConfig.formatDate.defaut;
 
 export const REQUEST_USER_INFOS_DATA   = 'REQUEST_USER_INFOS_DATA';
 export const RECEIVED_USER_INFOS_DATA  = 'RECEIVED_USER_INFOS_DATA';
 export const ERROR_USER_INFOS_DATA     = 'ERROR_USER_INFOS_DATA';
 
 
-const requestUserInfosData = (time = moment().format()) => {
+const requestUserInfosData = (time = moment().format(formatDate)) => {
   return {
     type:       REQUEST_USER_INFOS_DATA,
     isFetching: true,
     time
   };
 };
-const receivedUserInfosData = (userInfos, time = moment().format()) => {
+const receivedUserInfosData = (userInfos, time = moment().format(formatDate)) => {
   return {
     type:       RECEIVED_USER_INFOS_DATA,
     isFetching: false,
@@ -30,7 +31,7 @@ const receivedUserInfosData = (userInfos, time = moment().format()) => {
     time
   };
 };
-const errorUserInfosData = (time = moment().format()) => {
+const errorUserInfosData = (time = moment().format(formatDate)) => {
   return {
     type:       ERROR_USER_INFOS_DATA,
     isFetching: false,

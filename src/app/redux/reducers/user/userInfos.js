@@ -1,4 +1,8 @@
-'use strict';
+import {
+  REQUEST_USER_INFOS_DATA,
+  RECEIVED_USER_INFOS_DATA,
+  ERROR_USER_INFOS_DATA
+}             from '../../actions/user/userInfos';
 
 const initialState = {
   isFetching: false,
@@ -15,14 +19,14 @@ const initialState = {
 const userInfos = (state = initialState, action) => {
   switch (action.type) {
 
-  case 'REQUEST_USER_INFOS_DATA':
+  case REQUEST_USER_INFOS_DATA:
     return {
       ...state,
       isFetching: action.isFetching,
       time:       action.time
     };
 
-  case 'RECEIVED_USER_INFOS_DATA':
+  case RECEIVED_USER_INFOS_DATA:
     return {
       ...state,
       isFetching: action.isFetching,
@@ -31,7 +35,7 @@ const userInfos = (state = initialState, action) => {
       time:       action.time
     };
 
-  case 'ERROR_USER_INFOS_DATA':
+  case ERROR_USER_INFOS_DATA:
     return {
       ...state,
       isFetching: action.isFetching,
