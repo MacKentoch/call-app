@@ -68,7 +68,8 @@ ActiviteGroupe.propTypes = {
       groupName: PropTypes.string.isRequired,
       nbFichesEnCours: PropTypes.number.isRequired,
       nbFichesEnRetard: PropTypes.number.isRequired,
-      nbFichesNonAffectees: PropTypes.number.isRequired
+      nbFichesNonAffectees: PropTypes.number.isRequired,
+      pourcentageFicheRetard: PropTypes.number.isRequired
     })
   ),
   dateMaj: PropTypes.string.isRequired, // deja formatte en string: DD/MM/YYYY HH:ss:mm

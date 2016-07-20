@@ -27,7 +27,7 @@ const receivedUserGroupActivityData = (data, time = moment().format(formatDate))
   return {
     type:       RECEIVED_USER_USER_GROUP_ACTIVITY_DATA,
     isFetching: false,
-    data,
+    data: processRatioFichesEnRetard(data),
     time
   };
 };
@@ -81,4 +81,30 @@ function shouldFetchUserGroupActivityData(state) {
   } else {
     return true;
   }
+}
+
+function processRatioFichesEnRetard(data) {
+  if (data && Array.isArray(data)) {
+    return data.map(
+      group => {
+        const nbFichesEncours = parseInt(group.nbFichesEnCours, 10) ? parseInt(group.nbFichesEnCours, 10) : 0;
+        const nbFichesEnRetard= parseInt(group.nbFichesEnRetard, 10) ? parseInt(group.nbFichesEnRetard, 10) : 0;
+        const ratio = nbFichesEncours > 0 ? nbFichesEnRetard / nbFichesEncours : 0;
+
+        return {
+          ...group,
+          pourcentageFicheRetard: Math.round(ratio * 100)
+        };
+      }
+    );
+  }
+
+  return data.map(
+    group => {
+      return {
+        ...group,
+        pourcentageFicheRetard: 0
+      };
+    }
+  );
 }

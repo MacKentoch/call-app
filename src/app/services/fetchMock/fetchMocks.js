@@ -22,7 +22,7 @@ export const fetchMockUserGroupActivityData = (timeToWait = appConfig.FAKE_ASYNC
   return new Promise(
     resolve => {
       setTimeout(
-       () => resolve({...userGroupActivityMock}),
+       () => resolve([...userGroupActivityMock]),
        timeToWait
      );
     }
