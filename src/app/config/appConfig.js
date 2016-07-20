@@ -110,6 +110,12 @@ export const appConfig = {
     }
   },
 
+  userBoitesMails: {
+    data: {
+      API: 'api/userBoitesMails'
+    }
+  },
+
   HELLO_WORD: 'Bonjour'
 
 };

@@ -4,6 +4,7 @@ import { ficheparcanal }          from './fichesParCanal';
 import { principauxmotifs }       from './principauxmotifs';
 import { userInfosMockData }      from './userInfosMock';
 import { userGroupActivityMock }  from './userGroupActivity';
+import { userBoitesMailsMock }    from './userBoitesMails';
 
 export {
   motifsContacts,
@@ -11,5 +12,6 @@ export {
   ficheparcanal,
   principauxmotifs,
   userInfosMockData,
-  userGroupActivityMock
+  userGroupActivityMock,
+  userBoitesMailsMock
 };

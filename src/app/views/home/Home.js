@@ -18,21 +18,15 @@ const boiteEnvoiPath = appConfig.views.mailbox.envoi.path;
 const mockListBoiteMail = [
   {
     id: 1,
-    titre: 'Boite #1',
-    receptionRoute: 'route1',
-    envoyesRoute: 'route1'
+    titre: 'Boite #1'
   },
   {
     id: 2,
-    titre: 'Boite #2',
-    receptionRoute: 'route2',
-    envoyesRoute: 'route2'
+    titre: 'Boite #2'
   },
   {
     id: 3,
-    titre: 'Boite #3',
-    receptionRoute: 'route3',
-    envoyesRoute: 'route3'
+    titre: 'Boite #3'
   }
 ];
 
