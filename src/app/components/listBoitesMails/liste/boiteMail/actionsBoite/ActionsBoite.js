@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const ActionsBoite = ({}) => {
+const ActionsBoite = ({boiteId, onReceptionClick, onEnvoyesClick}) => {
   return (
     <ul
       style={{
@@ -31,8 +31,8 @@ const ActionsBoite = ({}) => {
 
 ActionsBoite.propTypes = {
   boiteId: PropTypes.number,
-  receptionRoute: PropTypes.string,
-  envoyesRoute: PropTypes.string
+  onReceptionClick: PropTypes.func,
+  onEnvoyesClick: PropTypes.func
 };
 
 export default ActionsBoite;

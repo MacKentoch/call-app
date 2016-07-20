@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import BoiteMail            from './boiteMail/BoiteMail';
 
-const Liste = ({boitesMails}) => {
+const Liste = ({boitesMails, onReceptionClick, onEnvoyesClick}) => {
   return (
     <ul className="list-unstyled">
       {
@@ -11,8 +11,8 @@ const Liste = ({boitesMails}) => {
               key={idx}
               id={boite.id}
               titre={boite.titre}
-              onReceptionClick={boite.onReceptionClick}
-              onEnvoyesClick={boite.onEnvoyesClick}
+              onReceptionClick={onReceptionClick}
+              onEnvoyesClick={onEnvoyesClick}
             />
           )
         )
