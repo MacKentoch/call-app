@@ -12,6 +12,27 @@ const dimensions = {
   height: '400'
 };
 
+const mockListBoiteMail = [
+  {
+    id: 1,
+    titre: 'Boite #1',
+    receptionRoute: 'route1',
+    envoyesRoute: 'route1'
+  },
+  {
+    id: 2,
+    titre: 'Boite #2',
+    receptionRoute: 'route2',
+    envoyesRoute: 'route2'
+  },
+  {
+    id: 3,
+    titre: 'Boite #3',
+    receptionRoute: 'route3',
+    envoyesRoute: 'route3'
+  }
+];
+
 const ListBoitesMails = ({isFetching, headerText, dateMaj, onRefreshClick}) => {
   return (
     <section className="panel">
@@ -52,7 +73,9 @@ const ListBoitesMails = ({isFetching, headerText, dateMaj, onRefreshClick}) => {
               'fadeIn': true,
               'center-block': true
             })}>
-            <Liste />
+            <Liste 
+              boitesMails={mockListBoiteMail}
+            />
           </div>
         }
       </Body>

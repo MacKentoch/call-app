@@ -17,6 +17,7 @@ const BoiteMail = ({id, titre, receptionRoute, envoyesRoute}) => {
         receptionRoute={receptionRoute}
         envoyesRoute={envoyesRoute}
       />
+      <span style={{margin: '10px'}}></span>
     </li>
   );
 };
