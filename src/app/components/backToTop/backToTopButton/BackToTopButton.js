@@ -2,9 +2,9 @@ import React, {PropTypes} from 'react';
 import cx from 'classnames';
 
 const defaultBackGroundColor = '#4A4A4A';
-const sideOffset    = '-10px';
-const bottomOffset  = '40px';
-const defaultWidth  = '100px';
+const sideOffset    = '10px';
+const bottomOffset  = '2px';
+const defaultWidth  = '50px';
 const defaultZindex = 10;
 const defaultOpacity= 0.5;
 const defaultStyle = {
@@ -30,8 +30,9 @@ const BackToTopButton = ({onClick, position, children, motionStyle}) => {
         onClick={onClick}>
         {
           !children &&
-          <div style={{marginRight: '10px'}}>
+          <div style={{marginRight: '0px'}}>
             <i
+              style={{color: '#F1F1F1'}}
               className="fa fa-arrow-up"
               aria-hidden="true">
             </i>

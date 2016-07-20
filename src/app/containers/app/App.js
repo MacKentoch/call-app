@@ -12,6 +12,7 @@ import {
 }                             from './aside';
 import { Modals }             from '../../views';
 import { appConfig }          from '../../config';
+import { BackToTop }          from '../../components';
 
 class App extends Component {
   constructor(props, context) {
@@ -35,6 +36,7 @@ class App extends Component {
     return (
       <div>
         <Header
+          id="topHeader"
           appName={appName}
           userLogin={userInfos.login}
           userFirstname={userInfos.firstname}
@@ -44,7 +46,9 @@ class App extends Component {
           currentView={currentView}
           toggleSideMenu={this.handlesMenuButtonClick}
         />
-        <div className="wrapper row-offcanvas row-offcanvas-left">
+        <div
+          id="appWrapper"
+          className="wrapper row-offcanvas row-offcanvas-left">
           <AsideLeft
             isAnimated={true}
             currentView={currentView}
@@ -60,8 +64,12 @@ class App extends Component {
           <AsideRight
             isAnimated={true}
             isExpanded={sideMenuIsCollapsed}>
-            <div>
+            <div id="mainContainer">
               { children }
+              <BackToTop
+                minScrollY={40}
+                scrollTo={'appWrapper'}
+              />
             </div>
           </AsideRight>
         </div>
@@ -99,6 +107,7 @@ App.propTypes = {
     picture: PropTypes.string,
     showPicture: PropTypes.bool
   }),
+  userInfoFetching: PropTypes.bool,
   userIsConnected: PropTypes.bool,
   currentView: PropTypes.string,
 
