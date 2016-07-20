@@ -3,7 +3,6 @@ import React, {
   PropTypes
 }                         from 'react';
 import shallowCompare     from 'react-addons-shallow-compare';
-import { browserHistory } from 'react-router'
 import cx                 from 'classnames';
 import { IsFetching }     from '../../components';
 import Header             from './header/Header';
