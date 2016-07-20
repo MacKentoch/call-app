@@ -7,7 +7,7 @@ import {
 const initialState = {
   isFetching: false,
   data: [],
-  time: null
+  time: ''
 };
 
 const userGroupActivity = (state = initialState, action) => {

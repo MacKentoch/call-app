@@ -24,6 +24,7 @@ class Home extends Component {
     this.handlesOnFichesTraiteesRefreshClick = this.handlesOnFichesTraiteesRefreshClick.bind(this);
     this.handlesOnFichesParCanalRefreshClick = this.handlesOnFichesParCanalRefreshClick.bind(this);
     this.handlesOnPrincipauxMotifRefreshClick = this.handlesOnPrincipauxMotifRefreshClick.bind(this);
+    this.handlesOnUserGroupActivityRefreshClick = this.handlesOnUserGroupActivityRefreshClick.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,7 @@ class Home extends Component {
     actions.fetchFichesTraiteeDataIfNeeded();
     actions.fetchFichesParCanalDataIfNeeded();
     actions.fetchPrincipauxMotifsDataIfNeeded();
+    actions.fetchUserGroupActivityDataIfNeeded();
   }
 
   componentWillUnmount() {
@@ -44,6 +46,7 @@ class Home extends Component {
     const { fichesParCanalData, fichesParCanalLegend, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
     const { principauxMotifsLabels, principauxMotifsDataset, principauxMotifsLegend, principauxMotifsIsFetching, principauxMotifsLastFetch } = this.props;
     const { createFicheContactCourier, createFicheContactMail, createFicheContactTelephone, createFicheContactPersonnes } = appConfig.views;
+    const { userGroupActivityData, userGroupActivityIsFetching, userGroupActivityLastFetch } = this.props;
 
     return(
       <section
@@ -140,10 +143,11 @@ class Home extends Component {
               Activité de mes groupes
             </h1>
             <ActiviteGroupe
-              isFetching={false}
-              dateMaj={'01/01/2016 12:00'}
+              isFetching={userGroupActivityIsFetching}
+              dateMaj={userGroupActivityLastFetch}
+              groupActivity={userGroupActivityData}
               headerText={'Mes groupes'}
-              onRefreshClick={()=>console.log('todo')}
+              onRefreshClick={this.handlesOnUserGroupActivityRefreshClick}
             />
           </div>
           <div className="col-md-6">
@@ -179,6 +183,12 @@ class Home extends Component {
     event.preventDefault();
     actions.fetchPrincipauxMotifsDataIfNeeded();
   }
+
+  handlesOnUserGroupActivityRefreshClick(event) {
+    const { actions } = this.props;
+    event.preventDefault();
+    actions.fetchUserGroupActivityDataIfNeeded();
+  }
 }
 
 Home.propTypes = {
@@ -199,6 +209,10 @@ Home.propTypes = {
   principauxMotifsIsFetching: PropTypes.bool,
   principauxMotifsLastFetch: PropTypes.string,
 
+  userGroupActivityData: PropTypes.arrayOf(PropTypes.object),
+  userGroupActivityIsFetching: PropTypes.bool,
+  userGroupActivityLastFetch: PropTypes.string,
+
   actions: PropTypes.shape({
     enterHome: PropTypes.func,
     leaveHome: PropTypes.func,
@@ -207,7 +221,9 @@ Home.propTypes = {
 
     fetchFichesParCanalDataIfNeeded: PropTypes.func,
 
-    fetchPrincipauxMotifsDataIfNeeded: PropTypes.func
+    fetchPrincipauxMotifsDataIfNeeded: PropTypes.func,
+
+    fetchUserGroupActivityDataIfNeeded: PropTypes.func
   })
 };
 
