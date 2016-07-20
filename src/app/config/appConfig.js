@@ -15,6 +15,16 @@ export const appConfig = {
       viewName: 'Accueil',
       path: '/'
     },
+    mailbox: {
+      reception: {
+        viewName: 'Boîte de réception',
+        path: '/mailbox/reception'
+      },
+      envoi: {
+        viewName: 'Boîte d\'envoi',
+        path: '/mailbox/envoi'
+      }
+    },
     recherche: {
       viewName: 'Recherche',
       path: '/recherche'

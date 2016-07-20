@@ -13,6 +13,8 @@ import {
 }                                       from '../../components';
 import { appConfig }                    from '../../config';
 
+const boiteReceptionPath = appConfig.views.mailbox.reception.path;
+const boiteEnvoiPath = appConfig.views.mailbox.envoi.path;
 const mockListBoiteMail = [
   {
     id: 1,
@@ -180,6 +182,8 @@ class Home extends Component {
               dateMaj={'01/01/2016 12:00'}
               headerText={'Boîtes Mail'}
               boitesMails={mockListBoiteMail}
+              boiteReceptionPath={boiteReceptionPath}
+              boiteEnvoiPath={boiteEnvoiPath}
               onRefreshClick={()=>console.log('todo')}
             />
           </div>

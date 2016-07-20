@@ -1,13 +1,14 @@
 import React, {
   Component,
   PropTypes
-}                       from 'react';
-import shallowCompare   from 'react-addons-shallow-compare';
-import cx               from 'classnames';
-import { IsFetching }   from '../../components';
-import Header           from './header/Header';
-import Body             from './body/Body';
-import Liste            from './liste/Liste';
+}                         from 'react';
+import shallowCompare     from 'react-addons-shallow-compare';
+import { browserHistory } from 'react-router'
+import cx                 from 'classnames';
+import { IsFetching }     from '../../components';
+import Header             from './header/Header';
+import Body               from './body/Body';
+import Liste              from './liste/Liste';
 
 const dimensions = {
   width: '300',
@@ -17,8 +18,8 @@ const dimensions = {
 class ListBoitesMails extends Component {
   constructor(props, context) {
     super(props, context);
-    this.handlesOnReceptionClick = this.handlesOnReceptionClick.bind(this);
-    this.handlesOnEnvoyesClick= this.handlesOnEnvoyesClick.bind(this);
+    this.handlesOnReceptionClick  = this.handlesOnReceptionClick.bind(this);
+    this.handlesOnEnvoyesClick    = this.handlesOnEnvoyesClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -79,11 +80,17 @@ class ListBoitesMails extends Component {
   }
 
   handlesOnReceptionClick(boiteId) {
-    console.log('handlesOnReceptionClick boiteId: ', boiteId);
+    if (boiteId) {
+      const {boiteReceptionPath} = this.props;
+      browserHistory.push(`${boiteReceptionPath}/${boiteId}`);
+    }
   }
 
   handlesOnEnvoyesClick(boiteId) {
-    console.log('handlesOnEnvoyesClick boiteId: ', boiteId);
+    if (boiteId) {
+      const {boiteEnvoiPath} = this.props;
+      browserHistory.push(`${boiteEnvoiPath}/${boiteId}`);
+    }
   }
 }
 
@@ -97,7 +104,9 @@ ListBoitesMails.propTypes = {
       id: PropTypes.number.isRequired,
       titre: PropTypes.string.isRequired
     })
-  )
+  ),
+  boiteReceptionPath: PropTypes.string.isRequired,
+  boiteEnvoiPath: PropTypes.string.isRequired
 };
 
 export default ListBoitesMails;
