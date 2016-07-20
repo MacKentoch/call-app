@@ -3,7 +3,7 @@ import path         from 'path';
 import autoprefixer from 'autoprefixer';
 import precss       from 'precss';
 
-const assetsDir       = path.resolve(__dirname, 'public/assets');
+const assetsDir       = path.resolve(__dirname, 'dist/public/assets');
 const nodeModulesDir  = path.resolve(__dirname, 'node_modules');
 const vendorsDir      = path.resolve(__dirname, 'src/app/vendors');
 
@@ -39,8 +39,8 @@ const config = {
   },
   plugins: [
     getImplicitGlobals(),
-    setNodeEnv(),
-    uglifyJS()
+    setNodeEnv()
+    // uglifyJS()
   ]
 };
 
@@ -61,12 +61,5 @@ function setNodeEnv() {
     }
   });
 }
-// eliminate dead code
-function uglifyJS() {
-  return new webpack.optimize.UglifyJsPlugin({
-    sourceMap: false,
-    warnings: false
-    // mangle: false
-  });
-}
+
 export default config;
