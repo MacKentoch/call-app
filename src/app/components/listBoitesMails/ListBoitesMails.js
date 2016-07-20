@@ -18,8 +18,6 @@ const dimensions = {
 class ListBoitesMails extends Component {
   constructor(props, context) {
     super(props, context);
-    this.handlesOnReceptionClick  = this.handlesOnReceptionClick.bind(this);
-    this.handlesOnEnvoyesClick    = this.handlesOnEnvoyesClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -27,7 +25,7 @@ class ListBoitesMails extends Component {
   }
 
   render() {
-    const {isFetching, boitesMails, headerText, dateMaj, onRefreshClick} = this.props;
+    const {isFetching, boitesMails, headerText, dateMaj, onRefreshClick, boiteReceptionPath, boiteEnvoiPath} = this.props;
     return (
       <section className="panel">
         <Header
@@ -69,28 +67,14 @@ class ListBoitesMails extends Component {
               })}>
               <Liste
                 boitesMails={boitesMails}
-                onReceptionClick={this.handlesOnReceptionClick}
-                onEnvoyesClick={this.handlesOnEnvoyesClick}
+                boiteReceptionPath={boiteReceptionPath}
+                boiteEnvoiPath={boiteEnvoiPath}
               />
             </div>
           }
         </Body>
       </section>
     );
-  }
-
-  handlesOnReceptionClick(boiteId) {
-    if (boiteId) {
-      const {boiteReceptionPath} = this.props;
-      browserHistory.push(`${boiteReceptionPath}/${boiteId}`);
-    }
-  }
-
-  handlesOnEnvoyesClick(boiteId) {
-    if (boiteId) {
-      const {boiteEnvoiPath} = this.props;
-      browserHistory.push(`${boiteEnvoiPath}/${boiteId}`);
-    }
   }
 }
 

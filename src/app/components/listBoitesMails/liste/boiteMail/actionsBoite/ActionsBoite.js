@@ -1,15 +1,14 @@
 import React, {
   Component,
   PropTypes
-}                       from 'react';
-import shallowCompare   from 'react-addons-shallow-compare';
+}                         from 'react';
+import shallowCompare     from 'react-addons-shallow-compare';
+import { Link }           from 'react-router';
 
 
 class ActionsBoite extends Component {
   constructor(props, context) {
     super(props, context);
-    this.handlesOnReceptionClick = this.handlesOnReceptionClick.bind(this);
-    this.handlesOnEnvoyesClick= this.handlesOnEnvoyesClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -17,6 +16,7 @@ class ActionsBoite extends Component {
   }
 
   render() {
+    const { boiteReceptionPath, boiteEnvoiPath, boiteId } = this.props;
     return (
       <ul
         style={{
@@ -27,39 +27,33 @@ class ActionsBoite extends Component {
         className="list-unstyled">
         <li
           className="boite_mail_link"
-          onClick={this.handlesOnReceptionClick}>
-          <i className="fa fa-inbox" aria-hidden="true"></i>
-          &nbsp;
-          Boîte de réception
+          >
+          <Link
+            to={`${boiteReceptionPath}/${boiteId}`}
+            style={{color:'rgb(51, 51, 51) !important'}}>
+            <i className="fa fa-inbox" aria-hidden="true"></i>
+            &nbsp;
+            Boîte de réception
+          </Link>
         </li>
         <li
           className="boite_mail_link"
-          onClick={this.handlesOnEnvoyesClick}>
-          <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
-          &nbsp;
-          Envoyés
+          >
+          <Link to={`${boiteEnvoiPath}/${boiteId}`}>
+            <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
+            &nbsp;
+            Envoyés
+          </Link>
         </li>
       </ul>
     );
-  }
-
-  handlesOnReceptionClick(event) {
-    event.preventDefault();
-    const {boiteId, onReceptionClick} = this.props;
-    onReceptionClick(boiteId);
-  }
-
-  handlesOnEnvoyesClick(event) {
-    event.preventDefault();
-    const {boiteId, onEnvoyesClick} = this.props;
-    onEnvoyesClick(boiteId);
   }
 }
 
 ActionsBoite.propTypes = {
   boiteId: PropTypes.number,
-  onReceptionClick: PropTypes.func,
-  onEnvoyesClick: PropTypes.func
+  boiteReceptionPath: PropTypes.string.isRequired,
+  boiteEnvoiPath: PropTypes.string.isRequired
 };
 
 export default ActionsBoite;

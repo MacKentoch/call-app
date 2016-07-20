@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import BoiteMail            from './boiteMail/BoiteMail';
 
-const Liste = ({boitesMails, onReceptionClick, onEnvoyesClick}) => {
+const Liste = ({boitesMails, boiteReceptionPath, boiteEnvoiPath}) => {
   return (
     <ul className="list-unstyled">
       {
@@ -11,8 +11,8 @@ const Liste = ({boitesMails, onReceptionClick, onEnvoyesClick}) => {
               key={idx}
               id={boite.id}
               titre={boite.titre}
-              onReceptionClick={onReceptionClick}
-              onEnvoyesClick={onEnvoyesClick}
+              boiteReceptionPath={boiteReceptionPath}
+              boiteEnvoiPath={boiteEnvoiPath}
             />
           )
         )
@@ -28,8 +28,8 @@ Liste.propTypes = {
       titre: PropTypes.string.isRequired
     })
   ),
-  onReceptionClick: PropTypes.func.isRequired,
-  onEnvoyesClick: PropTypes.func.isRequired
+  boiteReceptionPath: PropTypes.string.isRequired,
+  boiteEnvoiPath: PropTypes.string.isRequired
 };
 
 export default Liste;
