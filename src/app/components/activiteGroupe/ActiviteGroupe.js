@@ -5,13 +5,14 @@ import cx               from 'classnames';
 import { IsFetching }   from '../../components';
 import Header           from './header/Header';
 import Body             from './body/Body';
+import Table            from './table/Table';
 
 const dimensions = {
   width: '300',
   height: '400'
 };
 
-const ActiviteGroupe = ({isFetching, headerText, dateMaj, onRefreshClick}) => {
+const ActiviteGroupe = ({isFetching, groupActivity, headerText, dateMaj, onRefreshClick}) => {
   return (
     <section className="panel">
       <Header
@@ -51,9 +52,7 @@ const ActiviteGroupe = ({isFetching, headerText, dateMaj, onRefreshClick}) => {
               'fadeIn': true,
               'center-block': true
             })}>
-            <h3>
-              ici tableau
-            </h3>
+            <Table groupActivity={groupActivity} />
           </div>
         }
       </Body>
@@ -63,6 +62,15 @@ const ActiviteGroupe = ({isFetching, headerText, dateMaj, onRefreshClick}) => {
 
 ActiviteGroupe.propTypes = {
   isFetching: PropTypes.bool.isRequired,
+  groupActivity: PropTypes.arrayOf(
+    PropTypes.shape({
+      groupId: PropTypes.number.isRequired,
+      groupName: PropTypes.string.isRequired,
+      nbFichesEnCours: PropTypes.number.isRequired,
+      nbFichesEnRetard: PropTypes.number.isRequired,
+      nbFichesNonAffectees: PropTypes.number.isRequired
+    })
+  ),
   dateMaj: PropTypes.string.isRequired, // deja formatte en string: DD/MM/YYYY HH:ss:mm
   headerText: PropTypes.string.isRequired,
   onRefreshClick: PropTypes.func.isRequired

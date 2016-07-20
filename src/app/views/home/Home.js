@@ -138,7 +138,7 @@ class Home extends Component {
 
         {/* activité groupe et boîtes mails */}
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-8">
             <h1>
               Activité de mes groupes
             </h1>
@@ -150,7 +150,7 @@ class Home extends Component {
               onRefreshClick={this.handlesOnUserGroupActivityRefreshClick}
             />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-4">
             <h1>
               Mes boîtes mails
             </h1>
