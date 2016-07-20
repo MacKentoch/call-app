@@ -43,6 +43,9 @@ const ListBoitesMails = ({isFetching, headerText, dateMaj, onRefreshClick}) => {
         {
           !isFetching &&
           <div
+            style={{
+              minHeight: `${dimensions.height}px`
+            }}
             className={cx({
               'animated': true,
               'fadeIn': true,
