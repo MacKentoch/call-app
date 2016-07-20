@@ -8,6 +8,7 @@ import IsFetching from './isFetching/IsFetching';
 import ActiviteGroupe from './activiteGroupe/ActiviteGroupe';
 import ListBoitesMails from './listBoitesMails/ListBoitesMails';
 import Horloge from './horloge/Horloge';
+import BackToTop from './backToTop/BackToTop';
 
 import {
   FichesTraitee,
@@ -33,6 +34,7 @@ export {
   ActiviteGroupe,
   ListBoitesMails,
   Horloge,
+  BackToTop,
 
   // stats
   FichesTraitee,

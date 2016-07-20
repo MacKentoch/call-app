@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 import {
@@ -11,8 +9,7 @@ import {
   TelephoneLink,
   PersonnesLink,
   ActiviteGroupe,
-  ListBoitesMails,
-  Footer
+  ListBoitesMails
 }                                       from '../../components';
 import { appConfig }                    from '../../config';
 
