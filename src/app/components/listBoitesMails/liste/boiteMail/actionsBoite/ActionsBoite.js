@@ -26,18 +26,14 @@ class ActionsBoite extends Component {
         }}
         className="list-unstyled">
         <li
-          style={{
-            paddingLeft: '15px'
-          }}
+          className="boite_mail_link"
           onClick={this.handlesOnReceptionClick}>
           <i className="fa fa-inbox" aria-hidden="true"></i>
           &nbsp;
           Boîte de réception
         </li>
         <li
-          style={{
-            paddingLeft: '15px'
-          }}
+          className="boite_mail_link"
           onClick={this.handlesOnEnvoyesClick}>
           <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
           &nbsp;

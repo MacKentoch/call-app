@@ -3,10 +3,10 @@ import React, {PropTypes} from 'react';
 const TitreBoite = ({titre}) => {
   return (
     <h4>
+      <i className="fa fa-inbox" aria-hidden="true"></i>
+      &nbsp;
       <strong>
-        <u>
-          {titre}
-        </u>
+        {titre}
       </strong>
     </h4>
   );
