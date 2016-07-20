@@ -93,7 +93,8 @@ function processRatioFichesEnRetard(data) {
 
         return {
           ...group,
-          pourcentageFicheRetard: Math.round(ratio * 100)
+          pourcentageFicheRetard: Math.round(ratio * 100),
+          colorFicheRetard: getRetardColor(Math.round(ratio * 100))
         };
       }
     );
@@ -103,8 +104,25 @@ function processRatioFichesEnRetard(data) {
     group => {
       return {
         ...group,
-        pourcentageFicheRetard: 0
+        pourcentageFicheRetard: 0,
+        colorFicheRetard: getRetardColor(0)
       };
     }
   );
+}
+
+function getRetardColor(retardValue) {
+  if (retardValue === 0) {
+    return 'green';
+  }
+  if (retardValue > 0 && retardValue < 25) {
+    return 'blue';
+  }
+  if (retardValue >= 25  && retardValue < 50) {
+    return 'yellow';
+  }
+  if (retardValue >= 50  && retardValue < 75) {
+    return 'red';
+  }
+  return '';
 }

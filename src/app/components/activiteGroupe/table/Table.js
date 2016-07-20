@@ -7,9 +7,7 @@ const Table = ({groupActivity}) => {
     <div className="panel">
       <div className="panel-body">
       <table className="table table-striped">
-        <Thead
-          groupActivity= {groupActivity}
-        />
+        <Thead />
         <Tbody
           groupActivity= {groupActivity}
         />
@@ -27,7 +25,8 @@ Table.propTypes = {
       nbFichesEnCours: PropTypes.number.isRequired,
       nbFichesEnRetard: PropTypes.number.isRequired,
       nbFichesNonAffectees: PropTypes.number.isRequired,
-      pourcentageFicheRetard: PropTypes.number.isRequired
+      pourcentageFicheRetard: PropTypes.number.isRequired,
+      colorFicheRetard: PropTypes.string.isRequired
     })
   )
 };
