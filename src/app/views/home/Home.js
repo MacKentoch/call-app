@@ -42,6 +42,7 @@ class Home extends Component {
     this.handlesOnFichesParCanalRefreshClick = this.handlesOnFichesParCanalRefreshClick.bind(this);
     this.handlesOnPrincipauxMotifRefreshClick = this.handlesOnPrincipauxMotifRefreshClick.bind(this);
     this.handlesOnUserGroupActivityRefreshClick = this.handlesOnUserGroupActivityRefreshClick.bind(this);
+    this.handlesOnUserBoitesMailsRefreshClick = this.handlesOnUserBoitesMailsRefreshClick.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +52,7 @@ class Home extends Component {
     actions.fetchFichesParCanalDataIfNeeded();
     actions.fetchPrincipauxMotifsDataIfNeeded();
     actions.fetchUserGroupActivityDataIfNeeded();
+    actions.fetchUserBoitesMailsDataIfNeeded();
   }
 
   componentWillUnmount() {
@@ -64,7 +66,7 @@ class Home extends Component {
     const { principauxMotifsLabels, principauxMotifsDataset, principauxMotifsLegend, principauxMotifsIsFetching, principauxMotifsLastFetch } = this.props;
     const { createFicheContactCourier, createFicheContactMail, createFicheContactTelephone, createFicheContactPersonnes } = appConfig.views;
     const { userGroupActivityData, userGroupActivityIsFetching, userGroupActivityLastFetch } = this.props;
-
+    const { userBoitesMailsData, userBoitesMailsIsFetching, userBoitesMailsLastFetch } = this.props;
     return(
       <section
         className={cx({
@@ -172,13 +174,13 @@ class Home extends Component {
               Mes boîtes mails
             </h1>
             <ListBoitesMails
-              isFetching={false}
-              dateMaj={'01/01/2016 12:00'}
+              isFetching={userBoitesMailsIsFetching}
+              dateMaj={userBoitesMailsLastFetch}
               headerText={'Boîtes Mail'}
-              boitesMails={mockListBoiteMail}
+              boitesMails={userBoitesMailsData}
               boiteReceptionPath={boiteReceptionPath}
               boiteEnvoiPath={boiteEnvoiPath}
-              onRefreshClick={()=>console.log('todo')}
+              onRefreshClick={this.handlesOnUserBoitesMailsRefreshClick}
             />
           </div>
         </div>
@@ -209,6 +211,12 @@ class Home extends Component {
     event.preventDefault();
     actions.fetchUserGroupActivityDataIfNeeded();
   }
+
+  handlesOnUserBoitesMailsRefreshClick(event) {
+    const { actions } = this.props;
+    event.preventDefault();
+    actions.fetchUserBoitesMailsDataIfNeeded();
+  }  
 }
 
 Home.propTypes = {
@@ -233,6 +241,10 @@ Home.propTypes = {
   userGroupActivityIsFetching: PropTypes.bool,
   userGroupActivityLastFetch: PropTypes.string,
 
+  userBoitesMailsData: PropTypes.arrayOf(PropTypes.object),
+  userBoitesMailsIsFetching: PropTypes.bool,
+  userBoitesMailsLastFetch: PropTypes.string,
+
   actions: PropTypes.shape({
     enterHome: PropTypes.func,
     leaveHome: PropTypes.func,
@@ -243,7 +255,9 @@ Home.propTypes = {
 
     fetchPrincipauxMotifsDataIfNeeded: PropTypes.func,
 
-    fetchUserGroupActivityDataIfNeeded: PropTypes.func
+    fetchUserGroupActivityDataIfNeeded: PropTypes.func,
+
+    fetchUserBoitesMailsDataIfNeeded: PropTypes.func
   })
 };
 

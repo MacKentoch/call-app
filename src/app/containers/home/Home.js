@@ -22,6 +22,10 @@ const mapStateToProps = (state) => {
     userGroupActivityIsFetching: state.userGroupActivity.isFetching,
     userGroupActivityLastFetch: state.userGroupActivity.time,
 
+    userBoitesMailsData: state.userBoitesMails.data,
+    userBoitesMailsIsFetching: state.userBoitesMails.isFetching,
+    userBoitesMailsLastFetch: state.userBoitesMails.time,
+
     principauxMotifsLabels: state.principauxMotifs.labels,
     principauxMotifsDataset: state.principauxMotifs.datasets,
     principauxMotifsLegend: state.principauxMotifs.legend,
@@ -43,7 +47,9 @@ const mapDispatchToProps = (dispatch) => {
 
         fetchPrincipauxMotifsDataIfNeeded: actions.fetchPrincipauxMotifsDataIfNeeded,
 
-        fetchUserGroupActivityDataIfNeeded: actions.fetchUserGroupActivityDataIfNeeded
+        fetchUserGroupActivityDataIfNeeded: actions.fetchUserGroupActivityDataIfNeeded,
+
+        fetchUserBoitesMailsDataIfNeeded: actions.fetchUserBoitesMailsDataIfNeeded
       },
       dispatch)
   };

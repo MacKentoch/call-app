@@ -7,7 +7,7 @@ export const appConfig = {
   FAKE_ASYNC_DELAY: 1000,
 
 
-  APP_NAME: 'Outil Call',
+  APP_NAME: 'Call App',
 
   // views (pour config redux views actions et store view.currentView)
   views: {
