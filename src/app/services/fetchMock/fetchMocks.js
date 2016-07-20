@@ -1,11 +1,9 @@
 import { appConfig }    from '../../config';
 import {
-  userInfosMockData
-}                       from '../../models';
-import {
   fichetraitee,
   ficheparcanal,
-  principauxmotifs
+  principauxmotifs,
+  userInfosMockData
 }                       from '../../mocks';
 
 export const fetchMockUserInfosData = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {

@@ -19,7 +19,7 @@ const UserPanel = ({isFetching, showUserPicture, userPicture, hello, username}) 
         isFetching &&
         <div
           className="center-block"
-          style={{width: '60px'}}>
+          style={{width: '60px', height: '34px'}}>
           <NameLoading />
         </div>
       }
