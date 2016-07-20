@@ -93,6 +93,13 @@ export const appConfig = {
     }
   },
 
+  // userGroupActivity config
+  userGroupActivity: {
+    data: {
+      API: 'api/userGroupActivity'
+    }
+  },
+
   HELLO_WORD: 'Bonjour'
 
 };
