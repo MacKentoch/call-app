@@ -7,6 +7,7 @@ import principauxMotifs   from './stats/principauxMotifs';
 // user
 import userInfos          from './user/userInfos';
 import userGroupActivity  from './user/userGroupActivity';
+import userBoitesMails    from './user/userBoitesMails';
 // UI
 import sideMenu           from './sideMenu';
 import teamMates          from './teamMates';
@@ -21,6 +22,7 @@ export {
   // user
   userInfos,
   userGroupActivity,
+  userBoitesMails,
   // UI
   sideMenu,
   teamMates

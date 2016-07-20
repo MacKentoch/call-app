@@ -27,6 +27,10 @@ import {
   fetchUserGroupActivityDataIfNeeded
 }
                                   from './user/userGroupActivity';
+import {
+  fetchUserBoitesMailsDataIfNeeded
+}
+                                  from './user/userBoitesMails';
 // sideMenu
 import {
   openSideMenu,
@@ -50,9 +54,11 @@ export {
   openSideMenu,
   closeSideMenu,
   toggleSideMenu,
+
   // user
   fetchUserInfoDataIfNeeded,
   fetchUserGroupActivityDataIfNeeded,
-  
+  fetchUserBoitesMailsDataIfNeeded,
+
   fetchTeamMatesDataIfNeeded
 };
