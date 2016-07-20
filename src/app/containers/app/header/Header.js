@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import UserMenu             from './userMenu/UserMenu';
-import TaskMenu             from './taskMenu/TaskMenu';
-import MessageMenu          from './messageMenu/MessageMenu';
+// import TaskMenu             from './taskMenu/TaskMenu';
+// import MessageMenu          from './messageMenu/MessageMenu';
+import { Link }             from 'react-router';
 import SuperAdminMenu       from './superAdminMenu/SuperAdminMenu';
 
 const Header = ({ appName, toggleSideMenu, userLogin, userFirstname, userLastname, userPicture, showPicture }) => {
@@ -15,8 +16,8 @@ const Header = ({ appName, toggleSideMenu, userLogin, userFirstname, userLastnam
       <nav
         className="navbar navbar-static-top"
         role="navigation">
-        <a
-          href="#"
+        <Link
+          to="/"
           onClick={toggleSideMenu}
           className="navbar-btn sidebar-toggle"
           data-toggle="offcanvas"
@@ -25,7 +26,7 @@ const Header = ({ appName, toggleSideMenu, userLogin, userFirstname, userLastnam
           <span className="icon-bar"></span>
           <span className="icon-bar"></span>
           <span className="icon-bar"></span>
-        </a>
+        </Link>
         <div className="navbar-right">
           <ul className="nav navbar-nav">
             {/*<MessageMenu />*/}
