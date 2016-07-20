@@ -11,8 +11,8 @@ const Liste = ({boitesMails}) => {
               key={idx}
               id={boite.id}
               titre={boite.titre}
-              receptionRoute={boite.receptionRoute}
-              envoyesRoute={boite.envoyesRoute}
+              onReceptionClick={boite.onReceptionClick}
+              onEnvoyesClick={boite.onEnvoyesClick}
             />
           )
         )
@@ -25,11 +25,11 @@ Liste.propTypes = {
   boitesMails: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      titre: PropTypes.string.isRequired,
-      receptionRoute: PropTypes.string.isRequired,
-      envoyesRoute: PropTypes.string.isRequired
+      titre: PropTypes.string.isRequired
     })
-  )
+  ),
+  onReceptionClick: PropTypes.func.isRequired,
+  onEnvoyesClick: PropTypes.func.isRequired
 };
 
 export default Liste;

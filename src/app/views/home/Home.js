@@ -13,6 +13,27 @@ import {
 }                                       from '../../components';
 import { appConfig }                    from '../../config';
 
+const mockListBoiteMail = [
+  {
+    id: 1,
+    titre: 'Boite #1',
+    receptionRoute: 'route1',
+    envoyesRoute: 'route1'
+  },
+  {
+    id: 2,
+    titre: 'Boite #2',
+    receptionRoute: 'route2',
+    envoyesRoute: 'route2'
+  },
+  {
+    id: 3,
+    titre: 'Boite #3',
+    receptionRoute: 'route3',
+    envoyesRoute: 'route3'
+  }
+];
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -158,6 +179,7 @@ class Home extends Component {
               isFetching={false}
               dateMaj={'01/01/2016 12:00'}
               headerText={'Boîtes Mail'}
+              boitesMails={mockListBoiteMail}
               onRefreshClick={()=>console.log('todo')}
             />
           </div>
