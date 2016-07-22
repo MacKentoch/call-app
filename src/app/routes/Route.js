@@ -14,6 +14,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import {
   App,
   HomeConnected,
+  RechercheConnected,
   FicheContactCourierConnected
 }                               from '../containers';
 import configureStore           from '../redux/store/configureStore';
@@ -31,6 +32,7 @@ const store         = configureStore();
 const syncedHistory = syncHistoryWithStore(hashHistory, store);
 const {
   home,
+  recherche,
   createFicheContactCourier,
   createFicheContactMail,
   createFicheContactTelephone,
@@ -44,6 +46,9 @@ export const Routes = () => {
         <Router history={syncedHistory}>
           <Route path={home.path} component={App} >
             <IndexRoute component={HomeConnected} />
+
+            <Route path={recherche.path} component={RechercheConnected} />
+
             <Route path={createFicheContactCourier.path} component={FicheContactCourierConnected} />
             <Route path={createFicheContactMail.path} component={HomeConnected} />
             <Route path={createFicheContactTelephone.path} component={HomeConnected} />

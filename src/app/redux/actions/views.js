@@ -33,7 +33,7 @@ export const leaveHome = (time = moment().format(formatDate)) => {
 };
 
 // recherche avancée
-export const enterRecheche = (time = moment().format(formatDate)) => {
+export const enterRecherche = (time = moment().format(formatDate)) => {
   return {
     type:         ENTER_RECHERCHE_VIEW,
     currentView:  appConfig.views.recherche.viewName || 'non defini',
@@ -41,7 +41,7 @@ export const enterRecheche = (time = moment().format(formatDate)) => {
     leaveTime:    null
   };
 };
-export const leaveRecheche = (time = moment().format(formatDate)) => {
+export const leaveRecherche = (time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_RECHERCHE_VIEW,
     currentView:  appConfig.views.recherche.viewName || 'non defini',

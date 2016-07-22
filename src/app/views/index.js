@@ -1,4 +1,5 @@
 import Home           from './home/Home';
+import Recherche      from './recherche/Recherche';
 import Modals         from './modals/Modals';
 // create
 import {
@@ -7,6 +8,7 @@ import {
 
 export {
   Home,
+  Recherche,
   Modals,
 
   // create

@@ -1,5 +1,6 @@
-import App    from './app/App';
-import HomeConnected   from './home/Home';
+import App                    from './app/App';
+import HomeConnected          from './home/Home';
+import RechercheConnected     from './recherche/Recherche';
 import {
   FicheContactCourierConnected
 }                             from './create';
@@ -7,5 +8,6 @@ import {
 export {
   App,
   HomeConnected,
+  RechercheConnected,
   FicheContactCourierConnected
 };
