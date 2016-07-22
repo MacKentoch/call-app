@@ -3,14 +3,17 @@ import HomeConnected          from './home/Home';
 import RechercheConnected     from './recherche/Recherche';
 import {
   FicheContactCourierConnected,
-  FicheContactMailConnected
+  FicheContactMailConnected,
+  FicheContactTelephoneConnected
 }                             from './create';
 
 export {
   App,
   HomeConnected,
   RechercheConnected,
+
   // create
   FicheContactCourierConnected,
-  FicheContactMailConnected
+  FicheContactMailConnected,
+  FicheContactTelephoneConnected
 };

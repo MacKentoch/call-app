@@ -16,6 +16,9 @@ export const LEAVE_CREATE_FICHE_CONTACT_COURIER = 'LEAVE_CREATE_FICHE_CONTACT_CO
 export const ENTER_CREATE_FICHE_CONTACT_MAIL = 'ENTER_CREATE_FICHE_CONTACT_MAIL';
 export const LEAVE_CREATE_FICHE_CONTACT_MAIL = 'LEAVE_CREATE_FICHE_CONTACT_MAIL';
 
+export const ENTER_CREATE_FICHE_CONTACT_TELEPHONE = 'ENTER_CREATE_FICHE_CONTACT_TELEPHONE';
+export const LEAVE_CREATE_FICHE_CONTACT_TELEPHONE = 'LEAVE_CREATE_FICHE_CONTACT_TELEPHONE';
+
 // home est accueil dans cette app
 export const enterHome = (time = moment().format(formatDate)) => {
   return {
@@ -83,6 +86,24 @@ export const leaveCreateFicheContactMail = (time = moment().format(formatDate)) 
   return {
     type:         LEAVE_CREATE_FICHE_CONTACT_MAIL,
     currentView:  appConfig.views.createFicheContactMail.viewName || 'non defini',
+    enterTime:    null,
+    leaveTime:    time
+  };
+};
+
+// Create FicheContact type Telephone
+export const enterCreateFicheContactTelephone = (time = moment().format(formatDate)) => {
+  return {
+    type:         ENTER_CREATE_FICHE_CONTACT_TELEPHONE,
+    currentView:  appConfig.views.createFicheContactTelephone.viewName || 'non defini',
+    enterTime:    time,
+    leaveTime:    null
+  };
+};
+export const leaveCreateFicheContactTelephone = (time = moment().format(formatDate)) => {
+  return {
+    type:         LEAVE_CREATE_FICHE_CONTACT_TELEPHONE,
+    currentView:  appConfig.views.createFicheContactTelephone.viewName || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };

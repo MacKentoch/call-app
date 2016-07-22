@@ -6,7 +6,9 @@ import {
   ENTER_CREATE_FICHE_CONTACT_COURIER,
   LEAVE_CREATE_FICHE_CONTACT_COURIER,
   ENTER_CREATE_FICHE_CONTACT_MAIL,
-  LEAVE_CREATE_FICHE_CONTACT_MAIL
+  LEAVE_CREATE_FICHE_CONTACT_MAIL,
+  ENTER_CREATE_FICHE_CONTACT_TELEPHONE,
+  LEAVE_CREATE_FICHE_CONTACT_TELEPHONE
 }                                       from '../actions/views';
 
 const initialState = {
@@ -114,6 +116,31 @@ const views = (state = initialState, action) => {
       };
     }
     return state;
+
+  case ENTER_CREATE_FICHE_CONTACT_TELEPHONE:
+    // can't enter if you are already inside
+    if (state.currentView !== action.currentView) {
+      return {
+        ...state,
+        currentView:  action.currentView,
+        enterTime:    action.enterTime,
+        leaveTime:    action.leaveTime
+      };
+    }
+    return state;
+
+  case LEAVE_CREATE_FICHE_CONTACT_TELEPHONE:
+    // can't leave if you aren't already inside
+    if (state.currentView === action.currentView) {
+      return {
+        ...state,
+        currentView:  action.currentView,
+        enterTime:    action.enterTime,
+        leaveTime:    action.leaveTime
+      };
+    }
+    return state;
+
 
   default:
     return state;
