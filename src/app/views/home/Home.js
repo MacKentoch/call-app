@@ -15,20 +15,6 @@ import { appConfig }                    from '../../config';
 
 const boiteReceptionPath = appConfig.views.mailbox.reception.path;
 const boiteEnvoiPath = appConfig.views.mailbox.envoi.path;
-const mockListBoiteMail = [
-  {
-    id: 1,
-    titre: 'Boite #1'
-  },
-  {
-    id: 2,
-    titre: 'Boite #2'
-  },
-  {
-    id: 3,
-    titre: 'Boite #3'
-  }
-];
 
 class Home extends Component {
   constructor(props) {
@@ -216,7 +202,7 @@ class Home extends Component {
     const { actions } = this.props;
     event.preventDefault();
     actions.fetchUserBoitesMailsDataIfNeeded();
-  }  
+  }
 }
 
 Home.propTypes = {

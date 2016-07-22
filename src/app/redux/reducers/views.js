@@ -1,4 +1,11 @@
-'use strict';
+import {
+  ENTER_HOME_VIEW,
+  LEAVE_HOME_VIEW,
+  ENTER_RECHERCHE_VIEW,
+  LEAVE_RECHERCHE_VIEW,
+  ENTER_CREATE_FICHE_CONTACT_COURIER,
+  LEAVE_CREATE_FICHE_CONTACT_COURIER
+}                                       from '../actions/views';
 
 const initialState = {
   currentView:  'not set',
@@ -9,7 +16,7 @@ const initialState = {
 const views = (state = initialState, action) => {
   switch (action.type) {
 
-  case 'ENTER_HOME_VIEW':
+  case ENTER_HOME_VIEW:
     // can't enter if you are already inside
     if (state.currentView !== action.currentView) {
       return {
@@ -21,7 +28,7 @@ const views = (state = initialState, action) => {
     }
     return state;
 
-  case 'LEAVE_HOME_VIEW':
+  case LEAVE_HOME_VIEW:
     // can't leave if you aren't already inside
     if (state.currentView === action.currentView) {
       return {
@@ -34,7 +41,7 @@ const views = (state = initialState, action) => {
     return state;
 
 
-  case 'ENTER_SIMPLE_TABLES_VIEW':
+  case ENTER_RECHERCHE_VIEW:
     // can't enter if you are already inside
     if (state.currentView !== action.currentView) {
       return {
@@ -46,7 +53,7 @@ const views = (state = initialState, action) => {
     }
     return state;
 
-  case 'LEAVE_SIMPLE_TABLES_VIEW':
+  case LEAVE_RECHERCHE_VIEW:
     // can't leave if you aren't already inside
     if (state.currentView === action.currentView) {
       return {
@@ -58,7 +65,7 @@ const views = (state = initialState, action) => {
     }
     return state;
 
-  case 'ENTER_BASIC_ELEMENTS_VIEW':
+  case ENTER_CREATE_FICHE_CONTACT_COURIER:
     // can't enter if you are already inside
     if (state.currentView !== action.currentView) {
       return {
@@ -70,7 +77,7 @@ const views = (state = initialState, action) => {
     }
     return state;
 
-  case 'LEAVE_BASIC_ELEMENTS_VIEW':
+  case LEAVE_CREATE_FICHE_CONTACT_COURIER:
     // can't leave if you aren't already inside
     if (state.currentView === action.currentView) {
       return {
@@ -81,31 +88,6 @@ const views = (state = initialState, action) => {
       };
     }
     return state;
-
-  case 'ENTER_GENERAL_VIEW':
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-  case 'LEAVE_GENERAL_VIEW':
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   default:
     return state;
   }

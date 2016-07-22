@@ -3,7 +3,9 @@ import {
   enterHome,
   leaveHome,
   enterRecherche,
-  leaveRecherche
+  leaveRecherche,
+  enterCreateFicheContactCourier,
+  leaveCreateFicheContactCourier
 }                                 from './views';
 // stats
 import {
@@ -45,6 +47,8 @@ export {
   leaveHome,
   enterRecherche,
   leaveRecherche,
+  enterCreateFicheContactCourier,
+  leaveCreateFicheContactCourier,
 
   // stats:
   fetchFichesTraiteeDataIfNeeded,

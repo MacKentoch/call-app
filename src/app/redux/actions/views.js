@@ -10,6 +10,9 @@ export const LEAVE_HOME_VIEW  = 'LEAVE_HOME_VIEW';
 export const ENTER_RECHERCHE_VIEW = 'ENTER_RECHERCHE_VIEW';
 export const LEAVE_RECHERCHE_VIEW = 'LEAVE_RECHERCHE_VIEW';
 
+export const ENTER_CREATE_FICHE_CONTACT_COURIER = 'ENTER_CREATE_FICHE_CONTACT_COURIER';
+export const LEAVE_CREATE_FICHE_CONTACT_COURIER = 'LEAVE_CREATE_FICHE_CONTACT_COURIER';
+
 
 // home est accueil dans cette app
 export const enterHome = (time = moment().format(formatDate)) => {
@@ -42,6 +45,24 @@ export const leaveRecheche = (time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_RECHERCHE_VIEW,
     currentView:  appConfig.views.recherche.viewName || 'non defini',
+    enterTime:    null,
+    leaveTime:    time
+  };
+};
+
+// Create FicheContactCourier
+export const enterCreateFicheContactCourier = (time = moment().format(formatDate)) => {
+  return {
+    type:         ENTER_CREATE_FICHE_CONTACT_COURIER,
+    currentView:  appConfig.views.createFicheContactCourier.viewName || 'non defini',
+    enterTime:    time,
+    leaveTime:    null
+  };
+};
+export const leaveCreateFicheContactCourier = (time = moment().format(formatDate)) => {
+  return {
+    type:         LEAVE_CREATE_FICHE_CONTACT_COURIER,
+    currentView:  appConfig.views.createFicheContactCourier.viewName || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };

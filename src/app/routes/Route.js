@@ -13,7 +13,8 @@ import { Provider }             from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import {
   App,
-  HomeConnected
+  HomeConnected,
+  FicheContactCourierConnected
 }                               from '../containers';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
@@ -28,7 +29,13 @@ import { appConfig }            from '../config';
 
 const store         = configureStore();
 const syncedHistory = syncHistoryWithStore(hashHistory, store);
-const { home, createFicheContactCourier, createFicheContactMail, createFicheContactTelephone, createFicheContactPersonnes } = appConfig.views;
+const {
+  home,
+  createFicheContactCourier,
+  createFicheContactMail,
+  createFicheContactTelephone,
+  createFicheContactPersonnes
+} = appConfig.views;
 
 export const Routes = () => {
   return (
@@ -37,7 +44,7 @@ export const Routes = () => {
         <Router history={syncedHistory}>
           <Route path={home.path} component={App} >
             <IndexRoute component={HomeConnected} />
-            <Route path={createFicheContactCourier.path} component={HomeConnected} />
+            <Route path={createFicheContactCourier.path} component={FicheContactCourierConnected} />
             <Route path={createFicheContactMail.path} component={HomeConnected} />
             <Route path={createFicheContactTelephone.path} component={HomeConnected} />
             <Route path={createFicheContactPersonnes.path} component={HomeConnected} />
