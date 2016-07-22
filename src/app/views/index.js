@@ -5,7 +5,8 @@ import Modals         from './modals/Modals';
 import {
   FicheContactCourier,
   FicheContactMail,
-  FicheContactTelephone
+  FicheContactTelephone,
+  FicheContactPersonnes
 }                     from './create';
 
 export {
@@ -16,5 +17,6 @@ export {
   // create
   FicheContactCourier,
   FicheContactMail,
-  FicheContactTelephone
+  FicheContactTelephone,
+  FicheContactPersonnes
 };

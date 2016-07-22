@@ -4,7 +4,8 @@ import RechercheConnected     from './recherche/Recherche';
 import {
   FicheContactCourierConnected,
   FicheContactMailConnected,
-  FicheContactTelephoneConnected
+  FicheContactTelephoneConnected,
+  FicheContactPersonnesConnected
 }                             from './create';
 
 export {
@@ -15,5 +16,6 @@ export {
   // create
   FicheContactCourierConnected,
   FicheContactMailConnected,
-  FicheContactTelephoneConnected
+  FicheContactTelephoneConnected,
+  FicheContactPersonnesConnected
 };

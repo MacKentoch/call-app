@@ -9,7 +9,9 @@ import {
   enterCreateFicheContactMail,
   leaveCreateFicheContactMail,
   enterCreateFicheContactTelephone,
-  leaveCreateFicheContactTelephone
+  leaveCreateFicheContactTelephone,
+  enterCreateFicheContactPersonnes,
+  leaveCreateFicheContactPersonnes
 }                                 from './views';
 // stats
 import {
@@ -57,6 +59,8 @@ export {
   leaveCreateFicheContactMail,
   enterCreateFicheContactTelephone,
   leaveCreateFicheContactTelephone,
+  enterCreateFicheContactPersonnes,
+  leaveCreateFicheContactPersonnes,
 
   // stats:
   fetchFichesTraiteeDataIfNeeded,

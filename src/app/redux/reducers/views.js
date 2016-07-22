@@ -3,12 +3,15 @@ import {
   LEAVE_HOME_VIEW,
   ENTER_RECHERCHE_VIEW,
   LEAVE_RECHERCHE_VIEW,
+  // CREATE FICHES CONTACTS
   ENTER_CREATE_FICHE_CONTACT_COURIER,
   LEAVE_CREATE_FICHE_CONTACT_COURIER,
   ENTER_CREATE_FICHE_CONTACT_MAIL,
   LEAVE_CREATE_FICHE_CONTACT_MAIL,
   ENTER_CREATE_FICHE_CONTACT_TELEPHONE,
-  LEAVE_CREATE_FICHE_CONTACT_TELEPHONE
+  LEAVE_CREATE_FICHE_CONTACT_TELEPHONE,
+  ENTER_CREATE_FICHE_CONTACT_PERSONNES,
+  LEAVE_CREATE_FICHE_CONTACT_PERSONNES
 }                                       from '../actions/views';
 
 const initialState = {
@@ -141,6 +144,29 @@ const views = (state = initialState, action) => {
     }
     return state;
 
+  case ENTER_CREATE_FICHE_CONTACT_PERSONNES:
+    // can't enter if you are already inside
+    if (state.currentView !== action.currentView) {
+      return {
+        ...state,
+        currentView:  action.currentView,
+        enterTime:    action.enterTime,
+        leaveTime:    action.leaveTime
+      };
+    }
+    return state;
+
+  case LEAVE_CREATE_FICHE_CONTACT_PERSONNES:
+    // can't leave if you aren't already inside
+    if (state.currentView === action.currentView) {
+      return {
+        ...state,
+        currentView:  action.currentView,
+        enterTime:    action.enterTime,
+        leaveTime:    action.leaveTime
+      };
+    }
+    return state;
 
   default:
     return state;

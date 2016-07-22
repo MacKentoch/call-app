@@ -17,7 +17,8 @@ import {
   RechercheConnected,
   FicheContactCourierConnected,
   FicheContactMailConnected,
-  FicheContactTelephoneConnected
+  FicheContactTelephoneConnected,
+  FicheContactPersonnesConnected
 }                               from '../containers';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
@@ -54,7 +55,7 @@ export const Routes = () => {
             <Route path={createFicheContactCourier.path} component={FicheContactCourierConnected} />
             <Route path={createFicheContactMail.path} component={FicheContactMailConnected} />
             <Route path={createFicheContactTelephone.path} component={FicheContactTelephoneConnected} />
-            <Route path={createFicheContactPersonnes.path} component={HomeConnected} />
+            <Route path={createFicheContactPersonnes.path} component={FicheContactPersonnesConnected} />
           </Route>
         </Router>
         { process.env.NODE_ENV !== 'production' ? <DevTools /> : null }
