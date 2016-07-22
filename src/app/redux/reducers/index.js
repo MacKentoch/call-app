@@ -9,7 +9,7 @@ import userInfos          from './user/userInfos';
 import userGroupActivity  from './user/userGroupActivity';
 import userBoitesMails    from './user/userBoitesMails';
 // UI
-import sideMenu           from './sideMenu';
+import sideMenu           from './ui/sideMenu';
 import teamMates          from './teamMates';
 
 export {

@@ -37,7 +37,7 @@ import {
   closeSideMenu,
   toggleSideMenu,
   initSideMenu
-}                                 from './sideMenu';
+}                                 from './ui/sideMenu';
 
 export {
   // views:

@@ -1,9 +1,9 @@
 import moment         from 'moment';
-import { appConfig }  from '../../config';
+import { appConfig }  from '../../../config';
 import {
   getSideMenuState,
   setSideMenuState
-}                     from '../../services';
+}                     from '../../../services';
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
