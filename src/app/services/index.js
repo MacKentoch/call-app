@@ -1,3 +1,4 @@
+// utils:
 import {
   defaultOptions,
   checkStatus,
@@ -5,6 +6,7 @@ import {
   getLocationOrigin,
   encodeBase64
 }                     from './utils/fetchTools';
+// fetch mocks:
 import {
   fetchMockUserInfosData,
   fetchMockFichesTraiteesData,
@@ -13,9 +15,16 @@ import {
   fetchMockUserGroupActivityData,
   fetchMockUserBoitesMailsData
 }                     from './fetchMock/fetchMocks';
+// date tools
 import {
   getLastThreeMonthNames
 }                     from './utils/dateTools';
+
+// localStorage
+import {
+  getSideMenuState,
+  setSideMenuState
+}                     from './localStorage/ui/uiConfig';
 
 export {
   // utils:
@@ -34,5 +43,9 @@ export {
   fetchMockUserBoitesMailsData,
 
   // date tools
-  getLastThreeMonthNames
+  getLastThreeMonthNames,
+
+  // localStorage
+  getSideMenuState,
+  setSideMenuState
 };

@@ -14,6 +14,7 @@ import { Modals }             from '../../views';
 import { appConfig }          from '../../config';
 import { BackToTop }          from '../../components';
 
+
 class App extends Component {
   constructor(props, context) {
     super(props, context);
@@ -27,6 +28,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.actions.fetchUserInfoDataIfNeeded();
+    this.props.actions.initSideMenu(); // sideMenu collapse or not from localStorage value (default is opened)
   }
 
   render() {
@@ -82,6 +84,7 @@ class App extends Component {
   handlesMenuButtonClick(event) {
     event.preventDefault();
     const {location} = this.props;
+
     this.props.actions.toggleSideMenu();
 
     // refresh stats (to get responsive charts) if current view is Home
@@ -120,7 +123,8 @@ App.propTypes = {
     fetchPrincipauxMotifsDataIfNeeded: PropTypes.func,
     openSideMenu:   PropTypes.func,
     closeSideMenu:  PropTypes.func,
-    toggleSideMenu: PropTypes.func
+    toggleSideMenu: PropTypes.func,
+    initSideMenu:   PropTypes.func
   })
 };
 

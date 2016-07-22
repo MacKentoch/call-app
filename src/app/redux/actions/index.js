@@ -35,7 +35,8 @@ import {
 import {
   openSideMenu,
   closeSideMenu,
-  toggleSideMenu
+  toggleSideMenu,
+  initSideMenu
 }                                 from './sideMenu';
 
 export {
@@ -54,6 +55,7 @@ export {
   openSideMenu,
   closeSideMenu,
   toggleSideMenu,
+  initSideMenu,
 
   // user
   fetchUserInfoDataIfNeeded,
