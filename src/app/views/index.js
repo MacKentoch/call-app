@@ -3,7 +3,8 @@ import Recherche      from './recherche/Recherche';
 import Modals         from './modals/Modals';
 // create
 import {
-  FicheContactCourier
+  FicheContactCourier,
+  FicheContactMail
 }                     from './create';
 
 export {
@@ -12,5 +13,6 @@ export {
   Modals,
 
   // create
-  FicheContactCourier
+  FicheContactCourier,
+  FicheContactMail
 };

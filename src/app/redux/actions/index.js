@@ -5,7 +5,9 @@ import {
   enterRecherche,
   leaveRecherche,
   enterCreateFicheContactCourier,
-  leaveCreateFicheContactCourier
+  leaveCreateFicheContactCourier,
+  enterCreateFicheContactMail,
+  leaveCreateFicheContactMail
 }                                 from './views';
 // stats
 import {
@@ -49,6 +51,8 @@ export {
   leaveRecherche,
   enterCreateFicheContactCourier,
   leaveCreateFicheContactCourier,
+  enterCreateFicheContactMail,
+  leaveCreateFicheContactMail,
 
   // stats:
   fetchFichesTraiteeDataIfNeeded,
