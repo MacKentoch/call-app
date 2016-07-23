@@ -5,7 +5,8 @@ import {
   principauxmotifs,
   userInfosMockData,
   userGroupActivityMock,
-  userBoitesMailsMock
+  userBoitesMailsMock,
+  listMailsMock
 }                       from '../../mocks';
 
 export const fetchMockUserInfosData = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
@@ -68,6 +69,17 @@ export const fetchMockPrincipauxMotifsData = (timeToWait = appConfig.FAKE_ASYNC_
     resolve => {
       setTimeout(
        () => resolve({...principauxmotifs}),
+       timeToWait
+     );
+    }
+ );
+};
+
+export const fetchMockListMails = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({...listMailsMock}),
        timeToWait
      );
     }

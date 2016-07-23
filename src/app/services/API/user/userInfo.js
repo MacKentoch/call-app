@@ -3,7 +3,7 @@ import {
   checkStatus,
   parseJSON,
   getLocationOrigin
-}                     from '../fetchTools';
+}                     from '../../utils/fetchTools';
 import { appConfig }  from '../../../config';
 
 export const getUserInfo = () => {

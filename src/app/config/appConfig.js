@@ -110,9 +110,24 @@ export const appConfig = {
     }
   },
 
+  // user mailboxes list
   userBoitesMails: {
     data: {
       API: 'api/userBoitesMails'
+    }
+  },
+
+  // inbox content
+  inbox: {
+    data: {
+      API: 'api/inbox'
+    }
+  },
+
+  // home stats : fiche par canal
+  statsFichesParCanal: {
+    data: {
+      API: 'api/statsFichesParCanal'
     }
   },
 

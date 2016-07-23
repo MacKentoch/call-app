@@ -6,8 +6,8 @@ import {
 }                     from '../../utils/fetchTools';
 import { appConfig }  from '../../../config';
 
-export const getUserGroupActivity = () => {
-  const api = appConfig.userGroupActivity.data.API;
+export const getStatsFichesParCanal = () => {
+  const api = appConfig.statsFichesParCanal.data.API;
   const url = `${getLocationOrigin()}/${api}`;
   const options = {...defaultOptions};
 
