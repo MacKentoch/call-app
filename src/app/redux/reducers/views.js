@@ -1,18 +1,28 @@
 import {
   ENTER_HOME_VIEW,
-  LEAVE_HOME_VIEW,
+  LEAVE_HOME_VIEW
+}                                       from '../actions/views/home/home';
+import {
   ENTER_RECHERCHE_VIEW,
-  LEAVE_RECHERCHE_VIEW,
-  // CREATE FICHES CONTACTS
+  LEAVE_RECHERCHE_VIEW
+}                                       from '../actions/views/recherche/recherche';
+import {
   ENTER_CREATE_FICHE_CONTACT_COURIER,
-  LEAVE_CREATE_FICHE_CONTACT_COURIER,
+  LEAVE_CREATE_FICHE_CONTACT_COURIER
+}                                       from '../actions/views/create/ficheContact/courier';
+import {
   ENTER_CREATE_FICHE_CONTACT_MAIL,
-  LEAVE_CREATE_FICHE_CONTACT_MAIL,
+  LEAVE_CREATE_FICHE_CONTACT_MAIL
+}                                       from '../actions/views/create/ficheContact/mail';
+import {
   ENTER_CREATE_FICHE_CONTACT_TELEPHONE,
-  LEAVE_CREATE_FICHE_CONTACT_TELEPHONE,
+  LEAVE_CREATE_FICHE_CONTACT_TELEPHONE
+}                                       from '../actions/views/create/ficheContact/telephone';
+import {
   ENTER_CREATE_FICHE_CONTACT_PERSONNES,
   LEAVE_CREATE_FICHE_CONTACT_PERSONNES
-}                                       from '../actions/views';
+}                                       from '../actions/views/create/ficheContact/personnes';
+
 
 const initialState = {
   currentView:  'not set',
