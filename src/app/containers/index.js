@@ -7,6 +7,9 @@ import {
   FicheContactTelephoneConnected,
   FicheContactPersonnesConnected
 }                             from './create';
+import {
+  MailboxReceptionConnected
+}                             from './mailbox';
 
 export {
   App,
@@ -17,5 +20,8 @@ export {
   FicheContactCourierConnected,
   FicheContactMailConnected,
   FicheContactTelephoneConnected,
-  FicheContactPersonnesConnected
+  FicheContactPersonnesConnected,
+
+  // mailbox
+  MailboxReceptionConnected
 };

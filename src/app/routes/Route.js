@@ -18,7 +18,8 @@ import {
   FicheContactCourierConnected,
   FicheContactMailConnected,
   FicheContactTelephoneConnected,
-  FicheContactPersonnesConnected
+  FicheContactPersonnesConnected,
+  MailboxReceptionConnected
 }                               from '../containers';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
@@ -39,7 +40,8 @@ const {
   createFicheContactCourier,
   createFicheContactMail,
   createFicheContactTelephone,
-  createFicheContactPersonnes
+  createFicheContactPersonnes,
+  mailbox
 } = appConfig.views;
 
 export const Routes = () => {
@@ -56,6 +58,8 @@ export const Routes = () => {
             <Route path={createFicheContactMail.path} component={FicheContactMailConnected} />
             <Route path={createFicheContactTelephone.path} component={FicheContactTelephoneConnected} />
             <Route path={createFicheContactPersonnes.path} component={FicheContactPersonnesConnected} />
+
+            <Route path={`${mailbox.reception.path}/:mailboxId`} component={MailboxReceptionConnected} />
           </Route>
         </Router>
         { process.env.NODE_ENV !== 'production' ? <DevTools /> : null }

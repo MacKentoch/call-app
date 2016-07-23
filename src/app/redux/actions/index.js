@@ -2,8 +2,10 @@
 import {
   enterHome,
   leaveHome,
+
   enterRecherche,
   leaveRecherche,
+
   enterCreateFicheContactCourier,
   leaveCreateFicheContactCourier,
   enterCreateFicheContactMail,
@@ -11,7 +13,12 @@ import {
   enterCreateFicheContactTelephone,
   leaveCreateFicheContactTelephone,
   enterCreateFicheContactPersonnes,
-  leaveCreateFicheContactPersonnes
+  leaveCreateFicheContactPersonnes,
+
+  enterMailboxInbox,
+  leaveMailboxInbox,
+  enterMailboxSentbox,
+  leaveMailboxSentbox
 }                                 from './views';
 // stats
 import {
@@ -61,6 +68,10 @@ export {
   leaveCreateFicheContactTelephone,
   enterCreateFicheContactPersonnes,
   leaveCreateFicheContactPersonnes,
+  enterMailboxInbox,
+  leaveMailboxInbox,
+  enterMailboxSentbox,
+  leaveMailboxSentbox,
 
   // stats:
   fetchFichesTraiteeDataIfNeeded,

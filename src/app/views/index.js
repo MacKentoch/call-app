@@ -1,6 +1,7 @@
-import Home           from './home/Home';
-import Recherche      from './recherche/Recherche';
-import Modals         from './modals/Modals';
+import Home             from './home/Home';
+import Recherche        from './recherche/Recherche';
+import MailboxReception from './mailbox/reception/MailboxReception';
+import Modals           from './modals/Modals';
 // create
 import {
   FicheContactCourier,
@@ -13,6 +14,9 @@ export {
   Home,
   Recherche,
   Modals,
+
+  // mailboxes
+  MailboxReception,
 
   // create
   FicheContactCourier,

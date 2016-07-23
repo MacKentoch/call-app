@@ -16,7 +16,12 @@ import {
   enterCreateFicheContactPersonnes,
   leaveCreateFicheContactPersonnes
 }                                 from './create';
-
+import {
+  enterMailboxInbox,
+  leaveMailboxInbox,
+  enterMailboxSentbox,
+  leaveMailboxSentbox
+}                                 from './mailbox/mailbox';
 export {
   // home
   enterHome,
@@ -25,7 +30,7 @@ export {
   // recherche
   enterRecherche,
   leaveRecherche,
-  
+
   // create fiche contact
   enterCreateFicheContactCourier,
   leaveCreateFicheContactCourier,
@@ -34,5 +39,11 @@ export {
   enterCreateFicheContactTelephone,
   leaveCreateFicheContactTelephone,
   enterCreateFicheContactPersonnes,
-  leaveCreateFicheContactPersonnes
+  leaveCreateFicheContactPersonnes,
+
+  // mailbox
+  enterMailboxInbox,
+  leaveMailboxInbox,
+  enterMailboxSentbox,
+  leaveMailboxSentbox
 };
