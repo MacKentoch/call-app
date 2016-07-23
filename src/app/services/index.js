@@ -21,7 +21,8 @@ import {
   getUserBoitesMails,
   getUserGroupActivity,
   getUserInfo,
-  getInboxContent
+  getInboxContent,
+  getStatsFichesParCanal
 }                     from './API';
 // date tools
 import {
@@ -56,7 +57,8 @@ export {
   getUserGroupActivity,
   getUserInfo,
   getInboxContent,
-  
+  getStatsFichesParCanal,
+
   // date tools
   getLastThreeMonthNames,
 

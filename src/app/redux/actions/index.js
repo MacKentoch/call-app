@@ -30,7 +30,10 @@ import {
 import {
   fetchPrincipauxMotifsDataIfNeeded
 }                                 from './stats/principauxMotifs';
-
+// mailbox
+import {
+  fetchInboxContentIfNeeded
+}                                 from './mailbox/inbox';
 import {
   fetchTeamMatesDataIfNeeded
 }                                 from './teamMates';
@@ -89,5 +92,8 @@ export {
   fetchUserGroupActivityDataIfNeeded,
   fetchUserBoitesMailsDataIfNeeded,
 
-  fetchTeamMatesDataIfNeeded
+  fetchTeamMatesDataIfNeeded,
+
+  // mailbox
+  fetchInboxContentIfNeeded
 };

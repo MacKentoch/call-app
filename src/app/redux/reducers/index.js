@@ -11,19 +11,27 @@ import userBoitesMails    from './user/userBoitesMails';
 // UI
 import sideMenu           from './ui/sideMenu';
 import teamMates          from './teamMates';
+// mailbox
+import inboxContent       from './mailbox/inbox';
 
 export {
   // views:
   views,
+
   // stats:
   fichesTraitees,
   fichesParCanal,
   principauxMotifs,
+
   // user
   userInfos,
   userGroupActivity,
   userBoitesMails,
+
   // UI
   sideMenu,
-  teamMates
+  teamMates,
+
+  // mailbox
+  inboxContent
 };

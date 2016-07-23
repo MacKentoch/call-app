@@ -1,11 +1,7 @@
-/* eslint consistent-return:0 */
 import moment         from 'moment';
 import { appConfig }  from '../../../config';
 import {
-  defaultOptions,
-  checkStatus,
-  parseJSON,
-  getLocationOrigin,
+  getStatsFichesParCanal,
   fetchMockFichesParCanalData
 }                     from '../../../services';
 
@@ -52,12 +48,7 @@ const fetchFichesParCanalData = () => dispatch => {
         data => dispatch(receivedFichesParCanalData(data))
       );
   } else {
-    const url = `${getLocationOrigin()}/${appConfig.fichesParCanal.data.API}`;
-    const options = {...defaultOptions};
-
-    fetch(url, options)
-      .then(checkStatus)
-      .then(parseJSON)
+    getStatsFichesParCanal()
       .then(
         data => dispatch(receivedFichesParCanalData(data)))
       .catch(
@@ -72,12 +63,14 @@ const fetchFichesParCanalData = () => dispatch => {
       );
   }
 };
-
+/* eslint-disable consistent-return */
 export const fetchFichesParCanalDataIfNeeded = () => (dispatch, getState) => {
   if (shouldFetchFichesParCanalData(getState())) {
     return dispatch(fetchFichesParCanalData());
   }
 };
+/* eslint-enable consistent-return */
+
 function shouldFetchFichesParCanalData(state) {
   const fichesParCanal = state.fichesParCanal;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
@@ -92,7 +85,6 @@ function extractLegend(data) {
   if (data && data.data && Array.isArray(data.data)) {
     return extractNeededProperties(data.data);
   }
-
   return [...appConfig.stats.legendeInit];
 }
 

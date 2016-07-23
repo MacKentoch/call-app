@@ -75,9 +75,9 @@ export const fetchInboxContentIfNeeded = () => (dispatch, getState) => {
   return null;
 };
 function shouldFetchInboxContent(state) {
-  const userBoitesMails = state.userBoitesMails;
+  const inboxContent = state.inboxContent;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
-  if (userBoitesMails.isFetching) {
+  if (inboxContent.isFetching) {
     return false;
   } else {
     return true;
