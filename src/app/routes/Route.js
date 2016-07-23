@@ -19,7 +19,8 @@ import {
   FicheContactMailConnected,
   FicheContactTelephoneConnected,
   FicheContactPersonnesConnected,
-  MailboxReceptionConnected
+  MailboxReceptionConnected,
+  MailboxEnvoiConnected
 }                               from '../containers';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
@@ -60,6 +61,7 @@ export const Routes = () => {
             <Route path={createFicheContactPersonnes.path} component={FicheContactPersonnesConnected} />
 
             <Route path={`${mailbox.reception.path}/:mailboxId`} component={MailboxReceptionConnected} />
+            <Route path={`${mailbox.envoi.path}/:mailboxId`} component={MailboxEnvoiConnected} />
           </Route>
         </Router>
         { process.env.NODE_ENV !== 'production' ? <DevTools /> : null }

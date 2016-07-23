@@ -1,5 +1,7 @@
-import MailboxReceptionConnected from './reception/MailboxReception';
+import MailboxReceptionConnected  from './reception/mailboxReception';
+import MailboxEnvoiConnected      from './envoi/mailboxEnvoi';
 
 export {
-  MailboxReceptionConnected
+  MailboxReceptionConnected,
+  MailboxEnvoiConnected
 };
