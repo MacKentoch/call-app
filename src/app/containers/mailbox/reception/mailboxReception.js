@@ -8,8 +8,9 @@ const mapStateToProps = (state) => {
     currentView:  state.views.currentView,
 
     inboxMailId: state.inboxContent.boiteMailId,
+    inboxMailName: state.inboxContent.mailBoxName,
     inboxIsFetching: state.inboxContent.isFetching,
-    inbox: state.inboxContent.data
+    inbox: state.inboxContent.mails
   };
 };
 

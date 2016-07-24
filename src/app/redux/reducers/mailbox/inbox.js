@@ -2,12 +2,13 @@ import {
   REQUEST_INBOX_CONTENT,
   RECEIVED_INBOX_CONTENT,
   ERROR_INBOX_CONTENT
-}                                 from '../../actions/stats/fichesParCanal';
+}                                 from '../../actions/mailbox/inbox';
 
 const initialState = {
   isFetching:   false,
   boiteMailId:  0,
-  data:         [],
+  mailBoxName:  '',
+  mails:        [],
   time:         ''
 };
 
@@ -22,11 +23,13 @@ const inboxContent = (state = initialState, action) => {
     };
 
   case RECEIVED_INBOX_CONTENT:
+    console.log('actions: ', action);
     return {
       ...state,
       isFetching:   action.isFetching,
       boiteMailId:  action.boiteMailId,
-      data:         [...action.data],
+      mailBoxName:  action.mailBoxName,
+      mails:        [...action.mails],
       time:         action.time
     };
 

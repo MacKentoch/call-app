@@ -9,6 +9,7 @@ import ActiviteGroupe from './activiteGroupe/ActiviteGroupe';
 import ListBoitesMails from './listBoitesMails/ListBoitesMails';
 import Horloge from './horloge/Horloge';
 import BackToTop from './backToTop/BackToTop';
+import MailboxRepertoires from './mailboxRepertoires/MailboxRepertoires';
 
 import {
   FichesTraitee,
@@ -35,6 +36,9 @@ export {
   ListBoitesMails,
   Horloge,
   BackToTop,
+
+  // mailbox
+  MailboxRepertoires,
 
   // stats
   FichesTraitee,
