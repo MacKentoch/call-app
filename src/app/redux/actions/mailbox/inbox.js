@@ -68,13 +68,14 @@ const fetchInboxContent = (boiteMailId) => dispatch => {
     /* eslint-enable no-throw-literal */
   }
 };
-export const fetchInboxContentIfNeeded = () => (dispatch, getState) => {
-  if (shouldFetchInboxContent(getState())) {
-    return dispatch(fetchInboxContent());
+export const fetchInboxContentIfNeeded = (boiteMailId) => (dispatch, getState) => {
+  if (shouldFetchInboxContent(getState(), boiteMailId)) {
+    return dispatch(fetchInboxContent(boiteMailId));
   }
   return null;
 };
-function shouldFetchInboxContent(state) {
+/* eslint-disable no-unused-vars */
+function shouldFetchInboxContent(state, mailboxId) {
   const inboxContent = state.inboxContent;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
   if (inboxContent.isFetching) {
@@ -82,4 +83,11 @@ function shouldFetchInboxContent(state) {
   } else {
     return true;
   }
+  //
+  // } else if (inboxContent.mailboxId !== mailboxId) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
 }
+/* eslint-enable no-unused-vars */

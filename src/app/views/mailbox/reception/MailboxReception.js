@@ -15,6 +15,7 @@ class MailboxReception extends Component {
   componentDidMount() {
     const  { actions, params: { mailboxId } } =  this.props;
     actions.enterMailboxInbox(`mailbox #${mailboxId}`);
+    actions.fetchInboxContentIfNeeded(mailboxId);
   }
 
   componentWillUnmount() {
@@ -62,9 +63,14 @@ MailboxReception.propTypes = {
   params: PropTypes.object, // react router
   location: PropTypes.object,  // react router
 
+  inboxMailId: PropTypes.number,
+  inboxIsFetching: PropTypes.bool,
+  inbox: PropTypes.arrayOf(PropTypes.object),
+
   actions: PropTypes.shape({
     enterMailboxInbox: PropTypes.func,
-    leaveMailboxInbox: PropTypes.func
+    leaveMailboxInbox: PropTypes.func,
+    fetchInboxContentIfNeeded: PropTypes.func
   })
 };
 

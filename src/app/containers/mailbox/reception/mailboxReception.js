@@ -5,7 +5,11 @@ import { MailboxReception }     from '../../../views';
 
 const mapStateToProps = (state) => {
   return {
-    currentView:  state.views.currentView
+    currentView:  state.views.currentView,
+
+    inboxMailId: state.inboxContent.boiteMailId,
+    inboxIsFetching: state.inboxContent.isFetching,
+    inbox: state.inboxContent.data
   };
 };
 
@@ -14,7 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     actions : bindActionCreators(
       {
         enterMailboxInbox: actions.enterMailboxInbox,
-        leaveMailboxInbox: actions.leaveMailboxInbox
+        leaveMailboxInbox: actions.leaveMailboxInbox,
+
+        fetchInboxContentIfNeeded: actions.fetchInboxContentIfNeeded
       },
       dispatch)
   };
