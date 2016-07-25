@@ -51,8 +51,10 @@ class HeaderTools extends Component {
     const key = event.which || event.keyCode;
     if (key === 13) {
       const {onSearch} = this.props;
-      const value = event.target.value;
-      onSearch(value);
+      const value = event.target.value.trim();
+      if (value) {
+        onSearch(value);
+      }
     }
   }
 }
