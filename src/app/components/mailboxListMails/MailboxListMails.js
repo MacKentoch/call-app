@@ -2,8 +2,9 @@ import React, { PropTypes } from 'react';
 import Title from './title/Title';
 import HeaderTools from './headerTools/HeaderTools';
 import ListControl from './listControl/ListControl';
+import Table from './table/Table';
 
-const MailboxListMails = ({inboxMailName}) => {
+const MailboxListMails = ({inboxMailName, inbox}) => {
   return (
     <div className="panel">
       <div
@@ -39,34 +40,9 @@ const MailboxListMails = ({inboxMailName}) => {
             />
 
             <div className="table-responsive mailbox-messages">
-              <table className="table table-hover">
-                <tbody>
-
-                  <tr>
-                    <td><input type="checkbox" /></td>
-                    <td className="mailbox-star">
-                      <a href="#">
-                        <i className="fa fa-star text-yellow"></i>
-                      </a>
-                    </td>
-                    <td className="mailbox-name">
-                      <a href="read-mail.html">
-                        Alexander Pierce
-                      </a>
-                    </td>
-                    <td className="mailbox-subject">
-                      <b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                    </td>
-                    <td className="mailbox-attachment">
-
-                    </td>
-                    <td className="mailbox-date">
-                      5 mins ago
-                    </td>
-                  </tr>
-
-                </tbody>
-              </table>
+              <Table
+                inbox={inbox}
+              />
             </div>
           </div>
         </div>
@@ -76,7 +52,23 @@ const MailboxListMails = ({inboxMailName}) => {
 };
 
 MailboxListMails.propTypes = {
-  inboxMailName: PropTypes.string.isRequired
+  inboxMailName: PropTypes.string.isRequired,
+  inbox: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      receptionDate: PropTypes.string.isRequired,
+      subject: PropTypes.string.isRequired,
+      from: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired
+      }).isRequired,
+      to: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired
+      }).isRequired,
+      body: PropTypes.string.isRequired
+    })
+  )
 };
 
 export default MailboxListMails;

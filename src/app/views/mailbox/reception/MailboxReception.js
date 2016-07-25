@@ -29,7 +29,7 @@ class MailboxReception extends Component {
 
   render() {
     const { animated } = this.state;
-    const { inboxMailName } = this.props;
+    const { inboxMailName, inbox } = this.props;
     return(
       <section
         className={cx({
@@ -48,6 +48,7 @@ class MailboxReception extends Component {
           <div className="col-md-9">
             <MailboxListMails
               inboxMailName={inboxMailName}
+              inbox={inbox}
             />
           </div>
         </div>
@@ -63,8 +64,22 @@ MailboxReception.propTypes = {
   inboxMailId: PropTypes.number,
   inboxMailName: PropTypes.string,
   inboxIsFetching: PropTypes.bool,
-  inbox: PropTypes.arrayOf(PropTypes.object),
-
+  inbox: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      receptionDate: PropTypes.string.isRequired,
+      subject: PropTypes.string.isRequired,
+      from: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired
+      }).isRequired,
+      to: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired
+      }).isRequired,
+      body: PropTypes.string.isRequired
+    })
+  ),
   actions: PropTypes.shape({
     enterMailboxInbox: PropTypes.func,
     leaveMailboxInbox: PropTypes.func,
