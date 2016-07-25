@@ -44,19 +44,20 @@ const errorInboxContent = (boiteMailId = 0, time = moment().format(formatDate)) 
 const fetchInboxContent = (boiteMailId) => dispatch => {
   if (parseInt(boiteMailId, 10)) {
     dispatch(requestInboxContent(boiteMailId));
+    const mailId = parseInt(boiteMailId, 10);
     if (appConfig.DEV_MODE) {
       // DEV ONLY
       fetchMockListMails()
         .then(
-          data => dispatch(receivedInboxContent(boiteMailId, data))
+          data => dispatch(receivedInboxContent(mailId, data))
         );
     } else {
-      getInboxContent(boiteMailId)
+      getInboxContent(mailId)
         .then(
-          data => dispatch(receivedInboxContent(boiteMailId, data)))
+          data => dispatch(receivedInboxContent(mailId, data)))
         .catch(
           err => {
-            dispatch(errorInboxContent(boiteMailId));
+            dispatch(errorInboxContent(mailId));
             if (appConfig.DEBUG_ENABLED) {
               /* eslint-disable no-console */
               console.warn('fetchListMails error: ', err);

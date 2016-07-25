@@ -10,6 +10,7 @@ import ListBoitesMails from './listBoitesMails/ListBoitesMails';
 import Horloge from './horloge/Horloge';
 import BackToTop from './backToTop/BackToTop';
 import MailboxRepertoires from './mailboxRepertoires/MailboxRepertoires';
+import MailboxListMails from './mailboxListMails/MailboxListMails';
 
 import {
   FichesTraitee,
@@ -39,6 +40,7 @@ export {
 
   // mailbox
   MailboxRepertoires,
+  MailboxListMails,
 
   // stats
   FichesTraitee,

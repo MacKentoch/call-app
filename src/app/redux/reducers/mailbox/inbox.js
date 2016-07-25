@@ -23,7 +23,6 @@ const inboxContent = (state = initialState, action) => {
     };
 
   case RECEIVED_INBOX_CONTENT:
-    console.log('actions: ', action);
     return {
       ...state,
       isFetching:   action.isFetching,
