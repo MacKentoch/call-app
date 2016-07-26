@@ -37,8 +37,8 @@ class MailboxEnvoi extends Component {
         {
           sentbox.length > 0 &&
           <MailboxListMails
-            inboxMailName={sentboxMailName}
-            inbox={sentbox}
+            mailBoxName={sentboxMailName}
+            mails={sentbox}
           />
         }
         {

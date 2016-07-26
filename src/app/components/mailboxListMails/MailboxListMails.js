@@ -4,7 +4,7 @@ import HeaderTools          from './headerTools/HeaderTools';
 import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
 
-const MailboxListMails = ({inboxMailName, inbox}) => {
+const MailboxListMails = ({mailBoxName, mails}) => {
   return (
     <div className="panel">
       <div
@@ -16,7 +16,7 @@ const MailboxListMails = ({inboxMailName, inbox}) => {
           paddingRight: '0px'
         }}>
         <Title
-          inboxMailName={inboxMailName}
+          mailBoxName={mailBoxName}
         />
         <div className="box box-primary">
 
@@ -41,7 +41,7 @@ const MailboxListMails = ({inboxMailName, inbox}) => {
 
             <div className="table-responsive mailbox-messages">
               <Table
-                inbox={inbox}
+                mails={mails}
               />
             </div>
           </div>
@@ -52,8 +52,8 @@ const MailboxListMails = ({inboxMailName, inbox}) => {
 };
 
 MailboxListMails.propTypes = {
-  inboxMailName: PropTypes.string.isRequired,
-  inbox: PropTypes.arrayOf(
+  mailBoxName: PropTypes.string.isRequired,
+  mails: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       receptionDate: PropTypes.string.isRequired,

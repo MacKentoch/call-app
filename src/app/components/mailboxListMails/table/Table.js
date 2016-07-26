@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import Row from './row/Row';
 
-const Table  = ({inbox}) => {
+const Table  = ({mails}) => {
   return (
     <table className="table table-hover">
       <tbody>
         {
-          inbox.map(
+          mails.map(
             ({id, receptionDate, subject, from, to}, mailIdx) => {
               return (
                 <Row
@@ -27,7 +27,7 @@ const Table  = ({inbox}) => {
 };
 
 Table.propTypes = {
-  inbox: PropTypes.arrayOf(
+  mails: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       receptionDate: PropTypes.string.isRequired,

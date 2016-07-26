@@ -38,8 +38,8 @@ class MailboxReception extends Component {
         {
           inbox.length > 0 &&
           <MailboxListMails
-            inboxMailName={inboxMailName}
-            inbox={inbox}
+            mailBoxName={inboxMailName}
+            mails={inbox}
           />
         }
         {
