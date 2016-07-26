@@ -128,6 +128,13 @@ export const appConfig = {
     }
   },
 
+  // inbox content
+  sentbox: {
+    data: {
+      API: 'api/sentbox'
+    }
+  },
+
   // home stats : fiche par canal
   statsFichesParCanal: {
     data: {

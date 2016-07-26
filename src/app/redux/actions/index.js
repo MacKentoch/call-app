@@ -35,6 +35,9 @@ import {
   fetchInboxContentIfNeeded
 }                                 from './mailbox/inbox';
 import {
+  fetchSentboxContentIfNeeded
+}                                 from './mailbox/envoi';
+import {
   fetchTeamMatesDataIfNeeded
 }                                 from './teamMates';
 import {
@@ -95,5 +98,6 @@ export {
   fetchTeamMatesDataIfNeeded,
 
   // mailbox
-  fetchInboxContentIfNeeded
+  fetchInboxContentIfNeeded,
+  fetchSentboxContentIfNeeded
 };

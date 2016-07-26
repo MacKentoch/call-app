@@ -2,30 +2,30 @@ import moment         from 'moment';
 import { appConfig }  from '../../../config';
 import {
   fetchMockListMails,
-  getInboxContent
+  getSentboxContent
 }                     from '../../../services';
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
-export const REQUEST_INBOX_CONTENT   = 'REQUEST_INBOX_CONTENT';
-export const RECEIVED_INBOX_CONTENT  = 'RECEIVED_INBOX_CONTENT';
-export const ERROR_INBOX_CONTENT     = 'ERROR_INBOX_CONTENT';
+export const REQUEST_SENTBOX_CONTENT   = 'REQUEST_SENTBOX_CONTENT';
+export const RECEIVED_SENTBOX_CONTENT  = 'RECEIVED_SENTBOX_CONTENT';
+export const ERROR_SENTBOX_CONTENT     = 'ERROR_SENTBOX_CONTENT';
 
 
-const requestInboxContent = (boiteMailId = 0, time = moment().format(formatDate)) => {
+const requestSentboxContent = (boiteMailId = 0, time = moment().format(formatDate)) => {
   return {
-    type:       REQUEST_INBOX_CONTENT,
+    type:       REQUEST_SENTBOX_CONTENT,
     isFetching: true,
     boiteMailId,
     time
   };
 };
-const receivedInboxContent = (boiteMailId = 0, data, time = moment().format(formatDate)) => {
+const receivedSentboxContent = (boiteMailId = 0, data, time = moment().format(formatDate)) => {
   const mails = addCheckStatusProperty(data.mails) || [];
   const mailBoxName = data.mailboxName || '';
   return {
-    type:       RECEIVED_INBOX_CONTENT,
+    type:       RECEIVED_SENTBOX_CONTENT,
     isFetching: false,
     boiteMailId,
     mailBoxName,
@@ -33,34 +33,34 @@ const receivedInboxContent = (boiteMailId = 0, data, time = moment().format(form
     time
   };
 };
-const errorInboxContent = (boiteMailId = 0, time = moment().format(formatDate)) => {
+const errorSentboxContent = (boiteMailId = 0, time = moment().format(formatDate)) => {
   return {
-    type:       ERROR_INBOX_CONTENT,
+    type:       ERROR_SENTBOX_CONTENT,
     isFetching: false,
     boiteMailId,
     time
   };
 };
-const fetchInboxContent = (boiteMailId) => dispatch => {
+const fetchSentboxContent = (boiteMailId) => dispatch => {
   if (parseInt(boiteMailId, 10)) {
-    dispatch(requestInboxContent(boiteMailId));
+    dispatch(requestSentboxContent(boiteMailId));
     const mailId = parseInt(boiteMailId, 10);
     if (appConfig.DEV_MODE) {
       // DEV ONLY
       fetchMockListMails()
         .then(
-          data => dispatch(receivedInboxContent(mailId, data))
+          data => dispatch(receivedSentboxContent(mailId, data))
         );
     } else {
-      getInboxContent(mailId)
+      getSentboxContent(mailId)
         .then(
-          data => dispatch(receivedInboxContent(mailId, data)))
+          data => dispatch(receivedSentboxContent(mailId, data)))
         .catch(
           err => {
-            dispatch(errorInboxContent(mailId));
+            dispatch(errorSentboxContent(mailId));
             if (appConfig.DEBUG_ENABLED) {
               /* eslint-disable no-console */
-              console.warn('fetchInboxContent error: ', err);
+              console.warn('fetchSentboxContent error: ', err);
               /* eslint-enable no-console */
             }
           }
@@ -68,31 +68,25 @@ const fetchInboxContent = (boiteMailId) => dispatch => {
     }
   } else {
     /* eslint-disable no-throw-literal */
-    throw 'Error: fetchInboxContent requires a valid boiteMailId';
+    throw 'Error: fetchSentboxContent requires a valid boiteMailId';
     /* eslint-enable no-throw-literal */
   }
 };
-export const fetchInboxContentIfNeeded = (boiteMailId) => (dispatch, getState) => {
-  if (shouldFetchInboxContent(getState(), boiteMailId)) {
-    return dispatch(fetchInboxContent(boiteMailId));
+export const fetchSentboxContentIfNeeded = (boiteMailId) => (dispatch, getState) => {
+  if (shouldFetchSentboxContent(getState(), boiteMailId)) {
+    return dispatch(fetchSentboxContent(boiteMailId));
   }
   return null;
 };
 /* eslint-disable no-unused-vars */
-function shouldFetchInboxContent(state, mailboxId) {
-  const inboxContent = state.inboxContent;
+function shouldFetchSentboxContent(state, mailboxId) {
+  const sentboxContent = state.sentboxContent;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
-  if (inboxContent.isFetching) {
+  if (sentboxContent.isFetching) {
     return false;
   } else {
     return true;
   }
-  //
-  // } else if (inboxContent.mailboxId !== mailboxId) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
 }
 /* eslint-enable no-unused-vars */
 
