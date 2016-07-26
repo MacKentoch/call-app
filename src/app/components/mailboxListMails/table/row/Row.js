@@ -1,28 +1,40 @@
 import React, { PropTypes } from 'react';
 
-const Row  = ({id, receptionDate, subject, from, to}) => {
+const subjectMaxLength = 25;
+
+
+const Row  = ({id, receptionDate, subject, from, to, body}) => {
   return (
     <tr id={id}>
 
-      <td className="mailbox-star">
-        <a href="#">
-          <i className="fa fa-star text-yellow"></i>
-        </a>
+      <td style={{width: '10px'}}>
+        <input type="checkbox" />
       </td>
 
-      <td className="mailbox-name">
+      <td style={{width: '240px'}}>
         <a href="#">
-          {from.name}
+          {from.email}
         </a>
       </td>
 
       <td className="mailbox-subject">
-        <b>{subject}</b>
+        <b>
+          {
+            subject.length > subjectMaxLength &&
+            `${subject.slice(0, subjectMaxLength)}...`
+          }
+          {
+            subject.length <= subjectMaxLength &&
+            subject
+          }
+        </b>
       </td>
 
-      <td className="mailbox-attachment"></td>
+      <td style={{width: '10px'}}>
+        <i className="fa fa-paperclip" aria-hidden="true"></i>
+      </td>
 
-      <td className="mailbox-date">
+      <td style={{width: '150px'}}>
         {receptionDate}
       </td>
 
@@ -41,7 +53,8 @@ Row.propTypes = {
   to: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  body: PropTypes.string.isRequired
 };
 
 export default Row;
