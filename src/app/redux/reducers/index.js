@@ -13,6 +13,7 @@ import sideMenu           from './ui/sideMenu';
 import teamMates          from './teamMates';
 // mailbox
 import inboxContent       from './mailbox/inbox';
+import sentboxContent     from './mailbox/sentbox';
 
 export {
   // views:
@@ -33,5 +34,6 @@ export {
   teamMates,
 
   // mailbox
-  inboxContent
+  inboxContent,
+  sentboxContent
 };

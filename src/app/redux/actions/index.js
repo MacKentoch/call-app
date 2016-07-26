@@ -36,7 +36,7 @@ import {
 }                                 from './mailbox/inbox';
 import {
   fetchSentboxContentIfNeeded
-}                                 from './mailbox/envoi';
+}                                 from './mailbox/sentbox';
 import {
   fetchTeamMatesDataIfNeeded
 }                                 from './teamMates';
