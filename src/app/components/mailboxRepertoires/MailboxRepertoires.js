@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router'
 
-const MailboxRepertoires = () => {
+const MailboxRepertoires = ({recuLink, envoyeLink}) => {
   return (
     <div className="panel">
       <div className="panel-header">
@@ -25,34 +26,39 @@ const MailboxRepertoires = () => {
         <div className="box-body no-padding">
           <ul className="nav nav-pills nav-stacked">
             <li className="active">
-              <a href="#">
+              <Link to={recuLink}>
                 <i className="fa fa-inbox"></i>
                 &nbsp;
                 Reçus
                 <span className="label label-primary pull-right">
                   12
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to={envoyeLink}>
                 <i className="fa fa-envelope-o"></i>
                 &nbsp;
                 Envoyés
-              </a>
+              </Link>
             </li>
-            <li>
+            {/*<li>
               <a href="#">
                 <i className="fa fa-trash-o"></i>
                 &nbsp;
                 Corbeille
               </a>
-            </li>
+            </li>*/}
           </ul>
         </div>
       </div>
     </div>
   );
 };
+
+MailboxRepertoires.propTypes = {
+  recuLink: PropTypes.string.isRequired,
+  envoyeLink: PropTypes.string.isRequired
+}
 
 export default MailboxRepertoires;

@@ -1,6 +1,8 @@
 import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
-// import { appConfig }                    from '../../config';
+import {
+  MailboxListMails
+}                                       from '../../../components';
 
 
 class MailboxEnvoi extends Component {
@@ -24,36 +26,29 @@ class MailboxEnvoi extends Component {
 
   render() {
     const { animated } = this.state;
+    const { inboxMailName, inbox, inboxIsFetching } = this.props;
     return(
-      <section
+      <div
         className={cx({
-          'content':        true,
-          'animatedViews':  animated,
-          'view-enter':     animated
+          'animated': animated,
+          'fadeIn': animated
         })}>
-        {/* TODO */}
-        <div
-          className="row"
-          style={{marginBottom: '5px'}}>
-
-
-          <div className="col-md-3">
-            <h3>
-              mailbox panel
-            </h3>
-            <h4>
-              comands
-            </h4>
-          </div>
-
-
-          <div className="col-md-9">
-            <h2>
-              liste mail boite d'envoi
-            </h2>
-          </div>
-        </div>
-      </section>
+        {
+          inbox.length > 0 &&
+          <MailboxListMails
+            inboxMailName={inboxMailName}
+            inbox={inbox}
+          />
+        }
+        {
+          (inbox.length === 0 && !inboxIsFetching) &&
+          <h3>
+            <i>
+              Aucun mail.
+            </i>
+          </h3>
+        }
+      </div>
     );
   }
 }

@@ -13,8 +13,8 @@ import {
 }                                       from '../../components';
 import { appConfig }                    from '../../config';
 
-const boiteReceptionPath = appConfig.views.mailbox.reception.path;
-const boiteEnvoiPath = appConfig.views.mailbox.envoi.path;
+const boiteReceptionPath  = `${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.reception.path}`;
+const boiteEnvoiPath      = `${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.envoi.path}`;
 
 class Home extends Component {
   constructor(props) {

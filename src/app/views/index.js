@@ -1,7 +1,10 @@
 import Home             from './home/Home';
 import Recherche        from './recherche/Recherche';
-import MailboxReception from './mailbox/reception/MailboxReception';
-import MailboxEnvoi     from './mailbox/envoi/MailboxEnvoi';
+import {
+  Mailbox,
+  MailboxReception,
+  MailboxEnvoi
+}                       from './mailbox';
 import Modals           from './modals/Modals';
 // create
 import {
@@ -17,6 +20,7 @@ export {
   Modals,
 
   // mailboxes
+  Mailbox,
   MailboxReception,
   MailboxEnvoi,
 

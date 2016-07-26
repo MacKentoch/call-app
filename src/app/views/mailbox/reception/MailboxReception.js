@@ -2,7 +2,6 @@ import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 // import { appConfig }                    from '../../config';
 import {
-  MailboxRepertoires,
   MailboxListMails
 }                                       from '../../../components';
 
@@ -31,39 +30,27 @@ class MailboxReception extends Component {
     const { animated } = this.state;
     const { inboxMailName, inbox, inboxIsFetching } = this.props;
     return(
-      <section
+      <div
         className={cx({
-          'content':        true,
-          'animatedViews':  animated,
-          'view-enter':     animated
+          'animated': animated,
+          'fadeIn': animated
         })}>
-        {/* TODO */}
-        <div
-          className="row"
-          style={{marginBottom: '5px'}}>
-          <div className="col-md-3">
-            <MailboxRepertoires />
-          </div>
-
-          <div className="col-md-9">
-            {
-              inbox.length > 0 &&
-              <MailboxListMails
-                inboxMailName={inboxMailName}
-                inbox={inbox}
-              />
-            }
-            {
-              (inbox.length === 0 && !inboxIsFetching) &&
-              <h3>
-                <i>
-                  Aucun mail.
-                </i>
-              </h3>
-            }
-          </div>
-        </div>
-      </section>
+        {
+          inbox.length > 0 &&
+          <MailboxListMails
+            inboxMailName={inboxMailName}
+            inbox={inbox}
+          />
+        }
+        {
+          (inbox.length === 0 && !inboxIsFetching) &&
+          <h3>
+            <i>
+              Aucun mail.
+            </i>
+          </h3>
+        }
+      </div>
     );
   }
 }

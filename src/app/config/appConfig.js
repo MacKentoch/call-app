@@ -16,34 +16,38 @@ export const appConfig = {
       path: '/'
     },
     mailbox: {
+      root: {
+        viewName: 'Boîte mail',
+        path: 'mailbox'
+      },
       reception: {
         viewName: 'Boîte de réception',
-        path: '/mailbox/reception'
+        path: 'reception'
       },
       envoi: {
         viewName: 'Boîte d\'envoi',
-        path: '/mailbox/envoi'
+        path: 'envoi'
       }
     },
     recherche: {
       viewName: 'Recherche',
-      path: '/recherche'
+      path: 'recherche'
     },
     createFicheContactCourier: {
       viewName: 'Céation Fiche Contact Courier',
-      path: '/create/ficheContactCourier'
+      path: 'create/ficheContactCourier'
     },
     createFicheContactMail: {
       viewName: 'Céation Fiche Contact Mail',
-      path: '/create/ficheContactMail'
+      path: 'create/ficheContactMail'
     },
     createFicheContactTelephone: {
       viewName: 'Céation Fiche Contact Telephone',
-      path: '/create/ficheContactTelephone'
+      path: 'create/ficheContactTelephone'
     },
     createFicheContactPersonnes: {
       viewName: 'Céation Fiche Contact Personnes',
-      path: '/create/ficheContactPersonnes'
+      path: 'create/ficheContactPersonnes'
     }
   },
 

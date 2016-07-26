@@ -26,7 +26,7 @@ import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
 import { appConfig }            from '../config';
 // import { createHistory }        from 'history';
-
+import { Mailbox } from '../views';
 
 // specified base url
 // const browserHistory = useRouterHistory(createHistory)({
@@ -60,8 +60,11 @@ export const Routes = () => {
             <Route path={createFicheContactTelephone.path} component={FicheContactTelephoneConnected} />
             <Route path={createFicheContactPersonnes.path} component={FicheContactPersonnesConnected} />
 
-            <Route path={`${mailbox.reception.path}/:mailboxId`} component={MailboxReceptionConnected} />
-            <Route path={`${mailbox.envoi.path}/:mailboxId`} component={MailboxEnvoiConnected} />
+            <Route path={mailbox.root.path} component={Mailbox}>
+              <Route path={`${mailbox.reception.path}/:mailboxId`} component={MailboxReceptionConnected} />
+              <Route path={`${mailbox.envoi.path}/:mailboxId`} component={MailboxEnvoiConnected} />
+            </Route>
+
           </Route>
         </Router>
         { process.env.NODE_ENV !== 'production' ? <DevTools /> : null }

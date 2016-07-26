@@ -3,14 +3,14 @@ import React, { PropTypes } from 'react';
 const subjectMaxLength = 45;
 
 
-const Row  = ({id, receptionDate, subject, from, to, body}) => {
+const Row  = ({id, receptionDate, subject, from, selected}) => {
   return (
     <tr id={id}>
 
       <td style={{width: '10px'}}>
         <input
           type="checkbox"
-          checked={false}
+          checked={selected}
           onChange={()=>console.log('onChange to implement')}
         />
       </td>
