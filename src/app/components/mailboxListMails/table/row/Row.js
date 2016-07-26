@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const subjectMaxLength = 25;
+const subjectMaxLength = 45;
 
 
 const Row  = ({id, receptionDate, subject, from, to, body}) => {
@@ -8,7 +8,11 @@ const Row  = ({id, receptionDate, subject, from, to, body}) => {
     <tr id={id}>
 
       <td style={{width: '10px'}}>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          checked={false}
+          onChange={()=>console.log('onChange to implement')}
+        />
       </td>
 
       <td style={{width: '240px'}}>
@@ -54,7 +58,8 @@ Row.propTypes = {
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired
   }).isRequired,
-  body: PropTypes.string.isRequired
+  body: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired
 };
 
 export default Row;

@@ -40,7 +40,8 @@ Table.propTypes = {
         name: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired
       }).isRequired,
-      body: PropTypes.string.isRequired
+      body: PropTypes.string.isRequired,
+      selected: PropTypes.bool.isRequired
     })
   )
 };

@@ -4,7 +4,7 @@ export const listMailsMock = {
   mails: [
     {
       id: 1,
-      receptionDate: '01/01/2016',
+      receptionDate: '01/01/2016 12:23',
       from: {
         email: 'test1@from.test',
         name: 'person1'
@@ -18,7 +18,7 @@ export const listMailsMock = {
     },
     {
       id: 2,
-      receptionDate: '01/01/2016',
+      receptionDate: '01/01/2016  08:23',
       from: {
         email: 'test2@from.test',
         name: 'person3'
@@ -32,7 +32,7 @@ export const listMailsMock = {
     },
     {
       id: 3,
-      receptionDate: '01/01/2016',
+      receptionDate: '01/01/2016  12:23',
       from: {
         email: 'test1@from.test',
         name: 'person1'
@@ -46,7 +46,7 @@ export const listMailsMock = {
     },
     {
       id: 4,
-      receptionDate: '01/01/2016',
+      receptionDate: '01/01/2016  12:23',
       from: {
         email: 'test1@from.test',
         name: 'person1'
@@ -60,7 +60,7 @@ export const listMailsMock = {
     },
     {
       id: 5,
-      receptionDate: '01/01/2016',
+      receptionDate: '01/01/2016  12:23',
       from: {
         email: 'test2@from.test',
         name: 'person3'
@@ -69,12 +69,12 @@ export const listMailsMock = {
         email: 'test4@to.test',
         name: 'person4'
       },
-      subject: 'a nice email subject',
+      subject: 'a nice email subject with more than 50 characters to test truncation',
       body: 'to be filled later'
     },
     {
       id: 6,
-      receptionDate: '01/01/2016',
+      receptionDate: '01/01/2016  12:23',
       from: {
         email: 'test1@from.test',
         name: 'person1'

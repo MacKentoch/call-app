@@ -29,7 +29,7 @@ class MailboxReception extends Component {
 
   render() {
     const { animated } = this.state;
-    const { inboxMailName, inbox } = this.props;
+    const { inboxMailName, inbox, inboxIsFetching } = this.props;
     return(
       <section
         className={cx({
@@ -46,10 +46,21 @@ class MailboxReception extends Component {
           </div>
 
           <div className="col-md-9">
-            <MailboxListMails
-              inboxMailName={inboxMailName}
-              inbox={inbox}
-            />
+            {
+              inbox.length > 0 &&
+              <MailboxListMails
+                inboxMailName={inboxMailName}
+                inbox={inbox}
+              />
+            }
+            {
+              (inbox.length === 0 && !inboxIsFetching) &&
+              <h3>
+                <i>
+                  Aucun mail.
+                </i>
+              </h3>
+            }
           </div>
         </div>
       </section>
@@ -77,7 +88,8 @@ MailboxReception.propTypes = {
         name: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired
       }).isRequired,
-      body: PropTypes.string.isRequired
+      body: PropTypes.string.isRequired,
+      selected: PropTypes.bool.isRequired
     })
   ),
   actions: PropTypes.shape({

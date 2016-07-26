@@ -22,7 +22,7 @@ const requestInboxContent = (boiteMailId = 0, time = moment().format(formatDate)
   };
 };
 const receivedInboxContent = (boiteMailId = 0, data, time = moment().format(formatDate)) => {
-  const mails = data.mails || [];
+  const mails = addCheckStatusProperty(data.mails) || [];
   const mailBoxName = data.mailboxName || '';
   return {
     type:       RECEIVED_INBOX_CONTENT,
@@ -95,3 +95,14 @@ function shouldFetchInboxContent(state, mailboxId) {
   // }
 }
 /* eslint-enable no-unused-vars */
+
+function addCheckStatusProperty(mails) {
+  if (Array.isArray(mails)) {
+    return mails.map(
+      mail => {
+        return {...mail,  selected: false};
+      }
+    );
+  }
+  return mails;
+}
