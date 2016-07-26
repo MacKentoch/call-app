@@ -8,6 +8,9 @@ import { appConfig }                    from '../../config';
 const boiteReceptionPath  = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.reception.path}`;
 const boiteEnvoiPath      = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.envoi.path}`;
 
+const inboxRegex = /reception/;
+const sentboxRegex = /envoi/;
+
 class MailBox extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +22,19 @@ class MailBox extends Component {
 
   render() {
     const { animated } = this.state;
-    const { children, params: { mailboxId } } = this.props;
+    const { children, params: { mailboxId }, location: { pathname } } = this.props;
+
+    const isInbox   = inboxRegex.test(pathname);
+    const isSentBox = sentboxRegex.test(pathname);
+
+    let selectedView = '';
+    if (isInbox) {
+      selectedView = 'inbox';
+    }
+    if (isSentBox) {
+      selectedView = 'sentbox';
+    }
+
     return(
       <section
         className={cx({
@@ -32,6 +47,7 @@ class MailBox extends Component {
           style={{marginBottom: '5px'}}>
           <div className="col-md-3">
             <MailboxRepertoires
+              selectedView={selectedView}
               recuLink={`${boiteReceptionPath}/${mailboxId}`}
               envoyeLink={`${boiteEnvoiPath}/${mailboxId}`}
             />
@@ -49,7 +65,9 @@ class MailBox extends Component {
 MailBox.propTypes = {
   children: PropTypes.node,
   params: PropTypes.object, // react router
-  location: PropTypes.object  // react router
+  location: PropTypes.object,  // react router
+
+  currentView: PropTypes.string.isRequired
 };
 
 export default MailBox;

@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link }             from 'react-router';
+import cx                   from 'classnames';
 
-const MailboxRepertoires = ({recuLink, envoyeLink}) => {
+const MailboxRepertoires = ({recuLink, envoyeLink, selectedView}) => {
   return (
     <div className="panel">
       <div className="panel-header">
@@ -25,7 +26,10 @@ const MailboxRepertoires = ({recuLink, envoyeLink}) => {
         style={{padding: 0}}>
         <div className="box-body no-padding">
           <ul className="nav nav-pills nav-stacked">
-            <li className="active">
+            <li
+              className={cx({
+                'active': selectedView === 'inbox'
+              })}>
               <Link to={recuLink}>
                 <i className="fa fa-inbox"></i>
                 &nbsp;
@@ -35,7 +39,10 @@ const MailboxRepertoires = ({recuLink, envoyeLink}) => {
                 </span>
               </Link>
             </li>
-            <li>
+            <li
+              className={cx({
+                'active': selectedView === 'sentbox'
+              })}>
               <Link to={envoyeLink}>
                 <i className="fa fa-envelope-o"></i>
                 &nbsp;
@@ -60,6 +67,7 @@ const MailboxRepertoires = ({recuLink, envoyeLink}) => {
 };
 
 MailboxRepertoires.propTypes = {
+  selectedView: PropTypes.string.isRequired,
   recuLink: PropTypes.string.isRequired,
   envoyeLink: PropTypes.string.isRequired
 };
