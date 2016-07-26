@@ -51,6 +51,9 @@ const MailboxRepertoires = ({recuLink, envoyeLink}) => {
             </li>*/}
           </ul>
         </div>
+        <div style={{padding: 0, height:'10px'}}>
+          &nbsp;
+        </div>
       </div>
     </div>
   );
@@ -59,6 +62,6 @@ const MailboxRepertoires = ({recuLink, envoyeLink}) => {
 MailboxRepertoires.propTypes = {
   recuLink: PropTypes.string.isRequired,
   envoyeLink: PropTypes.string.isRequired
-}
+};
 
 export default MailboxRepertoires;
