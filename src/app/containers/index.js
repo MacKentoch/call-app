@@ -8,6 +8,7 @@ import {
   FicheContactPersonnesConnected
 }                             from './create';
 import {
+  MailboxConnected,
   MailboxReceptionConnected,
   MailboxEnvoiConnected
 }                             from './mailbox';
@@ -24,6 +25,7 @@ export {
   FicheContactPersonnesConnected,
 
   // mailbox
+  MailboxConnected,
   MailboxReceptionConnected,
   MailboxEnvoiConnected
 };

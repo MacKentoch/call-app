@@ -19,6 +19,7 @@ import {
   FicheContactMailConnected,
   FicheContactTelephoneConnected,
   FicheContactPersonnesConnected,
+  MailboxConnected,
   MailboxReceptionConnected,
   MailboxEnvoiConnected
 }                               from '../containers';
@@ -60,7 +61,7 @@ export const Routes = () => {
             <Route path={createFicheContactTelephone.path} component={FicheContactTelephoneConnected} />
             <Route path={createFicheContactPersonnes.path} component={FicheContactPersonnesConnected} />
 
-            <Route path={mailbox.root.path} component={Mailbox}>
+            <Route path={mailbox.root.path} component={MailboxConnected}>
               <Route path={`${mailbox.reception.path}/:mailboxId`} component={MailboxReceptionConnected} />
               <Route path={`${mailbox.envoi.path}/:mailboxId`} component={MailboxEnvoiConnected} />
             </Route>
