@@ -5,6 +5,7 @@ import {
   MailboxListMails
 }                                       from '../../../components';
 
+const mailBoxType = 'Reçus';
 
 class MailboxReception extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class MailboxReception extends Component {
         {
           inbox.length > 0 &&
           <MailboxListMails
+            mailboxType={mailBoxType}
             mailBoxName={inboxMailName}
             mails={inbox}
           />

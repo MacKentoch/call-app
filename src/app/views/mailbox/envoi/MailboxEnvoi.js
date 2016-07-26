@@ -4,6 +4,7 @@ import {
   MailboxListMails
 }                                       from '../../../components';
 
+const mailBoxType = 'Envoyés';
 
 class MailboxEnvoi extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class MailboxEnvoi extends Component {
         {
           sentbox.length > 0 &&
           <MailboxListMails
+            mailboxType={mailBoxType}
             mailBoxName={sentboxMailName}
             mails={sentbox}
           />

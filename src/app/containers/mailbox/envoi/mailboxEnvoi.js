@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
         enterMailboxSentbox: actions.enterMailboxSentbox,
         leaveMailboxSentbox: actions.leaveMailboxSentbox,
 
-        fetchSentboxContentIfNeeded: actions.fetchInboxContentIfNeeded
+        fetchSentboxContentIfNeeded: actions.fetchSentboxContentIfNeeded
       },
       dispatch)
   };

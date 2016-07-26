@@ -4,7 +4,7 @@ import HeaderTools          from './headerTools/HeaderTools';
 import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
 
-const MailboxListMails = ({mailBoxName, mails}) => {
+const MailboxListMails = ({mailBoxName, mails, mailboxType}) => {
   return (
     <div className="panel">
       <div
@@ -21,7 +21,7 @@ const MailboxListMails = ({mailBoxName, mails}) => {
         <div className="box box-primary">
 
           <HeaderTools
-            title={'Reçus'}
+            title={mailboxType}
             onSearch={(value)=>console.log('search: ', value)}
           />
 
@@ -52,6 +52,7 @@ const MailboxListMails = ({mailBoxName, mails}) => {
 };
 
 MailboxListMails.propTypes = {
+  mailboxType: PropTypes.oneOf(['Reçus', 'Envoyés']).isRequired,
   mailBoxName: PropTypes.string.isRequired,
   mails: PropTypes.arrayOf(
     PropTypes.shape({
