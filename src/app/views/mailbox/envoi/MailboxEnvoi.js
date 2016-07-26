@@ -17,6 +17,7 @@ class MailboxEnvoi extends Component {
   componentDidMount() {
     const  { actions, params: { mailboxId } } =  this.props;
     actions.enterMailboxSentbox(`mailbox #${mailboxId}`);
+    actions.fetchSentboxContentIfNeeded(mailboxId);
   }
 
   componentWillUnmount() {
@@ -26,7 +27,7 @@ class MailboxEnvoi extends Component {
 
   render() {
     const { animated } = this.state;
-    const { inboxMailName, inbox, inboxIsFetching } = this.props;
+    const { sentboxMailName, sentbox, sentboxIsFetching } = this.props;
     return(
       <div
         className={cx({
@@ -34,14 +35,14 @@ class MailboxEnvoi extends Component {
           'fadeIn': animated
         })}>
         {
-          inbox.length > 0 &&
+          sentbox.length > 0 &&
           <MailboxListMails
-            inboxMailName={inboxMailName}
-            inbox={inbox}
+            inboxMailName={sentboxMailName}
+            inbox={sentbox}
           />
         }
         {
-          (inbox.length === 0 && !inboxIsFetching) &&
+          (sentbox.length === 0 && !sentboxIsFetching) &&
           <h3>
             <i>
               Aucun mail.
@@ -57,9 +58,32 @@ MailboxEnvoi.propTypes = {
   params: PropTypes.object, // react router
   location: PropTypes.object,  // react router
 
+  sentboxMailId: PropTypes.number,
+  sentboxMailName: PropTypes.string,
+  sentboxIsFetching: PropTypes.bool,
+  sentbox: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      receptionDate: PropTypes.string.isRequired,
+      subject: PropTypes.string.isRequired,
+      from: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired
+      }).isRequired,
+      to: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired
+      }).isRequired,
+      body: PropTypes.string.isRequired,
+      selected: PropTypes.bool.isRequired
+    })
+  ),
+
   actions: PropTypes.shape({
     enterMailboxSentbox: PropTypes.func,
-    leaveMailboxSentbox: PropTypes.func
+    leaveMailboxSentbox: PropTypes.func,
+
+    fetchSentboxContentIfNeeded: PropTypes.func
   })
 };
 

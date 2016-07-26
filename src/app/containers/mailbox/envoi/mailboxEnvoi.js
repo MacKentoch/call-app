@@ -5,7 +5,12 @@ import { MailboxEnvoi }         from '../../../views';
 
 const mapStateToProps = (state) => {
   return {
-    currentView:  state.views.currentView
+    currentView:  state.views.currentView,
+
+    sentboxMailId: state.sentboxContent.boiteMailId,
+    sentboxMailName: state.sentboxContent.mailBoxName,
+    sentboxIsFetching: state.sentboxContent.isFetching,
+    sentbox: state.sentboxContent.mails
   };
 };
 
@@ -14,7 +19,9 @@ const mapDispatchToProps = (dispatch) => {
     actions : bindActionCreators(
       {
         enterMailboxSentbox: actions.enterMailboxSentbox,
-        leaveMailboxSentbox: actions.leaveMailboxSentbox
+        leaveMailboxSentbox: actions.leaveMailboxSentbox,
+
+        fetchSentboxContentIfNeeded: actions.fetchInboxContentIfNeeded
       },
       dispatch)
   };
