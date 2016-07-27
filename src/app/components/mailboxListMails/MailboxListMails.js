@@ -26,13 +26,12 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, 
           />
 
           <div className="box-body no-padding">
+
             <ListControl
               showCheckToggle={false}
               minPage={1}
               maxPage={50}
               totalPages={200}
-              onReplyClick={(e)=>console.log('onReplyClick, event: ', e)}
-              onForwardClick={(e)=>console.log('onForwardClick, event: ', e)}
               onRefreshClick={onRefreshListClick}
               onPagingPreviousClick={(e)=>console.log('onPagingPreviousClick, event: ', e)}
               onPagingNextClick={(e)=>console.log('onPagingNextClick, event: ', e)}
@@ -44,6 +43,16 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, 
                 mails={mails}
               />
             </div>
+
+            <ListControl
+              showCheckToggle={false}
+              minPage={1}
+              maxPage={50}
+              totalPages={200}
+              onRefreshClick={onRefreshListClick}
+              onPagingPreviousClick={(e)=>console.log('onPagingPreviousClick, event: ', e)}
+              onPagingNextClick={(e)=>console.log('onPagingNextClick, event: ', e)}
+            />
           </div>
         </div>
       </div>

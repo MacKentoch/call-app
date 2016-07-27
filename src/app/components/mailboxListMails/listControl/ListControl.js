@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const ListControl = ({minPage, maxPage, totalPages, showCheckToggle, onReplyClick, onForwardClick, onRefreshClick, onPagingPreviousClick, onPagingNextClick}) => {
+const ListControl = ({minPage, maxPage, totalPages, showCheckToggle, showReply, onReplyClick, showForward, onForwardClick, onRefreshClick, onPagingPreviousClick, onPagingNextClick}) => {
   return (
     <div
       style={{ padding: '5px'}}>
@@ -14,24 +14,24 @@ const ListControl = ({minPage, maxPage, totalPages, showCheckToggle, onReplyClic
       }
 
       <div className="btn-group">
-        {/*<button
-          type="button"
-          className="btn btn-default btn-sm"
-          onClick={onDeleteClick}>
-          <i className="fa fa-trash-o"></i>
-        </button>*/}
-        <button
-          type="button"
-          className="btn btn-default btn-sm"
-          onClick={onReplyClick}>
-          <i className="fa fa-reply"></i>
-        </button>
-        <button
-          type="button"
-          className="btn btn-default btn-sm"
-          onClick={onForwardClick}>
-          <i className="fa fa-share"></i>
-        </button>
+        {
+          showReply &&
+          <button
+            type="button"
+            className="btn btn-default btn-sm"
+            onClick={onReplyClick}>
+            <i className="fa fa-reply"></i>
+          </button>
+        }
+        {
+          showForward &&
+          <button
+            type="button"
+            className="btn btn-default btn-sm"
+            onClick={onForwardClick}>
+            <i className="fa fa-share"></i>
+          </button>
+        }
       </div>
 
       <button
@@ -69,9 +69,12 @@ ListControl.propTypes = {
   maxPage: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
 
-  // onDeleteClick: PropTypes.func.isRequired,
-  onReplyClick: PropTypes.func.isRequired,
-  onForwardClick: PropTypes.func.isRequired,
+  showReply: PropTypes.bool,
+  onReplyClick: PropTypes.func,
+
+  showForward: PropTypes.bool,
+  onForwardClick: PropTypes.func,
+
   onRefreshClick: PropTypes.func.isRequired,
 
   onPagingPreviousClick: PropTypes.func.isRequired,
@@ -81,7 +84,9 @@ ListControl.propTypes = {
 };
 
 ListControl.defaultProps  ={
-  showCheckToggle: false
+  showCheckToggle: false,
+  showReply: false,
+  showForward: false
 };
 
 export default ListControl;
