@@ -1,0 +1,13 @@
+.mailBoxNewEmailButton_button {
+  margin: {
+    left: 0px;
+  }
+  background: {
+    color: #E67E22 !important;
+  }
+  &:hover {
+    background: {
+      color: #F9690E !important;
+    }
+  }
+}

@@ -11,6 +11,7 @@ import Horloge from './horloge/Horloge';
 import BackToTop from './backToTop/BackToTop';
 import MailboxRepertoires from './mailboxRepertoires/MailboxRepertoires';
 import MailboxListMails from './mailboxListMails/MailboxListMails';
+import MailBoxNewEmailButton from './mailBoxNewEmailButton/MailBoxNewEmailButton';
 
 import {
   FichesTraitee,
@@ -40,6 +41,7 @@ export {
 
   // mailbox
   MailboxRepertoires,
+  MailBoxNewEmailButton,
   MailboxListMails,
 
   // stats

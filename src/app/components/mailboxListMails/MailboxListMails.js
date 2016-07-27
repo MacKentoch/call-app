@@ -31,7 +31,6 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType}) => {
               minPage={1}
               maxPage={50}
               totalPages={200}
-              onDeleteClick={(e)=>console.log('onDeleteClick, event: ', e)}
               onReplyClick={(e)=>console.log('onReplyClick, event: ', e)}
               onForwardClick={(e)=>console.log('onForwardClick, event: ', e)}
               onRefreshClick={(e)=>console.log('onRefreshClick, event: ', e)}

@@ -14,12 +14,12 @@ const ListControl = ({minPage, maxPage, totalPages, showCheckToggle, onDeleteCli
       }
 
       <div className="btn-group">
-        <button
+        {/*<button
           type="button"
           className="btn btn-default btn-sm"
           onClick={onDeleteClick}>
           <i className="fa fa-trash-o"></i>
-        </button>
+        </button>*/}
         <button
           type="button"
           className="btn btn-default btn-sm"
@@ -69,7 +69,7 @@ ListControl.propTypes = {
   maxPage: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
 
-  onDeleteClick: PropTypes.func.isRequired,
+  // onDeleteClick: PropTypes.func.isRequired,
   onReplyClick: PropTypes.func.isRequired,
   onForwardClick: PropTypes.func.isRequired,
   onRefreshClick: PropTypes.func.isRequired,

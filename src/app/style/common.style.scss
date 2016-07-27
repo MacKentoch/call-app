@@ -78,3 +78,20 @@ input[type="radio"], input[type="checkbox"] {
   display: block;
   height: 20px;
 }
+
+// overrides navpill stacked
+//
+.nav.nav-pills.nav-stacked > li.active > a, .nav.nav-pills.nav-stacked > li.active > a:hover {
+  background-color: #f6f6f6;
+  border-left-color: #E67E22 !important;
+  color: #444;
+}
+.nav.nav-pills.nav-stacked > li > a:hover {
+    background-color: #f6f6f6;
+    border-left-color: #E67E22 !important;
+}
+li.active > a:hover {
+    background-color: #f6f6f6;
+    border-top-color: #E67E22 !important;
+    color: #444;
+}

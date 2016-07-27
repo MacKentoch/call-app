@@ -1,7 +1,8 @@
 import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 import {
-  MailboxRepertoires
+  MailboxRepertoires,
+  MailBoxNewEmailButton
 }                                       from '../../components';
 import { appConfig }                    from '../../config';
 
@@ -46,6 +47,11 @@ class MailBox extends Component {
           className="row"
           style={{marginBottom: '5px'}}>
           <div className="col-md-3">
+            <MailBoxNewEmailButton
+              text={'Rédiger un email'}
+              onClick={()=>console.log('MailBoxNewEmailButton onclick TODO')}
+            />
+
             <MailboxRepertoires
               selectedView={selectedView}
               recuLink={`${boiteReceptionPath}/${mailboxId}`}
