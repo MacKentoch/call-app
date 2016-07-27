@@ -1,18 +1,30 @@
 import React, { PropTypes, Component }  from 'react';
+import moment                           from 'moment';
+import { appConfig }                    from '../../../config';
 import cx                               from 'classnames';
 import {
   MailboxListMails,
   IsFetching
 }                                       from '../../../components';
+import {
+  getCurrentPageContent
+}                                       from '../../../services';
 
+moment.locale('fr');
+
+const formatDate = appConfig.formatDate.defaut;
 const mailBoxType = 'Envoyés';
+
 
 class MailboxEnvoi extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      animated: true
+      animated: true,
+      currentPageMails: [],
+      currentPage: 1,
+      numberMailsPerPage: 50
     };
 
     this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);
@@ -22,6 +34,24 @@ class MailboxEnvoi extends Component {
     const  { actions, params: { mailboxId } } =  this.props;
     actions.enterMailboxSentbox(`mailbox #${mailboxId}`);
     actions.fetchSentboxContentIfNeeded(mailboxId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { sentboxRefreshTime } = this.props;
+    const { currentPage, numberMailsPerPage } = this.state;
+
+    const lastRefreshTime = sentboxRefreshTime.length > 0
+      ? moment(sentboxRefreshTime, formatDate).format(formatDate)
+      : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
+
+    const newRefreshTime = nextProps.sentboxRefreshTime.length > 0
+      ? moment(nextProps.sentboxRefreshTime, formatDate).format(formatDate)
+      : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
+
+    if (lastRefreshTime < newRefreshTime) {
+      const nextPageMails = getCurrentPageContent(nextProps.inbox, currentPage, numberMailsPerPage);
+      this.setState({ currentPageMails: nextPageMails });
+    }
   }
 
   componentWillUnmount() {
@@ -84,6 +114,7 @@ MailboxEnvoi.propTypes = {
   sentboxMailId: PropTypes.number,
   sentboxMailName: PropTypes.string,
   sentboxIsFetching: PropTypes.bool,
+  sentboxRefreshTime: PropTypes.string,
   sentbox: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
