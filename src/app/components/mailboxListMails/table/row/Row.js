@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+import cx                   from 'classnames';
 
 const subjectMaxLength = 45;
 
 
-const Row  = ({id, receptionDate, subject, from}) => {
+const Row  = ({id, notRead, mailboxType, receptionDate, subject, from}) => {
   return (
     <tr id={id}>
 
@@ -14,6 +15,21 @@ const Row  = ({id, receptionDate, subject, from}) => {
           onChange={()=>console.log('onChange to implement')}
         />
       </td>*/}
+
+      <td>
+        {
+          (mailboxType !== 'Reçus') || (mailboxType === 'Reçus' && !notRead) &&
+          <span>&nbsp;</span>
+        }
+        {
+          mailboxType === 'Reçus' && notRead &&
+            <i
+              className="fa fa-circle"
+              aria-hidden="true"
+              style={{color:'#E67E22'}}>
+            </i>
+        }
+      </td>
 
       <td style={{width: '240px'}}>
         <a href="#">
@@ -47,7 +63,9 @@ const Row  = ({id, receptionDate, subject, from}) => {
 };
 
 Row.propTypes = {
+  mailboxType: PropTypes.oneOf(['Reçus', 'Envoyés']).isRequired,
   id: PropTypes.number.isRequired,
+  notRead: PropTypes.bool.isRequired,
   receptionDate: PropTypes.string.isRequired,
   subject: PropTypes.string.isRequired,
   from: PropTypes.shape({
@@ -58,7 +76,6 @@ Row.propTypes = {
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired
   }).isRequired
-  // selected: PropTypes.bool.isRequired
 };
 
 export default Row;

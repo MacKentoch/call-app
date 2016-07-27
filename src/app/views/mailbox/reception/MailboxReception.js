@@ -67,6 +67,7 @@ MailboxReception.propTypes = {
   inbox: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
+      notRead: PropTypes.bool.isRequired,
       receptionDate: PropTypes.string.isRequired,
       subject: PropTypes.string.isRequired,
       from: PropTypes.shape({

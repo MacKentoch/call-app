@@ -4,6 +4,7 @@ export const listMailsMock = {
   mails: [
     {
       id: 1,
+      notRead: true,
       receptionDate: '01/01/2016 12:23',
       from: {
         email: 'test1@from.test',
@@ -18,6 +19,7 @@ export const listMailsMock = {
     },
     {
       id: 2,
+      notRead: true,
       receptionDate: '01/01/2016  08:23',
       from: {
         email: 'test2@from.test',
@@ -32,6 +34,7 @@ export const listMailsMock = {
     },
     {
       id: 3,
+      notRead: true,
       receptionDate: '01/01/2016  12:23',
       from: {
         email: 'test1@from.test',
@@ -46,6 +49,7 @@ export const listMailsMock = {
     },
     {
       id: 4,
+      notRead: false,
       receptionDate: '01/01/2016  12:23',
       from: {
         email: 'test1@from.test',
@@ -60,6 +64,7 @@ export const listMailsMock = {
     },
     {
       id: 5,
+      notRead: false,
       receptionDate: '01/01/2016  12:23',
       from: {
         email: 'test2@from.test',
@@ -74,6 +79,7 @@ export const listMailsMock = {
     },
     {
       id: 6,
+      notRead: false,
       receptionDate: '01/01/2016  12:23',
       from: {
         email: 'test1@from.test',

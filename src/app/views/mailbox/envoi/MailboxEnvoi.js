@@ -67,6 +67,7 @@ MailboxEnvoi.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       receptionDate: PropTypes.string.isRequired,
+      notRead: PropTypes.bool.isRequired,
       subject: PropTypes.string.isRequired,
       from: PropTypes.shape({
         name: PropTypes.string.isRequired,

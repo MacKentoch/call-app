@@ -40,6 +40,7 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType}) => {
 
             <div className="table-responsive mailbox-messages">
               <Table
+                mailboxType={mailboxType}
                 mails={mails}
               />
             </div>
@@ -56,6 +57,7 @@ MailboxListMails.propTypes = {
   mails: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
+      notRead: PropTypes.bool.isRequired,
       receptionDate: PropTypes.string.isRequired,
       subject: PropTypes.string.isRequired,
       from: PropTypes.shape({

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const ListControl = ({minPage, maxPage, totalPages, showCheckToggle, onDeleteClick, onReplyClick, onForwardClick, onRefreshClick, onPagingPreviousClick, onPagingNextClick}) => {
+const ListControl = ({minPage, maxPage, totalPages, showCheckToggle, onReplyClick, onForwardClick, onRefreshClick, onPagingPreviousClick, onPagingNextClick}) => {
   return (
     <div
       style={{ padding: '5px'}}>
