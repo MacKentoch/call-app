@@ -1,7 +1,8 @@
 import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 import {
-  MailboxListMails
+  MailboxListMails,
+  IsFetching
 }                                       from '../../../components';
 
 const mailBoxType = 'Envoyés';
@@ -13,6 +14,8 @@ class MailboxEnvoi extends Component {
     this.state = {
       animated: true
     };
+
+    this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);
   }
 
   componentDidMount() {
@@ -36,11 +39,12 @@ class MailboxEnvoi extends Component {
           'fadeIn': animated
         })}>
         {
-          sentbox.length > 0 &&
+          (sentbox.length > 0 && !sentboxIsFetching) &&
           <MailboxListMails
             mailboxType={mailBoxType}
             mailBoxName={sentboxMailName}
             mails={sentbox}
+            onRefreshListClick={this.handlesOnRefreshListClick}
           />
         }
         {
@@ -51,8 +55,25 @@ class MailboxEnvoi extends Component {
             </i>
           </h3>
         }
+        {
+          sentboxIsFetching &&
+          <div>
+            <p className="text-center">
+              <i style={{color: '#4A4A4A'}}>
+                Chargement...
+              </i>
+            </p>
+            <IsFetching />
+          </div>
+        }
       </div>
     );
+  }
+
+  handlesOnRefreshListClick(event) {
+    event.preventDefault();
+    const  { actions, params: { mailboxId } } =  this.props;
+    actions.fetchSentboxContentIfNeeded(mailboxId);
   }
 }
 

@@ -4,7 +4,7 @@ import HeaderTools          from './headerTools/HeaderTools';
 import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
 
-const MailboxListMails = ({mailBoxName, mails, mailboxType}) => {
+const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick}) => {
   return (
     <div className="panel">
       <div
@@ -33,7 +33,7 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType}) => {
               totalPages={200}
               onReplyClick={(e)=>console.log('onReplyClick, event: ', e)}
               onForwardClick={(e)=>console.log('onForwardClick, event: ', e)}
-              onRefreshClick={(e)=>console.log('onRefreshClick, event: ', e)}
+              onRefreshClick={onRefreshListClick}
               onPagingPreviousClick={(e)=>console.log('onPagingPreviousClick, event: ', e)}
               onPagingNextClick={(e)=>console.log('onPagingNextClick, event: ', e)}
             />
@@ -71,7 +71,8 @@ MailboxListMails.propTypes = {
       body: PropTypes.string.isRequired,
       selected: PropTypes.bool.isRequired
     })
-  )
+  ),
+  onRefreshListClick: PropTypes.func.isRequired
 };
 
 export default MailboxListMails;
