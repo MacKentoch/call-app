@@ -9,6 +9,7 @@ const initialState = {
   boiteMailId:  0,
   mailBoxName:  '',
   mails:        [],
+  nbUnRead:     0,
   time:         ''
 };
 
@@ -29,6 +30,7 @@ const inboxContent = (state = initialState, action) => {
       boiteMailId:  action.boiteMailId,
       mailBoxName:  action.mailBoxName,
       mails:        [...action.mails],
+      nbUnRead:     action.nbUnRead,
       time:         action.time
     };
 
