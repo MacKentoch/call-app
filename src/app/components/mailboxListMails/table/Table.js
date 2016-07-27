@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Row from './row/Row';
 
-const Table  = ({mails, mailboxType}) => {
+const Table  = ({mails, mailboxType, onMailClick}) => {
   return (
     <table className="table table-hover">
       <tbody>

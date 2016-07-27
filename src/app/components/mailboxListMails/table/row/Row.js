@@ -1,63 +1,60 @@
 import React, { PropTypes } from 'react';
-import cx                   from 'classnames';
+import { Link }              from 'react-router';
+// import cx                   from 'classnames';
 
 const subjectMaxLength = 45;
 
 
 const Row  = ({id, notRead, mailboxType, receptionDate, subject, from}) => {
   return (
-    <tr id={id}>
-
-      {/*<td style={{width: '10px'}}>
-        <input
-          type="checkbox"
-          checked={selected}
-          onChange={()=>console.log('onChange to implement')}
-        />
-      </td>*/}
-
+    <tr
+      id={id}
+      style={{cursor: 'pointer'}}>
       <td>
-        {
-          (mailboxType !== 'Reçus') || (mailboxType === 'Reçus' && !notRead) &&
-          <span>&nbsp;</span>
-        }
-        {
-          mailboxType === 'Reçus' && notRead &&
-            <i
-              className="fa fa-circle"
-              aria-hidden="true"
-              style={{color:'#E67E22'}}>
-            </i>
-        }
+          {
+            (mailboxType !== 'Reçus') || (mailboxType === 'Reçus' && !notRead) &&
+            <span>&nbsp;</span>
+          }
+          {
+            mailboxType === 'Reçus' && notRead &&
+              <i
+                className="fa fa-circle"
+                aria-hidden="true"
+                style={{color:'#E67E22'}}>
+              </i>
+          }
       </td>
 
       <td style={{width: '240px'}}>
-        <a href="#">
-          {from.email}
-        </a>
+        {from.email}
       </td>
 
       <td className="mailbox-subject">
-        <b>
-          {
-            subject.length > subjectMaxLength &&
-            `${subject.slice(0, subjectMaxLength)}...`
-          }
-          {
-            subject.length <= subjectMaxLength &&
-            subject
-          }
-        </b>
+        <Link to="/">
+          <b>
+            {
+              subject.length > subjectMaxLength &&
+              `${subject.slice(0, subjectMaxLength)}...`
+            }
+            {
+              subject.length <= subjectMaxLength &&
+              subject
+            }
+          </b>
+        </Link>
       </td>
 
       <td style={{width: '10px'}}>
-        <i className="fa fa-paperclip" aria-hidden="true"></i>
+        <Link to="/">
+          <i className="fa fa-paperclip" aria-hidden="true"></i>
+        </Link>
       </td>
 
       <td style={{width: '150px'}}>
-        {receptionDate}
+        <Link to="/">
+          {receptionDate}
+        </Link>
       </td>
-
     </tr>
   );
 };

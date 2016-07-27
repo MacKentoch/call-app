@@ -4,7 +4,7 @@ import HeaderTools          from './headerTools/HeaderTools';
 import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
 
-const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick}) => {
+const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, onMailClick}) => {
   return (
     <div className="panel">
       <div
