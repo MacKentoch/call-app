@@ -10,6 +10,7 @@ const mapStateToProps = (state) => {
     inboxMailId: state.inboxContent.boiteMailId,
     inboxMailName: state.inboxContent.mailBoxName,
     inboxIsFetching: state.inboxContent.isFetching,
+    inboxRefreshTime: state.inboxContent.time,
     inbox: state.inboxContent.mails
   };
 };

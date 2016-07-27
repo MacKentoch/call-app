@@ -1,19 +1,31 @@
 import React, { PropTypes, Component }  from 'react';
+import moment                           from 'moment';
+import { appConfig }                    from '../../../config';
 import cx                               from 'classnames';
 // import { appConfig }                    from '../../config';
 import {
   MailboxListMails,
   IsFetching
 }                                       from '../../../components';
+import {
+  getCurrentPageContent
+}                                       from '../../../services';
 
+moment.locale('fr');
+
+const formatDate = appConfig.formatDate.defaut;
 const mailBoxType = 'Reçus';
+
 
 class MailboxReception extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      animated: true
+      animated: true,
+      currentPageMails: [],
+      currentPage: 1,
+      numberMailsPerPage: 50
     };
 
     this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);
@@ -23,6 +35,24 @@ class MailboxReception extends Component {
     const  { actions, params: { mailboxId } } =  this.props;
     actions.enterMailboxInbox(`mailbox #${mailboxId}`);
     actions.fetchInboxContentIfNeeded(mailboxId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { inboxRefreshTime } = this.props;
+    const { currentPage, numberMailsPerPage } = this.state;
+
+    const lastRefreshTime = inboxRefreshTime.length > 0
+      ? moment(inboxRefreshTime, formatDate).format(formatDate)
+      : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
+
+    const newRefreshTime = nextProps.inboxRefreshTime.length > 0
+      ? moment(nextProps.inboxRefreshTime, formatDate).format(formatDate)
+      : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
+
+    if (lastRefreshTime < newRefreshTime) {
+      const nextPageMails = getCurrentPageContent(nextProps.inbox, currentPage, numberMailsPerPage);
+      this.setState({ currentPageMails: nextPageMails });
+    }
   }
 
   componentWillUnmount() {
@@ -85,6 +115,7 @@ MailboxReception.propTypes = {
   inboxMailId: PropTypes.number,
   inboxMailName: PropTypes.string,
   inboxIsFetching: PropTypes.bool,
+  inboxRefreshTime: PropTypes.string,
   inbox: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

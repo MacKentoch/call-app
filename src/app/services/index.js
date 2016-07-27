@@ -34,6 +34,10 @@ import {
   getSideMenuState,
   setSideMenuState
 }                     from './localStorage/ui/uiConfig';
+// mails pagination
+import {
+  getCurrentPageContent
+}                     from './utils/mailPagination';
 
 export {
   // utils:
@@ -64,5 +68,8 @@ export {
 
   // localStorage
   getSideMenuState,
-  setSideMenuState
+  setSideMenuState,
+
+  // mails pagination
+  getCurrentPageContent
 };

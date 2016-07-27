@@ -35,6 +35,7 @@ const receivedInboxContent = (boiteMailId = 0, data, time = moment().format(form
     time
   };
 };
+
 const errorInboxContent = (boiteMailId = 0, time = moment().format(formatDate)) => {
   return {
     type:       ERROR_INBOX_CONTENT,
