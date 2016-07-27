@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link }             from 'react-router';
 import cx                   from 'classnames';
 
-const MailboxRepertoires = ({recuLink, envoyeLink, selectedView}) => {
+const MailboxRepertoires = ({recuLink, envoyeLink, selectedView, inboxNbUnRead}) => {
   return (
     <div className="panel">
       <div className="panel-header">
@@ -35,7 +35,7 @@ const MailboxRepertoires = ({recuLink, envoyeLink, selectedView}) => {
                 &nbsp;
                 Reçus
                 <span className="label label-primary pull-right">
-                  12
+                  { inboxNbUnRead }
                 </span>
               </Link>
             </li>
@@ -69,7 +69,8 @@ const MailboxRepertoires = ({recuLink, envoyeLink, selectedView}) => {
 MailboxRepertoires.propTypes = {
   selectedView: PropTypes.string.isRequired,
   recuLink: PropTypes.string.isRequired,
-  envoyeLink: PropTypes.string.isRequired
+  envoyeLink: PropTypes.string.isRequired,
+  inboxNbUnRead: PropTypes.number.isRequired
 };
 
 export default MailboxRepertoires;

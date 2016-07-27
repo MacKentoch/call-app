@@ -1,11 +1,13 @@
 import { bindActionCreators }   from 'redux';
 import { connect }              from 'react-redux';
-// import * as actions             from '../../../redux/actions';
+import * as actions             from '../../redux/actions';
 import { Mailbox }              from '../../views';
 
 const mapStateToProps = (state) => {
   return {
-    currentView:  state.views.currentView
+    currentView:  state.views.currentView,
+
+    inboxNbUnRead: state.inboxContent.nbUnRead
   };
 };
 
@@ -13,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
       {
-
+        fetchInboxContentIfNeeded: actions.fetchInboxContentIfNeeded
       },
       dispatch)
   };

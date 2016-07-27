@@ -26,8 +26,8 @@ class MailboxReception extends Component {
   }
 
   componentWillUnmount() {
-    const { actions } = this.props;
-    actions.leaveMailboxInbox('test');
+    const  { actions, params: { mailboxId } } =  this.props;
+    actions.leaveMailboxInbox(`mailbox #${mailboxId}`);
   }
 
   render() {

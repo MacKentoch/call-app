@@ -25,8 +25,8 @@ class MailboxEnvoi extends Component {
   }
 
   componentWillUnmount() {
-    const { actions } = this.props;
-    actions.leaveMailboxSentbox('test');
+    const  { actions, params: { mailboxId } } =  this.props;
+    actions.leaveMailboxSentbox(`mailbox #${mailboxId}`);
   }
 
   render() {

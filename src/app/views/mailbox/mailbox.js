@@ -21,9 +21,14 @@ class MailBox extends Component {
     };
   }
 
+  componentDidMount() {
+    const  { actions, params: { mailboxId } } =  this.props;
+    actions.fetchInboxContentIfNeeded(mailboxId);
+  }
+
   render() {
     const { animated } = this.state;
-    const { children, params: { mailboxId }, location: { pathname } } = this.props;
+    const { children, params: { mailboxId }, location: { pathname }, inboxNbUnRead } = this.props;
 
     const isInbox   = inboxRegex.test(pathname);
     const isSentBox = sentboxRegex.test(pathname);
@@ -53,6 +58,7 @@ class MailBox extends Component {
             />
 
             <MailboxRepertoires
+              inboxNbUnRead={inboxNbUnRead}
               selectedView={selectedView}
               recuLink={`${boiteReceptionPath}/${mailboxId}`}
               envoyeLink={`${boiteEnvoiPath}/${mailboxId}`}
@@ -73,7 +79,13 @@ MailBox.propTypes = {
   params: PropTypes.object, // react router
   location: PropTypes.object,  // react router
 
-  currentView: PropTypes.string.isRequired
+  currentView: PropTypes.string.isRequired,
+
+  inboxNbUnRead: PropTypes.number.isRequired,
+
+  actions: PropTypes.shape({
+    fetchInboxContentIfNeeded: PropTypes.func
+  })
 };
 
 export default MailBox;
