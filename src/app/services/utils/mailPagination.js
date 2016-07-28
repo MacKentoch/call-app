@@ -1,6 +1,10 @@
 export const numberMailsPerPage = 50;
 
 export const getCurrentPageContent = (mails, page = 1, pageSize = numberMailsPerPage) => {
+  if (!Array.isArray(mails)) {
+    return [];
+  }
+
   const total   = mails.length;
   if (total <= pageSize - 1) {
     return mails;

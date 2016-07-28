@@ -25,10 +25,12 @@ class MailboxReception extends Component {
       animated: true,
       currentPageMails: [],
       currentPage: 1,
-      numberMailsPerPage: 50
+      numberMailsPerPage: 2
     };
 
     this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);
+    this.handlesOnPagingPreviousClick = this.handlesOnPagingPreviousClick.bind(this);
+    this.handlesOnPagingNextClick = this.handlesOnPagingNextClick.bind(this);
   }
 
   componentDidMount() {
@@ -61,7 +63,7 @@ class MailboxReception extends Component {
   }
 
   render() {
-    const { animated } = this.state;
+    const { animated, currentPageMails, currentPage, numberMailsPerPage } = this.state;
     const { inboxMailName, inbox, inboxIsFetching } = this.props;
     return(
       <div
@@ -74,8 +76,16 @@ class MailboxReception extends Component {
           <MailboxListMails
             mailboxType={mailBoxType}
             mailBoxName={inboxMailName}
-            mails={inbox}
+            mails={currentPageMails}
+
+            currentPage={currentPage}
+            nbPerPage={numberMailsPerPage}
+            totalMails={inbox.length}
+
             onRefreshListClick={this.handlesOnRefreshListClick}
+            onPagingPreviousClick={this.handlesOnPagingPreviousClick}
+            onPagingNextClick={this.handlesOnPagingNextClick}
+            onSearch={(value)=>console.log('search: ', value)}
           />
         }
         {
@@ -105,6 +115,32 @@ class MailboxReception extends Component {
     event.preventDefault();
     const  { actions, params: { mailboxId } } =  this.props;
     actions.fetchInboxContentIfNeeded(mailboxId);
+  }
+
+  handlesOnPagingPreviousClick(event) {
+    event.preventDefault();
+
+    const { inbox } = this.props;
+    const { currentPage, numberMailsPerPage } = this.state;
+
+    const previousPage = currentPage - 1 > 0 ? currentPage - 1 : currentPage;
+
+    const nextPageMails = getCurrentPageContent(inbox, previousPage, numberMailsPerPage);
+    this.setState({ currentPageMails: nextPageMails });
+  }
+
+  handlesOnPagingNextClick(event) {
+    event.preventDefault();
+
+    const { inbox } = this.props;
+    const { currentPage, numberMailsPerPage } = this.state;
+
+    const totalMails = inbox.length;
+    const pageMax = Math.ceil(totalMails / numberMailsPerPage);
+    const nextPage = currentPage + 1 <= pageMax ? currentPage + 1 : currentPage;
+
+    const nextPageMails = getCurrentPageContent(inbox, nextPage, numberMailsPerPage);
+    this.setState({ currentPageMails: nextPageMails });
   }
 }
 

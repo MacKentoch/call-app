@@ -4,7 +4,7 @@ import HeaderTools          from './headerTools/HeaderTools';
 import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
 
-const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, onMailClick}) => {
+const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, onPagingPreviousClick, onPagingNextClick, onSearch}) => {
   return (
     <div className="panel">
       <div
@@ -22,7 +22,7 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, 
 
           <HeaderTools
             title={mailboxType}
-            onSearch={(value)=>console.log('search: ', value)}
+            onSearch={onSearch}
           />
 
           <div className="box-body no-padding">
@@ -33,8 +33,8 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, 
               maxPage={50}
               totalPages={200}
               onRefreshClick={onRefreshListClick}
-              onPagingPreviousClick={(e)=>console.log('onPagingPreviousClick, event: ', e)}
-              onPagingNextClick={(e)=>console.log('onPagingNextClick, event: ', e)}
+              onPagingPreviousClick={onPagingPreviousClick}
+              onPagingNextClick={onPagingNextClick}
             />
 
             <div className="table-responsive mailbox-messages">
@@ -50,8 +50,8 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, 
               maxPage={50}
               totalPages={200}
               onRefreshClick={onRefreshListClick}
-              onPagingPreviousClick={(e)=>console.log('onPagingPreviousClick, event: ', e)}
-              onPagingNextClick={(e)=>console.log('onPagingNextClick, event: ', e)}
+              onPagingPreviousClick={onPagingPreviousClick}
+              onPagingNextClick={onPagingNextClick}
             />
           </div>
         </div>
@@ -81,7 +81,13 @@ MailboxListMails.propTypes = {
       selected: PropTypes.bool.isRequired
     })
   ),
-  onRefreshListClick: PropTypes.func.isRequired
+  currentPage: PropTypes.number.isRequired,
+  nbPerPage: PropTypes.number.isRequired,
+  totalMails: PropTypes.number.isRequired,
+  onRefreshListClick: PropTypes.func.isRequired,
+  onPagingPreviousClick: PropTypes.func.isRequired,
+  onPagingNextClick: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired
 };
 
 export default MailboxListMails;

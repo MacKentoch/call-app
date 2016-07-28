@@ -60,7 +60,7 @@ class MailboxEnvoi extends Component {
   }
 
   render() {
-    const { animated } = this.state;
+    const { animated, currentPageMails } = this.state;
     const { sentboxMailName, sentbox, sentboxIsFetching } = this.props;
     return(
       <div
@@ -73,8 +73,11 @@ class MailboxEnvoi extends Component {
           <MailboxListMails
             mailboxType={mailBoxType}
             mailBoxName={sentboxMailName}
-            mails={sentbox}
+            mails={currentPageMails}
             onRefreshListClick={this.handlesOnRefreshListClick}
+            onPagingPreviousClick={()=>console.log('onPagingPreviousClick')}
+            onPagingNextClick={()=>console.log('onPagingNextClick')}
+            onSearch={(value)=>console.log('search: ', value)}
           />
         }
         {
