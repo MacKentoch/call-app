@@ -25,6 +25,7 @@ class MailboxReception extends Component {
 
     this.state = {
       animated: true,
+      filter: '',
       currentPageMails: [],
       currentPage: 1,
       numberMailsPerPage: 50
@@ -33,6 +34,7 @@ class MailboxReception extends Component {
     this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);
     this.handlesOnPagingPreviousClick = this.handlesOnPagingPreviousClick.bind(this);
     this.handlesOnPagingNextClick = this.handlesOnPagingNextClick.bind(this);
+    this.handlesOnSearch = this.handlesOnSearch.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +45,7 @@ class MailboxReception extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { inboxRefreshTime } = this.props;
-    const { currentPage, numberMailsPerPage } = this.state;
+    const { currentPage, numberMailsPerPage, filter } = this.state;
 
     const lastRefreshTime = inboxRefreshTime.length > 0
       ? moment(inboxRefreshTime, formatDate).format(formatDate)
@@ -54,7 +56,7 @@ class MailboxReception extends Component {
       : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
 
     if (lastRefreshTime < newRefreshTime) {
-      const nextPageMails = getCurrentPageContent(nextProps.inbox, currentPage, numberMailsPerPage);
+      const nextPageMails = getCurrentPageContent(nextProps.inbox, currentPage, numberMailsPerPage, filter);
       this.setState({ currentPageMails: nextPageMails });
     }
   }
@@ -91,7 +93,7 @@ class MailboxReception extends Component {
             onRefreshListClick={this.handlesOnRefreshListClick}
             onPagingPreviousClick={this.handlesOnPagingPreviousClick}
             onPagingNextClick={this.handlesOnPagingNextClick}
-            onSearch={(value)=>console.log('search: ', value)}
+            onSearch={this.handlesOnSearch}
           />
         }
         {
@@ -127,11 +129,11 @@ class MailboxReception extends Component {
     event.preventDefault();
 
     const { inbox } = this.props;
-    const { currentPage, numberMailsPerPage } = this.state;
+    const { currentPage, numberMailsPerPage, filter } = this.state;
 
     const previousPage = currentPage - 1 > 0 ? currentPage - 1 : currentPage;
 
-    const nextPageMails = getCurrentPageContent(inbox, previousPage, numberMailsPerPage);
+    const nextPageMails = getCurrentPageContent(inbox, previousPage, numberMailsPerPage, filter);
     this.setState({
       currentPageMails: nextPageMails,
       currentPage: previousPage
@@ -142,16 +144,28 @@ class MailboxReception extends Component {
     event.preventDefault();
 
     const { inbox } = this.props;
-    const { currentPage, numberMailsPerPage } = this.state;
+    const { currentPage, numberMailsPerPage, filter } = this.state;
 
     const totalMails = inbox.length;
     const pageMax = Math.ceil(totalMails / numberMailsPerPage);
     const nextPage = currentPage + 1 <= pageMax ? currentPage + 1 : currentPage;
 
-    const nextPageMails = getCurrentPageContent(inbox, nextPage, numberMailsPerPage);
+    const nextPageMails = getCurrentPageContent(inbox, nextPage, numberMailsPerPage, filter);
     this.setState({
       currentPageMails: nextPageMails,
       currentPage: nextPage
+    });
+  }
+
+  handlesOnSearch(filter) {
+    const { inbox } = this.props;
+    const { currentPage, numberMailsPerPage } = this.state;
+
+    const currentPageMailsFiltered = getCurrentPageContent(inbox, currentPage, numberMailsPerPage, filter);
+
+    this.setState({
+      currentPageMails: currentPageMailsFiltered,
+      filter
     });
   }
 }
