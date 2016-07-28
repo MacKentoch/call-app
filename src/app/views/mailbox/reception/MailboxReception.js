@@ -27,7 +27,7 @@ class MailboxReception extends Component {
       animated: true,
       currentPageMails: [],
       currentPage: 1,
-      numberMailsPerPage: 2
+      numberMailsPerPage: 50
     };
 
     this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);

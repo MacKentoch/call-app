@@ -25,12 +25,12 @@ export const getCurrentPageContent = (mails, page = 1, pageSize = numberMailsPer
 
 export const getMinIndex = (mails, page = 1, pageSize = numberMailsPerPage) => {
   if (!Array.isArray(mails)) {
-    return [];
+    return 1;
   }
 
   const total   = mails.length;
   if (total <= pageSize - 1) {
-    return mails;
+    return 1;
   }
 
   return ((page - 1) * pageSize) + 1;
@@ -38,12 +38,12 @@ export const getMinIndex = (mails, page = 1, pageSize = numberMailsPerPage) => {
 
 export const getMaxIndex = (mails, page = 1, pageSize = numberMailsPerPage) => {
   if (!Array.isArray(mails)) {
-    return [];
+    return 1;
   }
 
   const total   = mails.length;
   if (total <= pageSize - 1) {
-    return mails;
+    return total;
   }
 
   return (page * pageSize);

@@ -7,7 +7,9 @@ import {
   IsFetching
 }                                       from '../../../components';
 import {
-  getCurrentPageContent
+  getCurrentPageContent,
+  getMinIndex,
+  getMaxIndex
 }                                       from '../../../services';
 
 moment.locale('fr');
@@ -24,10 +26,12 @@ class MailboxEnvoi extends Component {
       animated: true,
       currentPageMails: [],
       currentPage: 1,
-      numberMailsPerPage: 50
+      numberMailsPerPage: 2
     };
 
     this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);
+    this.handlesOnPagingPreviousClick = this.handlesOnPagingPreviousClick.bind(this);
+    this.handlesOnPagingNextClick = this.handlesOnPagingNextClick.bind(this);
   }
 
   componentDidMount() {
@@ -49,7 +53,7 @@ class MailboxEnvoi extends Component {
       : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
 
     if (lastRefreshTime < newRefreshTime) {
-      const nextPageMails = getCurrentPageContent(nextProps.inbox, currentPage, numberMailsPerPage);
+      const nextPageMails = getCurrentPageContent(nextProps.sentbox, currentPage, numberMailsPerPage);
       this.setState({ currentPageMails: nextPageMails });
     }
   }
@@ -60,8 +64,12 @@ class MailboxEnvoi extends Component {
   }
 
   render() {
-    const { animated, currentPageMails } = this.state;
+    const { animated, currentPageMails, currentPage, numberMailsPerPage } = this.state;
     const { sentboxMailName, sentbox, sentboxIsFetching } = this.props;
+
+    const minPage = getMinIndex(sentbox, currentPage, numberMailsPerPage);
+    const maxPage= getMaxIndex(sentbox, currentPage, numberMailsPerPage);
+
     return(
       <div
         className={cx({
@@ -74,9 +82,14 @@ class MailboxEnvoi extends Component {
             mailboxType={mailBoxType}
             mailBoxName={sentboxMailName}
             mails={currentPageMails}
+
+            minPage={minPage}
+            maxPage={maxPage}
+            totalMails={sentbox.length}
+
             onRefreshListClick={this.handlesOnRefreshListClick}
-            onPagingPreviousClick={()=>console.log('onPagingPreviousClick')}
-            onPagingNextClick={()=>console.log('onPagingNextClick')}
+            onPagingPreviousClick={this.handlesOnPagingPreviousClick}
+            onPagingNextClick={this.handlesOnPagingNextClick}
             onSearch={(value)=>console.log('search: ', value)}
           />
         }
@@ -107,6 +120,38 @@ class MailboxEnvoi extends Component {
     event.preventDefault();
     const  { actions, params: { mailboxId } } =  this.props;
     actions.fetchSentboxContentIfNeeded(mailboxId);
+  }
+
+  handlesOnPagingPreviousClick(event) {
+    event.preventDefault();
+
+    const { sentbox } = this.props;
+    const { currentPage, numberMailsPerPage } = this.state;
+
+    const previousPage = currentPage - 1 > 0 ? currentPage - 1 : currentPage;
+
+    const nextPageMails = getCurrentPageContent(sentbox, previousPage, numberMailsPerPage);
+    this.setState({
+      currentPageMails: nextPageMails,
+      currentPage: previousPage
+    });
+  }
+
+  handlesOnPagingNextClick(event) {
+    event.preventDefault();
+
+    const { sentbox } = this.props;
+    const { currentPage, numberMailsPerPage } = this.state;
+
+    const totalMails = sentbox.length;
+    const pageMax = Math.ceil(totalMails / numberMailsPerPage);
+    const nextPage = currentPage + 1 <= pageMax ? currentPage + 1 : currentPage;
+
+    const nextPageMails = getCurrentPageContent(sentbox, nextPage, numberMailsPerPage);
+    this.setState({
+      currentPageMails: nextPageMails,
+      currentPage: nextPage
+    });
   }
 }
 
