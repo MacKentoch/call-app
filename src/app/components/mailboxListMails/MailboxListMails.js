@@ -4,7 +4,7 @@ import HeaderTools          from './headerTools/HeaderTools';
 import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
 
-const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, onPagingPreviousClick, onPagingNextClick, onSearch}) => {
+const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, onPagingPreviousClick, onPagingNextClick, onSearch, minPage, maxPage, totalMails}) => {
   return (
     <div className="panel">
       <div
@@ -29,9 +29,9 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, 
 
             <ListControl
               showCheckToggle={false}
-              minPage={1}
-              maxPage={50}
-              totalPages={200}
+              minPage={minPage}
+              maxPage={maxPage}
+              totalPages={totalMails}
               onRefreshClick={onRefreshListClick}
               onPagingPreviousClick={onPagingPreviousClick}
               onPagingNextClick={onPagingNextClick}
@@ -46,9 +46,9 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, 
 
             <ListControl
               showCheckToggle={false}
-              minPage={1}
-              maxPage={50}
-              totalPages={200}
+              minPage={minPage}
+              maxPage={maxPage}
+              totalPages={totalMails}
               onRefreshClick={onRefreshListClick}
               onPagingPreviousClick={onPagingPreviousClick}
               onPagingNextClick={onPagingNextClick}
@@ -81,8 +81,8 @@ MailboxListMails.propTypes = {
       selected: PropTypes.bool.isRequired
     })
   ),
-  currentPage: PropTypes.number.isRequired,
-  nbPerPage: PropTypes.number.isRequired,
+  minPage: PropTypes.number.isRequired,
+  maxPage: PropTypes.number.isRequired,
   totalMails: PropTypes.number.isRequired,
   onRefreshListClick: PropTypes.func.isRequired,
   onPagingPreviousClick: PropTypes.func.isRequired,

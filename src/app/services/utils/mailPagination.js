@@ -21,3 +21,30 @@ export const getCurrentPageContent = (mails, page = 1, pageSize = numberMailsPer
     }
   );
 };
+
+
+export const getMinIndex = (mails, page = 1, pageSize = numberMailsPerPage) => {
+  if (!Array.isArray(mails)) {
+    return [];
+  }
+
+  const total   = mails.length;
+  if (total <= pageSize - 1) {
+    return mails;
+  }
+
+  return ((page - 1) * pageSize) + 1;
+};
+
+export const getMaxIndex = (mails, page = 1, pageSize = numberMailsPerPage) => {
+  if (!Array.isArray(mails)) {
+    return [];
+  }
+
+  const total   = mails.length;
+  if (total <= pageSize - 1) {
+    return mails;
+  }
+
+  return (page * pageSize);
+};

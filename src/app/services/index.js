@@ -36,7 +36,9 @@ import {
 }                     from './localStorage/ui/uiConfig';
 // mails pagination
 import {
-  getCurrentPageContent
+  getCurrentPageContent,
+  getMinIndex,
+  getMaxIndex
 }                     from './utils/mailPagination';
 
 export {
@@ -71,5 +73,7 @@ export {
   setSideMenuState,
 
   // mails pagination
-  getCurrentPageContent
+  getCurrentPageContent,
+  getMinIndex,
+  getMaxIndex
 };

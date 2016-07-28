@@ -8,7 +8,9 @@ import {
   IsFetching
 }                                       from '../../../components';
 import {
-  getCurrentPageContent
+  getCurrentPageContent,
+  getMinIndex,
+  getMaxIndex
 }                                       from '../../../services';
 
 moment.locale('fr');
@@ -65,6 +67,10 @@ class MailboxReception extends Component {
   render() {
     const { animated, currentPageMails, currentPage, numberMailsPerPage } = this.state;
     const { inboxMailName, inbox, inboxIsFetching } = this.props;
+
+    const minPage = getMinIndex(inbox, currentPage, numberMailsPerPage);
+    const maxPage= getMaxIndex(inbox, currentPage, numberMailsPerPage);
+
     return(
       <div
         className={cx({
@@ -78,8 +84,8 @@ class MailboxReception extends Component {
             mailBoxName={inboxMailName}
             mails={currentPageMails}
 
-            currentPage={currentPage}
-            nbPerPage={numberMailsPerPage}
+            minPage={minPage}
+            maxPage={maxPage}
             totalMails={inbox.length}
 
             onRefreshListClick={this.handlesOnRefreshListClick}
@@ -126,7 +132,10 @@ class MailboxReception extends Component {
     const previousPage = currentPage - 1 > 0 ? currentPage - 1 : currentPage;
 
     const nextPageMails = getCurrentPageContent(inbox, previousPage, numberMailsPerPage);
-    this.setState({ currentPageMails: nextPageMails });
+    this.setState({
+      currentPageMails: nextPageMails,
+      currentPage: previousPage
+    });
   }
 
   handlesOnPagingNextClick(event) {
@@ -140,7 +149,10 @@ class MailboxReception extends Component {
     const nextPage = currentPage + 1 <= pageMax ? currentPage + 1 : currentPage;
 
     const nextPageMails = getCurrentPageContent(inbox, nextPage, numberMailsPerPage);
-    this.setState({ currentPageMails: nextPageMails });
+    this.setState({
+      currentPageMails: nextPageMails,
+      currentPage: nextPage
+    });
   }
 }
 

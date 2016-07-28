@@ -10,7 +10,7 @@ const Row  = ({id, notRead, mailboxType, receptionDate, subject, from}) => {
     <tr
       id={id}
       style={{cursor: 'pointer'}}>
-      <td>
+      <td style={{width: '40px'}}>
           {
             (mailboxType !== 'Reçus') || (mailboxType === 'Reçus' && !notRead) &&
             <span>&nbsp;</span>
