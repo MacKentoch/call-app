@@ -22,7 +22,8 @@ import {
   MailboxConnected,
   MailboxReceptionConnected,
   MailboxEnvoiConnected,
-  MailConsultConnected
+  MailConsultConnected,
+  MailWriteNewConnected
 }                               from '../containers';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
@@ -65,6 +66,7 @@ export const Routes = () => {
               <Route path={`${mailbox.reception.path}/:mailboxId`} component={MailboxReceptionConnected} />
               <Route path={`${mailbox.envoi.path}/:mailboxId`} component={MailboxEnvoiConnected} />
               <Route path={`${mailbox.consult.path}/:mailboxId/:mailId`} component={MailConsultConnected} />
+              <Route path={`${mailbox.writeNew.path}/:mailboxId`} component={MailWriteNewConnected} />
             </Route>
 
           </Route>

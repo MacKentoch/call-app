@@ -4,7 +4,8 @@ import {
   Mailbox,
   MailboxReception,
   MailboxEnvoi,
-  MailConsult
+  MailConsult,
+  MailWriteNew
 }                       from './mailbox';
 import Modals           from './modals/Modals';
 // create
@@ -25,6 +26,7 @@ export {
   MailboxReception,
   MailboxEnvoi,
   MailConsult,
+  MailWriteNew,
 
   // create
   FicheContactCourier,
