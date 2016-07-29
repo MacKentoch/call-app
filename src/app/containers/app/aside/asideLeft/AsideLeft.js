@@ -15,6 +15,7 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
   return (
     <aside
       className={cx({
+        'no-print': true,
         'left-side': true,
         'aside-left--fixed': true,
         'sidebar-offcanvas': true,

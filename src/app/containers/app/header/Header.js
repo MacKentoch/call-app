@@ -8,7 +8,7 @@ import SuperAdminMenu       from './superAdminMenu/SuperAdminMenu';
 const Header = ({ appName, toggleSideMenu, userLogin, userFirstname, userLastname, userPicture, showPicture }) => {
   return (
     <header
-      className="header fixed--header">
+      className="header fixed--header no-print">
       <a href="#"
         className="logo">
         { appName }
