@@ -21,13 +21,13 @@ import {
   FicheContactPersonnesConnected,
   MailboxConnected,
   MailboxReceptionConnected,
-  MailboxEnvoiConnected
+  MailboxEnvoiConnected,
+  MailConsultConnected
 }                               from '../containers';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
 import { appConfig }            from '../config';
 // import { createHistory }        from 'history';
-import { Mailbox } from '../views';
 
 // specified base url
 // const browserHistory = useRouterHistory(createHistory)({
@@ -64,6 +64,7 @@ export const Routes = () => {
             <Route path={mailbox.root.path} component={MailboxConnected}>
               <Route path={`${mailbox.reception.path}/:mailboxId`} component={MailboxReceptionConnected} />
               <Route path={`${mailbox.envoi.path}/:mailboxId`} component={MailboxEnvoiConnected} />
+              <Route path={`${mailbox.consult.path}/:mailboxId/:mailId`} component={MailConsultConnected} />
             </Route>
 
           </Route>

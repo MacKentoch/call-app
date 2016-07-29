@@ -9,6 +9,7 @@ import {
 }                             from './create';
 import {
   MailboxConnected,
+  MailConsultConnected,
   MailboxReceptionConnected,
   MailboxEnvoiConnected
 }                             from './mailbox';
@@ -26,6 +27,7 @@ export {
 
   // mailbox
   MailboxConnected,
+  MailConsultConnected,
   MailboxReceptionConnected,
   MailboxEnvoiConnected
 };
