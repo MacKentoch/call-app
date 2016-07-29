@@ -95,3 +95,11 @@ li.active > a:hover {
     border-top-color: #E67E22 !important;
     color: #444;
 }
+
+// print media
+@media print {
+  // no-print class will prevent content to be printed when window.print()
+  .no-print {
+    display: none;
+  }
+}

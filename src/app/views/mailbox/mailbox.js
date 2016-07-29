@@ -56,7 +56,7 @@ class MailBox extends Component {
         <div
           className="row"
           style={{marginBottom: '5px'}}>
-          <div className="col-md-3">
+          <div className="col-md-3 no-print">
             <MailBoxNewEmailButton
               text={isWritingNewEmail ? mailBoxButtonTextRetour : mailBoxButtonTextRediger}
               linkTo={isWritingNewEmail ? `${boiteReceptionPath}/${mailboxId}` : `${writeNewEmailPath}/${mailboxId}`}
