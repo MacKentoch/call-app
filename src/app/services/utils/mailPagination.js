@@ -6,6 +6,7 @@ export const getCurrentPageContent = (mails, page = 1, pageSize = numberMailsPer
   }
 
   const total = mails.length;
+  // no pagination case
   if (total <= pageSize - 1) {
     if (filter.trim().length > 0) {
       const regexFilter = new RegExp(filter, 'gi');
@@ -20,7 +21,7 @@ export const getCurrentPageContent = (mails, page = 1, pageSize = numberMailsPer
 
   const minIdx  = (page - 1) * pageSize;
   const maxIdx  = (page * pageSize) - 1;
-
+  // pagination case
   if (filter.trim().length > 0) {
     const regexFilter = new RegExp(filter, 'gi');
     return mails

@@ -24,6 +24,7 @@ class MailboxEnvoi extends Component {
 
     this.state = {
       animated: true,
+      filter: '',
       currentPageMails: [],
       currentPage: 1,
       numberMailsPerPage: 2
@@ -32,6 +33,7 @@ class MailboxEnvoi extends Component {
     this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);
     this.handlesOnPagingPreviousClick = this.handlesOnPagingPreviousClick.bind(this);
     this.handlesOnPagingNextClick = this.handlesOnPagingNextClick.bind(this);
+    this.handlesOnSearch = this.handlesOnSearch.bind(this);
   }
 
   componentDidMount() {
@@ -90,7 +92,7 @@ class MailboxEnvoi extends Component {
             onRefreshListClick={this.handlesOnRefreshListClick}
             onPagingPreviousClick={this.handlesOnPagingPreviousClick}
             onPagingNextClick={this.handlesOnPagingNextClick}
-            onSearch={(value)=>console.log('search: ', value)}
+            onSearch={this.handlesOnSearch}
           />
         }
         {
@@ -151,6 +153,18 @@ class MailboxEnvoi extends Component {
     this.setState({
       currentPageMails: nextPageMails,
       currentPage: nextPage
+    });
+  }
+
+  handlesOnSearch(filter) {
+    const { sentbox } = this.props;
+    const { currentPage, numberMailsPerPage } = this.state;
+
+    const currentPageMailsFiltered = getCurrentPageContent(sentbox, currentPage, numberMailsPerPage, filter);
+
+    this.setState({
+      currentPageMails: currentPageMailsFiltered,
+      filter
     });
   }
 }

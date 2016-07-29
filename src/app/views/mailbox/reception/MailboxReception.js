@@ -28,7 +28,7 @@ class MailboxReception extends Component {
       filter: '',
       currentPageMails: [],
       currentPage: 1,
-      numberMailsPerPage: 50
+      numberMailsPerPage: 2
     };
 
     this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);

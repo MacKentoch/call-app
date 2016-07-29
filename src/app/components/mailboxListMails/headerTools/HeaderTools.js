@@ -43,8 +43,13 @@ class HeaderTools extends Component {
 
   handlesOnSearchChange(event) {
     event.preventDefault();
+    const {onSearch} = this.props;
     const newValue = event.target.value.trim();
     this.setState({ searchValue: newValue });
+    if (newValue.trim().length === 0) {
+      // remove search filter
+      onSearch('');
+    }
   }
 
   handlesOnSearchKeyPress(event) {
