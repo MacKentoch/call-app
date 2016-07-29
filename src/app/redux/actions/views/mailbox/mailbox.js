@@ -54,18 +54,18 @@ export const leaveMailboxSentbox = (mailboxName= ' ---', time = moment().format(
 };
 
 // consult
-export const enterMailboxConsult = (mailboxName= ' ---', mailId = 0, time = moment().format(formatDate)) => {
+export const enterMailboxConsult = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         ENTER_MAILBOX_CONSULT,
-    currentView:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}, mailId: ${mailId}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
 };
-export const leaveMailboxConsult = (mailboxName= ' ---', mailId = 0, time = moment().format(formatDate)) => {
+export const leaveMailboxConsult = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_MAILBOX_CONSULT,
-    currentView:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}, mailId: ${mailId}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };

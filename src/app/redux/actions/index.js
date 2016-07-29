@@ -18,7 +18,11 @@ import {
   enterMailboxInbox,
   leaveMailboxInbox,
   enterMailboxSentbox,
-  leaveMailboxSentbox
+  leaveMailboxSentbox,
+  enterMailboxConsult,
+  leaveMailboxConsult,
+  enterMailboxWriteNew,
+  leaveMailboxWriteNew
 }                                 from './views';
 // stats
 import {
@@ -78,6 +82,10 @@ export {
   leaveMailboxInbox,
   enterMailboxSentbox,
   leaveMailboxSentbox,
+  enterMailboxConsult,
+  leaveMailboxConsult,
+  enterMailboxWriteNew,
+  leaveMailboxWriteNew,
 
   // stats:
   fetchFichesTraiteeDataIfNeeded,

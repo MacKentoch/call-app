@@ -20,13 +20,13 @@ class MailConsult extends Component {
   }
 
   componentDidMount() {
-    // const  { actions, params: { mailboxId } } =  this.props;
-    // actions.enterMailboxConsult(`mailbox #${mailboxId}`);
+    const  { actions, params: { mailboxId, mailId } } =  this.props;
+    actions.enterMailboxConsult(`mailbox #${mailboxId}, mailId: ${mailId}`);
   }
 
   componentWillUnmount() {
-    // const  { actions, params: { mailboxId } } =  this.props;
-    // actions.leaveMailboxMailboxConsult(`mailbox #${mailboxId}`);
+    const  { actions, params: { mailboxId, mailId } } =  this.props;
+    actions.leaveMailboxConsult(`mailbox #${mailboxId}, mailId: ${mailId}`);
   }
 
   render() {
@@ -81,8 +81,8 @@ MailConsult.propTypes = {
   }),
 
   actions: PropTypes.shape({
-    enterMailboxSentbox: PropTypes.func,
-    leaveMailboxSentbox: PropTypes.func
+    enterMailboxConsult: PropTypes.func,
+    leaveMailboxConsult: PropTypes.func
   })
 };
 

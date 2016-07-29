@@ -1,7 +1,7 @@
 import { bindActionCreators }   from 'redux';
 import { connect }              from 'react-redux';
 import * as actions             from '../../../redux/actions';
-import { MailConsult }          from '../../../views';
+import { MailWriteNew }          from '../../../views';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,16 +13,16 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
       {
-        enterMailboxConsult: actions.enterMailboxConsult,
-        leaveMailboxConsult: actions.leaveMailboxConsult
+        enterMailboxWriteNew: actions.enterMailboxWriteNew,
+        leaveMailboxWriteNew: actions.leaveMailboxWriteNew
       },
       dispatch)
   };
 };
 
-const MailConsultConnected = connect(
+const MailWriteNewConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(MailConsult);
+)(MailWriteNew);
 
-export default MailConsultConnected;
+export default MailWriteNewConnected;
