@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Row from './row/Row';
 
-const Table  = ({mails, mailboxType, onMailClick}) => {
+const Table  = ({mails, mailboxType, mailboxId, consultLinkTo}) => {
   return (
     <table className="table table-hover">
       <tbody>
@@ -12,8 +12,10 @@ const Table  = ({mails, mailboxType, onMailClick}) => {
                 <Row
                   key={mailIdx}
                   id={id}
+                  consultLinkTo={`${consultLinkTo}/${mailboxId}/${id}`}
                   receptionDate={receptionDate}
                   notRead={notRead}
+                  mailboxId={mailboxId}
                   mailboxType={mailboxType}
                   subject={subject}
                   from={from}
@@ -29,6 +31,7 @@ const Table  = ({mails, mailboxType, onMailClick}) => {
 };
 
 Table.propTypes = {
+  mailboxId: PropTypes.string.isRequired,
   mailboxType: PropTypes.oneOf(['Reçus', 'Envoyés']).isRequired,
   mails: PropTypes.arrayOf(
     PropTypes.shape({
@@ -47,7 +50,8 @@ Table.propTypes = {
       body: PropTypes.string.isRequired,
       selected: PropTypes.bool.isRequired
     })
-  )
+  ),
+  consultLinkTo: PropTypes.string.isRequired
 };
 
 export default Table;

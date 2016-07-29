@@ -4,7 +4,7 @@ import HeaderTools          from './headerTools/HeaderTools';
 import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
 
-const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, onPagingPreviousClick, onPagingNextClick, onSearch, minPage, maxPage, totalMails}) => {
+const MailboxListMails = ({mailBoxName, mails, mailboxType, mailboxId, onRefreshListClick, onPagingPreviousClick, onPagingNextClick, onSearch, minPage, maxPage, totalMails, consultLinkTo}) => {
   return (
     <div className="panel">
       <div
@@ -39,8 +39,10 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, 
 
             <div className="table-responsive mailbox-messages">
               <Table
+                mailboxId={mailboxId}
                 mailboxType={mailboxType}
                 mails={mails}
+                consultLinkTo={consultLinkTo}
               />
             </div>
 
@@ -61,6 +63,7 @@ const MailboxListMails = ({mailBoxName, mails, mailboxType, onRefreshListClick, 
 };
 
 MailboxListMails.propTypes = {
+  mailboxId: PropTypes.string.isRequired,
   mailboxType: PropTypes.oneOf(['Reçus', 'Envoyés']).isRequired,
   mailBoxName: PropTypes.string.isRequired,
   mails: PropTypes.arrayOf(
@@ -87,7 +90,8 @@ MailboxListMails.propTypes = {
   onRefreshListClick: PropTypes.func.isRequired,
   onPagingPreviousClick: PropTypes.func.isRequired,
   onPagingNextClick: PropTypes.func.isRequired,
-  onSearch: PropTypes.func.isRequired
+  onSearch: PropTypes.func.isRequired,
+  consultLinkTo: PropTypes.string.isRequired
 };
 
 export default MailboxListMails;
