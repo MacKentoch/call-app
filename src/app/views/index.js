@@ -3,7 +3,8 @@ import Recherche        from './recherche/Recherche';
 import {
   Mailbox,
   MailboxReception,
-  MailboxEnvoi
+  MailboxEnvoi,
+  MailConsult
 }                       from './mailbox';
 import Modals           from './modals/Modals';
 // create
@@ -23,6 +24,7 @@ export {
   Mailbox,
   MailboxReception,
   MailboxEnvoi,
+  MailConsult,
 
   // create
   FicheContactCourier,
