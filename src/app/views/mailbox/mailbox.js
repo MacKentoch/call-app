@@ -8,6 +8,7 @@ import { appConfig }                    from '../../config';
 
 const boiteReceptionPath  = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.reception.path}`;
 const boiteEnvoiPath      = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.envoi.path}`;
+const writeNewEmailPath   = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.writeNew.path}`;
 
 const inboxRegex = /reception/;
 const sentboxRegex = /envoi/;
@@ -54,7 +55,7 @@ class MailBox extends Component {
           <div className="col-md-3">
             <MailBoxNewEmailButton
               text={'Rédiger un email'}
-              onClick={()=>console.log('MailBoxNewEmailButton onclick TODO')}
+              linkTo={`${writeNewEmailPath}/${mailboxId}`}
             />
 
             <MailboxRepertoires

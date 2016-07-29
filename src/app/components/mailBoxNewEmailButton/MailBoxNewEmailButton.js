@@ -1,20 +1,21 @@
 import React, { PropTypes } from 'react';
+import { Link }             from 'react-router';
 
-const MailBoxNewEmailButton = ({text, onClick}) => {
+const MailBoxNewEmailButton = ({text, linkTo}) => {
   return (
     <div className="panel">
-      <button
+      <Link
         className="btn btn-primary btn-block mailBoxNewEmailButton_button"
-        onClick={onClick}>
+        to={linkTo}>
         { text }
-      </button>
+      </Link>
     </div>
   );
 };
 
 MailBoxNewEmailButton.propTypes = {
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  linkTo: PropTypes.string.isRequired
 };
 
 export default MailBoxNewEmailButton;
