@@ -12,6 +12,7 @@ import BackToTop from './backToTop/BackToTop';
 import MailboxRepertoires from './mailboxRepertoires/MailboxRepertoires';
 import MailboxListMails from './mailboxListMails/MailboxListMails';
 import MailBoxNewEmailButton from './mailBoxNewEmailButton/MailBoxNewEmailButton';
+import MailboxConsultMail from './mailboxConsultMail/MailboxConsultMail';
 
 import {
   FichesTraitee,
@@ -43,6 +44,7 @@ export {
   MailboxRepertoires,
   MailBoxNewEmailButton,
   MailboxListMails,
+  MailboxConsultMail,
 
   // stats
   FichesTraitee,

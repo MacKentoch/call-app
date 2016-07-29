@@ -2,9 +2,10 @@ import React, { PropTypes, Component }  from 'react';
 import moment                           from 'moment';
 // import { appConfig }                    from '../../../config';
 import cx                               from 'classnames';
-// import {
-//   IsFetching
-// }                                       from '../../../components';
+import {
+  MailboxConsultMail,
+  IsFetching
+}                                       from '../../../components';
 
 moment.locale('fr');
 
@@ -39,9 +40,7 @@ class MailConsult extends Component {
         })}>
         {
           // (sentbox.length > 0 && !sentboxIsFetching) &&
-          <h1>
-            consult email
-          </h1>
+          <MailboxConsultMail />
         }
         {
           // sentboxIsFetching &&
