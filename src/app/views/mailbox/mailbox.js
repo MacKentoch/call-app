@@ -9,9 +9,12 @@ import { appConfig }                    from '../../config';
 const boiteReceptionPath  = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.reception.path}`;
 const boiteEnvoiPath      = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.envoi.path}`;
 const writeNewEmailPath   = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.writeNew.path}`;
+const mailBoxButtonTextRediger = 'Rédiger un email';
+const mailBoxButtonTextRetour = 'Retour à la boîte mail';
 
 const inboxRegex = /reception/;
 const sentboxRegex = /envoi/;
+const writeNewmailRegex = /writeNew/;
 
 class MailBox extends Component {
   constructor(props) {
@@ -33,6 +36,7 @@ class MailBox extends Component {
 
     const isInbox   = inboxRegex.test(pathname);
     const isSentBox = sentboxRegex.test(pathname);
+    const isWritingNewEmail = writeNewmailRegex.test(pathname);
 
     let selectedView = '';
     if (isInbox) {
@@ -54,8 +58,8 @@ class MailBox extends Component {
           style={{marginBottom: '5px'}}>
           <div className="col-md-3">
             <MailBoxNewEmailButton
-              text={'Rédiger un email'}
-              linkTo={`${writeNewEmailPath}/${mailboxId}`}
+              text={isWritingNewEmail ? mailBoxButtonTextRetour : mailBoxButtonTextRediger}
+              linkTo={isWritingNewEmail ? `${boiteReceptionPath}/${mailboxId}` : `${writeNewEmailPath}/${mailboxId}`}
             />
 
             <MailboxRepertoires
