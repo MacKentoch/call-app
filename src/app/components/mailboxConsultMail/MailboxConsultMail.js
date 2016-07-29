@@ -18,7 +18,12 @@ const MailboxConsultMail = ({}) => {
           <Title />
           <div className="box-body no-padding">
             <Tools />
-            <MailInfo />
+            <MailInfo
+              from={'test@test.test'}
+              to={'test2@test.test'}
+              receptionDate={'05/12/2015 13:23'}
+              subject={'titre du mail ici'}
+            />
             <div className="mailbox-read-message">
               <p>Hello John,</p>
 

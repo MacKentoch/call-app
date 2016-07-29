@@ -1,24 +1,41 @@
 import React, { PropTypes } from 'react';
 
-const MailInfo = ({}) => {
+const MailInfo = ({from, to, receptionDate, subject}) => {
   return (
     <div className="mailbox-read-info">
       <h5>
-        De: demo@demo.com
+        <span style={{marginRight: '1px'}}>
+          De:
+        </span>
+        &nbsp;
+        {from}
         <span className="mailbox-read-time pull-right"  >
-          15 février 2015 11:03
+          reçu le:
+          &nbsp;
+          {receptionDate}
         </span>
       </h5>
       <h5>
-        A: demo@demo.com
+        <span style={{marginRight: '10px'}}>
+          A:
+        </span>
+        &nbsp;
+        {to}
       </h5>
       <hr />
       <h3>
-        Sujet du mail ici
+        {subject}
       </h3>
       <hr />
     </div>
   );
+};
+
+MailInfo.propTypes = {
+  from: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  receptionDate: PropTypes.string.isRequired,
+  subject: PropTypes.string.isRequired
 };
 
 export default MailInfo;
