@@ -1,25 +1,50 @@
 export const numberMailsPerPage = 50;
 
-export const getCurrentPageContent = (mails, page = 1, pageSize = numberMailsPerPage) => {
+export const getCurrentPageContent = (mails, page = 1, pageSize = numberMailsPerPage, filter = '') => {
   if (!Array.isArray(mails)) {
     return [];
   }
 
-  const total   = mails.length;
+  const total = mails.length;
   if (total <= pageSize - 1) {
-    return mails;
+    if (filter.trim().length > 0) {
+      const regexFilter = new RegExp(filter, 'gi');
+      return mails
+        .filter(
+          mail => regexFilter.test(mail.from.name) || regexFilter.test(mail.subject)
+        );
+    } else {
+      return mails;
+    }
   }
 
   const minIdx  = (page - 1) * pageSize;
   const maxIdx  = (page * pageSize) - 1;
-  return mails.filter(
-    (mail, mailIdx) => {
-      if (mailIdx >= minIdx && mailIdx <= maxIdx) {
-        return true;
+
+  if (filter.trim().length > 0) {
+    const regexFilter = new RegExp(filter, 'gi');
+    return mails
+      .filter(
+        mail => regexFilter.test(mail.from.name) || regexFilter.test(mail.subject)
+      )
+      .filter(
+      (mail, mailIdx) => {
+        if (mailIdx >= minIdx && mailIdx <= maxIdx) {
+          return true;
+        }
+        return false;
       }
-      return false;
-    }
-  );
+    );
+  } else {
+    return mails.filter(
+      (mail, mailIdx) => {
+        if (mailIdx >= minIdx && mailIdx <= maxIdx) {
+          return true;
+        }
+        return false;
+      }
+    );
+  }
 };
 
 
