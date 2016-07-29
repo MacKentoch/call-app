@@ -16,6 +16,7 @@ moment.locale('fr');
 
 const formatDate = appConfig.formatDate.defaut;
 const mailBoxType = 'Envoyés';
+const consultEmailPath = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.consult.path}`;
 
 
 class MailboxEnvoi extends Component {
@@ -67,7 +68,7 @@ class MailboxEnvoi extends Component {
 
   render() {
     const { animated, currentPageMails, currentPage, numberMailsPerPage } = this.state;
-    const { sentboxMailName, sentbox, sentboxIsFetching } = this.props;
+    const { sentboxMailName, sentbox, sentboxIsFetching, params: { mailboxId } } = this.props;
 
     const minPage = getMinIndex(sentbox, currentPage, numberMailsPerPage);
     const maxPage= getMaxIndex(sentbox, currentPage, numberMailsPerPage);
@@ -81,9 +82,12 @@ class MailboxEnvoi extends Component {
         {
           (sentbox.length > 0 && !sentboxIsFetching) &&
           <MailboxListMails
+            mailboxId={mailboxId}
             mailboxType={mailBoxType}
             mailBoxName={sentboxMailName}
             mails={currentPageMails}
+
+            consultLinkTo={`${consultEmailPath}`}
 
             minPage={minPage}
             maxPage={maxPage}
