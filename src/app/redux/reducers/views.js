@@ -26,7 +26,11 @@ import {
   ENTER_MAILBOX_INBOX,
   LEAVE_MAILBOX_INBOX,
   ENTER_MAILBOX_SENTBOX,
-  LEAVE_MAILBOX_SENTBOX
+  LEAVE_MAILBOX_SENTBOX,
+  ENTER_MAILBOX_CONSULT,
+  LEAVE_MAILBOX_CONSULT,
+  ENTER_MAILBOX_WRITE_NEW,
+  LEAVE_MAILBOX_WRITE_NEW
 }                                       from '../actions/views/mailbox/mailbox';
 
 const initialState = {
@@ -220,6 +224,54 @@ const views = (state = initialState, action) => {
     return state;
 
   case LEAVE_MAILBOX_SENTBOX:
+    // can't leave if you aren't already inside
+    if (state.currentView === action.currentView) {
+      return {
+        ...state,
+        currentView:  action.currentView,
+        enterTime:    action.enterTime,
+        leaveTime:    action.leaveTime
+      };
+    }
+    return state;
+
+  case ENTER_MAILBOX_CONSULT:
+    // can't enter if you are already inside
+    if (state.currentView !== action.currentView) {
+      return {
+        ...state,
+        currentView:  action.currentView,
+        enterTime:    action.enterTime,
+        leaveTime:    action.leaveTime
+      };
+    }
+    return state;
+
+  case LEAVE_MAILBOX_CONSULT:
+    // can't leave if you aren't already inside
+    if (state.currentView === action.currentView) {
+      return {
+        ...state,
+        currentView:  action.currentView,
+        enterTime:    action.enterTime,
+        leaveTime:    action.leaveTime
+      };
+    }
+    return state;
+
+  case ENTER_MAILBOX_WRITE_NEW:
+    // can't enter if you are already inside
+    if (state.currentView !== action.currentView) {
+      return {
+        ...state,
+        currentView:  action.currentView,
+        enterTime:    action.enterTime,
+        leaveTime:    action.leaveTime
+      };
+    }
+    return state;
+
+  case LEAVE_MAILBOX_WRITE_NEW:
     // can't leave if you aren't already inside
     if (state.currentView === action.currentView) {
       return {

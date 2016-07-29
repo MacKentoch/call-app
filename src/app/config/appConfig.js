@@ -27,6 +27,14 @@ export const appConfig = {
       envoi: {
         viewName: 'Boîte d\'envoi',
         path: 'envoi'
+      },
+      consult: {
+        viewName: 'Consultation d\'email',
+        path: 'consult'
+      },
+      writeNew: {
+        viewName: 'Rédaction nouvel email',
+        path: 'writeNew'
       }
     },
     recherche: {
