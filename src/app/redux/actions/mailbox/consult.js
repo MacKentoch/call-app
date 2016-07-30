@@ -24,13 +24,11 @@ const requestMailContent = (mailId = 0, boiteMailId = 0, time = moment().format(
 };
 const receivedMailContent = (mailId = 0, boiteMailId = 0, data, time = moment().format(formatDate)) => {
   const mail = data.mails || {};
-  const mailBoxName = data.mailboxName || '';
   return {
     type:       RECEIVED_MAIL_CONTENT,
     isFetching: false,
     mailId,
     boiteMailId,
-    mailBoxName,
     mail,
     time
   };
@@ -79,7 +77,7 @@ const fetchMailContent = (mailId, boiteMailId) => dispatch => {
           dispatch(errorMailContent(mailIdNum, boiteMailIdNum));
           if (appConfig.DEBUG_ENABLED) {
             /* eslint-disable no-console */
-            console.warn('fetchSentboxContent error: ', err);
+            console.warn('fetchMailContent error: ', err);
             /* eslint-enable no-console */
           }
         }

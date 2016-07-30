@@ -14,6 +14,7 @@ import teamMates          from './teamMates';
 // mailbox
 import inboxContent       from './mailbox/inbox';
 import sentboxContent     from './mailbox/sentbox';
+import mailContent        from './mailbox/consult';
 
 export {
   // views:
@@ -35,5 +36,6 @@ export {
 
   // mailbox
   inboxContent,
-  sentboxContent
+  sentboxContent,
+  mailContent
 };
