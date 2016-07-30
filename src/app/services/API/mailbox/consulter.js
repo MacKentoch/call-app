@@ -6,7 +6,7 @@ import {
 }                     from '../../utils/fetchTools';
 import { appConfig }  from '../../../config';
 
-export const getMailcontent = (mailId = null, mailBoxId = null) => {
+export const getMailContent = (mailId = null, mailBoxId = null) => {
   if (!parseInt(mailId, 10)) {
     return Promise.reject('error: getMailcontent need a valid mailId');
   }
