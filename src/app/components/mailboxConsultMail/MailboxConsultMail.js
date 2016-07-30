@@ -134,6 +134,7 @@ MailboxConsultMail.propTypes = {
     }).isRequired,
     body: PropTypes.string.isRequired,
     selected: PropTypes.bool.isRequired,
+    hasAttachments: PropTypes.bool.isRequired,
     attachments: PropTypes.arrayOf(
       PropTypes.shape({
         type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),

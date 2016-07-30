@@ -15,7 +15,30 @@ export const listMailsMock = {
         name: 'person2'
       },
       subject: 'a nice email subject',
-      body: 'to be filled later'
+      hasAttachments: true
+      // NOTE: body and attachments aren't supposed to be here but mailContent fetch
+
+      // body: 'to be filled later',
+      // attachments: [
+      //   {
+      //     type: 'pdf',
+      //     filename: 'fake.pdf',
+      //     filePath: '#',
+      //     size: '1.23kb'
+      //   },
+      //   {
+      //     type: 'doc',
+      //     filename: 'fake.pdf',
+      //     filePath: '#',
+      //     size: '1.23kb'
+      //   },
+      //   {
+      //     type: 'zip',
+      //     filename: 'fake.zip',
+      //     filePath: '#',
+      //     size: '3.10kb'
+      //   }
+      // ]
     },
     {
       id: 2,
@@ -30,7 +53,16 @@ export const listMailsMock = {
         name: 'person4'
       },
       subject: 'a nice email subject',
-      body: 'to be filled later'
+      hasAttachments: false
+      // body: 'to be filled later',
+      // attachments: [
+      //   {
+      //     type: 'zip',
+      //     filename: 'fake.zip',
+      //     filePath: '#',
+      //     size: '3.10kb'
+      //   }
+      // ]
     },
     {
       id: 3,
@@ -45,7 +77,16 @@ export const listMailsMock = {
         name: 'person2'
       },
       subject: 'a nice email subject',
-      body: 'to be filled later'
+      hasAttachments: false
+      // body: 'to be filled later',
+      // attachments: [
+      //   {
+      //     type: 'doc',
+      //     filename: 'fake.pdf',
+      //     filePath: '#',
+      //     size: '1.23kb'
+      //   }
+      // ]
     },
     {
       id: 4,
@@ -60,7 +101,9 @@ export const listMailsMock = {
         name: 'person2'
       },
       subject: 'a nice email subject',
-      body: 'to be filled later'
+      hasAttachments: false
+      // body: 'to be filled later',
+      // attachments: []
     },
     {
       id: 5,
@@ -75,7 +118,9 @@ export const listMailsMock = {
         name: 'person4'
       },
       subject: 'a nice email subject with more than 50 characters to test truncation',
-      body: 'to be filled later'
+      hasAttachments: false
+      // body: 'to be filled later',
+      // attachments: []
     },
     {
       id: 6,
@@ -90,7 +135,9 @@ export const listMailsMock = {
         name: 'person2'
       },
       subject: 'a nice email subject',
-      body: 'to be filled later'
+      hasAttachments: false
+      // body: 'to be filled later',
+      // attachments: []
     }
   ]
 };
