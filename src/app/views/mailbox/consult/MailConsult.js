@@ -42,7 +42,7 @@ class MailConsult extends Component {
           'fadeIn': animated
         })}>
         {
-          !isFetchingMailContent &&
+          mail.id > 0 && !isFetchingMailContent &&
           <MailboxConsultMail
             mailId={mailId}
             mailboxId={boiteMailId}
