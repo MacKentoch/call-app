@@ -7,6 +7,7 @@ import Title                from './title/Title';
 import Tools                from './tools/Tools';
 import MailInfo             from './mailInfo/MailInfo';
 import MailBody             from './mailBody/MailBody';
+import Attachments          from './attachments/Attachments';
 
 const mockMailBody = `
 <h1>Hello John,</h1>
@@ -56,7 +57,7 @@ class MailboxConsultMail extends Component {
   }
 
   render() {
-    const {mailboxId, mailboxType, mailBoxName} = this.props;
+    const {mailboxId, mailboxType, mailBoxName, mail} = this.props;
     return (
       <div className="panel">
         <div
@@ -87,119 +88,20 @@ class MailboxConsultMail extends Component {
                 receptionDate={'05/12/2015 13:23'}
                 subject={'titre du mail ici'}
               />
+
               <div className="mailbox-read-message">
                 <MailBody
                   body={mockMailBody}
                 />
               </div>
+
             </div>
 
             <div className="box-footer">
-
-              <ul className="mailbox-attachments clearfix">
-
-                <li>
-                  <span className="mailbox-attachment-icon">
-                    <i className="fa fa-file-pdf-o"></i>
-                  </span>
-                  <div className="mailbox-attachment-info">
-                    <a
-                      href="#"
-                      className="mailbox-attachment-name">
-                      <i className="fa fa-paperclip"></i>
-                      &nbsp;
-                      Sep2014-report.pdf
-                    </a>
-                    <span className="mailbox-attachment-size">
-                      1,245 KB
-                      <a
-                        href="#"
-                        className="btn btn-default btn-xs pull-right">
-                        <i className="fa fa-cloud-download"></i>
-                      </a>
-                    </span>
-                  </div>
-                </li>
-
-                <li>
-                  <span className="mailbox-attachment-icon">
-                    <i className="fa fa-file-word-o"></i>
-                  </span>
-                  <div className="mailbox-attachment-info">
-                    <a
-                      href="#"
-                      className="mailbox-attachment-name">
-                      <i className="fa fa-paperclip"></i>
-                      &nbsp;
-                      App Description.docx
-                    </a>
-                    <span className="mailbox-attachment-size">
-                      1,245 KB
-                      <a
-                        href="#"
-                        className="btn btn-default btn-xs pull-right">
-                        <i className="fa fa-cloud-download"></i>
-                      </a>
-                    </span>
-                  </div>
-                </li>
-
-                <li>
-                  <span className="mailbox-attachment-icon has-img">
-                    <img
-                      src="../../dist/img/photo1.png"
-                      alt="Attachment"
-                    />
-                  </span>
-
-                  <div className="mailbox-attachment-info">
-                    <a
-                      href="#"
-                      className="mailbox-attachment-name">
-                      <i className="fa fa-camera"></i>
-                      &nbsp;
-                      photo1.png
-                    </a>
-                    <span className="mailbox-attachment-size">
-                      2.67 MB
-                      <a
-                        href="#"
-                        className="btn btn-default btn-xs pull-right">
-                        <i className="fa fa-cloud-download"></i>
-                      </a>
-                    </span>
-                  </div>
-                </li>
-
-                <li>
-                  <span className="mailbox-attachment-icon has-img">
-                    <img
-                      src="../../dist/img/photo2.png"
-                      alt="Attachment"
-                    />
-                  </span>
-                  <div className="mailbox-attachment-info">
-                    <a
-                      href="#"
-                      className="mailbox-attachment-name">
-                      <i className="fa fa-camera"></i>
-                      &nbsp;
-                      photo2.png
-                    </a>
-                    <span className="mailbox-attachment-size">
-                      1.9 MB
-                      <a
-                        href="#"
-                        className="btn btn-default btn-xs pull-right">
-                        <i className="fa fa-cloud-download"></i>
-                      </a>
-                    </span>
-                  </div>
-                </li>
-
-              </ul>
+              <Attachments
+                attachments={mail.attachments || []}
+              />
             </div>
-
           </div>
         </div>
       </div>
@@ -230,7 +132,15 @@ MailboxConsultMail.propTypes = {
       email: PropTypes.string.isRequired
     }).isRequired,
     body: PropTypes.string.isRequired,
-    selected: PropTypes.bool.isRequired
+    selected: PropTypes.bool.isRequired,
+    attachments: PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
+        filename: PropTypes.string.isRequired,
+        filePath: PropTypes.string.isRequired,
+        size: PropTypes.string.isRequired
+      })
+    )
   })
 };
 

@@ -3,7 +3,9 @@ import Pdf                  from './pdf/Pdf';
 import Txt                  from './txt/Txt';
 import Doc                  from './doc/Doc';
 import Xls                  from './xls/Xls';
-import Csv                  from './cvs/Csv';
+import Csv                  from './csv/Csv';
+import Img                  from './img/Img';
+import Zip                  from './zip/Zip';
 
 const Attachments = ({attachments}) => {
   return (
@@ -74,7 +76,77 @@ const Attachments = ({attachments}) => {
               );
             case 'csv':
               return (
-                <Xls
+                <Csv
+                  key={idx}
+                  type={type}
+                  filename={filename}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'png':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  filename={filename}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'jpg':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  filename={filename}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'jpeg':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  filename={filename}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'bmp':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  filename={filename}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'zip':
+              return (
+                <Zip
+                  key={idx}
+                  type={type}
+                  filename={filename}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case '7zip':
+              return (
+                <Zip
+                  key={idx}
+                  type={type}
+                  filename={filename}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'rar':
+              return (
+                <Zip
                   key={idx}
                   type={type}
                   filename={filename}
@@ -95,7 +167,7 @@ const Attachments = ({attachments}) => {
 Attachments.propTypes = {
   attachments: PropTypes.arrayOf(
     PropTypes.shape({
-      type: PropTypes.oneOf(['pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
+      type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
       filename: PropTypes.string.isRequired,
       filePath: PropTypes.string.isRequired,
       size: PropTypes.string.isRequired
