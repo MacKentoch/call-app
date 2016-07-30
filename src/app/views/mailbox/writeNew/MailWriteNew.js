@@ -39,9 +39,60 @@ class MailWriteNew extends Component {
         })}>
         {
           // (sentbox.length > 0 && !sentboxIsFetching) &&
-          <h1>
-            Rédaction nouvel email
-          </h1>
+          <div className="col-md-9">
+            <div className="box box-primary">
+              <div className="box-header with-border">
+                <h3 className="box-title">
+                  Composer un nouveau message
+                </h3>
+              </div>
+              {/* <!-- /.box-header --> */}
+              <div className="box-body">
+                <div className="form-group">
+                  <input
+                    className="form-control"
+                    placeholder="à:"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    className="form-control"
+                    placeholder="Objet:"
+                  />
+                </div>
+                <div className="form-group">
+                  <textarea
+                    id="compose-textarea"
+                    className="form-control"
+                    style={{height: '300px'}}>
+                  </textarea>
+                </div>
+                <div className="form-group">
+                  <div className="btn btn-default btn-file">
+                    <i className="fa fa-paperclip"></i>
+                    &nbsp;
+                    Pièces jointes
+                    <input
+                      type="file"
+                      name="attachment"
+                    />
+                  </div>
+                  <p className="help-block">
+                    Max. 4MB
+                  </p>
+                </div>
+              </div>
+              {/* <!-- /.box-body --> */}
+              <div className="box-footer">
+                <div className="pull-right">
+                  <button type="submit" className="btn btn-primary"><i className="fa fa-envelope-o"></i> Envoyer</button>
+                </div>
+                <button type="reset" className="btn btn-default"><i className="fa fa-times"></i> Annuler</button>
+              </div>
+              {/* <!-- /.box-footer --> */}
+            </div>
+            {/* <!-- /. box --> */}
+          </div>
         }
         {
           // sentboxIsFetching &&
