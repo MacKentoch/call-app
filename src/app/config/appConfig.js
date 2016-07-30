@@ -143,6 +143,13 @@ export const appConfig = {
     }
   },
 
+  // inbox content
+  consultMail: {
+    data: {
+      API: 'api/consultMail'
+    }
+  },
+
   // home stats : fiche par canal
   statsFichesParCanal: {
     data: {

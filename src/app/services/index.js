@@ -14,7 +14,8 @@ import {
   fetchMockPrincipauxMotifsData,
   fetchMockUserGroupActivityData,
   fetchMockUserBoitesMailsData,
-  fetchMockListMails
+  fetchMockListMails,
+  fetchMockMailContent
 }                     from './fetchMock/fetchMocks';
 // API
 import {
@@ -22,7 +23,8 @@ import {
   getUserGroupActivity,
   getUserInfo,
   getInboxContent,
-  getStatsFichesParCanal
+  getStatsFichesParCanal,
+  getMailcontent
 }                     from './API';
 // date tools
 import {
@@ -57,6 +59,7 @@ export {
   fetchMockUserGroupActivityData,
   fetchMockUserBoitesMailsData,
   fetchMockListMails,
+  fetchMockMailContent,
 
   // API
   getUserBoitesMails,
@@ -64,6 +67,7 @@ export {
   getUserInfo,
   getInboxContent,
   getStatsFichesParCanal,
+  getMailcontent,
 
   // date tools
   getLastThreeMonthNames,

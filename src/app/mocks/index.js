@@ -6,6 +6,7 @@ import { userInfosMockData }      from './userInfosMock';
 import { userGroupActivityMock }  from './userGroupActivity';
 import { userBoitesMailsMock }    from './userBoitesMails';
 import { listMailsMock }          from './listMails';
+import { mailContentMock }        from './mailContent';
 
 export {
   motifsContacts,
@@ -15,5 +16,6 @@ export {
   userInfosMockData,
   userGroupActivityMock,
   userBoitesMailsMock,
-  listMailsMock
+  listMailsMock,
+  mailContentMock
 };
