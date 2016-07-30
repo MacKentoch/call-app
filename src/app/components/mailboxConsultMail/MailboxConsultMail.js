@@ -72,6 +72,7 @@ class MailboxConsultMail extends Component {
               <Title />
             </div>
             <div className="box-body no-padding">
+
               <div className="no-print">
                 <Tools
                   onReplyClick={(e)=>console.log('onReplyClick')}
@@ -79,6 +80,7 @@ class MailboxConsultMail extends Component {
                   onPrintClick={this.handesOnPrintClick}
                 />
               </div>
+
               <MailInfo
                 from={'test@test.test'}
                 to={'test2@test.test'}
@@ -93,6 +95,7 @@ class MailboxConsultMail extends Component {
             </div>
 
             <div className="box-footer">
+
               <ul className="mailbox-attachments clearfix">
 
                 <li>
@@ -196,50 +199,10 @@ class MailboxConsultMail extends Component {
 
               </ul>
             </div>
-            {/*<!-- /.box-footer -->*/}
-            <div className="box-footer">
-              <div className="pull-right">
 
-                <button
-                  type="button"
-                  className="btn btn-default">
-                  <i className="fa fa-reply"></i>
-                  &nbsp;
-                  Répondre
-                </button>
-
-                <button
-                  type="button"
-                  className="btn btn-default">
-                  <i className="fa fa-share"></i>
-                  &nbsp;
-                  Transférer
-                </button>
-
-              </div>
-
-              <button
-                type="button"
-                className="btn btn-default">
-                <i className="fa fa-trash-o"></i>
-                &nbsp;
-                Supprimer
-              </button>
-
-              <button
-                type="button"
-                className="btn btn-default">
-                <i className="fa fa-print"></i>
-                &nbsp;
-                Imprimer
-              </button>
-            </div>
-            {/*<!-- /.box-footer -->*/}
           </div>
-          {/*<!-- /. box -->*/}
         </div>
-
-        </div>
+      </div>
     );
   }
 
