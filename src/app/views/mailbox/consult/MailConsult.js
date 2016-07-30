@@ -33,6 +33,8 @@ class MailConsult extends Component {
 
   render() {
     const { animated, isFetchingMailContent } = this.state;
+    const { mailId, boiteMailId, mail } = this.props;
+
     return(
       <div
         className={cx({
@@ -41,7 +43,11 @@ class MailConsult extends Component {
         })}>
         {
           !isFetchingMailContent &&
-          <MailboxConsultMail />
+          <MailboxConsultMail
+            mailId={mailId}
+            mailboxId={boiteMailId}
+            mail={mail}
+          />
         }
         {
           isFetchingMailContent &&
@@ -71,7 +77,6 @@ MailConsult.propTypes = {
   mail: PropTypes.shape({
     id: PropTypes.number.isRequired,
     receptionDate: PropTypes.string.isRequired,
-    notRead: PropTypes.bool.isRequired,
     subject: PropTypes.string.isRequired,
     from: PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -85,7 +90,7 @@ MailConsult.propTypes = {
     hasAttachments: PropTypes.bool.isRequired,
     attachments: PropTypes.arrayOf(
       PropTypes.shape({
-        type: PropTypes.string.isRequired,
+        type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
         filename: PropTypes.string.isRequired,
         filePath: PropTypes.string.isRequired,
         size: PropTypes.string.isRequired

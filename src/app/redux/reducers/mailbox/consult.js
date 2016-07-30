@@ -4,11 +4,28 @@ import {
   ERROR_MAIL_CONTENT
 }                                 from '../../actions/mailbox/consult';
 
+const initialMailModel= {
+  id: 0,
+  receptionDate: '01/01/1900 00:00',
+  subject: '',
+  from: {
+    name: '',
+    email: ''
+  },
+  to: {
+    name: '',
+    email: ''
+  },
+  body: '',
+  hasAttachments: false,
+  attachments: []
+};
+
 const initialState = {
   isFetching:   false,
   mailId:       0,
   boiteMailId:  0,
-  mail:         {},
+  mail:         {...initialMailModel},
   time:         ''
 };
 
