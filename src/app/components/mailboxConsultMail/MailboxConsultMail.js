@@ -22,7 +22,6 @@ class MailboxConsultMail extends Component {
 
   render() {
     const { mail: {id, receptionDate, subject, from, to, body, attachments }} = this.props;
-    // const {mailboxId, mailboxType, mailBoxName} = this.props;
     return (
       <div className="panel">
         <div
