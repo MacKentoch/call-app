@@ -93,13 +93,14 @@ class MailboxConsultMail extends Component {
                 <MailBody
                   body={mockMailBody}
                 />
+                <hr />
               </div>
 
             </div>
 
             <div className="box-footer">
               <Attachments
-                attachments={mail.attachments || []}
+                attachments={[]}
               />
             </div>
           </div>
