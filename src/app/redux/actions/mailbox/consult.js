@@ -23,7 +23,7 @@ const requestMailContent = (mailId = 0, boiteMailId = 0, time = moment().format(
   };
 };
 const receivedMailContent = (mailId = 0, boiteMailId = 0, data, time = moment().format(formatDate)) => {
-  const mail = data.mails || {};
+  const mail = data.mail || {};
   return {
     type:       RECEIVED_MAIL_CONTENT,
     isFetching: false,
@@ -64,12 +64,12 @@ const fetchMailContent = (mailId, boiteMailId) => dispatch => {
 
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    fetchMockMailContent()
+    fetchMockMailContent(mailIdNum, boiteMailIdNum)
       .then(
         data => dispatch(receivedMailContent(mailIdNum, boiteMailIdNum, data))
       );
   } else {
-    getMailContent(mailId)
+    getMailContent(mailId, boiteMailIdNum)
       .then(
         data => dispatch(receivedMailContent(mailIdNum, boiteMailIdNum, data)))
       .catch(

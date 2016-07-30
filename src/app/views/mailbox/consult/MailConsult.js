@@ -23,6 +23,7 @@ class MailConsult extends Component {
   componentDidMount() {
     const  { actions, params: { mailboxId, mailId } } =  this.props;
     actions.enterMailboxConsult(`mailbox #${mailboxId}, mailId: ${mailId}`);
+    actions.fetchMailContentIfNeeded(mailId, mailboxId);
   }
 
   componentWillUnmount() {
@@ -31,7 +32,7 @@ class MailConsult extends Component {
   }
 
   render() {
-    const { animated } = this.state;
+    const { animated, isFetchingMailContent } = this.state;
     return(
       <div
         className={cx({
@@ -39,19 +40,19 @@ class MailConsult extends Component {
           'fadeIn': animated
         })}>
         {
-          // (sentbox.length > 0 && !sentboxIsFetching) &&
+          !isFetchingMailContent &&
           <MailboxConsultMail />
         }
         {
-          // sentboxIsFetching &&
-          // <div>
-          //   <p className="text-center">
-          //     <i style={{color: '#4A4A4A'}}>
-          //       Chargement...
-          //     </i>
-          //   </p>
-          //   <IsFetching />
-          // </div>
+          isFetchingMailContent &&
+          <div>
+            <p className="text-center">
+              <i style={{color: '#4A4A4A'}}>
+                Chargement...
+              </i>
+            </p>
+            <IsFetching />
+          </div>
         }
       </div>
     );
@@ -62,6 +63,11 @@ MailConsult.propTypes = {
   params: PropTypes.object, // react router
   location: PropTypes.object,  // react router
 
+
+  isFetchingMailContent:PropTypes.bool.isRequired,
+  mailId: PropTypes.number.isRequired,
+  boiteMailId: PropTypes.number.isRequired,
+  mailContentRefreshTime: PropTypes.string.isRequired,
   mail: PropTypes.shape({
     id: PropTypes.number.isRequired,
     receptionDate: PropTypes.string.isRequired,
@@ -76,12 +82,22 @@ MailConsult.propTypes = {
       email: PropTypes.string.isRequired
     }).isRequired,
     body: PropTypes.string.isRequired,
-    selected: PropTypes.bool.isRequired
+    hasAttachments: PropTypes.bool.isRequired,
+    attachments: PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.string.isRequired,
+        filename: PropTypes.string.isRequired,
+        filePath: PropTypes.string.isRequired,
+        size: PropTypes.string.isRequired
+      })
+    )
   }),
 
   actions: PropTypes.shape({
     enterMailboxConsult: PropTypes.func,
-    leaveMailboxConsult: PropTypes.func
+    leaveMailboxConsult: PropTypes.func,
+
+    fetchMailContentIfNeeded: PropTypes.func
   })
 };
 

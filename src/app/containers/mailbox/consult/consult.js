@@ -5,7 +5,13 @@ import { MailConsult }          from '../../../views';
 
 const mapStateToProps = (state) => {
   return {
-    currentView:  state.views.currentView
+    currentView:  state.views.currentView,
+
+    isFetchingMailContent: state.mailContent.isFetching,
+    mailId: state.mailContent.mailId,
+    boiteMailId: state.mailContent.boiteMailId,
+    mail: state.mailContent.mail,
+    mailContentRefreshTime: state.mailContent.time
   };
 };
 
@@ -14,7 +20,9 @@ const mapDispatchToProps = (dispatch) => {
     actions : bindActionCreators(
       {
         enterMailboxConsult: actions.enterMailboxConsult,
-        leaveMailboxConsult: actions.leaveMailboxConsult
+        leaveMailboxConsult: actions.leaveMailboxConsult,
+
+        fetchMailContentIfNeeded: actions.fetchMailContentIfNeeded
       },
       dispatch)
   };

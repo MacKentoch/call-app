@@ -26,7 +26,7 @@ const mailContent = (state = initialState, action) => {
       isFetching:   action.isFetching,
       boiteMailId:  action.boiteMailId,
       mailBoxName:  action.mailBoxName,
-      mails:        [...action.mails],
+      mail:         {...action.mail},
       nbUnRead:     action.nbUnRead,
       time:         action.time
     };
