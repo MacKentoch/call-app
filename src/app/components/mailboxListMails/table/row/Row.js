@@ -5,7 +5,7 @@ import { Link }              from 'react-router';
 const subjectMaxLength = 45;
 
 
-const Row  = ({id, notRead, mailboxType, receptionDate, subject, from, consultLinkTo}) => {
+const Row  = ({id, notRead, mailboxType, receptionDate, subject, from, hasAttachments, consultLinkTo}) => {
   return (
     <tr
       id={id}
@@ -45,9 +45,16 @@ const Row  = ({id, notRead, mailboxType, receptionDate, subject, from, consultLi
       </td>
 
       <td style={{width: '10px'}}>
-        <Link to={consultLinkTo}>
-          <i className="fa fa-paperclip" aria-hidden="true"></i>
-        </Link>
+        {
+          hasAttachments &&
+          <Link to={consultLinkTo}>
+            <i className="fa fa-paperclip" aria-hidden="true"></i>
+          </Link>
+        }
+        {
+          !hasAttachments &&
+          <span>&nbsp;</span>
+        }
       </td>
 
       <td style={{width: '150px'}}>
@@ -74,7 +81,8 @@ Row.propTypes = {
   to: PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  hasAttachments: PropTypes.bool.isRequired
 };
 
 export default Row;

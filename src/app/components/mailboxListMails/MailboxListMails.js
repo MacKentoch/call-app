@@ -80,7 +80,7 @@ MailboxListMails.propTypes = {
         name: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired
       }).isRequired,
-      body: PropTypes.string.isRequired,
+      hasAttachments: PropTypes.bool.isRequired,
       selected: PropTypes.bool.isRequired
     })
   ),

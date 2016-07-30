@@ -7,7 +7,7 @@ const Table  = ({mails, mailboxType, mailboxId, consultLinkTo}) => {
       <tbody>
         {
           mails.map(
-            ({id, notRead, receptionDate, subject, from, to}, mailIdx) => {
+            ({id, notRead, receptionDate, subject, from, to, hasAttachments}, mailIdx) => {
               return (
                 <Row
                   key={mailIdx}
@@ -20,6 +20,7 @@ const Table  = ({mails, mailboxType, mailboxId, consultLinkTo}) => {
                   subject={subject}
                   from={from}
                   to={to}
+                  hasAttachments={hasAttachments}
                 />
               );
             }
@@ -47,7 +48,7 @@ Table.propTypes = {
         name: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired
       }).isRequired,
-      body: PropTypes.string.isRequired,
+      hasAttachments: PropTypes.bool.isRequired,
       selected: PropTypes.bool.isRequired
     })
   ),
