@@ -8,6 +8,14 @@ import Header3 from './Header3';
 import Header4 from './Header4';
 import Header5 from './Header5';
 import Header6 from './Header6';
+// font sizes
+import FontSize1 from './FontSize1';
+import FontSize2 from './FontSize2';
+import FontSize3 from './FontSize3';
+import FontSize4 from './FontSize4';
+import FontSize5 from './FontSize5';
+import FontSize6 from './FontSize6';
+import FontSize7 from './FontSize7';
 
 export {
   // paragraph style
@@ -20,5 +28,14 @@ export {
   Header3,
   Header4,
   Header5,
-  Header6
+  Header6,
+
+  // font sizes
+  FontSize1,
+  FontSize2,
+  FontSize3,
+  FontSize4,
+  FontSize5,
+  FontSize6,
+  FontSize7
 };
