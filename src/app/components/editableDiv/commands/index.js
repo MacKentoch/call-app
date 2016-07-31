@@ -16,6 +16,9 @@ import FontSize4 from './FontSize4';
 import FontSize5 from './FontSize5';
 import FontSize6 from './FontSize6';
 import FontSize7 from './FontSize7';
+// font styles
+import Bold from './Bold';
+import Italic from './Italic';
 
 export {
   // paragraph style
@@ -37,5 +40,9 @@ export {
   FontSize4,
   FontSize5,
   FontSize6,
-  FontSize7
+  FontSize7,
+
+  // font styles
+  Bold,
+  Italic
 };
