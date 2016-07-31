@@ -4,7 +4,13 @@ import React, {
 }                 from 'react';
 import {
   Paragraph,
-  BlockQuote
+  BlockQuote,
+  Header1,
+  Header2,
+  Header3,
+  Header4,
+  Header5,
+  Header6
 }                 from './commands';
 
 class EditableDiv extends Component {
@@ -38,7 +44,6 @@ class EditableDiv extends Component {
           <div
             className="btn-group"
             style={buttonSpacing}>
-
             <button
               className="btn btn-default btn-xs dropdown-toggle"
               type="button"
@@ -48,7 +53,6 @@ class EditableDiv extends Component {
               &nbsp;
               <i className="fa fa-caret-down"></i>
             </button>
-
             <ul
               role="menu"
               className="dropdown-menu">
@@ -65,11 +69,64 @@ class EditableDiv extends Component {
                 />
               </li>
             </ul>
-
-
           </div>
+          {/* text form group end */}
 
+          {/* headers group */}
+          <div
+            className="btn-group"
+            style={buttonSpacing}>
+            <button
+              className="btn btn-default btn-xs dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+              aria-expanded="true">
+              <i className="fa fa-header"></i>
+              &nbsp;
+              <i className="fa fa-caret-down"></i>
+            </button>
 
+            <ul
+              role="menu"
+              className="dropdown-menu">
+              <li>
+                <Header1
+                  commandName={'h1'}
+                  onClick={this.execCommand}
+                />
+              </li>
+              <li>
+                <Header2
+                  commandName={'h2'}
+                  onClick={this.execCommand}
+                />
+              </li>
+              <li>
+                <Header3
+                  commandName={'h3'}
+                  onClick={this.execCommand}
+                />
+              </li>
+              <li>
+                <Header4
+                  commandName={'h4'}
+                  onClick={this.execCommand}
+                />
+              </li>
+              <li>
+                <Header5
+                  commandName={'h5'}
+                  onClick={this.execCommand}
+                />
+              </li>
+              <li>
+                <Header6
+                  commandName={'h6'}
+                  onClick={this.execCommand}
+                />
+              </li>
+            </ul>
+          </div>
         </div>
         {/* toolbar end */}
         <div
@@ -81,7 +138,7 @@ class EditableDiv extends Component {
           onInput={this.emitChange}>
         </div>
       </div>
-
+      //
 			// React.createElement("div", null,
 			// 	React.createElement("div", {style: toolbarStyle},
       //
