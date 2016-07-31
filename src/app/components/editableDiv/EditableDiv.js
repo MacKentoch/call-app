@@ -19,7 +19,9 @@ import {
   FontSize6,
   FontSize7,
   Bold,
-  Italic
+  Italic,
+  Underline,
+  StrikeThrough
 }                 from './commands';
 
 class EditableDiv extends Component {
@@ -208,6 +210,12 @@ class EditableDiv extends Component {
               onClick={this.execCommand}
             />
             <Italic
+              onClick={this.execCommand}
+            />
+            <Underline
+              onClick={this.execCommand}
+            />
+            <StrikeThrough
               onClick={this.execCommand}
             />
           </div>

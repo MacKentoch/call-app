@@ -19,6 +19,8 @@ import FontSize7 from './FontSize7';
 // font styles
 import Bold from './Bold';
 import Italic from './Italic';
+import Underline from './Underline';
+import StrikeThrough from './StrikeThrough';
 
 export {
   // paragraph style
@@ -44,5 +46,7 @@ export {
 
   // font styles
   Bold,
-  Italic
+  Italic,
+  Underline,
+  StrikeThrough
 };
