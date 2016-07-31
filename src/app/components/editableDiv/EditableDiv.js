@@ -21,7 +21,10 @@ import {
   Bold,
   Italic,
   Underline,
-  StrikeThrough
+  StrikeThrough,
+  InsertOrderedList,
+  InsertUnorderedList,
+  JustifyLeft
 }                 from './commands';
 
 class EditableDiv extends Component {
@@ -219,8 +222,49 @@ class EditableDiv extends Component {
               onClick={this.execCommand}
             />
           </div>
-
           {/* font style end */}
+
+          {/* list style */}
+          <div
+            className="btn-group btn-group-xs"
+            role="group"
+            style={buttonSpacing}>
+            <InsertOrderedList
+              onClick={this.execCommand}
+            />
+            <InsertUnorderedList
+              onClick={this.execCommand}
+            />
+          </div>
+          {/* list style end */}
+
+
+          {/* text align group */}
+          <div
+            className="btn-group"
+            style={buttonSpacing}>
+            <button
+              className="btn btn-default btn-xs dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+              aria-expanded="true">
+              <i className="fa fa-align-left"></i>
+              &nbsp;
+              <i className="fa fa-caret-down"></i>
+            </button>
+            <ul
+              role="menu"
+              className="dropdown-menu">
+              <li>
+                <JustifyLeft
+                  commandName={'aligner à gauche'}
+                  onClick={this.execCommand}
+                />
+              </li>
+            </ul>
+          </div>
+          {/* text align group end */}
+
         </div>
         {/* toolbar end */}
         {/* editor */}
@@ -234,105 +278,9 @@ class EditableDiv extends Component {
         </div>
         {/* editor end */}
       </div>
-      //
+
 			// React.createElement("div", null,
 			// 	React.createElement("div", {style: toolbarStyle},
-      //
-			// 		/** feel free to customize buttons below.
-			// 		for list of supported commands, please see https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand */
-			// 		React.createElement("div", {className: "btn-group", style: buttonSpacing},
-			// 			React.createElement("button", {
-			// 				className: "btn btn-default btn-xs dropdown-toggle",
-			// 				type: "button", "data-toggle": "dropdown",
-			// 				"aria-expanded": "true"},
-			// 				React.createElement("i", {className: "fa fa-paragraph"}), " ", React.createElement("i", {className: "fa fa-caret-down"})
-			// 			),
-      //
-			// 			React.createElement("ul", {className: "dropdown-menu", role: "menu"},
-			// 				React.createElement("li", null,
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'formatBlock', 'P')},
-			// 						"Paragraph"
-			// 					),
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'formatBlock', 'BLOCKQUOTE')},
-			// 						"Block Quote"
-			// 					),
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'formatBlock', 'H1')},
-			// 						"Header 1"
-			// 					),
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'formatBlock', 'H2')},
-			// 						"Header 2"
-			// 					),
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'formatBlock', 'H3')},
-			// 						"Header 3"
-			// 					),
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'formatBlock', 'H4')},
-			// 						"Header 4"
-			// 					),
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'formatBlock', 'H5')},
-			// 						"Header 5"
-			// 					),
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'formatBlock', 'H6')},
-			// 						"Header 6"
-			// 					)
-			// 				)
-			// 			)
-			// 		),
-      //
-			// 		React.createElement("div", {className: "btn-group btn-group-xs", role: "group", style: buttonSpacing},
-			// 			React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.execCommand.bind(this, 'bold')},
-			// 				React.createElement("i", {className: "fa fa-bold"})
-			// 			),
-			// 			React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.execCommand.bind(this, 'italic')},
-			// 				React.createElement("i", {className: "fa fa-italic"})
-			// 			),
-			// 			React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.execCommand.bind(this, 'underline')},
-			// 				React.createElement("i", {className: "fa fa-underline"})
-			// 			),
-			// 			React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.execCommand.bind(this, 'strikeThrough')},
-			// 				React.createElement("i", {className: "fa fa-strikethrough"})
-			// 			),
-      //
-			// 			React.createElement("div", {className: "btn-group", role: "group"},
-			// 				React.createElement("button", {
-			// 					className: "btn btn-default btn-xs dropdown-toggle",
-			// 					type: "button", "data-toggle": "dropdown",
-			// 					"aria-expanded": "true"},
-			// 					React.createElement("i", {className: "fa fa-text-height"}), " ", React.createElement("i", {className: "fa fa-caret-down"})
-			// 				),
-			// 				React.createElement("ul", {className: "dropdown-menu", role: "menu"},
-			// 					React.createElement("li", null,
-			// 						React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'fontSize', 1)}, "1")
-			// 					),
-			// 					React.createElement("li", null,
-			// 						React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'fontSize', 2)}, "2")
-			// 					),
-			// 					React.createElement("li", null,
-			// 						React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'fontSize', 3)}, "3")
-			// 					),
-			// 					React.createElement("li", null,
-			// 						React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'fontSize', 4)}, "4")
-			// 					),
-			// 					React.createElement("li", null,
-			// 						React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'fontSize', 5)}, "5")
-			// 					),
-			// 					React.createElement("li", null,
-			// 						React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'fontSize', 6)}, "6")
-			// 					),
-			// 					React.createElement("li", null,
-			// 						React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'fontSize', 7)}, "7")
-			// 					)
-			// 				)
-			// 			)
-			// 		),
-      //
-			// 		React.createElement("div", {className: "btn-group btn-group-xs", role: "group", style: buttonSpacing},
-			// 			React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.execCommand.bind(this, 'insertOrderedList')},
-			// 				React.createElement("i", {className: "fa fa-list-ol"})
-			// 			),
-			// 			React.createElement("button", {type: "button", className: "btn btn-default", onClick: this.execCommand.bind(this, 'insertUnorderedList')},
-			// 				React.createElement("i", {className: "fa fa-list-ul"})
-			// 			)
-			// 		),
       //
 			// 		React.createElement("div", {className: "btn-group", style: buttonSpacing},
 			// 			React.createElement("button", {
@@ -364,16 +312,7 @@ class EditableDiv extends Component {
 			// 			onClick: this.execCommand.bind(this, 'removeFormat')},
 			// 			React.createElement("i", {className: "fa fa-eraser"})
 			// 		)
-			// 	),
-      //
-			// 	React.createElement("div", React.__spread({
-			// 		ref: "editor",
-			// 		className: "form-control"},
-			// 		this.props,
-			// 		{contentEditable: "true",
-			// 		dangerouslySetInnerHTML: {__html: this.state.html},
-			// 		onInput: this.emitChange}))
-			// )
+			// 	)
 
 		);
   }

@@ -22,6 +22,13 @@ import Italic from './Italic';
 import Underline from './Underline';
 import StrikeThrough from './StrikeThrough';
 
+// lists styles
+import InsertOrderedList from './InsertOrderedList';
+import InsertUnorderedList from './InsertUnorderedList';
+
+// text align
+import JustifyLeft from './JustifyLeft';
+
 export {
   // paragraph style
   Paragraph,
@@ -48,5 +55,12 @@ export {
   Bold,
   Italic,
   Underline,
-  StrikeThrough
+  StrikeThrough,
+
+  // lists styles
+  InsertOrderedList,
+  InsertUnorderedList,
+
+  // text align
+  JustifyLeft
 };
