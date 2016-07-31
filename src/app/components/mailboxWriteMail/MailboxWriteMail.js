@@ -7,13 +7,14 @@ import Title                from './title/Title';
 import To                   from './to/To';
 import Subject              from './subject/Subject';
 import EditableDiv          from '../editableDiv/EditableDiv';
-import Chips                from '../chips/Chips';
 
 const editorStyle = {
   overflow: 'auto',
   height: 500,
   maxHeight: 1000
 };
+
+const mockDestinataires = ['test@test.test'];
 
 class MailboxWriteMail extends Component {
   constructor(props) {
@@ -46,23 +47,16 @@ class MailboxWriteMail extends Component {
             style={{marginTop: '10px'}}
             className="box-body no-padding">
 
-            <To />
-
-            <Chips
-              chips={['test']}
-              placeholder={'Ajouter un destinataire...'}
-              max={50}
-              maxlength={50}
-            />
+            <To destinataires={mockDestinataires} />
 
             <Subject />
-
 
             <div className="form-group">
               <EditableDiv
                 style={editorStyle}
                 content={content}
-                onChange={this.handleContentChange} />
+                onChange={this.handleContentChange}
+              />
             </div>
 
             <div className="form-group">
@@ -75,10 +69,18 @@ class MailboxWriteMail extends Component {
                   name="attachment"
                 />
               </div>
-              <p className="help-block">
+              <p
+                style={{
+                  display: 'block',
+                  marginTop: '5px',
+                  marginBottom: '10px',
+                  color: '#737373',
+                  fontSize: '11px'
+                }}>
                 Max. 4MB
               </p>
             </div>
+
           </div>
           {/* <!-- /.box-body --> */}
           <div className="box-footer">
