@@ -27,7 +27,8 @@ import {
   JustifyLeft,
   JustifyRight,
   JustifyCenter,
-  JustifyFull
+  JustifyFull,
+  RemoveFormat
 }                 from './commands';
 
 class EditableDiv extends Component {
@@ -286,6 +287,11 @@ class EditableDiv extends Component {
           </div>
           {/* text align group end */}
 
+          {/* remove format */}
+          <RemoveFormat
+            onClick={this.execCommand}
+          />
+          {/* remove format end */}
         </div>
         {/* toolbar end */}
         {/* editor */}
@@ -299,15 +305,6 @@ class EditableDiv extends Component {
         </div>
         {/* editor end */}
       </div>
-
-			// 		React.createElement("button", {
-			// 			type: "button",
-			// 			className: "btn btn-default btn-xs",
-			// 			onClick: this.execCommand.bind(this, 'removeFormat')},
-			// 			React.createElement("i", {className: "fa fa-eraser"})
-			// 		)
-			// 	)
-
 		);
   }
 

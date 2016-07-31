@@ -32,6 +32,9 @@ import JustifyRight from './JustifyRight';
 import JustifyCenter from './JustifyCenter';
 import JustifyFull from './JustifyFull';
 
+// erase format
+import RemoveFormat from './RemoveFormat';
+
 export {
   // paragraph style
   Paragraph,
@@ -68,5 +71,8 @@ export {
   JustifyLeft,
   JustifyRight,
   JustifyCenter,
-  JustifyFull
+  JustifyFull,
+
+  // erase format
+  RemoveFormat
 };
