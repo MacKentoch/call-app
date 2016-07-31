@@ -24,7 +24,10 @@ import {
   StrikeThrough,
   InsertOrderedList,
   InsertUnorderedList,
-  JustifyLeft
+  JustifyLeft,
+  JustifyRight,
+  JustifyCenter,
+  JustifyFull
 }                 from './commands';
 
 class EditableDiv extends Component {
@@ -261,6 +264,24 @@ class EditableDiv extends Component {
                   onClick={this.execCommand}
                 />
               </li>
+              <li>
+                <JustifyRight
+                  commandName={'aligner à droite'}
+                  onClick={this.execCommand}
+                />
+              </li>
+              <li>
+                <JustifyCenter
+                  commandName={'centrer'}
+                  onClick={this.execCommand}
+                />
+              </li>
+              <li>
+                <JustifyFull
+                  commandName={'justifier'}
+                  onClick={this.execCommand}
+                />
+              </li>
             </ul>
           </div>
           {/* text align group end */}
@@ -279,33 +300,6 @@ class EditableDiv extends Component {
         {/* editor end */}
       </div>
 
-			// React.createElement("div", null,
-			// 	React.createElement("div", {style: toolbarStyle},
-      //
-			// 		React.createElement("div", {className: "btn-group", style: buttonSpacing},
-			// 			React.createElement("button", {
-			// 				className: "btn btn-default btn-xs dropdown-toggle",
-			// 				type: "button",
-			// 				"data-toggle": "dropdown",
-			// 				"aria-expanded": "false"},
-			// 				React.createElement("i", {className: "fa fa-align-left"}), " ", React.createElement("i", {className: "fa fa-caret-down"})
-			// 			),
-			// 			React.createElement("ul", {className: "dropdown-menu", role: "menu"},
-			// 				React.createElement("li", null,
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'justifyLeft')}, "Align Left")
-			// 				),
-			// 				React.createElement("li", null,
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'justifyRight')}, "Align Right")
-			// 				),
-			// 				React.createElement("li", null,
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'justifyCenter')}, "Align Center")
-			// 				),
-			// 				React.createElement("li", null,
-			// 					React.createElement("a", {href: "javascript:;", onClick: this.execCommand.bind(this, 'justifyFull')}, "Align Justify")
-			// 				)
-			// 			)
-			// 		),
-      //
 			// 		React.createElement("button", {
 			// 			type: "button",
 			// 			className: "btn btn-default btn-xs",

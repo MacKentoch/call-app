@@ -28,6 +28,9 @@ import InsertUnorderedList from './InsertUnorderedList';
 
 // text align
 import JustifyLeft from './JustifyLeft';
+import JustifyRight from './JustifyRight';
+import JustifyCenter from './JustifyCenter';
+import JustifyFull from './JustifyFull';
 
 export {
   // paragraph style
@@ -62,5 +65,8 @@ export {
   InsertUnorderedList,
 
   // text align
-  JustifyLeft
+  JustifyLeft,
+  JustifyRight,
+  JustifyCenter,
+  JustifyFull
 };
