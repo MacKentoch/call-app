@@ -43,8 +43,7 @@ class RemoveFormat extends Component {
 }
 
 RemoveFormat.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  commandName:PropTypes.string.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 export default RemoveFormat;

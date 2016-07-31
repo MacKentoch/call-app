@@ -6,7 +6,7 @@ import shallowCompare       from 'react-addons-shallow-compare';
 import Title                from './title/Title';
 import To                   from './to/To';
 import Subject              from './subject/Subject';
-import EditableDiv          from '../editableDiv/EditableDiv';//'react-wysiwyg-editor';
+import EditableDiv          from '../editableDiv/EditableDiv';
 
 const editorStyle = {
   overflow: 'auto',
