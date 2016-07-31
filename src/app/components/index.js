@@ -13,6 +13,7 @@ import MailboxRepertoires from './mailboxRepertoires/MailboxRepertoires';
 import MailboxListMails from './mailboxListMails/MailboxListMails';
 import MailBoxNewEmailButton from './mailBoxNewEmailButton/MailBoxNewEmailButton';
 import MailboxConsultMail from './mailboxConsultMail/MailboxConsultMail';
+import MailboxWriteMail from './mailboxWriteMail/MailboxWriteMail';
 
 import {
   FichesTraitee,
@@ -45,6 +46,7 @@ export {
   MailBoxNewEmailButton,
   MailboxListMails,
   MailboxConsultMail,
+  MailboxWriteMail,
 
   // stats
   FichesTraitee,

@@ -12,9 +12,9 @@ const Title = () => {
       }}>
       <h2
         className="box-title">
-        <i className="fa fa-eye" aria-hidden="true"></i>
+        <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
         &nbsp;
-        Consulation Mail
+        Composer un nouveau message
       </h2>
     </div>
   );
