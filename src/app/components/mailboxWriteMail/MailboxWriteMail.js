@@ -7,6 +7,7 @@ import Title                from './title/Title';
 import To                   from './to/To';
 import Subject              from './subject/Subject';
 import EditableDiv          from '../editableDiv/EditableDiv';
+import Upload               from './upload/Upload';
 
 const editorStyle = {
   overflow: 'auto',
@@ -59,27 +60,7 @@ class MailboxWriteMail extends Component {
               />
             </div>
 
-            <div className="form-group">
-              <div className="btn btn-default btn-file">
-                <i className="fa fa-paperclip"></i>
-                &nbsp;
-                Pièces jointes
-                <input
-                  type="file"
-                  name="attachment"
-                />
-              </div>
-              <p
-                style={{
-                  display: 'block',
-                  marginTop: '5px',
-                  marginBottom: '10px',
-                  color: '#737373',
-                  fontSize: '11px'
-                }}>
-                Max. 4MB
-              </p>
-            </div>
+            <Upload />
 
           </div>
           {/* <!-- /.box-body --> */}

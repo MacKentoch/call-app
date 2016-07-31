@@ -12,9 +12,7 @@ const To = ({destinataires}) => {
         }}>
         A:
       </label>
-      <div
-        className=""
-        >
+      <div className="">
         <Chips
           chips={destinataires}
           placeholder={'Ajouter un destinataire...'}
