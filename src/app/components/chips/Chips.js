@@ -1,11 +1,10 @@
 import React, {
-  React,
   Component,
   PropTypes
 }                       from 'react';
 import update           from 'react-addons-update';
 import shallowCompare   from 'react-addons-shallow-compare';
-
+import Chip             from './chip/Chip';
 // USAGE  <Chips chips={['react', 'javascript', 'scss']} placeholder="Add a tag..." max="10" />
 
 class Chips extends Component {
@@ -20,8 +19,12 @@ class Chips extends Component {
         enter:     13
       },
       // only allow letters, numbers and spaces inbetween words
-      INVALID_CHARS: /[^a-zA-Z0-9 ]/g
+      INVALID_CHARS: /[^a-zA-Z0-9@.]/g
     };
+
+    this.onKeyDown = this.onKeyDown.bind(this);
+    this.clearInvalidChars = this.clearInvalidChars.bind(this);
+    this.handlesOnChipDelete = this.handlesOnChipDelete.bind(this);
   }
 
   componentDidMount() {
@@ -37,35 +40,32 @@ class Chips extends Component {
   }
 
   render() {
-    let chips = this.state.chips.map((chip, index) => {
-      return (
-        <span
-          className="chip"
-          key={index}>
-          <span className="chip-value">
-            {chip}
-          </span>
-          <button
-            type="button"
-            className="chip-delete-button"
-            onClick={this.deleteChip.bind(null, chip)}>
-            x
-          </button>
-        </span>
-      );
-    });
+    const { chips } = this.state;
+    const { max, placeholder } = this.props;
 
-    let placeholder = !this.props.max || chips.length < this.props.max ? this.props.placeholder : '';
+    const renderedPlaceholder = !max || chips.length < max ? placeholder : '';
 
     return (
       <div
         className="chips"
         onClick={this.focusInput}>
-        {chips}
+        {
+          chips.map(
+            (chip, index) => {
+              return (
+                <Chip
+                  key={index}
+                  chip={chip}
+                  deleteChip={this.handlesOnChipDelete}
+                />
+              );
+            }
+          )
+        }
         <input
           type="text"
           className="chips-input"
-          placeholder={placeholder}
+          placeholder={renderedPlaceholder}
           onKeyDown={this.onKeyDown}
           onKeyUp={this.clearInvalidChars}
         />
@@ -153,6 +153,9 @@ class Chips extends Component {
     }
   }
 
+  handlesOnChipDelete(chip) {
+    this.deleteChip(chip);
+  }
 }
 
 Chips.propTypes = {
@@ -170,8 +173,7 @@ Chips.propTypes = {
 
 Chips.defaultProps = {
   placeholder: 'Ajouter...',
-  maxlength:   10
+  maxlength:   50
 };
-
 
 export default Chips;

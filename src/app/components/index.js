@@ -14,6 +14,7 @@ import MailboxListMails from './mailboxListMails/MailboxListMails';
 import MailBoxNewEmailButton from './mailBoxNewEmailButton/MailBoxNewEmailButton';
 import MailboxConsultMail from './mailboxConsultMail/MailboxConsultMail';
 import MailboxWriteMail from './mailboxWriteMail/MailboxWriteMail';
+import Chips from './chips/Chips';
 
 import {
   FichesTraitee,
@@ -40,6 +41,7 @@ export {
   ListBoitesMails,
   Horloge,
   BackToTop,
+  Chips,
 
   // mailbox
   MailboxRepertoires,

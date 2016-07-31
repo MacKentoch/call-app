@@ -7,6 +7,7 @@ import Title                from './title/Title';
 import To                   from './to/To';
 import Subject              from './subject/Subject';
 import EditableDiv          from '../editableDiv/EditableDiv';
+import Chips                from '../chips/Chips';
 
 const editorStyle = {
   overflow: 'auto',
@@ -46,6 +47,13 @@ class MailboxWriteMail extends Component {
             className="box-body no-padding">
 
             <To />
+
+            <Chips
+              chips={['test']}
+              placeholder={'Ajouter un destinataire...'}
+              max={50}
+              maxlength={50}
+            />
 
             <Subject />
 
