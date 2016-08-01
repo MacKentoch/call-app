@@ -8,6 +8,8 @@ import To                   from './to/To';
 import Subject              from './subject/Subject';
 import EditableDiv          from '../editableDiv/EditableDiv';
 import Upload               from './upload/Upload';
+import Attachments          from './attachments/Attachments';
+
 
 const editorStyle = {
   overflow: 'auto',
@@ -15,6 +17,12 @@ const editorStyle = {
   maxHeight: 1000
 };
 
+const mockAttachments = [{
+  type: 'pdf',
+  filename: 'test',
+  filePath: './',
+  size: '238 octets'
+}];
 const mockDestinataires = ['test@test.test'];
 
 class MailboxWriteMail extends Component {
@@ -60,17 +68,37 @@ class MailboxWriteMail extends Component {
               />
             </div>
 
-            <Upload />
-
+            <Upload
+              onChange={(file)=>console.log('Upload file: ', file)}
+            />
+            <Attachments
+              attachments={mockAttachments}
+            />
           </div>
-          {/* <!-- /.box-body --> */}
+
           <div className="box-footer">
             <div className="pull-right">
-              <button type="submit" className="btn btn-primary"><i className="fa fa-envelope-o"></i> Envoyer</button>
+              <button
+                type="reset"
+                className="btn btn-default"
+                onClick={()=>console.log('Annuler envoi mail event')}>
+                <i className="fa fa-times"></i>
+                &nbsp;
+                Annuler
+              </button>
+
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={()=>console.log('Envoyer mail event')}>
+                <i className="fa fa-envelope-o"></i>
+                &nbsp;
+                Envoyer
+              </button>
             </div>
-            <button type="reset" className="btn btn-default"><i className="fa fa-times"></i> Annuler</button>
+
           </div>
-          {/* <!-- /.box-footer --> */}
+
         </div>
       </div>
     );
