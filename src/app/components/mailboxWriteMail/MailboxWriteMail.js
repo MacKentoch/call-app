@@ -9,7 +9,8 @@ import Subject              from './subject/Subject';
 import EditableDiv          from '../editableDiv/EditableDiv';
 import Upload               from './upload/Upload';
 import Attachments          from './attachments/Attachments';
-
+import ValidButton          from './validButton/ValidButton';
+import CancelButton         from './cancelButton/CancelButton';
 
 const editorStyle = {
   overflow: 'auto',
@@ -28,10 +29,9 @@ const mockDestinataires = ['test@test.test'];
 class MailboxWriteMail extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      content: ''
-    };
+
     this.handleContentChange = this.handleContentChange.bind(this);
+    this.handlesOnAttachmentsChanged = this.handlesOnAttachmentsChanged.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -39,8 +39,12 @@ class MailboxWriteMail extends Component {
   }
 
   render() {
-    const {  } = this.props;
-    const { content } = this.state;
+    const { destinataires,  onDestinatiresChanged } = this.props;
+    const { subject,  onSubjectChanged } = this.props;
+    const { content,  onContentChanged } = this.props;
+    const { attachments,  onAttachmentsChanged } = this.props;
+    const { onCancel, onSend } = this.props;
+
     return (
       <div className="panel">
       <div
@@ -55,11 +59,15 @@ class MailboxWriteMail extends Component {
           <div
             style={{marginTop: '10px'}}
             className="box-body no-padding">
-
-            <To destinataires={mockDestinataires} />
-
-            <Subject />
-
+            <To
+              destinataires={destinataires}
+              onDestinatiresChanged={onDestinatiresChanged}
+            />
+            <Subject
+              content={subject}
+              onChange={onSubjectChanged}
+            />
+            {/* mail body */}
             <div className="form-group">
               <EditableDiv
                 style={editorStyle}
@@ -67,50 +75,50 @@ class MailboxWriteMail extends Component {
                 onChange={this.handleContentChange}
               />
             </div>
-
+            {/* upload attachments */}
             <Upload
-              onChange={(file)=>console.log('Upload file: ', file)}
+              onChange={this.handlesOnAttachmentsChanged}
             />
+            {/* displays attachments */}
             <Attachments
-              attachments={mockAttachments}
+              attachments={attachments}
             />
           </div>
-
           <div className="box-footer">
             <div className="pull-right">
-              <button
-                type="reset"
-                className="btn btn-default"
-                onClick={()=>console.log('Annuler envoi mail event')}>
-                <i className="fa fa-times"></i>
-                &nbsp;
-                Annuler
-              </button>
-
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={()=>console.log('Envoyer mail event')}>
-                <i className="fa fa-envelope-o"></i>
-                &nbsp;
-                Envoyer
-              </button>
+              <CancelButton onClick={onCancel} />
+              <ValidButton onClick={onSend} />
             </div>
-
           </div>
-
         </div>
       </div>
     );
   }
 
   handleContentChange(event) {
-    this.setState({content: event.target.value});
+    const { onContentChanged } = this.props;
+    console.log('handleContentChange, text: ', file);
+    onContentChanged(event.target.value.trim());
+  }
+
+  handlesOnAttachmentsChanged(file) {
+    const { onAttachmentsChanged } = this.props;
+    console.log('handlesOnAttachmentsChanged, file: ', file);
+    onAttachmentsChanged(file);
   }
 }
 
 MailboxWriteMail.propTypes = {
-
+  destinataires: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onDestinatiresChanged: PropTypes.func.isRequired,
+  subject: PropTypes.string.isRequired,
+  onSubjectChanged: PropTypes.func.isRequired,
+  content: PropTypes.string.isRequired,
+  onContentChanged: PropTypes.func.isRequired,
+  attachments: PropTypes.array.isRequired,
+  onAttachmentsChanged: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onSend: PropTypes.func.isRequired
 };
 
 export default MailboxWriteMail;

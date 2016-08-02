@@ -40,7 +40,18 @@ class MailWriteNew extends Component {
         })}>
         {
           // (sentbox.length > 0 && !sentboxIsFetching) &&
-          <MailboxWriteMail />
+          <MailboxWriteMail
+            destinataires={[]}
+            onDestinatiresChanged={()=>console.log('onDestinatiresChanged event')}
+            subject={''}
+            onSubjectChanged={()=>console.log('onSubjectChanged event')}
+            content={''}
+            onContentChanged={()=>console.log('onBodyChanged event')}
+            attachments={[]}
+            onAttachmentsChanged={()=>console.log('onAttachmentsChanged event')}
+            onCancel={()=>console.log('onCancel should remove new mail state content')}
+            onSend={()=>console.log('onSend should post new mail state content then reset it')}
+          />
         }
         {
           // sentboxIsFetching &&
