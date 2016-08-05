@@ -22,20 +22,20 @@ export const REQUEST_SAVE_NEW_MAIL   = 'REQUEST_SAVE_NEW_MAIL';
 export const RECEIVED_SAVE_NEW_MAIL  = 'RECEIVED_SAVE_NEW_MAIL';
 export const ERROR_SAVE_NEW_MAIL     = 'ERROR_SAVE_NEW_MAIL';
  // cancel
- export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
+export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
 
 
 export const newMailAddDestinataire = (boiteMailId = 0, destinataire = '', destinataires = [], time = moment().format(formatDate)) => {
-  const destinataires = [...destinataires, destinataire];
+  const updatedDestinataires = [...destinataires, destinataire];
 
   return {
     type:       NEW_MAIL_ADD_DESTINATAIRE,
     boiteMailId,
-    destinataires,
+    destinataires: updatedDestinataires,
     time
   };
 };
-const newMailRemoveDestinataire = (boiteMailId = 0, destinataires = [], time = moment().format(formatDate)) => {
+const newMailRemoveDestinataire = (boiteMailId = 0, destinataire= '', destinataires = [], time = moment().format(formatDate)) => {
   const updatedDestinataires = destinataires.filter(
     dest => dest !== destinataire
   );
@@ -47,31 +47,31 @@ const newMailRemoveDestinataire = (boiteMailId = 0, destinataires = [], time = m
     time
   };
 };
-const
 
 
 
-
-const receivedMailContent = (mailId = 0, boiteMailId = 0, data, time = moment().format(formatDate)) => {
-  const mail = data.mail || {};
-  return {
-    type:       RECEIVED_MAIL_CONTENT,
-    isFetching: false,
-    mailId,
-    boiteMailId,
-    mail,
-    time
-  };
-};
-const errorMailContent = (mailId = 0, boiteMailId = 0, time = moment().format(formatDate)) => {
-  return {
-    type:       ERROR_MAIL_CONTENT,
-    isFetching: false,
-    mailId,
-    boiteMailId,
-    time
-  };
-};
+//
+//
+// const receivedMailContent = (mailId = 0, boiteMailId = 0, data, time = moment().format(formatDate)) => {
+//   const mail = data.mail || {};
+//   return {
+//     type:       RECEIVED_MAIL_CONTENT,
+//     isFetching: false,
+//     mailId,
+//     boiteMailId,
+//     mail,
+//     time
+//   };
+// };
+// const errorMailContent = (mailId = 0, boiteMailId = 0, time = moment().format(formatDate)) => {
+//   return {
+//     type:       ERROR_MAIL_CONTENT,
+//     isFetching: false,
+//     mailId,
+//     boiteMailId,
+//     time
+//   };
+// };
 const fetchMailContent = (mailId, boiteMailId) => dispatch => {
   if (!parseInt(mailId, 10)) {
     dispatch(errorMailContent(mailId, boiteMailId));
