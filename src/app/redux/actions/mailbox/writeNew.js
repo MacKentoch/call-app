@@ -49,9 +49,25 @@ const newMailRemoveDestinataire = (boiteMailId = 0, destinataire= '', destinatai
 };
 
 
+const newMailSubjectChange = (boiteMailId = 0, subject, destinataires = [], time = moment().format(formatDate)) => {
+  return {
+    type:       NEW_MAIL_SUBJECT_CHANGE,
+    boiteMailId,
+    subject,
+    time
+  };
+};
 
-//
-//
+const newMailBodyChange = (boiteMailId = 0, body, destinataires = [], time = moment().format(formatDate)) => {
+  return {
+    type:       NEW_MAIL_BODY_CHANGE,
+    boiteMailId,
+    body,
+    time
+  };
+};
+
+
 // const receivedMailContent = (mailId = 0, boiteMailId = 0, data, time = moment().format(formatDate)) => {
 //   const mail = data.mail || {};
 //   return {
