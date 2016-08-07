@@ -19,7 +19,7 @@ export const REMOVE_NEW_MAIL_ATTACHMENT = 'REMOVE_NEW_MAIL_ATTACHMENT';
 
 // post
 export const REQUEST_SAVE_NEW_MAIL   = 'REQUEST_SAVE_NEW_MAIL';
-export const RECEIVED_SAVE_NEW_MAIL  = 'RECEIVED_SAVE_NEW_MAIL';
+export const CONFIRMED_SAVE_NEW_MAIL = 'CONFIRMED_SAVE_NEW_MAIL';
 export const ERROR_SAVE_NEW_MAIL     = 'ERROR_SAVE_NEW_MAIL';
  // cancel
 export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
@@ -27,7 +27,6 @@ export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
 
 export const newMailAddDestinataire = (boiteMailId = 0, destinataire = '', destinataires = [], time = moment().format(formatDate)) => {
   const updatedDestinataires = [...destinataires, destinataire];
-
   return {
     type:       NEW_MAIL_ADD_DESTINATAIRE,
     boiteMailId,
@@ -35,7 +34,7 @@ export const newMailAddDestinataire = (boiteMailId = 0, destinataire = '', desti
     time
   };
 };
-const newMailRemoveDestinataire = (boiteMailId = 0, destinataire= '', destinataires = [], time = moment().format(formatDate)) => {
+export const newMailRemoveDestinataire = (boiteMailId = 0, destinataire= '', destinataires = [], time = moment().format(formatDate)) => {
   const updatedDestinataires = destinataires.filter(
     dest => dest !== destinataire
   );
@@ -49,7 +48,7 @@ const newMailRemoveDestinataire = (boiteMailId = 0, destinataire= '', destinatai
 };
 
 
-const newMailSubjectChange = (boiteMailId = 0, subject, destinataires = [], time = moment().format(formatDate)) => {
+export const newMailSubjectChange = (boiteMailId = 0, subject, destinataires = [], time = moment().format(formatDate)) => {
   return {
     type:       NEW_MAIL_SUBJECT_CHANGE,
     boiteMailId,
@@ -58,7 +57,7 @@ const newMailSubjectChange = (boiteMailId = 0, subject, destinataires = [], time
   };
 };
 
-const newMailBodyChange = (boiteMailId = 0, body, destinataires = [], time = moment().format(formatDate)) => {
+export const newMailBodyChange = (boiteMailId = 0, body, destinataires = [], time = moment().format(formatDate)) => {
   return {
     type:       NEW_MAIL_BODY_CHANGE,
     boiteMailId,
@@ -67,6 +66,34 @@ const newMailBodyChange = (boiteMailId = 0, body, destinataires = [], time = mom
   };
 };
 
+
+const requestSaveNewMail = (boiteMailId = 0, time = moment().format(formatDate)) => {
+  return {
+    type:       REQUEST_SAVE_NEW_MAIL,
+    isFetching: true,
+    boiteMailId,
+    saveNewMailDone: false,
+    time
+  };
+};
+const confirmedSaveNewMail = (boiteMailId = 0, time = moment().format(formatDate)) => {
+  return {
+    type:       CONFIRMED_SAVE_NEW_MAIL,
+    isFetching: false,
+    boiteMailId,
+    saveNewMailDone: true,
+    time
+  };
+};
+const errorSaveNewMail = (boiteMailId = 0, time = moment().format(formatDate)) => {
+  return {
+    type:       ERROR_SAVE_NEW_MAIL,
+    isFetching: false,
+    boiteMailId,
+    saveNewMailDone: false,
+    time
+  };
+};
 
 // const receivedMailContent = (mailId = 0, boiteMailId = 0, data, time = moment().format(formatDate)) => {
 //   const mail = data.mail || {};
