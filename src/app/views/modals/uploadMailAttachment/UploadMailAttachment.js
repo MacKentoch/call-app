@@ -4,9 +4,10 @@ import React, {
 }                         from 'react';
 import shallowCompare     from 'react-addons-shallow-compare';
 import {
-  Modal,
-  Button
+  Modal
 }                         from 'react-bootstrap';
+import ModalHeader        from './modalHeader/ModalHeader';
+import ModalFooter        from './modalFooter/ModalFooter';
 
 class UploadMailAttachment extends Component {
   constructor(props) {
@@ -28,12 +29,9 @@ class UploadMailAttachment extends Component {
           onHide={this.close}
           bsSize="large"
           aria-labelledby="contained-modal-title-lg">
-          <Modal.Header closeButton>
-            <Modal.Title
-              id="contained-modal-title-lg">
-              {title}
-            </Modal.Title>
-          </Modal.Header>
+          <ModalHeader
+            title={title}
+          />
           <Modal.Body>
             <h4>Wrapped Text</h4>
 
@@ -47,12 +45,9 @@ class UploadMailAttachment extends Component {
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
             <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
           </Modal.Body>
-          <Modal.Footer>
-            <Button
-              onClick={this.handlesOnClose}>
-              Fermer
-            </Button>
-          </Modal.Footer>
+          <ModalFooter
+            onCloseClick={this.handlesOnClose}
+          />
         </Modal>
       </div>
     );

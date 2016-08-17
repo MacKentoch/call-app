@@ -80,8 +80,12 @@ class App extends Component {
         </div>
         {/* modals cannot be placed anywhere (avoid backdrop or modal placement issues) so all grouped in same component and outside .wrapper*/}
         <Modals />
+        {/* modal upload pieces jointes mails */}
         <UploadMailAttachment
-
+          showModal={}
+          title={'Ajouter des pièces jointes'}
+          onAttachmentsChange={}
+          onClose={}
         />
       </div>
     );
