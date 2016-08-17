@@ -69,7 +69,8 @@ import {
 import {
   newMailDestinatairesChange,
   newMailSubjectChange,
-  newMailBodyChange
+  newMailBodyChange,
+  newMailCancel
 }                                 from './mailbox/writeNew';
 
 export {
@@ -119,5 +120,6 @@ export {
   fetchMailContentIfNeeded,
   newMailDestinatairesChange,
   newMailSubjectChange,
-  newMailBodyChange
+  newMailBodyChange,
+  newMailCancel
 };

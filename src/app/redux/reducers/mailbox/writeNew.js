@@ -1,7 +1,8 @@
 import {
   NEW_MAIL_DESTINATAIRE_CHANGE,
   NEW_MAIL_SUBJECT_CHANGE,
-  NEW_MAIL_BODY_CHANGE
+  NEW_MAIL_BODY_CHANGE,
+  CANCEL_NEW_MAIL
 } from '../../actions/mailbox/writeNew';
 
 const initialMailModel = {
@@ -50,6 +51,19 @@ const writeNewMailContent = (state = initialState, action) => {
       isFetching: false,
       time:       action.time,
       body:       action.body
+    };
+  case CANCEL_NEW_MAIL:
+    return {
+      ...state,
+      isFetching: false,
+      time:       action.time,
+      // reset mail content:
+      subject: initialMailModel.subject,
+      from: initialMailModel.from,
+      to: [...initialMailModel.to],
+      body: initialMailModel.body,
+      hasAttachments: initialMailModel.hasAttachments,
+      attachments: [...initialMailModel.attachments]
     };
   default:
     return state;

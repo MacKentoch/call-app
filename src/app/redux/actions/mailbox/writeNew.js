@@ -21,7 +21,7 @@ export const NEW_MAIL_BODY_CHANGE     = 'NEW_MAIL_BODY_CHANGE';
 // export const CONFIRMED_SAVE_NEW_MAIL = 'CONFIRMED_SAVE_NEW_MAIL';
 // export const ERROR_SAVE_NEW_MAIL     = 'ERROR_SAVE_NEW_MAIL';
 // cancel
-// export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
+export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
 
 
 export const newMailDestinatairesChange = (boiteMailId = 0, destinataires = [], time = moment().format(formatDate)) => {
@@ -51,6 +51,13 @@ export const newMailBodyChange = (boiteMailId = 0, body, time = moment().format(
   };
 };
 
+export const newMailCancel = (boiteMailId = 0, time = moment().format(formatDate)) => {
+  return {
+    type:       CANCEL_NEW_MAIL,
+    boiteMailId,
+    time
+  };
+};
 
 // const requestSaveNewMail = (boiteMailId = 0, time = moment().format(formatDate)) => {
 //   return {
