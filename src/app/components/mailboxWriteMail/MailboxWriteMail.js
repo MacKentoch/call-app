@@ -41,7 +41,7 @@ class MailboxWriteMail extends Component {
   render() {
     const { destinataires,  onDestinatairesChange } = this.props;
     const { subject,  onSubjectChanged } = this.props;
-    const { content,  onContentChanged } = this.props;
+    const { content } = this.props;
     const { attachments,  onAttachmentsChanged } = this.props;
     const { onCancel, onSend } = this.props;
 
