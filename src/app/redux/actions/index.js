@@ -70,7 +70,9 @@ import {
   newMailDestinatairesChange,
   newMailSubjectChange,
   newMailBodyChange,
-  newMailCancel
+  newMailCancel,
+  newMailAddAttachement,
+  newMailRemoveAttachement
 }
                                  from './mailbox/writeNew';
 // modals
@@ -129,6 +131,8 @@ export {
   newMailSubjectChange,
   newMailBodyChange,
   newMailCancel,
+  newMailAddAttachement,
+  newMailRemoveAttachement,
 
   // modals
   showUploadMailAttachmentsModal,

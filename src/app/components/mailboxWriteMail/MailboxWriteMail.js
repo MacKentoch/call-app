@@ -114,7 +114,8 @@ MailboxWriteMail.propTypes = {
   content: PropTypes.string.isRequired,
   onContentChanged: PropTypes.func.isRequired,
   attachments: PropTypes.array.isRequired,
-  onAttachmentsChanged: PropTypes.func.isRequired,
+  addAttachement: PropTypes.func.isRequired,
+  removeAttachement: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   onSend: PropTypes.func.isRequired
 };

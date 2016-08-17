@@ -26,7 +26,9 @@ const mapDispatchToProps = (dispatch) => {
         newMailDestinatairesChange: actions.newMailDestinatairesChange,
         newMailSubjectChange: actions.newMailSubjectChange,
         newMailBodyChange: actions.newMailBodyChange,
-        newMailCancel: actions.newMailCancel
+        newMailCancel: actions.newMailCancel,
+        newMailAddAttachement: actions.newMailAddAttachement,
+        newMailRemoveAttachement: actions.newMailRemoveAttachement
       },
       dispatch)
   };

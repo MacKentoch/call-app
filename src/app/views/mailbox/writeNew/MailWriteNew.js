@@ -36,6 +36,7 @@ class MailWriteNew extends Component {
   render() {
     const { animated } = this.state;
     const { subject, to, body, attachments } = this.props;
+    const { actions: { newMailAddAttachement, newMailRemoveAttachement } } = this.props;
 
     return(
       <div
@@ -46,12 +47,17 @@ class MailWriteNew extends Component {
         <MailboxWriteMail
           destinataires={to}
           onDestinatairesChange={this.handlesOnDestinatairesChange}
+          // mail subject
           subject={subject}
           onSubjectChanged={this.handlesOnSubjectChanged}
+          // mail body
           content={body}
           onContentChanged={this.handlesOnContentChanged}
+          // attachments
           attachments={attachments}
-          onAttachmentsChanged={()=>console.log('onAttachmentsChanged event')}
+          addAttachement={newMailAddAttachement}
+          removeAttachement={newMailRemoveAttachement}
+          // actions
           onCancel={this.handlesOnCancel}
           onSend={()=>console.log('onSend should post new mail state content then reset it')}
         />
@@ -107,7 +113,9 @@ MailWriteNew.propTypes = {
     newMailDestinatairesChange: PropTypes.func,
     newMailSubjectChange: PropTypes.func,
     newMailBodyChange: PropTypes.func,
-    newMailCancel: PropTypes.func
+    newMailCancel: PropTypes.func,
+    newMailAddAttachement: PropTypes.func,
+    newMailRemoveAttachement: PropTypes.func
   })
 };
 
