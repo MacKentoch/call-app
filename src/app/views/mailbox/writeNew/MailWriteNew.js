@@ -1,4 +1,5 @@
 import React, { PropTypes, Component }  from 'react';
+import {Router}                         from 'react-router';
 import moment                           from 'moment';
 // import { appConfig }                    from '../../../config';
 import cx                               from 'classnames';
@@ -10,8 +11,8 @@ moment.locale('fr');
 // const formatDate = appConfig.formatDate.defaut;
 
 class MailWriteNew extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
       animated: true
@@ -20,6 +21,7 @@ class MailWriteNew extends Component {
     this.handlesOnDestinatairesChange = this.handlesOnDestinatairesChange.bind(this);
     this.handlesOnSubjectChanged = this.handlesOnSubjectChanged.bind(this);
     this.handlesOnContentChanged = this.handlesOnContentChanged.bind(this);
+    this.handlesOnCancel = this.handlesOnCancel.bind(this);
   }
 
   componentDidMount() {
@@ -51,7 +53,7 @@ class MailWriteNew extends Component {
           onContentChanged={this.handlesOnContentChanged}
           attachments={attachments}
           onAttachmentsChanged={()=>console.log('onAttachmentsChanged event')}
-          onCancel={()=>console.log('onCancel should remove new mail state content')}
+          onCancel={this.handlesOnCancel}
           onSend={()=>console.log('onSend should post new mail state content then reset it')}
         />
       </div>
@@ -75,12 +77,22 @@ class MailWriteNew extends Component {
     const { actions: { newMailBodyChange } } = this.props;
     newMailBodyChange(mailboxId, emailBody);
   }
+
+  handlesOnCancel() {
+    const { router } = this.context;
+    const { params: { mailboxId } } = this.props;
+    const { actions: {newMailCancel} } = this.props;
+    newMailCancel(mailboxId);
+    // react-router v2.0.0+ && < v2.4.0+
+    router.goBack();
+  }
 }
 
 MailWriteNew.propTypes = {
   // react router
   params: PropTypes.object,
   location: PropTypes.object,
+  history: PropTypes.object,
   // mail content:
   subject: PropTypes.string.isRequired,
   from: PropTypes.string.isRequired,
@@ -95,8 +107,13 @@ MailWriteNew.propTypes = {
     // write mail actions:
     newMailDestinatairesChange: PropTypes.func,
     newMailSubjectChange: PropTypes.func,
-    newMailBodyChange: PropTypes.func
+    newMailBodyChange: PropTypes.func,
+    newMailCancel: PropTypes.func
   })
+};
+
+MailWriteNew.contextTypes = {
+  router: React.PropTypes.object.isRequired
 };
 
 export default MailWriteNew;

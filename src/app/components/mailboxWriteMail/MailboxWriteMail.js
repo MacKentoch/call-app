@@ -27,8 +27,8 @@ const mockAttachments = [{
 const mockDestinataires = ['test@test.test'];
 
 class MailboxWriteMail extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.handleContentChange = this.handleContentChange.bind(this);
     this.handlesOnAttachmentsChanged = this.handlesOnAttachmentsChanged.bind(this);
