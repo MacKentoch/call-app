@@ -30,12 +30,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.fetchUserInfoDataIfNeeded();
-    this.props.actions.initSideMenu(); // sideMenu collapse or not from localStorage value (default is opened)
+    const { actions: { fetchUserInfoDataIfNeeded, initSideMenu } } = this.props;
+    fetchUserInfoDataIfNeeded();
+    initSideMenu(); // sideMenu collapse or not from localStorage value (default is opened)
   }
 
   render() {
     const { appName, connectionStatus, helloWord } = this.state;
+    const { uploadMailAttachmentsModalOpened } = this.props;
     const { userInfos, userInfoFetching, userIsConnected, currentView, children, sideMenuIsCollapsed } = this.props;
     const userFullName = `${userInfos.firstname} ${userInfos.lastname.toUpperCase()}`;
     return (
@@ -82,10 +84,10 @@ class App extends Component {
         <Modals />
         {/* modal upload pieces jointes mails */}
         <UploadMailAttachment
-          showModal={}
+          showModal={uploadMailAttachmentsModalOpened}
           title={'Ajouter des pièces jointes'}
-          onAttachmentsChange={}
-          onClose={}
+          onAttachmentsChange={(evt)=>console.log('UploadMailAttachment onAttachmentsChange event to dev')}
+          onClose={(evt)=>console.log('UploadMailAttachment onClose event to dev')}
         />
       </div>
     );
@@ -93,26 +95,33 @@ class App extends Component {
 
   handlesMenuButtonClick(event) {
     event.preventDefault();
+
+    // no need just for modal test
+    // this.props.actions.showUploadMailAttachmentsModal();
+
     const {location} = this.props;
-
-    this.props.actions.toggleSideMenu();
-
+    const { actions: { toggleSideMenu } } = this.props;
+    toggleSideMenu();
     // refresh stats (to get responsive charts) if current view is Home
     if (location.pathname === '/') {
-      this.props.actions.fetchFichesTraiteeDataIfNeeded();
-      this.props.actions.fetchFichesParCanalDataIfNeeded();
-      this.props.actions.fetchPrincipauxMotifsDataIfNeeded();
+      const { actions: { fetchFichesTraiteeDataIfNeeded, fetchFichesParCanalDataIfNeeded, fetchPrincipauxMotifsDataIfNeeded } } = this.props;
+      fetchFichesTraiteeDataIfNeeded();
+      fetchFichesParCanalDataIfNeeded();
+      fetchPrincipauxMotifsDataIfNeeded();
     }
   }
 }
 
 App.propTypes = {
+  // redux
   dispatch:   PropTypes.func,
+  // router
   children:   PropTypes.node.isRequired,
   history:    PropTypes.object,
   location:   PropTypes.object,
-
+  // sidemenu
   sideMenuIsCollapsed: PropTypes.bool,
+  // user
   userInfos: PropTypes.shape({
     login: PropTypes.string,
     firstname: PropTypes.string,
@@ -122,29 +131,44 @@ App.propTypes = {
   }),
   userInfoFetching: PropTypes.bool,
   userIsConnected: PropTypes.bool,
+  // currentView
   currentView: PropTypes.string,
-
+  // modals
+  uploadMailAttachmentsModalOpened: PropTypes.bool.isRequired,
+  // actions
   actions: PropTypes.shape({
+    // view
     enterHome: PropTypes.func,
     leaveHome: PropTypes.func,
+    // user
     fetchUserInfoDataIfNeeded: PropTypes.func,
+    // stats
     fetchFichesTraiteeDataIfNeeded: PropTypes.func,
     fetchFichesParCanalDataIfNeeded: PropTypes.func,
     fetchPrincipauxMotifsDataIfNeeded: PropTypes.func,
+    // sideMenu
     openSideMenu:   PropTypes.func,
     closeSideMenu:  PropTypes.func,
     toggleSideMenu: PropTypes.func,
-    initSideMenu:   PropTypes.func
+    initSideMenu:   PropTypes.func,
+    // modals
+    showUploadMailAttachmentsModal: PropTypes.func,
+    hideUploadMailAttachmentsModal: PropTypes.func
   })
 };
 
 const mapStateToProps = (state) => {
   return {
+    // currentView
     currentView:          state.views.currentView,
+    // sideMenu
     sideMenuIsCollapsed:  state.sideMenu.isCollapsed,
+    // user
     userInfos:            state.userInfos.data,
     userInfoFetching:     state.userInfos.isFetching,
-    userIsConnected:      state.userInfos.isConnected
+    userIsConnected:      state.userInfos.isConnected,
+    // modal
+    uploadMailAttachmentsModalOpened: state.uploadMailAttachmentsModal.isOpened
   };
 };
 

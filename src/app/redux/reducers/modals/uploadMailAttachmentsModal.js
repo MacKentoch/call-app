@@ -1,7 +1,7 @@
 import {
   SHOW_UPLOAD_ATTACHMENT_MODAL,
   HIDE_UPLOAD_ATTACHMENT_MODAL
-}                                 from '../../actions/modal/uploadMailAttachments';
+}                                 from '../../actions/modals/uploadMailAttachmentsModal';
 
 const initialState = {
   isOpened:  false,
