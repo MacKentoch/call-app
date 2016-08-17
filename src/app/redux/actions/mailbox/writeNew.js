@@ -7,8 +7,7 @@ import {
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
-export const NEW_MAIL_ADD_DESTINATAIRE    = 'NEW_MAIL_ADD_DESTINATAIRE';
-export const NEW_MAIL_REMOVE_DESTINATAIRE = 'NEW_MAIL_REMOVE_DESTINATAIRE';
+export const NEW_MAIL_DESTINATAIRE_CHANGE = 'NEW_MAIL_DESTINATAIRE_CHANGE';
 
 export const NEW_MAIL_SUBJECT_CHANGE = 'NEW_MAIL_SUBJECT_CHANGE';
 
@@ -25,28 +24,14 @@ export const NEW_MAIL_BODY_CHANGE     = 'NEW_MAIL_BODY_CHANGE';
 // export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
 
 
-export const newMailAddDestinataire = (boiteMailId = 0, destinataire = '', destinataires = [], time = moment().format(formatDate)) => {
-  const updatedDestinataires = [...destinataires, destinataire];
+export const newMailDestinatairesChange = (boiteMailId = 0, destinataires = [], time = moment().format(formatDate)) => {
   return {
-    type:       NEW_MAIL_ADD_DESTINATAIRE,
+    type:       NEW_MAIL_DESTINATAIRE_CHANGE,
     boiteMailId,
-    destinataires: updatedDestinataires,
+    destinataires,
     time
   };
 };
-export const newMailRemoveDestinataire = (boiteMailId = 0, destinataire = '', destinataires = [], time = moment().format(formatDate)) => {
-  const updatedDestinataires = destinataires.filter(
-    dest => dest !== destinataire
-  );
-
-  return {
-    type:       NEW_MAIL_REMOVE_DESTINATAIRE,
-    boiteMailId,
-    destinataires: updatedDestinataires,
-    time
-  };
-};
-
 
 export const newMailSubjectChange = (boiteMailId = 0, subject,  time = moment().format(formatDate)) => {
   return {

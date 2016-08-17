@@ -1,6 +1,5 @@
 import {
-  NEW_MAIL_ADD_DESTINATAIRE,
-  NEW_MAIL_REMOVE_DESTINATAIRE,
+  NEW_MAIL_DESTINATAIRE_CHANGE,
   NEW_MAIL_SUBJECT_CHANGE,
   NEW_MAIL_BODY_CHANGE
 } from '../../actions/mailbox/writeNew';
@@ -31,14 +30,7 @@ const initialState = {
 
 const writeNewMailContent = (state = initialState, action) => {
   switch (action.type) {
-  case NEW_MAIL_ADD_DESTINATAIRE:
-    return {
-      ...state,
-      isFetching: false,
-      time:       action.time,
-      to:         [...action.destinataires]
-    };
-  case NEW_MAIL_REMOVE_DESTINATAIRE:
+  case NEW_MAIL_DESTINATAIRE_CHANGE:
     return {
       ...state,
       isFetching: false,

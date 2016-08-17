@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Chips                from '../../chips/Chips';
 
-const To = ({destinataires}) => {
+const To = ({destinataires, onDestinatairesChange}) => {
   return (
     <div className="form-group">
       <label
@@ -15,6 +15,7 @@ const To = ({destinataires}) => {
       <div className="">
         <Chips
           chips={destinataires}
+          onChipsChange={onDestinatairesChange}
           placeholder={'Ajouter un destinataire...'}
           max={50}
           maxlength={50}
@@ -25,7 +26,8 @@ const To = ({destinataires}) => {
 };
 
 To.propTypes = {
-  destinataires: PropTypes.arrayOf(PropTypes.string)
+  destinataires: PropTypes.arrayOf(PropTypes.string),
+  onDestinatairesChange: PropTypes.func.isRequired
 };
 
 export default To;

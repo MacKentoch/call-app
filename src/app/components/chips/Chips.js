@@ -117,31 +117,41 @@ class Chips extends Component {
       const chip = value.trim().toLowerCase();
 
       if (chip && this.state.chips.indexOf(chip) < 0) {
+        const { onChipsChange } = this.props;
+        const updatedChips = update(
+          this.state.chips,
+          {
+            $push: [chip]
+          }
+        );
         this.setState({
-          chips: update(
-            this.state.chips,
-            {
-              $push: [chip]
-            }
-          )
+          chips: updatedChips
         });
+        if (onChipsChange) {
+          onChipsChange(updatedChips);
+        }
       }
     }
     event.target.value = '';
   }
 
   deleteChip(chip) {
+    const { onChipsChange } = this.props;
     const index = this.state.chips.indexOf(chip);
 
     if (index >= 0) {
+      const updatedChips = update(
+        this.state.chips,
+        {
+          $splice: [[index, 1]]
+        }
+      );
       this.setState({
-        chips: update(
-          this.state.chips,
-          {
-            $splice: [[index, 1]]
-          }
-        )
+        chips: updatedChips
       });
+      if (onChipsChange) {
+        onChipsChange(updatedChips);
+      }
     }
   }
 
@@ -160,6 +170,7 @@ class Chips extends Component {
 
 Chips.propTypes = {
   chips: PropTypes.array,
+  onChipsChange: PropTypes.func,
   max:   PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string

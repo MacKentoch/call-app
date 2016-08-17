@@ -39,7 +39,7 @@ class MailboxWriteMail extends Component {
   }
 
   render() {
-    const { destinataires,  onDestinatiresChanged } = this.props;
+    const { destinataires,  onDestinatairesChange } = this.props;
     const { subject,  onSubjectChanged } = this.props;
     const { content,  onContentChanged } = this.props;
     const { attachments,  onAttachmentsChanged } = this.props;
@@ -61,7 +61,7 @@ class MailboxWriteMail extends Component {
             className="box-body no-padding">
             <To
               destinataires={destinataires}
-              onDestinatiresChanged={onDestinatiresChanged}
+              onDestinatairesChange={onDestinatairesChange}
             />
             <Subject
               value={subject}
@@ -109,7 +109,7 @@ class MailboxWriteMail extends Component {
 
 MailboxWriteMail.propTypes = {
   destinataires: PropTypes.array.isRequired,
-  onDestinatiresChanged: PropTypes.func.isRequired,
+  onDestinatairesChange: PropTypes.func.isRequired,
   subject: PropTypes.string.isRequired,
   onSubjectChanged: PropTypes.func.isRequired,
   content: PropTypes.string.isRequired,

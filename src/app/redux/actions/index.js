@@ -67,8 +67,7 @@ import {
   initSideMenu
 }                                 from './ui/sideMenu';
 import {
-  newMailAddDestinataire,
-  newMailRemoveDestinataire,
+  newMailDestinatairesChange,
   newMailSubjectChange,
   newMailBodyChange
 }                                 from './mailbox/writeNew';
@@ -118,8 +117,7 @@ export {
   fetchInboxContentIfNeeded,
   fetchSentboxContentIfNeeded,
   fetchMailContentIfNeeded,
-  newMailAddDestinataire,
-  newMailRemoveDestinataire,
+  newMailDestinatairesChange,
   newMailSubjectChange,
   newMailBodyChange
 };

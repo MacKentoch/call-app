@@ -17,6 +17,7 @@ class MailWriteNew extends Component {
       animated: true
     };
 
+    this.handlesOnDestinatairesChange = this.handlesOnDestinatairesChange.bind(this);
     this.handlesOnSubjectChanged = this.handlesOnSubjectChanged.bind(this);
     this.handlesOnContentChanged = this.handlesOnContentChanged.bind(this);
   }
@@ -43,7 +44,7 @@ class MailWriteNew extends Component {
         })}>
         <MailboxWriteMail
           destinataires={to}
-          onDestinatiresChanged={()=>console.log('onDestinatiresChanged event')}
+          onDestinatairesChange={this.handlesOnDestinatairesChange}
           subject={subject}
           onSubjectChanged={this.handlesOnSubjectChanged}
           content={body}
@@ -55,6 +56,12 @@ class MailWriteNew extends Component {
         />
       </div>
     );
+  }
+
+  handlesOnDestinatairesChange(destinataires) {
+    const { params: { mailboxId } } = this.props;
+    const { actions: { newMailDestinatairesChange } } = this.props;
+    newMailDestinatairesChange(mailboxId, destinataires);
   }
 
   handlesOnSubjectChanged(subject) {
@@ -86,8 +93,7 @@ MailWriteNew.propTypes = {
     enterMailboxWriteNew: PropTypes.func,
     leaveMailboxWriteNew: PropTypes.func,
     // write mail actions:
-    newMailAddDestinataire: PropTypes.func,
-    newMailRemoveDestinataire: PropTypes.func,
+    newMailDestinatairesChange: PropTypes.func,
     newMailSubjectChange: PropTypes.func,
     newMailBodyChange: PropTypes.func
   })

@@ -23,8 +23,7 @@ const mapDispatchToProps = (dispatch) => {
         enterMailboxWriteNew: actions.enterMailboxWriteNew,
         leaveMailboxWriteNew: actions.leaveMailboxWriteNew,
         // write new mail actions:
-        newMailAddDestinataire: actions.newMailAddDestinataire,
-        newMailRemoveDestinataire: actions.newMailRemoveDestinataire,
+        newMailDestinatairesChange: actions.newMailDestinatairesChange,
         newMailSubjectChange: actions.newMailSubjectChange,
         newMailBodyChange: actions.newMailBodyChange
       },
