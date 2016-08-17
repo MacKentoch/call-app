@@ -40,6 +40,7 @@ class App extends Component {
     const { uploadMailAttachmentsModalOpened } = this.props;
     const { userInfos, userInfoFetching, userIsConnected, currentView, children, sideMenuIsCollapsed } = this.props;
     const userFullName = `${userInfos.firstname} ${userInfos.lastname.toUpperCase()}`;
+
     return (
       <div>
         <Header
@@ -95,10 +96,6 @@ class App extends Component {
 
   handlesMenuButtonClick(event) {
     event.preventDefault();
-
-    // no need just for modal test
-    // this.props.actions.showUploadMailAttachmentsModal();
-
     const {location} = this.props;
     const { actions: { toggleSideMenu } } = this.props;
     toggleSideMenu();

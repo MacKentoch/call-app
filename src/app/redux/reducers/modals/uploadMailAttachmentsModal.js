@@ -1,6 +1,6 @@
 import {
-  SHOW_UPLOAD_ATTACHMENT_MODAL,
-  HIDE_UPLOAD_ATTACHMENT_MODAL
+  SHOW_UPLOAD_MAIL_ATTACHMENT_MODAL,
+  HIDE_UPLOAD_MAIL_ATTACHMENT_MODAL
 }                                 from '../../actions/modals/uploadMailAttachmentsModal';
 
 const initialState = {
@@ -10,13 +10,13 @@ const initialState = {
 
 const uploadMailAttachmentsModal = (state = initialState, action) => {
   switch (action.type) {
-  case SHOW_UPLOAD_ATTACHMENT_MODAL:
+  case SHOW_UPLOAD_MAIL_ATTACHMENT_MODAL:
     return {
       ...state,
       isOpened:   true,
       time:       action.time
     };
-  case HIDE_UPLOAD_ATTACHMENT_MODAL:
+  case HIDE_UPLOAD_MAIL_ATTACHMENT_MODAL:
     return {
       ...state,
       isOpened:   false,
