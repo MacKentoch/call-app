@@ -5,7 +5,7 @@ import {
   NEW_MAIL_BODY_CHANGE
 } from '../../actions/mailbox/writeNew';
 
-const initialMailModel= {
+const initialMailModel = {
   subject: '',
   from: '',
   to: [],

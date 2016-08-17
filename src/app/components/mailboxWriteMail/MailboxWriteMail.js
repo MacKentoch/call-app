@@ -108,7 +108,7 @@ class MailboxWriteMail extends Component {
 }
 
 MailboxWriteMail.propTypes = {
-  destinataires: PropTypes.arrayOf(PropTypes.string).isRequired,
+  destinataires: PropTypes.array.isRequired,
   onDestinatiresChanged: PropTypes.func.isRequired,
   subject: PropTypes.string.isRequired,
   onSubjectChanged: PropTypes.func.isRequired,

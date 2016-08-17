@@ -57,7 +57,7 @@ export const newMailSubjectChange = (boiteMailId = 0, subject, destinataires = [
   };
 };
 
-export const newMailBodyChange = (boiteMailId = 0, body, destinataires = [], time = moment().format(formatDate)) => {
+export const newMailBodyChange = (boiteMailId = 0, body, time = moment().format(formatDate)) => {
   return {
     type:       NEW_MAIL_BODY_CHANGE,
     boiteMailId,

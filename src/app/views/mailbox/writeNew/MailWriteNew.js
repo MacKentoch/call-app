@@ -34,6 +34,8 @@ class MailWriteNew extends Component {
 
   render() {
     const { animated } = this.state;
+    const { subject, from, to, body, hasAttachments, attachments } = this.props;
+
     return(
       <div
         className={cx({
@@ -43,13 +45,13 @@ class MailWriteNew extends Component {
         {
           // (sentbox.length > 0 && !sentboxIsFetching) &&
           <MailboxWriteMail
-            destinataires={[]}
+            destinataires={to}
             onDestinatiresChanged={()=>console.log('onDestinatiresChanged event')}
-            subject={''}
+            subject={subject}
             onSubjectChanged={()=>console.log('onSubjectChanged event')}
-            content={''}
+            content={body}
             onContentChanged={this.handlesOnContentChanged}
-            attachments={[]}
+            attachments={attachments}
             onAttachmentsChanged={()=>console.log('onAttachmentsChanged event')}
             onCancel={()=>console.log('onCancel should remove new mail state content')}
             onSend={()=>console.log('onSend should post new mail state content then reset it')}
@@ -71,36 +73,32 @@ class MailWriteNew extends Component {
   }
 
   handlesOnContentChanged(emailBody) {
-    console.log('handlesOnContentChanged, emailBody:', emailBody);
-    // action to save emailBody
-    // so will update content prop and update EditableDiv content
+    const { params: { mailboxId } } = this.props;
+    const { actions: { newMailBodyChange } } = this.props;
+    newMailBodyChange(mailboxId, emailBody);
   }
 }
 
 MailWriteNew.propTypes = {
-  params: PropTypes.object, // react router
-  location: PropTypes.object,  // react router
-
-  mail: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    receptionDate: PropTypes.string.isRequired,
-    notRead: PropTypes.bool.isRequired,
-    subject: PropTypes.string.isRequired,
-    from: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired
-    }).isRequired,
-    to: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired
-    }).isRequired,
-    body: PropTypes.string.isRequired,
-    selected: PropTypes.bool.isRequired
-  }),
-
+  // react router
+  params: PropTypes.object,
+  location: PropTypes.object,
+  // mail content:
+  subject: PropTypes.string.isRequired,
+  from: PropTypes.string.isRequired,
+  to: PropTypes.array.isRequired,
+  body: PropTypes.string.isRequired,
+  hasAttachments: PropTypes.bool.isRequired,
+  attachments: PropTypes.array.isRequired,
+  // actions:
   actions: PropTypes.shape({
     enterMailboxWriteNew: PropTypes.func,
-    leaveMailboxWriteNew: PropTypes.func
+    leaveMailboxWriteNew: PropTypes.func,
+    // write mail actions:
+    newMailAddDestinataire: PropTypes.func,
+    newMailRemoveDestinataire: PropTypes.func,
+    newMailSubjectChange: PropTypes.func,
+    newMailBodyChange: PropTypes.func
   })
 };
 

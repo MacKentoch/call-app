@@ -5,7 +5,14 @@ import { MailWriteNew }          from '../../../views';
 
 const mapStateToProps = (state) => {
   return {
-    currentView:  state.views.currentView
+    currentView:  state.views.currentView,
+    // mail content:
+    subject: state.writeNewMailContent.subject,
+    from: state.writeNewMailContent.from,
+    to: state.writeNewMailContent.to,
+    body: state.writeNewMailContent.body,
+    hasAttachments: state.writeNewMailContent.hasAttachments,
+    attachments: state.writeNewMailContent.attachments
   };
 };
 
@@ -14,7 +21,12 @@ const mapDispatchToProps = (dispatch) => {
     actions : bindActionCreators(
       {
         enterMailboxWriteNew: actions.enterMailboxWriteNew,
-        leaveMailboxWriteNew: actions.leaveMailboxWriteNew
+        leaveMailboxWriteNew: actions.leaveMailboxWriteNew,
+        // write new mail actions:
+        newMailAddDestinataire: actions.newMailAddDestinataire,
+        newMailRemoveDestinataire: actions.newMailRemoveDestinataire,
+        newMailSubjectChange: actions.newMailSubjectChange,
+        newMailBodyChange: actions.newMailBodyChange
       },
       dispatch)
   };
