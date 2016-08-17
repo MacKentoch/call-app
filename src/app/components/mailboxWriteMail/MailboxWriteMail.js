@@ -64,7 +64,7 @@ class MailboxWriteMail extends Component {
               onDestinatiresChanged={onDestinatiresChanged}
             />
             <Subject
-              content={subject}
+              value={subject}
               onChange={onSubjectChanged}
             />
             {/* mail body */}

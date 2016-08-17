@@ -48,7 +48,7 @@ export const newMailRemoveDestinataire = (boiteMailId = 0, destinataire = '', de
 };
 
 
-export const newMailSubjectChange = (boiteMailId = 0, subject, destinataires = [], time = moment().format(formatDate)) => {
+export const newMailSubjectChange = (boiteMailId = 0, subject,  time = moment().format(formatDate)) => {
   return {
     type:       NEW_MAIL_SUBJECT_CHANGE,
     boiteMailId,

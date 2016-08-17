@@ -3,12 +3,10 @@ import moment                           from 'moment';
 // import { appConfig }                    from '../../../config';
 import cx                               from 'classnames';
 import {
-  MailboxWriteMail,
-  IsFetching
+  MailboxWriteMail
 }                                       from '../../../components';
 
 moment.locale('fr');
-
 // const formatDate = appConfig.formatDate.defaut;
 
 class MailWriteNew extends Component {
@@ -19,6 +17,7 @@ class MailWriteNew extends Component {
       animated: true
     };
 
+    this.handlesOnSubjectChanged = this.handlesOnSubjectChanged.bind(this);
     this.handlesOnContentChanged = this.handlesOnContentChanged.bind(this);
   }
 
@@ -34,7 +33,7 @@ class MailWriteNew extends Component {
 
   render() {
     const { animated } = this.state;
-    const { subject, from, to, body, hasAttachments, attachments } = this.props;
+    const { subject, to, body, attachments } = this.props;
 
     return(
       <div
@@ -42,34 +41,26 @@ class MailWriteNew extends Component {
           'animated': animated,
           'fadeIn': animated
         })}>
-        {
-          // (sentbox.length > 0 && !sentboxIsFetching) &&
-          <MailboxWriteMail
-            destinataires={to}
-            onDestinatiresChanged={()=>console.log('onDestinatiresChanged event')}
-            subject={subject}
-            onSubjectChanged={()=>console.log('onSubjectChanged event')}
-            content={body}
-            onContentChanged={this.handlesOnContentChanged}
-            attachments={attachments}
-            onAttachmentsChanged={()=>console.log('onAttachmentsChanged event')}
-            onCancel={()=>console.log('onCancel should remove new mail state content')}
-            onSend={()=>console.log('onSend should post new mail state content then reset it')}
-          />
-        }
-        {
-          // sentboxIsFetching &&
-          // <div>
-          //   <p className="text-center">
-          //     <i style={{color: '#4A4A4A'}}>
-          //       Chargement...
-          //     </i>
-          //   </p>
-          //   <IsFetching />
-          // </div>
-        }
+        <MailboxWriteMail
+          destinataires={to}
+          onDestinatiresChanged={()=>console.log('onDestinatiresChanged event')}
+          subject={subject}
+          onSubjectChanged={this.handlesOnSubjectChanged}
+          content={body}
+          onContentChanged={this.handlesOnContentChanged}
+          attachments={attachments}
+          onAttachmentsChanged={()=>console.log('onAttachmentsChanged event')}
+          onCancel={()=>console.log('onCancel should remove new mail state content')}
+          onSend={()=>console.log('onSend should post new mail state content then reset it')}
+        />
       </div>
     );
+  }
+
+  handlesOnSubjectChanged(subject) {
+    const { params: { mailboxId } } = this.props;
+    const { actions: { newMailSubjectChange } } = this.props;
+    newMailSubjectChange(mailboxId, subject);
   }
 
   handlesOnContentChanged(emailBody) {
