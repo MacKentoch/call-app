@@ -13,8 +13,9 @@ export const NEW_MAIL_SUBJECT_CHANGE = 'NEW_MAIL_SUBJECT_CHANGE';
 
 export const NEW_MAIL_BODY_CHANGE     = 'NEW_MAIL_BODY_CHANGE';
 
-// export const ADD_NEW_MAIL_ATTACHMENT    = 'ADD_NEW_MAIL_ATTACHMENT';
-// export const REMOVE_NEW_MAIL_ATTACHMENT = 'REMOVE_NEW_MAIL_ATTACHMENT';
+export const NEW_MAIL_UPDATE_ATTACHMENT_LIST  = 'NEW_MAIL_UPDATE_ATTACHMENT_LIST';
+export const NEW_MAIL_ADD_ATTACHMENT          = 'NEW_MAIL_ADD_ATTACHMENT';
+export const NEW_MAIL_REMOVE_ATTACHMENT       = 'NEW_MAIL_REMOVE_ATTACHMENT';
 
 // post
 // export const REQUEST_SAVE_NEW_MAIL   = 'REQUEST_SAVE_NEW_MAIL';
@@ -58,6 +59,62 @@ export const newMailCancel = (boiteMailId = 0, time = moment().format(formatDate
     time
   };
 };
+
+const newMailUpdateAttachementsList = (boiteMailId = 0, attachments = [], time = moment().format(formatDate)) => {
+  return {
+    type:       NEW_MAIL_UPDATE_ATTACHMENT_LIST,
+    boiteMailId,
+    attachments,
+    hasAttachments: attachments.length,
+    time
+  };
+};
+const addAttachement = (boiteMailId = 0, attachment = null, time = moment().format(formatDate)) => {
+  return {
+    type: NEW_MAIL_ADD_ATTACHMENT,
+    attachment,
+    boiteMailId,
+    time
+  };
+};
+export const newMailAddAttachement = (boiteMailId = 0, attachment = null) => {
+  return (dispatch, getState) => {
+    dispatch(addAttachement(boiteMailId, attachment));
+
+    if (attachment && hasFileNameProp(attachment)) {
+      const state = getState();
+      const { writeNewMailContent: { attachments } } = state;
+      dispatch(newMailUpdateAttachementsList(boiteMailId, [...attachments, attachment]));
+    }
+  };
+};
+
+const removeAttachement = (boiteMailId = 0, attachment = null, time = moment().format(formatDate)) => {
+  return {
+    type: NEW_MAIL_REMOVE_ATTACHMENT,
+    attachment,
+    boiteMailId,
+    time
+  };
+};
+export const newMailRemoveAttachement = (boiteMailId = 0, attachment = null) => {
+  return (dispatch, getState) => {
+    dispatch(removeAttachement(boiteMailId, attachment));
+
+    if (attachment && hasFileNameProp(attachment)) {
+      const state = getState();
+      const { writeNewMailContent: { attachments } } = state;
+      const newAttchmentsList = attachments.filter(att => att.filename !== attachment.filename);
+      dispatch(newMailUpdateAttachementsList(boiteMailId, [...newAttchmentsList]));
+    }
+  };
+};
+
+
+// utils
+function hasFileNameProp(obj) {
+  return Object.prototype.hasOwnProperty.call(obj, 'filename');
+}
 
 // const requestSaveNewMail = (boiteMailId = 0, time = moment().format(formatDate)) => {
 //   return {

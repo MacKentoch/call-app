@@ -2,7 +2,10 @@ import {
   NEW_MAIL_DESTINATAIRE_CHANGE,
   NEW_MAIL_SUBJECT_CHANGE,
   NEW_MAIL_BODY_CHANGE,
-  CANCEL_NEW_MAIL
+  CANCEL_NEW_MAIL,
+  NEW_MAIL_UPDATE_ATTACHMENT_LIST,
+  NEW_MAIL_ADD_ATTACHMENT,
+  NEW_MAIL_REMOVE_ATTACHMENT
 } from '../../actions/mailbox/writeNew';
 
 const initialMailModel = {
@@ -64,6 +67,26 @@ const writeNewMailContent = (state = initialState, action) => {
       body: initialMailModel.body,
       hasAttachments: initialMailModel.hasAttachments,
       attachments: [...initialMailModel.attachments]
+    };
+  case NEW_MAIL_UPDATE_ATTACHMENT_LIST:
+    return {
+      ...state,
+      isFetching:     false,
+      time:           action.time,
+      hasAttachments: action.hasAttachments,
+      attachments:    [...action.attachments]
+    };
+  case NEW_MAIL_ADD_ATTACHMENT:
+    return {
+      ...state,
+      isFetching:     false,
+      time:           action.time
+    };
+  case NEW_MAIL_REMOVE_ATTACHMENT:
+    return {
+      ...state,
+      isFetching:     false,
+      time:           action.time
     };
   default:
     return state;
