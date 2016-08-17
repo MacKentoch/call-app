@@ -7,7 +7,11 @@ import {
   MailConsult,
   MailWriteNew
 }                       from './mailbox';
+// modals:
 import Modals           from './modals/Modals';
+import {
+  UploadMailAttachment
+}                       from './modals';
 // create
 import {
   FicheContactCourier,
@@ -27,6 +31,9 @@ export {
   MailboxEnvoi,
   MailConsult,
   MailWriteNew,
+
+  // modals
+  UploadMailAttachment,
 
   // create
   FicheContactCourier,

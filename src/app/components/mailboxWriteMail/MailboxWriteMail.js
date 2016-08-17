@@ -24,7 +24,6 @@ const mockAttachments = [{
   filePath: './',
   size: '238 octets'
 }];
-const mockDestinataires = ['test@test.test'];
 
 class MailboxWriteMail extends Component {
   constructor(props, context) {
