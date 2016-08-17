@@ -1,20 +1,21 @@
 // views:
-import views              from './views';
+import views                from './views';
 // stats:
-import fichesTraitees     from './stats/fichesTraitees';
-import fichesParCanal     from './stats/fichesParCanal';
-import principauxMotifs   from './stats/principauxMotifs';
+import fichesTraitees       from './stats/fichesTraitees';
+import fichesParCanal       from './stats/fichesParCanal';
+import principauxMotifs     from './stats/principauxMotifs';
 // user
-import userInfos          from './user/userInfos';
-import userGroupActivity  from './user/userGroupActivity';
-import userBoitesMails    from './user/userBoitesMails';
+import userInfos            from './user/userInfos';
+import userGroupActivity    from './user/userGroupActivity';
+import userBoitesMails      from './user/userBoitesMails';
 // UI
-import sideMenu           from './ui/sideMenu';
-import teamMates          from './teamMates';
+import sideMenu             from './ui/sideMenu';
+import teamMates            from './teamMates';
 // mailbox
-import inboxContent       from './mailbox/inbox';
-import sentboxContent     from './mailbox/sentbox';
-import mailContent        from './mailbox/consult';
+import inboxContent         from './mailbox/inbox';
+import sentboxContent       from './mailbox/sentbox';
+import mailContent          from './mailbox/consult';
+import writeNewMailContent  from './mailbox/writeNew';
 
 export {
   // views:
@@ -37,5 +38,6 @@ export {
   // mailbox
   inboxContent,
   sentboxContent,
-  mailContent
+  mailContent,
+  writeNewMailContent
 };

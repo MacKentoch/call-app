@@ -21,7 +21,7 @@ export const NEW_MAIL_BODY_CHANGE     = 'NEW_MAIL_BODY_CHANGE';
 // export const REQUEST_SAVE_NEW_MAIL   = 'REQUEST_SAVE_NEW_MAIL';
 // export const CONFIRMED_SAVE_NEW_MAIL = 'CONFIRMED_SAVE_NEW_MAIL';
 // export const ERROR_SAVE_NEW_MAIL     = 'ERROR_SAVE_NEW_MAIL';
- // cancel
+// cancel
 // export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
 
 
@@ -34,7 +34,7 @@ export const newMailAddDestinataire = (boiteMailId = 0, destinataire = '', desti
     time
   };
 };
-export const newMailRemoveDestinataire = (boiteMailId = 0, destinataire= '', destinataires = [], time = moment().format(formatDate)) => {
+export const newMailRemoveDestinataire = (boiteMailId = 0, destinataire = '', destinataires = [], time = moment().format(formatDate)) => {
   const updatedDestinataires = destinataires.filter(
     dest => dest !== destinataire
   );

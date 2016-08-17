@@ -1,21 +1,14 @@
 import {
-  REQUEST_MAIL_CONTENT,
-  RECEIVED_MAIL_CONTENT,
-  ERROR_MAIL_CONTENT
-}                                 from '../../actions/mailbox/consult';
+  NEW_MAIL_ADD_DESTINATAIRE,
+  NEW_MAIL_REMOVE_DESTINATAIRE,
+  NEW_MAIL_SUBJECT_CHANGE,
+  NEW_MAIL_BODY_CHANGE
+} from '../../actions/mailbox/writeNew';
 
 const initialMailModel= {
-  // id: null,
-  // receptionDate: '01/01/1900 00:00',
   subject: '',
-  from: {
-    name: '',
-    email: ''
-  },
-  to: {
-    name: '',
-    email: ''
-  },
+  from: '',
+  to: [],
   body: '',
   hasAttachments: false,
   attachments: []
@@ -25,33 +18,46 @@ const initialState = {
   isFetching:   false,
   mailId:       0,
   boiteMailId:  0,
-  mail:         {...initialMailModel},
+  // mail content:
+  subject: initialMailModel.subject,
+  from: initialMailModel.from,
+  to: [...initialMailModel.to],
+  body: initialMailModel.body,
+  hasAttachments: initialMailModel.hasAttachments,
+  attachments: [...initialMailModel.attachments],
+  //
   time:         ''
 };
 
 const writeNewMailContent = (state = initialState, action) => {
   switch (action.type) {
-  case REQUEST_MAIL_CONTENT:
+  case NEW_MAIL_ADD_DESTINATAIRE:
     return {
       ...state,
-      isFetching: action.isFetching,
-      time:       action.time
+      isFetching: false,
+      time:       action.time,
+      to:         [...action.destinataires]
     };
-  case RECEIVED_MAIL_CONTENT:
+  case NEW_MAIL_REMOVE_DESTINATAIRE:
     return {
       ...state,
-      isFetching:   action.isFetching,
-      boiteMailId:  action.boiteMailId,
-      mailBoxName:  action.mailBoxName,
-      mail:         {...action.mail},
-      nbUnRead:     action.nbUnRead,
-      time:         action.time
+      isFetching: false,
+      time:       action.time,
+      to:         [...action.destinataires]
     };
-  case ERROR_MAIL_CONTENT:
+  case NEW_MAIL_SUBJECT_CHANGE:
     return {
       ...state,
-      isFetching: action.isFetching,
-      time:       action.time
+      isFetching: false,
+      time:       action.time,
+      subject:    action.subject
+    };
+  case NEW_MAIL_BODY_CHANGE:
+    return {
+      ...state,
+      isFetching: false,
+      time:       action.time,
+      body:       action.body
     };
   default:
     return state;
