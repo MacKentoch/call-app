@@ -18,6 +18,8 @@ class MailWriteNew extends Component {
     this.state = {
       animated: true
     };
+
+    this.handlesOnContentChanged = this.handlesOnContentChanged.bind(this);
   }
 
   componentDidMount() {
@@ -46,7 +48,7 @@ class MailWriteNew extends Component {
             subject={''}
             onSubjectChanged={()=>console.log('onSubjectChanged event')}
             content={''}
-            onContentChanged={()=>console.log('onBodyChanged event')}
+            onContentChanged={this.handlesOnContentChanged}
             attachments={[]}
             onAttachmentsChanged={()=>console.log('onAttachmentsChanged event')}
             onCancel={()=>console.log('onCancel should remove new mail state content')}
@@ -66,6 +68,12 @@ class MailWriteNew extends Component {
         }
       </div>
     );
+  }
+
+  handlesOnContentChanged(emailBody) {
+    console.log('handlesOnContentChanged, emailBody:', emailBody);
+    // action to save emailBody
+    // so will update content prop
   }
 }
 

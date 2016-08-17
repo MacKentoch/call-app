@@ -97,8 +97,7 @@ class MailboxWriteMail extends Component {
 
   handleContentChange(event) {
     const { onContentChanged } = this.props;
-    console.log('handleContentChange, text: ', file);
-    onContentChanged(event.target.value.trim());
+    onContentChanged(event.value.trim());
   }
 
   handlesOnAttachmentsChanged(file) {

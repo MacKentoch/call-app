@@ -296,7 +296,11 @@ class EditableDiv extends Component {
         {/* toolbar end */}
         {/* editor */}
         <div
-          ref="editor"
+          ref={
+            (ref) => {
+              this.editor = ref;
+            }
+          }
           className="form-control"
           {...this.props}
           contentEditable={true}
@@ -309,11 +313,12 @@ class EditableDiv extends Component {
   }
 
   emitChange() {
-    const editor = this.refs.editor;
-    const	newHtml = editor.innerHTML;
-
+    if (!this.editor) {
+      return;
+    }
+    const	newHtml = this.editor.innerHTML;
     this.setState({html: newHtml}, () => {
-      this.props.onChange({target: {value: newHtml}});
+      this.props.onChange({value: newHtml});
     });
   }
 
