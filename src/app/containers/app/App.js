@@ -10,7 +10,10 @@ import {
   AsideLeft,
   AsideRight
 }                             from './aside';
-import { Modals }             from '../../views';
+import {
+  Modals,
+  UploadMailAttachment
+}                             from '../../views';
 import { appConfig }          from '../../config';
 import { BackToTop }          from '../../components';
 
@@ -77,6 +80,9 @@ class App extends Component {
         </div>
         {/* modals cannot be placed anywhere (avoid backdrop or modal placement issues) so all grouped in same component and outside .wrapper*/}
         <Modals />
+        <UploadMailAttachment
+
+        />
       </div>
     );
   }
