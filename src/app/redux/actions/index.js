@@ -66,6 +66,12 @@ import {
   toggleSideMenu,
   initSideMenu
 }                                 from './ui/sideMenu';
+import {
+  newMailAddDestinataire,
+  newMailRemoveDestinataire,
+  newMailSubjectChange,
+  newMailBodyChange
+}                                 from './mailbox/writeNew';
 
 export {
   // views:
@@ -111,5 +117,9 @@ export {
   // mailbox
   fetchInboxContentIfNeeded,
   fetchSentboxContentIfNeeded,
-  fetchMailContentIfNeeded
+  fetchMailContentIfNeeded,
+  newMailAddDestinataire,
+  newMailRemoveDestinataire,
+  newMailSubjectChange,
+  newMailBodyChange
 };

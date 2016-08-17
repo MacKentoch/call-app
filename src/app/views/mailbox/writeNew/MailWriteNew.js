@@ -73,7 +73,7 @@ class MailWriteNew extends Component {
   handlesOnContentChanged(emailBody) {
     console.log('handlesOnContentChanged, emailBody:', emailBody);
     // action to save emailBody
-    // so will update content prop
+    // so will update content prop and update EditableDiv content
   }
 }
 
