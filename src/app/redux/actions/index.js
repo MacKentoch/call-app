@@ -71,7 +71,14 @@ import {
   newMailSubjectChange,
   newMailBodyChange,
   newMailCancel
-}                                 from './mailbox/writeNew';
+}
+                                 from './mailbox/writeNew';
+// modals
+import {
+  showUploadMailAttachmentsModal,
+  hideUploadMailAttachmentsModal
+}                                 from './modals/uploadMailAttachmentsModal';
+
 
 export {
   // views:
@@ -121,5 +128,9 @@ export {
   newMailDestinatairesChange,
   newMailSubjectChange,
   newMailBodyChange,
-  newMailCancel
+  newMailCancel,
+
+  // modals
+  showUploadMailAttachmentsModal,
+  hideUploadMailAttachmentsModal
 };

@@ -16,6 +16,8 @@ import inboxContent         from './mailbox/inbox';
 import sentboxContent       from './mailbox/sentbox';
 import mailContent          from './mailbox/consult';
 import writeNewMailContent  from './mailbox/writeNew';
+// Modals
+import uploadMailAttachmentsModal from './modals/uploadMailAttachmentsModal';
 
 export {
   // views:
@@ -39,5 +41,8 @@ export {
   inboxContent,
   sentboxContent,
   mailContent,
-  writeNewMailContent
+  writeNewMailContent,
+
+  // modals
+  uploadMailAttachmentsModal
 };
