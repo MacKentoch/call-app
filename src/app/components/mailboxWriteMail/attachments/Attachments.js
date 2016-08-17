@@ -34,6 +34,16 @@ const Attachments = ({attachments}) => {
                   size={size}
                 />
               );
+            case 'text/plain':
+              return (
+                <Txt
+                  key={idx}
+                  type={type}
+                  filename={filename}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
             case 'doc':
               return (
                 <Doc
@@ -167,7 +177,7 @@ const Attachments = ({attachments}) => {
 Attachments.propTypes = {
   attachments: PropTypes.arrayOf(
     PropTypes.shape({
-      type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
+      type: PropTypes.oneOf(['text/plain', 'zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
       filename: PropTypes.string.isRequired,
       filePath: PropTypes.string.isRequired,
       size: PropTypes.string.isRequired

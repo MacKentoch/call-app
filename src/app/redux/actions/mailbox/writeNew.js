@@ -65,7 +65,7 @@ const newMailUpdateAttachementsList = (boiteMailId = 0, attachments = [], time =
     type:       NEW_MAIL_UPDATE_ATTACHMENT_LIST,
     boiteMailId,
     attachments,
-    hasAttachments: attachments.length,
+    hasAttachments: attachments.length > 0 ? true : false,
     time
   };
 };

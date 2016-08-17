@@ -100,13 +100,24 @@ class MailboxWriteMail extends Component {
   }
 
   handlesOnAttachmentsChanged(file) {
-    const { onAttachmentsChanged } = this.props;
+    // is add an attachement
+    const { addAttachement, mailboxId } = this.props;
+    const { name, type, size } = file;
+    // debug
     console.log('handlesOnAttachmentsChanged, file: ', file);
-    onAttachmentsChanged(file);
+
+    const attachment = {
+      type: type,
+      filename: name,
+      filePath: '',
+      size: size + ''
+    };
+    addAttachement(mailboxId, attachment);
   }
 }
 
 MailboxWriteMail.propTypes = {
+  mailboxId: PropTypes.string.isRequired,
   destinataires: PropTypes.array.isRequired,
   onDestinatairesChange: PropTypes.func.isRequired,
   subject: PropTypes.string.isRequired,

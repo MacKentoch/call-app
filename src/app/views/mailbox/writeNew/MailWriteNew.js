@@ -37,7 +37,7 @@ class MailWriteNew extends Component {
     const { animated } = this.state;
     const { subject, to, body, attachments } = this.props;
     const { actions: { newMailAddAttachement, newMailRemoveAttachement } } = this.props;
-
+    const { params: { mailboxId } } = this.props;
     return(
       <div
         className={cx({
@@ -45,6 +45,8 @@ class MailWriteNew extends Component {
           'fadeIn': animated
         })}>
         <MailboxWriteMail
+          mailboxId={mailboxId}
+          
           destinataires={to}
           onDestinatairesChange={this.handlesOnDestinatairesChange}
           // mail subject
