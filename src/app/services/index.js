@@ -1,6 +1,7 @@
 // utils:
 import {
   defaultOptions,
+  postMethod,
   checkStatus,
   parseJSON,
   getLocationOrigin,

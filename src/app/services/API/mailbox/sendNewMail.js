@@ -1,5 +1,6 @@
 import {
   defaultOptions,
+  postMethod,
   checkStatus,
   parseJSON,
   getLocationOrigin
@@ -19,23 +20,21 @@ export const sendNewMail = (mailBoxId, userLogin = null, newMailContent = null) 
 
   // data to post (basic props)
   const numberFiles = newMailContent.attachments ? newMailContent.attachments.length : 0;
-  let body = {
-    mailBoxId,
-    userLogin,
-    nbFiles: numberFiles
-  };
+  // uses FormData since target is navigator > IE10
+  const body = new FormData();
+  body.append('mailBoxId', mailBoxId);
+  body.append('userLogin', userLogin);
+  body.append('nbFiles', numberFiles);
   // data to post (add attachments files)
   newMailContent.attachments.forEach(
-    (file, idx) => {
-      body[`file${idx + 1}`] = file;
-    }
+    (file, idx) => body.append(`file${idx + 1}`, file)
   );
 
   const api = appConfig.sendNewMail.POST.API;
   const url = `${getLocationOrigin()}/${api}`;
   const options = {
     ...defaultOptions,
-    method: 'POST',
+    ...postMethod,
     body
   };
 

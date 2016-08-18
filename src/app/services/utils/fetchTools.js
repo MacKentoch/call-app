@@ -7,6 +7,12 @@ export const defaultOptions = {
   credentials: 'same-origin'
 };
 /*
+* utils pour "whatwg-fetch" => method post
+*/
+export const postMethod = {
+  method: 'POST'
+};
+/*
 * utils pour "whatwg-fetch" = gestion personnalisée des statuts en erreur
 */
 export const checkStatus = (response) => {
