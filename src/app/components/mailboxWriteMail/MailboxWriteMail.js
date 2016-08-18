@@ -18,13 +18,6 @@ const editorStyle = {
   maxHeight: 1000
 };
 
-const mockAttachments = [{
-  type: 'pdf',
-  filename: 'test',
-  filePath: './',
-  size: '238 octets'
-}];
-
 class MailboxWriteMail extends Component {
   constructor(props, context) {
     super(props, context);

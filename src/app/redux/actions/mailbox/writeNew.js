@@ -6,27 +6,27 @@ import {
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
-
+// mail destinataire
 export const NEW_MAIL_DESTINATAIRE_CHANGE = 'NEW_MAIL_DESTINATAIRE_CHANGE';
-
+// mail subject
 export const NEW_MAIL_SUBJECT_CHANGE = 'NEW_MAIL_SUBJECT_CHANGE';
-
+// mail body
 export const NEW_MAIL_BODY_CHANGE     = 'NEW_MAIL_BODY_CHANGE';
-
+// mail attachments
 export const NEW_MAIL_UPDATE_ATTACHMENT_LIST  = 'NEW_MAIL_UPDATE_ATTACHMENT_LIST';
 export const NEW_MAIL_ADD_ATTACHMENT          = 'NEW_MAIL_ADD_ATTACHMENT';
 export const NEW_MAIL_ADD_ATTACHMENT_ERROR_ATTACHMENT_NOT_DEFINED = 'NEW_MAIL_ADD_ATTACHMENT_ERROR_ATTACHMENT_NOT_DEFINED';
 export const NEW_MAIL_ADD_ATTACHMENT_ERROR_FILE_NAME_EXISTS = 'NEW_MAIL_ADD_ATTACHMENT_ERROR_FILE_NAME_EXISTS';
 export const NEW_MAIL_REMOVE_ATTACHMENT       = 'NEW_MAIL_REMOVE_ATTACHMENT';
-
 // post
 // export const REQUEST_SAVE_NEW_MAIL   = 'REQUEST_SAVE_NEW_MAIL';
 // export const CONFIRMED_SAVE_NEW_MAIL = 'CONFIRMED_SAVE_NEW_MAIL';
 // export const ERROR_SAVE_NEW_MAIL     = 'ERROR_SAVE_NEW_MAIL';
+
 // cancel
 export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
 
-
+// mail destinataire
 export const newMailDestinatairesChange = (boiteMailId = 0, destinataires = [], time = moment().format(formatDate)) => {
   return {
     type:       NEW_MAIL_DESTINATAIRE_CHANGE,
@@ -35,7 +35,7 @@ export const newMailDestinatairesChange = (boiteMailId = 0, destinataires = [], 
     time
   };
 };
-
+// mail subject
 export const newMailSubjectChange = (boiteMailId = 0, subject,  time = moment().format(formatDate)) => {
   return {
     type:       NEW_MAIL_SUBJECT_CHANGE,
@@ -44,7 +44,7 @@ export const newMailSubjectChange = (boiteMailId = 0, subject,  time = moment().
     time
   };
 };
-
+// mail body
 export const newMailBodyChange = (boiteMailId = 0, body, time = moment().format(formatDate)) => {
   return {
     type:       NEW_MAIL_BODY_CHANGE,
@@ -53,7 +53,7 @@ export const newMailBodyChange = (boiteMailId = 0, body, time = moment().format(
     time
   };
 };
-
+// cancel
 export const newMailCancel = (boiteMailId = 0, time = moment().format(formatDate)) => {
   return {
     type:       CANCEL_NEW_MAIL,
@@ -61,7 +61,7 @@ export const newMailCancel = (boiteMailId = 0, time = moment().format(formatDate
     time
   };
 };
-
+// mail attachments
 const newMailUpdateAttachementsList = (boiteMailId = 0, attachments = [], time = moment().format(formatDate)) => {
   return {
     type: NEW_MAIL_UPDATE_ATTACHMENT_LIST,
@@ -113,7 +113,6 @@ export const newMailAddAttachement = (boiteMailId = 0, attachment = null) => {
     }
   };
 };
-
 const removeAttachement = (boiteMailId = 0, attachment = null, time = moment().format(formatDate)) => {
   return {
     type: NEW_MAIL_REMOVE_ATTACHMENT,
