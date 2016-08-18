@@ -54,8 +54,8 @@ class Upload extends Component {
 
   handleChange(event) {
     const { onChange } = this.props;
+    // this component does not stack multiple files
     const file = event.target.files[0];
-    console.log('file prototype: ', Object.getPrototypeOf(file));
     onChange(file);
   }
 }

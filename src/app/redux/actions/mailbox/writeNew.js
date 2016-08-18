@@ -101,10 +101,10 @@ export const newMailRemoveAttachement = (boiteMailId = 0, attachment = null) => 
   return (dispatch, getState) => {
     dispatch(removeAttachement(boiteMailId, attachment));
 
-    if (attachment && hasFileNameProp(attachment)) {
+    if (attachment && hasNameProperty(attachment)) {
       const state = getState();
       const { writeNewMailContent: { attachments } } = state;
-      const newAttchmentsList = attachments.filter(att => att.filename !== attachment.filename);
+      const newAttchmentsList = attachments.filter(att => att.name !== attachment.name);
       dispatch(newMailUpdateAttachementsList(boiteMailId, [...newAttchmentsList]));
     }
   };
@@ -112,8 +112,8 @@ export const newMailRemoveAttachement = (boiteMailId = 0, attachment = null) => 
 
 
 // utils
-function hasFileNameProp(obj) {
-  return Object.prototype.hasOwnProperty.call(obj, 'filename');
+function hasNameProperty(obj) {
+  return Object.prototype.hasOwnProperty.call(obj, 'name');
 }
 
 // const requestSaveNewMail = (boiteMailId = 0, time = moment().format(formatDate)) => {

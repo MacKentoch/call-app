@@ -102,17 +102,9 @@ class MailboxWriteMail extends Component {
   handlesOnAttachmentsChanged(file) {
     // is add an attachement
     const { addAttachement, mailboxId } = this.props;
-    const { name, type, size } = file;
     // debug
-    console.log('handlesOnAttachmentsChanged, file: ', file);
-
-    const attachment = {
-      type: type,
-      filename: name,
-      filePath: '',
-      size: size + ''
-    };
-    addAttachement(mailboxId, attachment);
+    // console.log('handlesOnAttachmentsChanged, file: ', file);
+    addAttachement(mailboxId, file);
   }
 }
 

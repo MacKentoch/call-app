@@ -55,19 +55,19 @@ export const mailContentMock = {
     attachments: [
       {
         type: 'pdf',
-        filename: 'fake.pdf',
+        name: 'fake.pdf',
         filePath: '#',
         size: '1.23kb'
       },
       {
         type: 'doc',
-        filename: 'fake.doc',
+        name: 'fake.doc',
         filePath: '#',
         size: '1.23kb'
       },
       {
         type: 'zip',
-        filename: 'fake.zip',
+        name: 'fake.zip',
         filePath: '#',
         size: '3.10kb'
       }
