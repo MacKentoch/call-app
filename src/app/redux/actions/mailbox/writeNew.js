@@ -15,6 +15,8 @@ export const NEW_MAIL_BODY_CHANGE     = 'NEW_MAIL_BODY_CHANGE';
 
 export const NEW_MAIL_UPDATE_ATTACHMENT_LIST  = 'NEW_MAIL_UPDATE_ATTACHMENT_LIST';
 export const NEW_MAIL_ADD_ATTACHMENT          = 'NEW_MAIL_ADD_ATTACHMENT';
+export const NEW_MAIL_ADD_ATTACHMENT_ERROR_ATTACHMENT_NOT_DEFINED = 'NEW_MAIL_ADD_ATTACHMENT_ERROR_ATTACHMENT_NOT_DEFINED';
+export const NEW_MAIL_ADD_ATTACHMENT_ERROR_FILE_NAME_EXISTS = 'NEW_MAIL_ADD_ATTACHMENT_ERROR_FILE_NAME_EXISTS';
 export const NEW_MAIL_REMOVE_ATTACHMENT       = 'NEW_MAIL_REMOVE_ATTACHMENT';
 
 // post
@@ -62,10 +64,17 @@ export const newMailCancel = (boiteMailId = 0, time = moment().format(formatDate
 
 const newMailUpdateAttachementsList = (boiteMailId = 0, attachments = [], time = moment().format(formatDate)) => {
   return {
-    type:       NEW_MAIL_UPDATE_ATTACHMENT_LIST,
+    type: NEW_MAIL_UPDATE_ATTACHMENT_LIST,
     boiteMailId,
     attachments,
     hasAttachments: attachments.length > 0 ? true : false,
+    time
+  };
+};
+const newMailAddAttachementErrorFileNoDefined = (boiteMailId = 0, time = moment().format(formatDate)) => {
+  return {
+    type: NEW_MAIL_ADD_ATTACHMENT_ERROR_ATTACHMENT_NOT_DEFINED,
+    boiteMailId,
     time
   };
 };
@@ -77,15 +86,30 @@ const addAttachement = (boiteMailId = 0, attachment = null, time = moment().form
     time
   };
 };
+const addAttachmentErrorFileNameExists = (boiteMailId = 0, attachment = null, time = moment().format(formatDate)) => {
+  return {
+    type: NEW_MAIL_ADD_ATTACHMENT_ERROR_FILE_NAME_EXISTS,
+    attachment,
+    boiteMailId,
+    time
+  };
+};
 export const newMailAddAttachement = (boiteMailId = 0, attachment = null) => {
   return (dispatch, getState) => {
-    dispatch(addAttachement(boiteMailId, attachment));
-    
-    if (attachment) {
+    if (attachment && attachment.name) {
       const state = getState();
       const { writeNewMailContent: { attachments } } = state;
 
-      dispatch(newMailUpdateAttachementsList(boiteMailId, [...attachments, attachment]));
+      dispatch(addAttachement(boiteMailId, attachment.name));
+
+      const fileExists = attachments.findIndex(att => att.name === attachment.name);
+      if (fileExists === -1) {
+        dispatch(newMailUpdateAttachementsList(boiteMailId, [...attachments, attachment]));
+      } else {
+        dispatch(addAttachmentErrorFileNameExists(boiteMailId, attachment.name));
+      }
+    } else {
+      dispatch(newMailAddAttachementErrorFileNoDefined(boiteMailId));
     }
   };
 };
@@ -98,15 +122,18 @@ const removeAttachement = (boiteMailId = 0, attachment = null, time = moment().f
     time
   };
 };
-export const newMailRemoveAttachement = (boiteMailId = 0, attachment = null) => {
+export const newMailRemoveAttachement = (boiteMailId = 0, attachmentName = '') => {
   return (dispatch, getState) => {
-    dispatch(removeAttachement(boiteMailId, attachment));
+    dispatch(removeAttachement(boiteMailId, attachmentName));
 
-    if (attachment) {
+    if (attachmentName) {
       const state = getState();
       const { writeNewMailContent: { attachments } } = state;
-      const newAttchmentsList = attachments.filter(att => att.name !== attachment.name);
+      const newAttchmentsList = attachments.filter(att => att.name !== attachmentName);
+
       dispatch(newMailUpdateAttachementsList(boiteMailId, [...newAttchmentsList]));
+    } else {
+      dispatch(newMailAddAttachementErrorFileNoDefined(boiteMailId));
     }
   };
 };

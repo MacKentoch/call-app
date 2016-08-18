@@ -31,6 +31,7 @@ class MailboxWriteMail extends Component {
 
     this.handleContentChange = this.handleContentChange.bind(this);
     this.handlesOnAttachmentsChanged = this.handlesOnAttachmentsChanged.bind(this);
+    this.handlesOnTrashClick = this.handlesOnTrashClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -80,6 +81,7 @@ class MailboxWriteMail extends Component {
             />
             {/* displays attachments */}
             <Attachments
+              onTrashClick={this.handlesOnTrashClick}
               attachments={attachments}
             />
           </div>
@@ -100,9 +102,15 @@ class MailboxWriteMail extends Component {
   }
 
   handlesOnAttachmentsChanged(file) {
-    // is add an attachement
+    // event: add an attachement
     const { addAttachement, mailboxId } = this.props;
     addAttachement(mailboxId, file);
+  }
+
+  handlesOnTrashClick(fileName) {
+    // event: remove an attachement (by name)
+    const { removeAttachement, mailboxId } = this.props;
+    removeAttachement(mailboxId, fileName);
   }
 }
 
