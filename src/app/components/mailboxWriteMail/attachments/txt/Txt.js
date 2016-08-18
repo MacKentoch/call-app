@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Txt = ({filename, filePath, size}) => {
+const Txt = ({name, filePath, size}) => {
   return (
     <li>
       <span className="mailbox-attachment-icon">
@@ -12,7 +12,7 @@ const Txt = ({filename, filePath, size}) => {
           className="mailbox-attachment-name">
           <i className="fa fa-paperclip"></i>
           &nbsp;
-          {filename}
+          {name}
         </a>
         <span className="mailbox-attachment-size">
           {size}
@@ -28,9 +28,13 @@ const Txt = ({filename, filePath, size}) => {
 };
 
 Txt.propTypes = {
-  filename: PropTypes.string.isRequired,
-  filePath: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  filePath: PropTypes.string,
+  size: PropTypes.any.isRequired
+};
+
+Txt.defaultProps = {
+  filePath: ''
 };
 
 export default Txt;

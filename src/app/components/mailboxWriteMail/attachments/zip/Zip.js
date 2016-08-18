@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Zip = ({filename, filePath, size}) => {
+const Zip = ({name, filePath, size}) => {
   return (
     <li>
       <span className="mailbox-attachment-icon">
@@ -12,7 +12,7 @@ const Zip = ({filename, filePath, size}) => {
           className="mailbox-attachment-name">
           <i className="fa fa-paperclip"></i>
           &nbsp;
-          {filename}
+          {name}
         </a>
         <span className="mailbox-attachment-size">
           {size}
@@ -28,9 +28,13 @@ const Zip = ({filename, filePath, size}) => {
 };
 
 Zip.propTypes = {
-  filename: PropTypes.string.isRequired,
-  filePath: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  filePath: PropTypes.string,
+  size: PropTypes.any.isRequired
+};
+
+Zip.defaultProps = {
+  filePath: ''
 };
 
 export default Zip;

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Csv = ({filename, filePath, size}) => {
+const Csv = ({name, filePath, size}) => {
   return (
     <li>
       <span className="mailbox-attachment-icon">
@@ -12,7 +12,7 @@ const Csv = ({filename, filePath, size}) => {
           className="mailbox-attachment-name">
           <i className="fa fa-paperclip"></i>
           &nbsp;
-          {filename}
+          {name}
         </a>
         <span className="mailbox-attachment-size">
           {size}
@@ -28,9 +28,13 @@ const Csv = ({filename, filePath, size}) => {
 };
 
 Csv.propTypes = {
-  filename: PropTypes.string.isRequired,
-  filePath: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  filePath: PropTypes.string,
+  size: PropTypes.any.isRequired
+};
+
+Csv.defaultProps = {
+  filePath: ''
 };
 
 export default Csv;

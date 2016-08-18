@@ -13,14 +13,14 @@ const Attachments = ({attachments}) => {
     <ul className="mailbox-attachments clearfix">
       {
         attachments.map(
-          ({type, filePath, filename, size}, idx) => {
+          ({type, filePath, name, size}, idx) => {
             switch (type) {
             case 'pdf' || 'application/pdf':
               return (
                 <Pdf
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -30,7 +30,7 @@ const Attachments = ({attachments}) => {
                 <Txt
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -40,7 +40,7 @@ const Attachments = ({attachments}) => {
                 <Txt
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -50,7 +50,7 @@ const Attachments = ({attachments}) => {
                 <Doc
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -60,7 +60,7 @@ const Attachments = ({attachments}) => {
                 <Doc
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -70,7 +70,7 @@ const Attachments = ({attachments}) => {
                 <Xls
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -80,7 +80,7 @@ const Attachments = ({attachments}) => {
                 <Xls
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -90,7 +90,7 @@ const Attachments = ({attachments}) => {
                 <Csv
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -100,7 +100,7 @@ const Attachments = ({attachments}) => {
                 <Img
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -110,7 +110,7 @@ const Attachments = ({attachments}) => {
                 <Img
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -120,7 +120,7 @@ const Attachments = ({attachments}) => {
                 <Img
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -130,7 +130,7 @@ const Attachments = ({attachments}) => {
                 <Zip
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -140,7 +140,7 @@ const Attachments = ({attachments}) => {
                 <Zip
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -150,7 +150,7 @@ const Attachments = ({attachments}) => {
                 <Zip
                   key={idx}
                   type={type}
-                  filename={filename}
+                  name={name}
                   filePath={filePath}
                   size={size}
                 />
@@ -169,9 +169,9 @@ Attachments.propTypes = {
   attachments: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.oneOf(appConfig.fileMimeTypes),
-      filename: PropTypes.string.isRequired,
-      filePath: PropTypes.string.isRequired,
-      size: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      filePath: PropTypes.string,
+      size: PropTypes.any.isRequired
     })
   )
 };
