@@ -55,6 +55,7 @@ class Upload extends Component {
   handleChange(event) {
     const { onChange } = this.props;
     const file = event.target.files[0];
+    console.log('file prototype: ', Object.getPrototypeOf(file));
     onChange(file);
   }
 }

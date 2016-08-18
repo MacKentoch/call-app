@@ -114,6 +114,16 @@ const Attachments = ({attachments}) => {
                   size={size}
                 />
               );
+            case 'image/jpeg':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  filename={filename}
+                  filePath={filePath}
+                  size={size}
+                />                
+              );
             case 'jpeg':
               return (
                 <Img
@@ -177,7 +187,7 @@ const Attachments = ({attachments}) => {
 Attachments.propTypes = {
   attachments: PropTypes.arrayOf(
     PropTypes.shape({
-      type: PropTypes.oneOf(['text/plain', 'zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
+      type: PropTypes.oneOf(['text/plain', 'zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'image/jpeg', 'jpg', 'jpeg', 'bmp']),
       filename: PropTypes.string.isRequired,
       filePath: PropTypes.string.isRequired,
       size: PropTypes.string.isRequired
