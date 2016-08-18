@@ -192,6 +192,13 @@ export const appConfig = {
     }
   },
 
+  // send new mail API (POST with or without files attachements)
+  sendNewMail: {
+    POST: {
+      API: 'api/sendNewMail'
+    }
+  },
+
   // home stats : fiche par canal
   statsFichesParCanal: {
     data: {

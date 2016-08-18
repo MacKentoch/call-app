@@ -37,8 +37,7 @@ class MailboxWriteMail extends Component {
     const { content } = this.props;
     const { attachments } = this.props;
     const { onCancel, onSend } = this.props;
-    const { mailboxId } = this.props;
-
+    
     return (
       <div className="panel">
       <div

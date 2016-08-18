@@ -1,3 +1,4 @@
+/* eslint-disable no-throw-literal */
 import { appConfig }    from '../../config';
 import {
   fichetraitee,
@@ -89,15 +90,10 @@ export const fetchMockListMails = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
 
 export const fetchMockMailContent = (mailId = null, mailboxId = null, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
   if (!parseInt(mailId, 10) && !parseInt(mailId, 10) > 0) {
-    /* eslint-disable no-throw-literal */
     throw 'Error: fetchMockMailContent needs a valid "mailId"';
-    /* eslint-enable no-throw-literal */
   }
-
   if (!parseInt(mailboxId, 10) && !parseInt(mailboxId, 10) > 0) {
-    /* eslint-disable no-throw-literal */
     throw 'Error: fetchMockMailContent needs a valid "mailboxId"';
-    /* eslint-enable no-throw-literal */
   }
 
   return new Promise(
@@ -108,4 +104,25 @@ export const fetchMockMailContent = (mailId = null, mailboxId = null, timeToWait
      );
     }
  );
+};
+
+
+export const fetchMockSendNewMail = (mailBoxId, userLogin = null, newMailContent = null, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!parseInt(mailBoxId, 10)) {
+    throw 'error: fetchMockSendNewMail need a valid mailBoxId';
+  }
+  if (!userLogin) {
+    throw 'error: fetchMockSendNewMail need a valid user login';
+  }
+  if (!newMailContent) {
+    throw 'error: fetchMockSendNewMail need a valid new mail content';
+  }
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({sendNewMail: 'SUCCES'}),
+       timeToWait
+     );
+    }
+  );
 };

@@ -5,6 +5,7 @@ import { getInboxContent }        from './mailbox/reception';
 import { getSentboxContent }      from './mailbox/envoi';
 import { getStatsFichesParCanal } from './stats/fichesParCanal';
 import { getMailContent }         from './mailbox/consulter';
+import { sendNewMail }            from './mailbox/sendNewMail';
 
 export {
   getUserBoitesMails,
@@ -13,5 +14,6 @@ export {
   getInboxContent,
   getSentboxContent,
   getStatsFichesParCanal,
-  getMailContent
+  getMailContent,
+  sendNewMail
 };
