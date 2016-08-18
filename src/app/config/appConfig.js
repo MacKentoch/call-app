@@ -42,12 +42,10 @@ export const appConfig = {
     // images:
     'png',
     'image/png',
-
     'jpg',
     'jpeg',
     'image/jpeg',
     'image/pjpeg',
-
     'bmp',
     'image/bmp',
     'image/x-windows-bmp'
