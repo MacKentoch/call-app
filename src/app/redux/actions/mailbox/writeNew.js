@@ -6,6 +6,10 @@ import {
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
+// new mail init (set mailBoxId or default values)
+export const NEW_MAIL_INIT = 'NEW_MAIL_INIT';
+// cancel new mail (reset content)
+export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
 // mail destinataire
 export const NEW_MAIL_DESTINATAIRE_CHANGE = 'NEW_MAIL_DESTINATAIRE_CHANGE';
 // mail subject
@@ -23,9 +27,23 @@ export const NEW_MAIL_REMOVE_ATTACHMENT       = 'NEW_MAIL_REMOVE_ATTACHMENT';
 // export const CONFIRMED_SAVE_NEW_MAIL = 'CONFIRMED_SAVE_NEW_MAIL';
 // export const ERROR_SAVE_NEW_MAIL     = 'ERROR_SAVE_NEW_MAIL';
 
-// cancel
-export const CANCEL_NEW_MAIL  = 'CANCEL_NEW_MAIL';
 
+// new mail init (set mailBoxId or default values)
+export const newMailInit = (boiteMailId = 0, time = moment().format(formatDate)) => {
+  return {
+    type:       NEW_MAIL_INIT,
+    boiteMailId,
+    time
+  };
+};
+// cancel new mail (reset content)
+export const newMailCancel = (boiteMailId = 0, time = moment().format(formatDate)) => {
+  return {
+    type:       CANCEL_NEW_MAIL,
+    boiteMailId,
+    time
+  };
+};
 // mail destinataire
 export const newMailDestinatairesChange = (boiteMailId = 0, destinataires = [], time = moment().format(formatDate)) => {
   return {
@@ -45,22 +63,7 @@ export const newMailSubjectChange = (boiteMailId = 0, subject,  time = moment().
   };
 };
 // mail body
-export const newMailBodyChange = (boiteMailId = 0, body, time = moment().format(formatDate)) => {
-  return {
-    type:       NEW_MAIL_BODY_CHANGE,
-    boiteMailId,
-    body,
-    time
-  };
-};
-// cancel
-export const newMailCancel = (boiteMailId = 0, time = moment().format(formatDate)) => {
-  return {
-    type:       CANCEL_NEW_MAIL,
-    boiteMailId,
-    time
-  };
-};
+
 // mail attachments
 const newMailUpdateAttachementsList = (boiteMailId = 0, attachments = [], time = moment().format(formatDate)) => {
   return {

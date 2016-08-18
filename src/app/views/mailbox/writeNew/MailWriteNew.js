@@ -24,8 +24,10 @@ class MailWriteNew extends Component {
   }
 
   componentDidMount() {
-    const  { actions, params: { mailboxId } } =  this.props;
-    actions.enterMailboxWriteNew(`mailbox #${mailboxId}`);
+    const  {  params: { mailboxId } } =  this.props;
+    const { actions : { enterMailboxWriteNew, newMailInit } } = this.props;
+    enterMailboxWriteNew(`mailbox #${mailboxId}`);
+    newMailInit(mailboxId);
   }
 
   componentWillUnmount() {
@@ -38,6 +40,7 @@ class MailWriteNew extends Component {
     const { subject, to, body, attachments } = this.props;
     const { actions: { newMailAddAttachement, newMailRemoveAttachement } } = this.props;
     const { params: { mailboxId } } = this.props;
+
     return(
       <div
         className={cx({
@@ -46,7 +49,7 @@ class MailWriteNew extends Component {
         })}>
         <MailboxWriteMail
           mailboxId={mailboxId}
-          
+
           destinataires={to}
           onDestinatairesChange={this.handlesOnDestinatairesChange}
           // mail subject
@@ -112,6 +115,7 @@ MailWriteNew.propTypes = {
     enterMailboxWriteNew: PropTypes.func,
     leaveMailboxWriteNew: PropTypes.func,
     // write mail actions:
+    newMailInit: PropTypes.func,
     newMailDestinatairesChange: PropTypes.func,
     newMailSubjectChange: PropTypes.func,
     newMailBodyChange: PropTypes.func,
