@@ -102,8 +102,6 @@ class MailboxWriteMail extends Component {
   handlesOnAttachmentsChanged(file) {
     // is add an attachement
     const { addAttachement, mailboxId } = this.props;
-    // debug
-    // console.log('handlesOnAttachmentsChanged, file: ', file);
     addAttachement(mailboxId, file);
   }
 }

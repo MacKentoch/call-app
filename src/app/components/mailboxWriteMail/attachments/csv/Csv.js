@@ -19,7 +19,7 @@ const Csv = ({name, filePath, size}) => {
           <a
             href={filePath}
             className="btn btn-default btn-xs pull-right">
-            <i className="fa fa-cloud-download"></i>
+            <i className="fa fa-trash-o"></i>
           </a>
         </span>
       </div>
