@@ -15,7 +15,7 @@ const Attachments = ({attachments}) => {
         attachments.map(
           ({type, filePath, name, size}, idx) => {
             switch (type) {
-            case 'pdf' || 'application/pdf':
+            case 'pdf':
               return (
                 <Pdf
                   key={idx}
@@ -25,7 +25,17 @@ const Attachments = ({attachments}) => {
                   size={size}
                 />
               );
-            case 'txt' || 'text/plain':
+            case 'application/pdf':
+              return (
+                <Pdf
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'txt':
               return (
                 <Txt
                   key={idx}
@@ -45,7 +55,17 @@ const Attachments = ({attachments}) => {
                   size={size}
                 />
               );
-            case 'doc' || 'application/msword':
+            case 'doc':
+              return (
+                <Doc
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'application/msword':
               return (
                 <Doc
                   key={idx}
@@ -65,7 +85,47 @@ const Attachments = ({attachments}) => {
                   size={size}
                 />
               );
-            case 'xls' || 'application/excel' || 'application/vnd.ms-excel' || 'application/x-excel' || 'application/x-msexcel' :
+            case 'xls':
+              return (
+                <Xls
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'application/excel':
+              return (
+                <Xls
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'application/vnd.ms-excel':
+              return (
+                <Xls
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'application/x-excel':
+              return (
+                <Xls
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'application/x-msexcel':
               return (
                 <Xls
                   key={idx}
@@ -95,7 +155,7 @@ const Attachments = ({attachments}) => {
                   size={size}
                 />
               );
-            case 'png' || 'image/png':
+            case 'png':
               return (
                 <Img
                   key={idx}
@@ -105,7 +165,7 @@ const Attachments = ({attachments}) => {
                   size={size}
                 />
               );
-            case 'jpg' || 'jpeg' || 'image/jpeg' || 'image/pjpeg' :
+            case 'image/png':
               return (
                 <Img
                   key={idx}
@@ -115,7 +175,7 @@ const Attachments = ({attachments}) => {
                   size={size}
                 />
               );
-            case 'bmp' || 'image/bmp' || 'image/x-windows-bmp' :
+            case 'image/jpeg':
               return (
                 <Img
                   key={idx}
@@ -125,7 +185,107 @@ const Attachments = ({attachments}) => {
                   size={size}
                 />
               );
-            case 'zip' || 'application/x-compressed' || 'application/x-zip-compressed' || 'application/zip' || 'multipart/x-zip' :
+            case 'jpg':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'jpeg':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'image/pjpeg':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'bmp':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'image/bmp':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'image/x-windows-bmp':
+              return (
+                <Img
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'zip':
+              return (
+                <Zip
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'application/x-compressed':
+              return (
+                <Zip
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'application/x-zip-compressed':
+              return (
+                <Zip
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'application/zip':
+              return (
+                <Zip
+                  key={idx}
+                  type={type}
+                  name={name}
+                  filePath={filePath}
+                  size={size}
+                />
+              );
+            case 'multipart/x-zip':
               return (
                 <Zip
                   key={idx}

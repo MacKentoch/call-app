@@ -80,7 +80,7 @@ const addAttachement = (boiteMailId = 0, attachment = null, time = moment().form
 export const newMailAddAttachement = (boiteMailId = 0, attachment = null) => {
   return (dispatch, getState) => {
     dispatch(addAttachement(boiteMailId, attachment));
-
+    
     if (attachment) {
       const state = getState();
       const { writeNewMailContent: { attachments } } = state;
