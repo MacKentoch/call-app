@@ -8,7 +8,7 @@ import Csv                  from './csv/Csv';
 import Img                  from './img/Img';
 import Zip                  from './zip/Zip';
 
-const Attachments = ({attachments}) => {
+const Attachments = ({attachments, onTrashClick}) => {
   return (
     <ul className="mailbox-attachments clearfix">
       {
@@ -23,6 +23,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'application/pdf':
@@ -33,6 +34,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'txt':
@@ -43,6 +45,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'text/plain':
@@ -53,6 +56,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'doc':
@@ -63,6 +67,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'application/msword':
@@ -73,6 +78,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'docx':
@@ -83,6 +89,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'xls':
@@ -93,6 +100,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'application/excel':
@@ -103,6 +111,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'application/vnd.ms-excel':
@@ -113,6 +122,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'application/x-excel':
@@ -123,6 +133,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'application/x-msexcel':
@@ -133,6 +144,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'xlsx':
@@ -143,6 +155,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'csv':
@@ -153,6 +166,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'png':
@@ -163,6 +177,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'image/png':
@@ -173,6 +188,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'image/jpeg':
@@ -183,6 +199,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'jpg':
@@ -193,6 +210,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'jpeg':
@@ -203,6 +221,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'image/pjpeg':
@@ -213,6 +232,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'bmp':
@@ -223,6 +243,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'image/bmp':
@@ -233,6 +254,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'image/x-windows-bmp':
@@ -243,6 +265,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'zip':
@@ -253,6 +276,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'application/x-compressed':
@@ -263,6 +287,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'application/x-zip-compressed':
@@ -273,6 +298,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'application/zip':
@@ -283,6 +309,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'multipart/x-zip':
@@ -293,6 +320,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case '7zip':
@@ -303,6 +331,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             case 'rar':
@@ -313,6 +342,7 @@ const Attachments = ({attachments}) => {
                   name={name}
                   filePath={filePath}
                   size={size}
+                  onTrashClick={onTrashClick}
                 />
               );
             default:
@@ -326,6 +356,7 @@ const Attachments = ({attachments}) => {
 };
 
 Attachments.propTypes = {
+  onTrashClick: PropTypes.func,
   attachments: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.oneOf(appConfig.fileMimeTypes),

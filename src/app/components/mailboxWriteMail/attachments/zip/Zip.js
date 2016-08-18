@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Zip = ({name, filePath, size}) => {
+const Zip = ({name, filePath, size, onTrashClick}) => {
   return (
     <li>
       <span className="mailbox-attachment-icon">
@@ -16,11 +16,11 @@ const Zip = ({name, filePath, size}) => {
         </a>
         <span className="mailbox-attachment-size">
           {size}
-          <a
-            href={filePath}
-            className="btn btn-default btn-xs pull-right">
+          <button
+            className="btn btn-default btn-xs pull-right"
+            onClick={onTrashClick}>
             <i className="fa fa-trash-o"></i>
-          </a>
+          </button>
         </span>
       </div>
     </li>
@@ -30,7 +30,8 @@ const Zip = ({name, filePath, size}) => {
 Zip.propTypes = {
   name: PropTypes.string.isRequired,
   filePath: PropTypes.string,
-  size: PropTypes.any.isRequired
+  size: PropTypes.any.isRequired,
+  onTrashClick: PropTypes.func
 };
 
 Zip.defaultProps = {
