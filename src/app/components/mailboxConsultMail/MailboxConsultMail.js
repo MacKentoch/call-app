@@ -100,8 +100,8 @@ MailboxConsultMail.propTypes = {
     attachments: PropTypes.arrayOf(
       PropTypes.shape({
         type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
-        filename: PropTypes.string.isRequired,
-        filePath: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        filePath: PropTypes.string,
         size: PropTypes.string.isRequired
       })
     )

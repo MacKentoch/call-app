@@ -81,7 +81,7 @@ export const newMailAddAttachement = (boiteMailId = 0, attachment = null) => {
   return (dispatch, getState) => {
     dispatch(addAttachement(boiteMailId, attachment));
 
-    if (attachment && hasFileNameProp(attachment)) {
+    if (attachment && hasNameProperty(attachment)) {
       const state = getState();
       const { writeNewMailContent: { attachments } } = state;
       dispatch(newMailUpdateAttachementsList(boiteMailId, [...attachments, attachment]));
