@@ -54,7 +54,7 @@ Menu.propTypes = {
     name: PropTypes.string.isRequired,
     linkTo: PropTypes.string.isRequired,
     faIconName: PropTypes.string.isRequired,
-    itemCount: PropTypes.number.isRequired
+    itemCount: PropTypes.number
   })).isRequired
 };
 

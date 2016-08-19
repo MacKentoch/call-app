@@ -50,13 +50,13 @@ const viewsEmails = [
   {
     name: 'Service.CAVDI',
     linkTo: '/',
-    faIconName: 'fa-file-o',
+    faIconName: 'fa-inbox',
     itemCount: 26
   },
   {
     name: 'Retraite.SUEZ',
     linkTo: '/',
-    faIconName: 'fa-file-o',
+    faIconName: 'fa-inbox',
     itemCount: 2
   }
 ];

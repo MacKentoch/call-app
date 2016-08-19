@@ -18,3 +18,11 @@
 .dropdown-menu-right > li > a:hover {
     background-color: #E67E22;
 }
+
+.sidebar-menu > li > a:hover {
+  background-color: #425164;
+}
+
+.sidebar-menu > li.active > a {
+  background-color: #E67E22;
+}
