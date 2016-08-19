@@ -2,15 +2,11 @@
 import React, {
 PropTypes
 }                     from 'react';
-// import { appConfig }  from '../../../../config';
 import cx             from 'classnames';
-// import { Link }       from 'react-router';
 import UserPanel      from './userPanel/UserPanel';
 import { Horloge }    from '../../../../components';
 import Menu           from './menu/Menu';
-// import SearchForm     from './searchForm/SearchForm'
-// const homeView      = appConfig.views.home.viewName;
-// const rechercheView = appConfig.views.recherche.viewName;
+
 
 const views = [
   {
@@ -48,13 +44,13 @@ const viewsActivite = [
 
 const viewsEmails = [
   {
-    name: 'Service.CAVDI',
+    name: 'MailBox #1',
     linkTo: '/',
     faIconName: 'fa-inbox',
     itemCount: 26
   },
   {
-    name: 'Retraite.SUEZ',
+    name: 'MailBox #2',
     linkTo: '/',
     faIconName: 'fa-inbox',
     itemCount: 2
