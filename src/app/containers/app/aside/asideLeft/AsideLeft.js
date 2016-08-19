@@ -28,12 +28,12 @@ const views = [
 const viewsBenef = [
   {
     name: 'Rechercher un bénéficaire',
-    linkTo: '/rechBeneficaires',
+    linkTo: '/',
     faIconName: 'fa-search'
   },
   {
     name: 'Mise à jour de bénéficiaire',
-    linkTo: '/majBeneficaire',
+    linkTo: '/',
     faIconName: 'fa-edit'
   }
 ];
@@ -41,8 +41,23 @@ const viewsBenef = [
 const viewsActivite = [
   {
     name: 'fiches de mes groupes',
-    linkTo: '/fichActivGroupe',
+    linkTo: '/',
     faIconName: 'fa-file-o'
+  }
+];
+
+const viewsEmails = [
+  {
+    name: 'Service.CAVDI',
+    linkTo: '/',
+    faIconName: 'fa-file-o',
+    itemCount: 26
+  },
+  {
+    name: 'Retraite.SUEZ',
+    linkTo: '/',
+    faIconName: 'fa-file-o',
+    itemCount: 2
   }
 ];
 
@@ -68,29 +83,29 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
           isFetching={isFetching}
         />
         <Horloge />
-
         {/* <SearchForm
           onSearchSubmit={(value) => console.log('searching: ', value)}
         /> */}
-
         <Menu
           headerTitle={'Général'}
           activeView={currentView}
           views={views}
         />
-
         <Menu
           headerTitle={'Gestion des bénéficiaires'}
           activeView={currentView}
           views={viewsBenef}
         />
-
         <Menu
           headerTitle={'Activités'}
           activeView={currentView}
           views={viewsActivite}
         />
-
+        <Menu
+          headerTitle={'Emails'}
+          activeView={currentView}
+          views={viewsEmails}
+        />
       </section>
     </aside>
   );

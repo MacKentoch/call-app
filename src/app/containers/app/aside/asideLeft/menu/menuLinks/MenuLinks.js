@@ -16,7 +16,7 @@ class MenuLinks extends Component {
       <ul className="sidebar-menu sidebar-menu__marginTop">
         {
           views.map(
-            ({name, linkTo, faIconName}, idx) => {
+            ({name, linkTo, faIconName, itemCount}, idx) => {
               return (
                 <ViewLink
                   key={idx}
@@ -24,6 +24,7 @@ class MenuLinks extends Component {
                   linkTo={linkTo}
                   viewName={name}
                   faIconName={faIconName}
+                  itemCount={itemCount ? itemCount : 0}
                 />
               );
             }
@@ -39,7 +40,8 @@ MenuLinks.propTypes = {
   views: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     linkTo: PropTypes.string.isRequired,
-    faIconName: PropTypes.string.isRequired
+    faIconName: PropTypes.string.isRequired,
+    itemCount: PropTypes.number
   })).isRequired
 };
 

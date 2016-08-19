@@ -53,7 +53,8 @@ Menu.propTypes = {
   views: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     linkTo: PropTypes.string.isRequired,
-    faIconName: PropTypes.string.isRequired
+    faIconName: PropTypes.string.isRequired,
+    itemCount: PropTypes.number.isRequired
   })).isRequired
 };
 
