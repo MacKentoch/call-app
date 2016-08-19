@@ -1,6 +1,10 @@
 import React, { PropTypes } from 'react';
+import {
+  Motion,
+  spring
+}                           from 'react-motion';
 
-const MenuHeader = ({title, onClick}) => {
+const MenuHeader = ({title, isCollapsed, onClick}) => {
   return (
     <ul
       className="list-inline sidebar-menu__group-container"
@@ -12,10 +16,25 @@ const MenuHeader = ({title, onClick}) => {
           <span className="pull-left sidebar-menu__group-title">
             {title}
           </span>
-          <i
-            className="fa fa-angle-up fa-1x pull-right"
-            aria-hidden="true">
-          </i>
+          <Motion
+            style={{
+              deg: isCollapsed ? spring(0) : spring(180),
+              y: isCollapsed ? spring(0) : spring(2)
+            }} >
+            {
+              ({deg, y}) => {
+                return (
+                  <i
+                    className="fa fa-angle-up fa-1x pull-right"
+                    style={{
+                      transform: `rotate(${deg}deg)`
+                    }}
+                    aria-hidden="true">
+                  </i>
+                );
+              }
+            }
+          </Motion>
         </a>
       </li>
     </ul>
@@ -24,6 +43,7 @@ const MenuHeader = ({title, onClick}) => {
 
 MenuHeader.propTypes = {
   title: PropTypes.string.isRequired,
+  isCollapsed: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired
 };
 

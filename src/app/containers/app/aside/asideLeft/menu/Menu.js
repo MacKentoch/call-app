@@ -3,10 +3,7 @@ import React, {
   PropTypes
 }                     from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-import {
-  Motion,
-  spring
-}                     from 'react-motion';
+import Collapse       from 'react-collapse';
 import MenuHeader     from './menuHeader/MenuHeader';
 import MenuLinks      from './menuLinks/MenuLinks';
 
@@ -16,18 +13,8 @@ const activeView = 'Accueil';
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isCollapsed: false,
-      minHeight: 0,
-      maxHeight: 100 // by default: will be changed with real hight
-    };
+    this.state = {isCollapsed: false};
     this.handlesCollapseClick = this.handlesCollapseClick.bind(this);
-  }
-
-  componentDidMount() {
-    if (this.MenuLinkComponent) {
-      this.getMenuLinkFullHeight();
-    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -36,42 +23,30 @@ class Menu extends Component {
 
   render() {
     const { headerTitle  } = this.props;
-    const { isCollapsed, minHeight, maxHeight } = this.state;
+    const { isCollapsed } = this.state;
     return (
       <div>
         <MenuHeader
           title={headerTitle}
+          isCollapsed={!isCollapsed}
           onClick={this.handlesCollapseClick}
         />
-        <Motion style={{height: spring(isCollapsed ? minHeight: maxHeight)}}>
-          {
-            ({height}) =>
-              <MenuLinks
-                ref={(ref)=>{
-                  this.MenuLinkComponent = ref;
-                }}
-                activeView={activeView}
-                views={views}
-                style={{
-                  height: `${height}px`
-                }}
-              />
-          }
-        </Motion>
+        <Collapse
+          isOpened={!isCollapsed}
+          keepCollapsedContent={false}>
+          <MenuLinks
+            activeView={activeView}
+            views={views}
+          />
+        </Collapse>
       </div>
     );
   }
 
   handlesCollapseClick(evt) {
     evt.preventDefault();
-    console.log('handlesCollapseClick event');
     const { isCollapsed } = this.state;
     this.setState({ isCollapsed: !isCollapsed });
-  }
-
-  getMenuLinkFullHeight() {
-    
-    // get MenuLinkComponent height ans store to state as maxHeight
   }
 }
 
