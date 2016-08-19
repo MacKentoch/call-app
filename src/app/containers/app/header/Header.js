@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 import UserMenu             from './userMenu/UserMenu';
-// import TaskMenu             from './taskMenu/TaskMenu';
-// import MessageMenu          from './messageMenu/MessageMenu';
 import { Link }             from 'react-router';
 import SuperAdminMenu       from './superAdminMenu/SuperAdminMenu';
 
@@ -29,8 +27,6 @@ const Header = ({ appName, toggleSideMenu, userLogin, userFirstname, userLastnam
         </Link>
         <div className="navbar-right">
           <ul className="nav navbar-nav">
-            {/*<MessageMenu />*/}
-            {/*<TaskMenu />*/}
             <SuperAdminMenu
               title={'Menu Super Administrateur'}
             />
