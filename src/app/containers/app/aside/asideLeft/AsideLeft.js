@@ -9,7 +9,7 @@ import UserPanel      from './userPanel/UserPanel';
 import { Horloge }    from '../../../../components';
 import Menu           from './menu/Menu';
 // import SearchForm     from './searchForm/SearchForm'
-;// const homeView      = appConfig.views.home.viewName;
+// const homeView      = appConfig.views.home.viewName;
 // const rechercheView = appConfig.views.recherche.viewName;
 
 const views = [
@@ -25,6 +25,26 @@ const views = [
   }
 ];
 
+const viewsBenef = [
+  {
+    name: 'Rechercher un bénéficaire',
+    linkTo: '/rechBeneficaires',
+    faIconName: 'fa-search'
+  },
+  {
+    name: 'Mise à jour de bénéficiaire',
+    linkTo: '/majBeneficaire',
+    faIconName: 'fa-edit'
+  }
+];
+
+const viewsActivite = [
+  {
+    name: 'fiches de mes groupes',
+    linkTo: '/fichActivGroupe',
+    faIconName: 'fa-file-o'
+  }
+];
 
 const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed }) => {
   return (
@@ -55,55 +75,21 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
 
         <Menu
           headerTitle={'Général'}
-          activeView={'Accueil'}
+          activeView={currentView}
           views={views}
         />
 
+        <Menu
+          headerTitle={'Gestion des bénéficiaires'}
+          activeView={currentView}
+          views={viewsBenef}
+        />
 
-        {/* <div>
-          <ul className="list-inline sidebar-menu__group-container">
-            <li style={{width: '100%', backgroundColor: '#4A4A4A'}}>
-              <a
-                className="btn"
-                style={{width: '100%', paddinLeft: '0px !important'}}>
-                <span className="pull-left sidebar-menu__group-title">
-                  Général
-                </span>
-                <i
-                  className="fa fa-angle-up fa-1x pull-right"
-                  aria-hidden="true">
-                </i>
-              </a>
-            </li>
-          </ul>
-
-          <ul className="sidebar-menu sidebar-menu__marginTop">
-
-            <li
-              className={cx({'active': currentView === homeView})}
-              style={{paddingLeft: '10px'}}>
-              <Link
-                to="/">
-                <i className="fa fa-home"></i>
-                <span>
-                  {homeView}
-                </span>
-              </Link>
-            </li>
-
-            <li
-              className={cx({'active': currentView === rechercheView})}
-              style={{paddingLeft: '10px'}}>
-              <Link to="/recherche">
-                <i className="fa fa-search"></i>
-                <span>
-                  {rechercheView}
-                </span>
-              </Link>
-            </li>
-          </ul>
-        </div> */}
-
+        <Menu
+          headerTitle={'Activités'}
+          activeView={currentView}
+          views={viewsActivite}
+        />
 
       </section>
     </aside>
