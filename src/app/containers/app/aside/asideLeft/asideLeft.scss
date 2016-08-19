@@ -6,9 +6,24 @@
 }
 .sidebar-menu__marginTop {
   margin: {
-    top: 30px !important;
+    top: 0px !important;
   }
 }
+
+.sidebar-menu__group-container {
+  margin: {
+    top: 10px !important;
+  }
+  height: 20px;
+}
+
+.sidebar-menu__group-title {
+  text-align: left;
+  font-size: 14px;
+  color: #f6f6f6;
+  font-weight: 600;
+}
+
 .left-side {
   transform: translateX(0) !important; // translate to MINUS sideMenu width
 }

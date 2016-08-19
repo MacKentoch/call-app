@@ -38,27 +38,52 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
           onSearchSubmit={(value) => console.log('searching: ', value)}
         />
         */}
-        <ul className="sidebar-menu sidebar-menu__marginTop">
-          {/* Menu accueil */}
-          <li className={cx({'active': currentView === homeView})}>
-            <Link
-              to="/">
-              <i className="fa fa-home"></i>
-              <span>
-                {homeView}
-              </span>
-            </Link>
-          </li>
-          {/* Menu recherche détaillées */}
-          <li className={cx({'active': currentView === rechercheView})}>
-            <Link to="/recherche">
-              <i className="fa fa-search"></i>
-              <span>
-                {rechercheView}
-              </span>
-            </Link>
-          </li>
-        </ul>
+
+        <div>
+          <ul className="list-inline sidebar-menu__group-container">
+            <li style={{width: '100%', backgroundColor: '#4A4A4A'}}>
+              <a
+                className="btn"
+                style={{width: '100%', paddinLeft: '0px !important'}}>
+                <span className="pull-left sidebar-menu__group-title">
+                  Général
+                </span>
+                <i
+                  className="fa fa-angle-up fa-1x pull-right"
+                  aria-hidden="true">
+                </i>
+              </a>
+            </li>
+          </ul>
+
+          <ul className="sidebar-menu sidebar-menu__marginTop">
+            {/* Menu accueil */}
+            <li
+              className={cx({'active': currentView === homeView})}
+              style={{paddingLeft: '10px'}}>
+              <Link
+                to="/">
+                <i className="fa fa-home"></i>
+                <span>
+                  {homeView}
+                </span>
+              </Link>
+            </li>
+            {/* Menu recherche détaillées */}
+            <li
+              className={cx({'active': currentView === rechercheView})}
+              style={{paddingLeft: '10px'}}>
+              <Link to="/recherche">
+                <i className="fa fa-search"></i>
+                <span>
+                  {rechercheView}
+                </span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+
       </section>
     </aside>
   );
