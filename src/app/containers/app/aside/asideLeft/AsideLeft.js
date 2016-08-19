@@ -35,9 +35,9 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
         />
         <Horloge />
 
-        <SearchForm
+        {/* <SearchForm
           onSearchSubmit={(value) => console.log('searching: ', value)}
-        />
+        /> */}
 
         <Menu
           headerTitle={'Général'}
