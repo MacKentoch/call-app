@@ -2,14 +2,15 @@
 import React, {
 PropTypes
 }                     from 'react';
-import { appConfig }  from '../../../../config';
+// import { appConfig }  from '../../../../config';
 import cx             from 'classnames';
-import { Link }       from 'react-router';
+// import { Link }       from 'react-router';
 import UserPanel      from './userPanel/UserPanel';
 import { Horloge }    from '../../../../components';
-
-const homeView      = appConfig.views.home.viewName;
-const rechercheView = appConfig.views.recherche.viewName;
+import Menu           from './menu/Menu';
+import SearchForm     from './searchForm/SearchForm'
+;// const homeView      = appConfig.views.home.viewName;
+// const rechercheView = appConfig.views.recherche.viewName;
 
 const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed }) => {
   return (
@@ -33,13 +34,17 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
           isFetching={isFetching}
         />
         <Horloge />
-        {/*
+
         <SearchForm
           onSearchSubmit={(value) => console.log('searching: ', value)}
         />
-        */}
 
-        <div>
+        <Menu
+          headerTitle={'Général'}
+        />
+
+
+        {/* <div>
           <ul className="list-inline sidebar-menu__group-container">
             <li style={{width: '100%', backgroundColor: '#4A4A4A'}}>
               <a
@@ -57,7 +62,7 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
           </ul>
 
           <ul className="sidebar-menu sidebar-menu__marginTop">
-            {/* Menu accueil */}
+
             <li
               className={cx({'active': currentView === homeView})}
               style={{paddingLeft: '10px'}}>
@@ -69,7 +74,7 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
                 </span>
               </Link>
             </li>
-            {/* Menu recherche détaillées */}
+
             <li
               className={cx({'active': currentView === rechercheView})}
               style={{paddingLeft: '10px'}}>
@@ -81,7 +86,7 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
 
 
       </section>
