@@ -16,13 +16,14 @@ class MenuLinks extends Component {
       <ul className="sidebar-menu sidebar-menu__marginTop">
         {
           views.map(
-            (viewName, idx) => {
+            ({name, linkTo, faIconName}, idx) => {
               return (
                 <ViewLink
                   key={idx}
-                  isActive={activeView === viewName}
-                  viewName={viewName}
-                  faIconName={''}
+                  isActive={activeView === name}
+                  linkTo={linkTo}
+                  viewName={name}
+                  faIconName={faIconName}
                 />
               );
             }
@@ -35,7 +36,11 @@ class MenuLinks extends Component {
 
 MenuLinks.propTypes = {
   activeView: PropTypes.string.isRequired,
-  views: PropTypes.arrayOf(PropTypes.string)
+  views: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    linkTo: PropTypes.string.isRequired,
+    faIconName: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default MenuLinks;

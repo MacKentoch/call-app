@@ -7,9 +7,6 @@ import Collapse       from 'react-collapse';
 import MenuHeader     from './menuHeader/MenuHeader';
 import MenuLinks      from './menuLinks/MenuLinks';
 
-const views = ['Accueil', 'Recherche'];
-const activeView = 'Accueil';
-
 class Menu extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +19,7 @@ class Menu extends Component {
   }
 
   render() {
-    const { headerTitle  } = this.props;
+    const { headerTitle, activeView, views  } = this.props;
     const { isCollapsed } = this.state;
     return (
       <div>
@@ -51,7 +48,13 @@ class Menu extends Component {
 }
 
 Menu.propTypes = {
-  headerTitle: PropTypes.string.isRequired
+  headerTitle: PropTypes.string.isRequired,
+  activeView: PropTypes.string.isRequired,
+  views: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    linkTo: PropTypes.string.isRequired,
+    faIconName: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default Menu;

@@ -8,9 +8,23 @@ import cx             from 'classnames';
 import UserPanel      from './userPanel/UserPanel';
 import { Horloge }    from '../../../../components';
 import Menu           from './menu/Menu';
-import SearchForm     from './searchForm/SearchForm'
+// import SearchForm     from './searchForm/SearchForm'
 ;// const homeView      = appConfig.views.home.viewName;
 // const rechercheView = appConfig.views.recherche.viewName;
+
+const views = [
+  {
+    name: 'Accueil',
+    linkTo: '/',
+    faIconName: 'fa-home'
+  },
+  {
+    name: 'Recherche',
+    linkTo: '/recherche',
+    faIconName: 'fa-search'
+  }
+];
+
 
 const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed }) => {
   return (
@@ -41,6 +55,8 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
 
         <Menu
           headerTitle={'Général'}
+          activeView={'Accueil'}
+          views={views}
         />
 
 

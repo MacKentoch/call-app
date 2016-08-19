@@ -2,13 +2,17 @@ import React, { PropTypes } from 'react';
 import cx                   from 'classnames';
 import { Link }             from 'react-router';
 
-const ViewLink = ({isActive, viewName}) => {
+const ViewLink = ({isActive, linkTo, viewName, faIconName}) => {
   return (
     <li
       className={cx({'active': isActive})}
-      style={{paddingLeft: '10px'}}>
-      <Link to="/recherche">
-        <i className="fa fa-search"></i>
+      >
+      <Link
+        to={linkTo}>
+        <i
+          className={`fa ${faIconName}`}
+          style={{marginLeft: '10px'}}>
+        </i>
         <span>
           {viewName}
         </span>
@@ -19,7 +23,9 @@ const ViewLink = ({isActive, viewName}) => {
 
 ViewLink.propTypes = {
   isActive: PropTypes.bool,
-  viewName: PropTypes.string.isRequired
+  viewName: PropTypes.string.isRequired,
+  linkTo: PropTypes.string.isRequired,
+  faIconName: PropTypes.string.isRequired
 };
 
 ViewLink.defaultProps = {
