@@ -30,7 +30,11 @@ class ActionsBoite extends Component {
           >
           <Link
             to={`${boiteReceptionPath}/${boiteId}`}
-            style={{color:'rgb(51, 51, 51) !important'}}>
+            style={{
+              color:'rgb(51, 51, 51) !important',
+              width: '100%',
+              display: 'block'
+            }}>
             <i className="fa fa-inbox" aria-hidden="true"></i>
             &nbsp;
             Boîte de réception
@@ -41,7 +45,12 @@ class ActionsBoite extends Component {
         <li
           className="boite_mail_link"
           >
-          <Link to={`${boiteEnvoiPath}/${boiteId}`}>
+          <Link
+            to={`${boiteEnvoiPath}/${boiteId}`}
+            style={{
+              width: '100%',
+              display: 'block'
+            }}>
             <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
             &nbsp;
             Envoyés
