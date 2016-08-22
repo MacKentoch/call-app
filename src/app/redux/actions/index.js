@@ -22,7 +22,9 @@ import {
   enterMailboxConsult,
   leaveMailboxConsult,
   enterMailboxWriteNew,
-  leaveMailboxWriteNew
+  leaveMailboxWriteNew,
+  enterMailboxReplyMail,
+  leaveMailboxReplyMail
 }                                 from './views';
 // stats
 import {
@@ -115,6 +117,8 @@ export {
   leaveMailboxConsult,
   enterMailboxWriteNew,
   leaveMailboxWriteNew,
+  enterMailboxReplyMail,
+  leaveMailboxReplyMail,
 
   // stats:
   fetchFichesTraiteeDataIfNeeded,
@@ -138,7 +142,7 @@ export {
   fetchInboxContentIfNeeded,
   fetchSentboxContentIfNeeded,
   fetchMailContentIfNeeded,
-  
+
   // write new mail
   newMailInit,
   newMailCancel,
