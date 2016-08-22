@@ -13,7 +13,7 @@ const ViewLink = ({isActive, linkTo, viewName, itemCount, faIconName}) => {
           className={`fa ${faIconName}`}
           style={{marginLeft: '10px'}}>
         </i>
-        <span>
+        <span style={{fontSize: '13px'}}>
           {viewName}
         </span>
         {

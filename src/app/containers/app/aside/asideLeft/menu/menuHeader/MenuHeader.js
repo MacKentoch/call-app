@@ -18,11 +18,10 @@ const MenuHeader = ({title, isCollapsed, onClick}) => {
           </span>
           <Motion
             style={{
-              deg: isCollapsed ? spring(0) : spring(180),
-              y: isCollapsed ? spring(0) : spring(2)
+              deg: isCollapsed ? spring(0) : spring(180)
             }} >
             {
-              ({deg, y}) => {
+              ({ deg }) => {
                 return (
                   <i
                     className="fa fa-angle-up fa-1x pull-right"
