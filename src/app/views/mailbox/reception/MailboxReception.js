@@ -45,21 +45,10 @@ class MailboxReception extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { inboxRefreshTime } = this.props;
-    const { currentPage, numberMailsPerPage, filter } = this.state;
-
-    const lastRefreshTime = inboxRefreshTime.length > 0
-      ? moment(inboxRefreshTime, formatDate).format(formatDate)
-      : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
-
-    const newRefreshTime = nextProps.inboxRefreshTime.length > 0
-      ? moment(nextProps.inboxRefreshTime, formatDate).format(formatDate)
-      : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
-
-    if (lastRefreshTime < newRefreshTime) {
-      const nextPageMails = getCurrentPageContent(nextProps.inbox, currentPage, numberMailsPerPage, filter);
-      this.setState({ currentPageMails: nextPageMails });
-    }
+    // route param change case (router won't route for only url param change):
+    this.refreshWhenMailBoxIdChange(nextProps);
+    // mailbox content refresh case (test refresh time):
+    this.refreshWhenMailboxContentRefreshTimeChange(nextProps);
   }
 
   componentWillUnmount() {
@@ -121,6 +110,33 @@ class MailboxReception extends Component {
         }
       </div>
     );
+  }
+
+  refreshWhenMailBoxIdChange(nextProps) {
+    const {actions, params: { mailboxId } } = this.props;
+    if (mailboxId !== nextProps.params.mailboxId) {
+      // refresh new mailbox
+      actions.enterMailboxInbox(`mailbox #${nextProps.params.mailboxId}`);
+      actions.fetchInboxContentIfNeeded(nextProps.params.mailboxId);
+    }
+  }
+
+  refreshWhenMailboxContentRefreshTimeChange(nextProps) {
+    const { inboxRefreshTime } = this.props;
+    const { currentPage, numberMailsPerPage, filter } = this.state;
+
+    const lastRefreshTime = inboxRefreshTime.length > 0
+      ? moment(inboxRefreshTime, formatDate).format(formatDate)
+      : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
+
+    const newRefreshTime = nextProps.inboxRefreshTime.length > 0
+      ? moment(nextProps.inboxRefreshTime, formatDate).format(formatDate)
+      : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
+
+    if (lastRefreshTime < newRefreshTime) {
+      const nextPageMails = getCurrentPageContent(nextProps.inbox, currentPage, numberMailsPerPage, filter);
+      this.setState({ currentPageMails: nextPageMails });
+    }
   }
 
   handlesOnRefreshListClick(event) {

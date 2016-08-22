@@ -23,7 +23,7 @@ const requestInboxContent = (boiteMailId = 0, time = moment().format(formatDate)
 };
 const receivedInboxContent = (boiteMailId = 0, data, time = moment().format(formatDate)) => {
   const mails = addCheckStatusProperty(data.mails) || [];
-  const mailBoxName = data.mailboxName || '';
+  const mailBoxName = data.mailboxName + boiteMailId || '';
   const nbUnRead = getNbUnread(mails);
   return {
     type:       RECEIVED_INBOX_CONTENT,

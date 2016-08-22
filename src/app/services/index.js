@@ -49,6 +49,7 @@ import {
 export {
   // utils:
   defaultOptions,
+  postMethod,
   checkStatus,
   parseJSON,
   getLocationOrigin,

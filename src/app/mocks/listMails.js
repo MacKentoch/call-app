@@ -1,6 +1,6 @@
 export const listMailsMock = {
   mailboxId: 1,
-  mailboxName: 'boîte mail #1',
+  mailboxName: 'boîte mail #',
   mails: [
     {
       id: 1,
