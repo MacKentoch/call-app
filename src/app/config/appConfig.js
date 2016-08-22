@@ -77,6 +77,10 @@ export const appConfig = {
       writeNew: {
         viewName: 'Rédaction nouvel email',
         path: 'writeNew'
+      },
+      reply: {
+        viewName: 'Réponse',
+        path: 'replyMail'
       }
     },
     recherche: {

@@ -1,6 +1,6 @@
 import React, { PropTypes, Component }  from 'react';
 import moment                           from 'moment';
-// import { appConfig }                    from '../../../config';
+import { appConfig }                    from '../../../config';
 import cx                               from 'classnames';
 import {
   MailboxConsultMail,
@@ -8,12 +8,13 @@ import {
 }                                       from '../../../components';
 
 moment.locale('fr');
-
 // const formatDate = appConfig.formatDate.defaut;
 
+const replyUrl = `${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.reply.path}`;
+
 class MailConsult extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
       animated: true
@@ -69,9 +70,25 @@ class MailConsult extends Component {
 
   handlesOnReplyMail(event) {
     event.preventDefault();
+
+    const { router } = this.context;
+    const { params: { mailboxId, mailId } } =  this.props;
+    router.push({
+      pathname: replyUrl,
+      query: {
+        mailboxId,
+        mailId
+      }
+    });
     console.log('handlesOnReplyMail: to route to write mail');
   }
 }
+
+
+MailConsult.contextTypes = {
+  // for manual routing
+  router: React.PropTypes.object.isRequired
+};
 
 MailConsult.propTypes = {
   params: PropTypes.object, // react router
