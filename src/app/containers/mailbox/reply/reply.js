@@ -20,8 +20,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
       {
-        enterMailboxWriteNew: actions.enterMailboxWriteNew,
-        leaveMailboxWriteNew: actions.leaveMailboxWriteNew,
+        enterMailboxReplyMail: actions.enterMailboxReplyMail,
+        leaveMailboxReplyMail: actions.leaveMailboxReplyMail,
         // write new mail actions:
         replyMailInit: actions.replyMailInit,
         replyMailDestinatairesChange: actions.replyMailDestinatairesChange,

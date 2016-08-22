@@ -25,14 +25,14 @@ class MailReply extends Component {
 
   componentDidMount() {
     const  {  params: { mailboxId } } =  this.props;
-    const { actions : { enterMailboxWriteNew, newMailInit } } = this.props;
-    enterMailboxWriteNew(`mailbox #${mailboxId}`);
+    const { actions : { enterMailboxReplyMail, newMailInit } } = this.props;
+    enterMailboxReplyMail(`mailbox #${mailboxId}`);
     newMailInit(mailboxId);
   }
 
   componentWillUnmount() {
     const  { actions, params: { mailboxId } } =  this.props;
-    actions.leaveMailboxWriteNew(`mailbox #${mailboxId}`);
+    actions.leaveMailboxReplyMail(`mailbox #${mailboxId}`);
   }
 
   render() {
@@ -101,6 +101,7 @@ class MailReply extends Component {
 MailReply.propTypes = {
   // react router
   params: PropTypes.object,
+  query: PropTypes.object,
   location: PropTypes.object,
   history: PropTypes.object,
   // mail content:
@@ -112,8 +113,8 @@ MailReply.propTypes = {
   attachments: PropTypes.array.isRequired,
   // actions:
   actions: PropTypes.shape({
-    enterMailboxWriteNew: PropTypes.func,
-    leaveMailboxWriteNew: PropTypes.func,
+    enterMailboxReplyMail: PropTypes.func,
+    leaveMailboxReplyMail: PropTypes.func,
     // write mail actions:
     replyMailInit: PropTypes.func,
     replyMailDestinatairesChange: PropTypes.func,

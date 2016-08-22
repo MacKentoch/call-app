@@ -24,7 +24,9 @@ import {
   enterMailboxConsult,
   leaveMailboxConsult,
   enterMailboxWriteNew,
-  leaveMailboxWriteNew
+  leaveMailboxWriteNew,
+  enterMailboxReplyMail,
+  leaveMailboxReplyMail
 }                                 from './mailbox/mailbox';
 export {
   // home
@@ -53,5 +55,7 @@ export {
   enterMailboxConsult,
   leaveMailboxConsult,
   enterMailboxWriteNew,
-  leaveMailboxWriteNew
+  leaveMailboxWriteNew,
+  enterMailboxReplyMail,
+  leaveMailboxReplyMail
 };

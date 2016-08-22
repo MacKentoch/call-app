@@ -30,7 +30,9 @@ import {
   ENTER_MAILBOX_CONSULT,
   LEAVE_MAILBOX_CONSULT,
   ENTER_MAILBOX_WRITE_NEW,
-  LEAVE_MAILBOX_WRITE_NEW
+  LEAVE_MAILBOX_WRITE_NEW,
+  ENTER_MAILBOX_REPLY_MAIL,
+  LEAVE_MAILBOX_REPLY_MAIL
 }                                       from '../actions/views/mailbox/mailbox';
 
 const initialState = {
@@ -43,6 +45,16 @@ const views = (state = initialState, action) => {
   switch (action.type) {
 
   case ENTER_HOME_VIEW:
+  case ENTER_RECHERCHE_VIEW:
+  case ENTER_CREATE_FICHE_CONTACT_COURIER:
+  case ENTER_CREATE_FICHE_CONTACT_MAIL:
+  case ENTER_CREATE_FICHE_CONTACT_TELEPHONE:
+  case ENTER_CREATE_FICHE_CONTACT_PERSONNES:
+  case ENTER_MAILBOX_INBOX:
+  case ENTER_MAILBOX_SENTBOX:
+  case ENTER_MAILBOX_CONSULT:
+  case ENTER_MAILBOX_WRITE_NEW:
+  case ENTER_MAILBOX_REPLY_MAIL:
     // can't enter if you are already inside
     if (state.currentView !== action.currentView) {
       return {
@@ -55,223 +67,16 @@ const views = (state = initialState, action) => {
     return state;
 
   case LEAVE_HOME_VIEW:
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-
-  case ENTER_RECHERCHE_VIEW:
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   case LEAVE_RECHERCHE_VIEW:
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-  case ENTER_CREATE_FICHE_CONTACT_COURIER:
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   case LEAVE_CREATE_FICHE_CONTACT_COURIER:
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-  case ENTER_CREATE_FICHE_CONTACT_MAIL:
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   case LEAVE_CREATE_FICHE_CONTACT_MAIL:
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-  case ENTER_CREATE_FICHE_CONTACT_TELEPHONE:
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   case LEAVE_CREATE_FICHE_CONTACT_TELEPHONE:
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-  case ENTER_CREATE_FICHE_CONTACT_PERSONNES:
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   case LEAVE_CREATE_FICHE_CONTACT_PERSONNES:
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-  case ENTER_MAILBOX_INBOX:
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   case LEAVE_MAILBOX_INBOX:
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-  case ENTER_MAILBOX_SENTBOX:
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   case LEAVE_MAILBOX_SENTBOX:
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-  case ENTER_MAILBOX_CONSULT:
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   case LEAVE_MAILBOX_CONSULT:
-    // can't leave if you aren't already inside
-    if (state.currentView === action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
-  case ENTER_MAILBOX_WRITE_NEW:
-    // can't enter if you are already inside
-    if (state.currentView !== action.currentView) {
-      return {
-        ...state,
-        currentView:  action.currentView,
-        enterTime:    action.enterTime,
-        leaveTime:    action.leaveTime
-      };
-    }
-    return state;
-
   case LEAVE_MAILBOX_WRITE_NEW:
+  case LEAVE_MAILBOX_REPLY_MAIL:
     // can't leave if you aren't already inside
     if (state.currentView === action.currentView) {
       return {
