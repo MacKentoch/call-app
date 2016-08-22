@@ -63,7 +63,14 @@ export const replyMailSubjectChange = (boiteMailId = 0, subject,  time = moment(
   };
 };
 // mail body
-
+export const replyMailBodyChange = (boiteMailId = 0, body, time = moment().format(formatDate)) => {
+  return {
+    type:       REPLY_MAIL_BODY_CHANGE,
+    boiteMailId,
+    body,
+    time
+  };
+};
 // mail attachments
 const replyMailUpdateAttachementsList = (boiteMailId = 0, attachments = [], time = moment().format(formatDate)) => {
   return {
