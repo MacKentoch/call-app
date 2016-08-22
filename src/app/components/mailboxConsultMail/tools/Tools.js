@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-export const Tools  = ({onReplyClick, onForwardClick, onPrintClick}) => {
+export const Tools  = ({onReplyClick, onPrintClick}) => {
   return (
     <div
       className="mailbox-controls with-border text-center"
@@ -19,7 +19,7 @@ export const Tools  = ({onReplyClick, onForwardClick, onPrintClick}) => {
           &nbsp;
           Répondre
         </button>
-        &nbsp;
+        {/* &nbsp;
         <button
           type="button"
           className="btn btn-default btn-sm"
@@ -30,7 +30,7 @@ export const Tools  = ({onReplyClick, onForwardClick, onPrintClick}) => {
           <i className="fa fa-share"></i>
           &nbsp;
           Tranférer
-        </button>
+        </button> */}
       </div>
 
       <button
@@ -49,7 +49,7 @@ export const Tools  = ({onReplyClick, onForwardClick, onPrintClick}) => {
 
 Tools.propTypes = {
   onReplyClick: PropTypes.func.isRequired,
-  onForwardClick: PropTypes.func.isRequired,
+  // onForwardClick: PropTypes.func.isRequired,
   onPrintClick: PropTypes.func.isRequired
 };
 

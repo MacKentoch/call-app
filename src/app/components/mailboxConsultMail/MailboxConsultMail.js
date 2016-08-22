@@ -41,7 +41,7 @@ class MailboxConsultMail extends Component {
               <div className="no-print">
                 <Tools
                   onReplyClick={(e)=>console.log('onReplyClick')}
-                  onForwardClick={(e)=>console.log('onForwardClick')}
+                  // onForwardClick={(e)=>console.log('onForwardClick')}
                   onPrintClick={this.handesOnPrintClick}
                 />
               </div>
