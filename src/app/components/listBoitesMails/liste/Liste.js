@@ -11,6 +11,7 @@ const Liste = ({boitesMails, boiteReceptionPath, boiteEnvoiPath}) => {
               key={idx}
               id={boite.id}
               titre={boite.titre}
+              receptionCount={boite.itemCount}
               boiteReceptionPath={boiteReceptionPath}
               boiteEnvoiPath={boiteEnvoiPath}
             />
@@ -25,7 +26,8 @@ Liste.propTypes = {
   boitesMails: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      titre: PropTypes.string.isRequired
+      titre: PropTypes.string.isRequired,
+      itemCount: PropTypes.number.isRequired
     })
   ),
   boiteReceptionPath: PropTypes.string.isRequired,

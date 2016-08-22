@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import TitreBoite           from './titreBoite/TitreBoite';
 import ActionsBoite         from './actionsBoite/ActionsBoite';
 
-const BoiteMail = ({id, titre, boiteReceptionPath, boiteEnvoiPath}) => {
+const BoiteMail = ({id, titre, receptionCount, boiteReceptionPath, boiteEnvoiPath}) => {
   return (
     <li
       style={{
@@ -15,6 +15,7 @@ const BoiteMail = ({id, titre, boiteReceptionPath, boiteEnvoiPath}) => {
       <ActionsBoite
         boiteId={id}
         boiteReceptionPath={boiteReceptionPath}
+        receptionCount={receptionCount}
         boiteEnvoiPath={boiteEnvoiPath}
       />
       <span style={{margin: '10px'}}></span>
@@ -25,6 +26,7 @@ const BoiteMail = ({id, titre, boiteReceptionPath, boiteEnvoiPath}) => {
 BoiteMail.propTypes = {
   id: PropTypes.number.isRequired,
   titre: PropTypes.string.isRequired,
+  receptionCount: PropTypes.number.isRequired,
   boiteReceptionPath: PropTypes.string.isRequired,
   boiteEnvoiPath: PropTypes.string.isRequired
 };

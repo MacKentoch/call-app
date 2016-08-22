@@ -16,7 +16,7 @@ class ActionsBoite extends Component {
   }
 
   render() {
-    const { boiteReceptionPath, boiteEnvoiPath, boiteId } = this.props;
+    const { boiteReceptionPath, receptionCount, boiteEnvoiPath, boiteId } = this.props;
     return (
       <ul
         style={{
@@ -34,6 +34,8 @@ class ActionsBoite extends Component {
             <i className="fa fa-inbox" aria-hidden="true"></i>
             &nbsp;
             Boîte de réception
+            &nbsp;
+            ({receptionCount})
           </Link>
         </li>
         <li
@@ -52,6 +54,7 @@ class ActionsBoite extends Component {
 
 ActionsBoite.propTypes = {
   boiteId: PropTypes.number,
+  receptionCount: PropTypes.number.isRequired,
   boiteReceptionPath: PropTypes.string.isRequired,
   boiteEnvoiPath: PropTypes.string.isRequired
 };

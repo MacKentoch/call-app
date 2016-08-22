@@ -25,6 +25,7 @@ class ListBoitesMails extends Component {
 
   render() {
     const {isFetching, boitesMails, headerText, dateMaj, onRefreshClick, boiteReceptionPath, boiteEnvoiPath} = this.props;
+    console.log('boitesMails: ', boitesMails);
     return (
       <section className="panel">
         <Header
@@ -85,7 +86,8 @@ ListBoitesMails.propTypes = {
   boitesMails: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      titre: PropTypes.string.isRequired
+      titre: PropTypes.string.isRequired,
+      itemCount: PropTypes.number.isRequired
     })
   ),
   boiteReceptionPath: PropTypes.string.isRequired,
