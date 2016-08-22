@@ -88,7 +88,7 @@ const replyMailAddAttachementErrorFileNoDefined = (boiteMailId = 0, time = momen
     time
   };
 };
-const replyMailAddAttachement = (boiteMailId = 0, attachment = null, time = moment().format(formatDate)) => {
+const addAttachement = (boiteMailId = 0, attachment = null, time = moment().format(formatDate)) => {
   return {
     type: REPLY_MAIL_ADD_ATTACHMENT,
     attachment,
@@ -110,7 +110,7 @@ export const replyMailAddAttachement = (boiteMailId = 0, attachment = null) => {
       const state = getState();
       const { replyMailContent: { attachments } } = state;
 
-      dispatch(replyMailAddAttachement(boiteMailId, attachment.name));
+      dispatch(addAttachement(boiteMailId, attachment.name));
 
       const fileExists = attachments.findIndex(att => att.name === attachment.name);
       if (fileExists === -1) {
@@ -123,7 +123,7 @@ export const replyMailAddAttachement = (boiteMailId = 0, attachment = null) => {
     }
   };
 };
-const replyMailRemoveAttachement = (boiteMailId = 0, attachment = null, time = moment().format(formatDate)) => {
+const removeAttachement = (boiteMailId = 0, attachment = null, time = moment().format(formatDate)) => {
   return {
     type: REPLY_MAIL_REMOVE_ATTACHMENT,
     attachment,
@@ -133,7 +133,7 @@ const replyMailRemoveAttachement = (boiteMailId = 0, attachment = null, time = m
 };
 export const replyMailRemoveAttachement = (boiteMailId = 0, attachmentName = '') => {
   return (dispatch, getState) => {
-    dispatch(replyMailRemoveAttachement(boiteMailId, attachmentName));
+    dispatch(removeAttachement(boiteMailId, attachmentName));
 
     if (attachmentName) {
       const state = getState();

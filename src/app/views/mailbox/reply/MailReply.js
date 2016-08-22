@@ -115,13 +115,13 @@ MailReply.propTypes = {
     enterMailboxWriteNew: PropTypes.func,
     leaveMailboxWriteNew: PropTypes.func,
     // write mail actions:
-    newMailInit: PropTypes.func,
-    newMailDestinatairesChange: PropTypes.func,
-    newMailSubjectChange: PropTypes.func,
-    newMailBodyChange: PropTypes.func,
-    newMailCancel: PropTypes.func,
-    newMailAddAttachement: PropTypes.func,
-    newMailRemoveAttachement: PropTypes.func
+    replyMailInit: PropTypes.func,
+    replyMailDestinatairesChange: PropTypes.func,
+    replyMailSubjectChange: PropTypes.func,
+    replyMailBodyChange: PropTypes.func,
+    replyMailCancel: PropTypes.func,
+    replyMailAddAttachement: PropTypes.func,
+    replyMailRemoveAttachement: PropTypes.func
   })
 };
 
