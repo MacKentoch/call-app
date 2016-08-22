@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Pdf = ({filename, filePath, size}) => {
+const Pdf = ({name, filePath, size}) => {
   return (
     <li>
       <span className="mailbox-attachment-icon">
@@ -12,7 +12,7 @@ const Pdf = ({filename, filePath, size}) => {
           className="mailbox-attachment-name">
           <i className="fa fa-paperclip"></i>
           &nbsp;
-          {filename}
+          {name}
         </a>
         <span className="mailbox-attachment-size">
           {size}
@@ -28,7 +28,7 @@ const Pdf = ({filename, filePath, size}) => {
 };
 
 Pdf.propTypes = {
-  filename: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   filePath: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired
 };

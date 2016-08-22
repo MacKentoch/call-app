@@ -24,10 +24,10 @@ class MailReply extends Component {
   }
 
   componentDidMount() {
-    const  {  params: { mailboxId } } =  this.props;
-    const { actions : { enterMailboxReplyMail, newMailInit } } = this.props;
-    enterMailboxReplyMail(`mailbox #${mailboxId}`);
-    newMailInit(mailboxId);
+    const  {  location: {query: { mailboxId, mailId }}  } =  this.props;
+    const { actions : { enterMailboxReplyMail, replyMailInit } } = this.props;
+    enterMailboxReplyMail(`mailbox #${mailboxId}`, mailId);
+    replyMailInit(mailboxId);
   }
 
   componentWillUnmount() {
@@ -101,7 +101,6 @@ class MailReply extends Component {
 MailReply.propTypes = {
   // react router
   params: PropTypes.object,
-  query: PropTypes.object,
   location: PropTypes.object,
   history: PropTypes.object,
   // mail content:

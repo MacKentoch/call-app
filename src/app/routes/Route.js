@@ -68,7 +68,7 @@ export const Routes = () => {
               <Route path={`${mailbox.envoi.path}/:mailboxId`} component={MailboxEnvoiConnected} />
               <Route path={`${mailbox.consult.path}/:mailboxId/:mailId`} component={MailConsultConnected} />
               <Route path={`${mailbox.writeNew.path}/:mailboxId`} component={MailWriteNewConnected} />
-              <Route path={`${mailbox.reply.path}/:mailboxId`} component={MailReplyConnected} />
+              <Route path={`${mailbox.reply.path}`} component={MailReplyConnected} />
             </Route>
 
           </Route>

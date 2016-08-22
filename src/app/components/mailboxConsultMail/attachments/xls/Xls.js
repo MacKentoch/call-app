@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Xls = ({filename, filePath, size}) => {
+const Xls = ({name, filePath, size}) => {
   return (
     <li>
       <span className="mailbox-attachment-icon">
@@ -12,7 +12,7 @@ const Xls = ({filename, filePath, size}) => {
           className="mailbox-attachment-name">
           <i className="fa fa-paperclip"></i>
           &nbsp;
-          {filename}
+          {name}
         </a>
         <span className="mailbox-attachment-size">
           {size}
@@ -28,7 +28,7 @@ const Xls = ({filename, filePath, size}) => {
 };
 
 Xls.propTypes = {
-  filename: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   filePath: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired
 };

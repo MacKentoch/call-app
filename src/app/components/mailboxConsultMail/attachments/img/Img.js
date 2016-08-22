@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Img = ({filename, filePath, size}) => {
+const Img = ({name, filePath, size}) => {
   return (
     <li>
       <span className="mailbox-attachment-icon">
@@ -12,7 +12,7 @@ const Img = ({filename, filePath, size}) => {
           className="mailbox-attachment-name">
           <i className="fa fa-paperclip"></i>
           &nbsp;
-          {filename}
+          {name}
         </a>
         <span className="mailbox-attachment-size">
           {size}
@@ -28,7 +28,7 @@ const Img = ({filename, filePath, size}) => {
 };
 
 Img.propTypes = {
-  filename: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   filePath: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired
 };
