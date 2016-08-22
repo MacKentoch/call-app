@@ -25,7 +25,6 @@ class ListBoitesMails extends Component {
 
   render() {
     const {isFetching, boitesMails, headerText, dateMaj, onRefreshClick, boiteReceptionPath, boiteEnvoiPath} = this.props;
-    console.log('boitesMails: ', boitesMails);
     return (
       <section className="panel">
         <Header

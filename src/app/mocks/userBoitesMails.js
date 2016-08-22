@@ -1,6 +1,6 @@
 import { appConfig } from '../config';
 
-const boiteReceptionPath  = `${appConfig.views.mailbox.reception.path}/${appConfig.views.mailbox.reception.path}`;
+const boiteReceptionPath  = `${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.reception.path}`;
 
 export const userBoitesMailsMock = [
   {
