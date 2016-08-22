@@ -30,6 +30,11 @@ class MailBox extends Component {
     actions.fetchInboxContentIfNeeded(mailboxId);
   }
 
+  componentWillReceiveProps(nextProps) {
+    // route param change case (router won't route for only url param change):
+    this.refreshWhenMailBoxIdChange(nextProps);
+  }
+
   render() {
     const { animated } = this.state;
     const { children, params: { mailboxId }, location: { pathname }, inboxNbUnRead } = this.props;
@@ -76,6 +81,14 @@ class MailBox extends Component {
         </div>
       </section>
     );
+  }
+
+  refreshWhenMailBoxIdChange(nextProps) {
+    const {actions, params: { mailboxId } } = this.props;
+    if (mailboxId !== nextProps.params.mailboxId) {
+      // refresh
+      actions.fetchInboxContentIfNeeded(nextProps.params.mailboxId);
+    }
   }
 }
 
