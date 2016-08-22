@@ -22,12 +22,14 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      navigation:       [...navigation.sideNavMenu],
-      appName:          appConfig.APP_NAME,
-      connectionStatus: appConfig.CONNECTION_STATUS,
-      helloWord:        appConfig.HELLO_WORD
+      navigationGeneral:    {...navigation.sideNavMenu.find(item=>item.groupe === 'General')},
+      navigationGestBen:    {...navigation.sideNavMenu.find(item=>item.groupe === 'GestBen')},
+      navigationActivities: {...navigation.sideNavMenu.find(item=>item.groupe === 'Activities')},
+      navigationMailBoxes:  {...navigation.sideNavMenu.find(item=>item.groupe === 'MailBoxes')},
+      appName:              appConfig.APP_NAME,
+      connectionStatus:     appConfig.CONNECTION_STATUS,
+      helloWord:            appConfig.HELLO_WORD
     };
-    console.log('init navigation: ', this.state.navigation);
     this.handlesMenuButtonClick = this.handlesMenuButtonClick.bind(this);
   }
 
@@ -47,6 +49,7 @@ class App extends Component {
     const { uploadMailAttachmentsModalOpened } = this.props;
     const { userInfos, userInfoFetching, userIsConnected, currentView, children, sideMenuIsCollapsed } = this.props;
     const userFullName = `${userInfos.firstname} ${userInfos.lastname.toUpperCase()}`;
+    const { navigationGeneral, navigationGestBen, navigationActivities, navigationMailBoxes } = this.state;
 
     return (
       <div>
@@ -75,6 +78,18 @@ class App extends Component {
             userPicture={userInfos.picture}
             showPicture={userInfos.showPicture}
             isFetching={userInfoFetching}
+            // navigation general
+            navGeneralTitle={'General'}
+            navGeneral={navigationGeneral.menus}
+            // navigation GestBen
+            navGestBenTitle={'Gest Ben'}
+            navGestBen={navigationGestBen.menus}
+            // navigation Activities
+            navActivTitle={'Actvities'}
+            navActiv={navigationActivities.menus}
+            // navigation mailboxes
+            navMailBoxesTitle={'Mailboxes'}
+            navMailBoxes={navigationMailBoxes.menus}
           />
           <AsideRight
             isAnimated={true}
@@ -116,21 +131,17 @@ class App extends Component {
   }
 
   updateNavigationStateIfNeeded(nextProps) {
+    // sidemenu navigation mailboxes depends user mailboxes rights: will update mailboxes list
     const { userBoitesMailsLastUpdateTime } = this.props;
 
     if (userBoitesMailsLastUpdateTime !== nextProps.userBoitesMailsLastUpdateTime &&
         nextProps.userBoitesMails.length > 0) {
       // not same time, refresh navigation since user mailboxes may have changed (administration update?)
-      const navMailBoxesGroupIndex = this.state.navigation.findIndex(
-        navItem => navItem.groupe === 'MailBoxes'
-      );
-      if (navMailBoxesGroupIndex !== -1) {
-        const updatedNavigation = [...this.state.navigation];
-        // replace previous mailbox list
-        updatedNavigation[navMailBoxesGroupIndex].menus = [...nextProps.userBoitesMails];
+      const updatedNavigationMailBoxes = {...this.state.navigationMailBoxes};
+      // replace previous mailbox list
+      updatedNavigationMailBoxes.menus = [...nextProps.userBoitesMails];
 
-        this.setState({navigation: [...updatedNavigation]});
-      }
+      this.setState({navigationMailBoxes: {...updatedNavigationMailBoxes}});
     }
   }
 }
@@ -155,7 +166,7 @@ App.propTypes = {
   userInfoFetching: PropTypes.bool,
   userIsConnected: PropTypes.bool,
   // user mailboxes (extends navigation)
-  userBoitesMails: PropTypes.arrayOf(PropTypes.Object),
+  userBoitesMails: PropTypes.Object,
   userBoitesMailsLastUpdateTime: PropTypes.string,
   // currentView
   currentView: PropTypes.string,

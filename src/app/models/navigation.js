@@ -36,7 +36,7 @@ export const navigation = {
     // group menu #2
     {
       id: 2,
-      groupe: 'Gest. ben.',
+      groupe: 'GestBen',
       menus: [
         {
           name: 'Search Ben',

@@ -8,56 +8,7 @@ import { Horloge }    from '../../../../components';
 import Menu           from './menu/Menu';
 
 
-const views = [
-  {
-    name: 'Accueil',
-    linkTo: '/',
-    faIconName: 'fa-home'
-  },
-  {
-    name: 'Recherche',
-    linkTo: '/recherche',
-    faIconName: 'fa-search'
-  }
-];
-
-const viewsBenef = [
-  {
-    name: 'Rechercher un bénéficaire',
-    linkTo: '/',
-    faIconName: 'fa-search'
-  },
-  {
-    name: 'Mise à jour de bénéficiaire',
-    linkTo: '/',
-    faIconName: 'fa-edit'
-  }
-];
-
-const viewsActivite = [
-  {
-    name: 'fiches de mes groupes',
-    linkTo: '/',
-    faIconName: 'fa-file-o'
-  }
-];
-
-const viewsEmails = [
-  {
-    name: 'MailBox #1',
-    linkTo: '/',
-    faIconName: 'fa-inbox',
-    itemCount: 26
-  },
-  {
-    name: 'MailBox #2',
-    linkTo: '/',
-    faIconName: 'fa-inbox',
-    itemCount: 2
-  }
-];
-
-const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed }) => {
+const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed, navGeneralTitle, navGeneral, navGestBenTitle, navGestBen, navActivTitle, navActiv, navMailBoxesTitle, navMailBoxes }) => {
   return (
     <aside
       className={cx({
@@ -83,24 +34,24 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
           onSearchSubmit={(value) => console.log('searching: ', value)}
         /> */}
         <Menu
-          headerTitle={'Général'}
+          headerTitle={navGeneralTitle}
           activeView={currentView}
-          views={views}
+          views={navGeneral}
         />
         <Menu
-          headerTitle={'Gestion des bénéficiaires'}
+          headerTitle={navGestBenTitle}
           activeView={currentView}
-          views={viewsBenef}
+          views={navGestBen}
         />
         <Menu
-          headerTitle={'Activités'}
+          headerTitle={navActivTitle}
           activeView={currentView}
-          views={viewsActivite}
+          views={navActiv}
         />
         <Menu
-          headerTitle={'Emails'}
+          headerTitle={navMailBoxesTitle}
           activeView={currentView}
-          views={viewsEmails}
+          views={navMailBoxes}
         />
       </section>
     </aside>
@@ -120,7 +71,43 @@ AsideLeft.propTypes = {
   username: PropTypes.string,
   userPicture: PropTypes.string,
   showPicture: PropTypes.bool,
-  helloWord: PropTypes.string
+  helloWord: PropTypes.string,
+  // navigation link for group "general":
+  navGeneralTitle: PropTypes.string.isRequired,
+  navGeneral: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      linkTo: PropTypes.string.isRequired,
+      faIconName: PropTypes.string
+    })
+  ).isRequired,
+  // navigation link for group "gest. ben":
+  navGestBenTitle: PropTypes.string.isRequired,
+  navGestBen: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      linkTo: PropTypes.string.isRequired,
+      faIconName: PropTypes.string
+    })
+  ).isRequired,
+  // navigation link for group "Activ":
+  navActivTitle: PropTypes.string.isRequired,
+  navActiv: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      linkTo: PropTypes.string.isRequired,
+      faIconName: PropTypes.string
+    })
+  ).isRequired,
+  // navigation link for group "mailboxes":
+  navMailBoxesTitle: PropTypes.string.isRequired,
+  navMailBoxes: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      linkTo: PropTypes.string.isRequired,
+      faIconName: PropTypes.string
+    })
+  ).isRequired
 };
 
 AsideLeft.defaultProps = {
