@@ -35,9 +35,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const MailWriteNewConnected = connect(
+const MailReplyConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(MailReply);
 
-export default MailWriteNewConnected;
+export default MailReplyConnected;

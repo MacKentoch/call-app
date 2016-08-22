@@ -5,7 +5,8 @@ import {
   MailboxReception,
   MailboxEnvoi,
   MailConsult,
-  MailWriteNew
+  MailWriteNew,
+  MailReply
 }                       from './mailbox';
 // modals:
 import Modals           from './modals/Modals';
@@ -31,6 +32,7 @@ export {
   MailboxEnvoi,
   MailConsult,
   MailWriteNew,
+  MailReply,
 
   // modals
   UploadMailAttachment,

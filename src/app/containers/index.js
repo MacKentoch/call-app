@@ -12,7 +12,8 @@ import {
   MailConsultConnected,
   MailboxReceptionConnected,
   MailboxEnvoiConnected,
-  MailWriteNewConnected
+  MailWriteNewConnected,
+  MailReplyConnected
 }                             from './mailbox';
 
 export {
@@ -31,5 +32,6 @@ export {
   MailConsultConnected,
   MailboxReceptionConnected,
   MailboxEnvoiConnected,
-  MailWriteNewConnected
+  MailWriteNewConnected,
+  MailReplyConnected
 };
