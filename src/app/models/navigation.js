@@ -1,5 +1,3 @@
-'use strict';
-
 export const navigation = {
   brand:      'reactDirectorAdmin',
   leftLinks:  [],
@@ -64,7 +62,7 @@ export const navigation = {
         }
       ]
     },
-    // group menu #4
+    // group menu #4 (should depend on User mailboxes)
     {
       id: 4,
       groupe: 'MailBoxes',

@@ -16,23 +16,30 @@ import {
 }                             from '../../views';
 import { appConfig }          from '../../config';
 import { BackToTop }          from '../../components';
-
+import { navigation }         from '../../models';
 
 class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      appName: appConfig.APP_NAME,
+      navigation:       [...navigation.sideNavMenu],
+      appName:          appConfig.APP_NAME,
       connectionStatus: appConfig.CONNECTION_STATUS,
-      helloWord: appConfig.HELLO_WORD
+      helloWord:        appConfig.HELLO_WORD
     };
+    console.log('init navigation: ', this.state.navigation);
     this.handlesMenuButtonClick = this.handlesMenuButtonClick.bind(this);
   }
 
   componentDidMount() {
-    const { actions: { fetchUserInfoDataIfNeeded, initSideMenu } } = this.props;
+    const { actions: { fetchUserInfoDataIfNeeded, initSideMenu, fetchUserBoitesMailsDataIfNeeded } } = this.props;
     fetchUserInfoDataIfNeeded();
+    fetchUserBoitesMailsDataIfNeeded();
     initSideMenu(); // sideMenu collapse or not from localStorage value (default is opened)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.updateNavigationStateIfNeeded(nextProps);
   }
 
   render() {
@@ -107,6 +114,25 @@ class App extends Component {
       fetchPrincipauxMotifsDataIfNeeded();
     }
   }
+
+  updateNavigationStateIfNeeded(nextProps) {
+    const { userBoitesMailsLastUpdateTime } = this.props;
+
+    if (userBoitesMailsLastUpdateTime !== nextProps.userBoitesMailsLastUpdateTime &&
+        nextProps.userBoitesMails.length > 0) {
+      // not same time, refresh navigation since user mailboxes may have changed (administration update?)
+      const navMailBoxesGroupIndex = this.state.navigation.findIndex(
+        navItem => navItem.groupe === 'MailBoxes'
+      );
+      if (navMailBoxesGroupIndex !== -1) {
+        const updatedNavigation = [...this.state.navigation];
+        // replace previous mailbox list
+        updatedNavigation[navMailBoxesGroupIndex].menus = [...nextProps.userBoitesMails];
+
+        this.setState({navigation: [...updatedNavigation]});
+      }
+    }
+  }
 }
 
 App.propTypes = {
@@ -128,6 +154,9 @@ App.propTypes = {
   }),
   userInfoFetching: PropTypes.bool,
   userIsConnected: PropTypes.bool,
+  // user mailboxes (extends navigation)
+  userBoitesMails: PropTypes.arrayOf(PropTypes.Object),
+  userBoitesMailsLastUpdateTime: PropTypes.string,
   // currentView
   currentView: PropTypes.string,
   // modals
@@ -164,6 +193,9 @@ const mapStateToProps = (state) => {
     userInfos:            state.userInfos.data,
     userInfoFetching:     state.userInfos.isFetching,
     userIsConnected:      state.userInfos.isConnected,
+    // user mailboxes (extends navigation)
+    userBoitesMails:      state.userBoitesMails.data,
+    userBoitesMailsLastUpdateTime: state.userBoitesMails.time,
     // modal
     uploadMailAttachmentsModalOpened: state.uploadMailAttachmentsModal.isOpened
   };
