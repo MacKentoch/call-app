@@ -24,7 +24,8 @@ class MailReply extends Component {
   }
 
   componentDidMount() {
-    const  {  location: {query: { mailboxId, mailId }}  } =  this.props;
+    const { params: { mailboxId } } = this.props;
+    const  {  location: {query: { mailId }}  } =  this.props;
     const { actions : { enterMailboxReplyMail, replyMailInit } } = this.props;
     enterMailboxReplyMail(`mailbox #${mailboxId}`, mailId);
     replyMailInit(mailboxId);

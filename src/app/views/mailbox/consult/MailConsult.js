@@ -73,14 +73,13 @@ class MailConsult extends Component {
 
     const { router } = this.context;
     const { params: { mailboxId, mailId } } =  this.props;
+    // all mailbox subroute need mailboxId param. Additionnal parameters go in query.
     router.push({
-      pathname: replyUrl,
+      pathname: `${replyUrl}/${mailboxId}`,
       query: {
-        mailboxId,
         mailId
       }
     });
-    console.log('handlesOnReplyMail: to route to write mail');
   }
 }
 
