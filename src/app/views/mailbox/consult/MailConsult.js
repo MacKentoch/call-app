@@ -18,6 +18,8 @@ class MailConsult extends Component {
     this.state = {
       animated: true
     };
+
+    this.handlesOnReplyMail = this.handlesOnReplyMail.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +49,7 @@ class MailConsult extends Component {
             mailId={mailId}
             mailboxId={boiteMailId}
             mail={mail}
+            onReplyMail={this.handlesOnReplyMail}
           />
         }
         {
@@ -62,6 +65,11 @@ class MailConsult extends Component {
         }
       </div>
     );
+  }
+
+  handlesOnReplyMail(event) {
+    event.preventDefault();
+    console.log('handlesOnReplyMail: to route to write mail');
   }
 }
 

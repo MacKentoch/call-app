@@ -22,6 +22,8 @@ class MailboxConsultMail extends Component {
 
   render() {
     const { mail: {id, receptionDate, subject, from, to, body, attachments }} = this.props;
+    const { onReplyMail } = this.props;
+
     return (
       <div className="panel">
         <div
@@ -37,15 +39,13 @@ class MailboxConsultMail extends Component {
               <Title />
             </div>
             <div className="box-body no-padding">
-
               <div className="no-print">
                 <Tools
-                  onReplyClick={(e)=>console.log('onReplyClick')}
+                  onReplyClick={onReplyMail}
                   // onForwardClick={(e)=>console.log('onForwardClick')}
                   onPrintClick={this.handesOnPrintClick}
                 />
               </div>
-
               <MailInfo
                 id={id}
                 from={from.email}
@@ -53,16 +53,13 @@ class MailboxConsultMail extends Component {
                 receptionDate={receptionDate}
                 subject={subject}
               />
-
               <div className="mailbox-read-message">
                 <MailBody
                   body={body}
                 />
                 <hr />
               </div>
-
             </div>
-
             <div className="box-footer">
               <Attachments
                 attachments={attachments}
@@ -83,6 +80,7 @@ class MailboxConsultMail extends Component {
 MailboxConsultMail.propTypes = {
   mailId: PropTypes.number.isRequired,
   mailboxId: PropTypes.number.isRequired,
+  onReplyMail: PropTypes.func.isRequired,
   mail: PropTypes.shape({
     id: PropTypes.number.isRequired,
     receptionDate: PropTypes.string.isRequired,
