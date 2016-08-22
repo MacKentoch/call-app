@@ -16,6 +16,8 @@ import inboxContent         from './mailbox/inbox';
 import sentboxContent       from './mailbox/sentbox';
 import mailContent          from './mailbox/consult';
 import writeNewMailContent  from './mailbox/writeNew';
+import replyMailContent     from './mailbox/reply';
+
 // Modals
 import uploadMailAttachmentsModal from './modals/uploadMailAttachmentsModal';
 
@@ -42,6 +44,7 @@ export {
   sentboxContent,
   mailContent,
   writeNewMailContent,
+  replyMailContent,
 
   // modals
   uploadMailAttachmentsModal

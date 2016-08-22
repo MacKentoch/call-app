@@ -66,6 +66,7 @@ import {
   toggleSideMenu,
   initSideMenu
 }                                 from './ui/sideMenu';
+// write a new mail
 import {
   newMailInit,
   newMailCancel,
@@ -74,8 +75,17 @@ import {
   newMailBodyChange,
   newMailAddAttachement,
   newMailRemoveAttachement
-}
-                                 from './mailbox/writeNew';
+}                                 from './mailbox/writeNew';
+// reply a mail
+import {
+  replyMailInit,
+  replyMailCancel,
+  replyMailDestinatairesChange,
+  replyMailSubjectChange,
+  replyMailBodyChange,
+  replyMailAddAttachement,
+  replyMailRemoveAttachement
+}                                 from './mailbox/reply';
 // modals
 import {
   showUploadMailAttachmentsModal,
@@ -128,6 +138,7 @@ export {
   fetchInboxContentIfNeeded,
   fetchSentboxContentIfNeeded,
   fetchMailContentIfNeeded,
+  
   // write new mail
   newMailInit,
   newMailCancel,
@@ -136,6 +147,15 @@ export {
   newMailBodyChange,
   newMailAddAttachement,
   newMailRemoveAttachement,
+
+  // reply a mail
+  replyMailInit,
+  replyMailCancel,
+  replyMailDestinatairesChange,
+  replyMailSubjectChange,
+  replyMailBodyChange,
+  replyMailAddAttachement,
+  replyMailRemoveAttachement,
 
   // modals
   showUploadMailAttachmentsModal,
