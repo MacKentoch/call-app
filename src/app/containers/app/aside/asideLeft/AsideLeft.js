@@ -18,7 +18,14 @@ const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected,
         'sidebar-offcanvas': true,
         'sidebar-animated': isAnimated,
         'collapse-left':    isCollapsed
-      })}>
+      })}
+      // add overflow to left sidebar:
+      style={{
+        height: '100%',
+        overflow: 'scroll',
+        position: 'fixed'
+      }}
+      >
       <section className="sidebar">
         <UserPanel
           hello={helloWord}
