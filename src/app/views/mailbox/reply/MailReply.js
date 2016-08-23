@@ -3,7 +3,7 @@ import moment                           from 'moment';
 // import { appConfig }                    from '../../../config';
 import cx                               from 'classnames';
 import {
-  MailboxWriteMail
+  MailboxReplyMail
 }                                       from '../../../components';
 
 moment.locale('fr');
@@ -40,6 +40,7 @@ class MailReply extends Component {
     const { animated } = this.state;
     const { subject, to, body, attachments } = this.props;
     const { actions: { replyMailAddAttachement, replyMailRemoveAttachement } } = this.props;
+    const  { location: {query: { mailId } } } =  this.props;
     const { params: { mailboxId } } = this.props;
 
     return(
@@ -48,8 +49,9 @@ class MailReply extends Component {
           'animated': animated,
           'fadeIn': animated
         })}>
-        <MailboxWriteMail
+        <MailboxReplyMail
           mailboxId={mailboxId}
+          mailId={mailId}
 
           destinataires={to}
           onDestinatairesChange={this.handlesOnDestinatairesChange}

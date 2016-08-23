@@ -14,7 +14,9 @@ import MailboxListMails from './mailboxListMails/MailboxListMails';
 import MailBoxNewEmailButton from './mailBoxNewEmailButton/MailBoxNewEmailButton';
 import MailboxConsultMail from './mailboxConsultMail/MailboxConsultMail';
 import MailboxWriteMail from './mailboxWriteMail/MailboxWriteMail';
+import MailboxReplyMail from './mailboxReplyMail/MailboxReplyMail';
 import Chips from './chips/Chips';
+
 
 import {
   FichesTraitee,
@@ -49,6 +51,7 @@ export {
   MailboxListMails,
   MailboxConsultMail,
   MailboxWriteMail,
+  MailboxReplyMail,
 
   // stats
   FichesTraitee,
