@@ -12,6 +12,7 @@ export const enterCreateFicheContactCourier = (time = moment().format(formatDate
   return {
     type:         ENTER_CREATE_FICHE_CONTACT_COURIER,
     currentView:  appConfig.views.createFicheContactCourier.viewName || 'non defini',
+    viewDetails:  '',
     enterTime:    time,
     leaveTime:    null
   };
@@ -20,6 +21,7 @@ export const leaveCreateFicheContactCourier = (time = moment().format(formatDate
   return {
     type:         LEAVE_CREATE_FICHE_CONTACT_COURIER,
     currentView:  appConfig.views.createFicheContactCourier.viewName || 'non defini',
+    viewDetails:  '',
     enterTime:    null,
     leaveTime:    time
   };

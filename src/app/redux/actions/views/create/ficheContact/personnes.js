@@ -12,6 +12,7 @@ export const enterCreateFicheContactPersonnes = (time = moment().format(formatDa
   return {
     type:         ENTER_CREATE_FICHE_CONTACT_PERSONNES,
     currentView:  appConfig.views.createFicheContactPersonnes.viewName || 'non defini',
+    viewDetails:  '',
     enterTime:    time,
     leaveTime:    null
   };
@@ -20,6 +21,7 @@ export const leaveCreateFicheContactPersonnes = (time = moment().format(formatDa
   return {
     type:         LEAVE_CREATE_FICHE_CONTACT_PERSONNES,
     currentView:  appConfig.views.createFicheContactPersonnes.viewName || 'non defini',
+    viewDetails:  '',
     enterTime:    null,
     leaveTime:    time
   };

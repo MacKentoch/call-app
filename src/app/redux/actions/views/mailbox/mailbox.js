@@ -24,7 +24,8 @@ export const LEAVE_MAILBOX_REPLY_MAIL  = 'LEAVE_MAILBOX_REPLY_MAIL';
 export const enterMailboxInbox = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         ENTER_MAILBOX_INBOX,
-    currentView:  `${appConfig.views.mailbox.reception.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  appConfig.views.mailbox.reception.viewName,
+    viewDetails:  `${appConfig.views.mailbox.reception.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
@@ -32,7 +33,8 @@ export const enterMailboxInbox = (mailboxName= ' ---', time = moment().format(fo
 export const leaveMailboxInbox = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_MAILBOX_INBOX,
-    currentView:  `${appConfig.views.mailbox.reception.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  appConfig.views.mailbox.reception.viewName,
+    viewDetails:  `${appConfig.views.mailbox.reception.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };
@@ -42,7 +44,8 @@ export const leaveMailboxInbox = (mailboxName= ' ---', time = moment().format(fo
 export const enterMailboxSentbox = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         ENTER_MAILBOX_SENTBOX,
-    currentView:  `${appConfig.views.mailbox.envoi.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  appConfig.views.mailbox.envoi.viewName,
+    viewDetails:  `${appConfig.views.mailbox.envoi.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
@@ -50,7 +53,8 @@ export const enterMailboxSentbox = (mailboxName= ' ---', time = moment().format(
 export const leaveMailboxSentbox = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_MAILBOX_SENTBOX,
-    currentView:  `${appConfig.views.mailbox.envoi.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  appConfig.views.mailbox.envoi.viewName,
+    viewDetails:  `${appConfig.views.mailbox.envoi.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };
@@ -60,7 +64,8 @@ export const leaveMailboxSentbox = (mailboxName= ' ---', time = moment().format(
 export const enterMailboxConsult = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         ENTER_MAILBOX_CONSULT,
-    currentView:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  appConfig.views.mailbox.consult.viewName,
+    viewDetails:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
@@ -68,7 +73,8 @@ export const enterMailboxConsult = (mailboxName= ' ---', time = moment().format(
 export const leaveMailboxConsult = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_MAILBOX_CONSULT,
-    currentView:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  appConfig.views.mailbox.consult.viewName,
+    viewDetails:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };
@@ -78,7 +84,8 @@ export const leaveMailboxConsult = (mailboxName= ' ---', time = moment().format(
 export const enterMailboxWriteNew = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         ENTER_MAILBOX_WRITE_NEW,
-    currentView:  `${appConfig.views.mailbox.writeNew.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  appConfig.views.mailbox.writeNew.viewName,
+    viewDetails:  `${appConfig.views.mailbox.writeNew.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
@@ -86,7 +93,8 @@ export const enterMailboxWriteNew = (mailboxName= ' ---', time = moment().format
 export const leaveMailboxWriteNew = (mailboxName= ' ---', time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_MAILBOX_WRITE_NEW,
-    currentView:  `${appConfig.views.mailbox.writeNew.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  appConfig.views.mailbox.writeNew.viewName,
+    viewDetails:  `${appConfig.views.mailbox.writeNew.viewName}: ${mailboxName}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };
@@ -96,7 +104,8 @@ export const leaveMailboxWriteNew = (mailboxName= ' ---', time = moment().format
 export const enterMailboxReplyMail = (mailboxName= ' ---', mailId = 0, time = moment().format(formatDate)) => {
   return {
     type:         ENTER_MAILBOX_REPLY_MAIL,
-    currentView:  `${appConfig.views.mailbox.reply.viewName}: ${mailboxName} for emailId: ${mailId}` || 'non defini',
+    currentView:  appConfig.views.mailbox.reply.viewName,
+    viewDetails:  `${appConfig.views.mailbox.reply.viewName}: ${mailboxName} for emailId: ${mailId}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
@@ -104,7 +113,8 @@ export const enterMailboxReplyMail = (mailboxName= ' ---', mailId = 0, time = mo
 export const leaveMailboxReplyMail = (mailboxName= ' ---', mailId = 0, time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_MAILBOX_REPLY_MAIL,
-    currentView:  `${appConfig.views.mailbox.reply.viewName}: ${mailboxName} for emailId: ${mailId}` || 'non defini',
+    currentView:  appConfig.views.mailbox.reply.viewName,
+    viewDetails:  `${appConfig.views.mailbox.reply.viewName}: ${mailboxName} for emailId: ${mailId}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };

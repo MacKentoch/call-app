@@ -102,6 +102,16 @@ export const appConfig = {
     createFicheContactPersonnes: {
       viewName: 'Céation Fiche Contact Personnes',
       path: 'create/ficheContactPersonnes'
+    },
+    beneficaires: {
+      recherche: {
+        viewName: 'Recherche ben.',
+        path: 'recherche/benef'
+      },
+      maj: {
+        viewName: 'Mise à jour ben.',
+        path: 'create/ficheContactPersonnes'
+      }
     }
   },
 

@@ -12,6 +12,7 @@ export const enterHome = (time = moment().format(formatDate)) => {
   return {
     type:         ENTER_HOME_VIEW,
     currentView:  appConfig.views.home.viewName || 'non defini',
+    viewDetails:  '',
     enterTime:    time,
     leaveTime:    null
   };
@@ -20,6 +21,7 @@ export const leaveHome = (time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_HOME_VIEW,
     currentView:  appConfig.views.home.viewName || 'non defini',
+    viewDetails:  '',
     enterTime:    null,
     leaveTime:    time
   };

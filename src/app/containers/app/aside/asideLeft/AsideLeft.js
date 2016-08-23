@@ -9,6 +9,7 @@ import Menu           from './menu/Menu';
 
 
 const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed, navGeneralTitle, navGeneral, navGestBenTitle, navGestBen, navActivTitle, navActiv, navMailBoxesTitle, navMailBoxes }) => {
+  console.log('AsideLeft currentView: ', currentView);
   return (
     <aside
       className={cx({

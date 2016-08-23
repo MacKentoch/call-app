@@ -37,6 +37,7 @@ import {
 
 const initialState = {
   currentView:  'not set',
+  viewDetails:  '',
   enterTime:    null,
   leaveTime:    null
 };
@@ -60,6 +61,7 @@ const views = (state = initialState, action) => {
       return {
         ...state,
         currentView:  action.currentView,
+        viewDetails:  action.viewDetails || '',
         enterTime:    action.enterTime,
         leaveTime:    action.leaveTime
       };
@@ -82,6 +84,7 @@ const views = (state = initialState, action) => {
       return {
         ...state,
         currentView:  action.currentView,
+        viewDetails:  action.viewDetails || '',
         enterTime:    action.enterTime,
         leaveTime:    action.leaveTime
       };

@@ -1,3 +1,5 @@
+import { appConfig } from '../config';
+
 export const navigation = {
   brand:      'reactDirectorAdmin',
   leftLinks:  [],
@@ -22,12 +24,12 @@ export const navigation = {
       groupe: 'General',
       menus: [
         {
-          name: 'Home',
+          name: appConfig.views.home.viewName,
           linkTo: '/',
           faIconName: 'fa-home'
         },
         {
-          name: 'Search',
+          name: appConfig.views.recherche.viewName,
           linkTo: '/recherche',
           faIconName: 'fa-search'
         }
@@ -39,7 +41,7 @@ export const navigation = {
       groupe: 'GestBen',
       menus: [
         {
-          name: 'Search Ben',
+          name: 'Search Ben', // === appConfig.views.recherche.viewName
           linkTo: '/',
           faIconName: 'fa-search'
         },
