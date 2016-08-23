@@ -29,18 +29,20 @@ export const REPLY_MAIL_REMOVE_ATTACHMENT       = 'REPLY_MAIL_REMOVE_ATTACHMENT'
 
 
 // reply mail init (set mailBoxId or default values)
-export const replyMailInit = (boiteMailId = 0, time = moment().format(formatDate)) => {
+export const replyMailInit = (boiteMailId = 0, mailId = 0, time = moment().format(formatDate)) => {
   return {
     type:       REPLY_MAIL_INIT,
     boiteMailId,
+    mailId,
     time
   };
 };
 // cancel reply mail (reset content)
-export const replyMailCancel = (boiteMailId = 0, time = moment().format(formatDate)) => {
+export const replyMailCancel = (boiteMailId = 0, mailId = 0, time = moment().format(formatDate)) => {
   return {
     type:       REPLY_MAIL_CANCEL,
     boiteMailId,
+    mailId,
     time
   };
 };

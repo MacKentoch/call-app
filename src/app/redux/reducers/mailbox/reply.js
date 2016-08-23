@@ -40,6 +40,7 @@ const replyMailContent = (state = initialState, action) => {
       ...state,
       isFetching:   false,
       boiteMailId:  action.boiteMailId,
+      mailId:       action.mailId,
       time:         action.time,
       // reset mail content:
       subject:      initialMailModel.subject,
@@ -78,6 +79,7 @@ const replyMailContent = (state = initialState, action) => {
       ...state,
       isFetching:   false,
       boiteMailId:  action.boiteMailId,
+      mailId:       action.mailId,
       time:         action.time,
       // reset mail content:
       subject:      initialMailModel.subject,

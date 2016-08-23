@@ -28,7 +28,7 @@ class MailReply extends Component {
     const  { location: {query: { mailId } } } =  this.props;
     const { actions : { enterMailboxReplyMail, replyMailInit } } = this.props;
     enterMailboxReplyMail(`mailbox #${mailboxId}`, mailId);
-    replyMailInit(mailboxId);
+    replyMailInit(mailboxId, mailId);
   }
 
   componentWillUnmount() {
@@ -93,7 +93,8 @@ class MailReply extends Component {
     const { router } = this.context;
     const { params: { mailboxId } } = this.props;
     const { actions: {replyMailCancel} } = this.props;
-    replyMailCancel(mailboxId);
+    const  { location: {query: { mailId } } } =  this.props;
+    replyMailCancel(mailboxId, mailId);
     // react-router v2.0.0+ && < v2.4.0+
     router.goBack();
   }
