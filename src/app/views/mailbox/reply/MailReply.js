@@ -25,7 +25,7 @@ class MailReply extends Component {
 
   componentDidMount() {
     const { params: { mailboxId } } = this.props;
-    const  {  location: {query: { mailId }}  } =  this.props;
+    const  { location: {query: { mailId } } } =  this.props;
     const { actions : { enterMailboxReplyMail, replyMailInit } } = this.props;
     enterMailboxReplyMail(`mailbox #${mailboxId}`, mailId);
     replyMailInit(mailboxId);
@@ -39,7 +39,7 @@ class MailReply extends Component {
   render() {
     const { animated } = this.state;
     const { subject, to, body, attachments } = this.props;
-    const { actions: { newMailAddAttachement, newMailRemoveAttachement } } = this.props;
+    const { actions: { replyMailAddAttachement, replyMailRemoveAttachement } } = this.props;
     const { params: { mailboxId } } = this.props;
 
     return(
@@ -61,8 +61,8 @@ class MailReply extends Component {
           onContentChanged={this.handlesOnContentChanged}
           // attachments
           attachments={attachments}
-          addAttachement={newMailAddAttachement}
-          removeAttachement={newMailRemoveAttachement}
+          addAttachement={replyMailAddAttachement}
+          removeAttachement={replyMailRemoveAttachement}
           // actions
           onCancel={this.handlesOnCancel}
           onSend={()=>console.log('onSend should post new mail state content then reset it')}
@@ -73,27 +73,27 @@ class MailReply extends Component {
 
   handlesOnDestinatairesChange(destinataires) {
     const { params: { mailboxId } } = this.props;
-    const { actions: { newMailDestinatairesChange } } = this.props;
-    newMailDestinatairesChange(mailboxId, destinataires);
+    const { actions: { replyMailDestinatairesChange } } = this.props;
+    replyMailDestinatairesChange(mailboxId, destinataires);
   }
 
   handlesOnSubjectChanged(subject) {
     const { params: { mailboxId } } = this.props;
-    const { actions: { newMailSubjectChange } } = this.props;
-    newMailSubjectChange(mailboxId, subject);
+    const { actions: { replyMailSubjectChange } } = this.props;
+    replyMailSubjectChange(mailboxId, subject);
   }
 
   handlesOnContentChanged(emailBody) {
     const { params: { mailboxId } } = this.props;
-    const { actions: { newMailBodyChange } } = this.props;
-    newMailBodyChange(mailboxId, emailBody);
+    const { actions: { replyMailBodyChange } } = this.props;
+    replyMailBodyChange(mailboxId, emailBody);
   }
 
   handlesOnCancel() {
     const { router } = this.context;
     const { params: { mailboxId } } = this.props;
-    const { actions: {newMailCancel} } = this.props;
-    newMailCancel(mailboxId);
+    const { actions: {replyMailCancel} } = this.props;
+    replyMailCancel(mailboxId);
     // react-router v2.0.0+ && < v2.4.0+
     router.goBack();
   }
