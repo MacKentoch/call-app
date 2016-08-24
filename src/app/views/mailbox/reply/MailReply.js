@@ -27,13 +27,13 @@ class MailReply extends Component {
     const { params: { mailboxId } } = this.props;
     const  { location: {query: { mailId } } } =  this.props;
     const { actions : { enterMailboxReplyMail, replyMailInit } } = this.props;
-    enterMailboxReplyMail(`mailbox #${mailboxId}`, mailId);
+    enterMailboxReplyMail(mailboxId, mailId);
     replyMailInit(mailboxId, mailId);
   }
 
   componentWillUnmount() {
     const  { actions, params: { mailboxId } } =  this.props;
-    actions.leaveMailboxReplyMail(`mailbox #${mailboxId}`);
+    actions.leaveMailboxReplyMail(mailboxId);
   }
 
   render() {

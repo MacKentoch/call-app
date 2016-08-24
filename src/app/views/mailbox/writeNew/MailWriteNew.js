@@ -26,13 +26,13 @@ class MailWriteNew extends Component {
   componentDidMount() {
     const  {  params: { mailboxId } } =  this.props;
     const { actions : { enterMailboxWriteNew, newMailInit } } = this.props;
-    enterMailboxWriteNew(`mailbox #${mailboxId}`);
+    enterMailboxWriteNew(mailboxId);
     newMailInit(mailboxId);
   }
 
   componentWillUnmount() {
     const  { actions, params: { mailboxId } } =  this.props;
-    actions.leaveMailboxWriteNew(`mailbox #${mailboxId}`);
+    actions.leaveMailboxWriteNew(mailboxId);
   }
 
   render() {

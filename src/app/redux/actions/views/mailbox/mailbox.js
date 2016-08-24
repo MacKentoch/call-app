@@ -105,40 +105,55 @@ export const leaveMailboxConsult = (mailboxId = 0, mailId = 0, time = moment().f
 };
 
 // write new email
-export const enterMailboxWriteNew = (mailboxName= ' ---', time = moment().format(formatDate)) => {
+export const enterMailboxWriteNew = (mailboxId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
   return {
     type:         ENTER_MAILBOX_WRITE_NEW,
-    currentView:  appConfig.views.mailbox.writeNew.viewName,
-    viewDetails:  `${appConfig.views.mailbox.writeNew.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.writeNew.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.writeNew.viewName}: mailbox#${mailboxId}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
 };
-export const leaveMailboxWriteNew = (mailboxName= ' ---', time = moment().format(formatDate)) => {
+export const leaveMailboxWriteNew = (mailboxId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
   return {
     type:         LEAVE_MAILBOX_WRITE_NEW,
-    currentView:  appConfig.views.mailbox.writeNew.viewName,
-    viewDetails:  `${appConfig.views.mailbox.writeNew.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.writeNew.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.writeNew.viewName}: mailbox#${mailboxId}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };
 };
 
 // reply email
-export const enterMailboxReplyMail = (mailboxName= ' ---', mailId = 0, time = moment().format(formatDate)) => {
+export const enterMailboxReplyMail = (mailboxId = 0, mailId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
+  if (!parseInt(mailId, 10) > 0) {
+    return {};
+  }
   return {
     type:         ENTER_MAILBOX_REPLY_MAIL,
-    currentView:  appConfig.views.mailbox.reply.viewName,
-    viewDetails:  `${appConfig.views.mailbox.reply.viewName}: ${mailboxName} for emailId: ${mailId}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.reply.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.reply.viewName}: mailbox#${mailboxId}, reply to mail#${mailId}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
 };
-export const leaveMailboxReplyMail = (mailboxName= ' ---', mailId = 0, time = moment().format(formatDate)) => {
+export const leaveMailboxReplyMail = (mailboxId = 0, mailId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
   return {
     type:         LEAVE_MAILBOX_REPLY_MAIL,
-    currentView:  appConfig.views.mailbox.reply.viewName,
-    viewDetails:  `${appConfig.views.mailbox.reply.viewName}: ${mailboxName} for emailId: ${mailId}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.reply.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.reply.viewName}: mailbox#${mailboxId}, reply to mail#${mailId}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };
