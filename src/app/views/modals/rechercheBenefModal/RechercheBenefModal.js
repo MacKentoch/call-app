@@ -20,13 +20,13 @@ class RechercheBenefModal extends Component {
     return shallowCompare(this, nextProps, nextState);
   }
   render() {
-    const { isOpened, title  } = this.props;
+    const { showModal, title  } = this.props;
     return (
       <div>
         <Modal
           {...this.props}
-          show={isOpened}
-          onHide={this.close}
+          show={showModal}
+          onHide={this.handlesOnClose}
           bsSize="large"
           aria-labelledby="contained-modal-title-lg">
           <ModalHeader
@@ -60,7 +60,7 @@ class RechercheBenefModal extends Component {
 }
 
 RechercheBenefModal.propTypes = {
-  isOpened: PropTypes.bool.isRequired,
+  showModal: PropTypes.bool.isRequired,
   title: PropTypes.string,
   onClose: PropTypes.func
 };

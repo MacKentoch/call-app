@@ -34,6 +34,7 @@ class App extends Component {
     };
     this.handlesMenuButtonClick = this.handlesMenuButtonClick.bind(this);
     this.handlesOnSearchButtonClick = this.handlesOnSearchButtonClick.bind(this);
+    this.handlesHideRechercheBenefModal = this.handlesHideRechercheBenefModal.bind(this);
   }
 
   componentDidMount() {
@@ -114,10 +115,16 @@ class App extends Component {
         <RechercheBenefModal
           showModal={rechercheBenefModalOpened}
           title={'Recherche de bénéficiare'}
-          onClose={(evt)=>console.log('RechercheBenefModal onClose event to dev')}
+          onClose={this.handlesHideRechercheBenefModal}
         />
       </div>
     );
+  }
+
+  handlesHideRechercheBenefModal() {
+    const { actions: {hideRechercheBenefModal} } = this.props;
+    console.log('should close modal');
+    hideRechercheBenefModal();
   }
 
   handlesMenuButtonClick(event) {
@@ -201,8 +208,8 @@ App.propTypes = {
     toggleSideMenu: PropTypes.func,
     initSideMenu:   PropTypes.func,
     // modals
-    showUploadMailAttachmentsModal: PropTypes.func,
-    hideUploadMailAttachmentsModal: PropTypes.func
+    showRechercheBenefModal: PropTypes.func,
+    hideRechercheBenefModal: PropTypes.func
   })
 };
 
