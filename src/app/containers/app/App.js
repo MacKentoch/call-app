@@ -31,6 +31,7 @@ class App extends Component {
       helloWord:            appConfig.HELLO_WORD
     };
     this.handlesMenuButtonClick = this.handlesMenuButtonClick.bind(this);
+    this.handlesOnSearchButtonClick = this.handlesOnSearchButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -64,6 +65,7 @@ class App extends Component {
           showPicture={userInfos.showPicture}
           currentView={currentView}
           toggleSideMenu={this.handlesMenuButtonClick}
+          onSearchClick={this.handlesOnSearchButtonClick}
         />
         <div
           id="appWrapper"
@@ -128,6 +130,14 @@ class App extends Component {
       fetchFichesTraiteeDataIfNeeded();
       fetchFichesParCanalDataIfNeeded();
       fetchPrincipauxMotifsDataIfNeeded();
+    }
+  }
+
+  handlesOnSearchButtonClick(event) {
+    event.preventDefault();
+    const { actions: { showRechercheBenefModal }, rechercheBenefModalOpened } = this.props;
+    if (!rechercheBenefModalOpened) {
+      showRechercheBenefModal();
     }
   }
 

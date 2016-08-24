@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import UserMenu             from './userMenu/UserMenu';
+import SearchButton         from './searchButton/SearchButton';
 import { Link }             from 'react-router';
 import SuperAdminMenu       from './superAdminMenu/SuperAdminMenu';
 
-const Header = ({ appName, toggleSideMenu, userLogin, userFirstname, userLastname, userPicture, showPicture }) => {
+const Header = ({ appName, toggleSideMenu, userLogin, userFirstname, userLastname, userPicture, showPicture, onSearchClick }) => {
   return (
     <header
       className="header fixed--header no-print">
@@ -27,6 +28,9 @@ const Header = ({ appName, toggleSideMenu, userLogin, userFirstname, userLastnam
         </Link>
         <div className="navbar-right">
           <ul className="nav navbar-nav">
+            <SearchButton
+              onClick={onSearchClick}
+            />
             <SuperAdminMenu
               title={'Menu Super Administrateur'}
             />
@@ -54,7 +58,9 @@ Header.propTypes = {
   showPicture: PropTypes.bool,
 
   currentView: PropTypes.string,
-  toggleSideMenu: PropTypes.func
+  toggleSideMenu: PropTypes.func,
+
+  onSearchClick: PropTypes.func.isRequired
 };
 
 Header.defaultProps = {
