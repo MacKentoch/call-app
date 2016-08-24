@@ -41,12 +41,12 @@ export const navigation = {
       groupe: 'GestBen',
       menus: [
         {
-          name: 'Search Ben', // === appConfig.views.recherche.viewName
+          name: appConfig.views.beneficaires.recherche.viewName,
           linkTo: '/',
           faIconName: 'fa-search'
         },
         {
-          name: 'MAJ ben.',
+          name: appConfig.views.beneficaires.maj.viewName,
           linkTo: '/',
           faIconName: 'fa-edit'
         }
@@ -58,7 +58,7 @@ export const navigation = {
       groupe: 'Activities',
       menus: [
         {
-          name: 'fich. group',
+          name: appConfig.views.activites.viewName,
           linkTo: '/',
           faIconName: 'fa-file-o'
         }

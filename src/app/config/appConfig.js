@@ -110,8 +110,12 @@ export const appConfig = {
       },
       maj: {
         viewName: 'Mise à jour ben.',
-        path: 'create/ficheContactPersonnes'
+        path: 'maj/benef'
       }
+    },
+    activites: {
+      viewName: 'Fiche groupe',
+      path: 'consult/fichGroup'
     }
   },
 

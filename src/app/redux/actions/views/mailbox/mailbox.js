@@ -21,11 +21,14 @@ export const LEAVE_MAILBOX_REPLY_MAIL  = 'LEAVE_MAILBOX_REPLY_MAIL';
 
 
 // inbox
-export const enterMailboxInbox = (mailboxName= ' ---', time = moment().format(formatDate)) => {
+export const enterMailboxInbox = (mailboxId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
   return {
     type:         ENTER_MAILBOX_INBOX,
-    currentView:  appConfig.views.mailbox.reception.viewName,
-    viewDetails:  `${appConfig.views.mailbox.reception.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.reception.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.reception.viewName}: mailbox#${mailboxId}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };

@@ -40,7 +40,7 @@ class MailboxReception extends Component {
 
   componentDidMount() {
     const  { actions, params: { mailboxId } } =  this.props;
-    actions.enterMailboxInbox(`mailbox #${mailboxId}`);
+    actions.enterMailboxInbox(mailboxId);
     actions.fetchInboxContentIfNeeded(mailboxId);
   }
 
@@ -116,7 +116,7 @@ class MailboxReception extends Component {
     const {actions, params: { mailboxId } } = this.props;
     if (mailboxId !== nextProps.params.mailboxId) {
       // refresh new mailbox
-      actions.enterMailboxInbox(`mailbox #${nextProps.params.mailboxId}`);
+      actions.enterMailboxInbox(nextProps.params.mailboxId);
       actions.fetchInboxContentIfNeeded(nextProps.params.mailboxId);
     }
   }
