@@ -27,7 +27,7 @@ class RechercheBenefModal extends Component {
           {...this.props}
           show={showModal}
           onHide={this.handlesOnClose}
-          bsSize="large"
+          bsSize="medium"
           aria-labelledby="contained-modal-title-md">
           <ModalHeader
             title={title}
@@ -40,10 +40,10 @@ class RechercheBenefModal extends Component {
                  Identifiant
                </label>
                <input
-                 type="email"
+                 type="text"
                  className="form-control"
-                 id="exampleInputEmail1"
-                 placeholder="Enter email"
+                 id="identifiant"
+                 placeholder=""
                />
                <p className="help-block">
                  Identifiant du dossier
@@ -61,35 +61,63 @@ class RechercheBenefModal extends Component {
                  placeholder="Password"
                />
              </div>
-             <div className="form-group">
-               <label htmlFor="exampleInputFile">
-                 File input
-               </label>
-               <input
-                 type="file"
-                 id="exampleInputFile"
-               />
-               <p className="help-block">
-                 Example block-level help text here.
-               </p>
-             </div>
-             <div className="checkbox">
-               <label>
-                 <input type="checkbox" />
-                  Check me out
-               </label>
-             </div>
+             <div style={{height: '40px'}}></div>
 
-             <button
-               type="submit"
-               className="btn btn-block orange_button">
-               Rechercher
-             </button>
+             <div className="input-group m-b-10">
+               <div className="input-group-btn">
+                 <button
+                   type="button"
+                   className="btn btn-white dropdown-toggle"
+                   data-toggle="dropdown">
+                   Commence par
+                   &nbsp;
+                   <span className="caret"></span>
+                 </button>
+                 <ul className="dropdown-menu">
+                   <li>
+                     <a href="#">
+                       Action
+                     </a>
+                   </li>
+                   <li>
+                     <a href="#">
+                       Another action
+                     </a>
+                   </li>
+                   <li>
+                     <a href="#">
+                       Something else here
+                     </a>
+                   </li>
+                   <li className="divider"></li>
+                   <li>
+                     <a href="#">
+                       Separated link
+                     </a>
+                   </li>
+                 </ul>
+               </div>
+               <input
+                 type="text"
+                 placeholder="saisir la rechercher..."
+                 className="form-control"
+               />
+               <span className="input-group-btn">
+                 <button
+                   className="btn btn-white orange_button"
+                   type="button">
+                   Go!
+                 </button>
+               </span>
+             </div>
 
             </form>
-
           </Modal.Body>
-          <ModalFooter />
+
+          <ModalFooter
+            onCloseClick={this.handlesOnClose}
+          />
+
         </Modal>
       </div>
     );
