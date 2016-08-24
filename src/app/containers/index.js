@@ -15,6 +15,9 @@ import {
   MailWriteNewConnected,
   MailReplyConnected
 }                             from './mailbox';
+import {
+  RechercheBenefModalConnected
+}                             from './modals';
 
 export {
   App,
@@ -33,5 +36,8 @@ export {
   MailboxReceptionConnected,
   MailboxEnvoiConnected,
   MailWriteNewConnected,
-  MailReplyConnected
+  MailReplyConnected,
+
+  // modals
+  RechercheBenefModalConnected
 };

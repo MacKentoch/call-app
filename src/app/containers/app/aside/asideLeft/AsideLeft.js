@@ -8,8 +8,25 @@ import { Horloge }    from '../../../../components';
 import Menu           from './menu/Menu';
 
 
-const AsideLeft = ({ isFetching, currentView, connectionStatus, userIsConnected, username, helloWord, userPicture, showPicture, isAnimated, isCollapsed, navGeneralTitle, navGeneral, navGestBenTitle, navGestBen, navActivTitle, navActiv, navMailBoxesTitle, navMailBoxes }) => {
-  console.log('AsideLeft currentView: ', currentView);
+const AsideLeft = ({
+  isFetching,
+  currentView,
+  connectionStatus,
+  userIsConnected,
+  username,
+  helloWord,
+  userPicture,
+  showPicture,
+  isAnimated,
+  isCollapsed,
+  navGeneralTitle,
+  navGeneral,
+  navGestBenTitle,
+  navGestBen,
+  navActivTitle,
+  navActiv,
+  navMailBoxesTitle,
+  navMailBoxes }) => {
   return (
     <aside
       className={cx({

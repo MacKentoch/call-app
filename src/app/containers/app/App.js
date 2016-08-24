@@ -11,9 +11,11 @@ import {
   AsideRight
 }                             from './aside';
 import {
-  Modals,
-  RechercheBenefModal
+  Modals
 }                             from '../../views';
+import {
+  RechercheBenefModalConnected as RechercheBenefModal
+}                             from '../../containers';
 import { appConfig }          from '../../config';
 import { BackToTop }          from '../../components';
 import { navigation }         from '../../models';
@@ -176,7 +178,7 @@ App.propTypes = {
   userInfoFetching: PropTypes.bool,
   userIsConnected: PropTypes.bool,
   // user mailboxes (extends navigation)
-  userBoitesMails: PropTypes.Object,
+  userBoitesMails: PropTypes.array,
   userBoitesMailsLastUpdateTime: PropTypes.string,
   // currentView
   currentView: PropTypes.string,
