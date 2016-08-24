@@ -12,7 +12,7 @@ import {
 }                             from './aside';
 import {
   Modals,
-  UploadMailAttachment
+  RechercheBenefModal
 }                             from '../../views';
 import { appConfig }          from '../../config';
 import { BackToTop }          from '../../components';
@@ -109,11 +109,10 @@ class App extends Component {
         {/* modals cannot be placed anywhere (avoid backdrop or modal placement issues) so all grouped in same component and outside .wrapper*/}
         <Modals />
         {/* modal upload pieces jointes mails */}
-        <UploadMailAttachment
+        <RechercheBenefModal
           showModal={rechercheBenefModalOpened}
-          title={'Ajouter des pièces jointes'}
-          onAttachmentsChange={(evt)=>console.log('UploadMailAttachment onAttachmentsChange event to dev')}
-          onClose={(evt)=>console.log('UploadMailAttachment onClose event to dev')}
+          title={'Recherche de bénéficiare'}
+          onClose={(evt)=>console.log('RechercheBenefModal onClose event to dev')}
         />
       </div>
     );

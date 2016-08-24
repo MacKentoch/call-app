@@ -11,7 +11,7 @@ import {
 // modals:
 import Modals           from './modals/Modals';
 import {
-  UploadMailAttachment
+  RechercheBenefModal
 }                       from './modals';
 // create
 import {
@@ -35,7 +35,7 @@ export {
   MailReply,
 
   // modals
-  UploadMailAttachment,
+  RechercheBenefModal,
 
   // create
   FicheContactCourier,

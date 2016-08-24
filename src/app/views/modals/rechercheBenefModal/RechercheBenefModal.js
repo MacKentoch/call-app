@@ -9,7 +9,7 @@ import {
 import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
 
-class UploadMailAttachment extends Component {
+class RechercheBenefModal extends Component {
   constructor(props) {
     super(props);
 
@@ -59,15 +59,14 @@ class UploadMailAttachment extends Component {
   }
 }
 
-UploadMailAttachment.propTypes = {
+RechercheBenefModal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   title: PropTypes.string,
-  onAttachmentsChange: PropTypes.func,
   onClose: PropTypes.func
 };
 
-UploadMailAttachment.defaultProps = {
-  title: 'Ajouter des pièces jointes'
+RechercheBenefModal.defaultProps = {
+  title: 'Recherche de bénéficiaires'
 };
 
-export default UploadMailAttachment;
+export default RechercheBenefModal;

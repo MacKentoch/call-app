@@ -1,5 +1,5 @@
-import UploadMailAttachment from './uploadMailAttachment/UploadMailAttachment';
+import RechercheBenefModal from './rechercheBenefModal/RechercheBenefModal';
 
 export {
-  UploadMailAttachment
+  RechercheBenefModal
 };
