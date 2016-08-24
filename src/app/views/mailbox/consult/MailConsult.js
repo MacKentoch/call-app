@@ -25,13 +25,13 @@ class MailConsult extends Component {
 
   componentDidMount() {
     const  { actions, params: { mailboxId, mailId } } =  this.props;
-    actions.enterMailboxConsult(`mailbox #${mailboxId}, mailId: ${mailId}`);
+    actions.enterMailboxConsult(mailboxId, mailId);
     actions.fetchMailContentIfNeeded(mailId, mailboxId);
   }
 
   componentWillUnmount() {
     const  { actions, params: { mailboxId, mailId } } =  this.props;
-    actions.leaveMailboxConsult(`mailbox #${mailboxId}, mailId: ${mailId}`);
+    actions.leaveMailboxConsult(mailboxId, mailId);
   }
 
   render() {

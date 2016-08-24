@@ -73,20 +73,32 @@ export const leaveMailboxSentbox = (mailboxId = 0, time = moment().format(format
 };
 
 // consult
-export const enterMailboxConsult = (mailboxName= ' ---', time = moment().format(formatDate)) => {
+export const enterMailboxConsult = (mailboxId = 0, mailId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
+  if (!parseInt(mailId, 10) > 0) {
+    return {};
+  }
   return {
     type:         ENTER_MAILBOX_CONSULT,
-    currentView:  appConfig.views.mailbox.consult.viewName,
-    viewDetails:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.consult.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.consult.viewName}: mailbox#${mailboxId}, consult mail#${mailId}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
 };
-export const leaveMailboxConsult = (mailboxName= ' ---', time = moment().format(formatDate)) => {
+export const leaveMailboxConsult = (mailboxId = 0, mailId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
+  if (!parseInt(mailId, 10) > 0) {
+    return {};
+  }
   return {
     type:         LEAVE_MAILBOX_CONSULT,
-    currentView:  appConfig.views.mailbox.consult.viewName,
-    viewDetails:  `${appConfig.views.mailbox.consult.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.consult.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.consult.viewName}: mailbox#${mailboxId}, consult mail#${mailId}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };
