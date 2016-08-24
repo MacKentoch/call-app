@@ -46,10 +46,11 @@ class App extends Component {
 
   render() {
     const { appName, connectionStatus, helloWord } = this.state;
-    const { uploadMailAttachmentsModalOpened } = this.props;
+    const { rechercheBenefModalOpened } = this.props;
     const { userInfos, userInfoFetching, userIsConnected, currentView, children, sideMenuIsCollapsed } = this.props;
-    const userFullName = `${userInfos.firstname} ${userInfos.lastname.toUpperCase()}`;
     const { navigationGeneral, navigationGestBen, navigationActivities, navigationMailBoxes } = this.state;
+
+    const userFullName = `${userInfos.firstname} ${userInfos.lastname.toUpperCase()}`;
 
     return (
       <div>
@@ -107,7 +108,7 @@ class App extends Component {
         <Modals />
         {/* modal upload pieces jointes mails */}
         <UploadMailAttachment
-          showModal={uploadMailAttachmentsModalOpened}
+          showModal={rechercheBenefModalOpened}
           title={'Ajouter des pièces jointes'}
           onAttachmentsChange={(evt)=>console.log('UploadMailAttachment onAttachmentsChange event to dev')}
           onClose={(evt)=>console.log('UploadMailAttachment onClose event to dev')}
@@ -171,7 +172,7 @@ App.propTypes = {
   // currentView
   currentView: PropTypes.string,
   // modals
-  uploadMailAttachmentsModalOpened: PropTypes.bool.isRequired,
+  rechercheBenefModalOpened: PropTypes.bool.isRequired,
   // actions
   actions: PropTypes.shape({
     // view
@@ -208,7 +209,7 @@ const mapStateToProps = (state) => {
     userBoitesMails:      state.userBoitesMails.data,
     userBoitesMailsLastUpdateTime: state.userBoitesMails.time,
     // modal
-    uploadMailAttachmentsModalOpened: state.uploadMailAttachmentsModal.isOpened
+    rechercheBenefModalOpened: state.rechercheBenefModal.isOpened
   };
 };
 

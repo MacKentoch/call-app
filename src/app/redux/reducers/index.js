@@ -19,7 +19,7 @@ import writeNewMailContent  from './mailbox/writeNew';
 import replyMailContent     from './mailbox/reply';
 
 // Modals
-import uploadMailAttachmentsModal from './modals/uploadMailAttachmentsModal';
+import rechercheBenefModal  from './modals/rechercheBenefModal';
 
 export {
   // views:
@@ -47,5 +47,5 @@ export {
   replyMailContent,
 
   // modals
-  uploadMailAttachmentsModal
+  rechercheBenefModal
 };

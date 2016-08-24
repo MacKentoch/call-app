@@ -90,9 +90,9 @@ import {
 }                                 from './mailbox/reply';
 // modals
 import {
-  showUploadMailAttachmentsModal,
-  hideUploadMailAttachmentsModal
-}                                 from './modals/uploadMailAttachmentsModal';
+  showRechercheBenefModal,
+  hideRechercheBenefModal
+}                                 from './modals/rechercheBenefModal';
 
 
 export {
@@ -162,6 +162,6 @@ export {
   replyMailRemoveAttachement,
 
   // modals
-  showUploadMailAttachmentsModal,
-  hideUploadMailAttachmentsModal
+  showRechercheBenefModal,
+  hideRechercheBenefModal
 };
