@@ -8,12 +8,14 @@ import {
 }                         from 'react-bootstrap';
 import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
+import SearchButton       from './searchButton/SearchButton';
 
 class RechercheBenefModal extends Component {
   constructor(props) {
     super(props);
 
     this.handlesOnClose = this.handlesOnClose.bind(this);
+    this.handlesOnSearch = this.handlesOnSearch.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -27,7 +29,7 @@ class RechercheBenefModal extends Component {
           {...this.props}
           show={showModal}
           onHide={this.handlesOnClose}
-          bsSize="medium"
+          bsSize="lg"
           aria-labelledby="contained-modal-title-md">
           <ModalHeader
             title={title}
@@ -102,15 +104,12 @@ class RechercheBenefModal extends Component {
                  placeholder="saisir la rechercher..."
                  className="form-control"
                />
-               <span className="input-group-btn">
-                 <button
-                   className="btn btn-white orange_button"
-                   type="button">
-                   Go!
-                 </button>
-               </span>
              </div>
-
+             
+             <SearchButton
+              buttonText={'Rechercher'}
+              onClick={this.handlesOnSearch}
+             />
             </form>
           </Modal.Body>
 
@@ -121,6 +120,11 @@ class RechercheBenefModal extends Component {
         </Modal>
       </div>
     );
+  }
+
+  handlesOnSearch(event) {
+    event.preventDefault();
+    console.log('on search click: TODO');
   }
 
   handlesOnClose() {
