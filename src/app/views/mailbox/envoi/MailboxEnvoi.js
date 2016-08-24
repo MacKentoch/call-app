@@ -39,7 +39,7 @@ class MailboxEnvoi extends Component {
 
   componentDidMount() {
     const  { actions, params: { mailboxId } } =  this.props;
-    actions.enterMailboxSentbox(`mailbox #${mailboxId}`);
+    actions.enterMailboxSentbox(mailboxId);
     actions.fetchSentboxContentIfNeeded(mailboxId);
   }
 
@@ -52,7 +52,7 @@ class MailboxEnvoi extends Component {
 
   componentWillUnmount() {
     const  { actions, params: { mailboxId } } =  this.props;
-    actions.leaveMailboxSentbox(`mailbox #${mailboxId}`);
+    actions.leaveMailboxSentbox(mailboxId);
   }
 
   render() {
@@ -115,7 +115,7 @@ class MailboxEnvoi extends Component {
     const {actions, params: { mailboxId } } = this.props;
     if (mailboxId !== nextProps.params.mailboxId) {
       // refresh new mailbox
-      actions.enterMailboxSentbox(`mailbox #${nextProps.params.mailboxId}`);
+      actions.enterMailboxSentbox(nextProps.params.mailboxId);
       actions.fetchSentboxContentIfNeeded(nextProps.params.mailboxId);
     }
   }

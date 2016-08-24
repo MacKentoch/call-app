@@ -33,31 +33,40 @@ export const enterMailboxInbox = (mailboxId = 0, time = moment().format(formatDa
     leaveTime:    null
   };
 };
-export const leaveMailboxInbox = (mailboxName= ' ---', time = moment().format(formatDate)) => {
+export const leaveMailboxInbox = (mailboxId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
   return {
     type:         LEAVE_MAILBOX_INBOX,
-    currentView:  appConfig.views.mailbox.reception.viewName,
-    viewDetails:  `${appConfig.views.mailbox.reception.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.reception.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.reception.viewName}: mailbox#${mailboxId}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };
 };
 
 // sentbox
-export const enterMailboxSentbox = (mailboxName= ' ---', time = moment().format(formatDate)) => {
+export const enterMailboxSentbox = (mailboxId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
   return {
     type:         ENTER_MAILBOX_SENTBOX,
-    currentView:  appConfig.views.mailbox.envoi.viewName,
-    viewDetails:  `${appConfig.views.mailbox.envoi.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.envoi.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.envoi.viewName}: mailbox#${mailboxId}` || 'non defini',
     enterTime:    time,
     leaveTime:    null
   };
 };
-export const leaveMailboxSentbox = (mailboxName= ' ---', time = moment().format(formatDate)) => {
+export const leaveMailboxSentbox = (mailboxId = 0, time = moment().format(formatDate)) => {
+  if (!parseInt(mailboxId, 10) > 0) {
+    return {};
+  }
   return {
     type:         LEAVE_MAILBOX_SENTBOX,
-    currentView:  appConfig.views.mailbox.envoi.viewName,
-    viewDetails:  `${appConfig.views.mailbox.envoi.viewName}: ${mailboxName}` || 'non defini',
+    currentView:  `${appConfig.views.mailbox.envoi.viewName}#${mailboxId}`,
+    viewDetails:  `${appConfig.views.mailbox.envoi.viewName}: mailbox#${mailboxId}` || 'non defini',
     enterTime:    null,
     leaveTime:    time
   };
