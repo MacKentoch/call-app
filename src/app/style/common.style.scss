@@ -103,3 +103,20 @@ li.active > a:hover {
     display: none;
   }
 }
+
+// orange Button
+.orange_button {
+  margin: {
+    left: 0px;
+  }
+  color: #FFFFFF;
+  background: {
+    color: #E67E22 !important;
+  }
+  &:hover {
+    color: #FFFFFF;
+    background: {
+      color: #F9690E !important;
+    }
+  }
+}

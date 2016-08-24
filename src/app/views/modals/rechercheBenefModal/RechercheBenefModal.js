@@ -28,26 +28,68 @@ class RechercheBenefModal extends Component {
           show={showModal}
           onHide={this.handlesOnClose}
           bsSize="large"
-          aria-labelledby="contained-modal-title-lg">
+          aria-labelledby="contained-modal-title-md">
           <ModalHeader
             title={title}
           />
           <Modal.Body>
-            <h4>Wrapped Text</h4>
 
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <form role="form">
+             <div className="form-group">
+               <label htmlFor="exampleInputEmail1">
+                 Identifiant
+               </label>
+               <input
+                 type="email"
+                 className="form-control"
+                 id="exampleInputEmail1"
+                 placeholder="Enter email"
+               />
+               <p className="help-block">
+                 Identifiant du dossier
+               </p>
+             </div>
+             <div className="form-group">
+               <label
+                 htmlFor="exampleInputPassword1">
+                 Password
+               </label>
+               <input
+                 type="password"
+                 className="form-control"
+                 id="exampleInputPassword1"
+                 placeholder="Password"
+               />
+             </div>
+             <div className="form-group">
+               <label htmlFor="exampleInputFile">
+                 File input
+               </label>
+               <input
+                 type="file"
+                 id="exampleInputFile"
+               />
+               <p className="help-block">
+                 Example block-level help text here.
+               </p>
+             </div>
+             <div className="checkbox">
+               <label>
+                 <input type="checkbox" />
+                  Check me out
+               </label>
+             </div>
+
+             <button
+               type="submit"
+               className="btn btn-block orange_button">
+               Rechercher
+             </button>
+
+            </form>
+
           </Modal.Body>
-          <ModalFooter
-            onCloseClick={this.handlesOnClose}
-          />
+          <ModalFooter />
         </Modal>
       </div>
     );

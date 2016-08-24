@@ -10,6 +10,7 @@ const ModalFooter = ({ onCloseClick }) => {
   return (
     <Footer>
       <Button
+        className="pull-right"
         onClick={onCloseClick}>
         Fermer
       </Button>
