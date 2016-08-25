@@ -19,10 +19,11 @@ class SearchInput extends Component {
     const {showLabel, labelText, showHelpBlock, helpBlockText} = this.props;
     const { selectedfilter, listFilters } = this.props;
     return (
-      <div className="form-group">
+      <div
+        className="form-group">
         {
           showLabel &&
-          <label htmlFor="exampleInputEmail1">
+          <label htmlFor="labelText">
             {labelText}
           </label>
         }

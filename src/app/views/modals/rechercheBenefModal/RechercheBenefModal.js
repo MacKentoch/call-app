@@ -32,7 +32,7 @@ class RechercheBenefModal extends Component {
       // Nom
       NomSelectedFilterId: -1,
       NomSelectedFilter: '',
-      NomActive: false,
+      NomActive: true,
       // Prenom
       PrenomSelectedFilterId: -1,
       PrenomSelectedFilter: '',
@@ -92,7 +92,8 @@ class RechercheBenefModal extends Component {
             <form role="form">
               <Collapse
                 isOpened={identActive}
-                keepCollapsedContent={false}>
+                keepCollapsedContent={true}>
+
                  <SearchInput
                    // label:
                    showLabel={true}
@@ -109,53 +110,53 @@ class RechercheBenefModal extends Component {
 
                <Collapse
                  isOpened={NomActive}
-                 keepCollapsedContent={false}>
-                 <SearchInput
-                   // label:
-                   showLabel={true}
-                   labelText={'Nom'}
-                   // help block text:
-                   showHelpBlock={true}
-                   helpBlockText={'Le nom du bénéficiaire'}
-                   // filter
-                   listFilters={searchInputBenefFilters}
-                   selectedfilter={NomSelectedFilter}
-                   onfilterChange={this.handlesOnNomFilterChange}
-                 />
+                 keepCollapsedContent={true}>
+                   <SearchInput
+                     // label:
+                     showLabel={true}
+                     labelText={'Nom'}
+                     // help block text:
+                     showHelpBlock={true}
+                     helpBlockText={'Le nom du bénéficiaire'}
+                     // filter
+                     listFilters={searchInputBenefFilters}
+                     selectedfilter={NomSelectedFilter}
+                     onfilterChange={this.handlesOnNomFilterChange}
+                   />
               </Collapse>
 
               <Collapse
                 isOpened={PrenomActive}
-                keepCollapsedContent={false}>
-                <SearchInput
-                  // label:
-                  showLabel={true}
-                  labelText={'Prénom'}
-                  // help block text:
-                  showHelpBlock={true}
-                  helpBlockText={'Le prénom du bénéficiaire'}
-                  // filter
-                  listFilters={searchInputBenefFilters}
-                  selectedfilter={PrenomSelectedFilter}
-                  onfilterChange={this.handlesOnPrenomFilterChange}
-                />
+                keepCollapsedContent={true}>
+                  <SearchInput
+                    // label:
+                    showLabel={true}
+                    labelText={'Prénom'}
+                    // help block text:
+                    showHelpBlock={true}
+                    helpBlockText={'Le prénom du bénéficiaire'}
+                    // filter
+                    listFilters={searchInputBenefFilters}
+                    selectedfilter={PrenomSelectedFilter}
+                    onfilterChange={this.handlesOnPrenomFilterChange}
+                  />
               </Collapse>
 
              <Collapse
                isOpened={NumSSActive}
-               keepCollapsedContent={false}>
-               <SearchInput
-                 // label:
-                 showLabel={true}
-                 labelText={'NumSS'}
-                 // help block text:
-                 showHelpBlock={true}
-                 helpBlockText={'A renseigner sur 13 ou 15 caractères'}
-                 // filter
-                 listFilters={searchInputBenefFilters}
-                 selectedfilter={numssSelectedFilter}
-                 onfilterChange={this.handlesOnNumssFilterChange}
-               />
+               keepCollapsedContent={true}>
+                 <SearchInput
+                   // label:
+                   showLabel={true}
+                   labelText={'NumSS'}
+                   // help block text:
+                   showHelpBlock={true}
+                   helpBlockText={'A renseigner sur 13 ou 15 caractères'}
+                   // filter
+                   listFilters={searchInputBenefFilters}
+                   selectedfilter={numssSelectedFilter}
+                   onfilterChange={this.handlesOnNumssFilterChange}
+                 />
              </Collapse>
 
              <div style={{height: '40px'}}></div>
