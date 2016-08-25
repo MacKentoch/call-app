@@ -12,6 +12,7 @@ import ModalFooter        from './modalFooter/ModalFooter';
 import SearchInput        from './searchInput/SearchInput';
 import SearchButton       from './searchButton/SearchButton';
 import SearchCommand      from './searchCommand/SearchCommand';
+import Collapse           from 'react-collapse';
 
 const searchInputBenefFilters = [...appConfig.searchBenefInputFilters];
 const seachBenefDefaultFilter = searchInputBenefFilters[0].id;
@@ -89,59 +90,81 @@ class RechercheBenefModal extends Component {
             <hr />
 
             <form role="form">
-             <SearchInput
-               // label:
-               showLabel={true}
-               labelText={'Identifiant'}
-               // help block text:
-               showHelpBlock={true}
-               helpBlockText={'Identifiant de dossier et non celui du bénéficiaire'}
-               // filter
-               listFilters={searchInputBenefFilters}
-               selectedfilter={identSelectedFilter}
-               onfilterChange={this.handlesOnIdentFilterChange}
-             />
-             <SearchInput
-               // label:
-               showLabel={true}
-               labelText={'Nom'}
-               // help block text:
-               showHelpBlock={true}
-               helpBlockText={'Le nom du bénéficiaire'}
-               // filter
-               listFilters={searchInputBenefFilters}
-               selectedfilter={NomSelectedFilter}
-               onfilterChange={this.handlesOnNomFilterChange}
-             />
-             <SearchInput
-               // label:
-               showLabel={true}
-               labelText={'Prénom'}
-               // help block text:
-               showHelpBlock={true}
-               helpBlockText={'Le prénom du bénéficiaire'}
-               // filter
-               listFilters={searchInputBenefFilters}
-               selectedfilter={PrenomSelectedFilter}
-               onfilterChange={this.handlesOnPrenomFilterChange}
-             />
-             <SearchInput
-               // label:
-               showLabel={true}
-               labelText={'NumSS'}
-               // help block text:
-               showHelpBlock={true}
-               helpBlockText={'A renseigner sur 13 ou 15 caractères'}
-               // filter
-               listFilters={searchInputBenefFilters}
-               selectedfilter={numssSelectedFilter}
-               onfilterChange={this.handlesOnNumssFilterChange}
-             />
+              <Collapse
+                isOpened={identActive}
+                keepCollapsedContent={false}>
+                 <SearchInput
+                   // label:
+                   showLabel={true}
+                   labelText={'Identifiant'}
+                   // help block text:
+                   showHelpBlock={true}
+                   helpBlockText={'Identifiant de dossier et non celui du bénéficiaire'}
+                   // filter
+                   listFilters={searchInputBenefFilters}
+                   selectedfilter={identSelectedFilter}
+                   onfilterChange={this.handlesOnIdentFilterChange}
+                 />
+               </Collapse>
+
+               <Collapse
+                 isOpened={NomActive}
+                 keepCollapsedContent={false}>
+                 <SearchInput
+                   // label:
+                   showLabel={true}
+                   labelText={'Nom'}
+                   // help block text:
+                   showHelpBlock={true}
+                   helpBlockText={'Le nom du bénéficiaire'}
+                   // filter
+                   listFilters={searchInputBenefFilters}
+                   selectedfilter={NomSelectedFilter}
+                   onfilterChange={this.handlesOnNomFilterChange}
+                 />
+              </Collapse>
+
+              <Collapse
+                isOpened={PrenomActive}
+                keepCollapsedContent={false}>
+                <SearchInput
+                  // label:
+                  showLabel={true}
+                  labelText={'Prénom'}
+                  // help block text:
+                  showHelpBlock={true}
+                  helpBlockText={'Le prénom du bénéficiaire'}
+                  // filter
+                  listFilters={searchInputBenefFilters}
+                  selectedfilter={PrenomSelectedFilter}
+                  onfilterChange={this.handlesOnPrenomFilterChange}
+                />
+              </Collapse>
+
+             <Collapse
+               isOpened={NumSSActive}
+               keepCollapsedContent={false}>
+               <SearchInput
+                 // label:
+                 showLabel={true}
+                 labelText={'NumSS'}
+                 // help block text:
+                 showHelpBlock={true}
+                 helpBlockText={'A renseigner sur 13 ou 15 caractères'}
+                 // filter
+                 listFilters={searchInputBenefFilters}
+                 selectedfilter={numssSelectedFilter}
+                 onfilterChange={this.handlesOnNumssFilterChange}
+               />
+             </Collapse>
+
              <div style={{height: '40px'}}></div>
+
              <SearchButton
               buttonText={'Rechercher'}
               onClick={this.handlesOnSearch}
              />
+
             </form>
           </Modal.Body>
 
@@ -265,7 +288,7 @@ class RechercheBenefModal extends Component {
 
         updatedCiterias[prenomIndex].active = toggleThisBool(isActive);
         this.setState({
-          NomActive: !PrenomActive,
+          PrenomActive: !PrenomActive,
           criterias: [...updatedCiterias]
         });
       }
@@ -281,7 +304,7 @@ class RechercheBenefModal extends Component {
 
         updatedCiterias[numssIndex].active = toggleThisBool(isActive);
         this.setState({
-          NomActive: !NumSSActive,
+          NumSSActive: !NumSSActive,
           criterias: [...updatedCiterias]
         });
       }
