@@ -70,9 +70,9 @@ class SearchInput extends Component {
   }
 
   handlesSelectFilter(filterId, filterLibelle) {
-    const { selectedfilter } = this.props;
+    const { onfilterChange } = this.props;
     console.log(`filterid: ${filterId}, libelle: ${filterLibelle}`);
-    selectedfilter(filterId, filterLibelle);
+    onfilterChange(filterId, filterLibelle);
   }
 }
 
