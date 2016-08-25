@@ -199,7 +199,12 @@ class RechercheBenefModal extends Component {
   }
 
   initInputs() {
-
+    this.setState({
+      identValue: '',
+      nomValue: '',
+      prenomValue: '',
+      numssValue: ''
+    });
   }
 
   initFilters() {
@@ -380,6 +385,8 @@ class RechercheBenefModal extends Component {
     const { onClose } = this.props;
     // all input filters reset
     this.initFilters();
+    // all value reset
+    this.initInputs();
     onClose();
   }
 }
