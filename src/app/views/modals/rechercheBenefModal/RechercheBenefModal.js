@@ -8,6 +8,7 @@ import {
 }                         from 'react-bootstrap';
 import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
+import SearchInput        from './searchInput/SearchInput';
 import SearchButton       from './searchButton/SearchButton';
 
 class RechercheBenefModal extends Component {
@@ -37,75 +38,35 @@ class RechercheBenefModal extends Component {
           <Modal.Body>
 
             <form role="form">
-             <div className="form-group">
-               <label htmlFor="exampleInputEmail1">
-                 Identifiant
-               </label>
-               <input
-                 type="text"
-                 className="form-control"
-                 id="identifiant"
-                 placeholder=""
-               />
-               <p className="help-block">
-                 Identifiant du dossier
-               </p>
-             </div>
-             <div className="form-group">
-               <label
-                 htmlFor="exampleInputPassword1">
-                 Password
-               </label>
-               <input
-                 type="password"
-                 className="form-control"
-                 id="exampleInputPassword1"
-                 placeholder="Password"
-               />
-             </div>
+
+             <SearchInput
+               // label:
+               showLabel={true}
+               labelText={''}
+               // help block text:
+               showHelpBlock={true}
+               helpBlockText={''}
+             />
+             <SearchInput
+               // label:
+               showLabel={true}
+               labelText={''}
+               // help block text:
+               showHelpBlock={true}
+               helpBlockText={''}
+             />
+             <SearchInput
+               // label:
+               showLabel={true}
+               labelText={''}
+               // help block text:
+               showHelpBlock={true}
+               helpBlockText={''}
+             />
              <div style={{height: '40px'}}></div>
 
-             <div className="input-group m-b-10">
-               <div className="input-group-btn">
-                 <button
-                   type="button"
-                   className="btn btn-white dropdown-toggle"
-                   data-toggle="dropdown">
-                   Commence par
-                   &nbsp;
-                   <span className="caret"></span>
-                 </button>
-                 <ul className="dropdown-menu">
-                   <li>
-                     <a href="#">
-                       Action
-                     </a>
-                   </li>
-                   <li>
-                     <a href="#">
-                       Another action
-                     </a>
-                   </li>
-                   <li>
-                     <a href="#">
-                       Something else here
-                     </a>
-                   </li>
-                   <li className="divider"></li>
-                   <li>
-                     <a href="#">
-                       Separated link
-                     </a>
-                   </li>
-                 </ul>
-               </div>
-               <input
-                 type="text"
-                 placeholder="saisir la rechercher..."
-                 className="form-control"
-               />
-             </div>
-             
+
+
              <SearchButton
               buttonText={'Rechercher'}
               onClick={this.handlesOnSearch}
