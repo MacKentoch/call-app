@@ -26,18 +26,22 @@ class RechercheBenefModal extends Component {
 
     this.state = {
       // Identifiant
+      identValue: '',
       identSelectedFilterId: -1,
       identSelectedFilter: '',
       identActive: false,
       // Nom
+      nomValue: '',
       NomSelectedFilterId: -1,
       NomSelectedFilter: '',
       NomActive: true,
       // Prenom
+      prenomValue: '',
       PrenomSelectedFilterId: -1,
       PrenomSelectedFilter: '',
       PrenomActive: false,
       // NumSS
+      numssValue: '',
       numssSelectedFilterId: -1,
       numssSelectedFilter: '',
       NumSSActive: false,
@@ -52,6 +56,10 @@ class RechercheBenefModal extends Component {
     this.handlesOnPrenomFilterChange = this.handlesOnPrenomFilterChange.bind(this);
     this.handlesOnNumssFilterChange = this.handlesOnNumssFilterChange.bind(this);
     this.handlesOnCriteriaClick = this.handlesOnCriteriaClick.bind(this);
+    this.handlesIndentValueChanged = this.handlesIndentValueChanged.bind(this);
+    this.handlesNomValueChanged = this.handlesNomValueChanged.bind(this);
+    this.handlesPrenomValueChanged = this.handlesPrenomValueChanged.bind(this);
+    this.handlesNumssValueChanged = this.handlesNumssValueChanged.bind(this);
   }
 
   componentDidMount() {
@@ -67,6 +75,7 @@ class RechercheBenefModal extends Component {
     const { identSelectedFilter, NomSelectedFilter, PrenomSelectedFilter, numssSelectedFilter } = this.state;
     const { criterias } = this.state;
     const { identActive, NomActive, PrenomActive, NumSSActive } = this.state;
+    const { identValue, nomValue, prenomValue, numssValue } = this.state;
 
     return (
       <div>
@@ -98,6 +107,9 @@ class RechercheBenefModal extends Component {
                    // label:
                    showLabel={true}
                    labelText={'Identifiant'}
+                   // value
+                   value={identValue}
+                   onValueChanged={this.handlesIndentValueChanged}
                    // help block text:
                    showHelpBlock={true}
                    helpBlockText={'Identifiant de dossier et non celui du bénéficiaire'}
@@ -115,6 +127,9 @@ class RechercheBenefModal extends Component {
                      // label:
                      showLabel={true}
                      labelText={'Nom'}
+                     // value
+                     value={nomValue}
+                     onValueChanged={this.handlesNomValueChanged}
                      // help block text:
                      showHelpBlock={true}
                      helpBlockText={'Le nom du bénéficiaire'}
@@ -132,6 +147,9 @@ class RechercheBenefModal extends Component {
                     // label:
                     showLabel={true}
                     labelText={'Prénom'}
+                    // value
+                    value={prenomValue}
+                    onValueChanged={this.handlesPrenomValueChanged}
                     // help block text:
                     showHelpBlock={true}
                     helpBlockText={'Le prénom du bénéficiaire'}
@@ -149,6 +167,9 @@ class RechercheBenefModal extends Component {
                    // label:
                    showLabel={true}
                    labelText={'NumSS'}
+                   // value
+                   value={numssValue}
+                   onValueChanged={this.handlesNumssValueChanged}
                    // help block text:
                    showHelpBlock={true}
                    helpBlockText={'A renseigner sur 13 ou 15 caractères'}
@@ -178,6 +199,10 @@ class RechercheBenefModal extends Component {
     );
   }
 
+  initInputs() {
+
+  }
+
   initFilters() {
     this.setState({
       // Identifiant
@@ -193,6 +218,22 @@ class RechercheBenefModal extends Component {
       numssSelectedFilterId: seachBenefDefaultFilter,
       numssSelectedFilter: this.getfilterLibelle(seachBenefDefaultFilter)
     });
+  }
+
+  handlesIndentValueChanged(value) {
+    this.setState({identValue: value});
+  }
+
+  handlesNomValueChanged(value) {
+    this.setState({nomValue: value});
+  }
+
+  handlesPrenomValueChanged(value) {
+    this.setState({prenomValue: value});
+  }
+
+  handlesNumssValueChanged(value) {
+    this.setState({numssValue: value});
   }
 
   getfilterLibelle(id) {
@@ -326,11 +367,16 @@ class RechercheBenefModal extends Component {
 
   handlesOnSearch(event) {
     event.preventDefault();
+    // get all active inputs only
+
+
     console.log('on search click: TODO');
   }
 
   handlesOnClose() {
     const { onClose } = this.props;
+    // all input filters reset
+    this.initFilters();
     onClose();
   }
 }
