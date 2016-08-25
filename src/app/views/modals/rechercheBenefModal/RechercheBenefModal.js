@@ -65,6 +65,8 @@ class RechercheBenefModal extends Component {
     const { showModal, title  } = this.props;
     const { identSelectedFilter, NomSelectedFilter, PrenomSelectedFilter, numssSelectedFilter } = this.state;
     const { criterias } = this.state;
+    const { identActive, NomActive, PrenomActive, NumSSActive } = this.state;
+
     return (
       <div>
         <Modal
@@ -217,16 +219,18 @@ class RechercheBenefModal extends Component {
   }
 
   handlesOnCriteriaClick(critere) {
+    const { criterias } = this.state;
+
     switch (critere) {
 
     case 'Identifiant':
-      const { identActive, criterias } = this.state;
+      const { identActive } = this.state;
 
       const identIndex = criterias.findIndex(criter => criter.label === 'Identifiant');
       if (isFound(identIndex)) {
         const updatedCiterias = [...criterias];
         const isActive = updatedCiterias[identIndex].active;
-        
+
         updatedCiterias[identIndex].active = toggleThisBool(isActive);
         this.setState({
           identActive: !identActive,
@@ -237,17 +241,50 @@ class RechercheBenefModal extends Component {
 
     case 'Nom':
       const { NomActive } = this.state;
-      this.setState({ NomActive: !NomActive });
+
+      const nomIndex = criterias.findIndex(criter => criter.label === 'Nom');
+      if (isFound(nomIndex)) {
+        const updatedCiterias = [...criterias];
+        const isActive = updatedCiterias[nomIndex].active;
+
+        updatedCiterias[nomIndex].active = toggleThisBool(isActive);
+        this.setState({
+          NomActive: !NomActive,
+          criterias: [...updatedCiterias]
+        });
+      }
       break;
 
     case 'Prénom':
       const { PrenomActive } = this.state;
-      this.setState({ PrenomActive: !PrenomActive });
+
+      const prenomIndex = criterias.findIndex(criter => criter.label === 'Prénom');
+      if (isFound(prenomIndex)) {
+        const updatedCiterias = [...criterias];
+        const isActive = updatedCiterias[prenomIndex].active;
+
+        updatedCiterias[prenomIndex].active = toggleThisBool(isActive);
+        this.setState({
+          NomActive: !PrenomActive,
+          criterias: [...updatedCiterias]
+        });
+      }
       break;
 
     case 'Numéro sécu.':
       const { NumSSActive } = this.state;
-      this.setState({ NumSSActive: !NumSSActive });
+
+      const numssIndex = criterias.findIndex(criter => criter.label === 'Numéro sécu.');
+      if (isFound(numssIndex)) {
+        const updatedCiterias = [...criterias];
+        const isActive = updatedCiterias[numssIndex].active;
+
+        updatedCiterias[numssIndex].active = toggleThisBool(isActive);
+        this.setState({
+          NomActive: !NumSSActive,
+          criterias: [...updatedCiterias]
+        });
+      }
       break;
 
     default:
