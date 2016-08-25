@@ -11,6 +11,7 @@ import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
 import SearchInput        from './searchInput/SearchInput';
 import SearchButton       from './searchButton/SearchButton';
+import SearchCommand      from './searchCommand/SearchCommand';
 
 const searchInputBenefFilters = [...appConfig.searchBenefInputFilters];
 const seachBenefDefaultFilter = searchInputBenefFilters[0].id;
@@ -67,6 +68,9 @@ class RechercheBenefModal extends Component {
           />
           <Modal.Body>
 
+            <SearchCommand />
+            <div style={{height: '20px'}}></div>
+            <hr />
             <form role="form">
              <SearchInput
                // label:

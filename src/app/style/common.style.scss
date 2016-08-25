@@ -126,3 +126,18 @@ li.active > a:hover {
     background-color: #E67E22;
     color: #f9f9f9;
 }
+
+// overrides nav pills
+.nav.nav-pills > li.active > a, .nav.nav-pills > li.active > a:hover {
+    background-color: #E67E22;
+    border-top-color: #F1F1F1 !important;
+    color: #F1F1F1;
+    border: 1px solid #F1F1F1;
+}
+.nav.nav-pills > li > a {
+    border: 1px solid #F1F1F1;
+    border-radius: 0;
+    color: #444;
+    margin-left: 5px;
+    margin-right: 5px;
+}

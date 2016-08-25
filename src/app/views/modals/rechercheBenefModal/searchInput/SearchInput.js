@@ -55,7 +55,7 @@ class SearchInput extends Component {
           </div>
           <input
             type="text"
-            placeholder="saisir la rechercher..."
+            placeholder={`${labelText}...`}
             className="form-control"
           />
         </div>
