@@ -16,6 +16,25 @@ import SearchCommand      from './searchCommand/SearchCommand';
 const searchInputBenefFilters = [...appConfig.searchBenefInputFilters];
 const seachBenefDefaultFilter = searchInputBenefFilters[0].id;
 
+const SearchCriteria = [
+  {
+    active: false,
+    label: 'Identifiant'
+  },
+  {
+    active: true,
+    label: 'Nom'
+  },
+  {
+    active: false,
+    label: 'Prenom'
+  },
+  {
+    active: false,
+    label: 'NumSS'
+  }
+];
+
 class RechercheBenefModal extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +60,7 @@ class RechercheBenefModal extends Component {
     this.handlesOnNomFilterChange = this.handlesOnNomFilterChange.bind(this);
     this.handlesOnPrenomFilterChange = this.handlesOnPrenomFilterChange.bind(this);
     this.handlesOnNumssFilterChange = this.handlesOnNumssFilterChange.bind(this);
+    this.handlesOnCriteriaClick = this.handlesOnCriteriaClick.bind(this);
   }
 
   componentDidMount() {
@@ -68,9 +88,14 @@ class RechercheBenefModal extends Component {
           />
           <Modal.Body>
 
-            <SearchCommand />
+            <SearchCommand
+              criterias={SearchCriteria}
+              onCriteriaClick={this.handlesOnCriteriaClick}
+            />
+
             <div style={{height: '20px'}}></div>
             <hr />
+
             <form role="form">
              <SearchInput
                // label:
@@ -199,6 +224,10 @@ class RechercheBenefModal extends Component {
         numssSelectedFilter: filterLibelle
       });
     }
+  }
+
+  handlesOnCriteriaClick(critere) {
+    console.log('critere: ', critere);
   }
 
   handlesOnSearch(event) {

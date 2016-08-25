@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
+import SearchCriteria       from './SearchCriteria/SearchCriteria';
 
-
-const SearchCommand = ({}) => {
+const SearchCommand = ({criterias, onCriteriaClick}) => {
   return (
     <div className="form-group">
       <label
@@ -11,31 +11,24 @@ const SearchCommand = ({}) => {
         }}>
         Critères de recherche:
       </label>
-      <div className="col-xs-9">
-        <ul className="nav nav-pills nav-justified">
-          <li className="active">
-            <a href="#">
-              Identifiant
-            </a>
-          </li>
-
-          <li>
-            <a href="#">
-              Nom
-            </a>
-          </li>
-
-          <li className="">
-            <a href="#">
-              Prénom
-            </a>
-          </li>
-
-          <li className="">
-            <a href="#">
-              NumSS
-            </a>
-          </li>
+      <div
+        className="col-xs-9 ">
+        <ul
+          className="nav nav-pills nav-justified">
+          {
+            criterias.map(
+              ({active, label}, idx) => {
+                return (
+                  <SearchCriteria
+                    key={idx}
+                    isActive={active}
+                    libelle={label}
+                    onClick={onCriteriaClick}
+                  />
+                );
+              }
+            )
+          }
         </ul>
       </div>
     </div>
@@ -45,7 +38,13 @@ const SearchCommand = ({}) => {
 };
 
 SearchCommand.propTypes = {
-
+  criterias: PropTypes.arrayOf(
+    PropTypes.shape({
+      isActive: PropTypes.bool.isRequired,
+      label: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  onCriteriaClick: PropTypes.func
 };
 
 export default SearchCommand;
