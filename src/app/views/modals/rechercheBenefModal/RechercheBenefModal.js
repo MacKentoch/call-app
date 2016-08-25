@@ -16,24 +16,8 @@ import SearchCommand      from './searchCommand/SearchCommand';
 const searchInputBenefFilters = [...appConfig.searchBenefInputFilters];
 const seachBenefDefaultFilter = searchInputBenefFilters[0].id;
 
-const SearchCriteria = [
-  {
-    active: false,
-    label: 'Identifiant'
-  },
-  {
-    active: true,
-    label: 'Nom'
-  },
-  {
-    active: false,
-    label: 'Prenom'
-  },
-  {
-    active: false,
-    label: 'NumSS'
-  }
-];
+const SearchCriteria = [...appConfig.searchCriterias];
+
 
 class RechercheBenefModal extends Component {
   constructor(props) {
@@ -43,15 +27,21 @@ class RechercheBenefModal extends Component {
       // Identifiant
       identSelectedFilterId: -1,
       identSelectedFilter: '',
+      identActive: false,
       // Nom
       NomSelectedFilterId: -1,
       NomSelectedFilter: '',
+      NomActive: false,
       // Prenom
       PrenomSelectedFilterId: -1,
       PrenomSelectedFilter: '',
+      PrenomActive: false,
       // NumSS
       numssSelectedFilterId: -1,
-      numssSelectedFilter: ''
+      numssSelectedFilter: '',
+      NumSSActive: false,
+
+      criterias: [...SearchCriteria]
     };
 
     this.handlesOnClose = this.handlesOnClose.bind(this);
@@ -74,7 +64,7 @@ class RechercheBenefModal extends Component {
   render() {
     const { showModal, title  } = this.props;
     const { identSelectedFilter, NomSelectedFilter, PrenomSelectedFilter, numssSelectedFilter } = this.state;
-
+    const { criterias } = this.state;
     return (
       <div>
         <Modal
@@ -89,7 +79,7 @@ class RechercheBenefModal extends Component {
           <Modal.Body>
 
             <SearchCommand
-              criterias={SearchCriteria}
+              criterias={criterias}
               onCriteriaClick={this.handlesOnCriteriaClick}
             />
 
@@ -227,7 +217,50 @@ class RechercheBenefModal extends Component {
   }
 
   handlesOnCriteriaClick(critere) {
-    console.log('critere: ', critere);
+    switch (critere) {
+
+    case 'Identifiant':
+      const { identActive, criterias } = this.state;
+
+      const identIndex = criterias.findIndex(criter => criter.label === 'Identifiant');
+      if (isFound(identIndex)) {
+        const updatedCiterias = [...criterias];
+        const isActive = updatedCiterias[identIndex].active;
+        
+        updatedCiterias[identIndex].active = toggleThisBool(isActive);
+        this.setState({
+          identActive: !identActive,
+          criterias: [...updatedCiterias]
+        });
+      }
+      break;
+
+    case 'Nom':
+      const { NomActive } = this.state;
+      this.setState({ NomActive: !NomActive });
+      break;
+
+    case 'Prénom':
+      const { PrenomActive } = this.state;
+      this.setState({ PrenomActive: !PrenomActive });
+      break;
+
+    case 'Numéro sécu.':
+      const { NumSSActive } = this.state;
+      this.setState({ NumSSActive: !NumSSActive });
+      break;
+
+    default:
+      return;
+    }
+
+    function isFound(index) {
+      return index > -1 ? true : false;
+    }
+
+    function toggleThisBool(val) {
+      return !val;
+    }
   }
 
   handlesOnSearch(event) {

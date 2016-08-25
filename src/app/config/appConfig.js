@@ -23,6 +23,25 @@ export const appConfig = {
       libelle: 'termine par'
     }
   ],
+  // do not change label or update match in RechercheBenefModal -> method handlesOnCriteriaClick
+  searchCriterias: [
+    {
+      active: false,
+      label: 'Identifiant'
+    },
+    {
+      active: true,
+      label: 'Nom'
+    },
+    {
+      active: false,
+      label: 'Prénom'
+    },
+    {
+      active: false,
+      label: 'Numéro sécu.'
+    }
+  ],
 
   fileMimeTypes: [
     // txt:

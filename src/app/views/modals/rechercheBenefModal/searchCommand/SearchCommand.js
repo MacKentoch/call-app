@@ -15,6 +15,26 @@ const SearchCommand = ({criterias, onCriteriaClick}) => {
         className="col-xs-9 ">
         <ul
           className="nav nav-pills nav-justified">
+          {/* <SearchCriteria
+            isActive={active}
+            libelle={label}
+            onClick={onCriteriaClick}
+          />
+          <SearchCriteria
+            isActive={active}
+            libelle={label}
+            onClick={onCriteriaClick}
+          />
+          <SearchCriteria
+            isActive={active}
+            libelle={label}
+            onClick={onCriteriaClick}
+          />
+          <SearchCriteria
+            isActive={active}
+            libelle={label}
+            onClick={onCriteriaClick}
+          /> */}
           {
             criterias.map(
               ({active, label}, idx) => {
