@@ -158,7 +158,6 @@ class RechercheBenefModal extends Component {
 
   handlesOnIdentFilterChange(filterId, filterLibelle) {
     const { identSelectedFilterId } = this.state;
-    console.log(`handlesOnIdentFilterChange, id: ${filterId}, libelle: ${filterLibelle}`);
     if (filterId !== identSelectedFilterId) {
       this.setState({
         identSelectedFilterId: filterId,
@@ -169,6 +168,7 @@ class RechercheBenefModal extends Component {
 
   handlesOnNomFilterChange(filterId, filterLibelle) {
     const { NomSelectedFilterId } = this.state;
+    console.log(`handlesOnNomFilterChange: ${filterId} - ${filterLibelle}`);
     if (filterId !== NomSelectedFilterId) {
       this.setState({
         NomSelectedFilter: filterId,

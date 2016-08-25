@@ -32,6 +32,7 @@ class SearchInputFilter extends Component {
   handlesOnClick(event) {
     event.preventDefault();
     const { filterId, libelle, onClick } = this.props;
+    console.log(`${filterId} ${libelle}`);
     onClick(filterId, libelle);
   }
 }

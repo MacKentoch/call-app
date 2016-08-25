@@ -71,7 +71,6 @@ class SearchInput extends Component {
 
   handlesSelectFilter(filterId, filterLibelle) {
     const { onfilterChange } = this.props;
-    console.log(`filterid: ${filterId}, libelle: ${filterLibelle}`);
     onfilterChange(filterId, filterLibelle);
   }
 }
