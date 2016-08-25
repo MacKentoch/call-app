@@ -9,6 +9,21 @@ export const appConfig = {
 
   APP_NAME: 'Call App',
 
+  searchBenefInputFilters: [
+    {
+      id: 'START_WITH',
+      libelle: 'Commence par'
+    },
+    {
+      id: 'EQUALS',
+      libelle: 'est égale à'
+    },
+    {
+      id: 'END_WITH',
+      libelle: 'termine par'
+    }
+  ],
+
   fileMimeTypes: [
     // txt:
     'txt',

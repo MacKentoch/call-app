@@ -44,28 +44,33 @@ class RechercheBenefModal extends Component {
                labelText={'Identifiant'}
                // help block text:
                showHelpBlock={true}
-               helpBlockText={'Identifiant de dossier et non celui du bénéficaire'}
+               helpBlockText={'Identifiant de dossier et non celui du bénéficiaire'}
              />
              <SearchInput
                // label:
                showLabel={true}
                labelText={'Nom'}
                // help block text:
-               showHelpBlock={false}
-               helpBlockText={''}
+               showHelpBlock={true}
+               helpBlockText={'Le nom du bénéficiaire'}
              />
              <SearchInput
                // label:
                showLabel={true}
                labelText={'Prénom'}
                // help block text:
-               showHelpBlock={false}
-               helpBlockText={''}
+               showHelpBlock={true}
+               helpBlockText={'Le prénom du bénéficiaire'}
+             />
+             <SearchInput
+               // label:
+               showLabel={true}
+               labelText={'NumSS'}
+               // help block text:
+               showHelpBlock={true}
+               helpBlockText={'A renseigner sur 13 ou 15 caractères'}
              />
              <div style={{height: '40px'}}></div>
-
-
-
              <SearchButton
               buttonText={'Rechercher'}
               onClick={this.handlesOnSearch}

@@ -1,4 +1,9 @@
 import React, { PropTypes } from 'react';
+import { appConfig } from '../../../../config';
+
+const searchInputBenefFilters = [...appConfig.searchBenefInputFilters];
+const seachBenefDefaultFilter = searchInputBenefFilters[0].libelle;
+
 
 const SearchInput = ({showLabel, labelText, showHelpBlock, helpBlockText}) => {
   return (
@@ -15,32 +20,24 @@ const SearchInput = ({showLabel, labelText, showHelpBlock, helpBlockText}) => {
             type="button"
             className="btn btn-white dropdown-toggle"
             data-toggle="dropdown">
-            Commence par
+            {seachBenefDefaultFilter}
             &nbsp;
             <span className="caret"></span>
           </button>
           <ul className="dropdown-menu">
-            <li>
-              <a href="#">
-                Action
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Another action
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Something else here
-              </a>
-            </li>
-            <li className="divider"></li>
-            <li>
-              <a href="#">
-                Separated link
-              </a>
-            </li>
+            {
+              searchInputBenefFilters.map(
+                (filter, idx) => {
+                  return (
+                    <li key={idx}>
+                      <a href="#">
+                        {filter.libelle}
+                      </a>
+                    </li>
+                  );
+                }
+              )
+            }
           </ul>
         </div>
         <input
