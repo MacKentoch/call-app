@@ -9,9 +9,14 @@ const ModalHeader = ({title}) => {
     <Header closeButton>
       <Title
         id="contained-modal-title-lg">
+        <i
+          className="fa fa-search"
+          style={{marginRight: '20px'}}
+          aria-hidden="true">
+        </i>
         {title}
       </Title>
-    </Header>
+  </Header>
   );
 };
 

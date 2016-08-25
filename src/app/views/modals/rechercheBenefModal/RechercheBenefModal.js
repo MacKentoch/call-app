@@ -38,29 +38,28 @@ class RechercheBenefModal extends Component {
           <Modal.Body>
 
             <form role="form">
-
              <SearchInput
                // label:
                showLabel={true}
-               labelText={''}
+               labelText={'Identifiant'}
                // help block text:
                showHelpBlock={true}
+               helpBlockText={'Identifiant de dossier et non celui du bénéficaire'}
+             />
+             <SearchInput
+               // label:
+               showLabel={true}
+               labelText={'Nom'}
+               // help block text:
+               showHelpBlock={false}
                helpBlockText={''}
              />
              <SearchInput
                // label:
                showLabel={true}
-               labelText={''}
+               labelText={'Prénom'}
                // help block text:
-               showHelpBlock={true}
-               helpBlockText={''}
-             />
-             <SearchInput
-               // label:
-               showLabel={true}
-               labelText={''}
-               // help block text:
-               showHelpBlock={true}
+               showHelpBlock={false}
                helpBlockText={''}
              />
              <div style={{height: '40px'}}></div>

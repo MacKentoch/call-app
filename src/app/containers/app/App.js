@@ -114,7 +114,7 @@ class App extends Component {
         {/* modal upload pieces jointes mails */}
         <RechercheBenefModal
           showModal={rechercheBenefModalOpened}
-          title={'Recherche de bénéficiare'}
+          title={'Recherche de bénéficiaire'}
           onClose={this.handlesHideRechercheBenefModal}
         />
       </div>
