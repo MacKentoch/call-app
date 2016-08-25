@@ -9,6 +9,7 @@ class SearchInput extends Component {
   constructor(props) {
     super(props);
     this.handlesSelectFilter = this.handlesSelectFilter.bind(this);
+    this.handlesOnValueChanged = this.handlesOnValueChanged.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -18,6 +19,8 @@ class SearchInput extends Component {
   render() {
     const {showLabel, labelText, showHelpBlock, helpBlockText} = this.props;
     const { selectedfilter, listFilters } = this.props;
+    const { value } = this.props;
+
     return (
       <div
         className="form-group">
@@ -56,6 +59,8 @@ class SearchInput extends Component {
           </div>
           <input
             type="text"
+            value={value}
+            onChange={this.handlesOnValueChanged}
             placeholder={`${labelText}...`}
             className="form-control"
           />
@@ -74,12 +79,21 @@ class SearchInput extends Component {
     const { onfilterChange } = this.props;
     onfilterChange(filterId, filterLibelle);
   }
+
+  handlesOnValueChanged(event) {
+    const value = event.target.value.trim();
+    const { onValueChanged } = this.props;
+    onValueChanged(value);
+  }
 }
 
 SearchInput.propTypes = {
   // label:
   showLabel: PropTypes.bool,
   labelText: PropTypes.string,
+  // value:
+  value: PropTypes.string,
+  onValueChanged: PropTypes.func,
   // help block text:
   showHelpBlock: PropTypes.bool,
   helpBlockText: PropTypes.string,
