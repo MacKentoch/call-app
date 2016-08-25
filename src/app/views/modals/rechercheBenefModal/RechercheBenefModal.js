@@ -13,7 +13,7 @@ import SearchInput        from './searchInput/SearchInput';
 import SearchButton       from './searchButton/SearchButton';
 
 const searchInputBenefFilters = [...appConfig.searchBenefInputFilters];
-const seachBenefDefaultFilter = searchInputBenefFilters[0].libelle;
+const seachBenefDefaultFilter = searchInputBenefFilters[0].id;
 
 class RechercheBenefModal extends Component {
   constructor(props) {
@@ -21,18 +21,25 @@ class RechercheBenefModal extends Component {
 
     this.state = {
       // Identifiant
+      identSelectedFilterId: -1,
       identSelectedFilter: '',
       // Nom
+      NomSelectedFilterId: -1,
       NomSelectedFilter: '',
       // Prenom
+      PrenomSelectedFilterId: -1,
       PrenomSelectedFilter: '',
       // NumSS
-      numssSelectedFilter: '',
+      numssSelectedFilterId: -1,
+      numssSelectedFilter: ''
     };
 
     this.handlesOnClose = this.handlesOnClose.bind(this);
     this.handlesOnSearch = this.handlesOnSearch.bind(this);
-    this.handlesOnInputFilterChange = this.handlesOnInputFilterChange.bind(this);
+    this.handlesOnIdentFilterChange = this.handlesOnIdentFilterChange.bind(this);
+    this.handlesOnNomFilterChange = this.handlesOnNomFilterChange.bind(this);
+    this.handlesOnPrenomFilterChange = this.handlesOnPrenomFilterChange.bind(this);
+    this.handlesOnNumssFilterChange = this.handlesOnNumssFilterChange.bind(this);
   }
 
   componentDidMount() {
@@ -71,7 +78,7 @@ class RechercheBenefModal extends Component {
                // filter
                listFilters={searchInputBenefFilters}
                selectedfilter={identSelectedFilter}
-               onfilterChange={this.handlesOnInputFilterChange}
+               onfilterChange={this.handlesOnIdentFilterChange}
              />
              <SearchInput
                // label:
@@ -83,7 +90,7 @@ class RechercheBenefModal extends Component {
                // filter
                listFilters={searchInputBenefFilters}
                selectedfilter={NomSelectedFilter}
-               onfilterChange={this.handlesOnInputFilterChange}
+               onfilterChange={this.handlesOnNomFilterChange}
              />
              <SearchInput
                // label:
@@ -95,7 +102,7 @@ class RechercheBenefModal extends Component {
                // filter
                listFilters={searchInputBenefFilters}
                selectedfilter={PrenomSelectedFilter}
-               onfilterChange={this.handlesOnInputFilterChange}
+               onfilterChange={this.handlesOnPrenomFilterChange}
              />
              <SearchInput
                // label:
@@ -107,7 +114,7 @@ class RechercheBenefModal extends Component {
                // filter
                listFilters={searchInputBenefFilters}
                selectedfilter={numssSelectedFilter}
-               onfilterChange={this.handlesOnInputFilterChange}
+               onfilterChange={this.handlesOnNumssFilterChange}
              />
              <div style={{height: '40px'}}></div>
              <SearchButton
@@ -129,18 +136,65 @@ class RechercheBenefModal extends Component {
   initFilters() {
     this.setState({
       // Identifiant
-      identSelectedFilter: seachBenefDefaultFilter,
+      identSelectedFilterId: seachBenefDefaultFilter,
+      identSelectedFilter: this.getfilterLibelle(seachBenefDefaultFilter),
       // Nom
-      NomSelectedFilter: seachBenefDefaultFilter,
+      NomSelectedFilterId: seachBenefDefaultFilter,
+      NomSelectedFilter: this.getfilterLibelle(seachBenefDefaultFilter),
       // Prenom
-      PrenomSelectedFilter: seachBenefDefaultFilter,
+      PrenomSelectedFilterId: seachBenefDefaultFilter,
+      PrenomSelectedFilter: this.getfilterLibelle(seachBenefDefaultFilter),
       // NumSS
-      numssSelectedFilter: seachBenefDefaultFilter
+      numssSelectedFilterId: seachBenefDefaultFilter,
+      numssSelectedFilter: this.getfilterLibelle(seachBenefDefaultFilter)
     });
   }
 
-  handlesOnInputFilterChange(filterId, filterLibelle) {
+  getfilterLibelle(id) {
+    return searchInputBenefFilters.find(
+      filter => filter.id === id
+    ).libelle;
+  }
 
+  handlesOnIdentFilterChange(filterId, filterLibelle) {
+    const { identSelectedFilterId } = this.state;
+    console.log(`handlesOnIdentFilterChange, id: ${filterId}, libelle: ${filterLibelle}`);
+    if (filterId !== identSelectedFilterId) {
+      this.setState({
+        identSelectedFilterId: filterId,
+        identSelectedFilter: filterLibelle
+      });
+    }
+  }
+
+  handlesOnNomFilterChange(filterId, filterLibelle) {
+    const { NomSelectedFilterId } = this.state;
+    if (filterId !== NomSelectedFilterId) {
+      this.setState({
+        NomSelectedFilter: filterId,
+        NomSelectedFilterId: filterLibelle
+      });
+    }
+  }
+
+  handlesOnPrenomFilterChange(filterId, filterLibelle) {
+    const { PrenomSelectedFilterId } = this.state;
+    if (filterId !== PrenomSelectedFilterId) {
+      this.setState({
+        PrenomSelectedFilter: filterId,
+        PrenomSelectedFilterId: filterLibelle
+      });
+    }
+  }
+
+  handlesOnNumssFilterChange(filterId, filterLibelle) {
+    const { numssSelectedFilterId } = this.state;
+    if (filterId !== numssSelectedFilterId) {
+      this.setState({
+        numssSelectedFilter: filterId,
+        numssSelectedFilterId: filterLibelle
+      });
+    }
   }
 
   handlesOnSearch(event) {
