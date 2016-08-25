@@ -23,7 +23,7 @@ class SearchInput extends Component {
 
     return (
       <div
-        className="form-group">
+        className="form-group remove-margin-bottom">
         {
           showLabel &&
           <label htmlFor="labelText">
@@ -67,10 +67,11 @@ class SearchInput extends Component {
         </div>
         {
           showHelpBlock &&
-          <p className="help-block">
+          <p className="help-block remove-margin-bottom">
             {helpBlockText}
           </p>
         }
+        <br />
       </div>
     );
   }

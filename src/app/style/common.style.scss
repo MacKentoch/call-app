@@ -141,3 +141,8 @@ li.active > a:hover {
     margin-left: 5px;
     margin-right: 5px;
 }
+
+// react Collaspe margin fix
+.remove-margin-bottom {
+  margin-bottom: 0px !important;
+}
