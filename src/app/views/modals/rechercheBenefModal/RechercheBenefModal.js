@@ -151,9 +151,10 @@ class RechercheBenefModal extends Component {
   }
 
   getfilterLibelle(id) {
-    return searchInputBenefFilters.find(
+    const filt = searchInputBenefFilters.find(
       filter => filter.id === id
-    ).libelle;
+    );
+    return filt.libelle ?  filt.libelle : '---';
   }
 
   handlesOnIdentFilterChange(filterId, filterLibelle) {
@@ -168,11 +169,10 @@ class RechercheBenefModal extends Component {
 
   handlesOnNomFilterChange(filterId, filterLibelle) {
     const { NomSelectedFilterId } = this.state;
-    console.log(`handlesOnNomFilterChange: ${filterId} - ${filterLibelle}`);
     if (filterId !== NomSelectedFilterId) {
       this.setState({
-        NomSelectedFilter: filterId,
-        NomSelectedFilterId: filterLibelle
+        NomSelectedFilterId: filterId,
+        NomSelectedFilter: filterLibelle
       });
     }
   }
@@ -181,8 +181,8 @@ class RechercheBenefModal extends Component {
     const { PrenomSelectedFilterId } = this.state;
     if (filterId !== PrenomSelectedFilterId) {
       this.setState({
-        PrenomSelectedFilter: filterId,
-        PrenomSelectedFilterId: filterLibelle
+        PrenomSelectedFilterId: filterId,
+        PrenomSelectedFilter: filterLibelle
       });
     }
   }
@@ -191,8 +191,8 @@ class RechercheBenefModal extends Component {
     const { numssSelectedFilterId } = this.state;
     if (filterId !== numssSelectedFilterId) {
       this.setState({
-        numssSelectedFilter: filterId,
-        numssSelectedFilterId: filterLibelle
+        numssSelectedFilterId: filterId,
+        numssSelectedFilter: filterLibelle
       });
     }
   }
