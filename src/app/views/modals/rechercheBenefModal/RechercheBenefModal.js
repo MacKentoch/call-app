@@ -9,10 +9,7 @@ import {
 import { appConfig }      from '../../../config';
 import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
-import SearchInput        from './searchInput/SearchInput';
-import SearchButton       from './searchButton/SearchButton';
-import SearchCommand      from './searchCommand/SearchCommand';
-import Collapse           from 'react-collapse';
+import SearchForm        from './searchForm/SearchForm';
 import FetchingIndicator from './fetchingIndicator/FetchingIndicator';
 
 
@@ -100,103 +97,41 @@ class RechercheBenefModal extends Component {
             }
             {
               !searchFetching &&
-              <div>
-
-                <SearchCommand
-                  criterias={criterias}
-                  onCriteriaClick={this.handlesOnCriteriaClick}
-                />
-                <div style={{height: '20px'}}></div>
-                <hr />
-                <form role="form">
-                  <Collapse
-                    isOpened={identActive}
-                    keepCollapsedContent={true}>
-                    <SearchInput
-                     // label:
-                     showLabel={true}
-                     labelText={'Identifiant'}
-                     // value
-                     value={identValue}
-                     onValueChanged={this.handlesIndentValueChanged}
-                     // help block text:
-                     showHelpBlock={true}
-                     helpBlockText={'Identifiant de dossier et non celui du bénéficiaire'}
-                     // filter
-                     listFilters={searchInputBenefFilters}
-                     selectedfilter={identSelectedFilter}
-                     onfilterChange={this.handlesOnIdentFilterChange}
-                    />
-                   </Collapse>
-
-                   <Collapse
-                     isOpened={NomActive}
-                     keepCollapsedContent={true}>
-                     <SearchInput
-                       // label:
-                       showLabel={true}
-                       labelText={'Nom'}
-                       // value
-                       value={nomValue}
-                       onValueChanged={this.handlesNomValueChanged}
-                       // help block text:
-                       showHelpBlock={true}
-                       helpBlockText={'Le nom du bénéficiaire'}
-                       // filter
-                       listFilters={searchInputBenefFilters}
-                       selectedfilter={NomSelectedFilter}
-                       onfilterChange={this.handlesOnNomFilterChange}
-                     />
-                  </Collapse>
-
-                  <Collapse
-                  isOpened={PrenomActive}
-                  keepCollapsedContent={true}>
-                  <SearchInput
-                    // label:
-                    showLabel={true}
-                    labelText={'Prénom'}
-                    // value
-                    value={prenomValue}
-                    onValueChanged={this.handlesPrenomValueChanged}
-                    // help block text:
-                    showHelpBlock={true}
-                    helpBlockText={'Le prénom du bénéficiaire'}
-                    // filter
-                    listFilters={searchInputBenefFilters}
-                    selectedfilter={PrenomSelectedFilter}
-                    onfilterChange={this.handlesOnPrenomFilterChange}
-                  />
-                  </Collapse>
-
-                  <Collapse
-                   isOpened={NumSSActive}
-                   keepCollapsedContent={true}>
-                   <SearchInput
-                     // label:
-                     showLabel={true}
-                     labelText={'NumSS'}
-                     // value
-                     value={numssValue}
-                     onValueChanged={this.handlesNumssValueChanged}
-                     // help block text:
-                     showHelpBlock={true}
-                     helpBlockText={'A renseigner sur 13 ou 15 caractères'}
-                     // filter
-                     listFilters={searchInputBenefFilters}
-                     selectedfilter={numssSelectedFilter}
-                     onfilterChange={this.handlesOnNumssFilterChange}
-                   />
-                  </Collapse>
-                 <div style={{height: '40px'}}></div>
-
-                 <SearchButton
-                  buttonText={'Rechercher'}
-                  onClick={this.handlesOnSearch}
-                 />
-                </form>
-              </div>
+              <SearchForm
+                // criterias
+                criterias={criterias}
+                onCriteriaClick={this.handlesOnCriteriaClick}
+                // searchInput filters
+                searchInputBenefFilters={searchInputBenefFilters}
+                // identifiant
+                identActive={identActive}
+                identValue={identValue}
+                identSelectedFilter={identSelectedFilter}
+                onIndentValueChanged={this.handlesIndentValueChanged}
+                onIdentFilterChange={this.handlesOnIdentFilterChange}
+                // nom
+                NomActive={NomActive}
+                nomValue={nomValue}
+                onNomValueChanged={this.handlesNomValueChanged}
+                NomSelectedFilter={NomSelectedFilter}
+                onNomFilterChange={this.handlesOnNomFilterChange}
+                // prenom
+                PrenomActive={PrenomActive}
+                prenomValue={prenomValue}
+                onPrenomValueChanged={this.handlesPrenomValueChanged}
+                PrenomSelectedFilter={PrenomSelectedFilter}
+                onPrenomFilterChange={this.handlesOnPrenomFilterChange}
+                // numss
+                NumSSActive={NumSSActive}
+                numssValue={numssValue}
+                onNumssValueChanged={this.handlesNumssValueChanged}
+                numssSelectedFilter={numssSelectedFilter}
+                onNumssFilterChange={this.handlesOnNumssFilterChange}
+                // search action
+                onSearch={this.handlesOnSearch}
+              />
             }
+
           </Modal.Body>
 
           <ModalFooter

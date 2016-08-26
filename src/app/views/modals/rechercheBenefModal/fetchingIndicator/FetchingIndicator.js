@@ -12,7 +12,7 @@ const FetchingIndicator = () => {
       <div className="spacer_20"></div>
         <small>
           <i>
-            recherche...
+            Recherche...
           </i>
         </small>
       <div className="spacer_20"></div>
