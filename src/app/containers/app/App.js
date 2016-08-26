@@ -123,7 +123,6 @@ class App extends Component {
 
   handlesHideRechercheBenefModal() {
     const { actions: {hideRechercheBenefModal} } = this.props;
-    console.log('should close modal');
     hideRechercheBenefModal();
   }
 

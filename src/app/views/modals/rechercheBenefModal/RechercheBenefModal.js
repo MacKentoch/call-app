@@ -394,7 +394,18 @@ class RechercheBenefModal extends Component {
 RechercheBenefModal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   title: PropTypes.string,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+
+  searchFetching: PropTypes.bool.isRequired,
+  searchPayload:  PropTypes.object.isRequired,
+  searchResult:   PropTypes.arrayOf(PropTypes.object).isRequired,
+  searchError:    PropTypes.object,
+  searchTime:     PropTypes.string.isRequired,
+
+  actions: PropTypes.shape({
+    hideRechercheBenefModal: PropTypes.func.isRequired,
+    postSearchIfNeeded: PropTypes.func.isRequired
+  }).isRequired
 };
 
 RechercheBenefModal.defaultProps = {

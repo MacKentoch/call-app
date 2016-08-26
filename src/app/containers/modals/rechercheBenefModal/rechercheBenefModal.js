@@ -5,7 +5,13 @@ import { RechercheBenefModal }  from '../../../views';
 
 const mapStateToProps = (state) => {
   return {
-    isOpened:  state.rechercheBenefModal.isOpened
+    isOpened:  state.rechercheBenefModal.isOpened,
+
+    searchFetching: state.search.isFetching,
+    searchPayload:  state.search.searchPayload,
+    searchResult:   state.search.searchResult,
+    searchError:    state.search.error,
+    searchTime:     state.search.time
   };
 };
 
@@ -13,7 +19,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
       {
-        hideRechercheBenefModal: actions.hideRechercheBenefModal
+        hideRechercheBenefModal: actions.hideRechercheBenefModal,
+        // search post:
+        postSearchIfNeeded: actions.postSearchIfNeeded
       },
       dispatch)
   };
