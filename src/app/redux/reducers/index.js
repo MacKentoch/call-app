@@ -17,9 +17,10 @@ import sentboxContent       from './mailbox/sentbox';
 import mailContent          from './mailbox/consult';
 import writeNewMailContent  from './mailbox/writeNew';
 import replyMailContent     from './mailbox/reply';
-
 // Modals
 import rechercheBenefModal  from './modals/rechercheBenefModal';
+// search
+import search               from './search/search';
 
 export {
   // views:
@@ -47,5 +48,8 @@ export {
   replyMailContent,
 
   // modals
-  rechercheBenefModal
+  rechercheBenefModal,
+
+  // search
+  search
 };

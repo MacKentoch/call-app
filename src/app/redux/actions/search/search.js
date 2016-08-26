@@ -17,7 +17,7 @@ const requestSearchBenef = (payload = {}, time = moment().format(formatDate)) =>
   return {
     type: REQUEST_SEARCH_BENEF,
     isFetching : true,
-    searchParam: payload,
+    searchPayload: payload,
     time
   };
 };
@@ -26,7 +26,7 @@ const receivedSearchBenef = (data, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_SEARCH_BENEF,
     isFetching : false,
-    searchresult: Array.isArray(data) ? data : [],
+    searchResult: Array.isArray(data) ? data : [],
     time
   };
 };
@@ -35,6 +35,8 @@ const errorSearchBenef = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_SEARCH_BENEF,
     isFetching : false,
+    searchResult: [],
+    error,
     time
   };
 };

@@ -93,7 +93,10 @@ import {
   showRechercheBenefModal,
   hideRechercheBenefModal
 }                                 from './modals/rechercheBenefModal';
-
+// search benef
+import {
+  postSearchIfNeeded
+}                                 from './search/search';
 
 export {
   // views:
@@ -163,5 +166,8 @@ export {
 
   // modals
   showRechercheBenefModal,
-  hideRechercheBenefModal
+  hideRechercheBenefModal,
+
+  // search benef
+  postSearchIfNeeded
 };
