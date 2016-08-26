@@ -7,7 +7,7 @@ import {
 }                     from '../../utils/fetchTools';
 import { appConfig }  from '../../../config';
 
-const defaultSearchPayload = {
+export const defaultSearchPayload = {
   // identifiant
   identActive: false, // means: to add to where clause if true
   identValue: '',
@@ -74,4 +74,4 @@ export function isValidSearchPayload(payload) {
       );
   }
   return false;
-};
+}

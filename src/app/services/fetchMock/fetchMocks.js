@@ -12,6 +12,11 @@ import {
   searchBenefResultMock
 }                       from '../../mocks';
 
+import {
+  isValidSearchPayload
+}                       from '../API/search/searchBenef';
+
+
 export const fetchMockUserInfosData = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
   return new Promise(
     resolve => {
@@ -129,7 +134,14 @@ export const fetchMockSendNewMail = (mailBoxId, userLogin = null, newMailContent
 };
 
 
-export const fetchMockSearchBenef = (searchParam, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+export const fetchMockSearchBenef = (searchPayload, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!isValidSearchPayload(searchPayload)) {
+    return Promise.reject({
+      'error': 'fetchMockSearchBenef error: payload is not a valid search payload object',
+      'payload': searchPayload
+    });
+  }
+
   return new Promise(
     resolve => {
       setTimeout(

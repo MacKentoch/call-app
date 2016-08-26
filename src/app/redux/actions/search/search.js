@@ -31,7 +31,7 @@ const receivedSearchBenef = (data, time = moment().format(formatDate)) => {
   };
 };
 
-const errorSearchBenef = (time = moment().format(formatDate)) => {
+const errorSearchBenef = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_SEARCH_BENEF,
     isFetching : false,
@@ -43,33 +43,25 @@ const postSearchBenef = (payload) => dispatch => {
   dispatch(requestSearchBenef());
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockUserInfosData()
+    return fetchMockSearchBenef(payload)
       .then(
-        data => dispatch(receivedUserInfosData(data))
+        data => dispatch(receivedSearchBenef(data))
+      )
+      .catch(
+        err => dispatch(errorSearchBenef(err))
       );
   } else {
-    const url = `${getLocationOrigin()}/${appConfig.userInfos.data.API}`;
-    const options = {...defaultOptions};
-
-    return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(
-      data => dispatch(receivedUserInfosData(data)))
-    .catch(
-      err => {
-        dispatch(errorUserInfosData());
-        if (appConfig.DEBUG_ENABLED) {
-          /* eslint-disable no-console */
-          console.warn('fetchUserInfosData error: ', err);
-          /* eslint-enable no-console */
-        }
-      }
-    );
+    return searchBenef(payload)
+              .then(
+                response => dispatch(receivedSearchBenef(response))
+              )
+              .catch(
+                error => dispatch(errorSearchBenef(error))
+              );
   }
 };
 
-const postSearchIfNeeded = (payload) => (dispatch, getState) => {
+export const postSearchIfNeeded = (payload) => (dispatch, getState) => {
   if (shouldPostSearchBenef(getState())) {
     return dispatch(postSearchBenef(payload));
   }
