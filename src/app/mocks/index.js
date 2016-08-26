@@ -7,6 +7,7 @@ import { userGroupActivityMock }  from './userGroupActivity';
 import { userBoitesMailsMock }    from './userBoitesMails';
 import { listMailsMock }          from './listMails';
 import { mailContentMock }        from './mailContent';
+import { searchBenefResultMock }  from './searchBenefResultMock';
 
 export {
   motifsContacts,
@@ -17,5 +18,7 @@ export {
   userGroupActivityMock,
   userBoitesMailsMock,
   listMailsMock,
-  mailContentMock
+  mailContentMock,
+  // search benef result 
+  searchBenefResultMock
 };

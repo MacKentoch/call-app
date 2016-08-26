@@ -8,7 +8,8 @@ import {
   userGroupActivityMock,
   userBoitesMailsMock,
   listMailsMock,
-  mailContentMock
+  mailContentMock,
+  searchBenefResultMock
 }                       from '../../mocks';
 
 export const fetchMockUserInfosData = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
@@ -121,6 +122,20 @@ export const fetchMockSendNewMail = (mailBoxId, userLogin = null, newMailContent
     resolve => {
       setTimeout(
        () => resolve({sendNewMail: 'SUCCES'}),
+       timeToWait
+     );
+    }
+  );
+};
+
+
+export const fetchMockSearchBenef = (searchParam, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve(
+         { searchresult: [...searchBenefResultMock] }
+       ),
        timeToWait
      );
     }

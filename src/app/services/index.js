@@ -17,7 +17,8 @@ import {
   fetchMockUserBoitesMailsData,
   fetchMockListMails,
   fetchMockMailContent,
-  fetchMockSendNewMail
+  fetchMockSendNewMail,
+  fetchMockSearchBenef
 }                     from './fetchMock/fetchMocks';
 // API
 import {
@@ -27,7 +28,8 @@ import {
   getInboxContent,
   getStatsFichesParCanal,
   getMailContent,
-  sendNewMail
+  sendNewMail,
+  searchBenef
 }                     from './API';
 // date tools
 import {
@@ -65,6 +67,7 @@ export {
   fetchMockListMails,
   fetchMockMailContent,
   fetchMockSendNewMail,
+  fetchMockSearchBenef,
 
   // API
   getUserBoitesMails,
@@ -74,6 +77,7 @@ export {
   getStatsFichesParCanal,
   getMailContent,
   sendNewMail,
+  searchBenef,
 
   // date tools
   getLastThreeMonthNames,
