@@ -258,6 +258,13 @@ export const appConfig = {
     }
   },
 
+  // search benef
+  searchBenef: {
+    POST: {
+      API: 'api/search'
+    }
+  }
+
   HELLO_WORD: 'Bonjour'
 
 };
