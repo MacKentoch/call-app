@@ -133,8 +133,7 @@ export const fetchMockSearchBenef = (searchParam, timeToWait = appConfig.FAKE_AS
   return new Promise(
     resolve => {
       setTimeout(
-       () => resolve(
-         { searchresult: [...searchBenefResultMock] }
+       () => resolve([...searchBenefResultMock]
        ),
        timeToWait
      );

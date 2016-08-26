@@ -263,7 +263,7 @@ export const appConfig = {
     POST: {
       API: 'api/search'
     }
-  }
+  },
 
   HELLO_WORD: 'Bonjour'
 

@@ -7,7 +7,7 @@ import {
 }                     from '../../utils/fetchTools';
 import { appConfig }  from '../../../config';
 
-const defaultSearchParam = {
+const defaultSearchPayload = {
   // identifiant
   identActive: false, // means: to add to where clause if true
   identValue: '',
@@ -26,10 +26,14 @@ const defaultSearchParam = {
   numssFilter: '' // START_WITH or EQUALS or END_WITH (see appConfig)
 };
 
-export const searchBenef = (searchParam = defaultSearchParam) => {
+export const searchBenef = (payload) => {
+  // payload object should contains all defaultSearchPayload object properties
+  if (!isValidSearchPayload(payload)) {
+    return Promise.reject({'error': 'search requires a valid payload (tips: check missing payload props)'});
+  }
   // uses FormData since target is navigator > IE10
   const body = new FormData();
-  body.append('search', searchParam);
+  body.append('searchPayload', payload);
 
   const api = appConfig.searchBenef.POST.API;
   const url = `${getLocationOrigin()}/${api}`;
@@ -44,4 +48,30 @@ export const searchBenef = (searchParam = defaultSearchParam) => {
     .then(parseJSON)
     .then(data => data)
     .catch(error => Promise.reject(error));
+};
+
+export function isValidSearchPayload(payload) {
+  // get needed keys from default payload as reference
+  const arrayNeededKeys = Object.keys(defaultSearchPayload);
+  // then return true if payload object contains all reference payload object properties:
+  if (payload) {
+    return Object
+      .keys(payload)
+      .map(
+        key => {
+          // get payload key index in reference payload
+          const keyIndex = arrayNeededKeys.findIndex(
+            keyRef => keyRef === key
+          );
+          return keyIndex > -1 ? true : false;
+        }
+      )
+      .reduce(
+        (res, next) => {
+          return res & next;
+        },
+        true
+      );
+  }
+  return false;
 };

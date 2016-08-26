@@ -42,7 +42,7 @@ const fetchUserInfosData = () => dispatch => {
   dispatch(requestUserInfosData());
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    fetchMockUserInfosData()
+    return fetchMockUserInfosData()
       .then(
         data => dispatch(receivedUserInfosData(data))
       );
@@ -50,7 +50,7 @@ const fetchUserInfosData = () => dispatch => {
     const url = `${getLocationOrigin()}/${appConfig.userInfos.data.API}`;
     const options = {...defaultOptions};
 
-    fetch(url, options)
+    return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON)
     .then(
@@ -71,7 +71,7 @@ export const fetchUserInfoDataIfNeeded = () => (dispatch, getState) => {
   if (shouldFetchUserInfoData(getState())) {
     return dispatch(fetchUserInfosData());
   }
-  return null;
+  return Promise.resolve();
 };
 function shouldFetchUserInfoData(state) {
   const userInfos = state.userInfos;
