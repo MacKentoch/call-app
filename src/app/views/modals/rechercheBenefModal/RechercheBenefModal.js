@@ -62,6 +62,7 @@ class RechercheBenefModal extends Component {
     this.handlesPrenomValueChanged = this.handlesPrenomValueChanged.bind(this);
     this.handlesNumssValueChanged = this.handlesNumssValueChanged.bind(this);
     this.handlesOnGoBackSearchForm = this.handlesOnGoBackSearchForm.bind(this);
+    this.handlesOnBenefSelection = this.handlesOnBenefSelection.bind(this);
   }
 
   componentDidMount() {
@@ -141,6 +142,7 @@ class RechercheBenefModal extends Component {
                 refreshTime={searchTime}
                 results={searchResult}
                 onGoBackSearchForm={this.handlesOnGoBackSearchForm}
+                onBenefSelection={this.handlesOnBenefSelection}
               />
             }
 
@@ -392,6 +394,15 @@ class RechercheBenefModal extends Component {
     this.initFilters();
     // all value reset
     this.initInputs();
+  }
+
+  handlesOnBenefSelection(id = 0) {
+    if (id > 0) {
+      // route to benef view
+
+      // close popup
+      this.handlesOnClose();
+    }
   }
 }
 
