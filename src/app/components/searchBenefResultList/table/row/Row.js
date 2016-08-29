@@ -1,90 +1,112 @@
-import React, { PropTypes } from 'react';
-import { Link }             from 'react-router';
-import Switch               from 'rc-switch';
+import React, {
+  Component,
+  PropTypes
+}                     from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
+import Switch         from 'rc-switch';
 
-const Row  = ({
-  id,
-  nom,
-  nomJeuneFille,
-  prenom,
-  numss,
-  dateNaissance,
-  dateDeces,
-  statutActivite,
-  isRet,
-  isPreRet,
-  //
-  consultLinkTo
-}) => {
-  return (
-    <tr
-      id={id}
-      style={{cursor: 'pointer'}}>
+class Row extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-      <td style={{width: '90px'}}>
-        {nom}
-      </td>
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
 
-      {/* <td>
-        {nomJeuneFille}
-      </td> */}
+  render() {
+    const {
+      id,
+      numDossier,
+      nom,
+      // nomJeuneFille,
+      prenom,
+      numss,
+      dateNaissance,
+      // dateDeces,
+      statutActivite,
+      isRet,
+      isPreRet
+    } = this.props;
 
-      <td>
-        {prenom}
-      </td>
+    return (
+      <tr
+        id={id}
+        style={{cursor: 'pointer'}}
+        onClick={this.handlesOnRowClick}>
 
-      <td style={{width: '100px'}}>
-        {dateNaissance}
-      </td>
+        <td style={{width: '100px'}}>
+          {numDossier}
+        </td>
 
-      <td style={{width: '100px'}}>
-        {numss}
-      </td>
+        <td style={{width: '90px'}}>
+          {nom}
+        </td>
 
-      {/* <td>
-        {dateDeces}
-      </td> */}
+        {/* <td>
+          {nomJeuneFille}
+        </td> */}
 
-      <td style={{width: '80px'}}>
-        {statutActivite}
-      </td>
+        <td>
+          {prenom}
+        </td>
 
-      <td style={{width: '90px'}}>
-        <Switch
-          disabled={true}
-          checkedChildren={'O'}
-          unCheckedChildren={'N'}
-          checked={isRet === true ? true : false}
-        />
-      </td>
+        <td style={{width: '100px'}}>
+          {dateNaissance}
+        </td>
 
-      <td style={{width: '90px'}}>
-        <Switch
-          disabled={true}
-          checkedChildren={'O'}
-          unCheckedChildren={'N'}
-          checked={isPreRet === true ? true : false}
-        />
-      </td>
+        <td style={{width: '100px'}}>
+          {numss}
+        </td>
 
-      <td style={{width: '10px'}}>
-        <Link to={consultLinkTo}>
+        {/* <td>
+          {dateDeces}
+        </td> */}
+
+        <td style={{width: '80px'}}>
+          {statutActivite}
+        </td>
+
+        <td style={{width: '90px'}}>
+          <Switch
+            disabled={true}
+            checkedChildren={'O'}
+            unCheckedChildren={'N'}
+            checked={isRet === true ? true : false}
+          />
+        </td>
+
+        <td style={{width: '90px'}}>
+          <Switch
+            disabled={true}
+            checkedChildren={'O'}
+            unCheckedChildren={'N'}
+            checked={isPreRet === true ? true : false}
+          />
+        </td>
+
+        <td style={{width: '10px'}}>
           <i
             className="fa fa-angle-right"
             aria-hidden="true">
           </i>
-        </Link>
-      </td>
+        </td>
 
-    </tr>
-  );
-};
+      </tr>
+    );
+  }
+
+  handlesOnRowClick(event) {
+    event.preventDefault();
+    const { id, onRowClick } = this.props;
+    onRowClick(id);
+  }
+}
 
 Row.propTypes = {
-  consultLinkTo: PropTypes.string.isRequired,
-
   // generic
   id: PropTypes.number.isRequired,
+  numDossier: PropTypes.string.isRequired,
   nom: PropTypes.string,
   nomJeuneFille: PropTypes.string,
   prenom: PropTypes.string,
@@ -97,13 +119,15 @@ Row.propTypes = {
   // regimeRattachement: PropTypes.string,
   // profilFinancementRattache: PropTypes.string,
   // specific2
-  isPreRet: PropTypes.bool.isRequired // ,
+  isPreRet: PropTypes.bool.isRequired,
   // dateEntreePreRet: PropTypes.string,
   // dateSortiePreRet: PropTypes.string,
   // dateTauxPlein: PropTypes.string,
   // numeroEntrepriseCliente: PropTypes.string,
   // libelleEntrepriseCliente: PropTypes.string,
   // numMatriculeSAG: PropTypes.string
+  //
+  onRowClick: PropTypes.func.isRequired
 };
 
 export default Row;

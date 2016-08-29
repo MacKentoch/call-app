@@ -3,6 +3,7 @@ export const searchBenefResultMock = [
   {
     // generic
     id: 1,
+    numDossier: '1543',
     nom: 'Nom1',
     nomJeuneFille: '',
     prenom: 'Prenom1',
@@ -26,6 +27,7 @@ export const searchBenefResultMock = [
   {
     // generic
     id: 2,
+    numDossier: '12864',
     nom: 'Nom2',
     nomJeuneFille: 'NomJeuneFille2',
     prenom: 'Prenom2',
@@ -50,6 +52,7 @@ export const searchBenefResultMock = [
     // generic
     id: 3,
     nom: 'Nom3',
+    numDossier: '10345',
     nomJeuneFille: 'NomJeuneFille3',
     prenom: 'Prenom3',
     numss: '000000000000003',

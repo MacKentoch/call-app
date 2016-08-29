@@ -71,6 +71,8 @@ class SearchResult extends Component {
             onPagingPreviousClick={this.handlesOnPagingPreviousClick}
             onPagingNextClick={this.handlesOnPagingNextClick}
             onSearch={this.handlesOnSearch}
+            onBackToForm={()=>console.log('should go back to search form')}
+            onRowClick={(id)=>console.log(`should handle beneg selction, for benef id=${id}}`)}
           />
         }
         {
@@ -175,6 +177,7 @@ SearchResult.propTypes = {
     PropTypes.shape({
       // generic
       id: PropTypes.number.isRequired,
+      numDossier: PropTypes.string.isRequired,
       nom: PropTypes.string,
       nomJeuneFille: PropTypes.string,
       prenom: PropTypes.string,

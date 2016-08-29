@@ -1,11 +1,15 @@
 import React, { PropTypes } from 'react';
 import Row from './row/Row';
 
-const Table  = ({benefs, consultLinkTo}) => {
+const Table  = ({benefs, onRowClick}) => {
   return (
     <table className="table table-hover">
       <thead>
         <tr>
+          <th>
+            Num. Dossier
+          </th>
+
           <th>
             Nom
           </th>
@@ -52,6 +56,7 @@ const Table  = ({benefs, consultLinkTo}) => {
           benefs.map(
             ({
               id,
+              numDossier,
               nom,
               nomJeuneFille,
               prenom,
@@ -66,8 +71,9 @@ const Table  = ({benefs, consultLinkTo}) => {
               return (
                 <Row
                   key={benefIdx}
-                  consultLinkTo={`${consultLinkTo}`}
+                  onRowClick={onRowClick}
                   id={id}
+                  numDossier={numDossier}
                   nom={nom}
                   nomJeuneFille={nomJeuneFille}
                   prenom={prenom}
@@ -88,10 +94,13 @@ const Table  = ({benefs, consultLinkTo}) => {
 };
 
 Table.propTypes = {
+  onRowClick: PropTypes.func.isRequired,
+
   benefs: PropTypes.arrayOf(
     PropTypes.shape({
       // generic
       id: PropTypes.number.isRequired,
+      numDossier: PropTypes.string.isRequired,
       nom: PropTypes.string,
       nomJeuneFille: PropTypes.string,
       prenom: PropTypes.string,
@@ -112,8 +121,7 @@ Table.propTypes = {
       // libelleEntrepriseCliente: PropTypes.string,
       // numMatriculeSAG: PropTypes.string
     })
-  ),
-  consultLinkTo: PropTypes.string.isRequired
+  )
 };
 
 export default Table;

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Title                from './title/Title';
+// import Title                from './title/Title';
 import HeaderTools          from './headerTools/HeaderTools';
 import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
@@ -9,10 +9,11 @@ const SearchBenefResultList = ({
   onPagingPreviousClick,
   onPagingNextClick,
   onSearch,
+  onBackToForm,
   minPage,
   maxPage,
   totalBenefs,
-  consultLinkTo
+  onRowClick
 }) => {
   return (
     <div className="panel">
@@ -32,7 +33,7 @@ const SearchBenefResultList = ({
           <HeaderTools
             title={''}
             onSearch={onSearch}
-            onBackButtonClick={()=>console.log('to implement')}
+            onBackButtonClick={onBackToForm}
           />
           <hr />
           <div
@@ -50,7 +51,7 @@ const SearchBenefResultList = ({
             <div className="table-responsive mailbox-messages">
               <Table
                 benefs={benefs}
-                consultLinkTo={consultLinkTo}
+                onRowClick={onRowClick}
               />
             </div>
 
@@ -74,6 +75,7 @@ SearchBenefResultList.propTypes = {
     PropTypes.shape({
       // generic
       id: PropTypes.number.isRequired,
+      numDossier: PropTypes.string.isRequired,
       nom: PropTypes.string,
       nomJeuneFille: PropTypes.string,
       prenom: PropTypes.string,
@@ -103,8 +105,8 @@ SearchBenefResultList.propTypes = {
   onPagingPreviousClick: PropTypes.func.isRequired,
   onPagingNextClick: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-
-  consultLinkTo: PropTypes.string.isRequired
+  onBackToForm: PropTypes.func.isRequired,
+  onRowClick: PropTypes.func.isRequired
 };
 
 export default SearchBenefResultList;
