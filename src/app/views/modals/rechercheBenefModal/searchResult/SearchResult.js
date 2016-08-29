@@ -1,5 +1,4 @@
 import React, { PropTypes, Component }  from 'react';
-import shallowCompare                   from 'react-addons-shallow-compare';
 import moment                           from 'moment';
 import { appConfig }                    from '../../../../config';
 import cx                               from 'classnames';

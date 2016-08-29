@@ -32,9 +32,11 @@ const SearchBenefResultList = ({
           <HeaderTools
             title={''}
             onSearch={onSearch}
+            onBackButtonClick={()=>console.log('to implement')}
           />
-
-          <div className="box-body no-padding">
+          <hr />
+          <div
+            className="box-body no-padding">
 
             <ListControl
               showCheckToggle={false}
@@ -44,6 +46,7 @@ const SearchBenefResultList = ({
               onPagingPreviousClick={onPagingPreviousClick}
               onPagingNextClick={onPagingNextClick}
             />
+
 
             <div className="table-responsive mailbox-messages">
               <Table

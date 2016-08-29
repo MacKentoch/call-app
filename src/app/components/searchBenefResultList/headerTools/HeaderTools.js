@@ -17,18 +17,29 @@ class HeaderTools extends Component {
   }
 
   render() {
-    const {title} = this.props;
+    const {title, onBackButtonClick } = this.props;
     const {searchValue} = this.state;
     return (
       <div className="box-header with-border">
         <h3 className="box-title">
           {title}
         </h3>
-        <div className="box-tools pull-right">
-          <div className="has-feedback">
+        <div className="box-tools">
+          <div className="has-feedback pull-left">
+            <button
+              type="button"
+              className="btn  btn-sm orange_button"
+              onClick={onBackButtonClick}>
+              <i className="fa fa-angle-left" aria-hidden="true"></i>
+              &nbsp;
+              Modifier la recherche
+            </button>
+          </div>
+          <div className="has-feedback pull-right">
             <input
               type="text"
               className="form-control input-sm"
+              style={{width: '250px'}}
               placeholder="Rechercher"
               value={searchValue}
               onChange={this.handlesOnSearchChange}
@@ -66,7 +77,8 @@ class HeaderTools extends Component {
 
 HeaderTools.propTypes = {
   title: PropTypes.string,
-  onSearch: PropTypes.func.isRequired
+  onSearch: PropTypes.func.isRequired,
+  onBackButtonClick: PropTypes.func.isRequired
 };
 
 export default HeaderTools;
