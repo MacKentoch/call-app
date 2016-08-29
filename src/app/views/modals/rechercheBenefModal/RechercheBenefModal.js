@@ -9,8 +9,8 @@ import {
 import { appConfig }      from '../../../config';
 import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
-import SearchForm        from './searchForm/SearchForm';
-import FetchingIndicator from './fetchingIndicator/FetchingIndicator';
+import SearchForm         from './searchForm/SearchForm';
+import FetchingIndicator  from './fetchingIndicator/FetchingIndicator';
 
 
 const searchInputBenefFilters = [...appConfig.searchBenefInputFilters];

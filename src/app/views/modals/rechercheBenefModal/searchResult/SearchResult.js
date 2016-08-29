@@ -131,7 +131,7 @@ class SearchResult extends Component {
     event.preventDefault();
 
     const { results } = this.props;
-    const { currentPage, numberMailsPerPage, filter } = this.state;
+    const { currentPage, numberBenefsPerPage, filter } = this.state;
 
     const totalBenefs = results.length;
     const pageMax = Math.ceil(totalBenefs / numberBenefsPerPage);
@@ -146,12 +146,12 @@ class SearchResult extends Component {
 
   handlesOnSearch(filter) {
     const { results } = this.props;
-    const { currentPage, numberMailsPerPage } = this.state;
+    const { currentPage, numberBenefsPerPage } = this.state;
 
-    const currentPageMailsFiltered = getCurrentPageContent(results, currentPage, numberMailsPerPage, filter);
+    const currentPageBenefsFiltered = getCurrentSearchBenefResPageContent(results, currentPage, numberBenefsPerPage, filter);
 
     this.setState({
-      currentPageMails: currentPageMailsFiltered,
+      currentPageBenefs: currentPageBenefsFiltered,
       filter
     });
   }
@@ -174,16 +174,16 @@ SearchResult.propTypes = {
       statutActivite: PropTypes.string,
       // specific 1
       isRet: PropTypes.bool.isRequired,
-      regimeRattachement: PropTypes.string,
-      profilFinancementRattache: PropTypes.string,
+      // regimeRattachement: PropTypes.string,
+      // profilFinancementRattache: PropTypes.string,
       // specific2
       isPreRet: PropTypes.bool.isRequired,
-      dateEntreePreRet: PropTypes.string,
-      dateSortiePreRet: PropTypes.string,
-      dateTauxPlein: PropTypes.string,
-      numeroEntrepriseCliente: PropTypes.string,
-      libelleEntrepriseCliente: PropTypes.string,
-      numMatriculeSAG: PropTypes.string
+      // dateEntreePreRet: PropTypes.string,
+      // dateSortiePreRet: PropTypes.string,
+      // dateTauxPlein: PropTypes.string,
+      // numeroEntrepriseCliente: PropTypes.string,
+      // libelleEntrepriseCliente: PropTypes.string,
+      // numMatriculeSAG: PropTypes.string
     })
   )
 };
