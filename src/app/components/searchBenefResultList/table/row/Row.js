@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import { Link }              from 'react-router';
-
+import { Link }             from 'react-router';
+import Switch               from 'rc-switch';
 
 const Row  = ({
   id,
@@ -50,11 +50,17 @@ const Row  = ({
       </td>
 
       <td>
-        {isRet}
+        <Switch
+          disabled={true}
+          checked={isRet === true ? true : false}
+        />
       </td>
 
       <td>
-        {isPreRet}
+        <Switch
+          disabled={true}
+          checked={isPreRet === true ? true : false}
+        />
       </td>
 
       <td>
