@@ -61,6 +61,7 @@ class RechercheBenefModal extends Component {
     this.handlesNomValueChanged = this.handlesNomValueChanged.bind(this);
     this.handlesPrenomValueChanged = this.handlesPrenomValueChanged.bind(this);
     this.handlesNumssValueChanged = this.handlesNumssValueChanged.bind(this);
+    this.handlesOnGoBackSearchForm = this.handlesOnGoBackSearchForm.bind(this);
   }
 
   componentDidMount() {
@@ -139,6 +140,7 @@ class RechercheBenefModal extends Component {
                 isFetching={searchFetching}
                 refreshTime={searchTime}
                 results={searchResult}
+                onGoBackSearchForm={this.handlesOnGoBackSearchForm}
               />
             }
 
@@ -155,7 +157,7 @@ class RechercheBenefModal extends Component {
 
   initInputs() {
     this.setState({
-      displaySearchResults: true,
+      displaySearchResults: false,
 
       identValue: '',
       nomValue: '',
@@ -383,6 +385,13 @@ class RechercheBenefModal extends Component {
     // all value reset
     this.initInputs();
     onClose();
+  }
+
+  handlesOnGoBackSearchForm() {
+    // all input filters reset
+    this.initFilters();
+    // all value reset
+    this.initInputs();
   }
 }
 
