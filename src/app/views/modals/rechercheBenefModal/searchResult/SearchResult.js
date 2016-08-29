@@ -36,6 +36,10 @@ class SearchResult extends Component {
     this.handlesOnSearch = this.handlesOnSearch.bind(this);
   }
 
+  componentDidMount() {
+    this.initResultsBindings();
+  }
+
   componentWillReceiveProps(nextProps) {
     // results content refresh case (test on refresh time):
     this.refreshWhenSearchBenefResultRefreshTimeChange(nextProps);
@@ -91,6 +95,14 @@ class SearchResult extends Component {
         }
       </div>
     );
+  }
+
+  initResultsBindings() {
+    const { results } = this.props;
+    const { currentPage, numberBenefsPerPage, filter } = this.state;
+
+    const nextPageBenefs = getCurrentSearchBenefResPageContent(results, currentPage, numberBenefsPerPage, filter);
+    this.setState({ currentPageBenefs: nextPageBenefs });
   }
 
   refreshWhenSearchBenefResultRefreshTimeChange(nextProps) {
