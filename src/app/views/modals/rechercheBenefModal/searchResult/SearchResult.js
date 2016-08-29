@@ -1,4 +1,5 @@
 import React, { PropTypes, Component }  from 'react';
+import shallowCompare                   from 'react-addons-shallow-compare';
 import moment                           from 'moment';
 import { appConfig }                    from '../../../config';
 import cx                               from 'classnames';
@@ -8,16 +9,15 @@ import {
   IsFetching
 }                                       from '../../../components';
 import {
-  getCurrentPageContent,
-  getMinIndex,
-  getMaxIndex
+  getCurrentSearchBenefResPageContent,
+  getSearchBenefResMinIndex,
+  getSearchBenefResMaxIndex
 }                                       from '../../../services';
 
 moment.locale('fr');
 
 const formatDate = appConfig.formatDate.defaut;
-const mailBoxType = 'Reçus';
-const consultEmailPath = `/${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.consult.path}`;
+const consultBenefPath = '/'; // to be defined
 
 
 class SearchResult extends Component {
@@ -27,41 +27,27 @@ class SearchResult extends Component {
     this.state = {
       animated: true,
       filter: '',
-      currentPageMails: [],
+      currentPageBenefs: [],
       currentPage: 1,
-      numberMailsPerPage: 2
+      numberBenefsPerPage: 2
     };
 
-    this.handlesOnRefreshListClick = this.handlesOnRefreshListClick.bind(this);
     this.handlesOnPagingPreviousClick = this.handlesOnPagingPreviousClick.bind(this);
     this.handlesOnPagingNextClick = this.handlesOnPagingNextClick.bind(this);
     this.handlesOnSearch = this.handlesOnSearch.bind(this);
   }
 
-  componentDidMount() {
-    const  { actions, params: { mailboxId } } =  this.props;
-    actions.enterMailboxInbox(mailboxId);
-    actions.fetchInboxContentIfNeeded(mailboxId);
-  }
-
   componentWillReceiveProps(nextProps) {
-    // route param change case (router won't route for only url param change):
-    this.refreshWhenMailBoxIdChange(nextProps);
-    // mailbox content refresh case (test refresh time):
-    this.refreshWhenMailboxContentRefreshTimeChange(nextProps);
-  }
-
-  componentWillUnmount() {
-    const  { actions, params: { mailboxId } } =  this.props;
-    actions.leaveMailboxInbox(mailboxId);
+    // results content refresh case (test on refresh time):
+    this.refreshWhenSearchBenefResultRefreshTimeChange(nextProps);
   }
 
   render() {
-    const { animated, currentPageMails, currentPage, numberMailsPerPage } = this.state;
-    const { inboxMailName, inbox, inboxIsFetching, params: { mailboxId } } = this.props;
+    const { animated, currentPageBenefs, currentPage, numberBenefsPerPage } = this.state;
+    const { results, isFetching } = this.props;
 
-    const minPage = getMinIndex(inbox, currentPage, numberMailsPerPage);
-    const maxPage= getMaxIndex(inbox, currentPage, numberMailsPerPage);
+    const minPage = getSearchBenefResMinIndex(results, currentPage, numberBenefsPerPage);
+    const maxPage= getSearchBenefResMaxIndex(results, currentPage, numberBenefsPerPage);
 
     return(
       <div
@@ -71,34 +57,30 @@ class SearchResult extends Component {
         })}>
         {
           (inbox.length > 0 && !inboxIsFetching) &&
-          <MailboxListMails
-            mailboxId={mailboxId}
-            mailboxType={mailBoxType}
-            mailBoxName={inboxMailName}
-            mails={currentPageMails}
+          <SearchBenefResultList
+            benefs={currentPageBenefs}
 
-            consultLinkTo={`${consultEmailPath}`}
+            consultLinkTo={`${consultBenefPath}`}
 
             minPage={minPage}
             maxPage={maxPage}
-            totalMails={inbox.length}
+            totalMails={results.length}
 
-            onRefreshListClick={this.handlesOnRefreshListClick}
             onPagingPreviousClick={this.handlesOnPagingPreviousClick}
             onPagingNextClick={this.handlesOnPagingNextClick}
             onSearch={this.handlesOnSearch}
           />
         }
         {
-          (inbox.length === 0 && !inboxIsFetching) &&
+          (results.length === 0 && !isFetching) &&
           <h3>
             <i>
-              Aucun mail.
+              Aucun résultat.
             </i>
           </h3>
         }
         {
-          inboxIsFetching &&
+          isFetching &&
           <div>
             <p className="text-center">
               <i style={{color: '#4A4A4A'}}>
@@ -112,50 +94,35 @@ class SearchResult extends Component {
     );
   }
 
-  refreshWhenMailBoxIdChange(nextProps) {
-    const {actions, params: { mailboxId } } = this.props;
-    if (mailboxId !== nextProps.params.mailboxId) {
-      // refresh new mailbox
-      actions.enterMailboxInbox(nextProps.params.mailboxId);
-      actions.fetchInboxContentIfNeeded(nextProps.params.mailboxId);
-    }
-  }
+  refreshWhenSearchBenefResultRefreshTimeChange(nextProps) {
+    const { refreshTime } = this.props;
+    const { currentPage, numberBenefsPerPage, filter } = this.state;
 
-  refreshWhenMailboxContentRefreshTimeChange(nextProps) {
-    const { inboxRefreshTime } = this.props;
-    const { currentPage, numberMailsPerPage, filter } = this.state;
-
-    const lastRefreshTime = inboxRefreshTime.length > 0
-      ? moment(inboxRefreshTime, formatDate).format(formatDate)
+    const lastRefreshTime = refreshTime.length > 0
+      ? moment(refreshTime, formatDate).format(formatDate)
       : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
 
-    const newRefreshTime = nextProps.inboxRefreshTime.length > 0
-      ? moment(nextProps.inboxRefreshTime, formatDate).format(formatDate)
+    const newRefreshTime = nextProps.refreshTime.length > 0
+      ? moment(nextProps.refreshTime, formatDate).format(formatDate)
       : moment('01/01/1900-00:00:01', formatDate).format(formatDate);
 
     if (lastRefreshTime < newRefreshTime) {
-      const nextPageMails = getCurrentPageContent(nextProps.inbox, currentPage, numberMailsPerPage, filter);
-      this.setState({ currentPageMails: nextPageMails });
+      const nextPageBenefs = getCurrentSearchBenefResPageContent(nextProps.results, currentPage, numberBenefsPerPage, filter);
+      this.setState({ currentPageBenefs: nextPageBenefs });
     }
-  }
-
-  handlesOnRefreshListClick(event) {
-    event.preventDefault();
-    const  { actions, params: { mailboxId } } =  this.props;
-    actions.fetchInboxContentIfNeeded(mailboxId);
   }
 
   handlesOnPagingPreviousClick(event) {
     event.preventDefault();
 
-    const { inbox } = this.props;
-    const { currentPage, numberMailsPerPage, filter } = this.state;
+    const { results } = this.props;
+    const { currentPage, numberBenefsPerPage, filter } = this.state;
 
     const previousPage = currentPage - 1 > 0 ? currentPage - 1 : currentPage;
 
-    const nextPageMails = getCurrentPageContent(inbox, previousPage, numberMailsPerPage, filter);
+    const nextPageBenefs = getCurrentSearchBenefResPageContent(inbox, previousPage, numberBenefsPerPage, filter);
     this.setState({
-      currentPageMails: nextPageMails,
+      currentPageBenefs: nextPageBenefs,
       currentPage: previousPage
     });
   }
@@ -163,25 +130,25 @@ class SearchResult extends Component {
   handlesOnPagingNextClick(event) {
     event.preventDefault();
 
-    const { inbox } = this.props;
+    const { results } = this.props;
     const { currentPage, numberMailsPerPage, filter } = this.state;
 
-    const totalMails = inbox.length;
-    const pageMax = Math.ceil(totalMails / numberMailsPerPage);
+    const totalBenefs = results.length;
+    const pageMax = Math.ceil(totalBenefs / numberBenefsPerPage);
     const nextPage = currentPage + 1 <= pageMax ? currentPage + 1 : currentPage;
 
-    const nextPageMails = getCurrentPageContent(inbox, nextPage, numberMailsPerPage, filter);
+    const nextPageMails = getCurrentSearchBenefResPageContent(results, nextPage, numberBenefsPerPage, filter);
     this.setState({
-      currentPageMails: nextPageMails,
+      currentPageBenefs: nextPageMails,
       currentPage: nextPage
     });
   }
 
   handlesOnSearch(filter) {
-    const { inbox } = this.props;
+    const { results } = this.props;
     const { currentPage, numberMailsPerPage } = this.state;
 
-    const currentPageMailsFiltered = getCurrentPageContent(inbox, currentPage, numberMailsPerPage, filter);
+    const currentPageMailsFiltered = getCurrentPageContent(results, currentPage, numberMailsPerPage, filter);
 
     this.setState({
       currentPageMails: currentPageMailsFiltered,
@@ -191,34 +158,34 @@ class SearchResult extends Component {
 }
 
 SearchResult.propTypes = {
-  inboxMailId: PropTypes.number,
-  inboxMailName: PropTypes.string,
-  inboxIsFetching: PropTypes.bool,
-  inboxRefreshTime: PropTypes.string,
+  isFetching: PropTypes.bool,
+  refreshTime: PropTypes.string,
 
-  result: PropTypes.arrayOf(
+  results: PropTypes.arrayOf(
     PropTypes.shape({
+      // generic
       id: PropTypes.number.isRequired,
-      notRead: PropTypes.bool.isRequired,
-      receptionDate: PropTypes.string.isRequired,
-      subject: PropTypes.string.isRequired,
-      from: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired
-      }).isRequired,
-      to: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired
-      }).isRequired,
-      hasAttachments: PropTypes.bool.isRequired,
-      selected: PropTypes.bool.isRequired
+      nom: PropTypes.string,
+      nomJeuneFille: PropTypes.string,
+      prenom: PropTypes.string,
+      numss: PropTypes.string,
+      dateNaissance: PropTypes.string,
+      dateDeces: PropTypes.string,
+      statutActivite: PropTypes.string,
+      // specific 1
+      isRet: PropTypes.bool.isRequired,
+      regimeRattachement: PropTypes.string,
+      profilFinancementRattache: PropTypes.string,
+      // specific2
+      isPreRet: PropTypes.bool.isRequired,
+      dateEntreePreRet: PropTypes.string,
+      dateSortiePreRet: PropTypes.string,
+      dateTauxPlein: PropTypes.string,
+      numeroEntrepriseCliente: PropTypes.string,
+      libelleEntrepriseCliente: PropTypes.string,
+      numMatriculeSAG: PropTypes.string
     })
-  ),
-  actions: PropTypes.shape({
-    enterMailboxInbox: PropTypes.func,
-    leaveMailboxInbox: PropTypes.func,
-    fetchInboxContentIfNeeded: PropTypes.func
-  })
+  )
 };
 
 export default SearchResult;
