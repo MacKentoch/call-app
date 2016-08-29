@@ -47,6 +47,12 @@ import {
   getMinIndex,
   getMaxIndex
 }                     from './utils/mailPagination';
+// benefs pagination
+import {
+  getCurrentSearchBenefResPageContent,
+  getSearchBenefResMinIndex,
+  getSearchBenefResMaxIndex
+}                     from './utils/searchBenefResultPagination';
 
 export {
   // utils:
@@ -89,5 +95,10 @@ export {
   // mails pagination
   getCurrentPageContent,
   getMinIndex,
-  getMaxIndex
+  getMaxIndex,
+
+  // benefs pagination
+  getCurrentSearchBenefResPageContent,
+  getSearchBenefResMinIndex,
+  getSearchBenefResMaxIndex
 };
