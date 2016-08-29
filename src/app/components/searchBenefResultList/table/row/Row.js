@@ -33,37 +33,41 @@ const Row  = ({
         {prenom}
       </td>
 
-      <td>
-        {numss}
+      <td style={{width: '100px'}}>
+        {dateNaissance}
       </td>
 
-      {/* <td>
-        {dateNaissance}
-      </td> */}
+      <td style={{width: '100px'}}>
+        {numss}
+      </td>
 
       {/* <td>
         {dateDeces}
       </td> */}
 
-      <td>
+      <td style={{width: '80px'}}>
         {statutActivite}
       </td>
 
-      <td>
+      <td style={{width: '90px'}}>
         <Switch
           disabled={true}
+          checkedChildren={'O'}
+          unCheckedChildren={'N'}
           checked={isRet === true ? true : false}
         />
       </td>
 
-      <td>
+      <td style={{width: '90px'}}>
         <Switch
           disabled={true}
+          checkedChildren={'O'}
+          unCheckedChildren={'N'}
           checked={isPreRet === true ? true : false}
         />
       </td>
 
-      <td>
+      <td style={{width: '10px'}}>
         <Link to={consultLinkTo}>
           <i
             className="fa fa-angle-right"

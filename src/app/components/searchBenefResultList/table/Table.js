@@ -19,14 +19,14 @@ const Table  = ({benefs, consultLinkTo}) => {
           </th>
 
           <th>
-            Numéro de sécu.
-          </th>
-
-          {/* <th>
             <i className="fa fa-calendar" aria-hidden="true"></i>
             &nbsp;
             naissance
-          </th> */}
+          </th>
+
+          <th>
+            Numéro de sécu.
+          </th>
 
           {/* <th>
             <i className="fa fa-calendar" aria-hidden="true"></i>
@@ -35,7 +35,7 @@ const Table  = ({benefs, consultLinkTo}) => {
           </th> */}
 
           <th>
-            Statut activité
+            Statut
           </th>
 
           <th>

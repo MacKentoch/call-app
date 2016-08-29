@@ -22,8 +22,8 @@ import './vendors/js/jquery-ui-1.10.3.min.js';
 // import './vendors/js/plugins/daterangepicker/daterangepicker.js';
 // import './vendors/js/plugins/iCheck/icheck.min.js';clear
 import './vendors/js/plugins/fullcalendar/fullcalendar.js';
-
-
+// rc-switch
+import 'rc-switch/assets/index.css';
 import './style/index.style.scss';
 
 const ELEMENT_TO_BOOTSTRAP  = 'root';

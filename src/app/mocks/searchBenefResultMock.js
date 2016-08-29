@@ -9,7 +9,7 @@ export const searchBenefResultMock = [
     numss: '000000000000001',
     dateNaissance: '01/01/2016',
     dateDeces: '',
-    statutActivite: '',
+    statutActivite: 'actif',
     // specific 1
     isRet: false,
     regimeRattachement: '',
@@ -32,7 +32,7 @@ export const searchBenefResultMock = [
     numss: '000000000000002',
     dateNaissance: '01/01/2016',
     dateDeces: '',
-    statutActivite: '',
+    statutActivite: 'Préretraité',
     // specific 1
     isRet: true,
     regimeRattachement: 'abc2',
