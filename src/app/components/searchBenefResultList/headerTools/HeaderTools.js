@@ -65,7 +65,7 @@ class HeaderTools extends Component {
 }
 
 HeaderTools.propTypes = {
-  title: PropTypes.oneOf(['Reçus', 'Envoyés']).isRequired,
+  title: PropTypes.string,
   onSearch: PropTypes.func.isRequired
 };
 

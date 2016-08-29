@@ -79,8 +79,6 @@ ListControl.propTypes = {
   showForward: PropTypes.bool,
   onForwardClick: PropTypes.func,
 
-  onRefreshClick: PropTypes.func.isRequired,
-
   onPagingPreviousClick: PropTypes.func.isRequired,
   onPagingNextClick: PropTypes.func.isRequired,
 

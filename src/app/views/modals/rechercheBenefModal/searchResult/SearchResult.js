@@ -1,18 +1,17 @@
 import React, { PropTypes, Component }  from 'react';
 import shallowCompare                   from 'react-addons-shallow-compare';
 import moment                           from 'moment';
-import { appConfig }                    from '../../../config';
+import { appConfig }                    from '../../../../config';
 import cx                               from 'classnames';
-// import { appConfig }                    from '../../config';
 import {
   SearchBenefResultList,
   IsFetching
-}                                       from '../../../components';
+}                                       from '../../../../components';
 import {
   getCurrentSearchBenefResPageContent,
   getSearchBenefResMinIndex,
   getSearchBenefResMaxIndex
-}                                       from '../../../services';
+}                                       from '../../../../services';
 
 moment.locale('fr');
 
