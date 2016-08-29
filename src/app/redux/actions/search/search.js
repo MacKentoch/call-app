@@ -46,20 +46,20 @@ const postSearchBenef = (payload) => dispatch => {
   if (appConfig.DEV_MODE) {
     // DEV ONLY
     return fetchMockSearchBenef(payload)
-      .then(
-        data => dispatch(receivedSearchBenef(data))
-      )
-      .catch(
-        err => dispatch(errorSearchBenef(err))
-      );
+            .then(
+              data => dispatch(receivedSearchBenef(data))
+            )
+            .catch(
+              err => dispatch(errorSearchBenef(err))
+            );
   } else {
     return searchBenef(payload)
-              .then(
-                response => dispatch(receivedSearchBenef(response))
-              )
-              .catch(
-                error => dispatch(errorSearchBenef(error))
-              );
+            .then(
+              response => dispatch(receivedSearchBenef(response))
+            )
+            .catch(
+              error => dispatch(errorSearchBenef(error))
+            );
   }
 };
 

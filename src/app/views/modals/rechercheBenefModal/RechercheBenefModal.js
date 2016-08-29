@@ -24,6 +24,8 @@ class RechercheBenefModal extends Component {
     super(props);
 
     this.state = {
+      // show/hide results or search form:
+      displaySearchResults: false,  // indicates wether search form or search resulst shoud be displayed
       // Identifiant
       identValue: '',
       identSelectedFilterId: -1,
@@ -73,11 +75,11 @@ class RechercheBenefModal extends Component {
     // search form and commands:
     const { showModal, title  } = this.props;
     const { identSelectedFilter, NomSelectedFilter, PrenomSelectedFilter, numssSelectedFilter } = this.state;
-    const { criterias } = this.state;
+    const { criterias, displaySearchResults } = this.state;
     const { identActive, NomActive, PrenomActive, NumSSActive } = this.state;
     const { identValue, nomValue, prenomValue, numssValue } = this.state;
     // search fetching:
-    const { searchFetching, searchPayload, searchResult, searchError } = this.props;
+    const { searchFetching, searchResult, searchError } = this.props;
 
     return (
       <div>
@@ -96,7 +98,7 @@ class RechercheBenefModal extends Component {
               <FetchingIndicator />
             }
             {
-              !searchFetching &&
+              !searchFetching && !displaySearchResults &&
               <SearchForm
                 // criterias
                 criterias={criterias}
@@ -131,6 +133,12 @@ class RechercheBenefModal extends Component {
                 onSearch={this.handlesOnSearch}
               />
             }
+            {
+              !searchFetching && displaySearchResults &&
+              <div>
+                test
+              </div>
+            }
 
           </Modal.Body>
 
@@ -145,6 +153,8 @@ class RechercheBenefModal extends Component {
 
   initInputs() {
     this.setState({
+      displaySearchResults: true,
+
       identValue: '',
       nomValue: '',
       prenomValue: '',
@@ -321,8 +331,49 @@ class RechercheBenefModal extends Component {
   handlesOnSearch(event) {
     event.preventDefault();
     const { actions: { postSearchIfNeeded } } = this.props;
-    postSearchIfNeeded({});
-    console.log('on search click: TODO');
+    const {
+      // show/hide results or search form:
+      displaySearchResults,
+      // Identifiant
+      identValue,
+      identSelectedFilterId,
+      identActive,
+      // Nom
+      nomValue,
+      NomSelectedFilterId,
+      NomActive,
+      // Prenom
+      prenomValue,
+      PrenomSelectedFilterId,
+      PrenomActive,
+      // NumSS
+      numssValue,
+      numssSelectedFilterId,
+      NumSSActive
+    } = this.state;
+
+    const searchPayload = {
+      // Identifiant
+      identActive: identActive,
+      identValue: identValue,
+      identFilter: identSelectedFilterId,
+      // Nom
+      nomActive: NomActive,
+      nomValue: nomValue,
+      nomFilter: NomSelectedFilterId,
+      // Prenom
+      prenomActive: PrenomActive,
+      prenomValue: prenomValue,
+      prenomFilter: PrenomSelectedFilterId,
+      // NumSS
+      numssActive: NumSSActive,
+      numssValue: numssValue,
+      numssFilter: numssSelectedFilterId
+    };
+
+    // show results:
+    this.setState({displaySearchResults: true});
+    postSearchIfNeeded(searchPayload);
   }
 
   handlesOnClose() {
