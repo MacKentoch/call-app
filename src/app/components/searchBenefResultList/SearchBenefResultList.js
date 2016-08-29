@@ -47,7 +47,6 @@ const SearchBenefResultList = ({
               onPagingNextClick={onPagingNextClick}
             />
 
-
             <div className="table-responsive mailbox-messages">
               <Table
                 benefs={benefs}

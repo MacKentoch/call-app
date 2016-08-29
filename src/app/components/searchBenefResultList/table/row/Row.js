@@ -25,9 +25,9 @@ const Row  = ({
         {nom}
       </td>
 
-      <td>
+      {/* <td>
         {nomJeuneFille}
-      </td>
+      </td> */}
 
       <td>
         {prenom}
@@ -37,13 +37,13 @@ const Row  = ({
         {numss}
       </td>
 
-      <td>
+      {/* <td>
         {dateNaissance}
-      </td>
+      </td> */}
 
-      <td>
+      {/* <td>
         {dateDeces}
-      </td>
+      </td> */}
 
       <td>
         {statutActivite}

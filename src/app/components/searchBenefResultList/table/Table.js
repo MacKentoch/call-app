@@ -4,6 +4,49 @@ import Row from './row/Row';
 const Table  = ({benefs, consultLinkTo}) => {
   return (
     <table className="table table-hover">
+      <thead>
+        <tr>
+          <th>
+            Nom
+          </th>
+
+          {/* <th>
+            Nom de jeune fille
+          </th> */}
+
+          <th>
+            Prénom
+          </th>
+
+          <th>
+            Numéro de sécu.
+          </th>
+
+          {/* <th>
+            <i className="fa fa-calendar" aria-hidden="true"></i>
+            &nbsp;
+            naissance
+          </th> */}
+
+          {/* <th>
+            <i className="fa fa-calendar" aria-hidden="true"></i>
+            &nbsp;
+            décès
+          </th> */}
+
+          <th>
+            Statut activité
+          </th>
+
+          <th>
+            Retraite
+          </th>
+
+          <th>
+            Pré-retraire
+          </th>
+        </tr>
+      </thead>
       <tbody>
         {
           benefs.map(
