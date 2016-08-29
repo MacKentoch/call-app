@@ -16,7 +16,7 @@ import MailboxConsultMail from './mailboxConsultMail/MailboxConsultMail';
 import MailboxWriteMail from './mailboxWriteMail/MailboxWriteMail';
 import MailboxReplyMail from './mailboxReplyMail/MailboxReplyMail';
 import Chips from './chips/Chips';
-
+import SearchBenefResultList from './searchBenefResultList/SearchBenefResultList';
 
 import {
   FichesTraitee,
@@ -62,5 +62,8 @@ export {
   MailsLink,
   EmailsLink,
   TelephoneLink,
-  PersonnesLink
+  PersonnesLink,
+
+  // search benefs:
+  SearchBenefResultList
 };

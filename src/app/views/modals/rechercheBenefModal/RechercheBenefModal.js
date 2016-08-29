@@ -11,7 +11,7 @@ import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
 import SearchForm         from './searchForm/SearchForm';
 import FetchingIndicator  from './fetchingIndicator/FetchingIndicator';
-
+import SearchResult       from './searchResult/SearchResult';
 
 const searchInputBenefFilters = [...appConfig.searchBenefInputFilters];
 const seachBenefDefaultFilter = searchInputBenefFilters[0].id;
@@ -79,7 +79,7 @@ class RechercheBenefModal extends Component {
     const { identActive, NomActive, PrenomActive, NumSSActive } = this.state;
     const { identValue, nomValue, prenomValue, numssValue } = this.state;
     // search fetching:
-    const { searchFetching, searchResult, searchError } = this.props;
+    const { searchFetching, searchResult, searchTime } = this.props;
 
     return (
       <div>
@@ -135,9 +135,11 @@ class RechercheBenefModal extends Component {
             }
             {
               !searchFetching && displaySearchResults &&
-              <div>
-                test
-              </div>
+              <SearchResult
+                isFetching={searchFetching}
+                refreshTime={searchTime}
+                results={searchResult}
+              />
             }
 
           </Modal.Body>
@@ -332,8 +334,6 @@ class RechercheBenefModal extends Component {
     event.preventDefault();
     const { actions: { postSearchIfNeeded } } = this.props;
     const {
-      // show/hide results or search form:
-      displaySearchResults,
       // Identifiant
       identValue,
       identSelectedFilterId,

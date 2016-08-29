@@ -5,7 +5,7 @@ import { appConfig }                    from '../../../config';
 import cx                               from 'classnames';
 // import { appConfig }                    from '../../config';
 import {
-  MailboxListMails,
+  SearchBenefResultList,
   IsFetching
 }                                       from '../../../components';
 import {
@@ -56,7 +56,7 @@ class SearchResult extends Component {
           'fadeIn': animated
         })}>
         {
-          (inbox.length > 0 && !inboxIsFetching) &&
+          (results.length > 0 && !isFetching) &&
           <SearchBenefResultList
             benefs={currentPageBenefs}
 
@@ -64,7 +64,7 @@ class SearchResult extends Component {
 
             minPage={minPage}
             maxPage={maxPage}
-            totalMails={results.length}
+            totalBenefs={results.length}
 
             onPagingPreviousClick={this.handlesOnPagingPreviousClick}
             onPagingNextClick={this.handlesOnPagingNextClick}
@@ -120,7 +120,7 @@ class SearchResult extends Component {
 
     const previousPage = currentPage - 1 > 0 ? currentPage - 1 : currentPage;
 
-    const nextPageBenefs = getCurrentSearchBenefResPageContent(inbox, previousPage, numberBenefsPerPage, filter);
+    const nextPageBenefs = getCurrentSearchBenefResPageContent(results, previousPage, numberBenefsPerPage, filter);
     this.setState({
       currentPageBenefs: nextPageBenefs,
       currentPage: previousPage
@@ -177,7 +177,7 @@ SearchResult.propTypes = {
       // regimeRattachement: PropTypes.string,
       // profilFinancementRattache: PropTypes.string,
       // specific2
-      isPreRet: PropTypes.bool.isRequired,
+      isPreRet: PropTypes.bool.isRequired // ,
       // dateEntreePreRet: PropTypes.string,
       // dateSortiePreRet: PropTypes.string,
       // dateTauxPlein: PropTypes.string,
