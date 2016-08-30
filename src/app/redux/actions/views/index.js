@@ -28,6 +28,10 @@ import {
   enterMailboxReplyMail,
   leaveMailboxReplyMail
 }                                 from './mailbox/mailbox';
+import {
+  enterGestBeneficiaires,
+  leaveGestBeneficiaires
+}                                 from './gestBeneficiaires/gestBeneficiaires';
 export {
   // home
   enterHome,
@@ -57,5 +61,9 @@ export {
   enterMailboxWriteNew,
   leaveMailboxWriteNew,
   enterMailboxReplyMail,
-  leaveMailboxReplyMail
+  leaveMailboxReplyMail,
+
+  // gest/maj benef:
+  enterGestBeneficiaires,
+  leaveGestBeneficiaires
 };

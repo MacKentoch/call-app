@@ -34,6 +34,10 @@ import {
   ENTER_MAILBOX_REPLY_MAIL,
   LEAVE_MAILBOX_REPLY_MAIL
 }                                       from '../actions/views/mailbox/mailbox';
+import {
+  ENTER_GEST_BENEFICIAIRES_VIEW,
+  LEAVE_GEST_BENEFICIAIRES_VIEW
+}                                       from '../actions/views/gestBeneficiaires/gestBeneficiaires';
 
 const initialState = {
   currentView:  'not set',
@@ -56,6 +60,7 @@ const views = (state = initialState, action) => {
   case ENTER_MAILBOX_CONSULT:
   case ENTER_MAILBOX_WRITE_NEW:
   case ENTER_MAILBOX_REPLY_MAIL:
+  case ENTER_GEST_BENEFICIAIRES_VIEW:
     // can't enter if you are already inside
     if (state.currentView !== action.currentView) {
       return {
@@ -79,6 +84,7 @@ const views = (state = initialState, action) => {
   case LEAVE_MAILBOX_CONSULT:
   case LEAVE_MAILBOX_WRITE_NEW:
   case LEAVE_MAILBOX_REPLY_MAIL:
+  case LEAVE_GEST_BENEFICIAIRES_VIEW:
     // can't leave if you aren't already inside
     if (state.currentView === action.currentView) {
       return {

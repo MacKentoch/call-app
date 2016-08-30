@@ -24,7 +24,10 @@ import {
   enterMailboxWriteNew,
   leaveMailboxWriteNew,
   enterMailboxReplyMail,
-  leaveMailboxReplyMail
+  leaveMailboxReplyMail,
+  // gest/maj benef:
+  enterGestBeneficiaires,
+  leaveGestBeneficiaires
 }                                 from './views';
 // stats
 import {
@@ -122,6 +125,8 @@ export {
   leaveMailboxWriteNew,
   enterMailboxReplyMail,
   leaveMailboxReplyMail,
+  enterGestBeneficiaires,
+  leaveGestBeneficiaires,
 
   // stats:
   fetchFichesTraiteeDataIfNeeded,
