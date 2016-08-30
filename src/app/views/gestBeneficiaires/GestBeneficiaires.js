@@ -2,7 +2,8 @@ import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 import {
   CiviliteDropDown,
-  FormLabel
+  FormLabel,
+  EditValidIcons
 }                                       from '../../components';
 // import { appConfig }                    from '../../config';
 
@@ -30,7 +31,7 @@ class GestBeneficiaires extends Component {
 
   render() {
     const { animated } = this.state;
-    const { isIdentiteEditing } = this.props;
+    const { isEditingIdentite, isSavingIdentite } = this.props;
 
     return(
       <section
@@ -54,6 +55,15 @@ class GestBeneficiaires extends Component {
 
                 <div className="page-header">
                   Identité
+                  {
+                    !isSavingIdentite &&
+                    <EditValidIcons
+                      isEditing={isEditingIdentite}
+                      setEdit={(e)=>console.log('TODO: Identite set Edit')}
+                      saveEdit={(e)=>console.log('TODO: Identite save Edit')}
+                      cancelEditing={(e)=>console.log('TODO: Identite cancel Edit')}
+                    />
+                  }
                 </div>
 
                 <form role="form">
@@ -61,7 +71,7 @@ class GestBeneficiaires extends Component {
                   <div className="row">
                     <div className="col-md-4">
                       {
-                        isIdentiteEditing
+                        isEditingIdentite
                         ?
                           <CiviliteDropDown
                             id="inputCivilite"
@@ -128,7 +138,8 @@ class GestBeneficiaires extends Component {
 }
 
 GestBeneficiaires.propTypes = {
-  isIdentiteEditing: PropTypes.bool,
+  isEditingIdentite: PropTypes.bool,
+  isSavingIdentite: PropTypes.bool,
 
   actions: PropTypes.shape({
     enterGestBeneficiaires: PropTypes.func,
@@ -138,7 +149,8 @@ GestBeneficiaires.propTypes = {
 
 // to remove when full redux store is done:
 GestBeneficiaires.defaultProps = {
-  isIdentiteEditing: true
+  isEditingIdentite: false,
+  isSavingIdentite: false
 };
 
 export default GestBeneficiaires;

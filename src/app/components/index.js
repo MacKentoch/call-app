@@ -19,6 +19,7 @@ import Chips from './chips/Chips';
 import SearchBenefResultList from './searchBenefResultList/SearchBenefResultList';
 import CiviliteDropDown from './civiliteDropDown/CiviliteDropDown';
 import FormLabel from './formLabel/FormLabel';
+import EditValidIcons from './editValidIcons/EditValidIcons';
 
 import {
   FichesTraitee,
@@ -48,6 +49,7 @@ export {
   Chips,
   CiviliteDropDown,
   FormLabel,
+  EditValidIcons,
 
   // mailbox
   MailboxRepertoires,
