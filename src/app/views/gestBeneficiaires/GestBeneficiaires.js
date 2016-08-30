@@ -1,5 +1,9 @@
 import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
+import {
+  CiviliteDropDown,
+  FormLabel
+}                                       from '../../components';
 // import { appConfig }                    from '../../config';
 
 
@@ -10,6 +14,8 @@ class GestBeneficiaires extends Component {
     this.state = {
       animated: true
     };
+
+    this.handlesOnCiviliteChange = this.handlesOnCiviliteChange.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +30,8 @@ class GestBeneficiaires extends Component {
 
   render() {
     const { animated } = this.state;
+    const { isIdentiteEditing } = this.props;
+
     return(
       <section
         className={cx({
@@ -50,20 +58,20 @@ class GestBeneficiaires extends Component {
 
                 <form role="form">
 
-
                   <div className="row">
                     <div className="col-md-4">
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">
-                          Email address
-                        </label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Enter email"
-                        />
-                      </div>
+                      {
+                        isIdentiteEditing
+                        ?
+                          <CiviliteDropDown
+                            id="inputCivilite"
+                            label={'Civilité'}
+                            value={''}
+                            onChange={this.handlesOnCiviliteChange}
+                          />
+                        :
+                          <FormLabel />
+                      }
                     </div>
                     <div className="col-md-4">
                       <div className="form-group">
@@ -96,13 +104,9 @@ class GestBeneficiaires extends Component {
                   </div>
 
 
-
-
-
-
                   <button
                     type="submit"
-                    className="btn btn-info">
+                    className="btn orange_button">
                     Submit
                   </button>
                 </form>
@@ -116,13 +120,25 @@ class GestBeneficiaires extends Component {
       </section>
     );
   }
+
+  handlesOnCiviliteChange(civilite) {
+    console.log(`selected civilite is ${civilite}`);
+    // TODO: to handle redux store
+  }
 }
 
 GestBeneficiaires.propTypes = {
+  isIdentiteEditing: PropTypes.bool,
+
   actions: PropTypes.shape({
     enterGestBeneficiaires: PropTypes.func,
     leaveGestBeneficiaires: PropTypes.func
   })
+};
+
+// to remove when full redux store is done:
+GestBeneficiaires.defaultProps = {
+  isIdentiteEditing: true
 };
 
 export default GestBeneficiaires;

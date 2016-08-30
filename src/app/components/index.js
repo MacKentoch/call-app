@@ -17,6 +17,8 @@ import MailboxWriteMail from './mailboxWriteMail/MailboxWriteMail';
 import MailboxReplyMail from './mailboxReplyMail/MailboxReplyMail';
 import Chips from './chips/Chips';
 import SearchBenefResultList from './searchBenefResultList/SearchBenefResultList';
+import CiviliteDropDown from './civiliteDropDown/CiviliteDropDown';
+import FormLabel from './formLabel/FormLabel';
 
 import {
   FichesTraitee,
@@ -44,6 +46,8 @@ export {
   Horloge,
   BackToTop,
   Chips,
+  CiviliteDropDown,
+  FormLabel,
 
   // mailbox
   MailboxRepertoires,

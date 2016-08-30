@@ -32,7 +32,7 @@ class CiviliteDropDown extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    shallowCompare(this, nextProps, nextState);
+    return shallowCompare(this, nextProps, nextState);
   }
 
   render() {
@@ -48,8 +48,8 @@ class CiviliteDropDown extends Component {
           <DropdownButton
             id={id}
             onSelect={this.handlesOnChange}
-            bsSize="md"
-            bsStyle={'warning'}
+            bsSize="sm"
+            bsStyle={'default'}
             title={ valueIsCivilite(value) ? value : civiliteEnum[0] }>
             {
               civiliteEnum.map(
@@ -57,7 +57,7 @@ class CiviliteDropDown extends Component {
                   return (
                     <MenuItem
                       key={idx}
-                      eventKey={idx + 1}>
+                      eventKey={idx}>
                       {civilite}
                     </MenuItem>
                   );
@@ -69,13 +69,20 @@ class CiviliteDropDown extends Component {
       </div>
     );
   }
+
+  handlesOnChange(event, key) {
+    event.preventDefault();
+    const { onChange } = this.props;
+
+    onChange(civiliteEnum[key]);
+  }
 }
 
 CiviliteDropDown.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
-  onChange: PropTypes.string.isRequired
+  onChange: PropTypes.func.isRequired
 };
 
 export default CiviliteDropDown;
