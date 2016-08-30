@@ -19,7 +19,7 @@ class Menu extends Component {
   }
 
   render() {
-    const { headerTitle, activeView, views  } = this.props;
+    const { headerTitle, activeView, views, onSearchClick  } = this.props;
     const { isCollapsed } = this.state;
     return (
       <div>
@@ -34,6 +34,7 @@ class Menu extends Component {
           <MenuLinks
             activeView={activeView}
             views={views}
+            onSearchClick={onSearchClick}
           />
         </Collapse>
       </div>
@@ -50,12 +51,15 @@ class Menu extends Component {
 Menu.propTypes = {
   headerTitle: PropTypes.string.isRequired,
   activeView: PropTypes.string.isRequired,
-  views: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    linkTo: PropTypes.string.isRequired,
-    faIconName: PropTypes.string.isRequired,
-    itemCount: PropTypes.number
-  })).isRequired
+  onSearchClick: PropTypes.func, // optional since only concerns search benef
+  views: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      linkTo: PropTypes.string.isRequired,
+      faIconName: PropTypes.string.isRequired,
+      itemCount: PropTypes.number
+    })
+  ).isRequired
 };
 
 export default Menu;

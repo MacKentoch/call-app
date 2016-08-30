@@ -90,6 +90,7 @@ class App extends Component {
             // navigation GestBen
             navGestBenTitle={'Gest Ben'}
             navGestBen={navigationGestBen.menus}
+            onSearchClick={this.handlesOnSearchButtonClick}
             // navigation Activities
             navActivTitle={'Actvities'}
             navActiv={navigationActivities.menus}

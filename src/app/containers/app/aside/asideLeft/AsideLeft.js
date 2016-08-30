@@ -26,7 +26,9 @@ const AsideLeft = ({
   navActivTitle,
   navActiv,
   navMailBoxesTitle,
-  navMailBoxes }) => {
+  navMailBoxes,
+  onSearchClick
+}) => {
   return (
     <aside
       className={cx({
@@ -67,6 +69,7 @@ const AsideLeft = ({
           headerTitle={navGestBenTitle}
           activeView={currentView}
           views={navGestBen}
+          onSearchClick={onSearchClick}
         />
         <Menu
           headerTitle={navActivTitle}
@@ -107,6 +110,7 @@ AsideLeft.propTypes = {
     })
   ).isRequired,
   // navigation link for group "gest. ben":
+  onSearchClick: PropTypes.func.isRequired,
   navGestBenTitle: PropTypes.string.isRequired,
   navGestBen: PropTypes.arrayOf(
     PropTypes.shape({
