@@ -11,7 +11,7 @@ export const LEAVE_GEST_BENEFICIAIRES_VIEW  = 'LEAVE_GEST_BENEFICIAIRES_VIEW';
 export const enterGestBeneficiaires = (time = moment().format(formatDate)) => {
   return {
     type:         ENTER_GEST_BENEFICIAIRES_VIEW,
-    currentView:  appConfig.views.beneficaires.maj || 'non defini',
+    currentView:  appConfig.views.beneficaires.maj.viewName || 'non defini',
     viewDetails:  '',
     enterTime:    time,
     leaveTime:    null
@@ -20,7 +20,7 @@ export const enterGestBeneficiaires = (time = moment().format(formatDate)) => {
 export const leaveGestBeneficiaires = (time = moment().format(formatDate)) => {
   return {
     type:         LEAVE_GEST_BENEFICIAIRES_VIEW,
-    currentView:  appConfig.views.beneficaires.maj || 'non defini',
+    currentView:  appConfig.views.beneficaires.maj.viewName || 'non defini',
     viewDetails:  '',
     enterTime:    null,
     leaveTime:    time

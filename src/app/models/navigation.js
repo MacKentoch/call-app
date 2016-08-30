@@ -30,7 +30,7 @@ export const navigation = {
         },
         {
           name: appConfig.views.recherche.viewName,
-          linkTo: '/recherche',
+          linkTo: appConfig.views.recherche.path,
           faIconName: 'fa-search'
         }
       ]
@@ -47,7 +47,7 @@ export const navigation = {
         },
         {
           name: appConfig.views.beneficaires.maj.viewName,
-          linkTo: '/',
+          linkTo: appConfig.views.beneficaires.maj.path,
           faIconName: 'fa-edit'
         }
       ]

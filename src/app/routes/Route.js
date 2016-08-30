@@ -24,7 +24,8 @@ import {
   MailboxEnvoiConnected,
   MailConsultConnected,
   MailWriteNewConnected,
-  MailReplyConnected
+  MailReplyConnected,
+  GestBeneficiairesConnected
 }                               from '../containers';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
@@ -45,7 +46,8 @@ const {
   createFicheContactMail,
   createFicheContactTelephone,
   createFicheContactPersonnes,
-  mailbox
+  mailbox,
+  beneficaires
 } = appConfig.views;
 
 export const Routes = () => {
@@ -62,6 +64,8 @@ export const Routes = () => {
             <Route path={createFicheContactMail.path} component={FicheContactMailConnected} />
             <Route path={createFicheContactTelephone.path} component={FicheContactTelephoneConnected} />
             <Route path={createFicheContactPersonnes.path} component={FicheContactPersonnesConnected} />
+
+            <Route path={beneficaires.maj.path} component={GestBeneficiairesConnected} />
 
             <Route path={mailbox.root.path} component={MailboxConnected}>
               <Route path={`${mailbox.reception.path}/:mailboxId`} component={MailboxReceptionConnected} />

@@ -20,6 +20,8 @@ import {
   FicheContactTelephone,
   FicheContactPersonnes
 }                     from './create';
+// gest beneficaires
+import GestBeneficiaires from './gestBeneficiaires/GestBeneficiaires';
 
 export {
   Home,
@@ -41,5 +43,8 @@ export {
   FicheContactCourier,
   FicheContactMail,
   FicheContactTelephone,
-  FicheContactPersonnes
+  FicheContactPersonnes,
+
+  // gest beneficaires
+  GestBeneficiaires
 };

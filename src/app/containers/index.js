@@ -18,6 +18,7 @@ import {
 import {
   RechercheBenefModalConnected
 }                             from './modals';
+import GestBeneficiairesConnected from './gestBeneficiaires/GestBeneficiaires';
 
 export {
   App,
@@ -37,6 +38,9 @@ export {
   MailboxEnvoiConnected,
   MailWriteNewConnected,
   MailReplyConnected,
+
+  // gest benef:
+  GestBeneficiairesConnected,
 
   // modals
   RechercheBenefModalConnected
