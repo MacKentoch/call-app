@@ -46,7 +46,7 @@ class SearchResult extends Component {
 
   render() {
     const { animated, currentPageBenefs, currentPage, numberBenefsPerPage } = this.state;
-    const { results, isFetching, onGoBackSearchForm } = this.props;
+    const { results, isFetching, onGoBackSearchForm, onBenefSelection } = this.props;
 
     const minPage = getSearchBenefResMinIndex(results, currentPage, numberBenefsPerPage);
     const maxPage= getSearchBenefResMaxIndex(results, currentPage, numberBenefsPerPage);
@@ -72,7 +72,7 @@ class SearchResult extends Component {
             onPagingNextClick={this.handlesOnPagingNextClick}
             onSearch={this.handlesOnSearch}
             onBackToForm={onGoBackSearchForm}
-            onRowClick={(id)=>console.log(`should handle beneg selction, for benef id=${id}}`)}
+            onRowClick={onBenefSelection}
           />
         }
         {
@@ -174,6 +174,8 @@ SearchResult.propTypes = {
   refreshTime: PropTypes.string,
 
   onGoBackSearchForm: PropTypes.func.isRequired,
+
+  onBenefSelection: PropTypes.func.isRequired,
 
   results: PropTypes.arrayOf(
     PropTypes.shape({

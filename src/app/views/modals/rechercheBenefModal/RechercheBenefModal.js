@@ -397,6 +397,7 @@ class RechercheBenefModal extends Component {
   }
 
   handlesOnBenefSelection(id = 0) {
+    console.log('handles benef selection, id: ', id);
     if (id > 0) {
       // route to benef view
 

@@ -8,6 +8,8 @@ import Switch         from 'rc-switch';
 class Row extends Component {
   constructor(props) {
     super(props);
+
+    this.handlesOnRowClick = this.handlesOnRowClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
