@@ -37,9 +37,79 @@ class GestBeneficiaires extends Component {
           style={{marginBottom: '5px'}}>
 
           <div className="col-md-12">
-            <h2>
-              GestBeneficiaires
-            </h2>
+            <section className="panel">
+              <header className="panel-heading">
+                Détail Bénéficiaire
+              </header>
+
+              <div className="panel-body">
+
+                <div className="page-header">
+                  Identité
+                </div>
+
+                <form role="form">
+
+
+                  <div className="row">
+                    <div className="col-md-4">
+                      <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">
+                          Email address
+                        </label>
+                        <input
+                          type="email"
+                          className="form-control"
+                          id="exampleInputEmail1"
+                          placeholder="Enter email"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="form-group">
+                        <label
+                          htmlFor="exampleInputPassword1">
+                          Password
+                        </label>
+                        <input
+                          type="password"
+                          className="form-control"
+                          id="exampleInputPassword1"
+                          placeholder="Password"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="form-group">
+                        <label
+                          htmlFor="exampleInputOther">
+                          Other
+                        </label>
+                        <input
+                          type="other"
+                          className="form-control"
+                          id="exampleInputOther"
+                          placeholder="other"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+                  <button
+                    type="submit"
+                    className="btn btn-info">
+                    Submit
+                  </button>
+                </form>
+
+
+              </div>
+            </section>
           </div>
 
         </div>
