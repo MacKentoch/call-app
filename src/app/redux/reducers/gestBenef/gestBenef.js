@@ -10,11 +10,15 @@ import {
   SET_IS_EDITING_IDENTITE,
   UNSET_IS_EDITING_IDENTITE,
 
+  SET_IS_SAVING_IDENTITE,
+  UNSET_IS_SAVING_IDENTITE,
+
   SET_IS_COLLAPSED_IDENTITE,
   UNSET_IS_COLLAPSED_IDENTITE
 }                             from '../../actions/gestBenef/gestBenef';
 
 const initialState = {
+  actionTime: '',
   // general fields
   id: 0,
   // identité
@@ -68,6 +72,7 @@ const gestBenef = (state = initialState, action) => {
       lastFetchTimeIdentite: action.time,
       lastFetchTimeContact: action.time,
       lastFetchTimeDossiers: action.time,
+      actionTime: action.time,
 
       id: action.benefId
     };
@@ -81,6 +86,7 @@ const gestBenef = (state = initialState, action) => {
       lastFetchTimeIdentite: action.time,
       lastFetchTimeContact: action.time,
       lastFetchTimeDossiers: action.time,
+      actionTime: action.time,
 
       id: action.gestBenef && action.gestBenef.id
         ? action.gestBenef.id
@@ -155,6 +161,7 @@ const gestBenef = (state = initialState, action) => {
       lastFetchTimeIdentite: action.time,
       lastFetchTimeContact: action.time,
       lastFetchTimeDossiers: action.time,
+      actionTime: action.time,
       error: action.error
     };
 
@@ -163,6 +170,7 @@ const gestBenef = (state = initialState, action) => {
       ...state,
       isFetchingIdentite: action.isFetchingIdentite,
       lastFetchTimeIdentite: action.time,
+      actionTime: action.time,
 
       id: action.benefId
     };
@@ -172,6 +180,7 @@ const gestBenef = (state = initialState, action) => {
       ...state,
       isFetchingIdentite: action.isFetchingIdentite,
       lastFetchTimeIdentite: action.time,
+      actionTime: action.time,
 
       id: action.gestBenef && action.gestBenef.id
         ? action.gestBenef.id
@@ -209,6 +218,7 @@ const gestBenef = (state = initialState, action) => {
       ...state,
       isFetchingIdentite: action.isFetchingIdentite,
       lastFetchTimeIdentite: action.time,
+      actionTime: action.time,
 
       error: action.error
     };
@@ -218,7 +228,15 @@ const gestBenef = (state = initialState, action) => {
     return {
       ...state,
       isEditingIdentite: action.isEditingIdentite,
-      time: action.time
+      actionTime: action.time
+    };
+
+  case SET_IS_SAVING_IDENTITE:
+  case UNSET_IS_SAVING_IDENTITE:
+    return {
+      ...state,
+      isSavingIdentite: action.isSavingIdentite,
+      actionTime: action.time
     };
 
   case SET_IS_COLLAPSED_IDENTITE:
@@ -226,7 +244,7 @@ const gestBenef = (state = initialState, action) => {
     return {
       ...state,
       isCollapsedIdentite: action.isCollapsedIdentite,
-      time: action.time
+      actionTime: action.time
     };
 
   default:

@@ -17,6 +17,9 @@ export const ERROR_GET_GEST_BENEF_IDENTITE     = 'ERROR_GET_GEST_BENEF_IDENTITE'
 export const SET_IS_EDITING_IDENTITE           = 'SET_IS_EDITING_IDENTITE';
 export const UNSET_IS_EDITING_IDENTITE         = 'UNSET_IS_EDITING_IDENTITE';
 
+export const SET_IS_SAVING_IDENTITE            = 'SET_IS_SAVING_IDENTITE';
+export const UNSET_IS_SAVING_IDENTITE          = 'UNSET_IS_SAVING_IDENTITE';
+
 export const SET_IS_COLLAPSED_IDENTITE         = 'SET_IS_COLLAPSED_IDENTITE';
 export const UNSET_IS_COLLAPSED_IDENTITE       = 'UNSET_IS_COLLAPSED_IDENTITE';
 
@@ -126,6 +129,24 @@ export const unsetIsCollapsedIdentite = (time = moment().format(formatDate)) => 
   return {
     type: UNSET_IS_COLLAPSED_IDENTITE,
     isCollapsedIdentite: false,
+    time
+  };
+};
+
+//  -----------------------------------------------------------------
+//    set / unset benef isSaving flag
+//  -----------------------------------------------------------------
+export const setIsSavingIdentite = (time = moment().format(formatDate)) => {
+  return {
+    type: SET_IS_SAVING_IDENTITE,
+    isSavingIdentite: true,
+    time
+  };
+};
+export const unsetIsSavingIdentite = (time = moment().format(formatDate)) => {
+  return {
+    type: UNSET_IS_SAVING_IDENTITE,
+    isSavingIdentite: false,
     time
   };
 };
