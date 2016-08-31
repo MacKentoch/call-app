@@ -9,7 +9,8 @@ import {
   userBoitesMailsMock,
   listMailsMock,
   mailContentMock,
-  searchBenefResultMock
+  searchBenefResultMock,
+  gestBenefMock
 }                       from '../../mocks';
 
 import {
@@ -149,6 +150,23 @@ export const fetchMockSearchBenef = (searchPayload, timeToWait = appConfig.FAKE_
        ),
        timeToWait
      );
+    }
+  );
+};
+
+export const fetchMockGetGestBenef = (benefId, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!benefId) {
+    return Promise.reject({
+      'error': 'fetchMockGetGestBenef error: benefId is not valid'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+        () => resolve({...gestBenefMock}),
+        timeToWait
+      );
     }
   );
 };
