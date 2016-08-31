@@ -21,6 +21,8 @@ import replyMailContent     from './mailbox/reply';
 import rechercheBenefModal  from './modals/rechercheBenefModal';
 // search
 import search               from './search/search';
+// gest benef
+import gestBenef            from './gestBenef/gestBenef';
 
 export {
   // views:
@@ -51,5 +53,8 @@ export {
   rechercheBenefModal,
 
   // search
-  search
+  search,
+
+  // gest benef
+  gestBenef
 };
