@@ -30,7 +30,8 @@ import {
   getStatsFichesParCanal,
   getMailContent,
   sendNewMail,
-  searchBenef
+  searchBenef,
+  getGestBenef
 }                     from './API';
 // date tools
 import {
@@ -86,7 +87,8 @@ export {
   getMailContent,
   sendNewMail,
   searchBenef,
-
+  getGestBenef,
+  
   // date tools
   getLastThreeMonthNames,
 

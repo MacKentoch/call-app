@@ -209,6 +209,12 @@ export const appConfig = {
     }
   },
 
+  gestBenef: {
+    getData: {
+      API: 'api/gestBenef'
+    }
+  },
+
   // userGroupActivity config
   userGroupActivity: {
     data: {
