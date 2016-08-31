@@ -46,7 +46,7 @@ import {
 // asp.net date converted better formatted for JS
 import {
   cleanAspDotNetStringDate
-}                     from './aspNetDateCleaner';
+}                     from './utils/aspNetDateCleaner';
 // mails pagination
 import {
   getCurrentPageContent,

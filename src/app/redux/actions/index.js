@@ -102,8 +102,9 @@ import {
 }                                 from './search/search';
 // gestBenef
 import {
-  getGestBenefIfNeeded
-}                                 from './gestBenef/gestBenef';
+  getGestBenefIfNeeded,
+  getGestBenefIdentiteIfNeeded
+}                                 from './gestBenef';
 
 
 export {
@@ -182,5 +183,6 @@ export {
   postSearchIfNeeded,
 
   // gestBenef
-  getGestBenefIfNeeded
+  getGestBenefIfNeeded,
+  getGestBenefIdentiteIfNeeded
 };
