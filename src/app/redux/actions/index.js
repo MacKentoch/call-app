@@ -100,6 +100,11 @@ import {
 import {
   postSearchIfNeeded
 }                                 from './search/search';
+// gestBenef
+import {
+  getGestBenefIfNeeded
+}                                 from './gestBenef/gestBenef';
+
 
 export {
   // views:
@@ -174,5 +179,8 @@ export {
   hideRechercheBenefModal,
 
   // search benef
-  postSearchIfNeeded
+  postSearchIfNeeded,
+
+  // gestBenef
+  getGestBenefIfNeeded
 };

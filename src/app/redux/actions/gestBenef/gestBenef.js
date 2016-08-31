@@ -22,11 +22,11 @@ const requestGetGestBenef = (benefId = 0, time = moment().format(formatDate)) =>
   };
 };
 
-const receivedGetGestBenef = (data, time = moment().format(formatDate)) => {
+const receivedGetGestBenef = (gestBenef, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_BENEF,
     isFetching : false,
-    data,
+    gestBenef,
     time
   };
 };
