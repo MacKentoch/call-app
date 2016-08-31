@@ -14,6 +14,10 @@ export const REQUEST_GET_GEST_BENEF_IDENTITE   = 'REQUEST_GET_GEST_BENEF_IDENTIT
 export const RECEIVED_GET_GEST_BENEF_IDENTITE  = 'RECEIVED_GET_GEST_BENEF_IDENTITE';
 export const ERROR_GET_GEST_BENEF_IDENTITE     = 'ERROR_GET_GEST_BENEF_IDENTITE';
 
+export const REQUEST_POST_GEST_BENEF_IDENTITE  = 'REQUEST_POST_GEST_BENEF_IDENTITE';
+export const RECEIVED_POST_GEST_BENEF_IDENTITE = 'RECEIVED_POST_GEST_BENEF_IDENTITE';
+export const ERROR_POST_GEST_BENEF_IDENTITE    = 'ERROR_POST_GEST_BENEF_IDENTITE';
+
 export const SET_IS_EDITING_IDENTITE           = 'SET_IS_EDITING_IDENTITE';
 export const UNSET_IS_EDITING_IDENTITE         = 'UNSET_IS_EDITING_IDENTITE';
 
@@ -150,3 +154,80 @@ export const unsetIsSavingIdentite = (time = moment().format(formatDate)) => {
     time
   };
 };
+
+
+//  -----------------------------------------------------------------
+//    POST benef identite
+//  -----------------------------------------------------------------
+const requestPostGestBenefIdentite = (payload = {}, time = moment().format(formatDate)) => {
+  return {
+    type: REQUEST_POST_GEST_BENEF_IDENTITE,
+    isFetchingIdentite: true,
+    isSavingIdentite: true
+    payload,
+    time
+  };
+};
+
+const receivedPostGestBenefIdentite = (response = {}, time = moment().format(formatDate)) => {
+  return {
+    type: RECEIVED_POST_GEST_BENEF_IDENTITE,
+    isFetchingIdentite : false,
+    isSavingIdentite: false,
+    response,
+    time
+  };
+};
+
+const errorPostGestBenefIdentite = (error, time = moment().format(formatDate)) => {
+  return {
+    type: ERROR_POST_GEST_BENEF_IDENTITE,
+    isFetchingIdentite : false,
+    isSavingIdentite: false,
+    error,
+    time
+  };
+};
+
+const postQueryGestBenefIdentite = payload => dispatch => {
+  if (!data) {
+    dispatch(errorPostGestBenefIdentite('postQueryGestBenefIdentite API error: benefId is not defined or not valid'));
+  }
+
+  dispatch(requestPostGestBenefIdentite(benefId));
+  if (appConfig.DEV_MODE) {
+    // DEV ONLY
+    return fetchMockGetGestBenef(benefId) // mock is the as all gestBenef object
+            .then(
+              data => dispatch(receivedGetGestBenefIdentite(data))
+            )
+            .catch(
+              err => dispatch(errorGetGestBenefIdentite(err))
+            );
+  } else {
+    return getGestBenefIdentite(benefId)
+            .then(
+              response => dispatch(receivedGetGestBenefIdentite(response))
+            )
+            .catch(
+              error => dispatch(errorGetGestBenefIdentite(error))
+            );
+  }
+};
+
+export const getGestBenefIdentiteIfNeeded = benefId => (dispatch, getState) => {
+  if (shouldGetGestBenefIdentite(getState())) {
+    return dispatch(getQueryGestBenefIdentite(benefId));
+  }
+  return Promise.resolve();
+};
+
+function shouldGetGestBenefIdentite(state) {
+  const gestBenef = state.gestBenef;
+  // just check wether fetching (assuming data could be refreshed and should not persist in store)
+  if (gestBenef.isFetchingIdentite) {
+    return false;
+  } else {
+    return true;
+  }
+}

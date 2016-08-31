@@ -14,11 +14,19 @@ import {
   UNSET_IS_SAVING_IDENTITE,
 
   SET_IS_COLLAPSED_IDENTITE,
-  UNSET_IS_COLLAPSED_IDENTITE
+  UNSET_IS_COLLAPSED_IDENTITE,
+
+  REQUEST_POST_GEST_BENEF_IDENTITE,
+  RECEIVED_POST_GEST_BENEF_IDENTITE,
+  ERROR_POST_GEST_BENEF_IDENTITE
 }                             from '../../actions/gestBenef/gestBenef';
 
 const initialState = {
   actionTime: '',
+  // error:
+  error: '',
+  // post benef payload
+  postPayload: {},
   // general fields
   id: 0,
   // identité
@@ -244,6 +252,32 @@ const gestBenef = (state = initialState, action) => {
     return {
       ...state,
       isCollapsedIdentite: action.isCollapsedIdentite,
+      actionTime: action.time
+    };
+
+  case REQUEST_POST_GEST_BENEF_IDENTITE:
+    return {
+      ...state,
+      isFetchingIdentite: action.isFetchingIdentite,
+      isSavingIdentite: action.isSavingIdentite,
+      postPayload: action.payload,
+      actionTime: action.time
+    };
+
+  case RECEIVED_POST_GEST_BENEF_IDENTITE:
+    return {
+      ...state,
+      isFetchingIdentite: action.isFetchingIdentite,
+      isSavingIdentite: action.isSavingIdentite,
+      actionTime: action.time
+    };
+
+  case ERROR_POST_GEST_BENEF_IDENTITE:
+    return {
+      ...state,
+      isFetchingIdentite: action.isFetchingIdentite,
+      isSavingIdentite: action.isSavingIdentite,
+      error: action.error,
       actionTime: action.time
     };
 
