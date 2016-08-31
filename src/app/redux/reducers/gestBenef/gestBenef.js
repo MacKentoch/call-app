@@ -1,18 +1,28 @@
 import {
   REQUEST_GET_GEST_BENEF,
   RECEIVED_GET_GEST_BENEF,
-  ERROR_GET_GEST_BENEF
+  ERROR_GET_GEST_BENEF,
+
+  REQUEST_GET_GEST_BENEF_IDENTITE,
+  RECEIVED_GET_GEST_BENEF_IDENTITE,
+  ERROR_GET_GEST_BENEF_IDENTITE,
+
+  SET_IS_EDITING_IDENTITE,
+  UNSET_IS_EDITING_IDENTITE,
+
+  SET_IS_COLLAPSED_IDENTITE,
+  UNSET_IS_COLLAPSED_IDENTITE
 }                             from '../../actions/gestBenef/gestBenef';
 
 const initialState = {
-  // ////////////////////
-  isFetching:  false,
-  time:      '',
-  // ////////////////////
-
   // general fields
   id: 0,
   // identité
+  isFetchingIdentite: false,
+  lastFetchTimeIdentite: '',
+  isEditingIdentite: false,
+  isSavingIdentite: false,
+  isCollapsedIdentite: false,
   civilite: '',
   nom: '',
   nomJeuneFille: '',
@@ -22,6 +32,11 @@ const initialState = {
   dateDeces: '',
   maritalStatus: '',
   // contact data
+  isFetchingContact: false,
+  lastFetchTimeContact: '',
+  isEditingContact: false,
+  isSavingContact: false,
+  isCollapsedContact: false,
   fixedPhone: '',
   mobilePhone: '',
   email: '',
@@ -33,6 +48,11 @@ const initialState = {
   ville: '',
   pays: '',
   // dossiers:
+  isFetchingDossiers: false,
+  lastFetchTimeDossiers: '',
+  isEditingDossiers: false,
+  isSavingDossiers: false,
+  isCollapsedDossiers: false,
   dossiers: []
 };
 
@@ -42,15 +62,25 @@ const gestBenef = (state = initialState, action) => {
   case REQUEST_GET_GEST_BENEF:
     return {
       ...state,
-      isFetching: true,
-      time: action.time
+      isFetchingIdentite: action.isFetching,
+      isFetchingContact: action.isFetching,
+      isFetchingDossiers: action.isFetching,
+      lastFetchTimeIdentite: action.time,
+      lastFetchTimeContact: action.time,
+      lastFetchTimeDossiers: action.time,
+
+      id: action.benefId
     };
 
   case RECEIVED_GET_GEST_BENEF:
     return {
       ...state,
-      isFetching: false,
-      time: action.time,
+      isFetchingIdentite: action.isFetching,
+      isFetchingContact: action.isFetching,
+      isFetchingDossiers: action.isFetching,
+      lastFetchTimeIdentite: action.time,
+      lastFetchTimeContact: action.time,
+      lastFetchTimeDossiers: action.time,
 
       id: action.gestBenef && action.gestBenef.id
         ? action.gestBenef.id
@@ -119,9 +149,84 @@ const gestBenef = (state = initialState, action) => {
   case ERROR_GET_GEST_BENEF:
     return {
       ...state,
-      isFetching: true,
-      time: action.time,
+      isFetchingIdentite: action.isFetching,
+      isFetchingContact: action.isFetching,
+      isFetchingDossiers: action.isFetching,
+      lastFetchTimeIdentite: action.time,
+      lastFetchTimeContact: action.time,
+      lastFetchTimeDossiers: action.time,
       error: action.error
+    };
+
+  case REQUEST_GET_GEST_BENEF_IDENTITE:
+    return {
+      ...state,
+      isFetchingIdentite: action.isFetchingIdentite,
+      lastFetchTimeIdentite: action.time,
+
+      id: action.benefId
+    };
+
+  case RECEIVED_GET_GEST_BENEF_IDENTITE:
+    return {
+      ...state,
+      isFetchingIdentite: action.isFetchingIdentite,
+      lastFetchTimeIdentite: action.time,
+
+      id: action.gestBenef && action.gestBenef.id
+        ? action.gestBenef.id
+        : initialState.id,
+
+      // identité
+      civilite: action.gestBenef && action.gestBenef.civilite
+        ? action.gestBenef.civilite
+        : initialState.civilite,
+      nom: action.gestBenef && action.gestBenef.nom
+        ? action.gestBenef.nom
+        : initialState.nom,
+      nomJeuneFille: action.gestBenef && action.gestBenef.nomJeuneFille
+        ? action.gestBenef.nomJeuneFille
+        : initialState.nomJeuneFille,
+      prenom: action.gestBenef && action.gestBenef.prenom
+        ? action.gestBenef.prenom
+        : initialState.prenom,
+      dateNaissance: action.gestBenef && action.gestBenef.dateNaissance
+        ? action.gestBenef.dateNaissance
+        : initialState.dateNaissance,
+      numss: action.gestBenef && action.gestBenef.numss
+        ? action.gestBenef.numss
+        : initialState.numss,
+      dateDeces: action.gestBenef && action.gestBenef.dateDeces
+        ? action.gestBenef.dateDeces
+        : initialState.dateDeces,
+      maritalStatus: action.gestBenef && action.gestBenef.maritalStatus
+        ? action.gestBenef.maritalStatus
+        : initialState.maritalStatus
+    };
+
+  case ERROR_GET_GEST_BENEF_IDENTITE:
+    return {
+      ...state,
+      isFetchingIdentite: action.isFetchingIdentite,
+      lastFetchTimeIdentite: action.time,
+
+      error: action.error
+    };
+
+  case SET_IS_EDITING_IDENTITE:
+  case UNSET_IS_EDITING_IDENTITE:
+    return {
+      ...state,
+      isEditingIdentite: action.isEditingIdentite,
+      time: action.time
+    };
+
+  case SET_IS_COLLAPSED_IDENTITE:
+  case UNSET_IS_COLLAPSED_IDENTITE:
+    return {
+      ...state,
+      isCollapsedIdentite: action.isCollapsedIdentite,
+      time: action.time
     };
 
   default:

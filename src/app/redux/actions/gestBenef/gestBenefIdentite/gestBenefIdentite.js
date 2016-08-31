@@ -13,6 +13,13 @@ export const REQUEST_GET_GEST_BENEF_IDENTITE   = 'REQUEST_GET_GEST_BENEF_IDENTIT
 export const RECEIVED_GET_GEST_BENEF_IDENTITE  = 'RECEIVED_GET_GEST_BENEF_IDENTITE';
 export const ERROR_GET_GEST_BENEF_IDENTITE     = 'ERROR_GET_GEST_BENEF_IDENTITE';
 
+export const SET_IS_EDITING_IDENTITE           = 'SET_IS_EDITING_IDENTITE';
+export const UNSET_IS_EDITING_IDENTITE         = 'UNSET_IS_EDITING_IDENTITE';
+
+export const SET_IS_COLLAPSED_IDENTITE         = 'SET_IS_COLLAPSED_IDENTITE';
+export const UNSET_IS_COLLAPSED_IDENTITE       = 'UNSET_IS_COLLAPSED_IDENTITE';
+
+
 const requestGetGestBenefIdentite = (benefId = 0, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_GET_GEST_BENEF_IDENTITE,
@@ -83,3 +90,36 @@ function shouldGetGestBenefIdentite(state) {
     return true;
   }
 }
+
+//
+export const setIsEditingIdentite = (time = moment().format(formatDate)) => {
+  return {
+    type: SET_IS_EDITING_IDENTITE,
+    isEditingIdentite: true,
+    time
+  };
+};
+
+export const unsetIsEditingIdentite = (time = moment().format(formatDate)) => {
+  return {
+    type: UNSET_IS_EDITING_IDENTITE,
+    isEditingIdentite: false,
+    time
+  };
+};
+
+export const setIsEditingIdentite = (time = moment().format(formatDate)) => {
+  return {
+    type: SET_IS_COLLAPSED_IDENTITE,
+    isCollapsedIdentite: true,
+    time
+  };
+};
+
+export const unsetIsEditingIdentite = (time = moment().format(formatDate)) => {
+  return {
+    type: UNSET_IS_COLLAPSED_IDENTITE,
+    isCollapsedIdentite: false,
+    time
+  };
+};
