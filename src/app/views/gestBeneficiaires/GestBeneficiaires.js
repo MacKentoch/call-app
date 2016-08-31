@@ -1,13 +1,6 @@
 import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 import Identite                         from './Identite/Identite';
-// import {
-//   CiviliteDropDown,
-//   FormLabel,
-//   EditValidIcons
-// }                                       from '../../components';
-// import SavingIndicator                  from './savingIndicator/SavingIndicator';
-// import { appConfig }                    from '../../config';
 
 
 class GestBeneficiaires extends Component {
