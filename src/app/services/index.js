@@ -43,6 +43,10 @@ import {
   getSideMenuState,
   setSideMenuState
 }                     from './localStorage/ui/uiConfig';
+// asp.net date converted better formatted for JS
+import {
+  cleanAspDotNetStringDate
+}                     from './aspNetDateCleaner';
 // mails pagination
 import {
   getCurrentPageContent,
@@ -88,9 +92,12 @@ export {
   sendNewMail,
   searchBenef,
   getGestBenef,
-  
+
   // date tools
   getLastThreeMonthNames,
+
+  // asp.net date converted better formatted for JS
+  cleanAspDotNetStringDate,
 
   // localStorage
   getSideMenuState,
