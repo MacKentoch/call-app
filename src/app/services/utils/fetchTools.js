@@ -13,6 +13,15 @@ export const postMethod = {
   method: 'POST'
 };
 /*
+* utils post a json body
+*/
+export const jsonHeader = {
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+};
+/*
 * utils pour "whatwg-fetch" = gestion personnalisée des statuts en erreur
 */
 export const checkStatus = (response) => {

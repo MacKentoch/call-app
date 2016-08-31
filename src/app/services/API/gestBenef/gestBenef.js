@@ -1,5 +1,7 @@
 import {
   defaultOptions,
+  postMethod,
+  jsonHeader,
   checkStatus,
   parseJSON,
   getLocationOrigin
@@ -42,6 +44,32 @@ export const getGestBenefIdentite = benefId => {
     .catch(error => Promise.reject(error));
 };
 
+export const postGestBenefIdentite = benefIdentite => {
+  if (!benefIdentite) {
+    return Promise.reject({error: 'postGestBenefIdentite API: benefIdentite is not valid '});
+  }
+
+  if (!benefIdentite.id) {
+    return Promise.reject({error: 'postGestBenefIdentite API: benefIdentite should have an id property'});
+  }
+
+  const api = appConfig.gestBenef.postIdentite.API;
+  const url = `${getLocationOrigin()}/${api}/${benefIdentite.id}`;
+  const body = { ...benefIdentite };
+
+  const options = {
+    ...defaultOptions,
+    ...postMethod,
+    ...jsonHeader,
+    ...body
+  };
+
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(error => Promise.reject(error));
+};
 
 // get "benef contact data only" related to benefId
 export const getGestBenefContactData = benefId => {

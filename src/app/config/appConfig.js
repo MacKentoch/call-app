@@ -216,6 +216,9 @@ export const appConfig = {
     getIdentite: {
       API: 'api/gestBenefIdentite'
     },
+    postIdentite: {
+      API: 'api/gestBenefIdentite'
+    },
     getContactData: {
       API: 'api/gestBenefContactData'
     },

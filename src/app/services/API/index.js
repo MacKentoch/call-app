@@ -9,8 +9,12 @@ import { sendNewMail }            from './mailbox/sendNewMail';
 import { searchBenef }            from './search/searchBenef';
 import {
   getGestBenef,
+
   getGestBenefIdentite,
+  postGestBenefIdentite,
+
   getGestBenefContactData,
+
   getGestBenefDossiers
 }                                 from './gestbenef/gestBenef';
 
@@ -27,6 +31,7 @@ export {
   // gest Benef
   getGestBenef,
   getGestBenefIdentite,
+  postGestBenefIdentite,
   getGestBenefContactData,
   getGestBenefDossiers
 };
