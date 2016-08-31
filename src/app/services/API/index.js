@@ -7,7 +7,12 @@ import { getStatsFichesParCanal } from './stats/fichesParCanal';
 import { getMailContent }         from './mailbox/consulter';
 import { sendNewMail }            from './mailbox/sendNewMail';
 import { searchBenef }            from './search/searchBenef';
-import { getGestBenef }           from './gestbenef/gestBenef';
+import {
+  getGestBenef,
+  getGestBenefIdentite,
+  getGestBenefContactData,
+  getGestBenefDossiers
+}                                 from './gestbenef/gestBenef';
 
 export {
   getUserBoitesMails,
@@ -19,5 +24,9 @@ export {
   getMailContent,
   sendNewMail,
   searchBenef,
-  getGestBenef
+  // gest Benef
+  getGestBenef,
+  getGestBenefIdentite,
+  getGestBenefContactData,
+  getGestBenefDossiers
 };

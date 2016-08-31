@@ -212,6 +212,15 @@ export const appConfig = {
   gestBenef: {
     getData: {
       API: 'api/gestBenef'
+    },
+    getIdentite: {
+      API: 'api/gestBenefIdentite'
+    },
+    getContactData: {
+      API: 'api/gestBenefContactData'
+    },
+    getDossiers: {
+      API: 'api/gestBenefDossiers'
     }
   },
 
