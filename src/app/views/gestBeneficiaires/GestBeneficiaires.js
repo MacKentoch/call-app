@@ -74,11 +74,17 @@ GestBeneficiaires.propTypes = {
   // ///////////////////////
   // gestBenef data:
   // ///////////////////////
-  isFetching: PropTypes.bool.isRequired,
-  lastGetTime: PropTypes.string.isRequired,
+  lastActionTime: PropTypes.string.isRequired,
+
+  id: PropTypes.number.isRequired,
   // ///////////////////////
   // identité
   // ///////////////////////
+  isFetchingIdentite: PropTypes.bool.isRequired,
+  lastFetchTimeIdentite: PropTypes.string.isRequired,
+  isEditingIdentite: PropTypes.bool.isRequired,
+  isSavingIdentite: PropTypes.bool.isRequired,
+  isCollapsedIdentite: PropTypes.bool.isRequired,
   civilite: PropTypes.string.isRequired,
   nom: PropTypes.string.isRequired,
   nomJeuneFille: PropTypes.string.isRequired,
@@ -87,13 +93,14 @@ GestBeneficiaires.propTypes = {
   numss: PropTypes.string.isRequired,
   dateDeces: PropTypes.string.isRequired,
   maritalStatus: PropTypes.string.isRequired,
-  // identité => sub for UI
-  isEditingIdentite: PropTypes.bool.isRequired,
-  isSavingIdentite: PropTypes.bool.isRequired,
-  isCollapsedIdentite: PropTypes.bool.isRequired,
   // ///////////////////////
   // contact data
   // ///////////////////////
+  isFetchingContact: PropTypes.bool.isRequired,
+  lastFetchTimeContact: PropTypes.string.isRequired,
+  isEditingContact: PropTypes.bool.isRequired,
+  isSavingContact: PropTypes.bool.isRequired,
+  isCollapsedContact: PropTypes.bool.isRequired,
   fixedPhone: PropTypes.string.isRequired,
   mobilePhone: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
@@ -107,6 +114,11 @@ GestBeneficiaires.propTypes = {
   // ///////////////////////
   // dossiers:
   // ///////////////////////
+  isFetchingDossiers: PropTypes.bool.isRequired,
+  lastFetchTimeDossiers: PropTypes.string.isRequired,
+  isEditingDossiers: PropTypes.bool.isRequired,
+  isSavingDossiers: PropTypes.bool.isRequired,
+  isCollapsedDossiers: PropTypes.bool.isRequired,
   dossiers: PropTypes.array.isRequired,
 
   // ///////////////////////// ///////////////////////
@@ -115,6 +127,8 @@ GestBeneficiaires.propTypes = {
     leaveGestBeneficiaires: PropTypes.func,
 
     getGestBenefIfNeeded: PropTypes.func,
+
+    postGestBenefIdentiteIfNeeded: PropTypes.func
   })
 };
 
