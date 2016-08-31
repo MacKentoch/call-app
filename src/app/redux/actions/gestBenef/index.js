@@ -1,6 +1,7 @@
 import { getGestBenefIfNeeded } from './gestBenef';
 import {
   getGestBenefIdentiteIfNeeded,
+  postGestBenefIdentiteIfNeeded,
 
   setIsEditingIdentite,
   unsetIsEditingIdentite,
@@ -14,6 +15,7 @@ export {
   getGestBenefIfNeeded,
   // benef identite only
   getGestBenefIdentiteIfNeeded,
+  postGestBenefIdentiteIfNeeded,
   setIsEditingIdentite,
   unsetIsEditingIdentite,
   setIsCollapsedIdentite,

@@ -139,7 +139,7 @@ export const unsetIsCollapsedIdentite = (time = moment().format(formatDate)) => 
 };
 
 //  -----------------------------------------------------------------
-//    set / unset benef isSaving flag
+//    set / unset benef isSaving flag (NOT USED)
 //  -----------------------------------------------------------------
 export const setIsSavingIdentite = (time = moment().format(formatDate)) => {
   return {
@@ -164,12 +164,11 @@ const requestPostGestBenefIdentite = (payload = {}, time = moment().format(forma
   return {
     type: REQUEST_POST_GEST_BENEF_IDENTITE,
     isFetchingIdentite: true,
-    isSavingIdentite: true
+    isSavingIdentite: true,
     payload,
     time
   };
 };
-
 const receivedPostGestBenefIdentite = (response = {}, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_POST_GEST_BENEF_IDENTITE,
@@ -179,7 +178,6 @@ const receivedPostGestBenefIdentite = (response = {}, time = moment().format(for
     time
   };
 };
-
 const errorPostGestBenefIdentite = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_POST_GEST_BENEF_IDENTITE,
@@ -191,18 +189,18 @@ const errorPostGestBenefIdentite = (error, time = moment().format(formatDate)) =
 };
 
 const postQueryGestBenefIdentite = payload => dispatch => {
-  if (!data) {
+  if (!payload) {
     dispatch(errorPostGestBenefIdentite('postQueryGestBenefIdentite API error: benefId is not defined or not valid'));
   }
 
   dispatch(requestPostGestBenefIdentite(payload));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockPostBenefIdentite(payload) // mock is the as all gestBenef object
+    return fetchMockPostBenefIdentite(payload) // mock is the same all gestBenef object
             .then(
               data => {
                 if (!data || !data.success) {
-                  dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}))
+                  dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}));
                 }
                 dispatch(receivedPostGestBenefIdentite(data));
               }
@@ -211,11 +209,11 @@ const postQueryGestBenefIdentite = payload => dispatch => {
               err => dispatch(errorPostGestBenefIdentite(err))
             );
   } else {
-    return postGestBenefIdentite(benefId)
+    return postGestBenefIdentite(payload)
             .then(
               response => {
                 if (!response || !response.success) {
-                  dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}))
+                  dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}));
                 }
                 dispatch(receivedPostGestBenefIdentite(response));
               }

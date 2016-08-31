@@ -103,7 +103,9 @@ import {
 // gestBenef
 import {
   getGestBenefIfNeeded,
+  // benef identite only
   getGestBenefIdentiteIfNeeded,
+  postGestBenefIdentiteIfNeeded,
   setIsEditingIdentite,
   unsetIsEditingIdentite,
   setIsCollapsedIdentite,
@@ -189,6 +191,7 @@ export {
   // gestBenef
   getGestBenefIfNeeded,
   getGestBenefIdentiteIfNeeded,
+  postGestBenefIdentiteIfNeeded,
   setIsEditingIdentite,
   unsetIsEditingIdentite,
   setIsCollapsedIdentite,
