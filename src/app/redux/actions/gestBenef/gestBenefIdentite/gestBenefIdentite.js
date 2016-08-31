@@ -3,7 +3,8 @@ import { appConfig }  from '../../../../config';
 import {
   getGestBenefIdentite,
   postGestBenefIdentite,
-  fetchMockGetGestBenef
+  fetchMockGetGestBenef,
+  fetchMockPostBenefIdentite
 }                     from '../../../../services';
 
 
@@ -194,38 +195,49 @@ const postQueryGestBenefIdentite = payload => dispatch => {
     dispatch(errorPostGestBenefIdentite('postQueryGestBenefIdentite API error: benefId is not defined or not valid'));
   }
 
-  dispatch(requestPostGestBenefIdentite(benefId));
+  dispatch(requestPostGestBenefIdentite(payload));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockGetGestBenef(benefId) // mock is the as all gestBenef object
+    return fetchMockPostBenefIdentite(payload) // mock is the as all gestBenef object
             .then(
-              data => dispatch(receivedGetGestBenefIdentite(data))
+              data => {
+                if (!data || !data.success) {
+                  dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}))
+                }
+                dispatch(receivedPostGestBenefIdentite(data));
+              }
             )
             .catch(
-              err => dispatch(errorGetGestBenefIdentite(err))
+              err => dispatch(errorPostGestBenefIdentite(err))
             );
   } else {
-    return getGestBenefIdentite(benefId)
+    return postGestBenefIdentite(benefId)
             .then(
-              response => dispatch(receivedGetGestBenefIdentite(response))
+              response => {
+                if (!response || !response.success) {
+                  dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}))
+                }
+                dispatch(receivedPostGestBenefIdentite(response));
+              }
             )
             .catch(
-              error => dispatch(errorGetGestBenefIdentite(error))
+              error => dispatch(errorPostGestBenefIdentite(error))
             );
   }
 };
 
-export const getGestBenefIdentiteIfNeeded = benefId => (dispatch, getState) => {
-  if (shouldGetGestBenefIdentite(getState())) {
-    return dispatch(getQueryGestBenefIdentite(benefId));
+export const postGestBenefIdentiteIfNeeded = payload => (dispatch, getState) => {
+  if (shouldPostGestBenefIdentite(getState())) {
+    return dispatch(postQueryGestBenefIdentite(payload));
   }
   return Promise.resolve();
 };
 
-function shouldGetGestBenefIdentite(state) {
+function shouldPostGestBenefIdentite(state) {
   const gestBenef = state.gestBenef;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
-  if (gestBenef.isFetchingIdentite) {
+  if (gestBenef.isFetchingIdentite ||
+      gestBenef.isSavingIdentite) {
     return false;
   } else {
     return true;

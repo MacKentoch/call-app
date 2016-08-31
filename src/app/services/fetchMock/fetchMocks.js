@@ -170,3 +170,21 @@ export const fetchMockGetGestBenef = (benefId, timeToWait = appConfig.FAKE_ASYNC
     }
   );
 };
+
+export const fetchMockPostBenefIdentite = (payload, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!payload) {
+    throw 'error: fetchMockPostBenefIdentite has no valid payload';
+  }
+  if (!parseInt(payload.id, 10)) {
+    throw 'error: fetchMockPostBenefIdentite payload is not valid';
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({success: true}),
+       timeToWait
+     );
+    }
+  );
+};
