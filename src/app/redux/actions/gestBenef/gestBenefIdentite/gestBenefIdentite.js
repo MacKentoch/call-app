@@ -2,6 +2,7 @@ import moment         from 'moment';
 import { appConfig }  from '../../../../config';
 import {
   getGestBenefIdentite,
+  postGestBenefIdentite,
   fetchMockGetGestBenef
 }                     from '../../../../services';
 
@@ -19,7 +20,9 @@ export const UNSET_IS_EDITING_IDENTITE         = 'UNSET_IS_EDITING_IDENTITE';
 export const SET_IS_COLLAPSED_IDENTITE         = 'SET_IS_COLLAPSED_IDENTITE';
 export const UNSET_IS_COLLAPSED_IDENTITE       = 'UNSET_IS_COLLAPSED_IDENTITE';
 
-
+//  -----------------------------------------------------------------
+//    GET benef identite
+//  -----------------------------------------------------------------
 const requestGetGestBenefIdentite = (benefId = 0, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_GET_GEST_BENEF_IDENTITE,
@@ -91,7 +94,9 @@ function shouldGetGestBenefIdentite(state) {
   }
 }
 
-//
+//  -----------------------------------------------------------------
+//    set / unset benef isEditing flag
+//  -----------------------------------------------------------------
 export const setIsEditingIdentite = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_EDITING_IDENTITE,
@@ -99,7 +104,6 @@ export const setIsEditingIdentite = (time = moment().format(formatDate)) => {
     time
   };
 };
-
 export const unsetIsEditingIdentite = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_EDITING_IDENTITE,
@@ -108,15 +112,17 @@ export const unsetIsEditingIdentite = (time = moment().format(formatDate)) => {
   };
 };
 
-export const setIsEditingIdentite = (time = moment().format(formatDate)) => {
+//  -----------------------------------------------------------------
+//    set / unset benef isCollapsed flag
+//  -----------------------------------------------------------------
+export const setIsCollapsedIdentite = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_COLLAPSED_IDENTITE,
     isCollapsedIdentite: true,
     time
   };
 };
-
-export const unsetIsEditingIdentite = (time = moment().format(formatDate)) => {
+export const unsetIsCollapsedIdentite = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_COLLAPSED_IDENTITE,
     isCollapsedIdentite: false,

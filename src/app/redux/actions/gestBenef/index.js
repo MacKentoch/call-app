@@ -1,9 +1,21 @@
 import { getGestBenefIfNeeded } from './gestBenef';
-import { getGestBenefIdentiteIfNeeded } from './gestBenefIdentite/gestBenefIdentite';
+import {
+  getGestBenefIdentiteIfNeeded,
+
+  setIsEditingIdentite,
+  unsetIsEditingIdentite,
+
+  setIsCollapsedIdentite,
+  unsetIsCollapsedIdentite
+}                               from './gestBenefIdentite/gestBenefIdentite';
 
 export {
   // all benef fields (identite + contact + dossiers)
   getGestBenefIfNeeded,
   // benef identite only
-  getGestBenefIdentiteIfNeeded
+  getGestBenefIdentiteIfNeeded,
+  setIsEditingIdentite,
+  unsetIsEditingIdentite,
+  setIsCollapsedIdentite,
+  unsetIsCollapsedIdentite
 };

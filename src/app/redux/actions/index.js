@@ -103,7 +103,11 @@ import {
 // gestBenef
 import {
   getGestBenefIfNeeded,
-  getGestBenefIdentiteIfNeeded
+  getGestBenefIdentiteIfNeeded,
+  setIsEditingIdentite,
+  unsetIsEditingIdentite,
+  setIsCollapsedIdentite,
+  unsetIsCollapsedIdentite
 }                                 from './gestBenef';
 
 
@@ -184,5 +188,9 @@ export {
 
   // gestBenef
   getGestBenefIfNeeded,
-  getGestBenefIdentiteIfNeeded
+  getGestBenefIdentiteIfNeeded,
+  setIsEditingIdentite,
+  unsetIsEditingIdentite,
+  setIsCollapsedIdentite,
+  unsetIsCollapsedIdentite
 };
