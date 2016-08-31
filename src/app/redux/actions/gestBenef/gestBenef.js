@@ -41,7 +41,7 @@ const errorGetGestBenef = (error, time = moment().format(formatDate)) => {
   };
 };
 
-const getGestBenef = (benefId) => dispatch => {
+const getQueryGestBenef = (benefId) => dispatch => {
   if (!benefId) {
     dispatch(errorGetGestBenef('getGestBenef API error: benefId is not defined or not valid'));
   }
@@ -69,7 +69,7 @@ const getGestBenef = (benefId) => dispatch => {
 
 export const getGestBenefIfNeeded = benefId => (dispatch, getState) => {
   if (shouldGetGestBenef(getState())) {
-    return dispatch(getGestBenef(benefId));
+    return dispatch(getQueryGestBenef(benefId));
   }
   return Promise.resolve();
 };
