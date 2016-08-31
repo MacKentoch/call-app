@@ -8,6 +8,7 @@ import { userBoitesMailsMock }    from './userBoitesMails';
 import { listMailsMock }          from './listMails';
 import { mailContentMock }        from './mailContent';
 import { searchBenefResultMock }  from './searchBenefResultMock';
+import { gestBenefMock }          from './gestBenefMock';
 
 export {
   motifsContacts,
@@ -19,6 +20,8 @@ export {
   userBoitesMailsMock,
   listMailsMock,
   mailContentMock,
-  // search benef result 
-  searchBenefResultMock
+  // search benef result
+  searchBenefResultMock,
+  // gest benef
+  gestBenefMock
 };
