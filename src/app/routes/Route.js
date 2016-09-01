@@ -77,7 +77,7 @@ export const Routes = () => {
               <Route path={`${mailbox.reply.path}/:mailboxId`} component={MailReplyConnected} />
             </Route>
 
-            <Route path="*" component={PageNotFound} />
+            {/* <Route path="*" component={PageNotFound} /> */}
 
           </Route>
         </Router>
