@@ -15,10 +15,13 @@ class GestBeneficiaires extends Component {
   }
 
   componentDidMount() {
-    const  { params: { mailboxId, mailId } } =  this.props;
+    const  { params: { benefId } } =  this.props;
     const  { actions: { enterGestBeneficiaires, getGestBenefIfNeeded } } =  this.props;
     enterGestBeneficiaires();
-    getGestBenefIfNeeded();
+    const idBenef = parseInt(benefId, 10);
+    if (idBenef) {
+      getGestBenefIfNeeded(idBenef);
+    }
   }
 
   componentWillUnmount() {
@@ -72,6 +75,10 @@ class GestBeneficiaires extends Component {
 }
 
 GestBeneficiaires.propTypes = {
+  // react router
+  params: PropTypes.object,
+  location: PropTypes.object,
+
   currentView:  PropTypes.string.isRequired,
   // ///////////////////////
   // gestBenef data:
