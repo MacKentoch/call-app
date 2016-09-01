@@ -22,11 +22,17 @@ import {
 }                     from './create';
 // gest beneficaires
 import GestBeneficiaires from './gestBeneficiaires/GestBeneficiaires';
+// page not found
+import PageNotFound from './pageNotFound/PageNotFound';
+
 
 export {
   Home,
   Recherche,
   Modals,
+
+  // page not found
+  PageNotFound,
 
   // mailboxes
   Mailbox,

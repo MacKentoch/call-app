@@ -15,13 +15,15 @@ class GestBeneficiaires extends Component {
   }
 
   componentDidMount() {
-    const  { actions } =  this.props;
-    actions.enterGestBeneficiaires();
+    const  { params: { mailboxId, mailId } } =  this.props;
+    const  { actions: { enterGestBeneficiaires, getGestBenefIfNeeded } } =  this.props;
+    enterGestBeneficiaires();
+    getGestBenefIfNeeded();
   }
 
   componentWillUnmount() {
-    const { actions } = this.props;
-    actions.leaveGestBeneficiaires();
+    const { actions: {leaveGestBeneficiaires  } } = this.props;
+    leaveGestBeneficiaires();
   }
 
   render() {

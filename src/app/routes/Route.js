@@ -30,6 +30,7 @@ import {
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
 import { appConfig }            from '../config';
+import { PageNotFound }         from '../views';
 // import { createHistory }        from 'history';
 
 // specified base url
@@ -66,6 +67,7 @@ export const Routes = () => {
             <Route path={createFicheContactPersonnes.path} component={FicheContactPersonnesConnected} />
 
             <Route path={beneficaires.maj.path} component={GestBeneficiairesConnected} />
+            <Route path={`${beneficaires.maj.path}/:benefId`} component={GestBeneficiairesConnected} />
 
             <Route path={mailbox.root.path} component={MailboxConnected}>
               <Route path={`${mailbox.reception.path}/:mailboxId`} component={MailboxReceptionConnected} />
@@ -74,6 +76,8 @@ export const Routes = () => {
               <Route path={`${mailbox.writeNew.path}/:mailboxId`} component={MailWriteNewConnected} />
               <Route path={`${mailbox.reply.path}/:mailboxId`} component={MailReplyConnected} />
             </Route>
+
+            <Route path="*" component={PageNotFound} />
 
           </Route>
         </Router>
