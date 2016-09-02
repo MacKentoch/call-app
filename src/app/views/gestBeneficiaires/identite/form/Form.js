@@ -5,7 +5,26 @@ import {
 }                           from '../../../../components';
 
 
-const Form = ({isEditingIdentite, onCiviliteChange}) => {
+const Form = ({
+  isEditingIdentite,
+  civilite,
+  onCiviliteChange,
+  nom,
+  onNomChanged,
+  nomJeuneFille,
+  onNomJeuneFilleChanged,
+  prenom,
+  onPrenomChanged,
+  dateNaissance,
+  onDateNaissanceChanged,
+  numss,
+  onNumssChanged,
+  dateDeces,
+  onDateDecesChanged,
+  maritalStatus,
+  onMaritalStatusChanged
+}) => {
+  console.log('isEditingIdentite: ', isEditingIdentite);
   return (
     <form role="form">
 
@@ -17,14 +36,14 @@ const Form = ({isEditingIdentite, onCiviliteChange}) => {
               <CiviliteDropDown
                 id="inputCivilite"
                 label={'Civilité'}
-                value={''}
+                value={civilite}
                 onChange={onCiviliteChange}
               />
             :
-              <FormLabel 
+              <FormLabel
                 id="inputCivilite"
                 label={'Civilité'}
-                value={''}
+                value={civilite}
               />
           }
         </div>
@@ -64,7 +83,30 @@ const Form = ({isEditingIdentite, onCiviliteChange}) => {
 
 Form.propTypes = {
   isEditingIdentite: PropTypes.bool,
-  onCiviliteChange: PropTypes.func.isRequired
+
+  civilite: PropTypes.string.isRequired,
+  onCiviliteChange: PropTypes.func.isRequired,
+
+  nom: PropTypes.string.isRequired,
+  onNomChanged: PropTypes.func.isRequired,
+
+  nomJeuneFille: PropTypes.string.isRequired,
+  onNomJeuneFilleChanged: PropTypes.func.isRequired,
+
+  prenom: PropTypes.string.isRequired,
+  onPrenomChanged: PropTypes.func.isRequired,
+
+  dateNaissance: PropTypes.string.isRequired,
+  onDateNaissanceChanged: PropTypes.func.isRequired,
+
+  numss: PropTypes.string.isRequired,
+  onNumssChanged: PropTypes.func.isRequired,
+
+  dateDeces: PropTypes.string.isRequired,
+  onDateDecesChanged: PropTypes.func.isRequired,
+
+  maritalStatus: PropTypes.string.isRequired,
+  onMaritalStatusChanged: PropTypes.func.isRequired
 };
 
 export default Form;

@@ -8,7 +8,22 @@ const Identite = ({
   isEditingIdentite,
   onEditClick,
   onCancelEditClick,
-  onCiviliteChange
+  civilite,
+  onCiviliteChange,
+  nom,
+  onNomChanged,
+  nomJeuneFille,
+  onNomJeuneFilleChanged,
+  prenom,
+  onPrenomChanged,
+  dateNaissance,
+  onDateNaissanceChanged,
+  numss,
+  onNumssChanged,
+  dateDeces,
+  onDateDecesChanged,
+  maritalStatus,
+  onMaritalStatusChanged
 }) => {
   return (
     <div>
@@ -31,8 +46,23 @@ const Identite = ({
           <SavingIndicator />
         :
           <Form
-            isEditingIdentite={isSavingIdentite}
+            isEditingIdentite={isEditingIdentite}
+            civilite={civilite}
             onCiviliteChange={onCiviliteChange}
+            nom={nom}
+            onNomChanged={onNomChanged}
+            nomJeuneFille={nomJeuneFille}
+            onNomJeuneFilleChanged={onNomJeuneFilleChanged}
+            prenom={prenom}
+            onPrenomChanged={onPrenomChanged}
+            dateNaissance={dateNaissance}
+            onDateNaissanceChanged={onDateNaissanceChanged}
+            numss={numss}
+            onNumssChanged={onNumssChanged}
+            dateDeces={dateDeces}
+            onDateDecesChanged={onDateDecesChanged}
+            maritalStatus={maritalStatus}
+            onMaritalStatusChanged={onMaritalStatusChanged}
           />
       }
       </div>
@@ -45,7 +75,30 @@ Identite.propTypes = {
   isEditingIdentite: PropTypes.bool.isRequired,
   onEditClick: PropTypes.func.isRequired,
   onCancelEditClick: PropTypes.func.isRequired,
-  onCiviliteChange: PropTypes.func.isRequired
+
+  civilite: PropTypes.string.isRequired,
+  onCiviliteChange: PropTypes.func.isRequired,
+
+  nom: PropTypes.string.isRequired,
+  onNomChanged: PropTypes.func.isRequired,
+
+  nomJeuneFille: PropTypes.string.isRequired,
+  onNomJeuneFilleChanged: PropTypes.func.isRequired,
+
+  prenom: PropTypes.string.isRequired,
+  onPrenomChanged: PropTypes.func.isRequired,
+
+  dateNaissance: PropTypes.string.isRequired,
+  onDateNaissanceChanged: PropTypes.func.isRequired,
+
+  numss: PropTypes.string.isRequired,
+  onNumssChanged: PropTypes.func.isRequired,
+
+  dateDeces: PropTypes.string.isRequired,
+  onDateDecesChanged: PropTypes.func.isRequired,
+
+  maritalStatus: PropTypes.string.isRequired,
+  onMaritalStatusChanged: PropTypes.func.isRequired
 };
 
 
