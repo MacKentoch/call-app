@@ -11,7 +11,15 @@ class GestBeneficiaires extends Component {
       animated: true
     };
 
-    this.handlesOnCiviliteChange = this.handlesOnCiviliteChange.bind(this);
+    this.handlesOnCiviliteChanged = this.handlesOnCiviliteChanged.bind(this);
+    this.handlesOnNomChanged = this.handlesOnNomChanged.bind(this);
+    this.handlesOnNomJeuneFilleChanged = this.handlesOnNomJeuneFilleChanged.bind(this);
+    this.handlesOnPrenomChanged = this.handlesOnPrenomChanged.bind(this);
+    this.handlesOnDateNaissanceChanged = this.handlesOnDateNaissanceChanged.bind(this);
+    this.handlesOnNumssChanged = this.handlesOnNumssChanged.bind(this);
+    this.handlesOnDateDecesChanged = this.handlesOnDateDecesChanged.bind(this);
+    this.handlesOnMaritalStatusChanged = this.handlesOnMaritalStatusChanged.bind(this);
+
     this.handlesOnEditIdentiteClick = this.handlesOnEditIdentiteClick.bind(this);
     this.handlesOnCancelEditIdentiteClick = this.handlesOnCancelEditIdentiteClick.bind(this);
   }
@@ -71,28 +79,28 @@ class GestBeneficiaires extends Component {
                   isCollapsedIdentite={isCollapsedIdentite}
 
                   civilite={civilite}
-                  onCiviliteChange={this.handlesOnCiviliteChange}
+                  onCiviliteChange={this.handlesOnCiviliteChanged}
 
                   nom={nom}
-                  onNomChanged={()=>console.log('TODO: Identite onNomChanged')}
+                  onNomChanged={this.handlesOnNomChanged}
 
                   nomJeuneFille={nomJeuneFille}
-                  onNomJeuneFilleChanged={()=>console.log('TODO: Identite onNomJeuneFilleChanged')}
+                  onNomJeuneFilleChanged={this.handlesOnNomJeuneFilleChanged}
 
                   prenom={prenom}
-                  onPrenomChanged={()=>console.log('TODO: Identite onPrenomChanged')}
+                  onPrenomChanged={this.handlesOnPrenomChanged}
 
                   dateNaissance={dateNaissance}
-                  onDateNaissanceChanged={()=>console.log('TODO: Identite onDateNaissanceChanged')}
+                  onDateNaissanceChanged={this.handlesOnDateNaissanceChanged}
 
                   numss={numss}
-                  onNumssChanged={()=>console.log('TODO: Identite onNumssChanged')}
+                  onNumssChanged={this.handlesOnNumssChanged}
 
                   dateDeces={dateDeces}
-                  onDateDecesChanged={()=>console.log('TODO: Identite onDateDecesChanged')}
+                  onDateDecesChanged={this.handlesOnDateDecesChanged}
 
                   maritalStatus={maritalStatus}
-                  onMaritalStatusChanged={()=>console.log('TODO: Identite onMaritalStatusChanged')}
+                  onMaritalStatusChanged={this.handlesOnMaritalStatusChanged}
                 />
 
               </div>
@@ -104,9 +112,44 @@ class GestBeneficiaires extends Component {
     );
   }
 
-  handlesOnCiviliteChange(civilite) {
+  handlesOnCiviliteChanged(civilite) {
     const { actions: { updateCiviliteIdentite } } = this.props;
     updateCiviliteIdentite(civilite);
+  }
+
+  handlesOnNomChanged(nom) {
+    const { actions: { updateNomIdentite } } = this.props;
+    updateNomIdentite(nom);
+  }
+
+  handlesOnNomJeuneFilleChanged(nomJeuneFille) {
+    const { actions: { updateNomJeuneFilleIdentite } } = this.props;
+    updateNomJeuneFilleIdentite(nomJeuneFille);
+  }
+
+  handlesOnPrenomChanged(prenom) {
+    const { actions: { updatePrenomIdentite } } = this.props;
+    updatePrenomIdentite(prenom);
+  }
+
+  handlesOnDateNaissanceChanged(dateNaissance) {
+    const { actions: { updateDateNaissanceIdentite } } = this.props;
+    updateDateNaissanceIdentite(dateNaissance);
+  }
+
+  handlesOnNumssChanged(numss) {
+    const { actions: { updateNumssIdentite } } = this.props;
+    updateNumssIdentite(numss);
+  }
+
+  handlesOnDateDecesChanged(dateDeces) {
+    const { actions: { updateDateDecesIdentite } } = this.props;
+    updateDateDecesIdentite(dateDeces);
+  }
+
+  handlesOnMaritalStatusChanged(maritalStatus) {
+    const { actions: { updateMaritalStatusIdentite } } = this.props;
+    updateMaritalStatusIdentite(maritalStatus);
   }
 
   handlesOnEditIdentiteClick() {

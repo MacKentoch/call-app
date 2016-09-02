@@ -164,6 +164,52 @@ const Form = ({
 
       </div>
 
+      {/* 3rd row */}
+      <div className="row">
+        <div className="col-md-6">
+          {
+            isEditingIdentite
+            ?
+              <DateInput
+                id="inputDateDeces"
+                label={'Date de décès'}
+                value={
+                  moment(dateDeces, formatDate).isValid
+                    ? moment(dateDeces, formatDate)
+                    : moment('01/01/1900', formatDate)
+                  }
+                onChange={onDateDecesChanged}
+              />
+            :
+              <FormLabel
+                id="inputDateDeces"
+                label={'Date de décès'}
+                value={dateDeces}
+              />
+          }
+        </div>
+
+        {/* statut marital */}
+        <div className="col-md-6">
+          {
+            isEditingIdentite
+            ?
+              <TextInput
+                id="inputStatutMarital"
+                label={'Statut marital'}
+                value={maritalStatus}
+                onChange={onMaritalStatusChanged}
+              />
+            :
+              <FormLabel
+                id="inputStatutMarital"
+                label={'Statut marital'}
+                value={maritalStatus}
+              />
+          }
+        </div>
+
+      </div>
 
     </form>
   );
