@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
-import DatePicker           from 'react-datepicker';
 import moment               from 'moment';
 import { appConfig }        from '../../../../config';
 import {
   CiviliteDropDown,
   FormLabel,
-  TextInput
+  TextInput,
+  DateInput
 }                           from '../../../../components';
 
 moment.locale('fr');
@@ -123,10 +123,11 @@ const Form = ({
           {
             isEditingIdentite
             ?
-              <DatePicker
-                dateFormat="DD/MM/YYYY"
-                selected={moment(dateNaissance, formatDate)}
-                onChange={()=>console.log('date changed: ', )}
+              <DateInput
+                id="inputDateNaissance"
+                label={'Date de naissance'}
+                value={dateNaissance}
+                onChange={onDateNaissanceChanged}
               />
             :
               <FormLabel
