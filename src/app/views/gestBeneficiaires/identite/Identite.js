@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react';
-import { EditValidIcons } from '../../../components';
-import Form from './form/Form';
-import SavingIndicator from '../savingIndicator/SavingIndicator';
+import { EditValidIcons }   from '../../../components';
+import Form                 from './form/Form';
+import SavingIndicator      from '../savingIndicator/SavingIndicator';
+import Collapse             from 'react-collapse';
+
 
 const Identite = ({
+  isCollapsedIdentite,
   isSavingIdentite,
   isEditingIdentite,
   onEditClick,
@@ -26,47 +29,51 @@ const Identite = ({
   onMaritalStatusChanged
 }) => {
   return (
-    <div style={{height: '290px'}}>
-      <div className="page-header">
-        Identité
+    <Collapse
+      isOpened={!isCollapsedIdentite}
+      keepCollapsedContent={false}>
+      <div style={{height: '290px'}}>
+        <div className="page-header">
+          Identité
+          {
+            !isSavingIdentite &&
+            <EditValidIcons
+              isEditing={isEditingIdentite}
+              setEdit={onEditClick}
+              cancelEditing={onCancelEditClick}
+              saveEdit={(e)=>console.log('TODO: Identite save Edit')}
+            />
+          }
+        </div>
+        <div>
         {
-          !isSavingIdentite &&
-          <EditValidIcons
-            isEditing={isEditingIdentite}
-            setEdit={onEditClick}
-            cancelEditing={onCancelEditClick}
-            saveEdit={(e)=>console.log('TODO: Identite save Edit')}
-          />
+          isSavingIdentite
+          ?
+            <SavingIndicator />
+          :
+            <Form
+              isEditingIdentite={isEditingIdentite}
+              civilite={civilite}
+              onCiviliteChange={onCiviliteChange}
+              nom={nom}
+              onNomChanged={onNomChanged}
+              nomJeuneFille={nomJeuneFille}
+              onNomJeuneFilleChanged={onNomJeuneFilleChanged}
+              prenom={prenom}
+              onPrenomChanged={onPrenomChanged}
+              dateNaissance={dateNaissance}
+              onDateNaissanceChanged={onDateNaissanceChanged}
+              numss={numss}
+              onNumssChanged={onNumssChanged}
+              dateDeces={dateDeces}
+              onDateDecesChanged={onDateDecesChanged}
+              maritalStatus={maritalStatus}
+              onMaritalStatusChanged={onMaritalStatusChanged}
+            />
         }
+        </div>
       </div>
-      <div>
-      {
-        isSavingIdentite
-        ?
-          <SavingIndicator />
-        :
-          <Form
-            isEditingIdentite={isEditingIdentite}
-            civilite={civilite}
-            onCiviliteChange={onCiviliteChange}
-            nom={nom}
-            onNomChanged={onNomChanged}
-            nomJeuneFille={nomJeuneFille}
-            onNomJeuneFilleChanged={onNomJeuneFilleChanged}
-            prenom={prenom}
-            onPrenomChanged={onPrenomChanged}
-            dateNaissance={dateNaissance}
-            onDateNaissanceChanged={onDateNaissanceChanged}
-            numss={numss}
-            onNumssChanged={onNumssChanged}
-            dateDeces={dateDeces}
-            onDateDecesChanged={onDateDecesChanged}
-            maritalStatus={maritalStatus}
-            onMaritalStatusChanged={onMaritalStatusChanged}
-          />
-      }
-      </div>
-    </div>
+    </Collapse>
   );
 };
 
@@ -75,6 +82,8 @@ Identite.propTypes = {
   isEditingIdentite: PropTypes.bool.isRequired,
   onEditClick: PropTypes.func.isRequired,
   onCancelEditClick: PropTypes.func.isRequired,
+
+  isCollapsedIdentite: PropTypes.bool.isRequired,
 
   civilite: PropTypes.string.isRequired,
   onCiviliteChange: PropTypes.func.isRequired,
