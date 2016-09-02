@@ -61,7 +61,14 @@ const mapDispatchToProps = (dispatch) => {
         // get gestBenef:
         getGestBenefIfNeeded: actions.getGestBenefIfNeeded,
         // post
-        postGestBenefIdentiteIfNeeded: actions.postGestBenefIdentiteIfNeeded
+        postGestBenefIdentiteIfNeeded: actions.postGestBenefIdentiteIfNeeded,
+        // UI: Identite
+        setIsEditingIdentite: actions.setIsEditingIdentite,
+        unsetIsEditingIdentite: actions.unsetIsEditingIdentite,
+        setIsCollapsedIdentite: actions.setIsCollapsedIdentite,
+        unsetIsCollapsedIdentite: actions.unsetIsCollapsedIdentite
+
+
       },
       dispatch)
   };

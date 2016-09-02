@@ -6,6 +6,7 @@ import SavingIndicator from '../savingIndicator/SavingIndicator';
 const Identite = ({
   isSavingIdentite,
   isEditingIdentite,
+  onEditClick,
   onCiviliteChange
 }) => {
   return (
@@ -16,7 +17,7 @@ const Identite = ({
           !isSavingIdentite &&
           <EditValidIcons
             isEditing={isEditingIdentite}
-            setEdit={(e)=>console.log('TODO: Identite set Edit')}
+            setEdit={onEditClick}
             saveEdit={(e)=>console.log('TODO: Identite save Edit')}
             cancelEditing={(e)=>console.log('TODO: Identite cancel Edit')}
           />
@@ -39,8 +40,9 @@ const Identite = ({
 };
 
 Identite.propTypes = {
-  isSavingIdentite: PropTypes.func,
-  isEditingIdentite: PropTypes.bool,
+  isSavingIdentite: PropTypes.bool.isRequired,
+  isEditingIdentite: PropTypes.bool.isRequired,
+  onEditClick: PropTypes.func.isRequired,
   onCiviliteChange: PropTypes.func.isRequired
 };
 

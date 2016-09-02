@@ -12,12 +12,14 @@ class GestBeneficiaires extends Component {
     };
 
     this.handlesOnCiviliteChange = this.handlesOnCiviliteChange.bind(this);
+    this.handlesOnEditIdentiteClick = this.handlesOnEditIdentiteClick.bind(this);
   }
 
   componentDidMount() {
     const  { params: { benefId } } =  this.props;
     const  { actions: { enterGestBeneficiaires, getGestBenefIfNeeded } } =  this.props;
     enterGestBeneficiaires();
+
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
       getGestBenefIfNeeded(idBenef);
@@ -31,7 +33,8 @@ class GestBeneficiaires extends Component {
 
   render() {
     const { animated } = this.state;
-    const { isEditingIdentite, isSavingIdentite } = this.props;
+    const { isFetchingIdentite, lastFetchTimeIdentite, isEditingIdentite, isSavingIdentite, isCollapsedIdentite } = this.props;
+    const { civilite, nom, prenom, nomJeuneFille, dateNaissance, numss, dateDeces, maritalStatus } = this.props;
 
     return(
       <section
@@ -54,9 +57,38 @@ class GestBeneficiaires extends Component {
               <div className="panel-body">
 
                 <Identite
+                  isFetchingIdentite={isFetchingIdentite}
+                  lastFetchTimeIdentite={lastFetchTimeIdentite}
+
                   isSavingIdentite={isSavingIdentite}
+
+                  onEditClick={this.handlesOnEditIdentiteClick}
                   isEditingIdentite={isEditingIdentite}
+                  isCollapsedIdentite={isCollapsedIdentite}
+
+                  civilite={civilite}
                   onCiviliteChange={this.handlesOnCiviliteChange}
+
+                  nom={nom}
+                  onNomChanged={()=>console.log('TODO: Identite onNomChanged')}
+
+                  nomJeuneFille={nomJeuneFille}
+                  onNomJeuneFilleChanged={()=>console.log('TODO: Identite onNomJeuneFilleChanged')}
+
+                  prenom={prenom}
+                  onPrenomChanged={()=>console.log('TODO: Identite onPrenomChanged')}
+
+                  dateNaissance={dateNaissance}
+                  onDateNaissanceChanged={()=>console.log('TODO: Identite onDateNaissanceChanged')}
+
+                  numss={numss}
+                  onNumssChanged={()=>console.log('TODO: Identite onNumssChanged')}
+
+                  dateDeces={dateDeces}
+                  onDateDecesChanged={()=>console.log('TODO: Identite onDateDecesChanged')}
+
+                  maritalStatus={maritalStatus}
+                  onMaritalStatusChanged={()=>console.log('TODO: Identite onMaritalStatusChanged')}
                 />
 
               </div>
@@ -71,6 +103,15 @@ class GestBeneficiaires extends Component {
   handlesOnCiviliteChange(civilite) {
     console.log(`selected civilite is ${civilite}`);
     // TODO: to handle redux store
+  }
+
+  handlesOnEditIdentiteClick() {
+    const { isEditingIdentite, actions: { setIsEditingIdentite, unsetIsEditingIdentite } } = this.props;
+    if (isEditingIdentite) {
+      unsetIsEditingIdentite();
+    } else {
+      setIsEditingIdentite();
+    }
   }
 }
 
@@ -137,7 +178,12 @@ GestBeneficiaires.propTypes = {
 
     getGestBenefIfNeeded: PropTypes.func,
 
-    postGestBenefIdentiteIfNeeded: PropTypes.func
+    postGestBenefIdentiteIfNeeded: PropTypes.func,
+    // UI: Identite
+    setIsEditingIdentite: PropTypes.func,
+    unsetIsEditingIdentite: PropTypes.func,
+    setIsCollapsedIdentite: PropTypes.func,
+    unsetIsCollapsedIdentite: PropTypes.func
   })
 };
 

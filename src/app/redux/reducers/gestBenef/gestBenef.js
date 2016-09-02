@@ -1,8 +1,9 @@
 import {
   REQUEST_GET_GEST_BENEF,
   RECEIVED_GET_GEST_BENEF,
-  ERROR_GET_GEST_BENEF,
-
+  ERROR_GET_GEST_BENEF
+}                                     from '../../actions/gestBenef/gestBenef';
+import {
   REQUEST_GET_GEST_BENEF_IDENTITE,
   RECEIVED_GET_GEST_BENEF_IDENTITE,
   ERROR_GET_GEST_BENEF_IDENTITE,
@@ -19,7 +20,7 @@ import {
   REQUEST_POST_GEST_BENEF_IDENTITE,
   RECEIVED_POST_GEST_BENEF_IDENTITE,
   ERROR_POST_GEST_BENEF_IDENTITE
-}                             from '../../actions/gestBenef/gestBenef';
+}                                     from '../../actions/gestBenef/gestBenefIdentite/gestBenefIdentite';
 
 const initialState = {
   actionTime: '',

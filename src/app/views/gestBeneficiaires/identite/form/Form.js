@@ -21,7 +21,11 @@ const Form = ({isEditingIdentite, onCiviliteChange}) => {
                 onChange={onCiviliteChange}
               />
             :
-              <FormLabel />
+              <FormLabel 
+                id="inputCivilite"
+                label={'Civilité'}
+                value={''}
+              />
           }
         </div>
         <div className="col-md-4">
