@@ -52,7 +52,7 @@ const EditValidIcons = ({
             ({ deg }) => {
               return (
                 <i
-                  className="fa fa-caret-up text-blanc"
+                  className="fa fa-caret-down text-blanc"
                   style={{
                     transform: `rotate(${deg}deg)`
                   }}
