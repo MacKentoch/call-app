@@ -126,7 +126,11 @@ const Form = ({
               <DateInput
                 id="inputDateNaissance"
                 label={'Date de naissance'}
-                value={dateNaissance}
+                value={
+                  moment(dateNaissance, formatDate).isValid
+                    ? moment(dateNaissance, formatDate)
+                    : moment('01/01/1900', formatDate)
+                  }
                 onChange={onDateNaissanceChanged}
               />
             :

@@ -29,7 +29,7 @@ const DateInput = ({label, id, value, onChange}) => {
 DateInput.propTypes = {
   label:    PropTypes.string.isRequired,
   id:       PropTypes.string.isRequired,
-  value:    PropTypes.string.isRequired,
+  value:    PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired
 };
 
