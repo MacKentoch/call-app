@@ -1,12 +1,17 @@
 import React, { PropTypes } from 'react';
-import { EditValidIcons }   from '../../../components';
+import {
+  EditValidIcons,
+  CollapseBtn
+}                           from '../../../components';
 import Form                 from './form/Form';
 import SavingIndicator      from '../savingIndicator/SavingIndicator';
 import Collapse             from 'react-collapse';
 
 
 const Identite = ({
+  onSaveFormIdentite,
   isCollapsedIdentite,
+  onCollapseClick,
   isSavingIdentite,
   isEditingIdentite,
   onEditClick,
@@ -37,12 +42,18 @@ const Identite = ({
           Identité
           {
             !isSavingIdentite &&
-            <EditValidIcons
-              isEditing={isEditingIdentite}
-              setEdit={onEditClick}
-              cancelEditing={onCancelEditClick}
-              saveEdit={(e)=>console.log('TODO: Identite save Edit')}
-            />
+            <div>
+              <EditValidIcons
+                isEditing={isEditingIdentite}
+                setEdit={onEditClick}
+                cancelEditing={onCancelEditClick}
+                saveEdit={onSaveFormIdentite}
+              />
+              <CollapseBtn
+                onCollapseClick={onCollapseClick}
+              />
+            </div>
+
           }
         </div>
         <div>
@@ -78,12 +89,15 @@ const Identite = ({
 };
 
 Identite.propTypes = {
+  onSaveFormIdentite: PropTypes.func.isRequired,
   isSavingIdentite: PropTypes.bool.isRequired,
+
   isEditingIdentite: PropTypes.bool.isRequired,
   onEditClick: PropTypes.func.isRequired,
   onCancelEditClick: PropTypes.func.isRequired,
 
   isCollapsedIdentite: PropTypes.bool.isRequired,
+  onCollapseClick: PropTypes.func.isRequired,
 
   civilite: PropTypes.string.isRequired,
   onCiviliteChange: PropTypes.func.isRequired,

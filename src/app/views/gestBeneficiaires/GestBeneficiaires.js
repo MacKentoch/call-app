@@ -20,6 +20,8 @@ class GestBeneficiaires extends Component {
     this.handlesOnDateDecesChanged = this.handlesOnDateDecesChanged.bind(this);
     this.handlesOnMaritalStatusChanged = this.handlesOnMaritalStatusChanged.bind(this);
 
+    this.handlesOnCollapseClick = this.handlesOnCollapseClick.bind(this);
+
     this.handlesOnEditIdentiteClick = this.handlesOnEditIdentiteClick.bind(this);
     this.handlesOnCancelEditIdentiteClick = this.handlesOnCancelEditIdentiteClick.bind(this);
   }
@@ -72,11 +74,14 @@ class GestBeneficiaires extends Component {
                   lastFetchTimeIdentite={lastFetchTimeIdentite}
 
                   isSavingIdentite={isSavingIdentite}
+                  onSaveFormIdentite={()=>console.log('TODO: onSaveFormIdentite')}
 
                   onEditClick={this.handlesOnEditIdentiteClick}
                   onCancelEditClick={this.handlesOnCancelEditIdentiteClick}
                   isEditingIdentite={isEditingIdentite}
+
                   isCollapsedIdentite={isCollapsedIdentite}
+                  onCollapseClick={this.handlesOnCollapseClick}
 
                   civilite={civilite}
                   onCiviliteChange={this.handlesOnCiviliteChanged}
@@ -150,6 +155,15 @@ class GestBeneficiaires extends Component {
   handlesOnMaritalStatusChanged(maritalStatus) {
     const { actions: { updateMaritalStatusIdentite } } = this.props;
     updateMaritalStatusIdentite(maritalStatus);
+  }
+
+  handlesOnCollapseClick() {
+    const { isCollapsedIdentite, actions: { setIsCollapsedIdentite, unsetIsCollapsedIdentite } } = this.props;
+    if (isCollapsedIdentite) {
+      unsetIsCollapsedIdentite();
+    } else {
+      setIsCollapsedIdentite();
+    }
   }
 
   handlesOnEditIdentiteClick() {
