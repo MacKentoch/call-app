@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import {
-  EditValidIcons,
-  CollapseBtn
+  EditValidIcons
 }                           from '../../../components';
 import Form                 from './form/Form';
 import SavingIndicator      from '../savingIndicator/SavingIndicator';
@@ -34,57 +33,54 @@ const Identite = ({
   onMaritalStatusChanged
 }) => {
   return (
-    <Collapse
-      isOpened={!isCollapsedIdentite}
-      keepCollapsedContent={false}>
       <div style={{height: '290px'}}>
         <div className="page-header">
           Identité
           {
             !isSavingIdentite &&
-            <div>
-              <EditValidIcons
-                isEditing={isEditingIdentite}
-                setEdit={onEditClick}
-                cancelEditing={onCancelEditClick}
-                saveEdit={onSaveFormIdentite}
-              />
-              <CollapseBtn
-                onCollapseClick={onCollapseClick}
-              />
-            </div>
-
+            <EditValidIcons
+              isEditing={isEditingIdentite}
+              setEdit={onEditClick}
+              cancelEditing={onCancelEditClick}
+              saveEdit={onSaveFormIdentite}
+              isCollapsed={isCollapsedIdentite}
+              toggleCollapse={onCollapseClick}
+            />
           }
         </div>
-        <div>
-        {
-          isSavingIdentite
-          ?
-            <SavingIndicator />
-          :
-            <Form
-              isEditingIdentite={isEditingIdentite}
-              civilite={civilite}
-              onCiviliteChange={onCiviliteChange}
-              nom={nom}
-              onNomChanged={onNomChanged}
-              nomJeuneFille={nomJeuneFille}
-              onNomJeuneFilleChanged={onNomJeuneFilleChanged}
-              prenom={prenom}
-              onPrenomChanged={onPrenomChanged}
-              dateNaissance={dateNaissance}
-              onDateNaissanceChanged={onDateNaissanceChanged}
-              numss={numss}
-              onNumssChanged={onNumssChanged}
-              dateDeces={dateDeces}
-              onDateDecesChanged={onDateDecesChanged}
-              maritalStatus={maritalStatus}
-              onMaritalStatusChanged={onMaritalStatusChanged}
-            />
-        }
-        </div>
+        <Collapse
+          isOpened={!isCollapsedIdentite}
+          keepCollapsedContent={false}>
+          <div>
+          {
+            isSavingIdentite
+            ?
+              <SavingIndicator />
+            :
+              <Form
+                isEditingIdentite={isEditingIdentite}
+                civilite={civilite}
+                onCiviliteChange={onCiviliteChange}
+                nom={nom}
+                onNomChanged={onNomChanged}
+                nomJeuneFille={nomJeuneFille}
+                onNomJeuneFilleChanged={onNomJeuneFilleChanged}
+                prenom={prenom}
+                onPrenomChanged={onPrenomChanged}
+                dateNaissance={dateNaissance}
+                onDateNaissanceChanged={onDateNaissanceChanged}
+                numss={numss}
+                onNumssChanged={onNumssChanged}
+                dateDeces={dateDeces}
+                onDateDecesChanged={onDateDecesChanged}
+                maritalStatus={maritalStatus}
+                onMaritalStatusChanged={onMaritalStatusChanged}
+              />
+          }
+          </div>
+        </Collapse>
       </div>
-    </Collapse>
+
   );
 };
 

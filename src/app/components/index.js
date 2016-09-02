@@ -22,7 +22,6 @@ import FormLabel from './formLabel/FormLabel';
 import EditValidIcons from './editValidIcons/EditValidIcons';
 import TextInput from './textInput/TextInput';
 import DateInput from './dateInput/DateInput';
-import CollapseBtn from './collapseBtn/CollapseBtn';
 
 import {
   FichesTraitee,
@@ -55,7 +54,6 @@ export {
   TextInput,
   DateInput,
   EditValidIcons,
-  CollapseBtn,
 
   // mailbox
   MailboxRepertoires,

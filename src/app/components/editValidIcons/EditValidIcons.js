@@ -42,6 +42,7 @@ const EditValidIcons = ({
           </i>
         </button>
       }
+      &nbsp;
       <button
         className="btn orange_button btn-sm"
         onClick={toggleCollapse}>
