@@ -18,10 +18,12 @@ const seachBenefDefaultFilter = searchInputBenefFilters[0].id;
 
 const SearchCriteria = [...appConfig.searchCriterias];
 
+const gestBenefUrl = `${appConfig.views.beneficaires.maj.path}`;
+
 
 class RechercheBenefModal extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
       // show/hide results or search form:
@@ -400,14 +402,22 @@ class RechercheBenefModal extends Component {
     console.log('handles benef selection, id: ', id);
     if (id > 0) {
       // route to benef view
-
+      const { router } = this.context;
+      router.push({pathname: `${gestBenefUrl}/${id}`});
       // close popup
       this.handlesOnClose();
     }
   }
 }
 
+RechercheBenefModal.contextTypes = {
+  // for manual routing
+  router: React.PropTypes.object.isRequired
+};
+
 RechercheBenefModal.propTypes = {
+  params: PropTypes.object, // react router
+
   showModal: PropTypes.bool.isRequired,
   title: PropTypes.string,
   onClose: PropTypes.func,
