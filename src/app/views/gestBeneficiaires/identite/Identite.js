@@ -7,6 +7,7 @@ const Identite = ({
   isSavingIdentite,
   isEditingIdentite,
   onEditClick,
+  onCancelEditClick,
   onCiviliteChange
 }) => {
   return (
@@ -18,8 +19,8 @@ const Identite = ({
           <EditValidIcons
             isEditing={isEditingIdentite}
             setEdit={onEditClick}
+            cancelEditing={onCancelEditClick}
             saveEdit={(e)=>console.log('TODO: Identite save Edit')}
-            cancelEditing={(e)=>console.log('TODO: Identite cancel Edit')}
           />
         }
       </div>
@@ -43,6 +44,7 @@ Identite.propTypes = {
   isSavingIdentite: PropTypes.bool.isRequired,
   isEditingIdentite: PropTypes.bool.isRequired,
   onEditClick: PropTypes.func.isRequired,
+  onCancelEditClick: PropTypes.func.isRequired,
   onCiviliteChange: PropTypes.func.isRequired
 };
 

@@ -13,12 +13,15 @@ class GestBeneficiaires extends Component {
 
     this.handlesOnCiviliteChange = this.handlesOnCiviliteChange.bind(this);
     this.handlesOnEditIdentiteClick = this.handlesOnEditIdentiteClick.bind(this);
+    this.handlesOnCancelEditIdentiteClick = this.handlesOnCancelEditIdentiteClick.bind(this);
   }
 
   componentDidMount() {
     const  { params: { benefId } } =  this.props;
     const  { actions: { enterGestBeneficiaires, getGestBenefIfNeeded } } =  this.props;
     enterGestBeneficiaires();
+
+    this.resetIdentiteEditingAndCollpasing();
 
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
@@ -63,6 +66,7 @@ class GestBeneficiaires extends Component {
                   isSavingIdentite={isSavingIdentite}
 
                   onEditClick={this.handlesOnEditIdentiteClick}
+                  onCancelEditClick={this.handlesOnCancelEditIdentiteClick}
                   isEditingIdentite={isEditingIdentite}
                   isCollapsedIdentite={isCollapsedIdentite}
 
@@ -106,12 +110,20 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnEditIdentiteClick() {
-    const { isEditingIdentite, actions: { setIsEditingIdentite, unsetIsEditingIdentite } } = this.props;
-    if (isEditingIdentite) {
-      unsetIsEditingIdentite();
-    } else {
-      setIsEditingIdentite();
-    }
+    const { actions: { setIsEditingIdentite } } = this.props;
+    setIsEditingIdentite();
+  }
+
+  handlesOnCancelEditIdentiteClick() {
+    const { actions: { unsetIsEditingIdentite } } = this.props;
+    unsetIsEditingIdentite();
+  }
+
+  // to reset editing state and collapsed state
+  resetIdentiteEditingAndCollpasing() {
+    const { actions: { unsetIsEditingIdentite, unsetIsCollapsedIdentite } } = this.props;
+    unsetIsEditingIdentite();
+    unsetIsCollapsedIdentite();
   }
 }
 
