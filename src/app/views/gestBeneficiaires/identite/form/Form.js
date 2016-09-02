@@ -142,6 +142,26 @@ const Form = ({
           }
         </div>
 
+        {/* numss */}
+        <div className="col-md-6">
+          {
+            isEditingIdentite
+            ?
+              <TextInput
+                id="inputNumss"
+                label={'Numéro sécurité sociale'}
+                value={numss}
+                onChange={onNumssChanged}
+              />
+            :
+              <FormLabel
+                id="inputNumss"
+                label={'Numéro sécurité sociale'}
+                value={numss}
+              />
+          }
+        </div>
+
       </div>
 
 
