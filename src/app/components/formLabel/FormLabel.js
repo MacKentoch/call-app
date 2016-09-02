@@ -8,9 +8,16 @@ const FormLabel = ({id, label, value}) => {
         htmlFor={'formLabel' + id}>
         {label}
       </label>
-      <div>
+      <div style={{
+        borderBottomWidth: '1px',
+        borderBottomColor: '#F1F1F1',
+        borderBottomStyle: 'solid'
+      }}>
         <label className="formLabelValue">
-          {value}
+          {value
+            ? value
+            : <span style={{color: '#FFF'}}>vide</span>
+          }
         </label>
       </div>
     </div>
