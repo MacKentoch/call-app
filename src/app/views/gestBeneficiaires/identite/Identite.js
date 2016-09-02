@@ -26,7 +26,7 @@ const Identite = ({
   onMaritalStatusChanged
 }) => {
   return (
-    <div>
+    <div style={{height: '290px'}}>
       <div className="page-header">
         Identité
         {
