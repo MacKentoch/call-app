@@ -24,6 +24,8 @@ import './vendors/js/jquery-ui-1.10.3.min.js';
 import './vendors/js/plugins/fullcalendar/fullcalendar.js';
 // rc-switch
 import 'rc-switch/assets/index.css';
+// datepicker
+import 'react-datepicker/dist/react-datepicker.css';
 import './style/index.style.scss';
 
 const ELEMENT_TO_BOOTSTRAP  = 'root';
