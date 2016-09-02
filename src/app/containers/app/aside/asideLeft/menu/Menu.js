@@ -10,7 +10,7 @@ import MenuLinks      from './menuLinks/MenuLinks';
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = {isCollapsed: false};
+    this.state = { isCollapsed: false };
     this.handlesCollapseClick = this.handlesCollapseClick.bind(this);
   }
 
