@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import {
   CiviliteDropDown,
-  FormLabel
+  FormLabel,
+  TextInput
 }                           from '../../../../components';
 
 
@@ -24,12 +25,13 @@ const Form = ({
   maritalStatus,
   onMaritalStatusChanged
 }) => {
-  console.log('isEditingIdentite: ', isEditingIdentite);
   return (
     <form role="form">
 
       <div className="row">
-        <div className="col-md-4">
+
+        {/* civilite */}
+        <div className="col-md-2">
           {
             isEditingIdentite
             ?
@@ -43,38 +45,71 @@ const Form = ({
               <FormLabel
                 id="inputCivilite"
                 label={'Civilité'}
-                value={civilite}
+                value={civilite || ' --- '}
               />
           }
         </div>
-        <div className="col-md-4">
-          <div className="form-group">
-            <label
-              htmlFor="exampleInputPassword1">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Password"
-            />
-          </div>
+
+        {/* nom */}
+        <div className="col-md-3">
+          {
+            isEditingIdentite
+            ?
+              <TextInput
+                id="inputNom"
+                label={'Nom'}
+                value={nom}
+                onChange={onNomChanged}
+              />
+            :
+              <FormLabel
+                id="inputNom"
+                label={'Nom'}
+                value={nom}
+              />
+          }
         </div>
-        <div className="col-md-4">
-          <div className="form-group">
-            <label
-              htmlFor="exampleInputOther">
-              Other
-            </label>
-            <input
-              type="other"
-              className="form-control"
-              id="exampleInputOther"
-              placeholder="other"
-            />
-          </div>
+
+        {/* nomDe Jeunefille */}
+        <div className="col-md-3">
+          {
+            isEditingIdentite
+            ?
+              <TextInput
+                id="inputNomDeJeuneFille"
+                label={'Nom de jeune fille'}
+                value={nomJeuneFille}
+                onChange={onNomJeuneFilleChanged}
+              />
+            :
+              <FormLabel
+                id="inputNomDeJeuneFille"
+                label={'Nom de jeune fille'}
+                value={nomJeuneFille}
+              />
+          }
         </div>
+
+        {/* prenom */}
+        <div className="col-md-3">
+          {
+            isEditingIdentite
+            ?
+              <TextInput
+                id="inputPrenom"
+                label={'Prénom'}
+                value={prenom}
+                onChange={onPrenomChanged}
+              />
+            :
+              <FormLabel
+                id="inputPrenom"
+                label={'Prénom'}
+                value={prenom}
+              />
+          }
+        </div>
+
       </div>
 
     </form>
