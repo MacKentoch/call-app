@@ -7,7 +7,9 @@ import {
   unsetIsEditingIdentite,
 
   setIsCollapsedIdentite,
-  unsetIsCollapsedIdentite
+  unsetIsCollapsedIdentite,
+  
+  updateCiviliteIdentite
 }                               from './gestBenefIdentite/gestBenefIdentite';
 
 export {
@@ -19,5 +21,6 @@ export {
   setIsEditingIdentite,
   unsetIsEditingIdentite,
   setIsCollapsedIdentite,
-  unsetIsCollapsedIdentite
+  unsetIsCollapsedIdentite,
+  updateCiviliteIdentite
 };

@@ -66,8 +66,8 @@ const mapDispatchToProps = (dispatch) => {
         setIsEditingIdentite: actions.setIsEditingIdentite,
         unsetIsEditingIdentite: actions.unsetIsEditingIdentite,
         setIsCollapsedIdentite: actions.setIsCollapsedIdentite,
-        unsetIsCollapsedIdentite: actions.unsetIsCollapsedIdentite
-
+        unsetIsCollapsedIdentite: actions.unsetIsCollapsedIdentite,
+        updateCiviliteIdentite: actions.updateCiviliteIdentite
 
       },
       dispatch)

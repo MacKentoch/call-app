@@ -19,7 +19,9 @@ import {
 
   REQUEST_POST_GEST_BENEF_IDENTITE,
   RECEIVED_POST_GEST_BENEF_IDENTITE,
-  ERROR_POST_GEST_BENEF_IDENTITE
+  ERROR_POST_GEST_BENEF_IDENTITE,
+
+  UPDATE_CIVILITE_IDENTITE
 }                                     from '../../actions/gestBenef/gestBenefIdentite/gestBenefIdentite';
 
 const initialState = {
@@ -279,6 +281,13 @@ const gestBenef = (state = initialState, action) => {
       isFetchingIdentite: action.isFetchingIdentite,
       isSavingIdentite: action.isSavingIdentite,
       error: action.error,
+      actionTime: action.time
+    };
+
+  case UPDATE_CIVILITE_IDENTITE:
+    return {
+      ...state,
+      civilite: action.civilite,
       actionTime: action.time
     };
 

@@ -109,7 +109,8 @@ import {
   setIsEditingIdentite,
   unsetIsEditingIdentite,
   setIsCollapsedIdentite,
-  unsetIsCollapsedIdentite
+  unsetIsCollapsedIdentite,
+  updateCiviliteIdentite
 }                                 from './gestBenef';
 
 
@@ -195,5 +196,6 @@ export {
   setIsEditingIdentite,
   unsetIsEditingIdentite,
   setIsCollapsedIdentite,
-  unsetIsCollapsedIdentite
+  unsetIsCollapsedIdentite,
+  updateCiviliteIdentite
 };

@@ -105,8 +105,8 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnCiviliteChange(civilite) {
-    console.log(`selected civilite is ${civilite}`);
-    // TODO: to handle redux store
+    const { actions: { updateCiviliteIdentite } } = this.props;
+    updateCiviliteIdentite(civilite);
   }
 
   handlesOnEditIdentiteClick() {
@@ -195,7 +195,8 @@ GestBeneficiaires.propTypes = {
     setIsEditingIdentite: PropTypes.func,
     unsetIsEditingIdentite: PropTypes.func,
     setIsCollapsedIdentite: PropTypes.func,
-    unsetIsCollapsedIdentite: PropTypes.func
+    unsetIsCollapsedIdentite: PropTypes.func,
+    updateCiviliteIdentite: PropTypes.func
   })
 };
 

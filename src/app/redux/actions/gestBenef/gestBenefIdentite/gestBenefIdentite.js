@@ -28,6 +28,9 @@ export const UNSET_IS_SAVING_IDENTITE          = 'UNSET_IS_SAVING_IDENTITE';
 export const SET_IS_COLLAPSED_IDENTITE         = 'SET_IS_COLLAPSED_IDENTITE';
 export const UNSET_IS_COLLAPSED_IDENTITE       = 'UNSET_IS_COLLAPSED_IDENTITE';
 
+export const UPDATE_CIVILITE_IDENTITE           = 'UPDATE_CIVILITE_IDENTITE';
+
+
 //  -----------------------------------------------------------------
 //    GET benef identite
 //  -----------------------------------------------------------------
@@ -156,6 +159,19 @@ export const unsetIsSavingIdentite = (time = moment().format(formatDate)) => {
   };
 };
 
+//  -----------------------------------------------------------------
+//    update civilite value
+//  -----------------------------------------------------------------
+export const updateCiviliteIdentite = (civilite = '', time = moment().format(formatDate)) => {
+  if (civilite.trim().length > 0) {
+    return {
+      type: UPDATE_CIVILITE_IDENTITE,
+      civilite,
+      time
+    };
+  }
+  return false;
+};
 
 //  -----------------------------------------------------------------
 //    POST benef identite
