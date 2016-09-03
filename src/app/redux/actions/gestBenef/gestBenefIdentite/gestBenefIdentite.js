@@ -11,25 +11,31 @@ import {
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
-export const REQUEST_GET_GEST_BENEF_IDENTITE   = 'REQUEST_GET_GEST_BENEF_IDENTITE';
-export const RECEIVED_GET_GEST_BENEF_IDENTITE  = 'RECEIVED_GET_GEST_BENEF_IDENTITE';
-export const ERROR_GET_GEST_BENEF_IDENTITE     = 'ERROR_GET_GEST_BENEF_IDENTITE';
+export const REQUEST_GET_GEST_BENEF_IDENTITE    = 'REQUEST_GET_GEST_BENEF_IDENTITE';
+export const RECEIVED_GET_GEST_BENEF_IDENTITE   = 'RECEIVED_GET_GEST_BENEF_IDENTITE';
+export const ERROR_GET_GEST_BENEF_IDENTITE      = 'ERROR_GET_GEST_BENEF_IDENTITE';
 
-export const REQUEST_POST_GEST_BENEF_IDENTITE  = 'REQUEST_POST_GEST_BENEF_IDENTITE';
-export const RECEIVED_POST_GEST_BENEF_IDENTITE = 'RECEIVED_POST_GEST_BENEF_IDENTITE';
-export const ERROR_POST_GEST_BENEF_IDENTITE    = 'ERROR_POST_GEST_BENEF_IDENTITE';
+export const REQUEST_POST_GEST_BENEF_IDENTITE   = 'REQUEST_POST_GEST_BENEF_IDENTITE';
+export const RECEIVED_POST_GEST_BENEF_IDENTITE  = 'RECEIVED_POST_GEST_BENEF_IDENTITE';
+export const ERROR_POST_GEST_BENEF_IDENTITE     = 'ERROR_POST_GEST_BENEF_IDENTITE';
 
-export const SET_IS_EDITING_IDENTITE           = 'SET_IS_EDITING_IDENTITE';
-export const UNSET_IS_EDITING_IDENTITE         = 'UNSET_IS_EDITING_IDENTITE';
+export const SET_IS_EDITING_IDENTITE            = 'SET_IS_EDITING_IDENTITE';
+export const UNSET_IS_EDITING_IDENTITE          = 'UNSET_IS_EDITING_IDENTITE';
 
-export const SET_IS_SAVING_IDENTITE            = 'SET_IS_SAVING_IDENTITE';
-export const UNSET_IS_SAVING_IDENTITE          = 'UNSET_IS_SAVING_IDENTITE';
+export const SET_IS_SAVING_IDENTITE             = 'SET_IS_SAVING_IDENTITE';
+export const UNSET_IS_SAVING_IDENTITE           = 'UNSET_IS_SAVING_IDENTITE';
 
-export const SET_IS_COLLAPSED_IDENTITE         = 'SET_IS_COLLAPSED_IDENTITE';
-export const UNSET_IS_COLLAPSED_IDENTITE       = 'UNSET_IS_COLLAPSED_IDENTITE';
+export const SET_IS_COLLAPSED_IDENTITE          = 'SET_IS_COLLAPSED_IDENTITE';
+export const UNSET_IS_COLLAPSED_IDENTITE        = 'UNSET_IS_COLLAPSED_IDENTITE';
 
 export const UPDATE_CIVILITE_IDENTITE           = 'UPDATE_CIVILITE_IDENTITE';
-
+export const UPDATE_NOM_IDENTITE                = 'UPDATE_NOM_IDENTITE';
+export const UPDATE_NOM_DE_JEUNE_FILLE_IDENTITE = 'UPDATE_NOM_DE_JEUNE_FILLE_IDENTITE';
+export const UPDATE_PRENOM_IDENTITE             = 'UPDATE_PRENOM_IDENTITE';
+export const UPDATE_DATE_DE_NAISSANCE_IDENTITE  = 'UPDATE_DATE_DE_NAISSANCE_IDENTITE';
+export const UPDATE_NUMSS_IDENTITE              = 'UPDATE_NUMSS_IDENTITE';
+export const UPDATE_DATE_DECES_IDENTITE         = 'UPDATE_DATE_DECES_IDENTITE';
+export const UPDATE_MARITAL_STATUS_IDENTITE     = 'UPDATE_MARITAL_STATUS_IDENTITE';
 
 //  -----------------------------------------------------------------
 //    GET benef identite
@@ -173,6 +179,99 @@ export const updateCiviliteIdentite = (civilite = '', time = moment().format(for
   return false;
 };
 
+//  -----------------------------------------------------------------
+//    update nom value
+//  -----------------------------------------------------------------
+export const updateNomIdentite = (nom = '', time = moment().format(formatDate)) => {
+  if (nom.trim().length > 0) {
+    return {
+      type: UPDATE_NOM_IDENTITE,
+      nom,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update nom de jeune fille value
+//  -----------------------------------------------------------------
+export const updateNomDeJeuneFilleIdentite = (nomDeJeuneFille = '', time = moment().format(formatDate)) => {
+  if (nomDeJeuneFille.trim().length > 0) {
+    return {
+      type: UPDATE_NOM_DE_JEUNE_FILLE_IDENTITE,
+      nomDeJeuneFille,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update prénom value
+//  -----------------------------------------------------------------
+export const updatePrenomIdentite = (prenom = '', time = moment().format(formatDate)) => {
+  if (prenom.trim().length > 0) {
+    return {
+      type: UPDATE_PRENOM_IDENTITE,
+      prenom,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update dateNaissance value
+//  -----------------------------------------------------------------
+export const updateDateNaissanceIdentite = (dateNaissance = '', time = moment().format(formatDate)) => {
+  if (dateNaissance.trim().length > 0) {
+    const dateNaissanceStr = moment(dateNaissance, formatDate).format(formatDate);
+    return {
+      type: UPDATE_DATE_DE_NAISSANCE_IDENTITE,
+      dateNaissance: dateNaissanceStr,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update numss value
+//  -----------------------------------------------------------------
+export const updateNumssIdentite = (numss = '', time = moment().format(formatDate)) => {
+  if (numss.trim().length > 0) {
+    return {
+      type: UPDATE_NUMSS_IDENTITE,
+      numss,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update dateDeces value
+//  -----------------------------------------------------------------
+export const updateDateDecesIdentite = (dateDeces = '', time = moment().format(formatDate)) => {
+  if (dateDeces.trim().length > 0) {
+    const dateDecesStr = moment(dateDeces, formatDate).format(formatDate);
+    return {
+      type: UPDATE_DATE_DECES_IDENTITE,
+      dateDeces: dateDecesStr,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update numss value
+//  -----------------------------------------------------------------
+export const updateMaritalStatusIdentite = (maritalStatus = '', time = moment().format(formatDate)) => {
+  if (maritalStatus.trim().length > 0) {
+    return {
+      type: UPDATE_MARITAL_STATUS_IDENTITE,
+      maritalStatus,
+      time
+    };
+  }
+  return false;
+};
 //  -----------------------------------------------------------------
 //    POST benef identite
 //  -----------------------------------------------------------------
