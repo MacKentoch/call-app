@@ -253,7 +253,14 @@ GestBeneficiaires.propTypes = {
     unsetIsEditingIdentite: PropTypes.func,
     setIsCollapsedIdentite: PropTypes.func,
     unsetIsCollapsedIdentite: PropTypes.func,
-    updateCiviliteIdentite: PropTypes.func
+    updateCiviliteIdentite: PropTypes.func,
+    updateNomIdentite: PropTypes.func,
+    updateNomDeJeuneFilleIdentite: PropTypes.func,
+    updatePrenomIdentite: PropTypes.func,
+    updateDateNaissanceIdentite: PropTypes.func,
+    updateNumssIdentite: PropTypes.func,
+    updateDateDecesIdentite: PropTypes.func,
+    updateMaritalStatusIdentite: PropTypes.func
   })
 };
 

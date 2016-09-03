@@ -67,8 +67,14 @@ const mapDispatchToProps = (dispatch) => {
         unsetIsEditingIdentite: actions.unsetIsEditingIdentite,
         setIsCollapsedIdentite: actions.setIsCollapsedIdentite,
         unsetIsCollapsedIdentite: actions.unsetIsCollapsedIdentite,
-        updateCiviliteIdentite: actions.updateCiviliteIdentite
-
+        updateCiviliteIdentite: actions.updateCiviliteIdentite,
+        updateNomIdentite: actions.updateNomIdentite,
+        updateNomDeJeuneFilleIdentite: actions.updateNomDeJeuneFilleIdentite,
+        updatePrenomIdentite: actions.updatePrenomIdentite,
+        updateDateNaissanceIdentite: actions.updateDateNaissanceIdentite,
+        updateNumssIdentite: actions.updateNumssIdentite,
+        updateDateDecesIdentite: actions.updateDateDecesIdentite,
+        updateMaritalStatusIdentite: actions.updateMaritalStatusIdentite
       },
       dispatch)
   };
