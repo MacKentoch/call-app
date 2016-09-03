@@ -128,8 +128,8 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnNomJeuneFilleChanged(nomJeuneFille) {
-    const { actions: { updateNomJeuneFilleIdentite } } = this.props;
-    updateNomJeuneFilleIdentite(nomJeuneFille);
+    const { actions: { updateNomDeJeuneFilleIdentite } } = this.props;
+    updateNomDeJeuneFilleIdentite(nomJeuneFille);
   }
 
   handlesOnPrenomChanged(prenom) {

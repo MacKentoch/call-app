@@ -8,8 +8,15 @@ import {
 
   setIsCollapsedIdentite,
   unsetIsCollapsedIdentite,
-  
-  updateCiviliteIdentite
+
+  updateCiviliteIdentite,
+  updateNomIdentite,
+  updateNomDeJeuneFilleIdentite,
+  updatePrenomIdentite,
+  updateDateNaissanceIdentite,
+  updateNumssIdentite,
+  updateDateDecesIdentite,
+  updateMaritalStatusIdentite
 }                               from './gestBenefIdentite/gestBenefIdentite';
 
 export {
@@ -22,5 +29,12 @@ export {
   unsetIsEditingIdentite,
   setIsCollapsedIdentite,
   unsetIsCollapsedIdentite,
-  updateCiviliteIdentite
+  updateCiviliteIdentite,
+  updateNomIdentite,
+  updateNomDeJeuneFilleIdentite,
+  updatePrenomIdentite,
+  updateDateNaissanceIdentite,
+  updateNumssIdentite,
+  updateDateDecesIdentite,
+  updateMaritalStatusIdentite
 };

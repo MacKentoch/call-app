@@ -21,7 +21,14 @@ import {
   RECEIVED_POST_GEST_BENEF_IDENTITE,
   ERROR_POST_GEST_BENEF_IDENTITE,
 
-  UPDATE_CIVILITE_IDENTITE
+  UPDATE_CIVILITE_IDENTITE,
+  UPDATE_NOM_IDENTITE,
+  UPDATE_NOM_DE_JEUNE_FILLE_IDENTITE,
+  UPDATE_PRENOM_IDENTITE,
+  UPDATE_DATE_DE_NAISSANCE_IDENTITE,
+  UPDATE_NUMSS_IDENTITE,
+  UPDATE_DATE_DECES_IDENTITE,
+  UPDATE_MARITAL_STATUS_IDENTITE
 }                                     from '../../actions/gestBenef/gestBenefIdentite/gestBenefIdentite';
 
 const initialState = {
@@ -288,6 +295,55 @@ const gestBenef = (state = initialState, action) => {
     return {
       ...state,
       civilite: action.civilite,
+      actionTime: action.time
+    };
+
+  case UPDATE_NOM_IDENTITE:
+    return {
+      ...state,
+      nom: action.nom,
+      actionTime: action.time
+    };
+
+  case UPDATE_NOM_DE_JEUNE_FILLE_IDENTITE:
+    return {
+      ...state,
+      nomJeuneFille: action.nomDeJeuneFille,
+      actionTime: action.time
+    };
+
+  case UPDATE_PRENOM_IDENTITE:
+    return {
+      ...state,
+      prenom: action.prenom,
+      actionTime: action.time
+    };
+
+  case UPDATE_DATE_DE_NAISSANCE_IDENTITE:
+    return {
+      ...state,
+      dateNaissance: action.dateNaissance,
+      actionTime: action.time
+    };
+
+  case UPDATE_NUMSS_IDENTITE:
+    return {
+      ...state,
+      numss: action.numss,
+      actionTime: action.time
+    };
+
+  case UPDATE_DATE_DECES_IDENTITE:
+    return {
+      ...state,
+      dateDeces: action.dateDeces,
+      actionTime: action.time
+    };
+
+  case UPDATE_MARITAL_STATUS_IDENTITE:
+    return {
+      ...state,
+      maritalStatus: action.maritalStatus,
       actionTime: action.time
     };
 

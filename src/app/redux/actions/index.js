@@ -110,7 +110,14 @@ import {
   unsetIsEditingIdentite,
   setIsCollapsedIdentite,
   unsetIsCollapsedIdentite,
-  updateCiviliteIdentite
+  updateCiviliteIdentite,
+  updateNomIdentite,
+  updateNomDeJeuneFilleIdentite,
+  updatePrenomIdentite,
+  updateDateNaissanceIdentite,
+  updateNumssIdentite,
+  updateDateDecesIdentite,
+  updateMaritalStatusIdentite
 }                                 from './gestBenef';
 
 
@@ -197,5 +204,12 @@ export {
   unsetIsEditingIdentite,
   setIsCollapsedIdentite,
   unsetIsCollapsedIdentite,
-  updateCiviliteIdentite
+  updateCiviliteIdentite,
+  updateNomIdentite,
+  updateNomDeJeuneFilleIdentite,
+  updatePrenomIdentite,
+  updateDateNaissanceIdentite,
+  updateNumssIdentite,
+  updateDateDecesIdentite,
+  updateMaritalStatusIdentite
 };
