@@ -185,7 +185,30 @@ class GestBeneficiaires extends Component {
 
   handlesOnSaveIdentiteForm() {
     const { actions: {postGestBenefIdentiteIfNeeded} } = this.props;
-    
+    const {
+      id,
+      civilite,
+      nom,
+      nomJeuneFille,
+      prenom,
+      dateNaissance,
+      numss,
+      dateDeces,
+      maritalStatus
+    } = this.props;
+
+    const payload = {
+      id,
+      civilite,
+      nom,
+      nomJeuneFille,
+      prenom,
+      dateNaissance,
+      numss,
+      dateDeces,
+      maritalStatus
+    };
+    postGestBenefIdentiteIfNeeded(payload);
   }
 }
 

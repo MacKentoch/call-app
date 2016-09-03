@@ -97,10 +97,10 @@ export const fetchMockListMails = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
 
 export const fetchMockMailContent = (mailId = null, mailboxId = null, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
   if (!parseInt(mailId, 10) && !parseInt(mailId, 10) > 0) {
-    throw 'Error: fetchMockMailContent needs a valid "mailId"';
+    return Promise.reject({'Error': 'fetchMockMailContent needs a valid "mailId"'});
   }
   if (!parseInt(mailboxId, 10) && !parseInt(mailboxId, 10) > 0) {
-    throw 'Error: fetchMockMailContent needs a valid "mailboxId"';
+    return Promise.reject({'Error': 'fetchMockMailContent needs a valid "mailboxId"'});
   }
 
   return new Promise(
@@ -116,13 +116,13 @@ export const fetchMockMailContent = (mailId = null, mailboxId = null, timeToWait
 
 export const fetchMockSendNewMail = (mailBoxId, userLogin = null, newMailContent = null, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
   if (!parseInt(mailBoxId, 10)) {
-    throw 'error: fetchMockSendNewMail need a valid mailBoxId';
+    return Promise.reject({'error': 'fetchMockSendNewMail need a valid mailBoxId'});
   }
   if (!userLogin) {
-    throw 'error: fetchMockSendNewMail need a valid user login';
+    return Promise.reject({'error': 'fetchMockSendNewMail need a valid user login'});
   }
   if (!newMailContent) {
-    throw 'error: fetchMockSendNewMail need a valid new mail content';
+    return Promise.reject({'error': 'fetchMockSendNewMail need a valid new mail content'});
   }
   return new Promise(
     resolve => {
@@ -173,10 +173,14 @@ export const fetchMockGetGestBenef = (benefId, timeToWait = appConfig.FAKE_ASYNC
 
 export const fetchMockPostBenefIdentite = (payload, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
   if (!payload) {
-    throw 'error: fetchMockPostBenefIdentite has no valid payload';
+    return Promise.reject({
+      'error': 'fetchMockPostBenefIdentite has no valid payload'
+    });
   }
   if (!parseInt(payload.id, 10)) {
-    throw 'error: fetchMockPostBenefIdentite payload is not valid';
+    return Promise.reject({
+      'error': 'fetchMockPostBenefIdentite payload is not valid'
+    });
   }
 
   return new Promise(
