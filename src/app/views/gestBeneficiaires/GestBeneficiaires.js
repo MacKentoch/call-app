@@ -20,10 +20,10 @@ class GestBeneficiaires extends Component {
     this.handlesOnDateDecesChanged = this.handlesOnDateDecesChanged.bind(this);
     this.handlesOnMaritalStatusChanged = this.handlesOnMaritalStatusChanged.bind(this);
 
-    this.handlesOnCollapseClick = this.handlesOnCollapseClick.bind(this);
-
+    this.handlesOnIdentiteCollapseClick = this.handlesOnIdentiteCollapseClick.bind(this);
     this.handlesOnEditIdentiteClick = this.handlesOnEditIdentiteClick.bind(this);
     this.handlesOnCancelEditIdentiteClick = this.handlesOnCancelEditIdentiteClick.bind(this);
+    this.handlesOnSaveIdentiteForm = this.handlesOnSaveIdentiteForm.bind(this);
   }
 
   componentDidMount() {
@@ -74,14 +74,14 @@ class GestBeneficiaires extends Component {
                   lastFetchTimeIdentite={lastFetchTimeIdentite}
 
                   isSavingIdentite={isSavingIdentite}
-                  onSaveFormIdentite={()=>console.log('TODO: onSaveFormIdentite')}
+                  onSaveFormIdentite={this.handlesOnSaveIdentiteForm}
 
                   onEditClick={this.handlesOnEditIdentiteClick}
                   onCancelEditClick={this.handlesOnCancelEditIdentiteClick}
                   isEditingIdentite={isEditingIdentite}
 
                   isCollapsedIdentite={isCollapsedIdentite}
-                  onCollapseClick={this.handlesOnCollapseClick}
+                  onCollapseClick={this.handlesOnIdentiteCollapseClick}
 
                   civilite={civilite}
                   onCiviliteChange={this.handlesOnCiviliteChanged}
@@ -157,7 +157,7 @@ class GestBeneficiaires extends Component {
     updateMaritalStatusIdentite(maritalStatus);
   }
 
-  handlesOnCollapseClick() {
+  handlesOnIdentiteCollapseClick() {
     const { isCollapsedIdentite, actions: { setIsCollapsedIdentite, unsetIsCollapsedIdentite } } = this.props;
     if (isCollapsedIdentite) {
       unsetIsCollapsedIdentite();
@@ -181,6 +181,11 @@ class GestBeneficiaires extends Component {
     const { actions: { unsetIsEditingIdentite, unsetIsCollapsedIdentite } } = this.props;
     unsetIsEditingIdentite();
     unsetIsCollapsedIdentite();
+  }
+
+  handlesOnSaveIdentiteForm() {
+    const { actions: {postGestBenefIdentiteIfNeeded} } = this.props;
+    
   }
 }
 

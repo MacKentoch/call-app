@@ -51,7 +51,7 @@ const Identite = ({
         <Collapse
           isOpened={!isCollapsedIdentite}
           keepCollapsedContent={false}>
-          <div>
+          <div style={{ height: '230px' }}>
           {
             isSavingIdentite
             ?

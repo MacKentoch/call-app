@@ -222,7 +222,7 @@ export const updatePrenomIdentite = (prenom = '', time = moment().format(formatD
 //    update dateNaissance value
 //  -----------------------------------------------------------------
 export const updateDateNaissanceIdentite = (dateNaissance = '', time = moment().format(formatDate)) => {
-  if (dateNaissance.trim().length > 0) {
+  if (dateNaissance) {
     const dateNaissanceStr = moment(dateNaissance, formatDate).format(formatDate);
     return {
       type: UPDATE_DATE_DE_NAISSANCE_IDENTITE,
@@ -249,7 +249,7 @@ export const updateNumssIdentite = (numss = '', time = moment().format(formatDat
 //    update dateDeces value
 //  -----------------------------------------------------------------
 export const updateDateDecesIdentite = (dateDeces = '', time = moment().format(formatDate)) => {
-  if (dateDeces.trim().length > 0) {
+  if (dateDeces) {
     const dateDecesStr = moment(dateDeces, formatDate).format(formatDate);
     return {
       type: UPDATE_DATE_DECES_IDENTITE,
