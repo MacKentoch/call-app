@@ -2,11 +2,11 @@ import React, {
   PropTypes
 }                 from 'react';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
+// import moment from 'moment';
 
 const DateInput = ({label, id, value, onChange}) => {
-  console.log('date value: ', value);
-  console.log('date value converted: ', moment(value, 'dd/MM/YYYY'));
+  // console.log('date value: ', value);
+  // console.log('date value converted: ', moment(value, 'dd/MM/YYYY'));
 
   return (
     <div className="form-group">

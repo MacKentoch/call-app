@@ -184,7 +184,7 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnSaveIdentiteForm() {
-    const { actions: {postGestBenefIdentiteIfNeeded} } = this.props;
+    const { actions: {postGestBenefIdentiteIfNeeded, unsetIsEditingIdentite} } = this.props;
     const {
       id,
       civilite,
@@ -209,6 +209,7 @@ class GestBeneficiaires extends Component {
       maritalStatus
     };
     postGestBenefIdentiteIfNeeded(payload);
+    unsetIsEditingIdentite();
   }
 }
 
