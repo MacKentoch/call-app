@@ -10,6 +10,8 @@ import {
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
+const formatDateNaissance = 'DD/MM/YYYY';
+const formatDateDeces = 'DD/MM/YYYY';
 
 export const REQUEST_GET_GEST_BENEF_IDENTITE    = 'REQUEST_GET_GEST_BENEF_IDENTITE';
 export const RECEIVED_GET_GEST_BENEF_IDENTITE   = 'RECEIVED_GET_GEST_BENEF_IDENTITE';
@@ -223,7 +225,7 @@ export const updatePrenomIdentite = (prenom = '', time = moment().format(formatD
 //  -----------------------------------------------------------------
 export const updateDateNaissanceIdentite = (dateNaissance = '', time = moment().format(formatDate)) => {
   if (dateNaissance) {
-    const dateNaissanceStr = moment(dateNaissance, formatDate).format(formatDate);
+    const dateNaissanceStr = moment(dateNaissance, formatDateNaissance).format(formatDateNaissance);
     return {
       type: UPDATE_DATE_DE_NAISSANCE_IDENTITE,
       dateNaissance: dateNaissanceStr,
@@ -250,7 +252,7 @@ export const updateNumssIdentite = (numss = '', time = moment().format(formatDat
 //  -----------------------------------------------------------------
 export const updateDateDecesIdentite = (dateDeces = '', time = moment().format(formatDate)) => {
   if (dateDeces) {
-    const dateDecesStr = moment(dateDeces, formatDate).format(formatDate);
+    const dateDecesStr = moment(dateDeces, formatDateDeces).format(formatDateDeces);
     return {
       type: UPDATE_DATE_DECES_IDENTITE,
       dateDeces: dateDecesStr,
