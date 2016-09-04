@@ -18,7 +18,26 @@ import {
   updateDateDecesIdentite,
   updateMaritalStatusIdentite
 }                               from './gestBenefIdentite/gestBenefIdentite';
+import {
+  getGestBenefContactIfNeeded,
+  postGestBenefContactIfNeeded,
 
+  setIsEditingContact,
+  unsetIsEditingContact,
+
+  setIsCollapsedContact,
+  unsetIsCollapsedContact,
+
+  updateTelephoneFixeContact,
+  updateTelephoneMobileContact,
+  updateEmailContact,
+  updateNumAdressNumber,
+  updateVoieAdressContact,
+  updateComplementAdressContact,
+  updateCodePostalContact,
+  updateVilleContact,
+  updatePaysContact
+}                               from './gestBenefIdentite/gestBenefContact';
 export {
   // all benef fields (identite + contact + dossiers)
   getGestBenefIfNeeded,
@@ -36,5 +55,21 @@ export {
   updateDateNaissanceIdentite,
   updateNumssIdentite,
   updateDateDecesIdentite,
-  updateMaritalStatusIdentite
+  updateMaritalStatusIdentite,
+  // benef contact only
+  getGestBenefContactIfNeeded,
+  postGestBenefContactIfNeeded,
+  setIsEditingContact,
+  unsetIsEditingContact,
+  setIsCollapsedContact,
+  unsetIsCollapsedContact,
+  updateTelephoneFixeContact,
+  updateTelephoneMobileContact,
+  updateEmailContact,
+  updateNumAdressNumber,
+  updateVoieAdressContact,
+  updateComplementAdressContact,
+  updateCodePostalContact,
+  updateVilleContact,
+  updatePaysContact
 };

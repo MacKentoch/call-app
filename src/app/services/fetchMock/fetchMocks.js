@@ -192,3 +192,25 @@ export const fetchMockPostBenefIdentite = (payload, timeToWait = appConfig.FAKE_
     }
   );
 };
+
+export const fetchMockPostBenefContactData = (payload, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!payload) {
+    return Promise.reject({
+      'error': 'fetchMockPostBenefContactData has no valid payload'
+    });
+  }
+  if (!parseInt(payload.id, 10)) {
+    return Promise.reject({
+      'error': 'fetchMockPostBenefContactData payload is not valid'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({success: true}),
+       timeToWait
+     );
+    }
+  );
+};

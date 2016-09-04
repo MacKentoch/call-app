@@ -20,7 +20,8 @@ import {
   fetchMockSendNewMail,
   fetchMockSearchBenef,
   fetchMockGetGestBenef,
-  fetchMockPostBenefIdentite
+  fetchMockPostBenefIdentite,
+  fetchMockPostBenefContactData
 }                     from './fetchMock/fetchMocks';
 // API
 import {
@@ -83,6 +84,7 @@ export {
   fetchMockSearchBenef,
   fetchMockGetGestBenef,
   fetchMockPostBenefIdentite,
+  fetchMockPostBenefContactData,
 
   // API
   getUserBoitesMails,

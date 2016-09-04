@@ -222,6 +222,9 @@ export const appConfig = {
     getContactData: {
       API: 'api/gestBenefContactData'
     },
+    postContactData: {
+      API: 'api/gestBenefContactData'
+    },
     getDossiers: {
       API: 'api/gestBenefDossiers'
     }

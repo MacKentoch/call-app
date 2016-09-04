@@ -89,6 +89,33 @@ export const getGestBenefContactData = benefId => {
 };
 
 
+export const postGestBenefContactData = benefContact => {
+  if (!benefContact) {
+    return Promise.reject({error: 'postGestBenefContactData API: benefContact is not valid '});
+  }
+
+  if (!benefContact.id) {
+    return Promise.reject({error: 'postGestBenefContactData API: benefContact should have an id property'});
+  }
+
+  const api = appConfig.gestBenef.postContactData.API;
+  const url = `${getLocationOrigin()}/${api}/${benefContact.id}`;
+  const body = { ...benefContact };
+
+  const options = {
+    ...defaultOptions,
+    ...postMethod,
+    ...jsonHeader,
+    ...body
+  };
+
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(error => Promise.reject(error));
+};
+
 // get "benef Dossiers only" related to benefId
 export const getGestBenefDossiers = benefId => {
   const api = appConfig.gestBenef.getDossiers.API;
