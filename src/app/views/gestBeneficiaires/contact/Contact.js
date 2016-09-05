@@ -37,7 +37,7 @@ const Contact = ({
   return (
       <div>
         <div className="page-header">
-          Identité
+          Contact
           {
             !isSavingContact &&
             <EditValidIcons

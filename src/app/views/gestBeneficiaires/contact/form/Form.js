@@ -1,214 +1,224 @@
 import React, { PropTypes } from 'react';
 import moment               from 'moment';
-import { appConfig }        from '../../../../config';
+// import { appConfig }        from '../../../../config';
 import {
-  CiviliteDropDown,
   FormLabel,
-  TextInput,
-  DateInput
+  TextInput
 }                           from '../../../../components';
 
 moment.locale('fr');
-const formatDate = appConfig.formatDate.defaut;
+// const formatDate = appConfig.formatDate.defaut;
 
 const Form = ({
-  isEditingIdentite,
-  civilite,
-  onCiviliteChange,
-  nom,
-  onNomChanged,
-  nomJeuneFille,
-  onNomJeuneFilleChanged,
-  prenom,
-  onPrenomChanged,
-  dateNaissance,
-  onDateNaissanceChanged,
-  numss,
-  onNumssChanged,
-  dateDeces,
-  onDateDecesChanged,
-  maritalStatus,
-  onMaritalStatusChanged
+  isEditingContact,
+  fixedPhone,
+  onFixedPhoneChanged,
+  mobilePhone,
+  onMobilePhoneChanged,
+  email,
+  onEmailChanged,
+  numAdress,
+  onNumAdressChanged,
+  voie,
+  onVoieChanged,
+  complementAdr,
+  onComplementAdrChanged,
+  codePostal,
+  onCodePostalChanged,
+  ville,
+  onVilleChanged,
+  pays,
+  onPaysChanged
 }) => {
   return (
     <form role="form">
+
       {/* 1st row */}
       <div className="row">
-
-        {/* civilite */}
-        <div className="col-md-2">
+        {/* fixedPhone */}
+        <div className="col-md-6">
           {
-            isEditingIdentite
-            ?
-              <CiviliteDropDown
-                id="inputCivilite"
-                label={'Civilité'}
-                value={civilite}
-                onChange={onCiviliteChange}
-              />
-            :
-              <FormLabel
-                id="inputCivilite"
-                label={'Civilité'}
-                value={civilite || ' --- '}
-              />
-          }
-        </div>
-
-        {/* nom */}
-        <div className="col-md-3">
-          {
-            isEditingIdentite
+            isEditingContact
             ?
               <TextInput
-                id="inputNom"
-                label={'Nom'}
-                value={nom}
-                onChange={onNomChanged}
+                id="inputFixedPhone"
+                label={'Téléphone fixe'}
+                value={fixedPhone}
+                onChange={onFixedPhoneChanged}
               />
             :
               <FormLabel
-                id="inputNom"
-                label={'Nom'}
-                value={nom}
+                id="inputFixedPhone"
+                label={'Téléphone fixe'}
+                value={fixedPhone || ' --- '}
               />
           }
         </div>
-
-        {/* nomDe Jeunefille */}
-        <div className="col-md-3">
+        {/* mobilePhone */}
+        <div className="col-md-6">
           {
-            isEditingIdentite
+            isEditingContact
             ?
               <TextInput
-                id="inputNomDeJeuneFille"
-                label={'Nom de jeune fille'}
-                value={nomJeuneFille}
-                onChange={onNomJeuneFilleChanged}
+                id="inputMobilePhone"
+                label={'Téléphone mobile'}
+                value={mobilePhone}
+                onChange={onMobilePhoneChanged}
               />
             :
               <FormLabel
-                id="inputNomDeJeuneFille"
-                label={'Nom de jeune fille'}
-                value={nomJeuneFille}
+                id="inputMobilePhone"
+                label={'Téléphone mobile'}
+                value={mobilePhone}
               />
           }
         </div>
-
-        {/* prenom */}
-        <div className="col-md-3">
-          {
-            isEditingIdentite
-            ?
-              <TextInput
-                id="inputPrenom"
-                label={'Prénom'}
-                value={prenom}
-                onChange={onPrenomChanged}
-              />
-            :
-              <FormLabel
-                id="inputPrenom"
-                label={'Prénom'}
-                value={prenom}
-              />
-          }
-        </div>
-
       </div>
 
       {/* 2nd row */}
       <div className="row">
-        <div className="col-md-6">
+        {/* email */}
+        <div className="col-md-12">
           {
-            isEditingIdentite
-            ?
-              <DateInput
-                id="inputDateNaissance"
-                label={'Date de naissance'}
-                value={
-                  moment(dateNaissance, formatDate).isValid
-                    ? moment(dateNaissance, formatDate)
-                    : moment('01/01/1900', formatDate)
-                  }
-                onChange={onDateNaissanceChanged}
-              />
-            :
-              <FormLabel
-                id="inputDateNaissance"
-                label={'Date de naissance'}
-                value={dateNaissance}
-              />
-          }
-        </div>
-
-        {/* numss */}
-        <div className="col-md-6">
-          {
-            isEditingIdentite
+            isEditingContact
             ?
               <TextInput
-                id="inputNumss"
-                label={'Numéro sécurité sociale'}
-                value={numss}
-                onChange={onNumssChanged}
+                id="inputEmail"
+                label={'Adresse mail'}
+                value={email}
+                onChange={onEmailChanged}
               />
             :
               <FormLabel
-                id="inputNumss"
-                label={'Numéro sécurité sociale'}
-                value={numss}
+                id="inputEmail"
+                label={'Adresse mail'}
+                value={email}
               />
           }
         </div>
-
       </div>
+
+      {/* 2nd row */}
+      <div className="row">
+        {/* numAdress */}
+        <div className="col-md-4">
+          {
+            isEditingContact
+            ?
+              <TextInput
+                id="inputNumAdr"
+                label={'N°'}
+                value={numAdress}
+                onChange={onNumAdressChanged}
+              />
+            :
+              <FormLabel
+                id="inputNumAdr"
+                label={'N°'}
+                value={numAdress}
+              />
+          }
+        </div>
+        {/* voie */}
+        <div className="col-md-4">
+          {
+            isEditingContact
+            ?
+              <TextInput
+                id="inputVoie"
+                label={'Voie'}
+                value={voie}
+                onChange={onVoieChanged}
+              />
+            :
+              <FormLabel
+                id="inputVoie"
+                label={'Voie'}
+                value={voie}
+              />
+          }
+        </div>
+        {/* complementAdr */}
+        <div className="col-md-4">
+          {
+            isEditingContact
+            ?
+              <TextInput
+                id="inputComplementAdr"
+                label={'Complément'}
+                value={complementAdr}
+                onChange={onComplementAdrChanged}
+              />
+            :
+              <FormLabel
+                id="inputComplementAdr"
+                label={'Complément'}
+                value={complementAdr}
+              />
+          }
+        </div>
+      </div>
+
 
       {/* 3rd row */}
       <div className="row">
-        <div className="col-md-6">
+        {/* codePostal */}
+        <div className="col-md-4">
           {
-            isEditingIdentite
-            ?
-              <DateInput
-                id="inputDateDeces"
-                label={'Date de décès'}
-                value={
-                  moment(dateDeces, formatDate).isValid
-                    ? moment(dateDeces, formatDate)
-                    : moment('01/01/1900', formatDate)
-                  }
-                onChange={onDateDecesChanged}
-              />
-            :
-              <FormLabel
-                id="inputDateDeces"
-                label={'Date de décès'}
-                value={dateDeces}
-              />
-          }
-        </div>
-
-        {/* statut marital */}
-        <div className="col-md-6">
-          {
-            isEditingIdentite
+            isEditingContact
             ?
               <TextInput
-                id="inputStatutMarital"
-                label={'Statut marital'}
-                value={maritalStatus}
-                onChange={onMaritalStatusChanged}
+                id="inputCodePostal"
+                label={'Code postal'}
+                value={codePostal}
+                onChange={onCodePostalChanged}
               />
             :
               <FormLabel
-                id="inputStatutMarital"
-                label={'Statut marital'}
-                value={maritalStatus}
+                id="inputCodePostal"
+                label={'Code postal'}
+                value={codePostal}
               />
           }
         </div>
-
+        {/* ville */}
+        <div className="col-md-4">
+          {
+            isEditingContact
+            ?
+              <TextInput
+                id="inputVille"
+                label={'Ville'}
+                value={ville}
+                onChange={onVilleChanged}
+              />
+            :
+              <FormLabel
+                id="inputVille"
+                label={'Ville'}
+                value={ville}
+              />
+          }
+        </div>
+        {/* pays */}
+        <div className="col-md-4">
+          {
+            isEditingContact
+            ?
+              <TextInput
+                id="inputPays"
+                label={'Pays'}
+                value={pays}
+                onChange={onPaysChanged}
+              />
+            :
+              <FormLabel
+                id="inputPays"
+                label={'Pays'}
+                value={pays}
+              />
+          }
+        </div>
       </div>
 
     </form>
@@ -216,31 +226,34 @@ const Form = ({
 };
 
 Form.propTypes = {
-  isEditingIdentite: PropTypes.bool,
+  isEditingContact: PropTypes.bool,
 
-  civilite: PropTypes.string.isRequired,
-  onCiviliteChange: PropTypes.func.isRequired,
+  fixedPhone: PropTypes.string.isRequired,
+  onFixedPhoneChanged: PropTypes.func.isRequired,
 
-  nom: PropTypes.string.isRequired,
-  onNomChanged: PropTypes.func.isRequired,
+  mobilePhone: PropTypes.string.isRequired,
+  onMobilePhoneChanged: PropTypes.func.isRequired,
 
-  nomJeuneFille: PropTypes.string.isRequired,
-  onNomJeuneFilleChanged: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
+  onEmailChanged: PropTypes.func.isRequired,
 
-  prenom: PropTypes.string.isRequired,
-  onPrenomChanged: PropTypes.func.isRequired,
+  numAdress: PropTypes.string.isRequired,
+  onNumAdressChanged: PropTypes.func.isRequired,
 
-  dateNaissance: PropTypes.string.isRequired,
-  onDateNaissanceChanged: PropTypes.func.isRequired,
+  voie: PropTypes.string.isRequired,
+  onVoieChanged: PropTypes.func.isRequired,
 
-  numss: PropTypes.string.isRequired,
-  onNumssChanged: PropTypes.func.isRequired,
+  complementAdr: PropTypes.string.isRequired,
+  onComplementAdrChanged: PropTypes.func.isRequired,
 
-  dateDeces: PropTypes.string.isRequired,
-  onDateDecesChanged: PropTypes.func.isRequired,
+  codePostal: PropTypes.string.isRequired,
+  onCodePostalChanged: PropTypes.func.isRequired,
 
-  maritalStatus: PropTypes.string.isRequired,
-  onMaritalStatusChanged: PropTypes.func.isRequired
+  ville: PropTypes.string.isRequired,
+  onVilleChanged: PropTypes.func.isRequired,
+
+  pays: PropTypes.string.isRequired,
+  onPaysChanged: PropTypes.func.isRequired
 };
 
 export default Form;
