@@ -127,6 +127,7 @@ class GestBeneficiaires extends Component {
                   onMaritalStatusChanged={this.handlesOnMaritalStatusChanged}
                 />
 
+                <div style={{height: '10px'}}></div>
 
                 <Contact
                   isFetchingContact={isFetchingContact}
