@@ -1,6 +1,7 @@
 import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
-import Identite                         from './Identite/Identite';
+import Identite                         from './identite/Identite';
+import Contact                          from './contact/Contact';
 
 
 class GestBeneficiaires extends Component {
@@ -10,7 +11,7 @@ class GestBeneficiaires extends Component {
     this.state = {
       animated: true
     };
-
+    // identite related methods:
     this.handlesOnCiviliteChanged = this.handlesOnCiviliteChanged.bind(this);
     this.handlesOnNomChanged = this.handlesOnNomChanged.bind(this);
     this.handlesOnNomJeuneFilleChanged = this.handlesOnNomJeuneFilleChanged.bind(this);
@@ -19,11 +20,24 @@ class GestBeneficiaires extends Component {
     this.handlesOnNumssChanged = this.handlesOnNumssChanged.bind(this);
     this.handlesOnDateDecesChanged = this.handlesOnDateDecesChanged.bind(this);
     this.handlesOnMaritalStatusChanged = this.handlesOnMaritalStatusChanged.bind(this);
-
     this.handlesOnIdentiteCollapseClick = this.handlesOnIdentiteCollapseClick.bind(this);
     this.handlesOnEditIdentiteClick = this.handlesOnEditIdentiteClick.bind(this);
     this.handlesOnCancelEditIdentiteClick = this.handlesOnCancelEditIdentiteClick.bind(this);
     this.handlesOnSaveIdentiteForm = this.handlesOnSaveIdentiteForm.bind(this);
+    // contact related methods:
+    this.handlesOnFixedPhoneChanged = this.handlesOnFixedPhoneChanged.bind(this);
+    this.handlesOnMobilePhoneChanged = this.handlesOnMobilePhoneChanged.bind(this);
+    this.handlesOnEmailChanged = this.handlesOnEmailChanged.bind(this);
+    this.handlesOnNumAdressChanged = this.handlesOnNumAdressChanged.bind(this);
+    this.handlesOnVoieChanged = this.handlesOnVoieChanged.bind(this);
+    this.handlesOnComplementAdrChanged = this.handlesOnComplementAdrChanged.bind(this);
+    this.handlesOnCodePostalChanged = this.handlesOnCodePostalChanged.bind(this);
+    this.handlesOnVilleChanged = this.handlesOnVilleChanged.bind(this);
+    this.handlesOnPaysChanged = this.handlesOnPaysChanged.bind(this);
+    this.handlesOnSaveContactForm = this.handlesOnSaveContactForm.bind(this);
+    this.handlesOnEditContactClick = this.handlesOnEditContactClick.bind(this);
+    this.handlesOnCancelEditContactClick = this.handlesOnCancelEditContactClick.bind(this);
+    this.handlesOnContactCollapseClick = this.handlesOnContactCollapseClick.bind(this);
   }
 
   componentDidMount() {
@@ -46,8 +60,12 @@ class GestBeneficiaires extends Component {
 
   render() {
     const { animated } = this.state;
+    // identite:
     const { isFetchingIdentite, lastFetchTimeIdentite, isEditingIdentite, isSavingIdentite, isCollapsedIdentite } = this.props;
     const { civilite, nom, prenom, nomJeuneFille, dateNaissance, numss, dateDeces, maritalStatus } = this.props;
+    // contact:
+    const { isFetchingContact, lastFetchTimeContact, isSavingContact, isEditingContact, isCollapsedContact } = this.props;
+    const { fixedPhone, mobilePhone, email, numAdress, voie, complementAdr, codePostal, ville, pays } = this.props;
 
     return(
       <section
@@ -108,6 +126,48 @@ class GestBeneficiaires extends Component {
                   onMaritalStatusChanged={this.handlesOnMaritalStatusChanged}
                 />
 
+
+                <Contact
+                  isFetchingContact={isFetchingContact}
+                  lastFetchTimeContact={lastFetchTimeContact}
+
+                  isSavingContact={isSavingContact}
+                  onSaveFormContact={this.handlesOnSaveContactForm}
+
+                  onEditClick={this.handlesOnEditContactClick}
+                  onCancelEditClick={this.handlesOnCancelEditContactClick}
+                  isEditingContact={isEditingContact}
+
+                  isCollapsedContact={isCollapsedContact}
+                  onCollapseClick={this.handlesOnContactCollapseClick}
+
+                  fixedPhone={fixedPhone}
+                  onFixedPhoneChanged={this.handlesOnFixedPhoneChanged}
+
+                  mobilePhone={mobilePhone}
+                  onMobilePhoneChanged={this.handlesOnMobilePhoneChanged}
+
+                  email={email}
+                  onEmailChanged={this.handlesOnEmailChanged}
+
+                  numAdress={numAdress}
+                  onNumAdressChanged={this.handlesOnNumAdressChanged}
+
+                  voie={voie}
+                  onVoieChanged={this.handlesOnVoieChanged}
+
+                  complementAdr={complementAdr}
+                  onComplementAdrChanged={this.handlesOnComplementAdrChanged}
+
+                  codePostal={codePostal}
+                  onCodePostalChanged={this.handlesOnCodePostalChanged}
+
+                  ville={ville}
+                  onVilleChanged={this.handlesOnVilleChanged}
+
+                  pays={pays}
+                  onPaysChanged={this.handlesOnPaysChanged}
+                />
               </div>
             </section>
           </div>
@@ -117,6 +177,9 @@ class GestBeneficiaires extends Component {
     );
   }
 
+  // ////////////////////////////////
+  //  Identite related methods
+  // ////////////////////////////////
   handlesOnCiviliteChanged(civilite) {
     const { actions: { updateCiviliteIdentite } } = this.props;
     updateCiviliteIdentite(civilite);
@@ -176,7 +239,7 @@ class GestBeneficiaires extends Component {
     unsetIsEditingIdentite();
   }
 
-  // to reset editing state and collapsed state
+  // to reset identite editing state and collapsed state
   resetIdentiteEditingAndCollpasing() {
     const { actions: { unsetIsEditingIdentite, unsetIsCollapsedIdentite } } = this.props;
     unsetIsEditingIdentite();
@@ -210,6 +273,61 @@ class GestBeneficiaires extends Component {
     };
     postGestBenefIdentiteIfNeeded(payload);
     unsetIsEditingIdentite();
+  }
+
+  // ////////////////////////////////
+  //  Contact related methods
+  // ////////////////////////////////
+  handlesOnFixedPhoneChanged() {
+    // TODO
+  }
+
+  handlesOnMobilePhoneChanged() {
+    // TODO
+  }
+
+  handlesOnEmailChanged() {
+    // TODO
+  }
+
+  handlesOnNumAdressChanged() {
+    // TODO
+  }
+
+  handlesOnVoieChanged() {
+    // TODO
+  }
+
+  handlesOnComplementAdrChanged() {
+    // TODO
+  }
+
+  handlesOnCodePostalChanged() {
+    // TODO
+  }
+
+  handlesOnVilleChanged() {
+    // TODO
+  }
+
+  handlesOnPaysChanged() {
+    // TODO
+  }
+
+  handlesOnContactCollapseClick() {
+    // TODO
+  }
+
+  handlesOnCancelEditContactClick() {
+    // TODO
+  }
+
+  handlesOnEditContactClick() {
+    // TODO
+  }
+
+  handlesOnSaveContactForm() {
+    // TODO
   }
 }
 
