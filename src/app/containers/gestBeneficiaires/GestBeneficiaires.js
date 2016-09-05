@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
     // general info
     lastActionTime: state.gestBenef.actionTime,
     // gestBenef data:
-    // isFetching: state.gestBenef.isFetching,
+    isFetchingAll: state.gestBenef.isFetchingAll,
     // lastGetTime: state.gestBenef.time,
     id: state.gestBenef.id,
     // identité

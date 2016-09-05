@@ -2,6 +2,7 @@ import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 import Identite                         from './identite/Identite';
 import Contact                          from './contact/Contact';
+import FetchingAllContent               from './fetchingAllContent/FetchingAllContent';
 
 
 class GestBeneficiaires extends Component {
@@ -113,89 +114,103 @@ class GestBeneficiaires extends Component {
               </header>
 
               <div className="panel-body">
+              {
+                isFetchingAll &&
+                <div>
+                  <div style={{height: '80px'}}></div>
+                  <FetchingAllContent />
+                </div>
+              }
+              {
+                !isFetchingAll &&
+                <div>
 
-                <Identite
-                  isFetchingIdentite={isFetchingIdentite}
-                  lastFetchTimeIdentite={lastFetchTimeIdentite}
+                  <Identite
+                    isFetchingIdentite={isFetchingIdentite}
+                    lastFetchTimeIdentite={lastFetchTimeIdentite}
 
-                  isSavingIdentite={isSavingIdentite}
-                  onSaveFormIdentite={this.handlesOnSaveIdentiteForm}
+                    isSavingIdentite={isSavingIdentite}
+                    onSaveFormIdentite={this.handlesOnSaveIdentiteForm}
 
-                  onEditClick={this.handlesOnEditIdentiteClick}
-                  onCancelEditClick={this.handlesOnCancelEditIdentiteClick}
-                  isEditingIdentite={isEditingIdentite}
+                    onEditClick={this.handlesOnEditIdentiteClick}
+                    onCancelEditClick={this.handlesOnCancelEditIdentiteClick}
+                    isEditingIdentite={isEditingIdentite}
 
-                  isCollapsedIdentite={isCollapsedIdentite}
-                  onCollapseClick={this.handlesOnIdentiteCollapseClick}
+                    isCollapsedIdentite={isCollapsedIdentite}
+                    onCollapseClick={this.handlesOnIdentiteCollapseClick}
 
-                  civilite={civilite}
-                  onCiviliteChange={this.handlesOnCiviliteChanged}
+                    civilite={civilite}
+                    onCiviliteChange={this.handlesOnCiviliteChanged}
 
-                  nom={nom}
-                  onNomChanged={this.handlesOnNomChanged}
+                    nom={nom}
+                    onNomChanged={this.handlesOnNomChanged}
 
-                  nomJeuneFille={nomJeuneFille}
-                  onNomJeuneFilleChanged={this.handlesOnNomJeuneFilleChanged}
+                    nomJeuneFille={nomJeuneFille}
+                    onNomJeuneFilleChanged={this.handlesOnNomJeuneFilleChanged}
 
-                  prenom={prenom}
-                  onPrenomChanged={this.handlesOnPrenomChanged}
+                    prenom={prenom}
+                    onPrenomChanged={this.handlesOnPrenomChanged}
 
-                  dateNaissance={dateNaissance}
-                  onDateNaissanceChanged={this.handlesOnDateNaissanceChanged}
+                    dateNaissance={dateNaissance}
+                    onDateNaissanceChanged={this.handlesOnDateNaissanceChanged}
 
-                  numss={numss}
-                  onNumssChanged={this.handlesOnNumssChanged}
+                    numss={numss}
+                    onNumssChanged={this.handlesOnNumssChanged}
 
-                  dateDeces={dateDeces}
-                  onDateDecesChanged={this.handlesOnDateDecesChanged}
+                    dateDeces={dateDeces}
+                    onDateDecesChanged={this.handlesOnDateDecesChanged}
 
-                  maritalStatus={maritalStatus}
-                  onMaritalStatusChanged={this.handlesOnMaritalStatusChanged}
-                />
+                    maritalStatus={maritalStatus}
+                    onMaritalStatusChanged={this.handlesOnMaritalStatusChanged}
+                  />
 
-                <div style={{height: '10px'}}></div>
+                  <div style={{height: '10px'}}></div>
 
-                <Contact
-                  isFetchingContact={isFetchingContact}
-                  lastFetchTimeContact={lastFetchTimeContact}
+                  <Contact
+                    isFetchingContact={isFetchingContact}
+                    lastFetchTimeContact={lastFetchTimeContact}
 
-                  isSavingContact={isSavingContact}
-                  onSaveFormContact={this.handlesOnSaveContactForm}
+                    isSavingContact={isSavingContact}
+                    onSaveFormContact={this.handlesOnSaveContactForm}
 
-                  onEditClick={this.handlesOnEditContactClick}
-                  onCancelEditClick={this.handlesOnCancelEditContactClick}
-                  isEditingContact={isEditingContact}
+                    onEditClick={this.handlesOnEditContactClick}
+                    onCancelEditClick={this.handlesOnCancelEditContactClick}
+                    isEditingContact={isEditingContact}
 
-                  isCollapsedContact={isCollapsedContact}
-                  onCollapseClick={this.handlesOnContactCollapseClick}
+                    isCollapsedContact={isCollapsedContact}
+                    onCollapseClick={this.handlesOnContactCollapseClick}
 
-                  fixedPhone={fixedPhone}
-                  onFixedPhoneChanged={this.handlesOnFixedPhoneChanged}
+                    fixedPhone={fixedPhone}
+                    onFixedPhoneChanged={this.handlesOnFixedPhoneChanged}
 
-                  mobilePhone={mobilePhone}
-                  onMobilePhoneChanged={this.handlesOnMobilePhoneChanged}
+                    mobilePhone={mobilePhone}
+                    onMobilePhoneChanged={this.handlesOnMobilePhoneChanged}
 
-                  email={email}
-                  onEmailChanged={this.handlesOnEmailChanged}
+                    email={email}
+                    onEmailChanged={this.handlesOnEmailChanged}
 
-                  numAdress={numAdress}
-                  onNumAdressChanged={this.handlesOnNumAdressChanged}
+                    numAdress={numAdress}
+                    onNumAdressChanged={this.handlesOnNumAdressChanged}
 
-                  voie={voie}
-                  onVoieChanged={this.handlesOnVoieChanged}
+                    voie={voie}
+                    onVoieChanged={this.handlesOnVoieChanged}
 
-                  complementAdr={complementAdr}
-                  onComplementAdrChanged={this.handlesOnComplementAdrChanged}
+                    complementAdr={complementAdr}
+                    onComplementAdrChanged={this.handlesOnComplementAdrChanged}
 
-                  codePostal={codePostal}
-                  onCodePostalChanged={this.handlesOnCodePostalChanged}
+                    codePostal={codePostal}
+                    onCodePostalChanged={this.handlesOnCodePostalChanged}
 
-                  ville={ville}
-                  onVilleChanged={this.handlesOnVilleChanged}
+                    ville={ville}
+                    onVilleChanged={this.handlesOnVilleChanged}
 
-                  pays={pays}
-                  onPaysChanged={this.handlesOnPaysChanged}
-                />
+                    pays={pays}
+                    onPaysChanged={this.handlesOnPaysChanged}
+                  />
+
+                </div>
+              }
+
               </div>
             </section>
           </div>
