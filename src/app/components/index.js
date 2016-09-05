@@ -21,6 +21,8 @@ import CiviliteDropDown from './civiliteDropDown/CiviliteDropDown';
 import FormLabel from './formLabel/FormLabel';
 import EditValidIcons from './editValidIcons/EditValidIcons';
 import TextInput from './textInput/TextInput';
+import TelephoneInput from './textInput/TelephoneInput';
+import NumssInput from './textInput/NumssInput';
 import DateInput from './dateInput/DateInput';
 
 import {
@@ -54,6 +56,8 @@ export {
   TextInput,
   DateInput,
   EditValidIcons,
+  TelephoneInput,
+  NumssInput,
 
   // mailbox
   MailboxRepertoires,

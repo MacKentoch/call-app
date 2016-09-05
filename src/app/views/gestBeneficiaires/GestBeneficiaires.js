@@ -237,8 +237,9 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnCancelEditIdentiteClick() {
-    const { actions: { unsetIsEditingIdentite } } = this.props;
+    const { actions: { unsetIsEditingIdentite, getGestBenefIdentiteIfNeeded } } = this.props;
     unsetIsEditingIdentite();
+    getGestBenefIdentiteIfNeeded();
   }
 
   // to reset identite editing state and collapsed state
@@ -249,7 +250,13 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnSaveIdentiteForm() {
-    const { actions: {postGestBenefIdentiteIfNeeded, unsetIsEditingIdentite} } = this.props;
+    const {
+      actions: {
+        postGestBenefIdentiteIfNeeded,
+        unsetIsEditingIdentite,
+        getGestBenefIdentiteIfNeeded
+      }
+    } = this.props;
     const {
       id,
       civilite,
@@ -275,6 +282,8 @@ class GestBeneficiaires extends Component {
     };
     postGestBenefIdentiteIfNeeded(payload);
     unsetIsEditingIdentite();
+    // fetch from server to refresh
+    getGestBenefIdentiteIfNeeded();
   }
 
   // ////////////////////////////////
@@ -340,12 +349,19 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnCancelEditContactClick() {
-    const { actions: { unsetIsEditingContact } } = this.props;
+    const { actions: { unsetIsEditingContact, getGestBenefContactIfNeeded } } = this.props;
     unsetIsEditingContact();
+    getGestBenefContactIfNeeded();
   }
 
   handlesOnSaveContactForm() {
-    const { actions: {postGestBenefContactIfNeeded, unsetIsEditingContact} } = this.props;
+    const {
+      actions: {
+        postGestBenefContactIfNeeded,
+        unsetIsEditingContact,
+        getGestBenefContactIfNeeded
+      }
+    } = this.props;
     const {
       id,
       fixedPhone,
@@ -373,6 +389,8 @@ class GestBeneficiaires extends Component {
     };
     postGestBenefContactIfNeeded(payload);
     unsetIsEditingContact();
+    // fetch from server to refresh
+    getGestBenefContactIfNeeded();
   }
 
   // to reset contact editing state and collapsed state

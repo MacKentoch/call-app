@@ -5,7 +5,9 @@ import {
   CiviliteDropDown,
   FormLabel,
   TextInput,
-  DateInput
+  DateInput,
+  TelephoneInput,
+  NumssInput
 }                           from '../../../../components';
 
 moment.locale('fr');
@@ -147,7 +149,7 @@ const Form = ({
           {
             isEditingIdentite
             ?
-              <TextInput
+              <NumssInput
                 id="inputNumss"
                 label={'Numéro sécurité sociale'}
                 value={numss}
