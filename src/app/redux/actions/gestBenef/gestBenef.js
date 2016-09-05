@@ -15,6 +15,7 @@ export const ERROR_GET_GEST_BENEF     = 'ERROR_GET_GEST_BENEF';
 export const RESET_GEST_BENEF         = 'RESET_GEST_BENEF';
 
 export const resetGestBenef = (time = moment().format(formatDate)) => {
+  console.log('should call RESET_GEST_BENEF actions');
   return {
     type: RESET_GEST_BENEF,
     time

@@ -44,16 +44,36 @@ class GestBeneficiaires extends Component {
     const  { params: { benefId } } =  this.props;
     const  { actions: { enterGestBeneficiaires, getGestBenefIfNeeded, resetGestBenef } } =  this.props;
     enterGestBeneficiaires();
-    // reset gestBenef form model
-    resetGestBenef();
 
     this.resetIdentiteEditingAndCollpasing();
     this.resetContactEditingAndCollpasing();
 
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
-      console.log('benef id found');
       getGestBenefIfNeeded(idBenef);
+    } else {
+      // reset gestBenef form model
+      resetGestBenef();
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { params: { benefId } } =  newProps;
+    const  { actions: { getGestBenefIfNeeded, resetGestBenef } } =  this.props;
+
+    const idBenef = parseInt(benefId, 10);
+
+    if (benefId !== this.props.params.benefId) {
+      // search another benef from same page = need to refresh
+      this.resetIdentiteEditingAndCollpasing();
+      this.resetContactEditingAndCollpasing();
+
+      if (idBenef) {
+        getGestBenefIfNeeded(idBenef);
+      } else {
+        // reset gestBenef form model
+        resetGestBenef();
+      }
     }
   }
 
@@ -64,12 +84,15 @@ class GestBeneficiaires extends Component {
 
   render() {
     const { animated } = this.state;
+    const { isFetchingAll } = this.props;
     // identite:
     const { isFetchingIdentite, lastFetchTimeIdentite, isEditingIdentite, isSavingIdentite, isCollapsedIdentite } = this.props;
     const { civilite, nom, prenom, nomJeuneFille, dateNaissance, numss, dateDeces, maritalStatus } = this.props;
     // contact:
     const { isFetchingContact, lastFetchTimeContact, isSavingContact, isEditingContact, isCollapsedContact } = this.props;
     const { fixedPhone, mobilePhone, email, numAdress, voie, complementAdr, codePostal, ville, pays } = this.props;
+
+    // TODO : add fetching all loading
 
     return(
       <section
@@ -414,6 +437,7 @@ GestBeneficiaires.propTypes = {
   // gestBenef data:
   // ///////////////////////
   lastActionTime: PropTypes.string.isRequired,
+  isFetchingAll: PropTypes.bool.isRequired,
 
   id: PropTypes.number.isRequired,
   // ///////////////////////

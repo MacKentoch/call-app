@@ -67,6 +67,7 @@ const initialState = {
   // post benef payload
   postPayload: {},
   // general fields
+  isFetchingAll: false,
   id: 0,
   // identité
   isFetchingIdentite: false,
@@ -145,6 +146,7 @@ const gestBenef = (state = initialState, action) => {
   case REQUEST_GET_GEST_BENEF:
     return {
       ...state,
+      isFetchingAll: true,
       isFetchingIdentite: action.isFetching,
       isFetchingContact: action.isFetching,
       isFetchingDossiers: action.isFetching,
@@ -159,6 +161,7 @@ const gestBenef = (state = initialState, action) => {
   case RECEIVED_GET_GEST_BENEF:
     return {
       ...state,
+      isFetchingAll: false,
       isFetchingIdentite: action.isFetching,
       isFetchingContact: action.isFetching,
       isFetchingDossiers: action.isFetching,
@@ -234,6 +237,7 @@ const gestBenef = (state = initialState, action) => {
   case ERROR_GET_GEST_BENEF:
     return {
       ...state,
+      isFetchingAll: false,
       isFetchingIdentite: action.isFetching,
       isFetchingContact: action.isFetching,
       isFetchingDossiers: action.isFetching,
