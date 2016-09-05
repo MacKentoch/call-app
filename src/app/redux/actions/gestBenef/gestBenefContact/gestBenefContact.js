@@ -44,7 +44,7 @@ export const UPDATE_PAYS_CONTACT               = 'UPDATE_PAYS_CONTACT';
 const requestGetGestBenefContact = (benefId = 0, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_GET_GEST_BENEF_CONTACT,
-    isFetchingIdentite : true,
+    isFetchingContact : true,
     benefId,
     time
   };
@@ -53,7 +53,7 @@ const requestGetGestBenefContact = (benefId = 0, time = moment().format(formatDa
 const receivedGetGestBenefContact = (gestBenef, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_BENEF_CONTACT,
-    isFetchingIdentite : false,
+    isFetchingContact : false,
     gestBenef,
     time
   };
@@ -62,7 +62,7 @@ const receivedGetGestBenefContact = (gestBenef, time = moment().format(formatDat
 const errorGetGestBenefContact = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_GET_GEST_BENEF_CONTACT,
-    isFetchingIdentite : false,
+    isFetchingContact : false,
     data: [],
     error,
     time
@@ -118,14 +118,14 @@ function shouldGetGestBenefContact(state) {
 export const setIsEditingContact = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_EDITING_CONTACT,
-    isEditingIdentite: true,
+    isEditingContact: true,
     time
   };
 };
 export const unsetIsEditingContact = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_EDITING_CONTACT,
-    isEditingIdentite: false,
+    isEditingContact: false,
     time
   };
 };
@@ -136,14 +136,14 @@ export const unsetIsEditingContact = (time = moment().format(formatDate)) => {
 export const setIsCollapsedContact = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_COLLAPSED_CONTACT,
-    isCollapsedIdentite: true,
+    isCollapsedContact: true,
     time
   };
 };
 export const unsetIsCollapsedContact = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_COLLAPSED_CONTACT,
-    isCollapsedIdentite: false,
+    isCollapsedContact: false,
     time
   };
 };
@@ -154,14 +154,14 @@ export const unsetIsCollapsedContact = (time = moment().format(formatDate)) => {
 export const setIsSavingContact = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_SAVING_CONTACT,
-    isSavingIdentite: true,
+    isSavingContact: true,
     time
   };
 };
 export const unsetIsSavingContact = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_SAVING_CONTACT,
-    isSavingIdentite: false,
+    isSavingContact: false,
     time
   };
 };
@@ -290,8 +290,8 @@ export const updatePaysContact = (pays = '', time = moment().format(formatDate))
 const requestPostGestBenefContact = (payload = {}, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_POST_GEST_BENEF_CONTACT,
-    isFetchingIdentite: true,
-    isSavingIdentite: true,
+    isFetchingContact: true,
+    isSavingContact: true,
     payload,
     time
   };
@@ -299,8 +299,8 @@ const requestPostGestBenefContact = (payload = {}, time = moment().format(format
 const receivedPostGestBenefContact = (response = {}, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_POST_GEST_BENEF_CONTACT,
-    isFetchingIdentite : false,
-    isSavingIdentite: false,
+    isFetchingContact : false,
+    isSavingContact: false,
     response,
     time
   };
@@ -308,8 +308,8 @@ const receivedPostGestBenefContact = (response = {}, time = moment().format(form
 const errorPostGestBenefContact = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_POST_GEST_BENEF_CONTACT,
-    isFetchingIdentite : false,
-    isSavingIdentite: false,
+    isFetchingContact : false,
+    isSavingContact: false,
     error,
     time
   };

@@ -60,6 +60,11 @@ const mapDispatchToProps = (dispatch) => {
         leaveGestBeneficiaires: actions.leaveGestBeneficiaires,
         // get gestBenef:
         getGestBenefIfNeeded: actions.getGestBenefIfNeeded,
+        // //////////////////
+        // identite
+        // /////////////////
+        // get
+        getGestBenefIdentiteIfNeeded: actions.getGestBenefIdentiteIfNeeded,
         // post
         postGestBenefIdentiteIfNeeded: actions.postGestBenefIdentiteIfNeeded,
         // UI: Identite
@@ -74,7 +79,28 @@ const mapDispatchToProps = (dispatch) => {
         updateDateNaissanceIdentite: actions.updateDateNaissanceIdentite,
         updateNumssIdentite: actions.updateNumssIdentite,
         updateDateDecesIdentite: actions.updateDateDecesIdentite,
-        updateMaritalStatusIdentite: actions.updateMaritalStatusIdentite
+        updateMaritalStatusIdentite: actions.updateMaritalStatusIdentite,
+        // //////////////////
+        // contact
+        // /////////////////
+        // get
+        getGestBenefContactIfNeeded: actions.getGestBenefContactIfNeeded,
+        // post
+        postGestBenefContactIfNeeded: actions.postGestBenefContactIfNeeded,
+        // UI: contact
+        setIsEditingContact: actions.setIsEditingContact,
+        unsetIsEditingContact: actions.unsetIsEditingContact,
+        setIsCollapsedContact: actions.setIsCollapsedContact,
+        unsetIsCollapsedContact: actions.unsetIsCollapsedContact,
+        updateTelephoneFixeContact: actions.updateTelephoneFixeContact,
+        updateTelephoneMobileContact: actions.updateTelephoneMobileContact,
+        updateEmailContact: actions.updateEmailContact,
+        updateNumAdressNumber: actions.updateNumAdressNumber,
+        updateVoieAdressContact: actions.updateVoieAdressContact,
+        updateComplementAdressContact: actions.updateComplementAdressContact,
+        updateCodePostalContact: actions.updateCodePostalContact,
+        updateVilleContact: actions.updateVilleContact,
+        updatePaysContact: actions.updatePaysContact
       },
       dispatch)
   };

@@ -273,9 +273,14 @@ GestBeneficiaires.propTypes = {
   actions: PropTypes.shape({
     enterGestBeneficiaires: PropTypes.func,
     leaveGestBeneficiaires: PropTypes.func,
-
+    // get gestBenef:
     getGestBenefIfNeeded: PropTypes.func,
-
+    // //////////////////
+    // identite
+    // /////////////////
+    // get
+    getGestBenefIdentiteIfNeeded: PropTypes.func,
+    // post
     postGestBenefIdentiteIfNeeded: PropTypes.func,
     // UI: Identite
     setIsEditingIdentite: PropTypes.func,
@@ -289,7 +294,28 @@ GestBeneficiaires.propTypes = {
     updateDateNaissanceIdentite: PropTypes.func,
     updateNumssIdentite: PropTypes.func,
     updateDateDecesIdentite: PropTypes.func,
-    updateMaritalStatusIdentite: PropTypes.func
+    updateMaritalStatusIdentite: PropTypes.func,
+    // //////////////////
+    // contact
+    // /////////////////
+    // get
+    getGestBenefContactIfNeeded: PropTypes.func,
+    // post
+    postGestBenefContactIfNeeded: PropTypes.func,
+    // UI: contact
+    setIsEditingContact: PropTypes.func,
+    unsetIsEditingContact: PropTypes.func,
+    setIsCollapsedContact: PropTypes.func,
+    unsetIsCollapsedContact: PropTypes.func,
+    updateTelephoneFixeContact: PropTypes.func,
+    updateTelephoneMobileContact: PropTypes.func,
+    updateEmailContact: PropTypes.func,
+    updateNumAdressNumber: PropTypes.func,
+    updateVoieAdressContact: PropTypes.func,
+    updateComplementAdressContact: PropTypes.func,
+    updateCodePostalContact: PropTypes.func,
+    updateVilleContact: PropTypes.func,
+    updatePaysContact: PropTypes.func
   })
 };
 

@@ -117,7 +117,23 @@ import {
   updateDateNaissanceIdentite,
   updateNumssIdentite,
   updateDateDecesIdentite,
-  updateMaritalStatusIdentite
+  updateMaritalStatusIdentite,
+
+  getGestBenefContactIfNeeded,
+  postGestBenefContactIfNeeded,
+  setIsEditingContact,
+  unsetIsEditingContact,
+  setIsCollapsedContact,
+  unsetIsCollapsedContact,
+  updateTelephoneFixeContact,
+  updateTelephoneMobileContact,
+  updateEmailContact,
+  updateNumAdressNumber,
+  updateVoieAdressContact,
+  updateComplementAdressContact,
+  updateCodePostalContact,
+  updateVilleContact,
+  updatePaysContact
 }                                 from './gestBenef';
 
 
@@ -211,5 +227,22 @@ export {
   updateDateNaissanceIdentite,
   updateNumssIdentite,
   updateDateDecesIdentite,
-  updateMaritalStatusIdentite
+  updateMaritalStatusIdentite,
+
+  getGestBenefContactIfNeeded,
+  postGestBenefContactIfNeeded,
+
+  setIsEditingContact,
+  unsetIsEditingContact,
+  setIsCollapsedContact,
+  unsetIsCollapsedContact,
+  updateTelephoneFixeContact,
+  updateTelephoneMobileContact,
+  updateEmailContact,
+  updateNumAdressNumber,
+  updateVoieAdressContact,
+  updateComplementAdressContact,
+  updateCodePostalContact,
+  updateVilleContact,
+  updatePaysContact
 };
