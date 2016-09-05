@@ -37,7 +37,7 @@ import {
   updateCodePostalContact,
   updateVilleContact,
   updatePaysContact
-}                               from './gestBenefIdentite/gestBenefContact';
+}                               from './gestBenefContact/gestBenefContact';
 export {
   // all benef fields (identite + contact + dossiers)
   getGestBenefIfNeeded,
