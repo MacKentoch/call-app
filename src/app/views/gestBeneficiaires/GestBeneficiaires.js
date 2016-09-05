@@ -278,52 +278,68 @@ class GestBeneficiaires extends Component {
   // ////////////////////////////////
   //  Contact related methods
   // ////////////////////////////////
-  handlesOnFixedPhoneChanged() {
-    // TODO
+  handlesOnFixedPhoneChanged(fixedPhone) {
+    const { actions: { updateTelephoneFixeContact } } = this.props;
+    updateTelephoneFixeContact(fixedPhone);
   }
 
-  handlesOnMobilePhoneChanged() {
-    // TODO
+  handlesOnMobilePhoneChanged(mobilePhone) {
+    const { actions: { updateTelephoneMobileContact } } = this.props;
+    updateTelephoneMobileContact(mobilePhone);
   }
 
-  handlesOnEmailChanged() {
-    // TODO
+  handlesOnEmailChanged(email) {
+    const { actions: { updateEmailContact } } = this.props;
+    updateEmailContact(email);
   }
 
-  handlesOnNumAdressChanged() {
-    // TODO
+  handlesOnNumAdressChanged(numAdr) {
+    const { actions: { updateNumAdressNumber } } = this.props;
+    updateNumAdressNumber(numAdr);
   }
 
-  handlesOnVoieChanged() {
-    // TODO
+  handlesOnVoieChanged(voie) {
+    const { actions: { updateVoieAdressContact } } = this.props;
+    updateVoieAdressContact(voie);
   }
 
-  handlesOnComplementAdrChanged() {
-    // TODO
+  handlesOnComplementAdrChanged(complementAdr) {
+    const { actions: { updateComplementAdressContact } } = this.props;
+    updateComplementAdressContact(complementAdr);
   }
 
-  handlesOnCodePostalChanged() {
-    // TODO
+  handlesOnCodePostalChanged(codePostal) {
+    const { actions: { updateCodePostalContact } } = this.props;
+    updateCodePostalContact(codePostal);
   }
 
-  handlesOnVilleChanged() {
-    // TODO
+  handlesOnVilleChanged(ville) {
+    const { actions: { updateVilleContact } } = this.props;
+    updateVilleContact(ville);
   }
 
-  handlesOnPaysChanged() {
-    // TODO
+  handlesOnPaysChanged(pays) {
+    const { actions: { updatePaysContact } } = this.props;
+    updatePaysContact(pays);
   }
 
   handlesOnContactCollapseClick() {
-    // TODO
-  }
-
-  handlesOnCancelEditContactClick() {
-    // TODO
+    const { isCollapsedContact, actions: { setIsCollapsedContact, unsetIsCollapsedContact } } = this.props;
+    if (isCollapsedContact) {
+      unsetIsCollapsedContact();
+    } else {
+      setIsCollapsedContact();
+    }
   }
 
   handlesOnEditContactClick() {
-    // TODO
+    const { actions: { setIsEditingContact } } = this.props;
+    setIsEditingContact();
+  }
+
+  handlesOnCancelEditContactClick() {
+    const { actions: { unsetIsEditingContact } } = this.props;
+    unsetIsEditingContact();
   }
 
   handlesOnSaveContactForm() {
