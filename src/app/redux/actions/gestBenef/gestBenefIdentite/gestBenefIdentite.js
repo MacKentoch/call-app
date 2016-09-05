@@ -185,9 +185,6 @@ export const updateCiviliteIdentite = (civilite = '', time = moment().format(for
 //    update nom value
 //  -----------------------------------------------------------------
 export const updateNomIdentite = (nom = '', time = moment().format(formatDate)) => {
-  console.log(nom);
-  console.log(typeof nom);
-
   if (nom.trim().length > 0) {
     return {
       type: UPDATE_NOM_IDENTITE,

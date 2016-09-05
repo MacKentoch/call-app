@@ -42,14 +42,17 @@ class GestBeneficiaires extends Component {
 
   componentDidMount() {
     const  { params: { benefId } } =  this.props;
-    const  { actions: { enterGestBeneficiaires, getGestBenefIfNeeded } } =  this.props;
+    const  { actions: { enterGestBeneficiaires, getGestBenefIfNeeded, resetGestBenef } } =  this.props;
     enterGestBeneficiaires();
+    // reset gestBenef form model
+    resetGestBenef();
 
     this.resetIdentiteEditingAndCollpasing();
     this.resetContactEditingAndCollpasing();
 
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
+      console.log('benef id found');
       getGestBenefIfNeeded(idBenef);
     }
   }
@@ -463,6 +466,8 @@ GestBeneficiaires.propTypes = {
     leaveGestBeneficiaires: PropTypes.func,
     // get gestBenef:
     getGestBenefIfNeeded: PropTypes.func,
+    // reset:
+    resetGestBenef: PropTypes.func.isRequired,
     // //////////////////
     // identite
     // /////////////////

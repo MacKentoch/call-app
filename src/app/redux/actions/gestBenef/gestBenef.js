@@ -12,6 +12,14 @@ const formatDate = appConfig.formatDate.defaut;
 export const REQUEST_GET_GEST_BENEF   = 'REQUEST_GET_GEST_BENEF';
 export const RECEIVED_GET_GEST_BENEF  = 'RECEIVED_GET_GEST_BENEF';
 export const ERROR_GET_GEST_BENEF     = 'ERROR_GET_GEST_BENEF';
+export const RESET_GEST_BENEF         = 'RESET_GEST_BENEF';
+
+export const resetGestBenef = (time = moment().format(formatDate)) => {
+  return {
+    type: RESET_GEST_BENEF,
+    time
+  };
+};
 
 const requestGetGestBenef = (benefId = 0, time = moment().format(formatDate)) => {
   return {

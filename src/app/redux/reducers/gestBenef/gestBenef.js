@@ -1,7 +1,8 @@
 import {
   REQUEST_GET_GEST_BENEF,
   RECEIVED_GET_GEST_BENEF,
-  ERROR_GET_GEST_BENEF
+  ERROR_GET_GEST_BENEF,
+  RESET_GEST_BENEF
 }                                     from '../../actions/gestBenef/gestBenef';
 import {
   REQUEST_GET_GEST_BENEF_IDENTITE,
@@ -112,6 +113,35 @@ const gestBenef = (state = initialState, action) => {
   // /////////////////
   // common
   // ////////////////
+  case RESET_GEST_BENEF:
+    return {
+      ...state,
+      id: initialState.id,
+      // identité
+      civilite: initialState.civilite,
+      nom: initialState.nom,
+      nomJeuneFille: initialState.nomJeuneFille,
+      prenom: initialState.prenom,
+      dateNaissance: initialState.dateNaissance,
+      numss: initialState.numss,
+      dateDeces: initialState.dateDeces,
+      maritalStatus: initialState.maritalStatus,
+      // contact data
+      fixedPhone: initialState.fixedPhone,
+      mobilePhone: initialState.mobilePhone,
+      email: initialState.email,
+      // contact data > sub: adress
+      numAdress: initialState.numAdress,
+      voie: initialState.voie,
+      complementAdr: initialState.complementAdr,
+      codePostal: initialState.codePostal,
+      ville: initialState.ville,
+      pays: initialState.pays,
+      // dossiers:
+      dossiers:  [...initialState.dossiers],
+
+      actionTime: action.time
+    };
   case REQUEST_GET_GEST_BENEF:
     return {
       ...state,

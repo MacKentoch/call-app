@@ -60,6 +60,8 @@ const mapDispatchToProps = (dispatch) => {
         leaveGestBeneficiaires: actions.leaveGestBeneficiaires,
         // get gestBenef:
         getGestBenefIfNeeded: actions.getGestBenefIfNeeded,
+        // reset:
+        resetGestBenef: actions.resetGestBenef,
         // //////////////////
         // identite
         // /////////////////
