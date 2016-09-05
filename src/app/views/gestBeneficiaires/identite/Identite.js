@@ -35,6 +35,12 @@ const Identite = ({
   return (
       <div>
         <div className="page-header">
+          <i
+            className="fa fa-user"
+            aria-hidden="true"
+            style={{color: '#444444'}}>
+          </i>
+          &nbsp;
           Identité
           {
             !isSavingIdentite &&

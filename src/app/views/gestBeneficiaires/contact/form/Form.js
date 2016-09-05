@@ -101,7 +101,7 @@ const Form = ({
       {/* 2nd row */}
       <div className="row">
         {/* numAdress */}
-        <div className="col-md-4">
+        <div className="col-md-3">
           {
             isEditingContact
             ?
@@ -120,7 +120,7 @@ const Form = ({
           }
         </div>
         {/* voie */}
-        <div className="col-md-4">
+        <div className="col-md-5">
           {
             isEditingContact
             ?
@@ -163,7 +163,7 @@ const Form = ({
       {/* 3rd row */}
       <div className="row">
         {/* codePostal */}
-        <div className="col-md-4">
+        <div className="col-md-3">
           {
             isEditingContact
             ?
@@ -182,7 +182,7 @@ const Form = ({
           }
         </div>
         {/* ville */}
-        <div className="col-md-4">
+        <div className="col-md-5">
           {
             isEditingContact
             ?

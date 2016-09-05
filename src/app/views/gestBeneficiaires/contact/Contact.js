@@ -37,6 +37,12 @@ const Contact = ({
   return (
       <div>
         <div className="page-header">
+          <i
+            className="fa fa-comments"
+            aria-hidden="true"
+            style={{color: '#444444'}}>
+          </i>
+          &nbsp;
           Contact
           {
             !isSavingContact &&
