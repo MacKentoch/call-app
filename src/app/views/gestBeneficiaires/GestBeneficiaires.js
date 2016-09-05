@@ -46,6 +46,7 @@ class GestBeneficiaires extends Component {
     enterGestBeneficiaires();
 
     this.resetIdentiteEditingAndCollpasing();
+    this.resetContactEditingAndCollpasing();
 
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
@@ -343,7 +344,41 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnSaveContactForm() {
-    // TODO
+    const { actions: {postGestBenefContactIfNeeded, unsetIsEditingContact} } = this.props;
+    const {
+      id,
+      fixedPhone,
+      mobilePhone,
+      email,
+      numAdress,
+      voie,
+      complementAdr,
+      codePostal,
+      ville,
+      pays
+    } = this.props;
+
+    const payload = {
+      id,
+      fixedPhone,
+      mobilePhone,
+      email,
+      numAdress,
+      voie,
+      complementAdr,
+      codePostal,
+      ville,
+      pays
+    };
+    postGestBenefContactIfNeeded(payload);
+    unsetIsEditingContact();
+  }
+
+  // to reset contact editing state and collapsed state
+  resetContactEditingAndCollpasing() {
+    const { actions: { unsetIsEditingContact, unsetIsCollapsedContact } } = this.props;
+    unsetIsEditingContact();
+    unsetIsCollapsedContact();
   }
 }
 
