@@ -327,10 +327,20 @@ class GestBeneficiaires extends Component {
       dateDeces,
       maritalStatus
     };
-    postGestBenefIdentiteIfNeeded(payload);
-    unsetIsEditingIdentite();
-    // fetch from server to refresh
-    getGestBenefIdentiteIfNeeded();
+    postGestBenefIdentiteIfNeeded(payload)
+      .then(
+        sucessPayload => {
+          // console.log(' ========> postGestBenefIdentiteIfNeeded DONE: ', sucessPayload);
+          unsetIsEditingIdentite();
+          // fetch from server to refresh
+          getGestBenefIdentiteIfNeeded();
+        }
+      )
+      .catch(
+        err => {
+          // console.log(' ========> postGestBenefIdentiteIfNeeded ERROR: ', err);
+        }
+      );
   }
 
   // ////////////////////////////////

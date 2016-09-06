@@ -5,7 +5,7 @@ import React, {
 import shallowCompare from 'react-addons-shallow-compare';
 import cx             from 'classnames';
 
-const telephoneRegex = /^(\+33|0033|0)(6|7)[0-9]{8}$/g;
+const telephoneRegex = /^(\+33|0033|0)([0-9])[0-9]{8}$/g;
 
 
 class TelephoneInput extends Component {
@@ -14,6 +14,12 @@ class TelephoneInput extends Component {
     this.state = { valid: true };
     this.handlesOnChange = this.handlesOnChange.bind(this);
   }
+
+  // componentDidMount() {
+  //   const { value } = this.props;
+  //   console.log('checking value: ', value);
+  //   this.checkIsValidTelephone(value.trim());
+  // }
 
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
@@ -49,13 +55,17 @@ class TelephoneInput extends Component {
     );
   }
 
+  checkIsValidTelephone(value) {
+    // test telephone pattern:
+    const isValid = telephoneRegex.test(value);
+    this.setState({ valid: isValid });
+  }
+
   handlesOnChange(event) {
     event.preventDefault();
     const { onChange } = this.props;
-    // test telephone pattern:
-    const isValid = telephoneRegex.test(event.target.value.trim());
-    this.setState({ valid: isValid });
 
+    this.checkIsValidTelephone(event.target.value);
     onChange(event.target.value);
   }
 }

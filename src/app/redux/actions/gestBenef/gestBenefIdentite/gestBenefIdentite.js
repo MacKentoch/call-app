@@ -318,12 +318,17 @@ const postQueryGestBenefIdentite = payload => dispatch => {
               data => {
                 if (!data || !data.success) {
                   dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}));
+                  return Promise.reject({'error': 'post benef identite unsuccessfull with no server error'});
                 }
                 dispatch(receivedPostGestBenefIdentite(data));
+                return Promise.resolve('fetchMockPostBenefIdentite SUCCESSFULL');
               }
             )
             .catch(
-              err => dispatch(errorPostGestBenefIdentite(err))
+              err => {
+                dispatch(errorPostGestBenefIdentite(err));
+                return Promise.reject({'error': err});
+              }
             );
   } else {
     return postGestBenefIdentite(payload)
@@ -331,12 +336,17 @@ const postQueryGestBenefIdentite = payload => dispatch => {
               response => {
                 if (!response || !response.success) {
                   dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}));
+                  return Promise.reject({'error': 'post benef identite unsuccessfull with no server error'});
                 }
                 dispatch(receivedPostGestBenefIdentite(response));
+                return Promise.resolve('postGestBenefIdentite SUCCESSFULL');
               }
             )
             .catch(
-              error => dispatch(errorPostGestBenefIdentite(error))
+              error => {
+                dispatch(errorPostGestBenefIdentite(error));
+                return Promise.reject({'error': error});
+              }
             );
   }
 };
@@ -345,7 +355,7 @@ export const postGestBenefIdentiteIfNeeded = payload => (dispatch, getState) => 
   if (shouldPostGestBenefIdentite(getState())) {
     return dispatch(postQueryGestBenefIdentite(payload));
   }
-  return Promise.resolve();
+  return Promise.resolve('INFO: postGestBenefIdentiteIfNeeded canceled since already processing');
 };
 
 function shouldPostGestBenefIdentite(state) {
