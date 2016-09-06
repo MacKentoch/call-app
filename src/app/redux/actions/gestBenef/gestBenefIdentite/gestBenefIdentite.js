@@ -369,7 +369,7 @@ const postQueryGestBenefIdentite = payload => dispatch => {
     return fetchMockPostBenefIdentite(payload) // mock is the same all gestBenef object
             .then(
               data => {
-                if (!data || !data.id) {
+                if (!data || !data.id) { // ATTENTION: doit retourner l'id du benef update ou insert
                   dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}));
                   return Promise.reject({
                     message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (retour invalide)',
@@ -379,6 +379,7 @@ const postQueryGestBenefIdentite = payload => dispatch => {
                 }
                 dispatch(receivedPostGestBenefIdentite(data));
                 return Promise.resolve({
+                  id: data.id,
                   message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire terminé',
                   level: 'success',
                   showNotification: true

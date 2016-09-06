@@ -186,7 +186,10 @@ export const fetchMockPostBenefIdentite = (payload, timeToWait = appConfig.FAKE_
   return new Promise(
     resolve => {
       setTimeout(
-       () => resolve({success: true}),
+       () => resolve({
+         status: 'success',
+         id: 10
+       }),
        timeToWait
      );
     }
