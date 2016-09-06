@@ -42,7 +42,7 @@ const AsideLeft = ({
       // add overflow to left sidebar:
       style={{
         height: '100%',
-        overflow: 'scroll',
+        overflow: 'auto',
         position: 'fixed'
       }}
       >
