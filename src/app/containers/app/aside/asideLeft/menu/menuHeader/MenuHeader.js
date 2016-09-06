@@ -26,6 +26,7 @@ const MenuHeader = ({title, isCollapsed, onClick}) => {
                   <i
                     className="fa fa-angle-up fa-1x pull-right"
                     style={{
+                      WebkitTransform: `rotate(${deg}deg)`,
                       transform: `rotate(${deg}deg)`
                     }}
                     aria-hidden="true">

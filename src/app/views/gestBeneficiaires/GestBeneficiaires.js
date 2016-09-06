@@ -86,6 +86,8 @@ class GestBeneficiaires extends Component {
   render() {
     const { animated } = this.state;
     const { isFetchingAll } = this.props;
+    // id benef if === 0  then create
+    const { id } = this.props;
     // identite:
     const { isFetchingIdentite, lastFetchTimeIdentite, isEditingIdentite, isSavingIdentite, isCollapsedIdentite } = this.props;
     const { civilite, nom, prenom, nomJeuneFille, dateNaissance, numss, dateDeces, maritalStatus } = this.props;
@@ -110,13 +112,17 @@ class GestBeneficiaires extends Component {
           <div className="col-md-12">
             <section className="panel">
               <header className="panel-heading">
-                Détail Bénéficiaire
+                {
+                  (!id || id <= 0)
+                  ? 'Ajout Bénéficiaire'
+                  : 'Détail Bénéficiaire'
+                }
               </header>
 
               <div className="panel-body">
               {
                 isFetchingAll &&
-                <div>
+                <div style={{height: '200px'}}>
                   <div style={{height: '80px'}}></div>
                   <FetchingAllContent />
                 </div>

@@ -3,7 +3,8 @@ import moment               from 'moment';
 // import { appConfig }        from '../../../../config';
 import {
   FormLabel,
-  TextInput
+  TextInput,
+  TelephoneInput
 }                           from '../../../../components';
 
 moment.locale('fr');
@@ -40,7 +41,7 @@ const Form = ({
           {
             isEditingContact
             ?
-              <TextInput
+              <TelephoneInput
                 id="inputFixedPhone"
                 label={'Téléphone fixe'}
                 value={fixedPhone}
@@ -59,7 +60,7 @@ const Form = ({
           {
             isEditingContact
             ?
-              <TextInput
+              <TelephoneInput
                 id="inputMobilePhone"
                 label={'Téléphone mobile'}
                 value={mobilePhone}

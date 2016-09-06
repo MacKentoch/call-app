@@ -5,7 +5,7 @@ import React, {
 import shallowCompare from 'react-addons-shallow-compare';
 import cx             from 'classnames';
 
-const numss15regex = /[12][ \.\-]?[0-9]{2}[ \.\-]?(0[1-9]|[1][0-2])[ \.\-]?([0-9]{2}|2A|2B)[ \.\-]?[0-9]{3}[ \.\-]?[0-9]{3}[ \.\-]?[0-9]{2}/;
+const numss15regex = /[1234][ \.\-]?[0-9]{2}[ \.\-]?(0[1-9]|[1][0-2])[ \.\-]?([0-9]{2}|2A|2B)[ \.\-]?[0-9]{3}[ \.\-]?[0-9]{3}[ \.\-]?[0-9]{2}/;
 
 
 class NumssInput extends Component {
@@ -20,15 +20,15 @@ class NumssInput extends Component {
   }
 
   render() {
-    const {label, id, value} = this.props;
-    const {valid} = this.state;
+    const { label, id, value } = this.props;
+    const { valid } = this.state;
 
     return (
       <div
         className={
           cx({
             'form-group': true,
-            'has-error': valid
+            'has-error': !valid
           })
         }>
         <label
@@ -53,7 +53,8 @@ class NumssInput extends Component {
     event.preventDefault();
     const { onChange } = this.props;
     // test numss pattern:
-    this.setState({ valid: numss15regex.test(event.target.value) });
+    const isValid = numss15regex.test(event.target.value);
+    this.setState({ valid: isValid });
     onChange(event.target.value);
   }
 }

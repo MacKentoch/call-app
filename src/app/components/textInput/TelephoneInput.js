@@ -5,7 +5,7 @@ import React, {
 import shallowCompare from 'react-addons-shallow-compare';
 import cx             from 'classnames';
 
-const telephoneRegex = /^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/;
+const telephoneRegex = /^(\+33|0033|0)(6|7)[0-9]{8}$/g;
 
 
 class TelephoneInput extends Component {
@@ -28,7 +28,7 @@ class TelephoneInput extends Component {
         className={
           cx({
             'form-group': true,
-            'has-error': valid
+            'has-error': !valid
           })
         }>
         <label
@@ -53,7 +53,9 @@ class TelephoneInput extends Component {
     event.preventDefault();
     const { onChange } = this.props;
     // test telephone pattern:
-    this.setState({ valid: telephoneRegex.test(event.target.value) });
+    const isValid = telephoneRegex.test(event.target.value.trim());
+    this.setState({ valid: isValid });
+
     onChange(event.target.value);
   }
 }
