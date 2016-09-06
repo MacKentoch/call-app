@@ -57,7 +57,27 @@ class GestBeneficiaires extends Component {
         message: 'Consultation / Edition d\'un bénéficiaire existant',
         level: 'info'
       });
-      getGestBenefIfNeeded(idBenef);
+      getGestBenefIfNeeded(idBenef)
+        .then(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              addNotificationMessage({
+                message: notificationPayload.message ? notificationPayload.message : '',
+                level: notificationPayload.level ? notificationPayload.level : 'info'
+              });
+            }
+          }
+        )
+        .catch(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              addNotificationMessage({
+                message: notificationPayload.message ? notificationPayload.message : '',
+                level: notificationPayload.level ? notificationPayload.level : 'error'
+              });
+            }
+          }
+        );
     } else {
       addNotificationMessage({
         message: 'Création d\'un nouveau bénéficiaire',
@@ -85,7 +105,27 @@ class GestBeneficiaires extends Component {
           message: 'Consultation / Edition d\'un bénéficiaire existant',
           level: 'info'
         });
-        getGestBenefIfNeeded(idBenef);
+        getGestBenefIfNeeded(idBenef)
+          .then(
+            notificationPayload => {
+              if (notificationPayload && notificationPayload.showNotification) {
+                addNotificationMessage({
+                  message: notificationPayload.message ? notificationPayload.message : '',
+                  level: notificationPayload.level ? notificationPayload.level : 'info'
+                });
+              }
+            }
+          )
+          .catch(
+            notificationPayload => {
+              if (notificationPayload && notificationPayload.showNotification) {
+                addNotificationMessage({
+                  message: notificationPayload.message ? notificationPayload.message : '',
+                  level: notificationPayload.level ? notificationPayload.level : 'error'
+                });
+              }
+            }
+          );
       } else {
         addNotificationMessage({
           message: 'Création d\'un nouveau bénéficiaire',

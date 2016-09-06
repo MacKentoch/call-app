@@ -59,18 +59,46 @@ const getQueryGestBenef = (benefId) => dispatch => {
     // DEV ONLY
     return fetchMockGetGestBenef(benefId)
             .then(
-              data => dispatch(receivedGetGestBenef(data))
+              data => {
+                dispatch(receivedGetGestBenef(data));
+                return Promise.resolve({
+                  message: 'Données bénéficiaire raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
             )
             .catch(
-              err => dispatch(errorGetGestBenef(err))
+              err => {
+                dispatch(errorGetGestBenef(err));
+                return Promise.reject({
+                  message: 'Données bénéficiaire non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
             );
   } else {
     return getGestBenef(benefId)
             .then(
-              response => dispatch(receivedGetGestBenef(response))
+              response => {
+                dispatch(receivedGetGestBenef(response));
+                return Promise.resolve({
+                  message: 'Données bénéficiaire raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
             )
             .catch(
-              error => dispatch(errorGetGestBenef(error))
+              error => {
+                dispatch(errorGetGestBenef(error));
+                return Promise.reject({
+                  message: 'Données bénéficiaire non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
             );
   }
 };
@@ -79,7 +107,11 @@ export const getGestBenefIfNeeded = benefId => (dispatch, getState) => {
   if (shouldGetGestBenef(getState())) {
     return dispatch(getQueryGestBenef(benefId));
   }
-  return Promise.resolve();
+  return Promise.resolve({
+    message: '',
+    level: 'info',
+    showNotification: false
+  });
 };
 
 function shouldGetGestBenef(state) {
