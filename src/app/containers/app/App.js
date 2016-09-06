@@ -19,6 +19,8 @@ import {
 import { appConfig }          from '../../config';
 import { BackToTop }          from '../../components';
 import { navigation }         from '../../models';
+import NotificationSystem     from 'react-notification-system';
+
 
 class App extends Component {
   constructor(props, context) {
@@ -118,8 +120,28 @@ class App extends Component {
           title={'Recherche de bénéficiaire'}
           onClose={this.handlesHideRechercheBenefModal}
         />
+        {/* Notifications */}
+        <NotificationSystem
+          ref={c => {
+            this.notificationSystem = c;
+          }}
+        />
       </div>
     );
+  }
+
+  handlesAddNotification(notification) {
+    if (!notification) {
+      return;
+    }
+    if (!notification.message) {
+      return;
+    }
+
+    this.notificationSystem.addNotification({
+      message: notification.message,
+      level: notification.level ? notification.level : 'info'
+    });
   }
 
   handlesHideRechercheBenefModal() {
