@@ -356,6 +356,11 @@ const errorPostGestBenefIdentite = (error, time = moment().format(formatDate)) =
 const postQueryGestBenefIdentite = payload => dispatch => {
   if (!payload) {
     dispatch(errorPostGestBenefIdentite('postQueryGestBenefIdentite API error: benefId is not defined or not valid'));
+    return Promise.reject({
+      message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (payload non valide)',
+      level: 'error',
+      showNotification: true
+    });
   }
 
   dispatch(requestPostGestBenefIdentite(payload));
@@ -364,18 +369,30 @@ const postQueryGestBenefIdentite = payload => dispatch => {
     return fetchMockPostBenefIdentite(payload) // mock is the same all gestBenef object
             .then(
               data => {
-                if (!data || !data.success) {
+                if (!data || !data.id) {
                   dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}));
-                  return Promise.reject({'error': 'post benef identite unsuccessfull with no server error'});
+                  return Promise.reject({
+                    message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (retour invalide)',
+                    level: 'error',
+                    showNotification: true
+                  });
                 }
                 dispatch(receivedPostGestBenefIdentite(data));
-                return Promise.resolve('fetchMockPostBenefIdentite SUCCESSFULL');
+                return Promise.resolve({
+                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire terminé',
+                  level: 'success',
+                  showNotification: true
+                });
               }
             )
             .catch(
               err => {
                 dispatch(errorPostGestBenefIdentite(err));
-                return Promise.reject({'error': err});
+                return Promise.reject({
+                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (erreur serveur)',
+                  level: 'error',
+                  showNotification: true
+                });
               }
             );
   } else {

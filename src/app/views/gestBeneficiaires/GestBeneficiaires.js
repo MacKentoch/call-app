@@ -432,8 +432,8 @@ class GestBeneficiaires extends Component {
     };
     postGestBenefIdentiteIfNeeded(payload)
       .then(
-        sucess => {
-          // console.log(' ========> postGestBenefIdentiteIfNeeded DONE: ', sucess);
+        response => {
+          // console.log(' ========> postGestBenefIdentiteIfNeeded DONE: ', notificationPayload);
           unsetIsEditingIdentite();
           // fetch from server to refresh
           getGestBenefIdentiteIfNeeded();
@@ -441,7 +441,7 @@ class GestBeneficiaires extends Component {
       )
       .catch(
         error => {
-          // console.log(' ========> postGestBenefIdentiteIfNeeded ERROR: ', err);
+          // console.log(' ========> postGestBenefIdentiteIfNeeded ERROR: ', notificationPayload);
         }
       );
   }
