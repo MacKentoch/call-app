@@ -278,6 +278,34 @@ class GestBeneficiaires extends Component {
   // ////////////////////////////////
   //  Identite related methods
   // ////////////////////////////////
+  refreshIdentiteBenefData(idBenef = 0) {
+    if (idBenef && (parseInt(idBenef, 10) > 0)) {
+      const { actions: { getGestBenefIdentiteIfNeeded, addNotificationMessage } } = this.props;
+
+      getGestBenefIdentiteIfNeeded(idBenef)
+        .then(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              addNotificationMessage({
+                message: notificationPayload.message ? notificationPayload.message : '',
+                level: notificationPayload.level ? notificationPayload.level : 'info'
+              });
+            }
+          }
+        )
+        .catch(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              addNotificationMessage({
+                message: notificationPayload.message ? notificationPayload.message : '',
+                level: notificationPayload.level ? notificationPayload.level : 'error'
+              });
+            }
+          }
+        );
+    }
+  }
+
   handlesOnCiviliteChanged(civilite) {
     const { actions: { updateCiviliteIdentite } } = this.props;
     updateCiviliteIdentite(civilite);
@@ -338,14 +366,23 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnCancelEditIdentiteClick() {
-    const { actions: { unsetIsEditingIdentite, getGestBenefIdentiteIfNeeded, addNotificationMessage } } = this.props;
+    const { actions: { unsetIsEditingIdentite, addNotificationMessage } } = this.props;
+    const { params: { benefId } } =  this.props;
+
     unsetIsEditingIdentite();
     // notification to inform enter edit mode
     addNotificationMessage({
       message: 'Annulation de l\'édition des information "Identité" (les changements ne seront pas sauvegardés)',
       level: 'info'
     });
-    getGestBenefIdentiteIfNeeded();
+
+    const idBenef = parseInt(benefId, 10);
+    if (idBenef) {
+      // EXISTING BENEF: refresh Indentite data from backend to reset changes:
+      this.refreshIdentiteBenefData(idBenef);
+    } else {
+      // NEW BENEF: reset changes:
+    }
   }
 
   // to reset identite editing state and collapsed state

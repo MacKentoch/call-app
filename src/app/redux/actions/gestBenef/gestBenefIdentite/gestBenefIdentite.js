@@ -73,6 +73,11 @@ const errorGetGestBenefIdentite = (error, time = moment().format(formatDate)) =>
 const getQueryGestBenefIdentite = (benefId) => dispatch => {
   if (!benefId) {
     dispatch(errorGetGestBenefIdentite('getGestBenefIdentite API error: benefId is not defined or not valid'));
+    return Promise.reject({
+      message: 'Rafraichissement des données "Identité" du bénéficiaire en erreur (identifiant non valide)',
+      level: 'error',
+      showNotification: true
+    });
   }
 
   dispatch(requestGetGestBenefIdentite(benefId));
@@ -80,18 +85,46 @@ const getQueryGestBenefIdentite = (benefId) => dispatch => {
     // DEV ONLY
     return fetchMockGetGestBenef(benefId) // mock is the as all gestBenef object
             .then(
-              data => dispatch(receivedGetGestBenefIdentite(data))
+              data => {
+                dispatch(receivedGetGestBenefIdentite(data));
+                return Promise.resolve({
+                  message: 'Données "Identité" du bénéficiaire raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
             )
             .catch(
-              err => dispatch(errorGetGestBenefIdentite(err))
+              err => {
+                dispatch(errorGetGestBenefIdentite(err));
+                return Promise.reject({
+                  message: 'Données "Identité" du bénéficiaire non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
             );
   } else {
     return getGestBenefIdentite(benefId)
             .then(
-              response => dispatch(receivedGetGestBenefIdentite(response))
+              response => {
+                dispatch(receivedGetGestBenefIdentite(response));
+                return Promise.resolve({
+                  message: 'Données "Identité" du bénéficiaire raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
             )
             .catch(
-              error => dispatch(errorGetGestBenefIdentite(error))
+              error => {
+                dispatch(errorGetGestBenefIdentite(error));
+                return Promise.reject({
+                  message: 'Données "Identité" du bénéficiaire non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
             );
   }
 };
@@ -100,7 +133,11 @@ export const getGestBenefIdentiteIfNeeded = benefId => (dispatch, getState) => {
   if (shouldGetGestBenefIdentite(getState())) {
     return dispatch(getQueryGestBenefIdentite(benefId));
   }
-  return Promise.resolve();
+  return Promise.resolve({
+    message: '',
+    level: 'info',
+    showNotification: false
+  });
 };
 
 function shouldGetGestBenefIdentite(state) {

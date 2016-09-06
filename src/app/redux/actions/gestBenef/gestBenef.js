@@ -52,6 +52,11 @@ const errorGetGestBenef = (error, time = moment().format(formatDate)) => {
 const getQueryGestBenef = (benefId) => dispatch => {
   if (!benefId) {
     dispatch(errorGetGestBenef('getGestBenef API error: benefId is not defined or not valid'));
+    return Promise.reject({
+      message: 'Rafraichissement des données bénéficiaire en erreur (identifiant non valide)',
+      level: 'error',
+      showNotification: true
+    });
   }
 
   dispatch(requestGetGestBenef(benefId));
