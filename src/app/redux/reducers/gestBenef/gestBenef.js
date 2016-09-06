@@ -75,36 +75,73 @@ const initialState = {
   isEditingIdentite: false,
   isSavingIdentite: false,
   isCollapsedIdentite: false,
+
   civilite: '',
+  civiliteIsValid: false,
+
   nom: '',
+  nomIsValid: false,
+
   nomJeuneFille: '',
+  nomJeuneFilleIsValid: false,
+
   prenom: '',
+  prenomIsValid: false,
+
   dateNaissance: '',
+  dateNaissanceIsValid: false,
+
   numss: '',
+  numssIsValid: false,
+
   dateDeces: '',
+  dateDecesIsValid: false,
+
   maritalStatus: '',
+  maritalStatusIsValid: false,
+
   // contact data
   isFetchingContact: false,
   lastFetchTimeContact: '',
   isEditingContact: false,
   isSavingContact: false,
   isCollapsedContact: false,
+
   fixedPhone: '',
+  fixedPhoneIsValid: false,
+
   mobilePhone: '',
+  mobilePhoneIsValid: false,
+
   email: '',
+  emailIsValid: false,
+
   // contact data > sub: adress
   numAdress: '',
+  numAdressIsValid: false,
+
   voie: '',
+  voieIsValid: false,
+
   complementAdr: '',
+  complementAdrIsValid: false,
+
   codePostal: '',
+  codePostalIsValid: false,
+
   ville: '',
+  villeIsvalid: false,
+
   pays: '',
+  paysIsValid: false,
+
   // dossiers:
   isFetchingDossiers: false,
   lastFetchTimeDossiers: '',
   isEditingDossiers: false,
   isSavingDossiers: false,
   isCollapsedDossiers: false,
+
   dossiers: []
 };
 

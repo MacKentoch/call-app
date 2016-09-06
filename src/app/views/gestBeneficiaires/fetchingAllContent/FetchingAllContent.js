@@ -3,10 +3,14 @@ import { ThreeBounce }    from 'better-react-spinkit';
 
 const FetchingAllContent = ({size, color}) => {
   return (
-    <ThreeBounce
-      size={size}
-      color={color}
-    />
+    <div
+      className="center-block"
+      style={{width: `${size + 90}px`}}>
+      <ThreeBounce
+        size={size}
+        color={color}
+      />
+    </div>
   );
 };
 
