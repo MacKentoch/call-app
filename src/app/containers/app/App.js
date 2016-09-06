@@ -48,7 +48,7 @@ class App extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.updateNavigationStateIfNeeded(nextProps);
-    
+
     // notifications detection:
     const { notificationTime } = this.props;
     if (nextProps.notificationTime !== notificationTime) {
@@ -148,10 +148,12 @@ class App extends Component {
     if (!notification.message) {
       return;
     }
+    if(!notification.level) {
+      return;
+    }
 
     this.notificationSystem.addNotification({
-      message: notification.message,
-      level: notification.level ? notification.level : 'info'
+      ...notification
     });
   }
 
@@ -226,7 +228,7 @@ App.propTypes = {
   rechercheBenefModalOpened: PropTypes.bool.isRequired,
   // notifications
   notificationMessage: PropTypes.string.isRequired,
-  notificationLevel: PropTypes.oneOf(['sucess', 'error', 'info']).isRequired,
+  notificationLevel: PropTypes.oneOf(['sucess', 'warning', 'error', 'info']).isRequired,
   notificationTime: PropTypes.string.isRequired,
   // actions
   actions: PropTypes.shape({
