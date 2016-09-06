@@ -43,7 +43,7 @@ class GestBeneficiaires extends Component {
 
   componentDidMount() {
     const { params: { benefId } } =  this.props;
-    const { actions: { enterGestBeneficiaires, getGestBenefIfNeeded, resetGestBenef } } =  this.props;
+    const { actions: { enterGestBeneficiaires, resetGestBenef } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
 
     enterGestBeneficiaires();
@@ -57,27 +57,7 @@ class GestBeneficiaires extends Component {
         message: 'Consultation / Edition d\'un bénéficiaire existant',
         level: 'info'
       });
-      getGestBenefIfNeeded(idBenef)
-        .then(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              addNotificationMessage({
-                message: notificationPayload.message ? notificationPayload.message : '',
-                level: notificationPayload.level ? notificationPayload.level : 'info'
-              });
-            }
-          }
-        )
-        .catch(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              addNotificationMessage({
-                message: notificationPayload.message ? notificationPayload.message : '',
-                level: notificationPayload.level ? notificationPayload.level : 'error'
-              });
-            }
-          }
-        );
+      this.refreshAllBenefData(idBenef);
     } else {
       addNotificationMessage({
         message: 'Création d\'un nouveau bénéficiaire',
@@ -90,7 +70,7 @@ class GestBeneficiaires extends Component {
 
   componentWillReceiveProps(newProps) {
     const { params: { benefId } } =  newProps;
-    const  { actions: { getGestBenefIfNeeded, resetGestBenef } } =  this.props;
+    const  { actions: { resetGestBenef } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
 
     const idBenef = parseInt(benefId, 10);
@@ -105,27 +85,7 @@ class GestBeneficiaires extends Component {
           message: 'Consultation / Edition d\'un bénéficiaire existant',
           level: 'info'
         });
-        getGestBenefIfNeeded(idBenef)
-          .then(
-            notificationPayload => {
-              if (notificationPayload && notificationPayload.showNotification) {
-                addNotificationMessage({
-                  message: notificationPayload.message ? notificationPayload.message : '',
-                  level: notificationPayload.level ? notificationPayload.level : 'info'
-                });
-              }
-            }
-          )
-          .catch(
-            notificationPayload => {
-              if (notificationPayload && notificationPayload.showNotification) {
-                addNotificationMessage({
-                  message: notificationPayload.message ? notificationPayload.message : '',
-                  level: notificationPayload.level ? notificationPayload.level : 'error'
-                });
-              }
-            }
-          );
+        this.refreshAllBenefData(idBenef);
       } else {
         addNotificationMessage({
           message: 'Création d\'un nouveau bénéficiaire',
@@ -153,8 +113,6 @@ class GestBeneficiaires extends Component {
     // contact:
     const { isFetchingContact, lastFetchTimeContact, isSavingContact, isEditingContact, isCollapsedContact } = this.props;
     const { fixedPhone, mobilePhone, email, numAdress, voie, complementAdr, codePostal, ville, pays } = this.props;
-
-    // TODO : add fetching all loading
 
     return(
       <section
@@ -284,6 +242,38 @@ class GestBeneficiaires extends Component {
       </section>
     );
   }
+  // ////////////////////////////////
+  //  general
+  // ////////////////////////////////
+
+  // fetch all benef data and add notifications
+  refreshAllBenefData(idBenef = 0) {
+    if (idBenef && (parseInt(idBenef, 10) > 0)) {
+      const { actions: { getGestBenefIfNeeded, addNotificationMessage } } = this.props;
+
+      getGestBenefIfNeeded(idBenef)
+        .then(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              addNotificationMessage({
+                message: notificationPayload.message ? notificationPayload.message : '',
+                level: notificationPayload.level ? notificationPayload.level : 'info'
+              });
+            }
+          }
+        )
+        .catch(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              addNotificationMessage({
+                message: notificationPayload.message ? notificationPayload.message : '',
+                level: notificationPayload.level ? notificationPayload.level : 'error'
+              });
+            }
+          }
+        );
+    }
+  }
 
   // ////////////////////////////////
   //  Identite related methods
@@ -338,13 +328,23 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnEditIdentiteClick() {
-    const { actions: { setIsEditingIdentite } } = this.props;
+    const { actions: { setIsEditingIdentite, addNotificationMessage } } = this.props;
     setIsEditingIdentite();
+    // notification to inform enter edit mode
+    addNotificationMessage({
+      message: 'Les informations "Identité" sont maintenant éditable',
+      level: 'info'
+    });
   }
 
   handlesOnCancelEditIdentiteClick() {
-    const { actions: { unsetIsEditingIdentite, getGestBenefIdentiteIfNeeded } } = this.props;
+    const { actions: { unsetIsEditingIdentite, getGestBenefIdentiteIfNeeded, addNotificationMessage } } = this.props;
     unsetIsEditingIdentite();
+    // notification to inform enter edit mode
+    addNotificationMessage({
+      message: 'Annulation de l\'édition des information "Identité" (les changements ne seront pas sauvegardés)',
+      level: 'info'
+    });
     getGestBenefIdentiteIfNeeded();
   }
 
