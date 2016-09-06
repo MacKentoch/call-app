@@ -83,6 +83,11 @@ const errorGetGestBenefContact = (error, time = moment().format(formatDate)) => 
 const getQueryGestBenefContact = (benefId) => dispatch => {
   if (!benefId) {
     dispatch(errorGetGestBenefContact('getQueryGestBenefContact API error: benefId is not defined or not valid'));
+    return Promise.reject({
+      message: 'Rafraichissement des données "Contact" du bénéficiaire en erreur (identifiant non valide)',
+      level: 'error',
+      showNotification: true
+    });
   }
 
   dispatch(requestGetGestBenefContact(benefId));
@@ -90,18 +95,46 @@ const getQueryGestBenefContact = (benefId) => dispatch => {
     // DEV ONLY
     return fetchMockGetGestBenef(benefId) // mock is the as all gestBenef object
             .then(
-              data => dispatch(receivedGetGestBenefContact(data))
+              data => {
+                dispatch(receivedGetGestBenefContact(data));
+                return Promise.resolve({
+                  message: 'Données "Contact" du bénéficiaire raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
             )
             .catch(
-              err => dispatch(errorGetGestBenefContact(err))
+              err => {
+                dispatch(errorGetGestBenefContact(err));
+                return Promise.reject({
+                  message: 'Données "Contact" du bénéficiaire non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
             );
   } else {
     return getGestBenefContactData(benefId)
             .then(
-              response => dispatch(receivedGetGestBenefContact(response))
+              response => {
+                dispatch(receivedGetGestBenefContact(response));
+                return Promise.resolve({
+                  message: 'Données "Contact" du bénéficiaire raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
             )
             .catch(
-              error => dispatch(errorGetGestBenefContact(error))
+              error => {
+                dispatch(errorGetGestBenefContact(error));
+                return Promise.reject({
+                  message: 'Données "Contact" du bénéficiaire non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
             );
   }
 };
@@ -110,7 +143,11 @@ export const getGestBenefContactIfNeeded = benefId => (dispatch, getState) => {
   if (shouldGetGestBenefContact(getState())) {
     return dispatch(getQueryGestBenefContact(benefId));
   }
-  return Promise.resolve();
+  return Promise.resolve({
+    message: 'fetch des modifications des informations "Contact" déjà en cours',
+    level: 'info',
+    showNotification: false
+  });
 };
 
 function shouldGetGestBenefContact(state) {
@@ -329,6 +366,11 @@ const errorPostGestBenefContact = (error, time = moment().format(formatDate)) =>
 const postQueryGestBenefContact = payload => dispatch => {
   if (!payload) {
     dispatch(errorPostGestBenefContact('postQueryGestBenefContact API error: benefId is not defined or not valid'));
+    return Promise.reject({
+      message: 'Enregistrement des modifications des informations "Contact" du bénéficiaire en erreur (payload non valide)',
+      level: 'error',
+      showNotification: true
+    });
   }
 
   dispatch(requestPostGestBenefContact(payload));
@@ -339,16 +381,29 @@ const postQueryGestBenefContact = payload => dispatch => {
               data => {
                 if (!data || !data.success) {
                   dispatch(errorPostGestBenefContact({'error': 'post benef contact unsuccessfull with no server error'}));
-                  return Promise.reject({'error': 'post benef contact unsuccessfull with no server error'});
+                  return Promise.reject({
+                    message: 'Enregistrement des modifications des informations "Contact" du bénéficiaire en erreur (retour invalide)',
+                    level: 'error',
+                    showNotification: true
+                  });
                 }
                 dispatch(receivedPostGestBenefContact(data));
-                return Promise.resolve('fetchMockPostBenefContactData SUCCESSFULL');
+                return Promise.resolve({
+                  id: data.id,
+                  message: 'Enregistrement des modifications des informations "Contact" du bénéficiaire terminé',
+                  level: 'success',
+                  showNotification: true
+                });
               }
             )
             .catch(
               err => {
                 dispatch(errorPostGestBenefContact(err));
-                return Promise.reject({'error': err});
+                return Promise.reject({
+                  message: 'Enregistrement des modifications des informations "Contact" du bénéficiaire en erreur (erreur serveur)',
+                  level: 'error',
+                  showNotification: true
+                });
               }
             );
   } else {
@@ -357,16 +412,29 @@ const postQueryGestBenefContact = payload => dispatch => {
               response => {
                 if (!response || !response.success) {
                   dispatch(errorPostGestBenefContact({'error': 'post benef contact unsuccessfull with no server error'}));
-                  return Promise.reject({'error': 'post benef contact unsuccessfull with no server error'});
+                  return Promise.reject({
+                    message: 'Enregistrement des modifications des informations "Contact" du bénéficiaire en erreur (retour invalide)',
+                    level: 'error',
+                    showNotification: true
+                  });
                 }
                 dispatch(receivedPostGestBenefContact(response));
-                return Promise.resolve('postGestBenefContactData SUCCESSFULL');
+                return Promise.resolve({
+                  id: response.id,
+                  message: 'Enregistrement des modifications des informations "Contact" du bénéficiaire terminé',
+                  level: 'success',
+                  showNotification: true
+                });
               }
             )
             .catch(
               error => {
                 dispatch(errorPostGestBenefContact(error));
-                return Promise.reject({'error': error});
+                return Promise.reject({
+                  message: 'Enregistrement des modifications des informations "Contact" du bénéficiaire en erreur (erreur serveur)',
+                  level: 'error',
+                  showNotification: true
+                });
               }
             );
   }
@@ -376,7 +444,11 @@ export const postGestBenefContactIfNeeded = payload => (dispatch, getState) => {
   if (shouldPostGestBenefContact(getState())) {
     return dispatch(postQueryGestBenefContact(payload));
   }
-  return Promise.resolve('INFO: postGestBenefContactIfNeeded canceled since already processing');
+  return Promise.resolve({
+    message: 'post des modifications des informations "Contact" déjà en cours',
+    level: 'info',
+    showNotification: false
+  });
 };
 
 function shouldPostGestBenefContact(state) {

@@ -378,7 +378,7 @@ class GestBeneficiaires extends Component {
     unsetIsEditingIdentite();
     // notification to inform enter edit mode
     addNotificationMessage({
-      message: 'Annulation de l\'édition des information "Identité" (les changements ne seront pas sauvegardés)',
+      message: 'Annulation de l\'édition des informations "Identité" (les changements ne seront pas sauvegardés)',
       level: 'info'
     });
 
@@ -451,6 +451,34 @@ class GestBeneficiaires extends Component {
   // ////////////////////////////////
   //  Contact related methods
   // ////////////////////////////////
+  refreshContactBenefData(idBenef = 0) {
+    if (idBenef && (parseInt(idBenef, 10) > 0)) {
+      const { actions: { getGestBenefContactIfNeeded, addNotificationMessage } } = this.props;
+
+      getGestBenefContactIfNeeded(idBenef)
+        .then(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              addNotificationMessage({
+                message: notificationPayload.message ? notificationPayload.message : '',
+                level: notificationPayload.level ? notificationPayload.level : 'info'
+              });
+            }
+          }
+        )
+        .catch(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              addNotificationMessage({
+                message: notificationPayload.message ? notificationPayload.message : '',
+                level: notificationPayload.level ? notificationPayload.level : 'error'
+              });
+            }
+          }
+        );
+    }
+  }
+
   handlesOnFixedPhoneChanged(fixedPhone) {
     const { actions: { updateTelephoneFixeContact } } = this.props;
     updateTelephoneFixeContact(fixedPhone);
@@ -511,9 +539,33 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnCancelEditContactClick() {
-    const { actions: { unsetIsEditingContact, getGestBenefContactIfNeeded } } = this.props;
+    // const { actions: { unsetIsEditingContact, getGestBenefContactIfNeeded } } = this.props;
+    // unsetIsEditingContact();
+    // getGestBenefContactIfNeeded();
+    const {
+      actions: {
+        unsetIsEditingContact,
+        addNotificationMessage,
+        resetGestBenefContact
+      }
+    } = this.props;
+    const { params: { benefId } } =  this.props;
+
     unsetIsEditingContact();
-    getGestBenefContactIfNeeded();
+    // notification to inform enter edit mode
+    addNotificationMessage({
+      message: 'Annulation de l\'édition des informations "Contact" (les changements ne seront pas sauvegardés)',
+      level: 'info'
+    });
+
+    const idBenef = parseInt(benefId, 10);
+    if (idBenef) {
+      // EXISTING BENEF: refresh Contact data from backend to reset changes:
+      this.refreshContactBenefData(idBenef);
+    } else {
+      // NEW BENEF: reset changes:
+      resetGestBenefContact();
+    }
   }
 
   handlesOnSaveContactForm() {
@@ -660,7 +712,7 @@ GestBeneficiaires.propTypes = {
     getGestBenefContactIfNeeded: PropTypes.func,
     // post
     postGestBenefContactIfNeeded: PropTypes.func,
-    // reset 
+    // reset
     resetGestBenefContact: PropTypes.func,
     // UI: contact
     setIsEditingContact: PropTypes.func,
