@@ -544,9 +544,6 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnCancelEditContactClick() {
-    // const { actions: { unsetIsEditingContact, getGestBenefContactIfNeeded } } = this.props;
-    // unsetIsEditingContact();
-    // getGestBenefContactIfNeeded();
     const {
       actions: {
         unsetIsEditingContact,
