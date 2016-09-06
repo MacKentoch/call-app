@@ -403,8 +403,7 @@ class GestBeneficiaires extends Component {
     const {
       actions: {
         postGestBenefIdentiteIfNeeded,
-        unsetIsEditingIdentite,
-        getGestBenefIdentiteIfNeeded
+        unsetIsEditingIdentite
       }
     } = this.props;
     const {
@@ -433,15 +432,18 @@ class GestBeneficiaires extends Component {
     postGestBenefIdentiteIfNeeded(payload)
       .then(
         response => {
-          // console.log(' ========> postGestBenefIdentiteIfNeeded DONE: ', notificationPayload);
           unsetIsEditingIdentite();
           // fetch from server to refresh
-          getGestBenefIdentiteIfNeeded();
+          this.refreshIdentiteBenefData(response.id);
         }
       )
       .catch(
         error => {
-          // console.log(' ========> postGestBenefIdentiteIfNeeded ERROR: ', notificationPayload);
+          const {actions: {addNotificationMessage}} = this.props;
+          addNotificationMessage({
+            message: error.message ? error.message : 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur',
+            level: 'error'
+          });
         }
       );
   }

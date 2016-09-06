@@ -145,7 +145,7 @@ export const getGestBenefIdentiteIfNeeded = benefId => (dispatch, getState) => {
     return dispatch(getQueryGestBenefIdentite(benefId));
   }
   return Promise.resolve({
-    message: '',
+    message: 'fetch des modifications des informations "Identité" déjà en cours',
     level: 'info',
     showNotification: false
   });
@@ -400,18 +400,31 @@ const postQueryGestBenefIdentite = payload => dispatch => {
     return postGestBenefIdentite(payload)
             .then(
               response => {
-                if (!response || !response.success) {
+                if (!response || !response.id) {
                   dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}));
-                  return Promise.reject({'error': 'post benef identite unsuccessfull with no server error'});
+                  return Promise.reject({
+                    message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (retour invalide)',
+                    level: 'error',
+                    showNotification: true
+                  });
                 }
                 dispatch(receivedPostGestBenefIdentite(response));
-                return Promise.resolve('postGestBenefIdentite SUCCESSFULL');
+                return Promise.resolve({
+                  id: response.id,
+                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire terminé',
+                  level: 'success',
+                  showNotification: true
+                });
               }
             )
             .catch(
               error => {
                 dispatch(errorPostGestBenefIdentite(error));
-                return Promise.reject({'error': error});
+                return Promise.reject({
+                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (erreur serveur)',
+                  level: 'error',
+                  showNotification: true
+                });
               }
             );
   }
@@ -421,7 +434,11 @@ export const postGestBenefIdentiteIfNeeded = payload => (dispatch, getState) => 
   if (shouldPostGestBenefIdentite(getState())) {
     return dispatch(postQueryGestBenefIdentite(payload));
   }
-  return Promise.resolve('INFO: postGestBenefIdentiteIfNeeded canceled since already processing');
+  return Promise.resolve({
+    message: 'post des modifications des informations "Identité" déjà en cours',
+    level: 'info',
+    showNotification: false
+  });
 };
 
 function shouldPostGestBenefIdentite(state) {
