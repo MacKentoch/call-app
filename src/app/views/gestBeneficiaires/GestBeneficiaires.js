@@ -278,7 +278,7 @@ class GestBeneficiaires extends Component {
   // ////////////////////////////////
   //  Identite related methods
   // ////////////////////////////////
-  refreshIdentiteBenefData(idBenef = 0) {
+  refreshIdentiteBenefData(idBenef = 0, resetMessage = '') {
     if (idBenef && (parseInt(idBenef, 10) > 0)) {
       const { actions: { getGestBenefIdentiteIfNeeded, addNotificationMessage } } = this.props;
 
@@ -286,8 +286,13 @@ class GestBeneficiaires extends Component {
         .then(
           notificationPayload => {
             if (notificationPayload && notificationPayload.showNotification) {
+              /* eslint-disable no-nested-ternary */
+              const message = resetMessage
+                ? resetMessage
+                : notificationPayload.message ? notificationPayload.message : '';
+              /* eslint-enable no-nested-ternary */
               addNotificationMessage({
-                message: notificationPayload.message ? notificationPayload.message : '',
+                message: message,
                 level: notificationPayload.level ? notificationPayload.level : 'info'
               });
             }
@@ -385,7 +390,8 @@ class GestBeneficiaires extends Component {
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
       // EXISTING BENEF: refresh Indentite data from backend to reset changes:
-      this.refreshIdentiteBenefData(idBenef);
+      const resetMessage = 'Données "Identité" du bénéficiaire réinitialisées';
+      this.refreshIdentiteBenefData(idBenef, resetMessage);
     } else {
       // NEW BENEF: reset changes:
       resetGestBenefIdentite();
@@ -451,7 +457,7 @@ class GestBeneficiaires extends Component {
   // ////////////////////////////////
   //  Contact related methods
   // ////////////////////////////////
-  refreshContactBenefData(idBenef = 0) {
+  refreshContactBenefData(idBenef = 0, resetMessage = '') {
     if (idBenef && (parseInt(idBenef, 10) > 0)) {
       const { actions: { getGestBenefContactIfNeeded, addNotificationMessage } } = this.props;
 
@@ -459,8 +465,13 @@ class GestBeneficiaires extends Component {
         .then(
           notificationPayload => {
             if (notificationPayload && notificationPayload.showNotification) {
+              /* eslint-disable no-nested-ternary */
+              const message = resetMessage
+                ? resetMessage
+                : notificationPayload.message ? notificationPayload.message : '';
+              /* eslint-enable no-nested-ternary */
               addNotificationMessage({
-                message: notificationPayload.message ? notificationPayload.message : '',
+                message: message,
                 level: notificationPayload.level ? notificationPayload.level : 'info'
               });
             }
@@ -563,7 +574,8 @@ class GestBeneficiaires extends Component {
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
       // EXISTING BENEF: refresh Contact data from backend to reset changes:
-      this.refreshContactBenefData(idBenef);
+      const resetMessage = 'Données "Identité" du bénéficiaire réinitialisées';
+      this.refreshContactBenefData(idBenef, resetMessage);
     } else {
       // NEW BENEF: reset changes:
       resetGestBenefContact();
