@@ -48,6 +48,17 @@ class App extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.updateNavigationStateIfNeeded(nextProps);
+    
+    // notifications detection:
+    const { notificationTime } = this.props;
+    if (nextProps.notificationTime !== notificationTime) {
+      // new notification added:
+      const notification = {
+        message: nextProps.notificationMessage,
+        level: nextProps.notificationLevel
+      };
+      this.handlesAddNotification(notification);
+    }
   }
 
   render() {
@@ -213,6 +224,10 @@ App.propTypes = {
   currentView: PropTypes.string,
   // modals
   rechercheBenefModalOpened: PropTypes.bool.isRequired,
+  // notifications
+  notificationMessage: PropTypes.string.isRequired,
+  notificationLevel: PropTypes.oneOf(['sucess', 'error', 'info']).isRequired,
+  notificationTime: PropTypes.string.isRequired,
   // actions
   actions: PropTypes.shape({
     // view
@@ -231,7 +246,9 @@ App.propTypes = {
     initSideMenu:   PropTypes.func,
     // modals
     showRechercheBenefModal: PropTypes.func,
-    hideRechercheBenefModal: PropTypes.func
+    hideRechercheBenefModal: PropTypes.func,
+    // notifications
+    addNotificationMessage: PropTypes.func
   })
 };
 
@@ -249,7 +266,11 @@ const mapStateToProps = (state) => {
     userBoitesMails:      state.userBoitesMails.data,
     userBoitesMailsLastUpdateTime: state.userBoitesMails.time,
     // modal
-    rechercheBenefModalOpened: state.rechercheBenefModal.isOpened
+    rechercheBenefModalOpened: state.rechercheBenefModal.isOpened,
+    // notifications
+    notificationMessage: state.notifications.message,
+    notificationLevel: state.notifications.level,
+    notificationTime: state.notifications.time
   };
 };
 
