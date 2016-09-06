@@ -212,7 +212,10 @@ export const fetchMockPostBenefContactData = (payload, timeToWait = appConfig.FA
   return new Promise(
     resolve => {
       setTimeout(
-       () => resolve({success: true}),
+       () => resolve({
+         success: true,
+         id: 10
+       }),
        timeToWait
      );
     }

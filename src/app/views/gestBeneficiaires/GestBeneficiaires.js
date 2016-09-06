@@ -360,7 +360,7 @@ class GestBeneficiaires extends Component {
     setIsEditingIdentite();
     // notification to inform enter edit mode
     addNotificationMessage({
-      message: 'Les informations "Identité" sont maintenant éditable',
+      message: 'Les informations "Identité" sont maintenant éditables',
       level: 'info'
     });
   }
@@ -379,7 +379,7 @@ class GestBeneficiaires extends Component {
     // notification to inform enter edit mode
     addNotificationMessage({
       message: 'Annulation de l\'édition des informations "Identité" (les changements ne seront pas sauvegardés)',
-      level: 'info'
+      level: 'warning'
     });
 
     const idBenef = parseInt(benefId, 10);
@@ -534,8 +534,13 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnEditContactClick() {
-    const { actions: { setIsEditingContact } } = this.props;
+    const { actions: { setIsEditingContact, addNotificationMessage } } = this.props;
     setIsEditingContact();
+    // notification to inform enter edit mode
+    addNotificationMessage({
+      message: 'Les informations "Contact" sont maintenant éditables',
+      level: 'info'
+    });
   }
 
   handlesOnCancelEditContactClick() {
@@ -555,7 +560,7 @@ class GestBeneficiaires extends Component {
     // notification to inform enter edit mode
     addNotificationMessage({
       message: 'Annulation de l\'édition des informations "Contact" (les changements ne seront pas sauvegardés)',
-      level: 'info'
+      level: 'warning'
     });
 
     const idBenef = parseInt(benefId, 10);
@@ -572,8 +577,7 @@ class GestBeneficiaires extends Component {
     const {
       actions: {
         postGestBenefContactIfNeeded,
-        unsetIsEditingContact,
-        getGestBenefContactIfNeeded
+        unsetIsEditingContact
       }
     } = this.props;
     const {
@@ -601,10 +605,26 @@ class GestBeneficiaires extends Component {
       ville,
       pays
     };
-    postGestBenefContactIfNeeded(payload);
-    unsetIsEditingContact();
-    // fetch from server to refresh
-    getGestBenefContactIfNeeded();
+    postGestBenefContactIfNeeded(payload)
+      .then(
+        response => {
+          unsetIsEditingContact();
+          // fetch from server to refresh
+          this.refreshContactBenefData(response.id);
+        }
+      )
+      .catch(
+        error => {
+          const {actions: {addNotificationMessage}} = this.props;
+          addNotificationMessage({
+            message: error.message ? error.message : 'Enregistrement des modifications des informations "Contact" du bénéficiaire en erreur',
+            level: 'error'
+          });
+        }
+      );
+    // postGestBenefContactIfNeeded(payload);
+    // unsetIsEditingContact();
+    // getGestBenefContactIfNeeded();
   }
 
   // to reset contact editing state and collapsed state
