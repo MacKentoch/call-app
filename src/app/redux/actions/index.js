@@ -136,7 +136,9 @@ import {
   updateVilleContact,
   updatePaysContact
 }                                 from './gestBenef';
-
+import {
+  addNotificationMessage
+}                                 from './notifications/notifications';
 
 export {
   // views:
@@ -246,5 +248,8 @@ export {
   updateComplementAdressContact,
   updateCodePostalContact,
   updateVilleContact,
-  updatePaysContact
+  updatePaysContact,
+
+  // notifications:
+  addNotificationMessage
 };

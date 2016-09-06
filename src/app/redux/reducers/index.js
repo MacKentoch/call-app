@@ -23,6 +23,8 @@ import rechercheBenefModal  from './modals/rechercheBenefModal';
 import search               from './search/search';
 // gest benef
 import gestBenef            from './gestBenef/gestBenef';
+// notifications
+import notifications        from './notifications/notifications';
 
 export {
   // views:
@@ -56,5 +58,8 @@ export {
   search,
 
   // gest benef
-  gestBenef
+  gestBenef,
+
+  // notifications
+  notifications
 };
