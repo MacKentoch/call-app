@@ -328,12 +328,17 @@ const postQueryGestBenefContact = payload => dispatch => {
               data => {
                 if (!data || !data.success) {
                   dispatch(errorPostGestBenefContact({'error': 'post benef contact unsuccessfull with no server error'}));
+                  return Promise.reject({'error': 'post benef contact unsuccessfull with no server error'});
                 }
                 dispatch(receivedPostGestBenefContact(data));
+                return Promise.resolve('fetchMockPostBenefContactData SUCCESSFULL');
               }
             )
             .catch(
-              err => dispatch(errorPostGestBenefContact(err))
+              err => {
+                dispatch(errorPostGestBenefContact(err));
+                return Promise.reject({'error': err});
+              }
             );
   } else {
     return postGestBenefContactData(payload)
@@ -341,12 +346,17 @@ const postQueryGestBenefContact = payload => dispatch => {
               response => {
                 if (!response || !response.success) {
                   dispatch(errorPostGestBenefContact({'error': 'post benef contact unsuccessfull with no server error'}));
+                  return Promise.reject({'error': 'post benef contact unsuccessfull with no server error'});
                 }
                 dispatch(receivedPostGestBenefContact(response));
+                return Promise.resolve('postGestBenefContactData SUCCESSFULL');
               }
             )
             .catch(
-              error => dispatch(errorPostGestBenefContact(error))
+              error => {
+                dispatch(errorPostGestBenefContact(error));
+                return Promise.reject({'error': error});
+              }
             );
   }
 };
@@ -355,7 +365,7 @@ export const postGestBenefContactIfNeeded = payload => (dispatch, getState) => {
   if (shouldPostGestBenefContact(getState())) {
     return dispatch(postQueryGestBenefContact(payload));
   }
-  return Promise.resolve();
+  return Promise.resolve('INFO: postGestBenefContactIfNeeded canceled since already processing');
 };
 
 function shouldPostGestBenefContact(state) {

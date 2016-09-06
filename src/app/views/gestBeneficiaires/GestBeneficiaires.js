@@ -329,15 +329,15 @@ class GestBeneficiaires extends Component {
     };
     postGestBenefIdentiteIfNeeded(payload)
       .then(
-        sucessPayload => {
-          // console.log(' ========> postGestBenefIdentiteIfNeeded DONE: ', sucessPayload);
+        sucess => {
+          // console.log(' ========> postGestBenefIdentiteIfNeeded DONE: ', sucess);
           unsetIsEditingIdentite();
           // fetch from server to refresh
           getGestBenefIdentiteIfNeeded();
         }
       )
       .catch(
-        err => {
+        error => {
           // console.log(' ========> postGestBenefIdentiteIfNeeded ERROR: ', err);
         }
       );
