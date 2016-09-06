@@ -42,8 +42,10 @@ class GestBeneficiaires extends Component {
   }
 
   componentDidMount() {
-    const  { params: { benefId } } =  this.props;
-    const  { actions: { enterGestBeneficiaires, getGestBenefIfNeeded, resetGestBenef } } =  this.props;
+    const { params: { benefId } } =  this.props;
+    const { actions: { enterGestBeneficiaires, getGestBenefIfNeeded, resetGestBenef } } =  this.props;
+    const { actions: { addNotificationMessage } } = this.props;
+
     enterGestBeneficiaires();
 
     this.resetIdentiteEditingAndCollpasing();
@@ -51,8 +53,16 @@ class GestBeneficiaires extends Component {
 
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
+      addNotificationMessage({
+        message: 'Consultation / Edition d\'un bénéficiaire existant',
+        level: 'info'
+      });
       getGestBenefIfNeeded(idBenef);
     } else {
+      addNotificationMessage({
+        message: 'Création d\'un nouveau bénéficiaire',
+        level: 'info'
+      });
       // reset gestBenef form model
       resetGestBenef();
     }
@@ -61,6 +71,7 @@ class GestBeneficiaires extends Component {
   componentWillReceiveProps(newProps) {
     const { params: { benefId } } =  newProps;
     const  { actions: { getGestBenefIfNeeded, resetGestBenef } } =  this.props;
+    const { actions: { addNotificationMessage } } = this.props;
 
     const idBenef = parseInt(benefId, 10);
 
@@ -70,8 +81,16 @@ class GestBeneficiaires extends Component {
       this.resetContactEditingAndCollpasing();
 
       if (idBenef) {
+        addNotificationMessage({
+          message: 'Consultation / Edition d\'un bénéficiaire existant',
+          level: 'info'
+        });
         getGestBenefIfNeeded(idBenef);
       } else {
+        addNotificationMessage({
+          message: 'Création d\'un nouveau bénéficiaire',
+          level: 'info'
+        });
         // reset gestBenef form model
         resetGestBenef();
       }
@@ -517,8 +536,11 @@ GestBeneficiaires.propTypes = {
 
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({
+    // view:
     enterGestBeneficiaires: PropTypes.func,
     leaveGestBeneficiaires: PropTypes.func,
+    // notifications:
+    addNotificationMessage: PropTypes.func,
     // get gestBenef:
     getGestBenefIfNeeded: PropTypes.func,
     // reset:

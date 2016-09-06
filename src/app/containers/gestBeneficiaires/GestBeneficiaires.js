@@ -56,8 +56,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
       {
+        // view:
         enterGestBeneficiaires: actions.enterGestBeneficiaires,
         leaveGestBeneficiaires: actions.leaveGestBeneficiaires,
+        // notifications
+        addNotificationMessage: actions.addNotificationMessage,
         // get gestBenef:
         getGestBenefIfNeeded: actions.getGestBenefIfNeeded,
         // reset:
