@@ -228,7 +228,7 @@ App.propTypes = {
   rechercheBenefModalOpened: PropTypes.bool.isRequired,
   // notifications
   notificationMessage: PropTypes.string.isRequired,
-  notificationLevel: PropTypes.oneOf(['sucess', 'warning', 'error', 'info']).isRequired,
+  notificationLevel: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
   notificationTime: PropTypes.string.isRequired,
   // actions
   actions: PropTypes.shape({

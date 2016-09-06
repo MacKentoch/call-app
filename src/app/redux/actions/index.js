@@ -104,6 +104,7 @@ import {
 import {
   getGestBenefIfNeeded,
   // benef identite only
+  resetGestBenefIdentite,
   getGestBenefIdentiteIfNeeded,
   resetGestBenef,
   postGestBenefIdentiteIfNeeded,
@@ -216,6 +217,7 @@ export {
   postSearchIfNeeded,
 
   // gestBenef
+  resetGestBenefIdentite,
   getGestBenefIfNeeded,
   getGestBenefIdentiteIfNeeded,
   resetGestBenef,

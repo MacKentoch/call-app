@@ -366,7 +366,13 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnCancelEditIdentiteClick() {
-    const { actions: { unsetIsEditingIdentite, addNotificationMessage } } = this.props;
+    const {
+      actions: {
+        unsetIsEditingIdentite,
+        addNotificationMessage,
+        resetGestBenefIdentite
+      }
+    } = this.props;
     const { params: { benefId } } =  this.props;
 
     unsetIsEditingIdentite();
@@ -382,6 +388,7 @@ class GestBeneficiaires extends Component {
       this.refreshIdentiteBenefData(idBenef);
     } else {
       // NEW BENEF: reset changes:
+      resetGestBenefIdentite();
     }
   }
 
@@ -629,6 +636,8 @@ GestBeneficiaires.propTypes = {
     getGestBenefIdentiteIfNeeded: PropTypes.func,
     // post
     postGestBenefIdentiteIfNeeded: PropTypes.func,
+    // reset:
+    resetGestBenefIdentite: PropTypes.func,
     // UI: Identite
     setIsEditingIdentite: PropTypes.func,
     unsetIsEditingIdentite: PropTypes.func,

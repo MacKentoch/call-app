@@ -78,6 +78,7 @@ const mapDispatchToProps = (dispatch) => {
         setIsCollapsedIdentite: actions.setIsCollapsedIdentite,
         unsetIsCollapsedIdentite: actions.unsetIsCollapsedIdentite,
         updateCiviliteIdentite: actions.updateCiviliteIdentite,
+        resetGestBenefIdentite: actions.resetGestBenefIdentite,
         updateNomIdentite: actions.updateNomIdentite,
         updateNomDeJeuneFilleIdentite: actions.updateNomDeJeuneFilleIdentite,
         updatePrenomIdentite: actions.updatePrenomIdentite,

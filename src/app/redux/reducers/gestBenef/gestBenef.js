@@ -5,6 +5,8 @@ import {
   RESET_GEST_BENEF
 }                                     from '../../actions/gestBenef/gestBenef';
 import {
+  RESET_GEST_BENEF_IDENTITE,
+
   REQUEST_GET_GEST_BENEF_IDENTITE,
   RECEIVED_GET_GEST_BENEF_IDENTITE,
   ERROR_GET_GEST_BENEF_IDENTITE,
@@ -286,8 +288,23 @@ const gestBenef = (state = initialState, action) => {
     };
 
   // /////////////////
-  // contact
+  // identite
   // ////////////////
+  case RESET_GEST_BENEF_IDENTITE:
+    return {
+      ...state,
+      civilite: initialState.civilite,
+      nom: initialState.nom,
+      nomJeuneFille: initialState.nomJeuneFille,
+      prenom: initialState.prenom,
+      dateNaissance: initialState.dateNaissance,
+      numss: initialState.numss,
+      dateDeces: initialState.dateDeces,
+      maritalStatus: initialState.maritalStatus,
+
+      actionTime: action.time
+    };
+
   case REQUEST_GET_GEST_BENEF_IDENTITE:
     return {
       ...state,

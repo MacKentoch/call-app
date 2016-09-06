@@ -39,6 +39,17 @@ export const UPDATE_NUMSS_IDENTITE              = 'UPDATE_NUMSS_IDENTITE';
 export const UPDATE_DATE_DECES_IDENTITE         = 'UPDATE_DATE_DECES_IDENTITE';
 export const UPDATE_MARITAL_STATUS_IDENTITE     = 'UPDATE_MARITAL_STATUS_IDENTITE';
 
+export const RESET_GEST_BENEF_IDENTITE          = 'RESET_GEST_BENEF_IDENTITE';
+//  -----------------------------------------------------------------
+//    reset benef identite fields
+//  -----------------------------------------------------------------
+export const resetGestBenefIdentite = (time = moment().format(formatDate)) => {
+  return {
+    type: RESET_GEST_BENEF_IDENTITE,
+    time
+  };
+};
+
 //  -----------------------------------------------------------------
 //    GET benef identite
 //  -----------------------------------------------------------------

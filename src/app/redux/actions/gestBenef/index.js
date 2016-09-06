@@ -1,5 +1,7 @@
 import { getGestBenefIfNeeded, resetGestBenef } from './gestBenef';
 import {
+  resetGestBenefIdentite,
+
   getGestBenefIdentiteIfNeeded,
   postGestBenefIdentiteIfNeeded,
 
@@ -42,6 +44,7 @@ export {
   // all benef fields (identite + contact + dossiers)
   getGestBenefIfNeeded,
   // benef identite only
+  resetGestBenefIdentite,
   getGestBenefIdentiteIfNeeded,
   resetGestBenef,
   postGestBenefIdentiteIfNeeded,
