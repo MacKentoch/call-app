@@ -177,12 +177,12 @@ export const fetchMockPostBenefIdentite = (payload, timeToWait = appConfig.FAKE_
       'error': 'fetchMockPostBenefIdentite has no valid payload'
     });
   }
-  if (!parseInt(payload.id, 10)) {
-    return Promise.reject({
-      'error': 'fetchMockPostBenefIdentite payload is not valid'
-    });
-  }
-
+  // if (!parseInt(payload.id, 10)) {
+  //   return Promise.reject({
+  //     'error': 'fetchMockPostBenefIdentite payload is not valid'
+  //   });
+  // }
+  // BACKEND TIP: if !payload.id => it means insert other update this id
   return new Promise(
     resolve => {
       setTimeout(
@@ -202,12 +202,13 @@ export const fetchMockPostBenefContactData = (payload, timeToWait = appConfig.FA
       'error': 'fetchMockPostBenefContactData has no valid payload'
     });
   }
-  if (!parseInt(payload.id, 10)) {
-    return Promise.reject({
-      'error': 'fetchMockPostBenefContactData payload is not valid'
-    });
-  }
+  // if (!parseInt(payload.id, 10)) {
+  //   return Promise.reject({
+  //     'error': 'fetchMockPostBenefContactData payload is not valid'
+  //   });
+  // }
 
+  // BACKEND TIP: if !payload.id => it means insert other update this id
   return new Promise(
     resolve => {
       setTimeout(
