@@ -21,6 +21,8 @@ import {
   updateMaritalStatusIdentite
 }                               from './gestBenefIdentite/gestBenefIdentite';
 import {
+  resetGestBenefContact,
+
   getGestBenefContactIfNeeded,
   postGestBenefContactIfNeeded,
 
@@ -61,6 +63,7 @@ export {
   updateDateDecesIdentite,
   updateMaritalStatusIdentite,
   // benef contact only
+  resetGestBenefContact,
   getGestBenefContactIfNeeded,
   postGestBenefContactIfNeeded,
   setIsEditingContact,

@@ -34,6 +34,8 @@ import {
   UPDATE_MARITAL_STATUS_IDENTITE
 }                                     from '../../actions/gestBenef/gestBenefIdentite/gestBenefIdentite';
 import {
+  RESET_GEST_BENEF_CONTACT,
+
   REQUEST_GET_GEST_BENEF_CONTACT,
   RECEIVED_GET_GEST_BENEF_CONTACT,
   ERROR_GET_GEST_BENEF_CONTACT,
@@ -472,6 +474,24 @@ const gestBenef = (state = initialState, action) => {
   // /////////////////
   // contact
   // ////////////////
+  case RESET_GEST_BENEF_CONTACT:
+    return {
+      ...state,
+      fixedPhone: initialState.fixedPhone,
+      mobilePhone: initialState.mobilePhone,
+      email: initialState.email,
+      // contact data > sub: adress
+      numAdress: initialState.numAdress,
+      voie: initialState.voie,
+      complementAdr: initialState.complementAdr,
+      codePostal: initialState.codePostal,
+      ville: initialState.ville,
+      pays: initialState.pays,
+
+      actionTime: action.time
+    };
+
+
   case REQUEST_GET_GEST_BENEF_CONTACT:
     return {
       ...state,

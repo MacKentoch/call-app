@@ -38,8 +38,19 @@ export const UPDATE_CODE_POSTAL_CONTACT        = 'UPDATE_CODE_POSTAL_CONTACT';
 export const UPDATE_VILLE_CONTACT              = 'UPDATE_VILLE_CONTACT';
 export const UPDATE_PAYS_CONTACT               = 'UPDATE_PAYS_CONTACT';
 
+export const RESET_GEST_BENEF_CONTACT          = 'RESET_GEST_BENEF_CONTACT';
 //  -----------------------------------------------------------------
-//    GET benef identite
+//    reset benef contact fields
+//  -----------------------------------------------------------------
+export const resetGestBenefContact = (time = moment().format(formatDate)) => {
+  return {
+    type: RESET_GEST_BENEF_CONTACT,
+    time
+  };
+};
+
+//  -----------------------------------------------------------------
+//    GET benef contact
 //  -----------------------------------------------------------------
 const requestGetGestBenefContact = (benefId = 0, time = moment().format(formatDate)) => {
   return {

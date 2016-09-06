@@ -98,6 +98,7 @@ const mapDispatchToProps = (dispatch) => {
         unsetIsEditingContact: actions.unsetIsEditingContact,
         setIsCollapsedContact: actions.setIsCollapsedContact,
         unsetIsCollapsedContact: actions.unsetIsCollapsedContact,
+        resetGestBenefContact: actions.resetGestBenefContact,
         updateTelephoneFixeContact: actions.updateTelephoneFixeContact,
         updateTelephoneMobileContact: actions.updateTelephoneMobileContact,
         updateEmailContact: actions.updateEmailContact,

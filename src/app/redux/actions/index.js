@@ -121,6 +121,7 @@ import {
   updateDateDecesIdentite,
   updateMaritalStatusIdentite,
 
+  resetGestBenefContact,
   getGestBenefContactIfNeeded,
   postGestBenefContactIfNeeded,
   setIsEditingContact,
@@ -235,6 +236,7 @@ export {
   updateDateDecesIdentite,
   updateMaritalStatusIdentite,
 
+  resetGestBenefContact,
   getGestBenefContactIfNeeded,
   postGestBenefContactIfNeeded,
 

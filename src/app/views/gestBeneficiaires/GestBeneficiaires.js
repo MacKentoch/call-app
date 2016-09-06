@@ -660,6 +660,8 @@ GestBeneficiaires.propTypes = {
     getGestBenefContactIfNeeded: PropTypes.func,
     // post
     postGestBenefContactIfNeeded: PropTypes.func,
+    // reset 
+    resetGestBenefContact: PropTypes.func,
     // UI: contact
     setIsEditingContact: PropTypes.func,
     unsetIsEditingContact: PropTypes.func,
