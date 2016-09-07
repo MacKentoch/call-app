@@ -1,15 +1,18 @@
 /* eslint react/no-did-mount-set-state:0 */
-
 import React, {
   Component,
   PropTypes
-}                     from 'react';
-import shallowCompare from 'react-addons-shallow-compare';
-import moment         from 'moment';
-import { appConfig }  from '../../../config';
+}                       from 'react';
+import shallowCompare   from 'react-addons-shallow-compare';
+import SavingIndicator  from '../savingIndicator/SavingIndicator';
+import Collapse         from 'react-collapse';
+import moment           from 'moment';
+import { appConfig }    from '../../../config';
+
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
+
 
 class Dossiers extends Component {
   constructor(props) {
