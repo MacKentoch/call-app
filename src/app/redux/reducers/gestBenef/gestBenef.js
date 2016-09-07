@@ -724,7 +724,9 @@ const gestBenef = (state = initialState, action) => {
       ...state,
       isFetchingDossiers: action.isFetchingDossiers,
       isSavingDossiers: action.isSavingDossiers,
-      actionTime: action.time
+      actionTime: action.time,
+
+      dossiers: [...action.dossiers]
     };
 
   case ERROR_ADD_GEST_BENEF_NEW_DOSSIER:
@@ -736,6 +738,21 @@ const gestBenef = (state = initialState, action) => {
       actionTime: action.time
     };
 
+  case SET_IS_SAVING_NEW_DOSSIER:
+  case UNSET_IS_SAVING_NEW_DOSSIER:
+    return {
+      ...state,
+      isSavingDossiers: action.isSavingDossiers,
+      actionTime: action.time
+    };
+
+  case SET_IS_COLLAPSED_DOSSIERS:
+  case UNSET_IS_COLLAPSED_DOSSIERS:
+    return {
+      ...state,
+      isCollapsedDossiers: action.isCollapsedDossiers,
+      actionTime: action.time
+    };
 
   default:
     return state;
