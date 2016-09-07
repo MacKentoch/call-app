@@ -16,7 +16,8 @@ import {
   getGestBenefContactData,
   postGestBenefContactData,
 
-  getGestBenefDossiers
+  getGestBenefDossiers,
+  addGestBenefNewDossier
 }                                 from './gestbenef/gestBenef';
 
 export {
@@ -35,5 +36,6 @@ export {
   postGestBenefIdentite,
   getGestBenefContactData,
   postGestBenefContactData,
-  getGestBenefDossiers
+  getGestBenefDossiers,
+  addGestBenefNewDossier
 };

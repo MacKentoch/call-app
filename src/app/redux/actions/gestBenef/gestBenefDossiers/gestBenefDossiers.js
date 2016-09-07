@@ -1,7 +1,10 @@
 import moment         from 'moment';
 import { appConfig }  from '../../../../config';
 import {
+  // API:
   getGestBenefDossiers,
+  addGestBenefNewDossier,
+  // fecth mocks:
   fetchMockGetGestBenefDossiers,
   fetchMockAddBenefNewDossier
 }                     from '../../../../services';
@@ -9,6 +12,7 @@ import {
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
+
 // all dossiers:
 export const REQUEST_GET_GEST_BENEF_ALL_DOSSIERS    = 'REQUEST_GET_GEST_BENEF_ALL_DOSSIERS';
 export const RECEIVED_GET_GEST_BENEF_ALL_DOSSIERS   = 'RECEIVED_GET_GEST_BENEF_ALL_DOSSIERS';
@@ -231,18 +235,18 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => dispatch => {
     return fetchMockAddBenefNewDossier(benefId, newDossier)
             .then(
               data => {
-                if (!data || !data.id) { // ATTENTION: doit retourner l'id du benef update ou insert
-                  dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}));
+                if (!data || !data.id) { // ATTENTION: doit retourner l'id du dossier
+                  dispatch(errorAddGestBenefNewDossier({'error': 'add benef new dossier unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (retour invalide)',
+                    message: 'Ajout d\'un nouveau "Dossier" en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
                 }
-                dispatch(receivedPostGestBenefIdentite(data));
+                dispatch(receivedAddGestBenefNewDossier(data));
                 return Promise.resolve({
                   id: data.id,
-                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire terminé',
+                  message: 'Ajout d\'un nouveau "Dossier" terminé',
                   level: 'success',
                   showNotification: true
                 });
@@ -250,30 +254,30 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => dispatch => {
             )
             .catch(
               err => {
-                dispatch(errorPostGestBenefIdentite(err));
+                dispatch(errorAddGestBenefNewDossier(err));
                 return Promise.reject({
-                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (erreur serveur)',
+                  message: 'Ajout d\'un nouveau "Dossier" en erreur (erreur serveur)',
                   level: 'error',
                   showNotification: true
                 });
               }
             );
   } else {
-    return postGestBenefIdentite(payload)
+    return addGestBenefNewDossier(benefId, newDossier)
             .then(
               response => {
-                if (!response || !response.id) {
-                  dispatch(errorPostGestBenefIdentite({'error': 'post benef identite unsuccessfull with no server error'}));
+                if (!response || !response.id) { // ATTENTION: doit retourner l'id du dossier
+                  dispatch(errorAddGestBenefNewDossier({'error': 'post benef identite unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (retour invalide)',
+                    message: 'Ajout d\'un nouveau "Dossier" en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
                 }
-                dispatch(receivedPostGestBenefIdentite(response));
+                dispatch(receivedAddGestBenefNewDossier(response));
                 return Promise.resolve({
                   id: response.id,
-                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire terminé',
+                  message: 'Ajout d\'un nouveau "Dossier" terminé',
                   level: 'success',
                   showNotification: true
                 });
@@ -281,9 +285,9 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => dispatch => {
             )
             .catch(
               error => {
-                dispatch(errorPostGestBenefIdentite(error));
+                dispatch(errorAddGestBenefNewDossier(error));
                 return Promise.reject({
-                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (erreur serveur)',
+                  message: 'Ajout d\'un nouveau "Dossier" en erreur (erreur serveur)',
                   level: 'error',
                   showNotification: true
                 });
