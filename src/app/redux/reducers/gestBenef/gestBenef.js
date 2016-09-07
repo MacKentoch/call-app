@@ -72,6 +72,10 @@ import {
   RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER,
   ERROR_ADD_GEST_BENEF_NEW_DOSSIER,
 
+  REQUEST_UPDATE_GEST_BENEF_DOSSIER,
+  RECEIVED_UPDATE_GEST_BENEF_DOSSIER,
+  ERROR_UPDATE_GEST_BENEF_DOSSIER,
+
   SET_IS_SAVING_NEW_DOSSIER,
   UNSET_IS_SAVING_NEW_DOSSIER,
 
@@ -725,6 +729,8 @@ const gestBenef = (state = initialState, action) => {
       isFetchingDossiers: action.isFetchingDossiers,
       isSavingDossiers: action.isSavingDossiers,
       actionTime: action.time,
+      // important to update: to indicate data refresh in components:
+      lastFetchTimeDossiers: action.time,
 
       dossiers: [...action.dossiers]
     };
@@ -737,6 +743,37 @@ const gestBenef = (state = initialState, action) => {
       error: action.error,
       actionTime: action.time
     };
+
+  case REQUEST_UPDATE_GEST_BENEF_DOSSIER:
+    return {
+      ...state,
+      isFetchingDossiers: action.isFetchingDossiers,
+      isSavingDossiers: action.isSavingDossiers,
+      postPayload: action.payload,
+      actionTime: action.time
+    };
+
+  case RECEIVED_UPDATE_GEST_BENEF_DOSSIER:
+    return {
+      ...state,
+      isFetchingDossiers: action.isFetchingDossiers,
+      isSavingDossiers: action.isSavingDossiers,
+      actionTime: action.time,
+      // important to update: to indicate data refresh in components:
+      lastFetchTimeDossiers: action.time,
+
+      dossiers: [...action.dossiers]
+    };
+
+  case ERROR_UPDATE_GEST_BENEF_DOSSIER:
+    return {
+      ...state,
+      isFetchingDossiers: action.isFetchingDossiers,
+      isSavingDossiers: action.isSavingDossiers,
+      error: action.error,
+      actionTime: action.time
+    };
+
 
   case SET_IS_SAVING_NEW_DOSSIER:
   case UNSET_IS_SAVING_NEW_DOSSIER:
