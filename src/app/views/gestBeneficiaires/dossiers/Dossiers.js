@@ -1,4 +1,3 @@
-/* eslint react/no-did-mount-set-state:0 */
 import React, {
   Component,
   PropTypes
@@ -33,11 +32,14 @@ class Dossiers extends Component {
       currentPage: 1,
       numberDossiersPerPage: 2
     };
+
+    this.handlesOnPagingPreviousClick = this.handlesOnPagingPreviousClick.bind(this);
+    this.handlesOnPagingNextClick = this.handlesOnPagingNextClick.bind(this);
+    this.handlesOnSearch = this.handlesOnSearch.bind(this);
   }
 
   componentDidMount() {
-    const { dossiers } = this.props;
-    this.setState({ dossiers });
+    this.initDossiersBindings();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -59,6 +61,34 @@ class Dossiers extends Component {
       <div></div>
     );
   }
+
+  initDossiersBindings() {
+    const { dossiers } = this.props;
+    const { currentPage, numberDossiersPerPage, filter } = this.state;
+
+    const nextPageDossiers = getCurrentSearchDossiersResPageContent(dossiers, currentPage, numberDossiersPerPage, filter);
+
+    this.setState({
+      dossiers,
+      currentPageDossiers: nextPageDossiers
+    });
+  }
+
+  handlesOnPagingPreviousClick(event) {
+    event.preventDefault();
+
+    const { dossiers } = this.props;
+    const { currentPage, numberDossiersPerPage, filter } = this.state;
+
+    const previousPage = currentPage - 1 > 0 ? currentPage - 1 : currentPage;
+    const nextPageBenefs = getCurrentSearchDossiersResPageContent(dossiers, previousPage, numberDossiersPerPage, filter);
+
+    this.setState({
+      currentPageDossiers: nextPageBenefs,
+      currentPage: previousPage
+    });
+  }
+
 }
 
 Dossiers.propTypes = {
