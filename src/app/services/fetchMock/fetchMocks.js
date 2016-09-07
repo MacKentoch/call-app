@@ -171,6 +171,23 @@ export const fetchMockGetGestBenef = (benefId, timeToWait = appConfig.FAKE_ASYNC
   );
 };
 
+export const fetchMockGetGestBenefDossiers = (benefId, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!benefId) {
+    return Promise.reject({
+      'error': 'fetchMockGetGestBenefDossiers error: benefId is not valid'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+        () => resolve([...gestBenefMock.dossiers]),
+        timeToWait
+      );
+    }
+  );
+};
+
 export const fetchMockPostBenefIdentite = (payload, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
   if (!payload) {
     return Promise.reject({

@@ -21,7 +21,8 @@ import {
   fetchMockSearchBenef,
   fetchMockGetGestBenef,
   fetchMockPostBenefIdentite,
-  fetchMockPostBenefContactData
+  fetchMockPostBenefContactData,
+  fetchMockGetGestBenefDossiers
 }                     from './fetchMock/fetchMocks';
 // API
 import {
@@ -33,7 +34,8 @@ import {
   getMailContent,
   sendNewMail,
   searchBenef,
-  getGestBenef
+  getGestBenef,
+  getGestBenefDossiers
 }                     from './API';
 // date tools
 import {
@@ -85,6 +87,7 @@ export {
   fetchMockGetGestBenef,
   fetchMockPostBenefIdentite,
   fetchMockPostBenefContactData,
+  fetchMockGetGestBenefDossiers,
 
   // API
   getUserBoitesMails,
@@ -96,6 +99,7 @@ export {
   sendNewMail,
   searchBenef,
   getGestBenef,
+  getGestBenefDossiers,
 
   // date tools
   getLastThreeMonthNames,
