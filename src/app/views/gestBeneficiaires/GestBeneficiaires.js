@@ -70,7 +70,7 @@ class GestBeneficiaires extends Component {
 
   componentWillReceiveProps(newProps) {
     const { params: { benefId } } =  newProps;
-    const  { actions: { resetGestBenef } } =  this.props;
+    const { actions: { resetGestBenef } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
 
     const idBenef = parseInt(benefId, 10);
@@ -756,7 +756,21 @@ GestBeneficiaires.propTypes = {
     updateComplementAdressContact: PropTypes.func,
     updateCodePostalContact: PropTypes.func,
     updateVilleContact: PropTypes.func,
-    updatePaysContact: PropTypes.func
+    updatePaysContact: PropTypes.func,
+    // //////////////////
+    // dossiers
+    // /////////////////
+    // get
+    getGestBenefAllDossiersIfNeeded: PropTypes.func,
+    // post (insert)
+    addGestBenefNewDossierIfNeeded: PropTypes.func,
+    // post (update)
+    updateGestBenefDossierIfNeeded: PropTypes.func,
+    // UI dossiers
+    setIsCollapsedDossiers: PropTypes.func,
+    unsetIsCollapsedDossiers: PropTypes.func,
+    setIsSavingNewDossier: PropTypes.func,
+    unsetIsSavingNewDossier: PropTypes.func
   })
 };
 
