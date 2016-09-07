@@ -33,7 +33,7 @@ export const UNSET_IS_COLLAPSED_DOSSIERS        = 'UNSET_IS_COLLAPSED_DOSSIERS';
 const requestGetGestBenefAllDossiers = (benefId = 0, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_GET_GEST_BENEF_ALL_DOSSIERS,
-    isFetchingIdentite : true,
+    isFetchingDossiers : true,
     benefId,
     time
   };
@@ -42,7 +42,7 @@ const requestGetGestBenefAllDossiers = (benefId = 0, time = moment().format(form
 const receivedGetGestBenefAllDossiers = (dossiers = [], time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_BENEF_ALL_DOSSIERS,
-    isFetchingIdentite : false,
+    isFetchingDossiers : false,
     dossiers,
     time
   };
@@ -51,7 +51,7 @@ const receivedGetGestBenefAllDossiers = (dossiers = [], time = moment().format(f
 const errorGetGestBenefAllDossiers = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_GET_GEST_BENEF_ALL_DOSSIERS,
-    isFetchingIdentite : false,
+    isFetchingDossiers : false,
     error,
     time
   };
@@ -138,34 +138,16 @@ function shouldGetGestBenefAllDossiers(state) {
 }
 
 //  -----------------------------------------------------------------
-//    set / unset benef isEditing flag
-//  -----------------------------------------------------------------
-export const setIsEditingIdentite = (time = moment().format(formatDate)) => {
-  return {
-    type: SET_IS_EDITING_DOSSIERS,
-    isEditingIdentite: true,
-    time
-  };
-};
-export const unsetIsEditingIdentite = (time = moment().format(formatDate)) => {
-  return {
-    type: UNSET_IS_EDITING_DOSSIERS,
-    isEditingIdentite: false,
-    time
-  };
-};
-
-//  -----------------------------------------------------------------
 //    set / unset benef isCollapsed flag
 //  -----------------------------------------------------------------
-export const setIsCollapsedIdentite = (time = moment().format(formatDate)) => {
+export const setIsCollapsedDossiers = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_COLLAPSED_DOSSIERS,
     isCollapsedIdentite: true,
     time
   };
 };
-export const unsetIsCollapsedIdentite = (time = moment().format(formatDate)) => {
+export const unsetIsCollapsedDossiers = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_COLLAPSED_DOSSIERS,
     isCollapsedIdentite: false,
@@ -174,137 +156,30 @@ export const unsetIsCollapsedIdentite = (time = moment().format(formatDate)) => 
 };
 
 //  -----------------------------------------------------------------
-//    set / unset benef isSaving flag (NOT USED)
+//    set / unset benef isSaving a new dossier flag (NOT USED)
 //  -----------------------------------------------------------------
-export const setIsSavingIdentite = (time = moment().format(formatDate)) => {
+export const setIsSavingNewDossier = (time = moment().format(formatDate)) => {
   return {
-    type: SET_IS_SAVING_DOSSIERS,
+    type: SET_IS_SAVING_NEW_DOSSIER,
     isSavingIdentite: true,
     time
   };
 };
-export const unsetIsSavingIdentite = (time = moment().format(formatDate)) => {
+export const unsetIsSavingNewDossier = (time = moment().format(formatDate)) => {
   return {
-    type: UNSET_IS_SAVING_DOSSIERS,
+    type: UNSET_IS_SAVING_NEW_DOSSIER,
     isSavingIdentite: false,
     time
   };
 };
 
 //  -----------------------------------------------------------------
-//    update civilite value
+//    add new dossier to benef
 //  -----------------------------------------------------------------
-export const updateCiviliteIdentite = (civilite = '', time = moment().format(formatDate)) => {
-  if (civilite.trim().length > 0) {
-    return {
-      type: UPDATE_CIVILITE_DOSSIERS,
-      civilite,
-      time
-    };
-  }
-  return false;
-};
-
-//  -----------------------------------------------------------------
-//    update nom value
-//  -----------------------------------------------------------------
-export const updateNomIdentite = (nom = '', time = moment().format(formatDate)) => {
-  if (nom.trim().length > 0) {
-    return {
-      type: UPDATE_NOM_DOSSIERS,
-      nom,
-      time
-    };
-  }
-  return false;
-};
-//  -----------------------------------------------------------------
-//    update nom de jeune fille value
-//  -----------------------------------------------------------------
-export const updateNomDeJeuneFilleIdentite = (nomDeJeuneFille = '', time = moment().format(formatDate)) => {
-  if (nomDeJeuneFille.trim().length > 0) {
-    return {
-      type: UPDATE_NOM_DE_JEUNE_FILLE_DOSSIERS,
-      nomDeJeuneFille,
-      time
-    };
-  }
-  return false;
-};
-//  -----------------------------------------------------------------
-//    update prénom value
-//  -----------------------------------------------------------------
-export const updatePrenomIdentite = (prenom = '', time = moment().format(formatDate)) => {
-  if (prenom.trim().length > 0) {
-    return {
-      type: UPDATE_PRENOM_DOSSIERS,
-      prenom,
-      time
-    };
-  }
-  return false;
-};
-//  -----------------------------------------------------------------
-//    update dateNaissance value
-//  -----------------------------------------------------------------
-export const updateDateNaissanceIdentite = (dateNaissance = '', time = moment().format(formatDate)) => {
-  if (dateNaissance) {
-    const dateNaissanceStr = moment(dateNaissance, formatDateNaissance).format(formatDateNaissance);
-    return {
-      type: UPDATE_DATE_DE_NAISSANCE_DOSSIERS,
-      dateNaissance: dateNaissanceStr,
-      time
-    };
-  }
-  return false;
-};
-//  -----------------------------------------------------------------
-//    update numss value
-//  -----------------------------------------------------------------
-export const updateNumssIdentite = (numss = '', time = moment().format(formatDate)) => {
-  if (numss.trim().length > 0) {
-    return {
-      type: UPDATE_NUMSS_DOSSIERS,
-      numss,
-      time
-    };
-  }
-  return false;
-};
-//  -----------------------------------------------------------------
-//    update dateDeces value
-//  -----------------------------------------------------------------
-export const updateDateDecesIdentite = (dateDeces = '', time = moment().format(formatDate)) => {
-  if (dateDeces) {
-    const dateDecesStr = moment(dateDeces, formatDateDeces).format(formatDateDeces);
-    return {
-      type: UPDATE_DATE_DECES_DOSSIERS,
-      dateDeces: dateDecesStr,
-      time
-    };
-  }
-  return false;
-};
-//  -----------------------------------------------------------------
-//    update numss value
-//  -----------------------------------------------------------------
-export const updateMaritalStatusIdentite = (maritalStatus = '', time = moment().format(formatDate)) => {
-  if (maritalStatus.trim().length > 0) {
-    return {
-      type: UPDATE_MARITAL_STATUS_DOSSIERS,
-      maritalStatus,
-      time
-    };
-  }
-  return false;
-};
-//  -----------------------------------------------------------------
-//    POST benef identite
-//  -----------------------------------------------------------------
-const requestPostGestBenefIdentite = (payload = {}, time = moment().format(formatDate)) => {
+const requestAddGestBenefNewDossier = (benefId = 0, dossier = {}, time = moment().format(formatDate)) => {
   return {
-    type: REQUEST_POST_GEST_BENEF_DOSSIERS,
-    isFetchingIdentite: true,
+    type: REQUEST_ADD_GEST_BENEF_NEW_DOSSIER,
+    isFetchingDossiers: true,
     isSavingIdentite: true,
     payload,
     time
@@ -313,7 +188,7 @@ const requestPostGestBenefIdentite = (payload = {}, time = moment().format(forma
 const receivedPostGestBenefIdentite = (response = {}, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_POST_GEST_BENEF_DOSSIERS,
-    isFetchingIdentite : false,
+    isFetchingDossiers : false,
     isSavingIdentite: false,
     response,
     time
@@ -322,7 +197,7 @@ const receivedPostGestBenefIdentite = (response = {}, time = moment().format(for
 const errorPostGestBenefIdentite = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_POST_GEST_BENEF_DOSSIERS,
-    isFetchingIdentite : false,
+    isFetchingDossiers : false,
     isSavingIdentite: false,
     error,
     time
@@ -420,7 +295,7 @@ export const postGestBenefIdentiteIfNeeded = payload => (dispatch, getState) => 
 function shouldPostGestBenefIdentite(state) {
   const gestBenef = state.gestBenef;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
-  if (gestBenef.isFetchingIdentite ||
+  if (gestBenef.isFetchingDossiers ||
       gestBenef.isSavingIdentite) {
     return false;
   } else {
