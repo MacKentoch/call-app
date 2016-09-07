@@ -120,7 +120,7 @@ import {
   updateNumssIdentite,
   updateDateDecesIdentite,
   updateMaritalStatusIdentite,
-
+  // benef contact
   resetGestBenefContact,
   getGestBenefContactIfNeeded,
   postGestBenefContactIfNeeded,
@@ -136,7 +136,15 @@ import {
   updateComplementAdressContact,
   updateCodePostalContact,
   updateVilleContact,
-  updatePaysContact
+  updatePaysContact,
+  // benef dossiers:
+  getGestBenefAllDossiersIfNeeded,
+  setIsCollapsedDossiers,
+  unsetIsCollapsedDossiers,
+  setIsSavingNewDossier,
+  unsetIsSavingNewDossier,
+  addGestBenefNewDossierIfNeeded,
+  updateGestBenefDossierIfNeeded
 }                                 from './gestBenef';
 import {
   addNotificationMessage
@@ -253,6 +261,14 @@ export {
   updateCodePostalContact,
   updateVilleContact,
   updatePaysContact,
+
+  getGestBenefAllDossiersIfNeeded,
+  setIsCollapsedDossiers,
+  unsetIsCollapsedDossiers,
+  setIsSavingNewDossier,
+  unsetIsSavingNewDossier,
+  addGestBenefNewDossierIfNeeded,
+  updateGestBenefDossierIfNeeded,
 
   // notifications:
   addNotificationMessage

@@ -1,4 +1,6 @@
+// benef all:
 import { getGestBenefIfNeeded, resetGestBenef } from './gestBenef';
+// benef Idnetite:
 import {
   resetGestBenefIdentite,
 
@@ -20,6 +22,7 @@ import {
   updateDateDecesIdentite,
   updateMaritalStatusIdentite
 }                               from './gestBenefIdentite/gestBenefIdentite';
+// benef contact:
 import {
   resetGestBenefContact,
 
@@ -42,6 +45,20 @@ import {
   updateVilleContact,
   updatePaysContact
 }                               from './gestBenefContact/gestBenefContact';
+// benef dossiers:
+import {
+  getGestBenefAllDossiersIfNeeded,
+
+  setIsCollapsedDossiers,
+  unsetIsCollapsedDossiers,
+
+  setIsSavingNewDossier,
+  unsetIsSavingNewDossier,
+
+  addGestBenefNewDossierIfNeeded,
+
+  updateGestBenefDossierIfNeeded
+}                               from './gestBenefDossiers/gestBenefDossiers';
 export {
   // all benef fields (identite + contact + dossiers)
   getGestBenefIfNeeded,
@@ -78,5 +95,13 @@ export {
   updateComplementAdressContact,
   updateCodePostalContact,
   updateVilleContact,
-  updatePaysContact
+  updatePaysContact,
+  // benef dossiers:
+  getGestBenefAllDossiersIfNeeded,
+  setIsCollapsedDossiers,
+  unsetIsCollapsedDossiers,
+  setIsSavingNewDossier,
+  unsetIsSavingNewDossier,
+  addGestBenefNewDossierIfNeeded,
+  updateGestBenefDossierIfNeeded
 };
