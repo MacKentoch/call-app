@@ -21,7 +21,12 @@ class Dossiers extends Component {
     this.state = {
       dossiers: [],
       dossierIdSelected: 0, // when 0: no dossier selected, when > 0, should trigger fiche contact and activ appearance
-      dossierIdBeingEditing: 0 // when > 0 gives id dossier being edited (0 means no dossier is being editing)
+      dossierIdBeingEditing: 0, // when > 0 gives id dossier being edited (0 means no dossier is being editing)
+      // pagination
+      filter: '',
+      currentPageDossiers: [],
+      currentPage: 1,
+      numberDossiersPerPage: 2
     };
   }
 

@@ -50,7 +50,7 @@ const ListDossiersBeneficaire = ({
 
             <div className="table-responsive mailbox-messages">
               <Table
-                benefs={benefs}
+                benefs={dossiers}
                 onRowClick={onRowClick}
               />
             </div>
