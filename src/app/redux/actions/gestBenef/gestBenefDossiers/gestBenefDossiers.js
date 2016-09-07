@@ -2,86 +2,80 @@ import moment         from 'moment';
 import { appConfig }  from '../../../../config';
 import {
   getGestBenefDossiers,
-  // postGestBenefIdentite,
-  fetchMockGetGestBenefDossiers,
-  // fetchMockPostBenefIdentite
+  fetchMockGetGestBenefDossiers
 }                     from '../../../../services';
 
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
+// all dossiers:
+export const REQUEST_GET_GEST_BENEF_ALL_DOSSIERS    = 'REQUEST_GET_GEST_BENEF_ALL_DOSSIERS';
+export const RECEIVED_GET_GEST_BENEF_ALL_DOSSIERS   = 'RECEIVED_GET_GEST_BENEF_ALL_DOSSIERS';
+export const ERROR_GET_GEST_BENEF_ALL_DOSSIERS      = 'ERROR_GET_GEST_BENEF_ALL_DOSSIERS';
 
-export const REQUEST_GET_GEST_BENEF_DOSSIERS    = 'REQUEST_GET_GEST_BENEF_DOSSIERS';
-export const RECEIVED_GET_GEST_BENEF_DOSSIERS   = 'RECEIVED_GET_GEST_BENEF_DOSSIERS';
-export const ERROR_GET_GEST_BENEF_DOSSIERS      = 'ERROR_GET_GEST_BENEF_DOSSIERS';
+// /////////////////////////////////////
+// manual create dossier (post backend):
+export const REQUEST_ADD_GEST_BENEF_NEW_DOSSIER     = 'REQUEST_ADD_GEST_BENEF_NEW_DOSSIER';
+export const RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER    = 'RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER';
+export const ERROR_ADD_GEST_BENEF_NEW_DOSSIER       = 'ERROR_ADD_GEST_BENEF_NEW_DOSSIER';
+// for UI (set a flag): to get informed when saving a new dossier to backend
+export const SET_IS_SAVING_NEW_DOSSIER             = 'SET_IS_SAVING_NEW_DOSSIER';
+export const UNSET_IS_SAVING_NEW_DOSSIER           = 'UNSET_IS_SAVING_NEW_DOSSIER';
+// /////////////////////////////////////
 
-// export const REQUEST_POST_GEST_BENEF_DOSSIERS   = 'REQUEST_POST_GEST_BENEF_DOSSIERS';
-// export const RECEIVED_POST_GEST_BENEF_DOSSIERS  = 'RECEIVED_POST_GEST_BENEF_DOSSIERS';
-// export const ERROR_POST_GEST_BENEF_DOSSIERS     = 'ERROR_POST_GEST_BENEF_DOSSIERS';
-
-// export const SET_IS_EDITING_DOSSIERS            = 'SET_IS_EDITING_DOSSIERS';
-// export const UNSET_IS_EDITING_DOSSIERS          = 'UNSET_IS_EDITING_DOSSIERS';
-
-export const SET_IS_SAVING_DOSSIERS             = 'SET_IS_SAVING_DOSSIERS';
-export const UNSET_IS_SAVING_DOSSIERS           = 'UNSET_IS_SAVING_DOSSIERS';
-
+// ui dossier collpased
 export const SET_IS_COLLAPSED_DOSSIERS          = 'SET_IS_COLLAPSED_DOSSIERS';
 export const UNSET_IS_COLLAPSED_DOSSIERS        = 'UNSET_IS_COLLAPSED_DOSSIERS';
 
-export const UPDATE_ONE_GEST_BENEF_DOSSIERS     = 'UPDATE_ONE_GEST_BENEF_DOSSIERS';
-export const ADD_ONE_GEST_BENEF_DOSSIERS        = 'ADD_ONE_GEST_BENEF_DOSSIERS';
-export const DELETE_ONE_GEST_BENEF_DOSSIERS     = 'DELETE_ONE_GEST_BENEF_DOSSIERS';
-
 //  -----------------------------------------------------------------
-//    GET benef dossiers
+//    GET benef all dossiers
 //  -----------------------------------------------------------------
-const requestGetGestBenefIdentite = (benefId = 0, time = moment().format(formatDate)) => {
+const requestGetGestBenefAllDossiers = (benefId = 0, time = moment().format(formatDate)) => {
   return {
-    type: REQUEST_GET_GEST_BENEF_DOSSIERS,
+    type: REQUEST_GET_GEST_BENEF_ALL_DOSSIERS,
     isFetchingIdentite : true,
     benefId,
     time
   };
 };
 
-const receivedGetGestBenefIdentite = (gestBenef, time = moment().format(formatDate)) => {
+const receivedGetGestBenefAllDossiers = (dossiers = [], time = moment().format(formatDate)) => {
   return {
-    type: RECEIVED_GET_GEST_BENEF_DOSSIERS,
+    type: RECEIVED_GET_GEST_BENEF_ALL_DOSSIERS,
     isFetchingIdentite : false,
-    gestBenef,
+    dossiers,
     time
   };
 };
 
-const errorGetGestBenefIdentite = (error, time = moment().format(formatDate)) => {
+const errorGetGestBenefAllDossiers = (error, time = moment().format(formatDate)) => {
   return {
-    type: ERROR_GET_GEST_BENEF_DOSSIERS,
+    type: ERROR_GET_GEST_BENEF_ALL_DOSSIERS,
     isFetchingIdentite : false,
-    data: [],
     error,
     time
   };
 };
 
-const getQueryGestBenefIdentite = (benefId) => dispatch => {
+const getQueryGestBenefAllDossiers = (benefId) => dispatch => {
   if (!benefId) {
-    dispatch(errorGetGestBenefIdentite('getGestBenefIdentite API error: benefId is not defined or not valid'));
+    dispatch(errorGetGestBenefAllDossiers('getQueryGestBenefAllDossiers API error: benefId is not defined or not valid'));
     return Promise.reject({
-      message: 'Rafraichissement des données "Identité" du bénéficiaire en erreur (identifiant non valide)',
+      message: 'Rafraichissement des données "Dossiers" du bénéficiaire en erreur (identifiant non valide)',
       level: 'error',
       showNotification: true
     });
   }
 
-  dispatch(requestGetGestBenefIdentite(benefId));
+  dispatch(requestGetGestBenefAllDossiers(benefId));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockGetGestBenef(benefId) // mock is the as all gestBenef object
+    return fetchMockGetGestBenefDossiers(benefId)
             .then(
               data => {
-                dispatch(receivedGetGestBenefIdentite(data));
+                dispatch(receivedGetGestBenefAllDossiers(data));
                 return Promise.resolve({
-                  message: 'Données "Identité" du bénéficiaire raffraichies',
+                  message: 'Données "Dossiers" du bénéficiaire raffraichies',
                   level: 'success',
                   showNotification: true
                 });
@@ -89,21 +83,21 @@ const getQueryGestBenefIdentite = (benefId) => dispatch => {
             )
             .catch(
               err => {
-                dispatch(errorGetGestBenefIdentite(err));
+                dispatch(errorGetGestBenefAllDossiers(err));
                 return Promise.reject({
-                  message: 'Données "Identité" du bénéficiaire non raffraichies',
+                  message: 'Données "Dossiers" du bénéficiaire non raffraichies',
                   level: 'error',
                   showNotification: true
                 });
               }
             );
   } else {
-    return getGestBenefIdentite(benefId)
+    return getGestBenefDossiers(benefId)
             .then(
               response => {
-                dispatch(receivedGetGestBenefIdentite(response));
+                dispatch(receivedGetGestBenefAllDossiers(response));
                 return Promise.resolve({
-                  message: 'Données "Identité" du bénéficiaire raffraichies',
+                  message: 'Données "Dossiers" du bénéficiaire raffraichies',
                   level: 'success',
                   showNotification: true
                 });
@@ -111,9 +105,9 @@ const getQueryGestBenefIdentite = (benefId) => dispatch => {
             )
             .catch(
               error => {
-                dispatch(errorGetGestBenefIdentite(error));
+                dispatch(errorGetGestBenefAllDossiers(error));
                 return Promise.reject({
-                  message: 'Données "Identité" du bénéficiaire non raffraichies',
+                  message: 'Données "Dossiers" du bénéficiaire non raffraichies',
                   level: 'error',
                   showNotification: true
                 });
@@ -122,21 +116,21 @@ const getQueryGestBenefIdentite = (benefId) => dispatch => {
   }
 };
 
-export const getGestBenefIdentiteIfNeeded = benefId => (dispatch, getState) => {
-  if (shouldGetGestBenefIdentite(getState())) {
-    return dispatch(getQueryGestBenefIdentite(benefId));
+export const getGestBenefAllDossiersIfNeeded = benefId => (dispatch, getState) => {
+  if (shouldGetGestBenefAllDossiers(getState())) {
+    return dispatch(getQueryGestBenefAllDossiers(benefId));
   }
   return Promise.resolve({
-    message: 'fetch des modifications des informations "Identité" déjà en cours',
+    message: 'fetch des modifications des informations "Dossiers" déjà en cours',
     level: 'info',
     showNotification: false
   });
 };
 
-function shouldGetGestBenefIdentite(state) {
+function shouldGetGestBenefAllDossiers(state) {
   const gestBenef = state.gestBenef;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
-  if (gestBenef.isFetchingIdentite) {
+  if (gestBenef.isFetchingDossiers) {
     return false;
   } else {
     return true;
