@@ -134,6 +134,7 @@ export const getGestBenefDossiers = benefId => {
 };
 
 // add a new dossier to benef (identified by benefId)
+// IMPORTANT: response "should return inserted dossier" (so should have an id dossier)
 export const addGestBenefNewDossier = (benefId, payload) => {
   if (!parseInt(benefId, 10)) {
     return Promise.reject({error: 'addGestBenefNewDossier API: id is not valid '});

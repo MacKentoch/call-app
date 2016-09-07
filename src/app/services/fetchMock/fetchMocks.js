@@ -255,8 +255,8 @@ export const fetchMockAddBenefNewDossier = (benefId, payload, timeToWait = appCo
     resolve => {
       setTimeout(
        () => resolve({
-         success: true,
-         id: 10
+         id: 10,
+         ...payload
        }),
        timeToWait
      );
