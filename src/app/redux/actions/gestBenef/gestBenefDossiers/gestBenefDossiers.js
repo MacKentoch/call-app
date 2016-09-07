@@ -143,14 +143,14 @@ function shouldGetGestBenefAllDossiers(state) {
 export const setIsCollapsedDossiers = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_COLLAPSED_DOSSIERS,
-    isCollapsedIdentite: true,
+    isCollapsedDossiers: true,
     time
   };
 };
 export const unsetIsCollapsedDossiers = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_COLLAPSED_DOSSIERS,
-    isCollapsedIdentite: false,
+    isCollapsedDossiers: false,
     time
   };
 };
@@ -161,14 +161,14 @@ export const unsetIsCollapsedDossiers = (time = moment().format(formatDate)) => 
 export const setIsSavingNewDossier = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_SAVING_NEW_DOSSIER,
-    isSavingIdentite: true,
+    isSavingDossiers: true,
     time
   };
 };
 export const unsetIsSavingNewDossier = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_SAVING_NEW_DOSSIER,
-    isSavingIdentite: false,
+    isSavingDossiers: false,
     time
   };
 };
@@ -180,41 +180,51 @@ const requestAddGestBenefNewDossier = (benefId = 0, dossier = {}, time = moment(
   return {
     type: REQUEST_ADD_GEST_BENEF_NEW_DOSSIER,
     isFetchingDossiers: true,
-    isSavingIdentite: true,
-    payload,
+    isSavingDossiers: true,
+    benefId,
+    dossier,
     time
   };
 };
-const receivedPostGestBenefIdentite = (response = {}, time = moment().format(formatDate)) => {
+const receivedAddGestBenefNewDossier = (response = {}, time = moment().format(formatDate)) => {
   return {
-    type: RECEIVED_POST_GEST_BENEF_DOSSIERS,
+    type: RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER,
     isFetchingDossiers : false,
-    isSavingIdentite: false,
+    isSavingDossiers: false,
     response,
     time
   };
 };
-const errorPostGestBenefIdentite = (error, time = moment().format(formatDate)) => {
+const errorAddGestBenefNewDossier = (error, time = moment().format(formatDate)) => {
   return {
-    type: ERROR_POST_GEST_BENEF_DOSSIERS,
+    type: ERROR_ADD_GEST_BENEF_NEW_DOSSIER,
     isFetchingDossiers : false,
-    isSavingIdentite: false,
+    isSavingDossiers: false,
     error,
     time
   };
 };
 
-const postQueryGestBenefIdentite = payload => dispatch => {
-  if (!payload) {
-    dispatch(errorPostGestBenefIdentite('postQueryGestBenefIdentite API error: benefId is not defined or not valid'));
+const addQueryGestBenefNewDossier = (benefId, newDossier) => dispatch => {
+  if (!parseInt(benefId, 10)) {
+    dispatch(errorAddGestBenefNewDossier('addQueryGestBenefNewDossier API error: benefId is not defined or not valid'));
     return Promise.reject({
-      message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (payload non valide)',
+      message: 'Ajout d\'un nouveau "Dossier" en erreur (id non valide)',
       level: 'error',
       showNotification: true
     });
   }
 
-  dispatch(requestPostGestBenefIdentite(payload));
+  if (!newDossier) {
+    dispatch(errorAddGestBenefNewDossier('addQueryGestBenefNewDossier API error: newDossier is not defined or not valid'));
+    return Promise.reject({
+      message: 'Ajout d\'un nouveau "Dossier" en erreur (payload non valide)',
+      level: 'error',
+      showNotification: true
+    });
+  }
+
+  dispatch(requestAddGestBenefNewDossier(benefId, newDossier));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
     return fetchMockPostBenefIdentite(payload) // mock is the same all gestBenef object
@@ -281,22 +291,22 @@ const postQueryGestBenefIdentite = payload => dispatch => {
   }
 };
 
-export const postGestBenefIdentiteIfNeeded = payload => (dispatch, getState) => {
-  if (shouldPostGestBenefIdentite(getState())) {
-    return dispatch(postQueryGestBenefIdentite(payload));
+export const addGestBenefNewDossierIfNeeded = (benefId, newDossier) => (dispatch, getState) => {
+  if (shouldAddGestBenefNewDossier(getState())) {
+    return dispatch(addQueryGestBenefNewDossier(benefId, newDossier));
   }
   return Promise.resolve({
-    message: 'post des modifications des informations "Identité" déjà en cours',
+    message: 'Un ajout de "Dossier" est déjà en cours',
     level: 'info',
     showNotification: false
   });
 };
 
-function shouldPostGestBenefIdentite(state) {
+function shouldAddGestBenefNewDossier(state) {
   const gestBenef = state.gestBenef;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
   if (gestBenef.isFetchingDossiers ||
-      gestBenef.isSavingIdentite) {
+      gestBenef.isSavingDossiers) {
     return false;
   } else {
     return true;
