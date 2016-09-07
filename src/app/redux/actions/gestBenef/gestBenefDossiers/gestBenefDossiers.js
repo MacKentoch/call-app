@@ -191,14 +191,17 @@ const requestAddGestBenefNewDossier = (benefId = 0, dossier = {}, time = moment(
     time
   };
 };
-const receivedAddGestBenefNewDossier = (response = {}, time = moment().format(formatDate)) => {
-  return {
-    type: RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER,
-    isFetchingDossiers : false,
-    isSavingDossiers: false,
-    response,
-    time
-  };
+const receivedAddGestBenefNewDossier = (dossiers = [], time = moment().format(formatDate)) => {
+  if (Array.isArray(dossiers) && dossiers.length > 0) {
+    return {
+      type: RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER,
+      isFetchingDossiers : false,
+      isSavingDossiers: false,
+      dossiers,
+      time
+    };
+  }
+  return;
 };
 const errorAddGestBenefNewDossier = (error, time = moment().format(formatDate)) => {
   return {
@@ -210,7 +213,7 @@ const errorAddGestBenefNewDossier = (error, time = moment().format(formatDate)) 
   };
 };
 
-const addQueryGestBenefNewDossier = (benefId, newDossier) => dispatch => {
+const addQueryGestBenefNewDossier = (benefId, newDossier) => (dispatch, getState) => {
   if (!parseInt(benefId, 10)) {
     dispatch(errorAddGestBenefNewDossier('addQueryGestBenefNewDossier API error: benefId is not defined or not valid'));
     return Promise.reject({
@@ -230,6 +233,8 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => dispatch => {
   }
 
   dispatch(requestAddGestBenefNewDossier(benefId, newDossier));
+  // les dossiers du state avant insertion:
+  const previousDossiersList = [...getState().gestBenef.dossiers];
   if (appConfig.DEV_MODE) {
     // DEV ONLY
     return fetchMockAddBenefNewDossier(benefId, newDossier)
@@ -243,7 +248,9 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => dispatch => {
                     showNotification: true
                   });
                 }
-                dispatch(receivedAddGestBenefNewDossier(data));
+                const allDossiers = [ ...previousDossiersList, {...data} ];
+                dispatch(receivedAddGestBenefNewDossier(allDossiers));
+
                 return Promise.resolve({
                   id: data.id,
                   message: 'Ajout d\'un nouveau "Dossier" terminé',
@@ -274,7 +281,9 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => dispatch => {
                     showNotification: true
                   });
                 }
-                dispatch(receivedAddGestBenefNewDossier(response));
+                const allDossiers = [ ...previousDossiersList, {...response} ];
+                dispatch(receivedAddGestBenefNewDossier(allDossiers));
+
                 return Promise.resolve({
                   id: response.id,
                   message: 'Ajout d\'un nouveau "Dossier" terminé',

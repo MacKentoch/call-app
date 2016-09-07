@@ -710,6 +710,32 @@ const gestBenef = (state = initialState, action) => {
       error: action.error
     };
 
+  case REQUEST_ADD_GEST_BENEF_NEW_DOSSIER:
+    return {
+      ...state,
+      isFetchingDossiers: action.isFetchingDossiers,
+      isSavingDossiers: action.isSavingDossiers,
+      postPayload: action.payload,
+      actionTime: action.time
+    };
+
+  case RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER:
+    return {
+      ...state,
+      isFetchingDossiers: action.isFetchingDossiers,
+      isSavingDossiers: action.isSavingDossiers,
+      actionTime: action.time
+    };
+
+  case ERROR_ADD_GEST_BENEF_NEW_DOSSIER:
+    return {
+      ...state,
+      isFetchingDossiers: action.isFetchingDossiers,
+      isSavingDossiers: action.isSavingDossiers,
+      error: action.error,
+      actionTime: action.time
+    };
+
 
   default:
     return state;
