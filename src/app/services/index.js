@@ -37,7 +37,8 @@ import {
   searchBenef,
   getGestBenef,
   getGestBenefDossiers,
-  addGestBenefNewDossier
+  addGestBenefNewDossier,
+  updateGestBenefNewDossier
 }                     from './API';
 // date tools
 import {
@@ -104,6 +105,7 @@ export {
   getGestBenef,
   getGestBenefDossiers,
   addGestBenefNewDossier,
+  updateGestBenefNewDossier,
 
   // date tools
   getLastThreeMonthNames,

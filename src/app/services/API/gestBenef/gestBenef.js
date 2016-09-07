@@ -161,3 +161,32 @@ export const addGestBenefNewDossier = (benefId, payload) => {
     .then(data => data)
     .catch(error => Promise.reject(error));
 };
+
+// UPDATE an existing dossier to benef (identified by benefId)
+// IMPORTANT: response "should return inserted dossier" (so should have an id dossier)
+export const updateGestBenefNewDossier = (payload = {}) => {
+  if (!payload) {
+    return Promise.reject({error: 'updateGestBenefNewDossier API: payload is not valid'});
+  }
+
+  if (!parseInt(payload.id, 10)) {
+    return Promise.reject({error: 'updateGestBenefNewDossier API: id is not valid '});
+  }
+
+  const api = appConfig.gestBenef.updateDossier.API;
+  const url = `${getLocationOrigin()}/${api}/${payload.id}`;
+  const body = { ...payload };
+
+  const options = {
+    ...defaultOptions,
+    ...postMethod,
+    ...jsonHeader,
+    ...body
+  };
+
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(error => Promise.reject(error));
+};

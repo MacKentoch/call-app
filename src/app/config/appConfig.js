@@ -229,6 +229,9 @@ export const appConfig = {
     },
     addNewDossier: {
       API: 'api/gestBenefAddDossier'
+    },
+    updateDossier: {
+      API: 'api/gestBenefUpdateDossier'
     }
   },
 

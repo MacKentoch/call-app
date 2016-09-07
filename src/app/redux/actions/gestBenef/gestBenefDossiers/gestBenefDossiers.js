@@ -4,6 +4,7 @@ import {
   // API:
   getGestBenefDossiers,
   addGestBenefNewDossier,
+  updateGestBenefNewDossier,
   // fecth mocks:
   fetchMockGetGestBenefDossiers,
   fetchMockAddBenefNewDossier
@@ -24,9 +25,14 @@ export const REQUEST_ADD_GEST_BENEF_NEW_DOSSIER     = 'REQUEST_ADD_GEST_BENEF_NE
 export const RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER    = 'RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER';
 export const ERROR_ADD_GEST_BENEF_NEW_DOSSIER       = 'ERROR_ADD_GEST_BENEF_NEW_DOSSIER';
 // for UI (set a flag): to get informed when saving a new dossier to backend
-export const SET_IS_SAVING_NEW_DOSSIER             = 'SET_IS_SAVING_NEW_DOSSIER';
-export const UNSET_IS_SAVING_NEW_DOSSIER           = 'UNSET_IS_SAVING_NEW_DOSSIER';
+export const SET_IS_SAVING_NEW_DOSSIER              = 'SET_IS_SAVING_NEW_DOSSIER';
+export const UNSET_IS_SAVING_NEW_DOSSIER            = 'UNSET_IS_SAVING_NEW_DOSSIER';
 // /////////////////////////////////////
+
+// update a dossier:
+export const REQUEST_UPDATE_GEST_BENEF_DOSSIER      = 'REQUEST_UPDATE_GEST_BENEF_DOSSIER';
+export const RECEIVED_UPDATE_GEST_BENEF_DOSSIER     = 'RECEIVED_UPDATE_GEST_BENEF_DOSSIER';
+export const ERROR_UPDATE_GEST_BENEF_DOSSIER        = 'ERROR_UPDATE_GEST_BENEF_DOSSIER';
 
 // ui dossier collpased
 export const SET_IS_COLLAPSED_DOSSIERS          = 'SET_IS_COLLAPSED_DOSSIERS';
@@ -201,7 +207,7 @@ const receivedAddGestBenefNewDossier = (dossiers = [], time = moment().format(fo
       time
     };
   }
-  return;
+  return false;
 };
 const errorAddGestBenefNewDossier = (error, time = moment().format(formatDate)) => {
   return {
@@ -317,6 +323,163 @@ export const addGestBenefNewDossierIfNeeded = (benefId, newDossier) => (dispatch
 };
 
 function shouldAddGestBenefNewDossier(state) {
+  const gestBenef = state.gestBenef;
+  // just check wether fetching (assuming data could be refreshed and should not persist in store)
+  if (gestBenef.isFetchingDossiers ||
+      gestBenef.isSavingDossiers) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//  -----------------------------------------------------------------
+//    update a dossier to benef
+//  -----------------------------------------------------------------
+const requestUpdateGestBenefDossier = (dossier = {}, time = moment().format(formatDate)) => {
+  if (dossier && parseInt(dossier.id, 10)) {
+    return {
+      type: REQUEST_UPDATE_GEST_BENEF_DOSSIER,
+      isFetchingDossiers: true,
+      isSavingDossiers: true,
+      dossier,
+      time
+    };
+  }
+  return {
+    type: 'ERROR',
+    from: 'requestUpdateGestBenefDossier'
+  };
+};
+const receivedUpdateGestBenefDossier = (dossiers = [], time = moment().format(formatDate)) => {
+  if (Array.isArray(dossiers) && dossiers.length > 0) {
+    return {
+      type: RECEIVED_UPDATE_GEST_BENEF_DOSSIER,
+      isFetchingDossiers : false,
+      isSavingDossiers: false,
+      dossiers,
+      time
+    };
+  }
+  return {
+    type: 'ERROR',
+    from: 'receivedUpdateGestBenefDossier'
+  };
+};
+const errorUpdateGestBenefDossier = (error, time = moment().format(formatDate)) => {
+  return {
+    type: ERROR_UPDATE_GEST_BENEF_DOSSIER,
+    isFetchingDossiers : false,
+    isSavingDossiers: false,
+    error,
+    time
+  };
+};
+
+const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
+  if (!updatedDossier) {
+    dispatch(errorUpdateGestBenefDossier('updateQueryGestBenefDossier API error: newDossier is not defined or not valid'));
+    return Promise.reject({
+      message: 'Modification du "Dossier" interrompue (données invalides)',
+      level: 'error',
+      showNotification: true
+    });
+  }
+
+  if (!parseInt(updatedDossier.id, 10)) {
+    dispatch(errorUpdateGestBenefDossier('updateQueryGestBenefDossier API error: dossier id is not defined or not valid'));
+    return Promise.reject({
+      message: 'Modification du "Dossier" interrompue (id non valide)',
+      level: 'error',
+      showNotification: true
+    });
+  }
+
+  dispatch(requestUpdateGestBenefDossier(updatedDossier));
+  // les dossiers du state avant insertion:
+  const previousDossiersList = [...getState().gestBenef.dossiers];
+  if (appConfig.DEV_MODE) {
+    // DEV ONLY
+    return fetchMockAddBenefNewDossier(10, updatedDossier) // NOTE: update mock same as add dossier
+            .then(
+              data => {
+                if (!data || !data.id) { // ATTENTION: doit retourner l'id du dossier
+                  dispatch(errorUpdateGestBenefDossier({'error': 'update benef dossier unsuccessfull with no server error'}));
+                  return Promise.reject({
+                    message: 'Modification du "Dossier" en erreur (retour invalide)',
+                    level: 'error',
+                    showNotification: true
+                  });
+                }
+                const allDossiers = [ ...previousDossiersList, {...data} ];
+                dispatch(receivedUpdateGestBenefDossier(allDossiers));
+
+                return Promise.resolve({
+                  id: data.id,
+                  message: 'Modification du "Dossier" terminé',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
+            )
+            .catch(
+              err => {
+                dispatch(errorUpdateGestBenefDossier(err));
+                return Promise.reject({
+                  message: 'Modification du "Dossier" en erreur (erreur serveur)',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
+            );
+  } else {
+    return updateGestBenefNewDossier(updatedDossier)
+            .then(
+              response => {
+                if (!response || !response.id) { // ATTENTION: doit retourner l'id du dossier
+                  dispatch(errorUpdateGestBenefDossier({'error': 'update benef identite unsuccessfull with no server error'}));
+                  return Promise.reject({
+                    message: 'Modification du "Dossier" en erreur (retour invalide)',
+                    level: 'error',
+                    showNotification: true
+                  });
+                }
+                const allDossiers = [ ...previousDossiersList, {...response} ];
+                dispatch(receivedUpdateGestBenefDossier(allDossiers));
+
+                return Promise.resolve({
+                  id: response.id,
+                  message: 'Modification du "Dossier" terminé',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
+            )
+            .catch(
+              error => {
+                dispatch(errorUpdateGestBenefDossier(error));
+                return Promise.reject({
+                  message: 'Modification du "Dossier" en erreur (erreur serveur)',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
+            );
+  }
+};
+
+export const updateGestBenefDossierIfNeeded = updatedDossier => (dispatch, getState) => {
+  if (shouldUpdateGestBenefDossier(getState())) {
+    return dispatch(updateQueryGestBenefDossier(updatedDossier));
+  }
+  return Promise.resolve({
+    message: 'Une modification de "Dossier" est déjà en cours',
+    level: 'info',
+    showNotification: false
+  });
+};
+
+function shouldUpdateGestBenefDossier(state) {
   const gestBenef = state.gestBenef;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
   if (gestBenef.isFetchingDossiers ||
