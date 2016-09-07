@@ -226,6 +226,9 @@ export const appConfig = {
     },
     getDossiers: {
       API: 'api/gestBenefDossiers'
+    },
+    addNewDossier: {
+      API: 'api/gestBenefAddDossier'
     }
   },
 
