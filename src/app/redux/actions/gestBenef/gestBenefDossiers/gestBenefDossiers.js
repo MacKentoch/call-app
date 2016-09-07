@@ -2,7 +2,8 @@ import moment         from 'moment';
 import { appConfig }  from '../../../../config';
 import {
   getGestBenefDossiers,
-  fetchMockGetGestBenefDossiers
+  fetchMockGetGestBenefDossiers,
+  fetchMockAddBenefNewDossier
 }                     from '../../../../services';
 
 
@@ -227,7 +228,7 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => dispatch => {
   dispatch(requestAddGestBenefNewDossier(benefId, newDossier));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockPostBenefIdentite(payload) // mock is the same all gestBenef object
+    return fetchMockAddBenefNewDossier(benefId, newDossier)
             .then(
               data => {
                 if (!data || !data.id) { // ATTENTION: doit retourner l'id du benef update ou insert

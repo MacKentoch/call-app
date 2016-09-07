@@ -238,3 +238,28 @@ export const fetchMockPostBenefContactData = (payload, timeToWait = appConfig.FA
     }
   );
 };
+
+export const fetchMockAddBenefNewDossier = (benefId, payload, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!payload) {
+    return Promise.reject({
+      'error': 'fetchMockAddBenefNewDossier has no valid payload'
+    });
+  }
+  if (!parseInt(benefId, 10)) {
+    return Promise.reject({
+      'error': 'fetchMockAddBenefNewDossier should be supplied a valid id'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({
+         success: true,
+         id: 10
+       }),
+       timeToWait
+     );
+    }
+  );
+};
