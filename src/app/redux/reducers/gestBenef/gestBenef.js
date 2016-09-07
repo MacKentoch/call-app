@@ -63,7 +63,21 @@ import {
   UPDATE_VILLE_CONTACT,
   UPDATE_PAYS_CONTACT
 }                                     from '../../actions/gestBenef/gestBenefContact/gestBenefContact';
+import {
+  REQUEST_GET_GEST_BENEF_ALL_DOSSIERS,
+  RECEIVED_GET_GEST_BENEF_ALL_DOSSIERS,
+  ERROR_GET_GEST_BENEF_ALL_DOSSIERS,
 
+  REQUEST_ADD_GEST_BENEF_NEW_DOSSIER,
+  RECEIVED_ADD_GEST_BENEF_NEW_DOSSIER,
+  ERROR_ADD_GEST_BENEF_NEW_DOSSIER,
+
+  SET_IS_SAVING_NEW_DOSSIER,
+  UNSET_IS_SAVING_NEW_DOSSIER,
+
+  SET_IS_COLLAPSED_DOSSIERS,
+  UNSET_IS_COLLAPSED_DOSSIERS
+}                                     from '../../actions/gestBenef/gestBenefDossiers/gestBenefDossiers';
 const initialState = {
   actionTime: '',
   // error:
@@ -663,6 +677,39 @@ const gestBenef = (state = initialState, action) => {
       error: action.error,
       actionTime: action.time
     };
+
+  // /////////////////
+  // dossiers
+  // ////////////////
+
+  case REQUEST_GET_GEST_BENEF_ALL_DOSSIERS:
+    return {
+      ...state,
+      isFetchingDossiers: action.isFetchingDossiers,
+      lastFetchTimeIdentite: action.time,
+      actionTime: action.time
+    };
+
+  case RECEIVED_GET_GEST_BENEF_ALL_DOSSIERS:
+    return {
+      ...state,
+      isFetchingDossiers: action.isFetchingDossiers,
+      lastFetchTimeDossiers: action.time,
+      actionTime: action.time,
+
+      dossiers: [...action.dossiers]
+    };
+
+  case ERROR_GET_GEST_BENEF_ALL_DOSSIERS:
+    return {
+      ...state,
+      isFetchingDossiers: action.isFetchingDossiers,
+      lastFetchTimeDossiers: action.time,
+      actionTime: action.time,
+
+      error: action.error
+    };
+
 
   default:
     return state;
