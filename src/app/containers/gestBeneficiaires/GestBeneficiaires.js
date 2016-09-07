@@ -107,7 +107,21 @@ const mapDispatchToProps = (dispatch) => {
         updateComplementAdressContact: actions.updateComplementAdressContact,
         updateCodePostalContact: actions.updateCodePostalContact,
         updateVilleContact: actions.updateVilleContact,
-        updatePaysContact: actions.updatePaysContact
+        updatePaysContact: actions.updatePaysContact,
+        // //////////////////
+        // dossiers
+        // /////////////////
+        // get
+        getGestBenefAllDossiersIfNeeded: actions.getGestBenefAllDossiersIfNeeded,
+        // post (insert)
+        addGestBenefNewDossierIfNeeded: actions.addGestBenefNewDossierIfNeeded,
+        // post (update)
+        updateGestBenefDossierIfNeeded: actions.updateGestBenefDossierIfNeeded,
+        // UI dossiers
+        setIsCollapsedDossiers: actions.setIsCollapsedDossiers,
+        unsetIsCollapsedDossiers: actions.unsetIsCollapsedDossiers,
+        setIsSavingNewDossier: actions.setIsSavingNewDossier,
+        unsetIsSavingNewDossier: actions.unsetIsSavingNewDossier
       },
       dispatch)
   };
