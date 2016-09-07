@@ -2,12 +2,17 @@
 import React, {
   Component,
   PropTypes
-}                       from 'react';
-import shallowCompare   from 'react-addons-shallow-compare';
-import SavingIndicator  from '../savingIndicator/SavingIndicator';
-import Collapse         from 'react-collapse';
-import moment           from 'moment';
-import { appConfig }    from '../../../config';
+}                                         from 'react';
+import shallowCompare                     from 'react-addons-shallow-compare';
+import SavingIndicator                    from '../savingIndicator/SavingIndicator';
+import Collapse                           from 'react-collapse';
+import moment                             from 'moment';
+import { appConfig }                      from '../../../config';
+import {
+  getCurrentSearchDossiersResPageContent,
+  getSearchDossiersResMinIndex,
+  getSearchDossiersResMaxIndex
+}                                         from '../../../services';
 
 
 moment.locale('fr');

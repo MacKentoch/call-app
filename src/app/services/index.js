@@ -66,6 +66,12 @@ import {
   getSearchBenefResMinIndex,
   getSearchBenefResMaxIndex
 }                     from './utils/searchBenefResultPagination';
+// benef dossier pagination:
+import {
+  getCurrentSearchDossiersResPageContent,
+  getSearchDossiersResMinIndex,
+  getSearchDossiersResMaxIndex
+}                     from './utils/benefDossiersPagination';
 
 export {
   // utils:
@@ -125,5 +131,10 @@ export {
   // benefs pagination
   getCurrentSearchBenefResPageContent,
   getSearchBenefResMinIndex,
-  getSearchBenefResMaxIndex
+  getSearchBenefResMaxIndex,
+
+  // benef dossiers pagination:
+  getCurrentSearchDossiersResPageContent,
+  getSearchDossiersResMinIndex,
+  getSearchDossiersResMaxIndex
 };
