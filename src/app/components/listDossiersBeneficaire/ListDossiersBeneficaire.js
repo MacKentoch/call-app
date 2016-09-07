@@ -5,7 +5,7 @@ import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
 
 const ListDossiersBeneficaire = ({
-  benefs,
+  dossiers,
   onPagingPreviousClick,
   onPagingNextClick,
   onSearch,
@@ -71,32 +71,21 @@ const ListDossiersBeneficaire = ({
 };
 
 ListDossiersBeneficaire.propTypes = {
-  benefs: PropTypes.arrayOf(
+  dossiers: PropTypes.arrayOf(
     PropTypes.shape({
-      // generic
-      id: PropTypes.number.isRequired,
-      numDossier: PropTypes.string.isRequired,
-      nom: PropTypes.string,
-      nomJeuneFille: PropTypes.string,
-      prenom: PropTypes.string,
-      numss: PropTypes.string,
-      dateNaissance: PropTypes.string,
-      dateDeces: PropTypes.string,
-      statutActivite: PropTypes.string,
-      // specific 1
-      isRet: PropTypes.bool.isRequired,
-      // regimeRattachement: PropTypes.string,
-      // profilFinancementRattache: PropTypes.string,
-      // specific2
-      isPreRet: PropTypes.bool.isRequired // ,
-      // dateEntreePreRet: PropTypes.string,
-      // dateSortiePreRet: PropTypes.string,
-      // dateTauxPlein: PropTypes.string,
-      // numeroEntrepriseCliente: PropTypes.string,
-      // libelleEntrepriseCliente: PropTypes.string,
-      // numMatriculeSAG: PropTypes.string
+      id: PropTypes.number,
+      numDossier: PropTypes.string,
+      domaine: PropTypes.string,
+      regime: PropTypes.string,
+      societe: PropTypes.string,
+      numSte: PropTypes.string,
+      statutBenef: PropTypes.string,
+      dateEntreeDispositif: PropTypes.string,
+      dateSortieDispositif: PropTypes.string,
+      dateTauxPlein: PropTypes.string
     })
-  ),
+  ).isRequired,
+
   minPage: PropTypes.number.isRequired,
   maxPage: PropTypes.number.isRequired,
 
