@@ -5,13 +5,19 @@ import React, {
   PropTypes
 }                     from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
+import moment         from 'moment';
+import { appConfig }  from '../../../config';
+
+moment.locale('fr');
+const formatDate = appConfig.formatDate.defaut;
 
 class Dossiers extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      dossiers: []
+      dossiers: [],
+      dossierIdBeingEditing: 0 // when > 0 gives id dossier being edited (0 means no dossier is being editing)
     };
   }
 
@@ -21,7 +27,13 @@ class Dossiers extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ()
+    const { lastFetchTimeDossiers } = this.props;
+    const dossiersAreUpdated = moment(nextProps.lastFetchTimeDossiers, formatDate).diff(moment(lastFetchTimeDossiers, formatDate));
+
+    if (dossiersAreUpdated > 0) {
+      const { dossiers } = this.props;
+      this.setState({ dossiers });
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -36,6 +48,8 @@ class Dossiers extends Component {
 }
 
 Dossiers.propTypes = {
+  lastFetchTimeDossiers: PropTypes.string.isRequired,
+
   dossiers: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
