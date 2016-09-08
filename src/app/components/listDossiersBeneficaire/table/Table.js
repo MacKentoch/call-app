@@ -1,71 +1,60 @@
 import React, { PropTypes } from 'react';
 import Row from './row/Row';
 
-const Table  = ({benefs, onRowClick}) => {
+const Table  = ({dossiers, onRowClick}) => {
   return (
     <table className="table table-hover">
       <thead>
         <tr>
           <th>
-            Num. Dossier
+            N°Dossier ou matricule
           </th>
-
           <th>
-            Nom
+            Domaine
           </th>
-
-          {/* <th>
-            Nom de jeune fille
-          </th> */}
-
           <th>
-            Prénom
+            Régime
           </th>
-
           <th>
-            <i className="fa fa-calendar" aria-hidden="true"></i>
-            &nbsp;
-            naissance
+            Société
           </th>
-
           <th>
-            Numéro de sécu.
+            N°STE
           </th>
-
-          {/* <th>
-            <i className="fa fa-calendar" aria-hidden="true"></i>
-            &nbsp;
-            décès
-          </th> */}
-
           <th>
-            Statut
+            Statut bénéficiaire
           </th>
-
           <th>
-            Retraite
+            Dispositif date entrée
           </th>
-
           <th>
-            Pré-retraire
+            Dispositif date sortie
+          </th>
+          <th>
+            Date taux plein
+          </th>
+          <th>
+            <i
+              className="fa fa-pencil-square-o"
+              aria-hidden="true">  
+            </i>
           </th>
         </tr>
       </thead>
       <tbody>
         {
-          benefs.map(
+          dossiers.map(
             ({
               id,
               numDossier,
-              nom,
-              nomJeuneFille,
-              prenom,
-              numss,
-              dateNaissance,
-              dateDeces,
-              statutActivite,
-              isRet,
-              isPreRet
+              domaine,
+              regime,
+              societe,
+              numSte,
+              statutBenef,
+              dateEntreeDispositif,
+              dateSortieDispositif,
+              dateTauxPlein
             },
             benefIdx) => {
               return (
@@ -74,15 +63,14 @@ const Table  = ({benefs, onRowClick}) => {
                   onRowClick={onRowClick}
                   id={id}
                   numDossier={numDossier}
-                  nom={nom}
-                  nomJeuneFille={nomJeuneFille}
-                  prenom={prenom}
-                  numss={numss}
-                  dateNaissance={dateNaissance}
-                  dateDeces={dateDeces}
-                  statutActivite={statutActivite}
-                  isRet={isRet}
-                  isPreRet={isPreRet}
+                  domaine={domaine}
+                  regime={regime}
+                  societe={societe}
+                  numSte={numSte}
+                  statutBenef={statutBenef}
+                  dateEntreeDispositif={dateEntreeDispositif}
+                  dateSortieDispositif={dateSortieDispositif}
+                  dateTauxPlein={dateTauxPlein}
                 />
               );
             }
@@ -96,30 +84,18 @@ const Table  = ({benefs, onRowClick}) => {
 Table.propTypes = {
   onRowClick: PropTypes.func.isRequired,
 
-  benefs: PropTypes.arrayOf(
+  dossiers: PropTypes.arrayOf(
     PropTypes.shape({
-      // generic
-      id: PropTypes.number.isRequired,
-      numDossier: PropTypes.string.isRequired,
-      nom: PropTypes.string,
-      nomJeuneFille: PropTypes.string,
-      prenom: PropTypes.string,
-      numss: PropTypes.string,
-      dateNaissance: PropTypes.string,
-      dateDeces: PropTypes.string,
-      statutActivite: PropTypes.string,
-      // specific 1
-      isRet: PropTypes.bool.isRequired,
-      // regimeRattachement: PropTypes.string,
-      // profilFinancementRattache: PropTypes.string,
-      // specific2
-      isPreRet: PropTypes.bool.isRequired // ,
-      // dateEntreePreRet: PropTypes.string,
-      // dateSortiePreRet: PropTypes.string,
-      // dateTauxPlein: PropTypes.string,
-      // numeroEntrepriseCliente: PropTypes.string,
-      // libelleEntrepriseCliente: PropTypes.string,
-      // numMatriculeSAG: PropTypes.string
+      id: PropTypes.number,
+      numDossier: PropTypes.string,
+      domaine: PropTypes.string,
+      regime: PropTypes.string,
+      societe: PropTypes.string,
+      numSte: PropTypes.string,
+      statutBenef: PropTypes.string,
+      dateEntreeDispositif: PropTypes.string,
+      dateSortieDispositif: PropTypes.string,
+      dateTauxPlein: PropTypes.string
     })
   )
 };
