@@ -28,16 +28,11 @@ const ListDossiersBeneficaire = ({
           mailBoxName={mailBoxName}
         /> */}
         <div className="box box-primary">
-
-          <HeaderTools
-            title={''}
-            onSearch={onSearch}
-          />
-          <hr />
           <div
             className="box-body no-padding">
 
             <ListControl
+              onSearch={onSearch}
               showCheckToggle={false}
               minPage={minPage}
               maxPage={maxPage}
@@ -45,22 +40,12 @@ const ListDossiersBeneficaire = ({
               onPagingPreviousClick={onPagingPreviousClick}
               onPagingNextClick={onPagingNextClick}
             />
-
             <div className="table-responsive mailbox-messages">
               <Table
                 dossiers={dossiers}
                 onRowClick={onRowClick}
               />
             </div>
-
-            <ListControl
-              showCheckToggle={false}
-              minPage={minPage}
-              maxPage={maxPage}
-              totalPages={totalDossiers}
-              onPagingPreviousClick={onPagingPreviousClick}
-              onPagingNextClick={onPagingNextClick}
-            />
           </div>
         </div>
       </div>
