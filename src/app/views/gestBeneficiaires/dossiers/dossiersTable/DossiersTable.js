@@ -1,5 +1,4 @@
 import React, { PropTypes }               from 'react';
-import SavingIndicator                    from '../../savingIndicator/SavingIndicator';
 import {
   ListDossiersBeneficaire
 }                                         from '../../../../components';
