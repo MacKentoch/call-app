@@ -9,7 +9,6 @@ const ListDossiersBeneficaire = ({
   onPagingPreviousClick,
   onPagingNextClick,
   onSearch,
-  onBackToForm,
   minPage,
   maxPage,
   totalDossiers,
@@ -33,7 +32,6 @@ const ListDossiersBeneficaire = ({
           <HeaderTools
             title={''}
             onSearch={onSearch}
-            onBackButtonClick={onBackToForm}
           />
           <hr />
           <div
@@ -94,7 +92,6 @@ ListDossiersBeneficaire.propTypes = {
   onPagingPreviousClick: PropTypes.func.isRequired,
   onPagingNextClick: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  onBackToForm: PropTypes.func.isRequired,
   onRowClick: PropTypes.func.isRequired
 };
 

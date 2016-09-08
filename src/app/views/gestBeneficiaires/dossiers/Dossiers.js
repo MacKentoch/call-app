@@ -84,7 +84,7 @@ class Dossiers extends Component {
       <div>
         <div className="page-header">
           <i
-            className="fa fa-user"
+            className="fa fa-folder-open"
             aria-hidden="true"
             style={{color: '#444444'}}>
           </i>
