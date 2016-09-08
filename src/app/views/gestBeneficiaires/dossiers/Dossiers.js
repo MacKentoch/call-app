@@ -38,7 +38,6 @@ class Dossiers extends Component {
     this.handlesOnPagingPreviousClick = this.handlesOnPagingPreviousClick.bind(this);
     this.handlesOnPagingNextClick = this.handlesOnPagingNextClick.bind(this);
     this.handlesOnSearch = this.handlesOnSearch.bind(this);
-    this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
   }
 
   componentDidMount() {
@@ -110,7 +109,7 @@ class Dossiers extends Component {
             :
               <DossiersTable
                 dossiers={dossiers}
-                onDossierSelection={this.handlesOnDossierSelection}
+                onDossierSelection={onDossierSelection}
 
                 // pagination & search:
                 currentPageDossiers={currentPageDossiers}
@@ -183,15 +182,11 @@ class Dossiers extends Component {
     const { currentPage, numberDossiersPerPage } = this.state;
 
     const currentPageDossiersFiltered = getCurrentSearchDossiersResPageContent(dossiers, currentPage, numberDossiersPerPage, filter);
-    
+
     this.setState({
       currentPageDossiers: currentPageDossiersFiltered,
       filter
     });
-  }
-
-  handlesOnDossierSelection() {
-
   }
 }
 

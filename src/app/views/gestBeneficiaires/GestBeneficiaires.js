@@ -42,6 +42,7 @@ class GestBeneficiaires extends Component {
     this.handlesOnContactCollapseClick = this.handlesOnContactCollapseClick.bind(this);
     // dossiers related methods:
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
+    this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
   }
 
   componentDidMount() {
@@ -260,6 +261,8 @@ class GestBeneficiaires extends Component {
 
                     isCollapsedDossiers={isCollapsedDossiers}
                     onCollapseClick={this.handlesOnDossiersCollapseClick}
+
+                    onDossierSelection={this.handlesOnDossierSelection}
                   />
 
                 </div>
@@ -684,6 +687,10 @@ class GestBeneficiaires extends Component {
     } else {
       setIsCollapsedDossiers();
     }
+  }
+
+  handlesOnDossierSelection(dossierId) {
+    console.log('dossier selected id: ', dossierId);
   }
 }
 
