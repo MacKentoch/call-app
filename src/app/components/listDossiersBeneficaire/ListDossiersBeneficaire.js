@@ -10,7 +10,8 @@ const ListDossiersBeneficaire = ({
   minPage,
   maxPage,
   totalDossiers,
-  onRowClick
+  onRowClick,
+  onRowEditClick
 }) => {
   return (
     <div className="panel">
@@ -42,6 +43,7 @@ const ListDossiersBeneficaire = ({
               <Table
                 dossiers={dossiers}
                 onRowClick={onRowClick}
+                onRowEditClick={onRowEditClick}
               />
             </div>
           </div>
@@ -75,7 +77,9 @@ ListDossiersBeneficaire.propTypes = {
   onPagingPreviousClick: PropTypes.func.isRequired,
   onPagingNextClick: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  onRowClick: PropTypes.func.isRequired
+
+  onRowClick: PropTypes.func.isRequired,
+  onRowEditClick: PropTypes.func.isRequired
 };
 
 export default ListDossiersBeneficaire;

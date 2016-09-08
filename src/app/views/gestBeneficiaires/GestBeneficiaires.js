@@ -43,6 +43,7 @@ class GestBeneficiaires extends Component {
     // dossiers related methods:
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
     this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
+    this.handlesOnDossierEdition = this.handlesOnDossierEdition.bind(this);
   }
 
   componentDidMount() {
@@ -263,6 +264,8 @@ class GestBeneficiaires extends Component {
                     onCollapseClick={this.handlesOnDossiersCollapseClick}
 
                     onDossierSelection={this.handlesOnDossierSelection}
+
+                    onDossierEdition={this.handlesOnDossierEdition}
                   />
 
                 </div>
@@ -689,8 +692,12 @@ class GestBeneficiaires extends Component {
     }
   }
 
-  handlesOnDossierSelection(dossierId) {
-    console.log('dossier selected id: ', dossierId);
+  handlesOnDossierSelection(dossierSelected) {
+    console.log('dossier selected: ', dossierSelected);
+  }
+
+  handlesOnDossierEdition(dossierToEdit) {
+    console.log('dossier to edit: ', dossierToEdit);
   }
 }
 

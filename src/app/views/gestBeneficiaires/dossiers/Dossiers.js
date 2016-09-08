@@ -73,7 +73,8 @@ class Dossiers extends Component {
       isSavingDossiers,
       isCollapsedDossiers,
       onCollapseClick,
-      onDossierSelection
+      onDossierSelection,
+      onDossierEdition
     } = this.props;
 
     const minPage = getSearchDossiersResMinIndex(dossiers, currentPage, numberDossiersPerPage);
@@ -110,6 +111,7 @@ class Dossiers extends Component {
               <DossiersTable
                 dossiers={dossiers}
                 onDossierSelection={onDossierSelection}
+                onDossierEdition={onDossierEdition}
 
                 // pagination & search:
                 currentPageDossiers={currentPageDossiers}
@@ -214,7 +216,8 @@ Dossiers.propTypes = {
     })
   ).isRequired,
 
-  onDossierSelection: PropTypes.func.isRequired
+  onDossierSelection: PropTypes.func.isRequired,
+  onDossierEdition: PropTypes.func.isRequired
 };
 
 export default Dossiers;

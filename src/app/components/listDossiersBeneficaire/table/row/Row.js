@@ -11,6 +11,7 @@ class Row extends Component {
     super(props);
 
     this.handlesOnRowClick = this.handlesOnRowClick.bind(this);
+    this.handlesOnEditRowClick = this.handlesOnEditRowClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -67,11 +68,15 @@ class Row extends Component {
         {
           domaine === appConfig.editableDomaine
           ?
-            <td style={{width: '10px'}}>
-              <i
-                className="fa fa-pencil"
-                aria-hidden="true">
-              </i>
+            <td
+              onClick={this.handlesOnEditRowClick}
+              style={{width: '10px'}}>
+              <button className="btn orange_button btn-sm">
+                <i
+                  className="fa fa-pencil"
+                  aria-hidden="true">
+                </i>
+              </button>
             </td>
           :
             <td style={{width: '10px'}}>
@@ -112,6 +117,39 @@ class Row extends Component {
       dateTauxPlein
     });
   }
+
+  handlesOnEditRowClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const {
+      id,
+      numDossier,
+      domaine,
+      regime,
+      societe,
+      numSte,
+      statutBenef,
+      dateEntreeDispositif,
+      dateSortieDispositif,
+      dateTauxPlein,
+
+      onRowEditClick
+    } = this.props;
+
+    onRowEditClick({
+      id,
+      numDossier,
+      domaine,
+      regime,
+      societe,
+      numSte,
+      statutBenef,
+      dateEntreeDispositif,
+      dateSortieDispositif,
+      dateTauxPlein
+    });
+  }
 }
 
 Row.propTypes = {
@@ -126,7 +164,8 @@ Row.propTypes = {
   dateSortieDispositif: PropTypes.string,
   dateTauxPlein: PropTypes.string,
 
-  onRowClick: PropTypes.func.isRequired
+  onRowClick: PropTypes.func.isRequired,
+  onRowEditClick: PropTypes.func.isRequired
 };
 
 export default Row;

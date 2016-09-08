@@ -6,7 +6,9 @@ import {
 const DossiersTable = ({
   dossiers,
   isFetchingDossiers,
+
   onDossierSelection,
+  onDossierEdition,
   // pagination & search:
   currentPageDossiers,
   minPage,
@@ -31,6 +33,7 @@ const DossiersTable = ({
           onPagingNextClick={onPagingNextClick}
           onSearch={onSearch}
           onRowClick={onDossierSelection}
+          onRowEditClick={onDossierEdition}
         />
       }
       {/* when dossiers is empty */}
@@ -76,7 +79,8 @@ DossiersTable.propTypes = {
       dateTauxPlein: PropTypes.string
     })
   ).isRequired,
-  onDossierSelection: PropTypes.func.isRequired
+  onDossierSelection: PropTypes.func.isRequired,
+  onDossierEdition: PropTypes.func.isRequired
 };
 
 export default DossiersTable;
