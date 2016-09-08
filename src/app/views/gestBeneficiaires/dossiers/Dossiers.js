@@ -3,7 +3,6 @@ import React, {
   PropTypes
 }                                         from 'react';
 import shallowCompare                     from 'react-addons-shallow-compare';
-import SavingIndicator                    from '../savingIndicator/SavingIndicator';
 import Collapse                           from 'react-collapse';
 import moment                             from 'moment';
 import { appConfig }                      from '../../../config';
@@ -12,7 +11,11 @@ import {
   getSearchDossiersResMinIndex,
   getSearchDossiersResMaxIndex
 }                                         from '../../../services';
-
+import SavingIndicator                    from '../savingIndicator/SavingIndicator';
+import {
+  ListDossiersBeneficaire
+}                                         from '../../../components';
+import DossiersTable                      from './dossiersTable/DossiersTable';
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
@@ -57,8 +60,77 @@ class Dossiers extends Component {
   }
 
   render() {
-    return (
-      <div></div>
+    const { currentPageDossiers, currentPage, numberDossiersPerPage } = this.state;
+    const {
+      dossiers,
+      isFetchingDossiers,
+      lastFetchTimeDossiers,
+      isEditingDossiers,
+      isSavingDossiers,
+      isCollapsedDossiers,
+      onDossierSelection
+    } = this.props;
+
+    const minPage = getSearchDossiersResMinIndex(dossiers, currentPage, numberDossiersPerPage);
+    const maxPage= getSearchDossiersResMaxIndex(dossiers, currentPage, numberDossiersPerPage);
+
+    return(
+      <div>
+        <div className="page-header">
+          <i
+            className="fa fa-user"
+            aria-hidden="true"
+            style={{color: '#444444'}}>
+          </i>
+          &nbsp;
+          Dossiers
+          {
+            !isSavingIdentite &&
+            <EditValidIcons
+              isEditing={isEditingIdentite}
+              setEdit={onEditClick}
+              cancelEditing={onCancelEditClick}
+              saveEdit={onSaveFormIdentite}
+              isCollapsed={isCollapsedIdentite}
+              toggleCollapse={onCollapseClick}
+            />
+          }
+        </div>
+        <Collapse
+          isOpened={!isCollapsedDossiers}
+          keepCollapsedContent={false}>
+          <div style={{ height: '230px' }}>
+
+            {/* when dossiers not empty */}
+            {
+              (dossiers.length > 0 && !isFetchingDossiers) &&
+              <ListDossiersBeneficaire
+                benefs={currentPageDossiers}
+
+                minPage={minPage}
+                maxPage={maxPage}
+                totalBenefs={dossiers.length}
+
+                onPagingPreviousClick={this.handlesOnPagingPreviousClick}
+                onPagingNextClick={this.handlesOnPagingNextClick}
+                onSearch={this.handlesOnSearch}
+                onRowClick={onDossierSelection}
+              />
+            }
+            {/* when dossiers is empty */}
+            {
+              (dossiers.length === 0 && !isFetchingDossiers) &&
+              <h3>
+                <i>
+                  Aucun dossier.
+                </i>
+              </h3>
+            }
+
+
+          </div>
+        </Collapse>
+      </div>
     );
   }
 
@@ -120,7 +192,11 @@ class Dossiers extends Component {
 }
 
 Dossiers.propTypes = {
+  isFetchingDossiers: PropTypes.bool.isRequired,
   lastFetchTimeDossiers: PropTypes.string.isRequired,
+  isEditingDossiers: PropTypes.bool.isRequired,
+  isSavingDossiers: PropTypes.bool.isRequired,
+  isCollapsedDossiers: PropTypes.bool.isRequired,
 
   dossiers: PropTypes.arrayOf(
     PropTypes.shape({
@@ -135,7 +211,9 @@ Dossiers.propTypes = {
       dateSortieDispositif: PropTypes.string,
       dateTauxPlein: PropTypes.string
     })
-  ).isRequired
+  ).isRequired,
+
+  onDossierSelection: PropTypes.func.isRequired
 };
 
 export default Dossiers;

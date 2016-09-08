@@ -24,6 +24,7 @@ import TextInput from './textInput/TextInput';
 import TelephoneInput from './textInput/TelephoneInput';
 import NumssInput from './textInput/NumssInput';
 import DateInput from './dateInput/DateInput';
+import ListDossiersBeneficaire from './listDossiersBeneficaire/ListDossiersBeneficaire';
 
 import {
   FichesTraitee,
@@ -79,5 +80,8 @@ export {
   PersonnesLink,
 
   // search benefs:
-  SearchBenefResultList
+  SearchBenefResultList,
+
+  // gestBenef:
+  ListDossiersBeneficaire
 };
