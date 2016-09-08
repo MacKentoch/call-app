@@ -291,6 +291,8 @@ export const appConfig = {
     }
   },
 
+  editableDomaine: 'ssh',
+
   HELLO_WORD: 'Bonjour'
 
 };

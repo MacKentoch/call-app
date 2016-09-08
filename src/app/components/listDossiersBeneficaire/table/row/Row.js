@@ -3,7 +3,8 @@ import React, {
   PropTypes
 }                     from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-import Switch         from 'rc-switch';
+import { appConfig }  from '../../../../config';
+
 
 class Row extends Component {
   constructor(props) {
@@ -20,15 +21,14 @@ class Row extends Component {
     const {
       id,
       numDossier,
-      nom,
-      // nomJeuneFille,
-      prenom,
-      numss,
-      dateNaissance,
-      // dateDeces,
-      statutActivite,
-      isRet,
-      isPreRet
+      domaine,
+      regime,
+      societe,
+      numSte,
+      statutBenef,
+      dateEntreeDispositif,
+      dateSortieDispositif,
+      dateTauxPlein
     } = this.props;
 
     return (
@@ -36,64 +36,48 @@ class Row extends Component {
         id={id}
         style={{cursor: 'pointer'}}
         onClick={this.handlesOnRowClick}>
-
         <td style={{width: '100px'}}>
           {numDossier}
         </td>
-
         <td style={{width: '90px'}}>
-          {nom}
+          {domaine}
         </td>
-
-        {/* <td>
-          {nomJeuneFille}
-        </td> */}
-
-        <td>
-          {prenom}
+        <td style={{width: '120px'}}>
+          {regime}
         </td>
-
-        <td style={{width: '100px'}}>
-          {dateNaissance}
+        <td style={{width: '90px'}}>
+          {societe}
         </td>
-
-        <td style={{width: '100px'}}>
-          {numss}
-        </td>
-
-        {/* <td>
-          {dateDeces}
-        </td> */}
-
         <td style={{width: '80px'}}>
-          {statutActivite}
+          {numSte}
         </td>
-
         <td style={{width: '90px'}}>
-          <Switch
-            disabled={true}
-            checkedChildren={'O'}
-            unCheckedChildren={'N'}
-            checked={isRet === true ? true : false}
-          />
+          {statutBenef}
         </td>
-
-        <td style={{width: '90px'}}>
-          <Switch
-            disabled={true}
-            checkedChildren={'O'}
-            unCheckedChildren={'N'}
-            checked={isPreRet === true ? true : false}
-          />
+        <td style={{width: '80px'}}>
+          {dateEntreeDispositif}
         </td>
-
-        <td style={{width: '10px'}}>
-          <i
-            className="fa fa-angle-right"
-            aria-hidden="true">
-          </i>
+        <td style={{width: '80px'}}>
+          {dateSortieDispositif}
         </td>
-
+        <td style={{width: '80px'}}>
+          {dateTauxPlein}
+        </td>
+        {/* editable row depends condition: */}
+        {
+          domaine === appConfig.editableDomaine
+          ?
+            <td style={{width: '10px'}}>
+              <i
+                className="fa fa-pencil"
+                aria-hidden="true">
+              </i>
+            </td>
+          :
+            <td style={{width: '10px'}}>
+              &nbsp;
+            </td>
+        }
       </tr>
     );
   }
@@ -106,29 +90,17 @@ class Row extends Component {
 }
 
 Row.propTypes = {
-  // generic
-  id: PropTypes.number.isRequired,
-  numDossier: PropTypes.string.isRequired,
-  nom: PropTypes.string,
-  nomJeuneFille: PropTypes.string,
-  prenom: PropTypes.string,
-  numss: PropTypes.string,
-  dateNaissance: PropTypes.string,
-  dateDeces: PropTypes.string,
-  statutActivite: PropTypes.string,
-  // specific 1
-  isRet: PropTypes.bool.isRequired,
-  // regimeRattachement: PropTypes.string,
-  // profilFinancementRattache: PropTypes.string,
-  // specific2
-  isPreRet: PropTypes.bool.isRequired,
-  // dateEntreePreRet: PropTypes.string,
-  // dateSortiePreRet: PropTypes.string,
-  // dateTauxPlein: PropTypes.string,
-  // numeroEntrepriseCliente: PropTypes.string,
-  // libelleEntrepriseCliente: PropTypes.string,
-  // numMatriculeSAG: PropTypes.string
-  //
+  id: PropTypes.number,
+  numDossier: PropTypes.string,
+  domaine: PropTypes.string,
+  regime: PropTypes.string,
+  societe: PropTypes.string,
+  numSte: PropTypes.string,
+  statutBenef: PropTypes.string,
+  dateEntreeDispositif: PropTypes.string,
+  dateSortieDispositif: PropTypes.string,
+  dateTauxPlein: PropTypes.string,
+
   onRowClick: PropTypes.func.isRequired
 };
 
