@@ -172,10 +172,11 @@ export const unsetIsCollapsedDossiers = (time = moment().format(formatDate)) => 
 //  -----------------------------------------------------------------
 //    set / unset isEditing flag
 //  -----------------------------------------------------------------
-export const setIsEditingDossier = (time = moment().format(formatDate)) => {
+export const setIsEditingDossier = (dossierId = 0, time = moment().format(formatDate)) => {
   return {
     type: SET_IS_EDITING_DOSSIER,
     isEditingDossiers: true,
+    editDossierId: dossierId,
     time
   };
 };
@@ -183,6 +184,7 @@ export const unsetIsEditingDossier = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_EDITING_DOSSIER,
     isEditingDossiers: false,
+    editDossierId: 0, // dossier Id = 0 means no dossier
     time
   };
 };

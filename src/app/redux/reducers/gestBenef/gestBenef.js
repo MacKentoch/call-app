@@ -167,7 +167,8 @@ const initialState = {
   isSavingDossiers: false,
   isCollapsedDossiers: false,
 
-  dossiers: []
+  dossiers: [],
+  editDossierId: 0
 };
 
 const gestBenef = (state = initialState, action) => {
@@ -202,6 +203,7 @@ const gestBenef = (state = initialState, action) => {
       pays: initialState.pays,
       // dossiers:
       dossiers:  [...initialState.dossiers],
+      editDossierId: initialState.editDossierId,
 
       actionTime: action.time
     };
@@ -293,7 +295,9 @@ const gestBenef = (state = initialState, action) => {
       // dossiers:
       dossiers: action.gestBenef && action.gestBenef.dossiers
         ? [...action.gestBenef.dossiers]
-        : [...initialState.dossiers]
+        : [...initialState.dossiers],
+
+      editDossierId: initialState.editDossierId
     };
 
   case ERROR_GET_GEST_BENEF:
@@ -782,6 +786,7 @@ const gestBenef = (state = initialState, action) => {
     return {
       ...state,
       isEditingDossiers: action.isEditingDossiers,
+      editDossierId: action.editDossierId,
       actionTime: action.time
     };
 
