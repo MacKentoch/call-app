@@ -2,6 +2,7 @@ import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 import Identite                         from './identite/Identite';
 import Contact                          from './contact/Contact';
+// import Dossiers                         from './dossiers/Dossiers';
 import FetchingAllContent               from './fetchingAllContent/FetchingAllContent';
 
 
