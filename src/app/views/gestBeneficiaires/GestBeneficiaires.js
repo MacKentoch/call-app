@@ -147,7 +147,7 @@ class GestBeneficiaires extends Component {
               <div className="panel-body">
               {
                 isFetchingAll &&
-                <div style={{height: '200px'}}>
+                <div style={{height: '1000px'}}>
                   <div style={{height: '80px'}}></div>
                   <FetchingAllContent />
                 </div>
