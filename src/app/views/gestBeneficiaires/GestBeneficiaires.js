@@ -237,7 +237,7 @@ class GestBeneficiaires extends Component {
                     onPaysChanged={this.handlesOnPaysChanged}
                   />
 
-                  <div style={{height: '10px'}}></div>
+                  <div style={{height: '60px'}}></div>
 
                   <Dossiers
                     dossiers={dossiers}
