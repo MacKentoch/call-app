@@ -21,11 +21,11 @@ const DossiersTable = ({
       {
         (dossiers.length > 0 && !isFetchingDossiers) &&
         <ListDossiersBeneficaire
-          benefs={currentPageDossiers}
+          dossiers={currentPageDossiers}
 
           minPage={minPage}
           maxPage={maxPage}
-          totalBenefs={dossiers.length}
+          totalDossiers={dossiers.length}
 
           onPagingPreviousClick={onPagingPreviousClick}
           onPagingNextClick={onPagingNextClick}

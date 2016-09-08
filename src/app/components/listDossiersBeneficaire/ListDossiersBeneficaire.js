@@ -12,7 +12,7 @@ const ListDossiersBeneficaire = ({
   onBackToForm,
   minPage,
   maxPage,
-  totalBenefs,
+  totalDossiers,
   onRowClick
 }) => {
   return (
@@ -43,14 +43,14 @@ const ListDossiersBeneficaire = ({
               showCheckToggle={false}
               minPage={minPage}
               maxPage={maxPage}
-              totalPages={totalBenefs}
+              totalPages={totalDossiers}
               onPagingPreviousClick={onPagingPreviousClick}
               onPagingNextClick={onPagingNextClick}
             />
 
             <div className="table-responsive mailbox-messages">
               <Table
-                benefs={dossiers}
+                dossiers={dossiers}
                 onRowClick={onRowClick}
               />
             </div>
@@ -59,7 +59,7 @@ const ListDossiersBeneficaire = ({
               showCheckToggle={false}
               minPage={minPage}
               maxPage={maxPage}
-              totalPages={totalBenefs}
+              totalPages={totalDossiers}
               onPagingPreviousClick={onPagingPreviousClick}
               onPagingNextClick={onPagingNextClick}
             />
@@ -89,7 +89,7 @@ ListDossiersBeneficaire.propTypes = {
   minPage: PropTypes.number.isRequired,
   maxPage: PropTypes.number.isRequired,
 
-  totalBenefs: PropTypes.number.isRequired,
+  totalDossiers: PropTypes.number.isRequired,
 
   onPagingPreviousClick: PropTypes.func.isRequired,
   onPagingNextClick: PropTypes.func.isRequired,
