@@ -9,6 +9,7 @@ const DossiersTable = ({
 
   onDossierSelection,
   onDossierEdition,
+  isEditingDossiers,
   // pagination & search:
   currentPageDossiers,
   minPage,
@@ -24,6 +25,7 @@ const DossiersTable = ({
         (dossiers.length > 0 && !isFetchingDossiers) &&
         <ListDossiersBeneficaire
           dossiers={currentPageDossiers}
+          isEditingDossiers={isEditingDossiers}
 
           minPage={minPage}
           maxPage={maxPage}

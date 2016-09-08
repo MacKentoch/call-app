@@ -29,7 +29,8 @@ class Row extends Component {
       statutBenef,
       dateEntreeDispositif,
       dateSortieDispositif,
-      dateTauxPlein
+      dateTauxPlein,
+      isEditingDossiers
     } = this.props;
 
     return (
@@ -165,7 +166,9 @@ Row.propTypes = {
   dateTauxPlein: PropTypes.string,
 
   onRowClick: PropTypes.func.isRequired,
-  onRowEditClick: PropTypes.func.isRequired
+
+  onRowEditClick: PropTypes.func.isRequired,
+  isEditingDossiers: PropTypes.bool.isRequired
 };
 
 export default Row;
