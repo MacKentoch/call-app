@@ -79,6 +79,9 @@ import {
   SET_IS_SAVING_NEW_DOSSIER,
   UNSET_IS_SAVING_NEW_DOSSIER,
 
+  SET_IS_EDITING_DOSSIER,
+  UNSET_IS_EDITING_DOSSIER,
+
   SET_IS_COLLAPSED_DOSSIERS,
   UNSET_IS_COLLAPSED_DOSSIERS
 }                                     from '../../actions/gestBenef/gestBenefDossiers/gestBenefDossiers';
@@ -774,6 +777,13 @@ const gestBenef = (state = initialState, action) => {
       actionTime: action.time
     };
 
+  case SET_IS_EDITING_DOSSIER:
+  case UNSET_IS_EDITING_DOSSIER:
+    return {
+      ...state,
+      isEditingDossiers: action.isEditingDossiers,
+      actionTime: action.time
+    };
 
   case SET_IS_SAVING_NEW_DOSSIER:
   case UNSET_IS_SAVING_NEW_DOSSIER:

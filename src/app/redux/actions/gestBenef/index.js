@@ -55,6 +55,9 @@ import {
   setIsSavingNewDossier,
   unsetIsSavingNewDossier,
 
+  setIsEditingDossier,
+  unsetIsEditingDossier,
+
   addGestBenefNewDossierIfNeeded,
 
   updateGestBenefDossierIfNeeded
@@ -102,6 +105,8 @@ export {
   unsetIsCollapsedDossiers,
   setIsSavingNewDossier,
   unsetIsSavingNewDossier,
+  setIsEditingDossier,
+  unsetIsEditingDossier,
   addGestBenefNewDossierIfNeeded,
   updateGestBenefDossierIfNeeded
 };

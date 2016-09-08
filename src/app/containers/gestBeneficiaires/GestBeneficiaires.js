@@ -121,7 +121,9 @@ const mapDispatchToProps = (dispatch) => {
         setIsCollapsedDossiers: actions.setIsCollapsedDossiers,
         unsetIsCollapsedDossiers: actions.unsetIsCollapsedDossiers,
         setIsSavingNewDossier: actions.setIsSavingNewDossier,
-        unsetIsSavingNewDossier: actions.unsetIsSavingNewDossier
+        unsetIsSavingNewDossier: actions.unsetIsSavingNewDossier,
+        setIsEditingDossier: actions.setIsEditingDossier,
+        unsetIsEditingDossier: actions.unsetIsEditingDossier
       },
       dispatch)
   };

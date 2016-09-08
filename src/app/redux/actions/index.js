@@ -143,6 +143,8 @@ import {
   unsetIsCollapsedDossiers,
   setIsSavingNewDossier,
   unsetIsSavingNewDossier,
+  setIsEditingDossier,
+  unsetIsEditingDossier,
   addGestBenefNewDossierIfNeeded,
   updateGestBenefDossierIfNeeded
 }                                 from './gestBenef';
@@ -267,6 +269,8 @@ export {
   unsetIsCollapsedDossiers,
   setIsSavingNewDossier,
   unsetIsSavingNewDossier,
+  setIsEditingDossier,
+  unsetIsEditingDossier,
   addGestBenefNewDossierIfNeeded,
   updateGestBenefDossierIfNeeded,
 

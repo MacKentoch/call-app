@@ -27,7 +27,10 @@ export const ERROR_ADD_GEST_BENEF_NEW_DOSSIER       = 'ERROR_ADD_GEST_BENEF_NEW_
 // for UI (set a flag): to get informed when saving a new dossier to backend
 export const SET_IS_SAVING_NEW_DOSSIER              = 'SET_IS_SAVING_NEW_DOSSIER';
 export const UNSET_IS_SAVING_NEW_DOSSIER            = 'UNSET_IS_SAVING_NEW_DOSSIER';
-// /////////////////////////////////////
+
+// for UI (set a flag): to get informed when editing mode enabled or disabled
+export const SET_IS_EDITING_DOSSIER                 = 'SET_IS_EDITING_DOSSIER';
+export const UNSET_IS_EDITING_DOSSIER               = 'UNSET_IS_EDITING_DOSSIER';
 
 // update a dossier:
 export const REQUEST_UPDATE_GEST_BENEF_DOSSIER      = 'REQUEST_UPDATE_GEST_BENEF_DOSSIER';
@@ -165,6 +168,25 @@ export const unsetIsCollapsedDossiers = (time = moment().format(formatDate)) => 
     time
   };
 };
+
+//  -----------------------------------------------------------------
+//    set / unset isEditing flag
+//  -----------------------------------------------------------------
+export const setIsEditingDossier = (time = moment().format(formatDate)) => {
+  return {
+    type: SET_IS_EDITING_DOSSIER,
+    isEditingDossiers: true,
+    time
+  };
+};
+export const unsetIsEditingDossier = (time = moment().format(formatDate)) => {
+  return {
+    type: UNSET_IS_EDITING_DOSSIER,
+    isEditingDossiers: false,
+    time
+  };
+};
+
 
 //  -----------------------------------------------------------------
 //    set / unset benef isSaving a new dossier flag (NOT USED)
