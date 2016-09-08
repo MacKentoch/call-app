@@ -33,7 +33,7 @@ const Table  = ({dossiers, onRowClick, onRowEditClick}) => {
           <th>
             Date taux plein
           </th>
-          <th>
+          <th style={{textAlign: 'center'}}>
             <i
               className="fa fa-pencil-square-o"
               aria-hidden="true">
