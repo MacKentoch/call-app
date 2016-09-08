@@ -2,7 +2,7 @@ import React, { PropTypes, Component }  from 'react';
 import cx                               from 'classnames';
 import Identite                         from './identite/Identite';
 import Contact                          from './contact/Contact';
-// import Dossiers                         from './dossiers/Dossiers';
+import Dossiers                         from './dossiers/Dossiers';
 import FetchingAllContent               from './fetchingAllContent/FetchingAllContent';
 
 
@@ -40,6 +40,8 @@ class GestBeneficiaires extends Component {
     this.handlesOnEditContactClick = this.handlesOnEditContactClick.bind(this);
     this.handlesOnCancelEditContactClick = this.handlesOnCancelEditContactClick.bind(this);
     this.handlesOnContactCollapseClick = this.handlesOnContactCollapseClick.bind(this);
+    // dossiers related methods:
+    this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
   }
 
   componentDidMount() {
@@ -114,6 +116,9 @@ class GestBeneficiaires extends Component {
     // contact:
     const { isFetchingContact, lastFetchTimeContact, isSavingContact, isEditingContact, isCollapsedContact } = this.props;
     const { fixedPhone, mobilePhone, email, numAdress, voie, complementAdr, codePostal, ville, pays } = this.props;
+    // dossiers:
+    const { isFetchingDossiers, lastFetchTimeDossiers, isSavingDossiers, isEditingDossiers, isCollapsedDossiers } = this.props;
+    const { dossiers } = this.props;
 
     return(
       <section
@@ -230,6 +235,21 @@ class GestBeneficiaires extends Component {
 
                     pays={pays}
                     onPaysChanged={this.handlesOnPaysChanged}
+                  />
+
+                  <div style={{height: '10px'}}></div>
+
+                  <Dossiers
+                    dossiers={dossiers}
+
+                    isFetchingDossiers={isFetchingDossiers}
+                    lastFetchTimeDossiers={lastFetchTimeDossiers}
+
+                    isEditingDossiers={isEditingDossiers}
+                    isSavingDossiers={isSavingDossiers}
+
+                    isCollapsedDossiers={isCollapsedDossiers}
+                    onCollapseClick={this.handlesOnDossiersCollapseClick}
                   />
 
                 </div>
@@ -642,6 +662,18 @@ class GestBeneficiaires extends Component {
     const { actions: { unsetIsEditingContact, unsetIsCollapsedContact } } = this.props;
     unsetIsEditingContact();
     unsetIsCollapsedContact();
+  }
+
+  // ////////////////////////////////
+  //  dossiers related methods
+  // ////////////////////////////////
+  handlesOnDossiersCollapseClick() {
+    const { isCollapsedDossiers, actions: { setIsCollapsedDossiers, unsetIsCollapsedDossiers } } = this.props;
+    if (isCollapsedDossiers) {
+      unsetIsCollapsedDossiers();
+    } else {
+      setIsCollapsedDossiers();
+    }
   }
 }
 
