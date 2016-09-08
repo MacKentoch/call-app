@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react';
-// import Title                from './title/Title';
-import HeaderTools          from './headerTools/HeaderTools';
 import ListControl          from './listControl/ListControl';
 import Table                from './table/Table';
 
