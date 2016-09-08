@@ -7,9 +7,12 @@ export const getCurrentSearchDossiersResPageContent = (dossiers, page = 1, pageS
 
   const total = dossiers.length;
 
-  // no pagination case
+  // /////////////////////////////////////////
+  // 1) no pagination case
+  // /////////////////////////////////////////
   if (total <= pageSize - 1) {
     if (filter.trim().length > 0) {
+      // 1.a) with filter case:
       const regexFilter = new RegExp(filter, 'gi');
       return dossiers
         .filter(
@@ -19,14 +22,19 @@ export const getCurrentSearchDossiersResPageContent = (dossiers, page = 1, pageS
                       regexFilter.test(dossier.societe)
         );
     } else {
+      // 1.b) no filter case:
       return dossiers;
     }
   }
 
   const minIdx  = (page - 1) * pageSize;
   const maxIdx  = (page * pageSize) - 1;
-  // pagination case
+
+  // /////////////////////////////////////////
+  // 2) with pagination case
+  // /////////////////////////////////////////
   if (filter.trim().length > 0) {
+    // 2.a) with filter case:
     const regexFilter = new RegExp(filter, 'gi');
     return dossiers
       .filter(
@@ -44,6 +52,7 @@ export const getCurrentSearchDossiersResPageContent = (dossiers, page = 1, pageS
       }
     );
   } else {
+    // 2.b) no filter case:
     return dossiers.filter(
       (dossier, dossierIdx) => {
         if (dossierIdx >= minIdx && dossierIdx <= maxIdx) {

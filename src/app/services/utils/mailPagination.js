@@ -6,23 +6,31 @@ export const getCurrentPageContent = (mails, page = 1, pageSize = numberMailsPer
   }
 
   const total = mails.length;
-  // no pagination case
+  // /////////////////////////////////////////
+  // 1) no pagination case
+  // /////////////////////////////////////////
   if (total <= pageSize - 1) {
     if (filter.trim().length > 0) {
+      // 1.a) with filter case:
       const regexFilter = new RegExp(filter, 'gi');
       return mails
         .filter(
           mail => regexFilter.test(mail.from.name) || regexFilter.test(mail.subject)
         );
     } else {
+      // 1.b) no filter case:
       return mails;
     }
   }
 
   const minIdx  = (page - 1) * pageSize;
   const maxIdx  = (page * pageSize) - 1;
-  // pagination case
+
+  // /////////////////////////////////////////
+  // 2) with pagination case
+  // /////////////////////////////////////////
   if (filter.trim().length > 0) {
+    // 2.a) with filter case:
     const regexFilter = new RegExp(filter, 'gi');
     return mails
       .filter(
@@ -37,6 +45,7 @@ export const getCurrentPageContent = (mails, page = 1, pageSize = numberMailsPer
       }
     );
   } else {
+    // 2.b) no filter case:
     return mails.filter(
       (mail, mailIdx) => {
         if (mailIdx >= minIdx && mailIdx <= maxIdx) {

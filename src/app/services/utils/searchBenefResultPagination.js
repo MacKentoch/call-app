@@ -6,32 +6,40 @@ export const getCurrentSearchBenefResPageContent = (benefs, page = 1, pageSize =
   }
 
   const total = benefs.length;
-  // no pagination case
+  // /////////////////////////////////////////
+  // 1) no pagination case
+  // /////////////////////////////////////////
   if (total <= pageSize - 1) {
     if (filter.trim().length > 0) {
+      // 1.a) with filter case:
       const regexFilter = new RegExp(filter, 'gi');
       return benefs
         .filter(
-          benef =>  regexFilter.test(benef.nom) ||
+          benef =>  regexFilter.test(benef.nom)           ||
                     regexFilter.test(benef.nomJeuneFille) ||
-                    regexFilter.test(benef.prenom) ||
+                    regexFilter.test(benef.prenom)        ||
                     regexFilter.test(benef.numss)
         );
     } else {
+      // 1.b) no filter case:
       return benefs;
     }
   }
 
   const minIdx  = (page - 1) * pageSize;
   const maxIdx  = (page * pageSize) - 1;
-  // pagination case
+
+  // /////////////////////////////////////////
+  // 2) with pagination case
+  // /////////////////////////////////////////
   if (filter.trim().length > 0) {
+    // 2.a) with filter case:
     const regexFilter = new RegExp(filter, 'gi');
     return benefs
       .filter(
-        benef =>  regexFilter.test(benef.nom) ||
+        benef =>  regexFilter.test(benef.nom)           ||
                   regexFilter.test(benef.nomJeuneFille) ||
-                  regexFilter.test(benef.prenom) ||
+                  regexFilter.test(benef.prenom)        ||
                   regexFilter.test(benef.numss)
       )
       .filter(
@@ -43,6 +51,7 @@ export const getCurrentSearchBenefResPageContent = (benefs, page = 1, pageSize =
       }
     );
   } else {
+    // 2.b) no filter case:
     return benefs.filter(
       (benef, benefIdx) => {
         if (benefIdx >= minIdx && benefIdx <= maxIdx) {

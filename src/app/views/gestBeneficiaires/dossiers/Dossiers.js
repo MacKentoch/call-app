@@ -81,14 +81,42 @@ class Dossiers extends Component {
     const { currentPage, numberDossiersPerPage, filter } = this.state;
 
     const previousPage = currentPage - 1 > 0 ? currentPage - 1 : currentPage;
-    const nextPageBenefs = getCurrentSearchDossiersResPageContent(dossiers, previousPage, numberDossiersPerPage, filter);
+    const nextPageDossiers = getCurrentSearchDossiersResPageContent(dossiers, previousPage, numberDossiersPerPage, filter);
 
     this.setState({
-      currentPageDossiers: nextPageBenefs,
+      currentPageDossiers: nextPageDossiers,
       currentPage: previousPage
     });
   }
 
+  handlesOnPagingNextClick(event) {
+    event.preventDefault();
+
+    const { dossiers } = this.props;
+    const { currentPage, numberDossiersPerPage, filter } = this.state;
+
+    const totalDossiers = dossiers.length;
+    const pageMax = Math.ceil(totalDossiers / numberDossiersPerPage);
+    const nextPage = currentPage + 1 <= pageMax ? currentPage + 1 : currentPage;
+
+    const nextPageDossiers = getCurrentSearchDossiersResPageContent(dossiers, nextPage, numberDossiersPerPage, filter);
+    this.setState({
+      currentPageDossiers: nextPageDossiers,
+      currentPage: nextPage
+    });
+  }
+
+  handlesOnSearch(filter) {
+    const { dossiers } = this.props;
+    const { currentPage, numberDossiersPerPage } = this.state;
+
+    const currentPageDossiersFiltered = getCurrentSearchDossiersResPageContent(dossiers, currentPage, numberDossiersPerPage, filter);
+
+    this.setState({
+      currentPageDossiers: currentPageDossiersFiltered,
+      filter
+    });
+  }
 }
 
 Dossiers.propTypes = {
