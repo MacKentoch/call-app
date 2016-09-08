@@ -120,7 +120,7 @@ class GestBeneficiaires extends Component {
     const { fixedPhone, mobilePhone, email, numAdress, voie, complementAdr, codePostal, ville, pays } = this.props;
     // dossiers:
     const { isFetchingDossiers, lastFetchTimeDossiers, isSavingDossiers, isEditingDossiers, isCollapsedDossiers } = this.props;
-    const { dossiers } = this.props;
+    const { dossiers, editDossierId } = this.props;
 
     return(
       <section
@@ -258,6 +258,7 @@ class GestBeneficiaires extends Component {
                     lastFetchTimeDossiers={lastFetchTimeDossiers}
 
                     isEditingDossiers={isEditingDossiers}
+                    editDossierId={editDossierId}
                     isSavingDossiers={isSavingDossiers}
 
                     isCollapsedDossiers={isCollapsedDossiers}
@@ -668,9 +669,6 @@ class GestBeneficiaires extends Component {
           });
         }
       );
-    // postGestBenefContactIfNeeded(payload);
-    // unsetIsEditingContact();
-    // getGestBenefContactIfNeeded();
   }
 
   // to reset contact editing state and collapsed state
@@ -765,6 +763,7 @@ GestBeneficiaires.propTypes = {
   isSavingDossiers: PropTypes.bool.isRequired,
   isCollapsedDossiers: PropTypes.bool.isRequired,
   dossiers: PropTypes.array.isRequired,
+  editDossierId: PropTypes.number.isRequired,
 
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({

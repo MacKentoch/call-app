@@ -10,12 +10,31 @@ class Row extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      editDomaine: appConfig.editableDomaine,
+      editRegime: '',
+      editSociete: '',
+      editNumSte: '',
+      editStatutBenef: '',
+      editDateEntree: '',
+      editDateSortie: '',
+      editDateTauxPlein: ''
+    };
+
     this.handlesOnRowClick = this.handlesOnRowClick.bind(this);
     this.handlesOnEditRowClick = this.handlesOnEditRowClick.bind(this);
   }
 
+  componentDidMount() {
+    this.refreshStateFromProps(this.props);
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.refreshStateFromProps(nextProps);
   }
 
   render() {
@@ -30,20 +49,48 @@ class Row extends Component {
       dateEntreeDispositif,
       dateSortieDispositif,
       dateTauxPlein,
-      isEditingDossiers
+      isEditing
     } = this.props;
+
+    const {
+      editDomaine,
+      editRegime,
+      editSociete,
+      editNumSte,
+      editStatutBenef,
+      editDateEntree,
+      editDateSortie,
+      editDateTauxPlein
+    } = this.state;
 
     return (
       <tr
         id={id}
         style={{cursor: 'pointer'}}
         onClick={this.handlesOnRowClick}>
+
         <td style={{width: '100px'}}>
           {numDossier}
         </td>
+
         <td style={{width: '90px'}}>
-          {domaine}
+          {
+            isEditing
+            ?
+              <input
+                className="form-control"
+                id="edit"
+                type="text"
+                value={editDomaine}
+                onChange={this.handlesOnChange}
+              />
+            :
+             <span>
+               {domaine}
+             </span>
+          }
         </td>
+
         <td style={{width: '120px'}}>
           {regime}
         </td>
@@ -86,6 +133,18 @@ class Row extends Component {
         }
       </tr>
     );
+  }
+
+  refreshStateFromProps(props) {
+    this.setState({
+      editRegime: props.regime,
+      editSociete: props.societe,
+      editNumSte: props.numSte,
+      editStatutBenef: props.statutBenef,
+      editDateEntree: props.dateEntreeDispositif,
+      editDateSortie: props.dateSortieDispositif,
+      editDateTauxPlein: props.dateTauxPlein
+    });
   }
 
   handlesOnRowClick(event) {
@@ -168,7 +227,9 @@ Row.propTypes = {
   onRowClick: PropTypes.func.isRequired,
 
   onRowEditClick: PropTypes.func.isRequired,
-  isEditingDossiers: PropTypes.bool.isRequired
+  isEditingDossiers: PropTypes.bool.isRequired,
+
+  isEditing: PropTypes.bool.isRequired
 };
 
 export default Row;

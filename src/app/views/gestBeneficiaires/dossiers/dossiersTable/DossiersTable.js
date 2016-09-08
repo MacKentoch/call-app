@@ -10,6 +10,7 @@ const DossiersTable = ({
   onDossierSelection,
   onDossierEdition,
   isEditingDossiers,
+  editDossierId,
   // pagination & search:
   currentPageDossiers,
   minPage,
@@ -25,7 +26,9 @@ const DossiersTable = ({
         (dossiers.length > 0 && !isFetchingDossiers) &&
         <ListDossiersBeneficaire
           dossiers={currentPageDossiers}
+
           isEditingDossiers={isEditingDossiers}
+          editDossierId={editDossierId}
 
           minPage={minPage}
           maxPage={maxPage}
@@ -53,7 +56,7 @@ const DossiersTable = ({
 
 DossiersTable.propTypes = {
   // pagination & search:
-  currentPageDossiers: PropTypes.number.isRequired,
+  currentPageDossiers: PropTypes.array.isRequired,
   minPage: PropTypes.number.isRequired,
   maxPage: PropTypes.number.isRequired,
   onPagingPreviousClick: PropTypes.func.isRequired,
@@ -64,6 +67,7 @@ DossiersTable.propTypes = {
   isFetchingDossiers: PropTypes.bool.isRequired,
   lastFetchTimeDossiers: PropTypes.string.isRequired,
   isEditingDossiers: PropTypes.bool.isRequired,
+  editDossierId: PropTypes.number.isRequired,
   isSavingDossiers: PropTypes.bool.isRequired,
   isCollapsedDossiers: PropTypes.bool.isRequired,
   // data

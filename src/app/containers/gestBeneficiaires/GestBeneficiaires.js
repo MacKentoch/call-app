@@ -46,6 +46,7 @@ const mapStateToProps = (state) => {
     isFetchingDossiers: state.gestBenef.isFetchingDossiers,
     lastFetchTimeDossiers: state.gestBenef.lastFetchTimeDossiers,
     isEditingDossiers: state.gestBenef.isEditingDossiers,
+    editDossierId: state.gestBenef.editDossierId,
     isSavingDossiers: state.gestBenef.isSavingDossiers,
     isCollapsedDossiers: state.gestBenef.isCollapsedDossiers,
     dossiers: state.gestBenef.dossiers

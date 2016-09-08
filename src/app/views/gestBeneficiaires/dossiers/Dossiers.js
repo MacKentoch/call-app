@@ -70,6 +70,7 @@ class Dossiers extends Component {
       isFetchingDossiers,
       lastFetchTimeDossiers,
       isEditingDossiers,
+      editDossierId,
       isSavingDossiers,
       isCollapsedDossiers,
       onCollapseClick,
@@ -124,7 +125,10 @@ class Dossiers extends Component {
                 // flags bool
                 isFetchingDossiers={isFetchingDossiers}
                 lastFetchTimeDossiers={lastFetchTimeDossiers}
+
                 isEditingDossiers={isEditingDossiers}
+                editDossierId={editDossierId}
+
                 isSavingDossiers={isSavingDossiers}
                 isCollapsedDossiers={isCollapsedDossiers}
               />
@@ -195,7 +199,10 @@ class Dossiers extends Component {
 Dossiers.propTypes = {
   isFetchingDossiers: PropTypes.bool.isRequired,
   lastFetchTimeDossiers: PropTypes.string.isRequired,
+
   isEditingDossiers: PropTypes.bool.isRequired,
+  editDossierId: PropTypes.number.isRequired,
+
   isSavingDossiers: PropTypes.bool.isRequired,
 
   isCollapsedDossiers: PropTypes.bool.isRequired,

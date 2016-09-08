@@ -12,7 +12,8 @@ const ListDossiersBeneficaire = ({
   totalDossiers,
   onRowClick,
   onRowEditClick,
-  isEditingDossiers
+  isEditingDossiers,
+  editDossierId
 }) => {
   return (
     <div className="panel">
@@ -46,6 +47,7 @@ const ListDossiersBeneficaire = ({
                 onRowClick={onRowClick}
                 onRowEditClick={onRowEditClick}
                 isEditingDossiers={isEditingDossiers}
+                editDossierId={editDossierId}
               />
             </div>
           </div>
@@ -82,7 +84,8 @@ ListDossiersBeneficaire.propTypes = {
 
   onRowClick: PropTypes.func.isRequired,
   onRowEditClick: PropTypes.func.isRequired,
-  isEditingDossiers: PropTypes.bool.isRequired
+  isEditingDossiers: PropTypes.bool.isRequired,
+  editDossierId: PropTypes.number.isRequired
 };
 
 export default ListDossiersBeneficaire;
