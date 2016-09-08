@@ -47,6 +47,18 @@ export const gestBenefMock = {
       dateEntreeDispositif: '08/02/2015',
       dateSortieDispositif: '',
       dateTauxPlein: ''
+    },
+    {
+      id: 3,
+      numDossier: '45',
+      domaine: 'ssh',
+      regime: 'reg ssh',
+      societe: 'demo',
+      numSte: '007',
+      statutBenef: 'none',
+      dateEntreeDispositif: '17/11/2015',
+      dateSortieDispositif: '',
+      dateTauxPlein: '01/01/2022'
     }
   ]
 };

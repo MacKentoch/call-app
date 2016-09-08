@@ -290,7 +290,7 @@ export const appConfig = {
       API: 'api/search'
     }
   },
-
+  // IMPORTANT TO DEFINE: domaine by default when dossier manually created:
   editableDomaine: 'ssh',
 
   HELLO_WORD: 'Bonjour'
