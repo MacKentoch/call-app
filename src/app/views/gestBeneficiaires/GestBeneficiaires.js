@@ -697,7 +697,13 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnDossierEdition(dossierToEdit) {
-    console.log('dossier to edit: ', dossierToEdit);
+    const { actions: { addNotificationMessage } } = this.props;
+    // notification to inform enter edit mode
+    const numDossToEdit = dossierToEdit.id;
+    addNotificationMessage({
+      message: `Les informations "Dossier" (${numDossToEdit}) sont maintenant éditables`,
+      level: 'info'
+    });
   }
 }
 
