@@ -72,8 +72,8 @@ class Dossiers extends Component {
       isEditingDossiers,
       isSavingDossiers,
       isCollapsedDossiers,
-      onCollapseClick
-      // onDossierSelection
+      onCollapseClick,
+      onDossierSelection
     } = this.props;
 
     const minPage = getSearchDossiersResMinIndex(dossiers, currentPage, numberDossiersPerPage);

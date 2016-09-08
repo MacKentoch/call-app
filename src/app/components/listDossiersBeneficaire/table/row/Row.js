@@ -84,8 +84,33 @@ class Row extends Component {
 
   handlesOnRowClick(event) {
     event.preventDefault();
-    const { id, onRowClick } = this.props;
-    onRowClick(id);
+    const {
+      id,
+      numDossier,
+      domaine,
+      regime,
+      societe,
+      numSte,
+      statutBenef,
+      dateEntreeDispositif,
+      dateSortieDispositif,
+      dateTauxPlein,
+
+      onRowClick
+    } = this.props;
+
+    onRowClick({
+      id,
+      numDossier,
+      domaine,
+      regime,
+      societe,
+      numSte,
+      statutBenef,
+      dateEntreeDispositif,
+      dateSortieDispositif,
+      dateTauxPlein
+    });
   }
 }
 
