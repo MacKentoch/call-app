@@ -59,7 +59,7 @@ const Contact = ({
         <Collapse
           isOpened={!isCollapsedContact}
           keepCollapsedContent={false}>
-          <div style={{ height: '230px' }}>
+          <div style={{ height: '250px' }}>
           {
             isSavingContact
             ?
