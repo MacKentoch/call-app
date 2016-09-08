@@ -183,7 +183,7 @@ class Dossiers extends Component {
     const { currentPage, numberDossiersPerPage } = this.state;
 
     const currentPageDossiersFiltered = getCurrentSearchDossiersResPageContent(dossiers, currentPage, numberDossiersPerPage, filter);
-
+    
     this.setState({
       currentPageDossiers: currentPageDossiersFiltered,
       filter

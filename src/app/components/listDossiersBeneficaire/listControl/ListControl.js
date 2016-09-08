@@ -75,6 +75,11 @@ class ListControl extends Component {
     const {onSearch} = this.props;
     const newValue = event.target.value.trim();
     this.setState({ searchValue: newValue });
+
+    if (newValue) {
+      onSearch(newValue);
+    }
+
     if (newValue.trim().length === 0) {
       // remove search filter
       onSearch('');
