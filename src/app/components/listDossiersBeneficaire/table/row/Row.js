@@ -350,9 +350,17 @@ class Row extends Component {
       onValidEditDossier
     } = this.props;
 
-    const dateEntreeStr = moment(editDateEntree, formatDate).format(formatDate);
-    const dateSortieStr = moment(editDateSortie, formatDate).format(formatDate);
-    const dateTauxPleinStr = moment(editDateTauxPlein, formatDate).format(formatDate);
+    const dateEntreeStr = moment(editDateEntree, formatDate).isValid()
+                            ? moment(editDateEntree, formatDate).format('DD/MM/YYYY')
+                            : '';
+
+    const dateSortieStr = moment(editDateSortie, formatDate).isValid()
+                            ? moment(editDateSortie, formatDate).format('DD/MM/YYYY')
+                            : '';
+
+    const dateTauxPleinStr = moment(editDateTauxPlein, formatDate).isValid()
+                            ? moment(editDateTauxPlein, formatDate).format('DD/MM/YYYY')
+                            : '';
 
     const editedDossier = {
       id,
