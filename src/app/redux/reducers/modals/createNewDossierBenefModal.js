@@ -1,3 +1,4 @@
+import { appConfig } from '../../../config';
 import {
   // show hide modal
   SHOW_NEW_BENEF_DOSSIER_MODAL,
@@ -14,8 +15,21 @@ import {
 }                                                 from '../../actions/modals/createNewDossierBenefModal';
 
 const initialState = {
+  // UI state:
   isOpened:  false,
-  time:      ''
+  time:      '',
+  // dossiers fields:
+  id: 0, // will not be set here but by backend
+  numDossier: 0, // will not be set here but by backend
+  domaine: appConfig.editableDomaine || ' --- ', // always set by defaults should not be overwritten
+  
+  regime: '',
+  societe: '',
+  numSte: '',
+  statutBenef: '',
+  dateEntree: '',
+  dateSortie: '',
+  dateTauxPlein: ''
 };
 
 const createNewDossierBenefModal = (state = initialState, action) => {
