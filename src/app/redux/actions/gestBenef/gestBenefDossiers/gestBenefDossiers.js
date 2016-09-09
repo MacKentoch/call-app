@@ -293,7 +293,7 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => (dispatch, getState
                 }
                 // all dossier: add new one -> then sort by id ASC
                 const allDossiers = previousDossiersList
-                                      .concat({...data})
+                                      .concat({...newDossier})
                                       .sort((a, b) => sortByIdPropertyAsc(a, b));
 
                 dispatch(receivedAddGestBenefNewDossier(allDossiers));
