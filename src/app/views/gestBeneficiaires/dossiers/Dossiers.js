@@ -46,11 +46,13 @@ class Dossiers extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { lastFetchTimeDossiers } = this.props;
-    const dossiersAreUpdated = moment(nextProps.lastFetchTimeDossiers, formatDate).diff(moment(lastFetchTimeDossiers, formatDate));
+    const dossiersAreUpdated = moment(nextProps.lastFetchTimeDossiers, formatDate)
+                                  .diff(moment(lastFetchTimeDossiers, formatDate));
 
     if (dossiersAreUpdated > 0) {
-      const { dossiers } = this.props;
-      this.setState({ dossiers });
+      const { dossiers } = nextProps;
+      this.setState({ dossiers: [...dossiers] }); // force all dossiers to refresh
+      this.refreshDossiersBindings([...dossiers]); // force paginated dossiers to refresh
     }
   }
 
@@ -145,6 +147,17 @@ class Dossiers extends Component {
 
   initDossiersBindings() {
     const { dossiers } = this.props;
+    const { currentPage, numberDossiersPerPage, filter } = this.state;
+
+    const nextPageDossiers = getCurrentSearchDossiersResPageContent(dossiers, currentPage, numberDossiersPerPage, filter);
+
+    this.setState({
+      dossiers,
+      currentPageDossiers: nextPageDossiers
+    });
+  }
+
+  refreshDossiersBindings(dossiers) {
     const { currentPage, numberDossiersPerPage, filter } = this.state;
 
     const nextPageDossiers = getCurrentSearchDossiersResPageContent(dossiers, currentPage, numberDossiersPerPage, filter);

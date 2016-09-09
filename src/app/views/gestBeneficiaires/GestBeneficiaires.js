@@ -752,8 +752,7 @@ class GestBeneficiaires extends Component {
       actions: {
         unsetIsEditingDossier,
         updateGestBenefDossierIfNeeded
-      },
-      id // benefId
+      }
     } = this.props;
 
     /* eslint-disable no-unused-vars */
@@ -761,7 +760,8 @@ class GestBeneficiaires extends Component {
       .then(
         response => {
           unsetIsEditingDossier();
-          this.refreshDossiersBenefData(id); // refresh all dossiers for this bnefId
+          // IMPORTANT IF NOT ALREADY: UNCOMMENT LINE BELOW FOR PRODUCTION!!!!
+          // this.refreshDossiersBenefData(id); // refresh all dossiers for this bnefId
         }
       )
       .catch(
