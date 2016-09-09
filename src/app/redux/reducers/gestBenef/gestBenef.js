@@ -170,7 +170,11 @@ const initialState = {
   isCollapsedDossiers: false,
 
   dossiers: [],
-  editDossierId: 0
+  editDossierId: 0,
+
+  // contacts Et activites
+  contactsEtActivites: [],
+  numDossierSelected: 0
 };
 
 const gestBenef = (state = initialState, action) => {
@@ -206,6 +210,9 @@ const gestBenef = (state = initialState, action) => {
       // dossiers:
       dossiers:  [...initialState.dossiers],
       editDossierId: initialState.editDossierId,
+      // contacts Et activites
+      contactsEtActivites: [...initialState.contactsEtActivites],
+      numDossierSelected: initialState.numDossierSelected,
 
       actionTime: action.time
     };
@@ -298,6 +305,9 @@ const gestBenef = (state = initialState, action) => {
       dossiers: action.gestBenef && action.gestBenef.dossiers
         ? [...action.gestBenef.dossiers]
         : [...initialState.dossiers],
+      // contacts Et activites // fetch all benef means no dossier selected so contactsEtActivites is empty
+      contactsEtActivites: [...initialState.contactsEtActivites],
+      numDossierSelected: initialState.numDossierSelected,
 
       editDossierId: initialState.editDossierId
     };
