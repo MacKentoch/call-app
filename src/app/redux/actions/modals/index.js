@@ -9,7 +9,7 @@ import {
   updateDateEntreeNewBenefDossier,
   updateDateSortieNewBenefDossier,
   updateDateTauxPleinNewBenefDossier
-}                                     from './createNewDossier';
+}                                     from './createNewDossierBenefModal';
 import {
   showRechercheBenefModal,
   hideRechercheBenefModal
