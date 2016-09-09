@@ -8,6 +8,9 @@ const mapStateToProps = (state) => {
     isOpened: state.createNewDossierBenefModal.isOpened,
     lastActionTime: state.createNewDossierBenefModal.time,
 
+    // saving flag:
+    isSavingDossiers: state.gestBenef.isSavingDossiers,
+
     // benefId:
     benefId: state.createNewDossierBenefModal.benefId,
 

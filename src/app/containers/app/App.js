@@ -249,6 +249,8 @@ App.propTypes = {
     // modals
     showRechercheBenefModal: PropTypes.func,
     hideRechercheBenefModal: PropTypes.func,
+    showNewBenefDossierModal: PropTypes.func.isRequired, // return promise with notification data
+    hideNewBenefDossierModal: PropTypes.func.isRequired,
     // notifications
     addNotificationMessage: PropTypes.func
   })

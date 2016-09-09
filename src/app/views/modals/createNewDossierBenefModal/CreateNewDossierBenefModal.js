@@ -48,13 +48,9 @@ class CreateNewDossierBenefModal extends Component {
             }
             {
               !searchFetching &&
-              <SearchResult
-                isFetching={searchFetching}
-                refreshTime={searchTime}
-                results={searchResult}
-                onGoBackSearchForm={this.handlesOnGoBackSearchForm}
-                onBenefSelection={this.handlesOnBenefSelection}
-              />
+              <span>
+                Modal content hideRechercheBenefModal
+              </span>
             }
           </Modal.Body>
 
@@ -69,18 +65,7 @@ class CreateNewDossierBenefModal extends Component {
 
   handlesOnClose() {
     const { onClose } = this.props;
-    // all input filters reset
-    this.initFilters();
-    // all value reset
-    this.initInputs();
     onClose();
-  }
-
-  handlesOnGoBackSearchForm() {
-    // all input filters reset
-    this.initFilters();
-    // all value reset
-    this.initInputs();
   }
 }
 
@@ -97,8 +82,7 @@ CreateNewDossierBenefModal.propTypes = {
   onClose: PropTypes.func,
 
   actions: PropTypes.shape({
-    hideRechercheBenefModal: PropTypes.func.isRequired,
-    postSearchIfNeeded: PropTypes.func.isRequired
+    hideNewBenefDossierModal: PropTypes.func.isRequired
   }).isRequired
 };
 
