@@ -118,6 +118,8 @@ const mapDispatchToProps = (dispatch) => {
         addGestBenefNewDossierIfNeeded: actions.addGestBenefNewDossierIfNeeded,
         // post (update)
         updateGestBenefDossierIfNeeded: actions.updateGestBenefDossierIfNeeded,
+        // reset:
+        resetGestBenefDossier: actions.resetGestBenefDossier,
         // UI dossiers
         setIsCollapsedDossiers: actions.setIsCollapsedDossiers,
         unsetIsCollapsedDossiers: actions.unsetIsCollapsedDossiers,

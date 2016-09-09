@@ -83,7 +83,9 @@ import {
   UNSET_IS_EDITING_DOSSIER,
 
   SET_IS_COLLAPSED_DOSSIERS,
-  UNSET_IS_COLLAPSED_DOSSIERS
+  UNSET_IS_COLLAPSED_DOSSIERS,
+
+  RESET_GEST_BENEF_DOSSIERS
 }                                     from '../../actions/gestBenef/gestBenefDossiers/gestBenefDossiers';
 const initialState = {
   actionTime: '',
@@ -692,6 +694,13 @@ const gestBenef = (state = initialState, action) => {
   // /////////////////
   // dossiers
   // ////////////////
+  case RESET_GEST_BENEF_DOSSIERS:
+    return {
+      ...state,
+      dossiers: [...initialState.dossiers],
+
+      actionTime: action.time
+    };
 
   case REQUEST_GET_GEST_BENEF_ALL_DOSSIERS:
     return {

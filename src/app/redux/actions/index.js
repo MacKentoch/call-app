@@ -146,7 +146,8 @@ import {
   setIsEditingDossier,
   unsetIsEditingDossier,
   addGestBenefNewDossierIfNeeded,
-  updateGestBenefDossierIfNeeded
+  updateGestBenefDossierIfNeeded,
+  resetGestBenefDossier
 }                                 from './gestBenef';
 import {
   addNotificationMessage
@@ -273,6 +274,7 @@ export {
   unsetIsEditingDossier,
   addGestBenefNewDossierIfNeeded,
   updateGestBenefDossierIfNeeded,
+  resetGestBenefDossier,
 
   // notifications:
   addNotificationMessage

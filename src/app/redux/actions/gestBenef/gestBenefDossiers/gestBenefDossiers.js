@@ -39,9 +39,21 @@ export const RECEIVED_UPDATE_GEST_BENEF_DOSSIER     = 'RECEIVED_UPDATE_GEST_BENE
 export const ERROR_UPDATE_GEST_BENEF_DOSSIER        = 'ERROR_UPDATE_GEST_BENEF_DOSSIER';
 
 // ui dossier collpased
-export const SET_IS_COLLAPSED_DOSSIERS          = 'SET_IS_COLLAPSED_DOSSIERS';
-export const UNSET_IS_COLLAPSED_DOSSIERS        = 'UNSET_IS_COLLAPSED_DOSSIERS';
+export const SET_IS_COLLAPSED_DOSSIERS              = 'SET_IS_COLLAPSED_DOSSIERS';
+export const UNSET_IS_COLLAPSED_DOSSIERS            = 'UNSET_IS_COLLAPSED_DOSSIERS';
 
+// RESET dossiers
+export const RESET_GEST_BENEF_DOSSIERS              = 'RESET_GEST_BENEF_DOSSIERS';
+
+//  -----------------------------------------------------------------
+//    reset dossiers (ex: new benef -> cancel edition)
+//  -----------------------------------------------------------------
+export const resetGestBenefDossier = (time = moment().format(formatDate)) => {
+  return {
+    type: RESET_GEST_BENEF_DOSSIERS,
+    time
+  };
+};
 //  -----------------------------------------------------------------
 //    GET benef all dossiers
 //  -----------------------------------------------------------------

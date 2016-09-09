@@ -44,6 +44,7 @@ class GestBeneficiaires extends Component {
     this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
     this.handlesOnDossierEdition = this.handlesOnDossierEdition.bind(this);
     this.handlesOnDossierValidEdition = this.handlesOnDossierValidEdition.bind(this);
+    this.handlesOnDossierCancelEdition = this.handlesOnDossierCancelEdition.bind(this);
   }
 
   componentDidMount() {
@@ -264,7 +265,7 @@ class GestBeneficiaires extends Component {
                     isSavingDossiers={isSavingDossiers}
 
                     onDossierValidEdition={this.handlesOnDossierValidEdition}
-                    onDossierCancelEdition={()=>console.log('TODO: onDossierCancelEdition')}
+                    onDossierCancelEdition={this.handlesOnDossierCancelEdition}
 
                     isCollapsedDossiers={isCollapsedDossiers}
                     onCollapseClick={this.handlesOnDossiersCollapseClick}
@@ -617,7 +618,7 @@ class GestBeneficiaires extends Component {
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
       // EXISTING BENEF: refresh Contact data from backend to reset changes:
-      const resetMessage = 'Données "Identité" du bénéficiaire réinitialisées';
+      const resetMessage = 'Données "Contact" du bénéficiaire réinitialisées';
       this.refreshContactBenefData(idBenef, resetMessage);
     } else {
       // NEW BENEF: reset changes:
@@ -719,7 +720,6 @@ class GestBeneficiaires extends Component {
     }
   }
 
-
   handlesOnDossiersCollapseClick() {
     const { isCollapsedDossiers, actions: { setIsCollapsedDossiers, unsetIsCollapsedDossiers } } = this.props;
     if (isCollapsedDossiers) {
@@ -774,6 +774,34 @@ class GestBeneficiaires extends Component {
         }
       );
     /* eslint-enable no-unused-vars */
+  }
+
+  handlesOnDossierCancelEdition() {
+    const {
+      actions: {
+        unsetIsEditingDossier,
+        addNotificationMessage,
+        resetGestBenefDossier
+      }
+    } = this.props;
+    const { params: { benefId } } =  this.props;
+
+    unsetIsEditingDossier();
+    // notification to inform leave edit mode
+    addNotificationMessage({
+      message: 'Annulation de l\'édition du "Dossier" (les changements ne seront pas sauvegardés)',
+      level: 'warning'
+    });
+
+    const idBenef = parseInt(benefId, 10);
+    if (idBenef) {
+      // EXISTING BENEF: refresh Dossier data from backend to reset changes:
+      const resetMessage = 'Données "Dossiers" du bénéficiaire réinitialisées';
+      this.refreshDossiersBenefData(idBenef, resetMessage);
+    } else {
+      // NEW BENEF: reset changes:
+      resetGestBenefDossier();
+    }
   }
 
   // to reset contact editing state and collapsed state
@@ -907,6 +935,8 @@ GestBeneficiaires.propTypes = {
     addGestBenefNewDossierIfNeeded: PropTypes.func,
     // post (update)
     updateGestBenefDossierIfNeeded: PropTypes.func,
+    // reset:
+    resetGestBenefDossier: PropTypes.func,
     // UI dossiers
     setIsCollapsedDossiers: PropTypes.func,
     unsetIsCollapsedDossiers: PropTypes.func,

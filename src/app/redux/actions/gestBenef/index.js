@@ -60,7 +60,9 @@ import {
 
   addGestBenefNewDossierIfNeeded,
 
-  updateGestBenefDossierIfNeeded
+  updateGestBenefDossierIfNeeded,
+
+  resetGestBenefDossier  
 }                               from './gestBenefDossiers/gestBenefDossiers';
 export {
   // all benef fields (identite + contact + dossiers)
@@ -108,5 +110,6 @@ export {
   setIsEditingDossier,
   unsetIsEditingDossier,
   addGestBenefNewDossierIfNeeded,
-  updateGestBenefDossierIfNeeded
+  updateGestBenefDossierIfNeeded,
+  resetGestBenefDossier
 };
