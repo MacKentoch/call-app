@@ -23,6 +23,7 @@ class Row extends Component {
 
     this.handlesOnRowClick = this.handlesOnRowClick.bind(this);
     this.handlesOnEditRowClick = this.handlesOnEditRowClick.bind(this);
+    this.handlesOnEditRegime = this.handlesOnEditRegime.bind(this);
   }
 
   componentDidMount() {
@@ -53,7 +54,6 @@ class Row extends Component {
     } = this.props;
 
     const {
-      editDomaine,
       editRegime,
       editSociete,
       editNumSte,
@@ -74,6 +74,12 @@ class Row extends Component {
         </td>
 
         <td style={{width: '90px'}}>
+         <span>
+           {domaine}
+         </span>
+        </td>
+
+        <td style={{width: '120px'}}>
           {
             isEditing
             ?
@@ -81,18 +87,14 @@ class Row extends Component {
                 className="form-control"
                 id="edit"
                 type="text"
-                value={editDomaine}
-                onChange={this.handlesOnChange}
+                value={editRegime}
+                onChange={this.handlesOnEditRegime}
               />
             :
              <span>
-               {domaine}
+               {regime}
              </span>
           }
-        </td>
-
-        <td style={{width: '120px'}}>
-          {regime}
         </td>
         <td style={{width: '90px'}}>
           {societe}
@@ -145,6 +147,11 @@ class Row extends Component {
       editDateSortie: props.dateSortieDispositif,
       editDateTauxPlein: props.dateTauxPlein
     });
+  }
+
+  handlesOnEditRegime(event) {
+    event.preventDefault();
+    this.setState({editRegime: event.target.value.trim()});
   }
 
   handlesOnRowClick(event) {

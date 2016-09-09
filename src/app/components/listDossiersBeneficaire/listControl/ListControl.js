@@ -22,7 +22,8 @@ class ListControl extends Component {
       maxPage,
       totalPages,
       onPagingPreviousClick,
-      onPagingNextClick
+      onPagingNextClick,
+      isEditingDossiers
     } = this.props;
     const { searchValue } = this.state;
 
@@ -37,6 +38,7 @@ class ListControl extends Component {
           <div className="has-feedback pull-left">
             <input
               type="text"
+              readOnly={isEditingDossiers}
               className="form-control input-sm"
               style={{width: '250px'}}
               placeholder="Rechercher"
@@ -53,12 +55,14 @@ class ListControl extends Component {
             <div className="btn-group">
               <button
                 type="button"
+                disabled={isEditingDossiers}
                 className="btn btn-default btn-sm"
                 onClick={onPagingPreviousClick}>
                 <i className="fa fa-chevron-left"></i>
               </button>
               <button
                 type="button"
+                disabled={isEditingDossiers}
                 className="btn btn-default btn-sm"
                 onClick={onPagingNextClick}>
                 <i className="fa fa-chevron-right"></i>
@@ -108,7 +112,9 @@ ListControl.propTypes = {
 
   showCheckToggle: PropTypes.bool,
 
-  onSearch: PropTypes.func.isRequired
+  onSearch: PropTypes.func.isRequired,
+
+  isEditingDossiers: PropTypes.bool.isRequired
 };
 
 ListControl.defaultProps  ={

@@ -40,6 +40,7 @@ const ListDossiersBeneficaire = ({
               totalPages={totalDossiers}
               onPagingPreviousClick={onPagingPreviousClick}
               onPagingNextClick={onPagingNextClick}
+              isEditingDossiers={isEditingDossiers}
             />
             <div className="table-responsive mailbox-messages">
               <Table
