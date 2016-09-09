@@ -449,7 +449,6 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
                   });
                 }
 
-                console.log('BEFORE update: ', previousDossiersList);
                 // updated all dossier: remove -> add new one -> then sort by id ASC
                 const allDossiers = previousDossiersList
                                       .filter(dossier => dossier.id !== updatedDossier.id)
@@ -465,8 +464,6 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
                                           return 0;
                                         }
                                       );
-                console.log('AFTER update: ', allDossiers);
-
                 dispatch(receivedUpdateGestBenefDossier(allDossiers));
 
                 return Promise.resolve({
