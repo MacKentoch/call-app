@@ -453,17 +453,7 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
                 const allDossiers = previousDossiersList
                                       .filter(dossier => dossier.id !== updatedDossier.id)
                                       .concat({...updatedDossier})
-                                      .sort(
-                                        (a, b) => {
-                                          if (a.id < b.id) {
-                                            return -1;
-                                          }
-                                          if (a.id > b.id) {
-                                            return 1;
-                                          }
-                                          return 0;
-                                        }
-                                      );
+                                      .sort((a, b) => sortByIdPropertyAsc(a, b));
                 dispatch(receivedUpdateGestBenefDossier(allDossiers));
 
                 return Promise.resolve({
@@ -500,17 +490,7 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
                 const allDossiers = previousDossiersList
                                       .filter(dossier => dossier.id !== response.id)
                                       .concat({...response})
-                                      .sort(
-                                        (a, b) => {
-                                          if (a.id < b.id) {
-                                            return -1;
-                                          }
-                                          if (a.id > b.id) {
-                                            return 1;
-                                          }
-                                          return 0;
-                                        }
-                                      );
+                                      .sort((a, b) => sortByIdPropertyAsc(a, b));
                 dispatch(receivedUpdateGestBenefDossier(allDossiers));
 
                 return Promise.resolve({
@@ -554,4 +534,15 @@ function shouldUpdateGestBenefDossier(state) {
   } else {
     return true;
   }
+}
+
+
+function sortByIdPropertyAsc(a, b) {
+  if (a.id < b.id) {
+    return -1;
+  }
+  if (a.id > b.id) {
+    return 1;
+  }
+  return 0;
 }
