@@ -13,7 +13,9 @@ const ListDossiersBeneficaire = ({
   onRowClick,
   onRowEditClick,
   isEditingDossiers,
-  editDossierId
+  editDossierId,
+  onValidEditDossier,
+  onCancelEditDossier
 }) => {
   return (
     <div className="panel">
@@ -49,6 +51,8 @@ const ListDossiersBeneficaire = ({
                 onRowEditClick={onRowEditClick}
                 isEditingDossiers={isEditingDossiers}
                 editDossierId={editDossierId}
+                onValidEditDossier={onValidEditDossier}
+                onCancelEditDossier={onCancelEditDossier}
               />
             </div>
           </div>
@@ -84,9 +88,13 @@ ListDossiersBeneficaire.propTypes = {
   onSearch: PropTypes.func.isRequired,
 
   onRowClick: PropTypes.func.isRequired,
+
   onRowEditClick: PropTypes.func.isRequired,
   isEditingDossiers: PropTypes.bool.isRequired,
-  editDossierId: PropTypes.number.isRequired
+  editDossierId: PropTypes.number.isRequired,
+
+  onValidEditDossier: PropTypes.func.isRequired,
+  onCancelEditDossier: PropTypes.func.isRequired
 };
 
 export default ListDossiersBeneficaire;

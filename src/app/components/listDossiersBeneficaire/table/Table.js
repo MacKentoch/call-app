@@ -1,7 +1,15 @@
 import React, { PropTypes } from 'react';
 import Row from './row/Row';
 
-const Table  = ({dossiers, isEditingDossiers, editDossierId, onRowClick, onRowEditClick}) => {
+const Table  = ({
+  dossiers,
+  isEditingDossiers,
+  editDossierId,
+  onRowClick,
+  onRowEditClick,
+  onValidEditDossier,
+  onCancelEditDossier
+}) => {
   return (
     <table className="table table-hover">
       <thead>
@@ -61,7 +69,10 @@ const Table  = ({dossiers, isEditingDossiers, editDossierId, onRowClick, onRowEd
                 <Row
                   key={dossierIdx}
                   onRowClick={onRowClick}
+
                   onRowEditClick={onRowEditClick}
+                  onValidEditDossier={onValidEditDossier}
+                  onCancelEditDossier={onCancelEditDossier}
 
                   isEditing={(editDossierId === id) && isEditingDossiers}
 
@@ -90,7 +101,12 @@ const Table  = ({dossiers, isEditingDossiers, editDossierId, onRowClick, onRowEd
 
 Table.propTypes = {
   onRowClick: PropTypes.func.isRequired,
+
   onRowEditClick: PropTypes.func.isRequired,
+
+  onValidEditDossier: PropTypes.func.isRequired,
+  onCancelEditDossier: PropTypes.func.isRequired,
+
   isEditingDossiers: PropTypes.bool.isRequired,
   editDossierId: PropTypes.number.isRequired,
 

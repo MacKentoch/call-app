@@ -11,6 +11,8 @@ const DossiersTable = ({
   onDossierEdition,
   isEditingDossiers,
   editDossierId,
+  onDossierValidEdition,
+  onDossierCancelEdition,
   // pagination & search:
   currentPageDossiers,
   minPage,
@@ -39,6 +41,8 @@ const DossiersTable = ({
           onSearch={onSearch}
           onRowClick={onDossierSelection}
           onRowEditClick={onDossierEdition}
+          onValidEditDossier={onDossierValidEdition}
+          onCancelEditDossier={onDossierCancelEdition}
         />
       }
       {/* when dossiers is empty */}
@@ -86,7 +90,9 @@ DossiersTable.propTypes = {
     })
   ).isRequired,
   onDossierSelection: PropTypes.func.isRequired,
-  onDossierEdition: PropTypes.func.isRequired
+  onDossierEdition: PropTypes.func.isRequired,
+  onDossierValidEdition: PropTypes.func.isRequired,
+  onDossierCancelEdition: PropTypes.func.isRequired
 };
 
 export default DossiersTable;

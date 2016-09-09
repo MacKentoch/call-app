@@ -261,6 +261,9 @@ class GestBeneficiaires extends Component {
                     editDossierId={editDossierId}
                     isSavingDossiers={isSavingDossiers}
 
+                    onDossierValidEdition={()=>console.log('TODO: onDossierValidEdition')}
+                    onDossierCancelEdition={()=>console.log('TODO: onDossierCancelEdition')}
+
                     isCollapsedDossiers={isCollapsedDossiers}
                     onCollapseClick={this.handlesOnDossiersCollapseClick}
 
