@@ -4,10 +4,11 @@ import {
   // API:
   getGestBenefDossiers,
   addGestBenefNewDossier,
-  updateGestBenefNewDossier,
+  updateGestBenefDossier,
   // fecth mocks:
   fetchMockGetGestBenefDossiers,
-  fetchMockAddBenefNewDossier
+  fetchMockAddBenefNewDossier,
+  fetchMockUpdateBenefDossier
 }                     from '../../../../services';
 
 
@@ -424,7 +425,7 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
   const previousDossiersList = [...getState().gestBenef.dossiers];
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockAddBenefNewDossier(10, updatedDossier) // NOTE: update mock same as add dossier since it is just a timeout
+    return fetchMockUpdateBenefDossier(updatedDossier) // NOTE: update mock same as add dossier since it is just a timeout
             .then(
               data => {
                 if (!data || !data.id) { // ATTENTION: doit retourner l'id du dossier
@@ -475,7 +476,7 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
               }
             );
   } else {
-    return updateGestBenefNewDossier(updatedDossier)
+    return updateGestBenefDossier(updatedDossier)
             .then(
               response => {
                 if (!response || !response.id) { // ATTENTION: doit retourner l'id du dossier

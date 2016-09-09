@@ -263,3 +263,22 @@ export const fetchMockAddBenefNewDossier = (benefId, payload, timeToWait = appCo
     }
   );
 };
+
+export const fetchMockUpdateBenefDossier = (payload, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!payload) {
+    return Promise.reject({
+      'error': 'fetchMockUpdateBenefDossier has no valid payload'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({
+         ...payload
+       }),
+       timeToWait
+     );
+    }
+  );
+};
