@@ -22,7 +22,7 @@ const initialState = {
   id: 0, // will not be set here but by backend
   numDossier: 0, // will not be set here but by backend
   domaine: appConfig.editableDomaine || ' --- ', // always set by defaults should not be overwritten
-  
+
   regime: '',
   societe: '',
   numSte: '',
@@ -38,14 +38,81 @@ const createNewDossierBenefModal = (state = initialState, action) => {
     return {
       ...state,
       isOpened:   true,
-      time:       action.time
+      time:       action.time,
+      // reset:
+      regime: initialState.regime,
+      societe: initialState.societe,
+      numSte: initialState.numSte,
+      statutBenef: initialState.statutBenef,
+      dateEntree: initialState.dateEntree,
+      dateSortie: initialState.dateSortie,
+      dateTauxPlein: initialState.dateTauxPlein
     };
+
   case HIDE_NEW_BENEF_DOSSIER_MODAL:
     return {
       ...state,
       isOpened:   false,
-      time:       action.time
+      time:       action.time,
+      // reset:
+      regime: initialState.regime,
+      societe: initialState.societe,
+      numSte: initialState.numSte,
+      statutBenef: initialState.statutBenef,
+      dateEntree: initialState.dateEntree,
+      dateSortie: initialState.dateSortie,
+      dateTauxPlein: initialState.dateTauxPlein
     };
+
+  case UPDATE_REGIME_NEW_BENEF_DOSSIER_MODAL:
+    return {
+      ...state,
+      regime: action.regime,
+      time: action.time
+    };
+
+  case UPDATE_SOCIETE_NEW_BENEF_DOSSIER_MODAL:
+    return {
+      ...state,
+      societe: action.societe,
+      time: action.time
+    };
+
+  case UPDATE_NUM_STE_NEW_BENEF_DOSSIER_MODAL:
+    return {
+      ...state,
+      numSte: action.numSte,
+      time: action.time
+    };
+
+  case UPDATE_STATUT_BENEF_NEW_BENEF_DOSSIER_MODAL:
+    return {
+      ...state,
+      statutBenef: action.statutBenef,
+      time: action.time
+    };
+
+  case UPDATE_DATE_ENTREE_NEW_BENEF_DOSSIER_MODAL:
+    return {
+      ...state,
+      dateEntree: action.dateEntree,
+      time: action.time
+    };
+
+  case UPDATE_DATE_SORTIE_NEW_BENEF_DOSSIER_MODAL:
+    return {
+      ...state,
+      dateSortie: action.dateSortie,
+      time: action.time
+    };
+
+  case UPDATE_DATE_TAUX_PLEIN_NEW_BENEF_DOSSIER_MODAL:
+    return {
+      ...state,
+      dateTauxPlein: action.dateTauxPlein,
+      time: action.time
+    };
+
   default:
     return state;
   }
