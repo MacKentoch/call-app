@@ -1,9 +1,11 @@
 import { appConfig } from '../../../config';
 import {
-  // show hide modal
-  SHOW_NEW_BENEF_DOSSIER_MODAL,
+  // show modal:
+  REQUEST_SHOW_NEW_BENEF_DOSSIER_MODAL,
+  SUCCESS_SHOW_NEW_BENEF_DOSSIER_MODAL,
+  ERROR_SHOW_NEW_BENEF_DOSSIER_MODAL,
+  // hide modal:
   HIDE_NEW_BENEF_DOSSIER_MODAL,
-
   // fields edtion actions:
   UPDATE_REGIME_NEW_BENEF_DOSSIER_MODAL,
   UPDATE_SOCIETE_NEW_BENEF_DOSSIER_MODAL,
@@ -18,6 +20,10 @@ const initialState = {
   // UI state:
   isOpened:  false,
   time:      '',
+
+  // benefId:
+  benefId: 0,
+
   // dossiers fields:
   id: 0, // will not be set here but by backend
   numDossier: 0, // will not be set here but by backend
@@ -34,12 +40,19 @@ const initialState = {
 
 const createNewDossierBenefModal = (state = initialState, action) => {
   switch (action.type) {
-  case SHOW_NEW_BENEF_DOSSIER_MODAL:
+  case REQUEST_SHOW_NEW_BENEF_DOSSIER_MODAL:
+    return {
+      ...state,
+      isOpened:   false,
+      time:       action.time,
+      benefId:    action.benefId
+    };
+  case SUCCESS_SHOW_NEW_BENEF_DOSSIER_MODAL:
     return {
       ...state,
       isOpened:   true,
       time:       action.time,
-      // reset:
+      // reset editable fields:
       regime: initialState.regime,
       societe: initialState.societe,
       numSte: initialState.numSte,
@@ -47,6 +60,12 @@ const createNewDossierBenefModal = (state = initialState, action) => {
       dateEntree: initialState.dateEntree,
       dateSortie: initialState.dateSortie,
       dateTauxPlein: initialState.dateTauxPlein
+    };
+  case ERROR_SHOW_NEW_BENEF_DOSSIER_MODAL:
+    return {
+      ...state,
+      isOpened:   false,
+      time:       action.time
     };
 
   case HIDE_NEW_BENEF_DOSSIER_MODAL:

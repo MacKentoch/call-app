@@ -4,8 +4,12 @@ import { appConfig }  from '../../../config';
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
-// show hide modal
-export const SHOW_NEW_BENEF_DOSSIER_MODAL = 'SHOW_NEW_BENEF_DOSSIER_MODAL';
+// show
+export const REQUEST_SHOW_NEW_BENEF_DOSSIER_MODAL = 'REQUEST_SHOW_NEW_BENEF_DOSSIER_MODAL';
+export const SUCCESS_SHOW_NEW_BENEF_DOSSIER_MODAL = 'SUCCESS_SHOW_NEW_BENEF_DOSSIER_MODAL';
+export const ERROR_SHOW_NEW_BENEF_DOSSIER_MODAL   = 'ERROR_SHOW_NEW_BENEF_DOSSIER_MODAL';
+
+// hide modal
 export const HIDE_NEW_BENEF_DOSSIER_MODAL = 'HIDE_NEW_BENEF_DOSSIER_MODAL';
 
 // fields edtion actions:
@@ -18,14 +22,52 @@ export const UPDATE_DATE_SORTIE_NEW_BENEF_DOSSIER_MODAL     = 'UPDATE_DATE_SORTI
 export const UPDATE_DATE_TAUX_PLEIN_NEW_BENEF_DOSSIER_MODAL = 'UPDATE_DATE_TAUX_PLEIN_NEW_BENEF_DOSSIER_MODAL';
 
 //  -----------------------------------------------------------------
-//    show/hide modal (+ reset)
+//    show (+ reset editable fields)
 //  -----------------------------------------------------------------
-export const showNewBenefDossierModal = (time = moment().format(formatDate)) => {
+const requestShowNewBenefDossierModal = (benefId, time = moment().format(formatDate)) => {
   return {
-    type: SHOW_NEW_BENEF_DOSSIER_MODAL,
+    type: REQUEST_SHOW_NEW_BENEF_DOSSIER_MODAL,
+    benefId,
     time
   };
 };
+const successShowNewBenefDossierModal = (time = moment().format(formatDate)) => {
+  return {
+    type: SUCCESS_SHOW_NEW_BENEF_DOSSIER_MODAL,
+    time
+  };
+};
+const errorShowNewBenefDossierModal = (error = 'undefined', time = moment().format(formatDate)) => {
+  return {
+    type: ERROR_SHOW_NEW_BENEF_DOSSIER_MODAL,
+    error,
+    time
+  };
+};
+export const showNewBenefDossierModal = benefId => dispatch => {
+  dispatch(requestShowNewBenefDossierModal(benefId));
+
+  if (!parseInt(benefId, 10) || (parseInt(benefId, 10) <= 0)) {
+    dispatch(errorShowNewBenefDossierModal('showNewBenefDossierModal error: benefId is not defined or not valid'));
+
+    return Promise.reject({
+      message: 'Erreur: Bénéficiaire non reconnu. La création du dossier est annulée',
+      level: 'error',
+      showNotification: true
+    });
+  } else {
+    dispatch(successShowNewBenefDossierModal(benefId));
+
+    return Promise.resolve({
+      message: '',
+      level: 'success',
+      showNotification: false
+    });
+  }
+};
+//  -----------------------------------------------------------------
+//    hide modal (+ reset editable fields)
+//  -----------------------------------------------------------------
 export const hideNewBenefDossierModal = (time = moment().format(formatDate)) => {
   return {
     type: HIDE_NEW_BENEF_DOSSIER_MODAL,

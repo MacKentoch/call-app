@@ -14,9 +14,20 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
       {
-        hideRechercheBenefModal: actions.hideRechercheBenefModal,
-        // search post:
-        postSearchIfNeeded: actions.postSearchIfNeeded
+        // hide modal
+        hideNewBenefDossierModal: actions.hideNewBenefDossierModal,
+
+        // update fields:
+        updateRegimeNewBenefDossier: actions.updateRegimeNewBenefDossier,
+        updateSocieteNewBenefDossier: actions.updateSocieteNewBenefDossier,
+        updateNumSteNewBenefDossier: actions.updateNumSteNewBenefDossier,
+        updateStatutBenefNewBenefDossier: actions.updateStatutBenefNewBenefDossier,
+        updateDateEntreeNewBenefDossier: actions.updateDateEntreeNewBenefDossier,
+        updateDateSortieNewBenefDossier: actions.updateDateSortieNewBenefDossier,
+        updateDateTauxPleinNewBenefDossier: actions.updateDateTauxPleinNewBenefDossier,
+
+        // save new benef dossier needs inputs: benefId, newDossier
+        addGestBenefNewDossierIfNeeded: actions.addGestBenefNewDossierIfNeeded
       },
       dispatch)
   };
