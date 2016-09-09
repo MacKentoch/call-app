@@ -44,6 +44,7 @@ class GestBeneficiaires extends Component {
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
     this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
     this.handlesOnDossierEdition = this.handlesOnDossierEdition.bind(this);
+    this.handlesOnDossierValidEdition = this.handlesOnDossierValidEdition.bind(this);
   }
 
   componentDidMount() {
@@ -55,6 +56,7 @@ class GestBeneficiaires extends Component {
 
     this.resetIdentiteEditingAndCollpasing();
     this.resetContactEditingAndCollpasing();
+    this.resetDossierEditingAndCollpasing();
 
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
@@ -84,6 +86,7 @@ class GestBeneficiaires extends Component {
       // search another benef from same page = need to refresh
       this.resetIdentiteEditingAndCollpasing();
       this.resetContactEditingAndCollpasing();
+      this.resetDossierEditingAndCollpasing();
 
       if (idBenef) {
         addNotificationMessage({
@@ -261,7 +264,7 @@ class GestBeneficiaires extends Component {
                     editDossierId={editDossierId}
                     isSavingDossiers={isSavingDossiers}
 
-                    onDossierValidEdition={()=>console.log('TODO: onDossierValidEdition')}
+                    onDossierValidEdition={this.handlesOnDossierValidEdition}
                     onDossierCancelEdition={()=>console.log('TODO: onDossierCancelEdition')}
 
                     isCollapsedDossiers={isCollapsedDossiers}
@@ -684,6 +687,40 @@ class GestBeneficiaires extends Component {
   // ////////////////////////////////
   //  dossiers related methods
   // ////////////////////////////////
+  refreshDossiersBenefData(idBenef = 0, resetMessage = '') {
+    if (idBenef && (parseInt(idBenef, 10) > 0)) {
+      const { actions: { getGestBenefAllDossiersIfNeeded, addNotificationMessage } } = this.props;
+
+      getGestBenefAllDossiersIfNeeded(idBenef)
+        .then(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              /* eslint-disable no-nested-ternary */
+              const message = resetMessage
+                ? resetMessage
+                : notificationPayload.message ? notificationPayload.message : '';
+              /* eslint-enable no-nested-ternary */
+              addNotificationMessage({
+                message: message,
+                level: notificationPayload.level ? notificationPayload.level : 'info'
+              });
+            }
+          }
+        )
+        .catch(
+          notificationPayload => {
+            if (notificationPayload && notificationPayload.showNotification) {
+              addNotificationMessage({
+                message: notificationPayload.message ? notificationPayload.message : '',
+                level: notificationPayload.level ? notificationPayload.level : 'error'
+              });
+            }
+          }
+        );
+    }
+  }
+
+
   handlesOnDossiersCollapseClick() {
     const { isCollapsedDossiers, actions: { setIsCollapsedDossiers, unsetIsCollapsedDossiers } } = this.props;
     if (isCollapsedDossiers) {
@@ -694,7 +731,7 @@ class GestBeneficiaires extends Component {
   }
 
   handlesOnDossierSelection(dossierSelected) {
-    console.log('dossier selected: ', dossierSelected);
+    console.log('TODO: dossier selected: ', dossierSelected);
   }
 
   handlesOnDossierEdition(dossierToEdit) {
@@ -708,6 +745,42 @@ class GestBeneficiaires extends Component {
       level: 'info'
     });
     setIsEditingDossier(dossierIdToEdit);
+  }
+
+  handlesOnDossierValidEdition(dossierUpdated) {
+    const {
+      actions: {
+        unsetIsEditingDossier,
+        updateGestBenefDossierIfNeeded
+      },
+      id // benefId
+    } = this.props;
+
+    /* eslint-disable no-unused-vars */
+    updateGestBenefDossierIfNeeded(dossierUpdated)
+      .then(
+        response => {
+          unsetIsEditingDossier();
+          this.refreshDossiersBenefData(id); // refresh all dossiers for this bnefId
+        }
+      )
+      .catch(
+        error => {
+          const {actions: {addNotificationMessage}} = this.props;
+          addNotificationMessage({
+            message: error.message ? error.message : 'Enregistrement des modifications du "Dossier" en erreur',
+            level: 'error'
+          });
+        }
+      );
+    /* eslint-enable no-unused-vars */
+  }
+
+  // to reset contact editing state and collapsed state
+  resetDossierEditingAndCollpasing() {
+    const { actions: { unsetIsEditingContact, unsetIsCollapsedContact } } = this.props;
+    unsetIsEditingContact();
+    unsetIsCollapsedContact();
   }
 }
 

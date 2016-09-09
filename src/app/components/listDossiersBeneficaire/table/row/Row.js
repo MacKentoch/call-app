@@ -349,6 +349,10 @@ class Row extends Component {
       onValidEditDossier
     } = this.props;
 
+    const dateEntreeStr = moment(editDateEntree, formatDate).format(formatDate);
+    const dateSortieStr = moment(editDateSortie, formatDate).format(formatDate);
+    const dateTauxPleinStr = moment(editDateTauxPlein, formatDate).format(formatDate);
+
     const editedDossier = {
       id,
       // numDossier,
@@ -357,9 +361,9 @@ class Row extends Component {
       societe: editSociete,
       numSte: editNumSte,
       statutBenef: editStatutBenef,
-      dateEntreeDispositif: editDateEntree,
-      dateSortieDispositif: editDateSortie,
-      dateTauxPlein: editDateTauxPlein
+      dateEntreeDispositif: dateEntreeStr,
+      dateSortieDispositif: dateSortieStr,
+      dateTauxPlein: dateTauxPleinStr
     };
 
     onValidEditDossier(editedDossier);
