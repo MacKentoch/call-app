@@ -4,7 +4,7 @@ import Identite                         from './identite/Identite';
 import Contact                          from './contact/Contact';
 import Dossiers                         from './dossiers/Dossiers';
 import FetchingAllContent               from './fetchingAllContent/FetchingAllContent';
-
+import { appConfig }                    from '../../config';
 
 class GestBeneficiaires extends Component {
   constructor(props) {
