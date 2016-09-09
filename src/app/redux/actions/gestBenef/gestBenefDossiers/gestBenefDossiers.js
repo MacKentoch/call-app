@@ -424,7 +424,7 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
   const previousDossiersList = [...getState().gestBenef.dossiers];
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockAddBenefNewDossier(10, updatedDossier) // NOTE: update mock same as add dossier
+    return fetchMockAddBenefNewDossier(10, updatedDossier) // NOTE: update mock same as add dossier since it is just a timeout
             .then(
               data => {
                 if (!data || !data.id) { // ATTENTION: doit retourner l'id du dossier
@@ -435,7 +435,25 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
                     showNotification: true
                   });
                 }
-                const allDossiers = [ ...previousDossiersList, {...data} ];
+
+                console.log('BEFORE update: ', previousDossiersList);
+                // updated all dossier: remove -> add new one -> then sort by id ASC
+                const allDossiers = previousDossiersList
+                                      .filter(dossier => dossier.id !== updatedDossier.id)
+                                      .concat({...updatedDossier})
+                                      .sort(
+                                        (a, b) => {
+                                          if (a.id < b.id) {
+                                            return -1;
+                                          }
+                                          if (a.id > b.id) {
+                                            return 1;
+                                          }
+                                          return 0;
+                                        }
+                                      );
+                console.log('AFTER update: ', allDossiers);
+
                 dispatch(receivedUpdateGestBenefDossier(allDossiers));
 
                 return Promise.resolve({
@@ -468,7 +486,21 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
                     showNotification: true
                   });
                 }
-                const allDossiers = [ ...previousDossiersList, {...response} ];
+                // const allDossiers = [ ...previousDossiersList, {...response} ];
+                const allDossiers = previousDossiersList
+                                      .filter(dossier => dossier.id !== response.id)
+                                      .concat({...response})
+                                      .sort(
+                                        (a, b) => {
+                                          if (a.id < b.id) {
+                                            return -1;
+                                          }
+                                          if (a.id > b.id) {
+                                            return 1;
+                                          }
+                                          return 0;
+                                        }
+                                      );
                 dispatch(receivedUpdateGestBenefDossier(allDossiers));
 
                 return Promise.resolve({

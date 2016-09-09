@@ -346,6 +346,7 @@ class Row extends Component {
     } = this.state;
     const {
       id,
+      numDossier,
       onValidEditDossier
     } = this.props;
 
@@ -355,7 +356,7 @@ class Row extends Component {
 
     const editedDossier = {
       id,
-      // numDossier,
+      numDossier,
       domaine: editDomaine,
       regime: editRegime,
       societe: editSociete,
