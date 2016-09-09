@@ -93,9 +93,22 @@ import {
 }                                 from './mailbox/reply';
 // modals
 import {
+  // recherche benef modal:
   showRechercheBenefModal,
-  hideRechercheBenefModal
-}                                 from './modals/rechercheBenefModal';
+  hideRechercheBenefModal,
+
+  // create new benef Dossier modal:
+  showNewBenefDossierModal,
+  hideNewBenefDossierModal,
+
+  updateRegimeNewBenefDossier,
+  updateSocieteNewBenefDossier,
+  updateNumSteNewBenefDossier,
+  updateStatutBenefNewBenefDossier,
+  updateDateEntreeNewBenefDossier,
+  updateDateSortieNewBenefDossier,
+  updateDateTauxPleinNewBenefDossier
+}                                 from './modals';
 // search benef
 import {
   postSearchIfNeeded
@@ -221,9 +234,21 @@ export {
   replyMailAddAttachement,
   replyMailRemoveAttachement,
 
-  // modals
+  // recherche benef modal:
   showRechercheBenefModal,
   hideRechercheBenefModal,
+
+  // create new benef Dossier modal:
+  showNewBenefDossierModal,
+  hideNewBenefDossierModal,
+
+  updateRegimeNewBenefDossier,
+  updateSocieteNewBenefDossier,
+  updateNumSteNewBenefDossier,
+  updateStatutBenefNewBenefDossier,
+  updateDateEntreeNewBenefDossier,
+  updateDateSortieNewBenefDossier,
+  updateDateTauxPleinNewBenefDossier,
 
   // search benef
   postSearchIfNeeded,

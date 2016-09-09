@@ -87,6 +87,7 @@ import {
 
   RESET_GEST_BENEF_DOSSIERS
 }                                     from '../../actions/gestBenef/gestBenefDossiers/gestBenefDossiers';
+
 const initialState = {
   actionTime: '',
   // error:
