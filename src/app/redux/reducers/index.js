@@ -18,7 +18,10 @@ import mailContent          from './mailbox/consult';
 import writeNewMailContent  from './mailbox/writeNew';
 import replyMailContent     from './mailbox/reply';
 // Modals
-import rechercheBenefModal  from './modals/rechercheBenefModal';
+import {
+  rechercheBenefModal,
+  createNewDossierBenefModal
+}                           from './modals';
 // search
 import search               from './search/search';
 // gest benef
@@ -53,6 +56,7 @@ export {
 
   // modals
   rechercheBenefModal,
+  createNewDossierBenefModal,
 
   // search
   search,

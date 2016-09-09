@@ -4,7 +4,6 @@ import React, {
 }                         from 'react';
 import shallowCompare     from 'react-addons-shallow-compare';
 import { Modal }          from 'react-bootstrap';
-import { appConfig }      from '../../../config';
 import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
 import FetchingIndicator  from './fetchingIndicator/FetchingIndicator';

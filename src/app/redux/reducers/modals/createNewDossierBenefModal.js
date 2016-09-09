@@ -11,7 +11,7 @@ import {
   UPDATE_STATUT_BENEF_NEW_BENEF_DOSSIER_MODAL,
   UPDATE_DATE_ENTREE_NEW_BENEF_DOSSIER_MODAL,
   UPDATE_DATE_SORTIE_NEW_BENEF_DOSSIER_MODAL,
-  UPDATE_DATE_TAUX_PLEIN_NEW_BENEF_DOSSIER_MODAL,
+  UPDATE_DATE_TAUX_PLEIN_NEW_BENEF_DOSSIER_MODAL
 }                                                 from '../../actions/modals/createNewDossierBenefModal';
 
 const initialState = {

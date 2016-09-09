@@ -16,7 +16,8 @@ import {
   MailReplyConnected
 }                             from './mailbox';
 import {
-  RechercheBenefModalConnected
+  RechercheBenefModalConnected,
+  CreateNewDossierBenefModalConnected
 }                             from './modals';
 import GestBeneficiairesConnected from './gestBeneficiaires/GestBeneficiaires';
 
@@ -43,5 +44,6 @@ export {
   GestBeneficiairesConnected,
 
   // modals
-  RechercheBenefModalConnected
+  RechercheBenefModalConnected,
+  CreateNewDossierBenefModalConnected
 };

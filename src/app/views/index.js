@@ -11,7 +11,8 @@ import {
 // modals:
 import Modals           from './modals/Modals';
 import {
-  RechercheBenefModal
+  RechercheBenefModal,
+  CreateNewDossierBenefModal
 }                       from './modals';
 // create
 import {
@@ -44,6 +45,7 @@ export {
 
   // modals
   RechercheBenefModal,
+  CreateNewDossierBenefModal,
 
   // create
   FicheContactCourier,
