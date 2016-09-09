@@ -291,7 +291,11 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => (dispatch, getState
                     showNotification: true
                   });
                 }
-                const allDossiers = [ ...previousDossiersList, {...data} ];
+                // all dossier: add new one -> then sort by id ASC
+                const allDossiers = previousDossiersList
+                                      .concat({...data})
+                                      .sort((a, b) => sortByIdPropertyAsc(a, b));
+
                 dispatch(receivedAddGestBenefNewDossier(allDossiers));
 
                 return Promise.resolve({
@@ -324,7 +328,11 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => (dispatch, getState
                     showNotification: true
                   });
                 }
-                const allDossiers = [ ...previousDossiersList, {...response} ];
+                // all dossier: add new one -> then sort by id ASC
+                const allDossiers = previousDossiersList
+                                      .concat({...response})
+                                      .sort((a, b) => sortByIdPropertyAsc(a, b));
+
                 dispatch(receivedAddGestBenefNewDossier(allDossiers));
 
                 return Promise.resolve({
