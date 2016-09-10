@@ -28,7 +28,7 @@ class CreateNewDossierBenefModal extends Component {
   }
 
   render() {
-    const { showModal, title  } = this.props;
+    const { showModal, title, isSavingDossiers  } = this.props;
 
     return (
       <div>
@@ -43,11 +43,11 @@ class CreateNewDossierBenefModal extends Component {
           />
           <Modal.Body>
             {
-              searchFetching &&
+              isSavingDossiers &&
               <FetchingIndicator />
             }
             {
-              !searchFetching &&
+              !isSavingDossiers &&
               <span>
                 Modal content hideRechercheBenefModal
               </span>
@@ -76,13 +76,44 @@ CreateNewDossierBenefModal.contextTypes = {
 
 CreateNewDossierBenefModal.propTypes = {
   params: PropTypes.object, // react router
-
+  // modal UI:
   showModal: PropTypes.bool.isRequired,
   title: PropTypes.string,
   onClose: PropTypes.func,
 
+  isOpened: PropTypes.bool.isRequired,
+  lastActionTime: PropTypes.string.isRequired,
+  // saving flag:
+  isSavingDossiers: PropTypes.bool.isRequired,
+  // benefId:
+  benefId: PropTypes.number.isRequired,
+  // dossiers non editable fields:
+  id: PropTypes.number.isRequired,
+  numDossier: PropTypes.string.isRequired,
+  domaine: PropTypes.string.isRequired,
+  // dossiers editable fields:
+  regime: PropTypes.string.isRequired,
+  societe: PropTypes.string.isRequired,
+  numSte: PropTypes.string.isRequired,
+  statutBenef: PropTypes.string.isRequired,
+  dateEntree: PropTypes.string.isRequired,
+  dateSortie: PropTypes.string.isRequired,
+  dateTauxPlein: PropTypes.string.isRequired,
+
+  // Actions:
   actions: PropTypes.shape({
-    hideNewBenefDossierModal: PropTypes.func.isRequired
+    // hide modal
+    hideNewBenefDossierModal: PropTypes.func,
+    // update fields:
+    updateRegimeNewBenefDossier: PropTypes.func,
+    updateSocieteNewBenefDossier: PropTypes.func,
+    updateNumSteNewBenefDossier: PropTypes.func,
+    updateStatutBenefNewBenefDossier: PropTypes.func,
+    updateDateEntreeNewBenefDossier: PropTypes.func,
+    updateDateSortieNewBenefDossier: PropTypes.func,
+    updateDateTauxPleinNewBenefDossier: PropTypes.func,
+    // save new benef dossier needs inputs: benefId, newDossier
+    addGestBenefNewDossierIfNeeded: PropTypes.func
   }).isRequired
 };
 
