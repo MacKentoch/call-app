@@ -67,7 +67,9 @@ class SearchInput extends Component {
         </div>
         {
           showHelpBlock &&
-          <p className="help-block remove-margin-bottom">
+          <p
+            className="help-block remove-margin-bottom"
+            style={{fontSize : '11px'}}>
             {helpBlockText}
           </p>
         }

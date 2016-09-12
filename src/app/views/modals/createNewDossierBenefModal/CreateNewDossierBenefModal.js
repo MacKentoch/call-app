@@ -174,7 +174,7 @@ class CreateNewDossierBenefModal extends Component {
                 />
 
                 <SaveButton
-                 buttonText={'Rechercher'}
+                 buttonText={'Enregistrer'}
                  onClick={this.handlesOnSaveNewDossier}
                 />
 
@@ -268,11 +268,12 @@ class CreateNewDossierBenefModal extends Component {
 
     addGestBenefNewDossierIfNeeded(benefId, payload)
       .then(
-        success => {
+        notificationPayload => {
           addNotificationMessage({
-            message: 'Ajout du nouveau dossiers terminé avec succès',
-            level: 'success'
+            message: notificationPayload.message ? notificationPayload.message : '',
+            level: notificationPayload.level ? notificationPayload.level : 'info'
           });
+          // fermeture de la modal:
           onClose();
         }
       )
