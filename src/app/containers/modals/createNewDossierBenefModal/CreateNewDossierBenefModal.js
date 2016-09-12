@@ -34,6 +34,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
       {
+        // notifications:
+        addNotificationMessage: actions.addNotificationMessage,
+
         // hide modal
         hideNewBenefDossierModal: actions.hideNewBenefDossierModal,
 

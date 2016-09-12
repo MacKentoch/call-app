@@ -8,6 +8,7 @@ import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
 import FetchingIndicator  from './fetchingIndicator/FetchingIndicator';
 import EditInput          from './editInput/EditInput';
+import SaveButton         from './saveButton/SaveButton';
 
 
 class CreateNewDossierBenefModal extends Component {
@@ -22,6 +23,7 @@ class CreateNewDossierBenefModal extends Component {
     this.handlesOnDateEntreeChange = this.handlesOnDateEntreeChange.bind(this);
     this.handlesOnDateSortieChange = this.handlesOnDateSortieChange.bind(this);
     this.handlesOnDateTauxPleinChange = this.handlesOnDateTauxPleinChange.bind(this);
+    this.handlesOnSaveNewDossier = this.handlesOnSaveNewDossier.bind(this);
   }
 
   componentDidMount() {
@@ -35,12 +37,12 @@ class CreateNewDossierBenefModal extends Component {
   render() {
     const { showModal, title, isSavingDossiers  } = this.props;
     const {
-      // benefId:
-      benefId,
-      // dossiers non editable fields:
-      id,
-      numDossier,
-      domaine,
+      // // benefId:
+      // benefId,
+      // // dossiers non editable fields:
+      // id,
+      // numDossier,
+      // domaine,
       // dossiers editable fields:
       regime,
       societe,
@@ -171,6 +173,11 @@ class CreateNewDossierBenefModal extends Component {
                  helpBlockText={'La date taux plein spécifique à ce dossier.'}
                 />
 
+                <SaveButton
+                 buttonText={'Rechercher'}
+                 onClick={this.handlesOnSaveNewDossier}
+                />
+
               </form>
             }
           </Modal.Body>
@@ -219,6 +226,66 @@ class CreateNewDossierBenefModal extends Component {
     updateDateTauxPleinNewBenefDossier(value);
   }
 
+  handlesOnSaveNewDossier(event) {
+    event.preventDefault();
+    const {
+      // benefId:
+      benefId,
+      // dossiers non editable fields:
+      id,
+      numDossier,
+      domaine,
+      // dossiers editable fields:
+      regime,
+      societe,
+      numSte,
+      statutBenef,
+      dateEntree,
+      dateSortie,
+      dateTauxPlein,
+
+      onClose,
+      actions: {
+        addGestBenefNewDossierIfNeeded,
+        addNotificationMessage
+      }
+    } = this.props;
+
+    const payload  ={
+      // dossiers non editable fields:
+      id,
+      numDossier,
+      domaine,
+      // dossiers editable fields:
+      regime,
+      societe,
+      numSte,
+      statutBenef,
+      dateEntree,
+      dateSortie,
+      dateTauxPlein
+    };
+
+    addGestBenefNewDossierIfNeeded(benefId, payload)
+      .then(
+        success => {
+          addNotificationMessage({
+            message: 'Ajout du nouveau dossiers terminé avec succès',
+            level: 'success'
+          });
+          onClose();
+        }
+      )
+      .catch(
+        error => {
+          addNotificationMessage({
+            message: 'Ajout du nouveau dossiers en erreur',
+            level: 'error'
+          });
+        }
+      )
+  }
+
   handlesOnClose() {
     const { onClose } = this.props;
     onClose();
@@ -258,6 +325,8 @@ CreateNewDossierBenefModal.propTypes = {
 
   // Actions:
   actions: PropTypes.shape({
+    // notifications:
+    addNotificationMessage: PropTypes.func,
     // hide modal
     hideNewBenefDossierModal: PropTypes.func,
     // update fields:
