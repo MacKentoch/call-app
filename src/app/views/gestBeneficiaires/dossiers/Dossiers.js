@@ -14,6 +14,7 @@ import {
 import SavingIndicator                    from '../savingIndicator/SavingIndicator';
 import DossiersTable                      from './dossiersTable/DossiersTable';
 import ToggleCollapse                     from './toggleCollapse/ToggleCollapse';
+import CreateDossierButton                from './createDossierButton/CreateDossierButton';
 
 
 moment.locale('fr');
@@ -79,7 +80,8 @@ class Dossiers extends Component {
       onDossierSelection,
       onDossierEdition,
       onDossierValidEdition,
-      onDossierCancelEdition
+      onDossierCancelEdition,
+      onCreateDossierClick
     } = this.props;
 
     const minPage = getSearchDossiersResMinIndex(dossiers, currentPage, numberDossiersPerPage);
@@ -95,6 +97,12 @@ class Dossiers extends Component {
           </i>
           &nbsp;
           Dossiers
+          {
+            !isSavingDossiers &&
+            <CreateDossierButton
+              onClick={onCreateDossierClick}
+            />
+          }
           {
             !isSavingDossiers &&
             <ToggleCollapse
@@ -243,7 +251,9 @@ Dossiers.propTypes = {
   onDossierSelection: PropTypes.func.isRequired,
   onDossierEdition: PropTypes.func.isRequired,
   onDossierValidEdition: PropTypes.func.isRequired,
-  onDossierCancelEdition: PropTypes.func.isRequired
+  onDossierCancelEdition: PropTypes.func.isRequired,
+
+  onCreateDossierClick: PropTypes.func.isRequired
 };
 
 export default Dossiers;

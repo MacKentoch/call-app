@@ -45,6 +45,7 @@ class GestBeneficiaires extends Component {
     this.handlesOnDossierEdition = this.handlesOnDossierEdition.bind(this);
     this.handlesOnDossierValidEdition = this.handlesOnDossierValidEdition.bind(this);
     this.handlesOnDossierCancelEdition = this.handlesOnDossierCancelEdition.bind(this);
+    this.handlesOnCreateNewDossiersClick = this.handlesOnCreateNewDossiersClick.bind(this);
   }
 
   componentDidMount() {
@@ -273,6 +274,8 @@ class GestBeneficiaires extends Component {
                     onDossierSelection={this.handlesOnDossierSelection}
 
                     onDossierEdition={this.handlesOnDossierEdition}
+
+                    onCreateDossierClick={this.handlesOnCreateNewDossiersClick}
                   />
 
                 </div>
@@ -810,6 +813,34 @@ class GestBeneficiaires extends Component {
     unsetIsEditingContact();
     unsetIsCollapsedContact();
   }
+
+  handlesOnCreateNewDossiersClick(event) {
+    event.preventDefault();
+    const { params: { benefId } } =  this.props;
+    const { actions: { showNewBenefDossierModal } } = this.props;
+    // needs a benefId to add a dossiers!:
+    if (parseInt(benefId, 10)) {
+      showNewBenefDossierModal()
+        .then(
+          () => console.log('show modal')
+        )
+        .catch(
+          error => {
+            const {actions: {addNotificationMessage}} = this.props;
+            addNotificationMessage({
+              message: error.message ? error.message : 'Création d\'un nouveau dossiers impossible',
+              level: 'error'
+            });
+          }
+        );
+    } else {
+      const {actions: {addNotificationMessage}} = this.props;
+      addNotificationMessage({
+        message: 'Veuillez enregister les informations du nouveau bénéficiaire. \nLe bénéficaire doit exister dans l\'application avant de pouvoir lui ajouter des dossiers.',
+        level: 'error'
+      });
+    }
+  }
 }
 
 GestBeneficiaires.propTypes = {
@@ -943,7 +974,10 @@ GestBeneficiaires.propTypes = {
     setIsSavingNewDossier: PropTypes.func,
     unsetIsSavingNewDossier: PropTypes.func,
     setIsEditingDossier: PropTypes.func,
-    unsetIsEditingDossier: PropTypes.func
+    unsetIsEditingDossier: PropTypes.func,
+    // modal create new dossier:
+    showNewBenefDossierModal: PropTypes.func.isRequired, // returns promise with notification data
+    hideNewBenefDossierModal: PropTypes.func.isRequired
   })
 };
 

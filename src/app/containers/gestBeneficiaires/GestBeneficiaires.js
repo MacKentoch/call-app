@@ -126,7 +126,10 @@ const mapDispatchToProps = (dispatch) => {
         setIsSavingNewDossier: actions.setIsSavingNewDossier,
         unsetIsSavingNewDossier: actions.unsetIsSavingNewDossier,
         setIsEditingDossier: actions.setIsEditingDossier,
-        unsetIsEditingDossier: actions.unsetIsEditingDossier
+        unsetIsEditingDossier: actions.unsetIsEditingDossier,
+        // modal create new dossier:
+        showNewBenefDossierModal: actions.showNewBenefDossierModal, // return promise with notification data
+        hideNewBenefDossierModal: actions.hideNewBenefDossierModal
       },
       dispatch)
   };
