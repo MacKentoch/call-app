@@ -29,6 +29,22 @@ class CreateNewDossierBenefModal extends Component {
 
   render() {
     const { showModal, title, isSavingDossiers  } = this.props;
+    const {
+      // benefId:
+      benefId,
+      // dossiers non editable fields:
+      id,
+      numDossier,
+      domaine,
+      // dossiers editable fields:
+      regime,
+      societe,
+      numSte,
+      statutBenef,
+      dateEntree,
+      dateSortie,
+      dateTauxPlein
+    } = this.props;
 
     return (
       <div>

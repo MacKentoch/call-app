@@ -139,7 +139,9 @@ class GestBeneficiaires extends Component {
           style={{marginBottom: '5px'}}>
 
           <div className="col-md-12">
-            <section className="panel">
+            <section
+              className="panel"
+              style={{ paddingBottom: '10px'}}>
               <header className="panel-heading">
                 {
                   (!id || id <= 0)
@@ -255,28 +257,37 @@ class GestBeneficiaires extends Component {
 
                   <div style={{height: '10px'}}></div>
 
-                  <Dossiers
-                    dossiers={dossiers}
+                  {/* pas de dossier si beneficiaire sans id (il suffit de sauvegarder une fois pour lui créer un id et passer à modification de benef) */}
+                  {
+                    (parseInt(id, 10) > 0) &&
+                    <div>
+                      {/* dossiers */}
+                      <Dossiers
+                        dossiers={dossiers}
 
-                    isFetchingDossiers={isFetchingDossiers}
-                    lastFetchTimeDossiers={lastFetchTimeDossiers}
+                        isFetchingDossiers={isFetchingDossiers}
+                        lastFetchTimeDossiers={lastFetchTimeDossiers}
 
-                    isEditingDossiers={isEditingDossiers}
-                    editDossierId={editDossierId}
-                    isSavingDossiers={isSavingDossiers}
+                        isEditingDossiers={isEditingDossiers}
+                        editDossierId={editDossierId}
+                        isSavingDossiers={isSavingDossiers}
 
-                    onDossierValidEdition={this.handlesOnDossierValidEdition}
-                    onDossierCancelEdition={this.handlesOnDossierCancelEdition}
+                        onDossierValidEdition={this.handlesOnDossierValidEdition}
+                        onDossierCancelEdition={this.handlesOnDossierCancelEdition}
 
-                    isCollapsedDossiers={isCollapsedDossiers}
-                    onCollapseClick={this.handlesOnDossiersCollapseClick}
+                        isCollapsedDossiers={isCollapsedDossiers}
+                        onCollapseClick={this.handlesOnDossiersCollapseClick}
 
-                    onDossierSelection={this.handlesOnDossierSelection}
+                        onDossierSelection={this.handlesOnDossierSelection}
 
-                    onDossierEdition={this.handlesOnDossierEdition}
+                        onDossierEdition={this.handlesOnDossierEdition}
 
-                    onCreateDossierClick={this.handlesOnCreateNewDossiersClick}
-                  />
+                        onCreateDossierClick={this.handlesOnCreateNewDossiersClick}
+                      />
+                      {/* contacts et activites */}
+
+                    </div>
+                  }
 
                 </div>
               }
