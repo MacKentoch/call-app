@@ -14,7 +14,8 @@ import {
   Modals
 }                             from '../../views';
 import {
-  RechercheBenefModalConnected as RechercheBenefModal
+  RechercheBenefModalConnected as RechercheBenefModal,
+  CreateNewDossierBenefModalConnected as CreateNewDossierBenefModal
 }                             from '../../containers';
 import { appConfig }          from '../../config';
 import { BackToTop }          from '../../components';
@@ -37,6 +38,7 @@ class App extends Component {
     this.handlesMenuButtonClick = this.handlesMenuButtonClick.bind(this);
     this.handlesOnSearchButtonClick = this.handlesOnSearchButtonClick.bind(this);
     this.handlesHideRechercheBenefModal = this.handlesHideRechercheBenefModal.bind(this);
+    this.handlesHideCreateDossierBenefModal = this.handlesHideCreateDossierBenefModal.bind(this);
   }
 
   componentDidMount() {
@@ -63,7 +65,7 @@ class App extends Component {
 
   render() {
     const { appName, connectionStatus, helloWord } = this.state;
-    const { rechercheBenefModalOpened } = this.props;
+    const { rechercheBenefModalOpened, createDossierBenefModalOpened } = this.props;
     const { userInfos, userInfoFetching, userIsConnected, currentView, children, sideMenuIsCollapsed } = this.props;
     const { navigationGeneral, navigationGestBen, navigationActivities, navigationMailBoxes } = this.state;
 
@@ -131,6 +133,12 @@ class App extends Component {
           title={'Recherche de bénéficiaire'}
           onClose={this.handlesHideRechercheBenefModal}
         />
+        {/* modal add dossier to benef */}
+        <CreateNewDossierBenefModal
+          showModal={createDossierBenefModalOpened}
+          title={'Ajout d\'un nouveau dossier'}
+          onClose={this.handlesHideCreateDossierBenefModal}
+        />
         {/* Notifications */}
         <NotificationSystem
           ref={c => {
@@ -160,6 +168,11 @@ class App extends Component {
   handlesHideRechercheBenefModal() {
     const { actions: {hideRechercheBenefModal} } = this.props;
     hideRechercheBenefModal();
+  }
+
+  handlesHideCreateDossierBenefModal() {
+    const { actions: {hideNewBenefDossierModal} } = this.props;
+    hideNewBenefDossierModal();
   }
 
   handlesMenuButtonClick(event) {
@@ -224,8 +237,10 @@ App.propTypes = {
   userBoitesMailsLastUpdateTime: PropTypes.string,
   // currentView
   currentView: PropTypes.string,
-  // modals
+  // modal recherche benef:
   rechercheBenefModalOpened: PropTypes.bool.isRequired,
+  // modal add dossier to benef:
+  createDossierBenefModalOpened: PropTypes.bool.isRequired,
   // notifications
   notificationMessage: PropTypes.string.isRequired,
   notificationLevel: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
@@ -246,9 +261,10 @@ App.propTypes = {
     closeSideMenu:  PropTypes.func,
     toggleSideMenu: PropTypes.func,
     initSideMenu:   PropTypes.func,
-    // modals
-    showRechercheBenefModal: PropTypes.func,
-    hideRechercheBenefModal: PropTypes.func,
+    // modals recherche benef:
+    showRechercheBenefModal: PropTypes.func.isRequired,
+    hideRechercheBenefModal: PropTypes.func.isRequired,
+    // modal create dossier benef:
     showNewBenefDossierModal: PropTypes.func.isRequired, // return promise with notification data
     hideNewBenefDossierModal: PropTypes.func.isRequired,
     // notifications
@@ -269,8 +285,10 @@ const mapStateToProps = (state) => {
     // user mailboxes (extends navigation)
     userBoitesMails:      state.userBoitesMails.data,
     userBoitesMailsLastUpdateTime: state.userBoitesMails.time,
-    // modal
+    // modal recherche benef:
     rechercheBenefModalOpened: state.rechercheBenefModal.isOpened,
+    // modal add dossier to benef:
+    createDossierBenefModalOpened: state.createNewDossierBenefModal.isOpened,
     // notifications
     notificationMessage: state.notifications.message,
     notificationLevel: state.notifications.level,
