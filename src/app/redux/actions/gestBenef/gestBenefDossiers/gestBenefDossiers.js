@@ -294,7 +294,7 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => (dispatch, getState
                 // all dossier: add new one -> then sort by id ASC
                 const allDossiers = previousDossiersList
                                       .concat({...newDossier})
-                                      .sort((a, b) => sortByIdPropertyAsc(a, b));
+                                      .sort(sortByIdPropertyAsc);
 
                 dispatch(receivedAddGestBenefNewDossier(allDossiers));
 
@@ -331,7 +331,7 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => (dispatch, getState
                 // all dossier: add new one -> then sort by id ASC
                 const allDossiers = previousDossiersList
                                       .concat({...response})
-                                      .sort((a, b) => sortByIdPropertyAsc(a, b));
+                                      .sort(sortByIdPropertyAsc);
 
                 dispatch(receivedAddGestBenefNewDossier(allDossiers));
 
@@ -461,7 +461,7 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
                 const allDossiers = previousDossiersList
                                       .filter(dossier => dossier.id !== updatedDossier.id)
                                       .concat({...updatedDossier})
-                                      .sort((a, b) => sortByIdPropertyAsc(a, b));
+                                      .sort(sortByIdPropertyAsc);
                 dispatch(receivedUpdateGestBenefDossier(allDossiers));
 
                 return Promise.resolve({
@@ -498,7 +498,7 @@ const updateQueryGestBenefDossier = updatedDossier => (dispatch, getState) => {
                 const allDossiers = previousDossiersList
                                       .filter(dossier => dossier.id !== response.id)
                                       .concat({...response})
-                                      .sort((a, b) => sortByIdPropertyAsc(a, b));
+                                      .sort(sortByIdPropertyAsc);
                 dispatch(receivedUpdateGestBenefDossier(allDossiers));
 
                 return Promise.resolve({
