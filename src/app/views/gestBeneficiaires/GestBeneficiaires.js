@@ -819,10 +819,13 @@ class GestBeneficiaires extends Component {
     const { params: { benefId } } =  this.props;
     const { actions: { showNewBenefDossierModal } } = this.props;
     // needs a benefId to add a dossiers!:
-    if (parseInt(benefId, 10)) {
-      showNewBenefDossierModal()
+    const idBenef = parseInt(benefId, 10);
+    if (idBenef) {
+      showNewBenefDossierModal(idBenef)
         .then(
-          () => console.log('show modal')
+          () => {
+            return;
+          }
         )
         .catch(
           error => {
