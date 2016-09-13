@@ -283,7 +283,7 @@ const addQueryGestBenefNewDossier = (benefId, newDossier) => (dispatch, getState
     return fetchMockAddBenefNewDossier(benefId, newDossier)
             .then(
               data => {
-                if (!data || !data.id) { // ATTENTION: doit retourner l'id du dossier
+                if (!data) { // ATTENTION: doit retourner l'id du dossier
                   dispatch(errorAddGestBenefNewDossier({'error': 'add benef new dossier unsuccessfull with no server error'}));
                   return Promise.reject({
                     message: 'Ajout d\'un nouveau "Dossier" en erreur (retour invalide)',
