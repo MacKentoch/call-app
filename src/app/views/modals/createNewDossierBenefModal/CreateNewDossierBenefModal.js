@@ -8,6 +8,7 @@ import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
 import FetchingIndicator  from './fetchingIndicator/FetchingIndicator';
 import EditInput          from './editInput/EditInput';
+import EditDate           from './editDate/EditDate';
 import SaveButton         from './saveButton/SaveButton';
 
 
@@ -131,7 +132,7 @@ class CreateNewDossierBenefModal extends Component {
                 <div className="row">
                   <div className="col-xs-6">
                     {/* date entree dispositif: */}
-                    <EditInput
+                    <EditDate
                      // label:
                      showLabel={true}
                      labelText={'Dispositif date entrée'}
@@ -145,7 +146,7 @@ class CreateNewDossierBenefModal extends Component {
                   </div>
                   <div className="col-xs-6">
                     {/* date sortie dispositif: */}
-                    <EditInput
+                    <EditDate
                      // label:
                      showLabel={true}
                      labelText={'Dispositif date sortie'}
@@ -159,19 +160,26 @@ class CreateNewDossierBenefModal extends Component {
                   </div>
                 </div>
 
+                <div style={{height: '20px'}}>&nbsp;</div>
 
                 {/* date taux plein: */}
-                <EditInput
-                 // label:
-                 showLabel={true}
-                 labelText={'Date taux plein'}
-                 // value
-                 value={dateTauxPlein}
-                 onValueChanged={this.handlesOnDateTauxPleinChange}
-                 // help block text:
-                 showHelpBlock={true}
-                 helpBlockText={'La date taux plein spécifique à ce dossier.'}
-                />
+                <div className="row">
+                  <div className="col-xs-6 col-xs-offset-3">
+                    <EditDate
+                     // label:
+                     showLabel={true}
+                     labelText={'Date taux plein'}
+                     // value
+                     value={dateTauxPlein}
+                     onValueChanged={this.handlesOnDateTauxPleinChange}
+                     // help block text:
+                     showHelpBlock={true}
+                     helpBlockText={'La date taux plein spécifique à ce dossier.'}
+                    />
+                  </div>
+                </div>
+
+                <div style={{height: '20px'}}>&nbsp;</div>
 
                 <SaveButton
                  buttonText={'Enregistrer'}

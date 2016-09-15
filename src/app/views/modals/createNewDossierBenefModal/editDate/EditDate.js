@@ -1,10 +1,11 @@
 import React, {
   Component,
   PropTypes
-}                         from 'react';
-import shallowCompare     from 'react-addons-shallow-compare';
+}                     from 'react';
+import DatePicker     from 'react-datepicker';
+import shallowCompare from 'react-addons-shallow-compare';
 
-class EditInput extends Component {
+class EditDate extends Component {
   constructor(props) {
     super(props);
 
@@ -26,19 +27,17 @@ class EditInput extends Component {
     const { value } = this.props;
 
     return (
-      <div
-        className="form-group remove-margin-bottom">
+      <div className="form-group remove-margin-bottom">
         {
           showLabel &&
           <label>
             {labelText}
           </label>
         }
-        <input
-          type="text"
-          value={value}
+        <DatePicker
+          dateFormat="DD/MM/YYYY"
+          selected={value}
           onChange={this.handlesOnValueChanged}
-          placeholder={`${labelText}...`}
           className="form-control"
         />
         {
@@ -49,7 +48,6 @@ class EditInput extends Component {
             {helpBlockText}
           </p>
         }
-        <br />
       </div>
     );
   }
@@ -61,7 +59,7 @@ class EditInput extends Component {
   }
 }
 
-EditInput.propTypes = {
+EditDate.propTypes = {
   // label:
   showLabel: PropTypes.bool,
   labelText: PropTypes.string,
@@ -73,13 +71,4 @@ EditInput.propTypes = {
   helpBlockText: PropTypes.string
 };
 
-EditInput.defaultProps = {
-  // label:
-  showLabel: true,
-  labelText: 'val1',
-  // help block text:
-  showHelpBlock: true,
-  helpBlockText: 'val2'
-};
-
-export default EditInput;
+export default EditDate;
