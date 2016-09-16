@@ -52,10 +52,9 @@ class EditDate extends Component {
     );
   }
 
-  handlesOnValueChanged(event) {
-    const value = event.target.value.trim();
+  handlesOnValueChanged(date) {
     const { onValueChanged } = this.props;
-    onValueChanged(value);
+    onValueChanged(date);
   }
 }
 

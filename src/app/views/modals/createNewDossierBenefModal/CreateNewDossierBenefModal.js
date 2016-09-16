@@ -4,13 +4,19 @@ import React, {
 }                         from 'react';
 import shallowCompare     from 'react-addons-shallow-compare';
 import { Modal }          from 'react-bootstrap';
+import { appConfig }      from '../../../config';
 import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
 import FetchingIndicator  from './fetchingIndicator/FetchingIndicator';
 import EditInput          from './editInput/EditInput';
 import EditDate           from './editDate/EditDate';
 import SaveButton         from './saveButton/SaveButton';
-
+import moment             from 'moment';
+import {
+  isValidDateOrReturnDefault
+}                         from '../../../services';
+moment.locale('fr');
+const formatDate = appConfig.formatDate.defaut;
 
 class CreateNewDossierBenefModal extends Component {
   constructor(props, context) {
@@ -137,7 +143,7 @@ class CreateNewDossierBenefModal extends Component {
                      showLabel={true}
                      labelText={'Dispositif date entrée'}
                      // value
-                     value={dateEntree}
+                     value={isValidDateOrReturnDefault(dateEntree, formatDate)}
                      onValueChanged={this.handlesOnDateEntreeChange}
                      // help block text:
                      showHelpBlock={true}
@@ -151,7 +157,7 @@ class CreateNewDossierBenefModal extends Component {
                      showLabel={true}
                      labelText={'Dispositif date sortie'}
                      // value
-                     value={dateSortie}
+                     value={isValidDateOrReturnDefault(dateSortie, formatDate)}
                      onValueChanged={this.handlesOnDateSortieChange}
                      // help block text:
                      showHelpBlock={true}
@@ -170,7 +176,7 @@ class CreateNewDossierBenefModal extends Component {
                      showLabel={true}
                      labelText={'Date taux plein'}
                      // value
-                     value={dateTauxPlein}
+                     value={isValidDateOrReturnDefault(dateTauxPlein, formatDate)}
                      onValueChanged={this.handlesOnDateTauxPleinChange}
                      // help block text:
                      showHelpBlock={true}

@@ -131,10 +131,11 @@ export const updateStatutBenefNewBenefDossier = (statutBenef = '', time = moment
   };
 };
 export const updateDateEntreeNewBenefDossier = (dateEntree = '', time = moment().format(formatDate)) => {
-  if (dateEntree.trim().length > 0) {
+  if (dateEntree) {
+    const dateEntreeStr = moment(dateEntree, 'DD/MM/YYYY').format('DD/MM/YYYY');
     return {
       type: UPDATE_DATE_ENTREE_NEW_BENEF_DOSSIER_MODAL,
-      dateEntree,
+      dateEntree: dateEntreeStr,
       time
     };
   }
@@ -144,10 +145,11 @@ export const updateDateEntreeNewBenefDossier = (dateEntree = '', time = moment()
   };
 };
 export const updateDateSortieNewBenefDossier = (dateSortie = '', time = moment().format(formatDate)) => {
-  if (dateSortie.trim().length > 0) {
+  if (dateSortie) {
+    const dateSortieStr = moment(dateSortie, 'DD/MM/YYYY').format('DD/MM/YYYY');
     return {
       type: UPDATE_DATE_SORTIE_NEW_BENEF_DOSSIER_MODAL,
-      dateSortie,
+      dateSortie: dateSortieStr,
       time
     };
   }
@@ -157,10 +159,11 @@ export const updateDateSortieNewBenefDossier = (dateSortie = '', time = moment()
   };
 };
 export const updateDateTauxPleinNewBenefDossier = (dateTauxPlein = '', time = moment().format(formatDate)) => {
-  if (dateTauxPlein.trim().length > 0) {
+  if (dateTauxPlein) {
+    const dateTauxPleinStr = moment(dateTauxPlein, 'DD/MM/YYYY').format('DD/MM/YYYY');
     return {
       type: UPDATE_DATE_TAUX_PLEIN_NEW_BENEF_DOSSIER_MODAL,
-      dateTauxPlein,
+      dateTauxPlein: dateTauxPleinStr,
       time
     };
   }

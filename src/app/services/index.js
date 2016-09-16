@@ -43,7 +43,8 @@ import {
 }                     from './API';
 // date tools
 import {
-  getLastThreeMonthNames
+  getLastThreeMonthNames,
+  isValidDateOrReturnDefault
 }                     from './utils/dateTools';
 
 // localStorage
@@ -117,6 +118,7 @@ export {
 
   // date tools
   getLastThreeMonthNames,
+  isValidDateOrReturnDefault,
 
   // asp.net date converted better formatted for JS
   cleanAspDotNetStringDate,

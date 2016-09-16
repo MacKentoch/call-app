@@ -8,3 +8,11 @@ export const getLastThreeMonthNames = () => {
     delta => moment().subtract(delta, 'months').format('MMMM')
   );
 };
+
+export const isValidDateOrReturnDefault = (date, formatDate) => {
+  const DEFAULT_DATE = '01/01/1900';
+
+  return moment(date, formatDate).isValid()
+    ? moment(date, formatDate)
+    : moment(DEFAULT_DATE, formatDate);
+};

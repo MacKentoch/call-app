@@ -9,6 +9,9 @@ import {
   TelephoneInput,
   NumssInput
 }                           from '../../../../components';
+import {
+  isValidDateOrReturnDefault
+}                           from '../../../../services';
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
@@ -128,11 +131,7 @@ const Form = ({
               <DateInput
                 id="inputDateNaissance"
                 label={'Date de naissance'}
-                value={
-                  moment(dateNaissance, formatDate).isValid
-                    ? moment(dateNaissance, formatDate)
-                    : moment('01/01/1900', formatDate)
-                  }
+                value={isValidDateOrReturnDefault(dateNaissance, formatDate)}
                 onChange={onDateNaissanceChanged}
               />
             :
@@ -175,11 +174,7 @@ const Form = ({
               <DateInput
                 id="inputDateDeces"
                 label={'Date de décès'}
-                value={
-                  moment(dateDeces, formatDate).isValid
-                    ? moment(dateDeces, formatDate)
-                    : moment('01/01/1900', formatDate)
-                  }
+                value={isValidDateOrReturnDefault(dateDeces, formatDate)}
                 onChange={onDateDecesChanged}
               />
             :
