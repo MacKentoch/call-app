@@ -6,6 +6,10 @@ import shallowCompare from 'react-addons-shallow-compare';
 import { appConfig }  from '../../../../config';
 import DatePicker     from 'react-datepicker';
 import moment         from 'moment';
+import {
+  isValidDateOrReturnDefault
+}                     from '../../../../services';
+
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
@@ -167,7 +171,7 @@ class Row extends Component {
           ?
             <DatePicker
               dateFormat="DD/MM/YYYY"
-              selected={moment(editDateEntree, formatDate)}
+              selected={isValidDateOrReturnDefault(editDateEntree, formatDate)}
               onChange={this.handlesOnDateEntreeDispositifChanged}
             />
           :
@@ -182,7 +186,7 @@ class Row extends Component {
           ?
             <DatePicker
               dateFormat="DD/MM/YYYY"
-              selected={moment(editDateSortie, formatDate)}
+              selected={isValidDateOrReturnDefault(editDateSortie, formatDate)}
               onChange={this.handlesOnDateSortieDispositifChanged}
             />
           :

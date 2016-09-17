@@ -10,9 +10,8 @@ export const getLastThreeMonthNames = () => {
 };
 
 export const isValidDateOrReturnDefault = (date, formatDate) => {
-  const DEFAULT_DATE = '01/01/1900';
-
+  // const DEFAULT_DATE = '01/01/1900';
   return moment(date, formatDate).isValid()
     ? moment(date, formatDate)
-    : moment(DEFAULT_DATE, formatDate);
+    : null; // moment(DEFAULT_DATE, formatDate);
 };
