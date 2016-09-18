@@ -63,7 +63,7 @@ EditDate.propTypes = {
   showLabel: PropTypes.bool,
   labelText: PropTypes.string,
   // value:
-  value: PropTypes.string,
+  value: PropTypes.object,
   onValueChanged: PropTypes.func,
   // help block text:
   showHelpBlock: PropTypes.bool,

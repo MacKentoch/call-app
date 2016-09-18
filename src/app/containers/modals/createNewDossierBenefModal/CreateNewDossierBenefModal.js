@@ -24,8 +24,8 @@ const mapStateToProps = (state) => {
     societe: state.createNewDossierBenefModal.societe,
     numSte: state.createNewDossierBenefModal.numSte,
     statutBenef: state.createNewDossierBenefModal.statutBenef,
-    dateEntree: state.createNewDossierBenefModal.dateEntree,
-    dateSortie: state.createNewDossierBenefModal.dateSortie,
+    dateEntree: state.createNewDossierBenefModal.dateEntreeDispositif,
+    dateSortie: state.createNewDossierBenefModal.dateSortieDispositif,
     dateTauxPlein: state.createNewDossierBenefModal.dateTauxPlein
   };
 };

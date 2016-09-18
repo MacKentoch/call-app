@@ -250,6 +250,10 @@ export const fetchMockAddBenefNewDossier = (benefId, payload, timeToWait = appCo
       'error': 'fetchMockAddBenefNewDossier should be supplied a valid id'
     });
   }
+  console.log('will return payload: ', {
+    id: 10,
+    ...payload
+  });
 
   return new Promise(
     resolve => {

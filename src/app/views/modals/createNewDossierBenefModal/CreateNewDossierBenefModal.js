@@ -275,8 +275,8 @@ class CreateNewDossierBenefModal extends Component {
       societe,
       numSte,
       statutBenef,
-      dateEntree,
-      dateSortie,
+      dateEntreeDispositif: dateEntree,
+      dateSortieDispositif: dateSortie,
       dateTauxPlein
     };
 

@@ -26,15 +26,15 @@ const initialState = {
 
   // dossiers fields:
   id: 0, // will not be set here but by backend
-  numDossier: 0, // will not be set here but by backend
+  numDossier: '0', // will not be set here but by backend
   domaine: appConfig.editableDomaine || ' --- ', // always set by defaults should not be overwritten
 
   regime: '',
   societe: '',
   numSte: '',
   statutBenef: '',
-  dateEntree: '',
-  dateSortie: '',
+  dateEntreeDispositif: '',
+  dateSortieDispositif: '',
   dateTauxPlein: ''
 };
 
@@ -57,8 +57,8 @@ const createNewDossierBenefModal = (state = initialState, action) => {
       societe: initialState.societe,
       numSte: initialState.numSte,
       statutBenef: initialState.statutBenef,
-      dateEntree: initialState.dateEntree,
-      dateSortie: initialState.dateSortie,
+      dateEntreeDispositif: initialState.dateEntree,
+      dateSortieDispositif: initialState.dateSortie,
       dateTauxPlein: initialState.dateTauxPlein
     };
   case ERROR_SHOW_NEW_BENEF_DOSSIER_MODAL:
@@ -78,8 +78,8 @@ const createNewDossierBenefModal = (state = initialState, action) => {
       societe: initialState.societe,
       numSte: initialState.numSte,
       statutBenef: initialState.statutBenef,
-      dateEntree: initialState.dateEntree,
-      dateSortie: initialState.dateSortie,
+      dateEntreeDispositif: initialState.dateEntree,
+      dateSortieDispositif: initialState.dateSortie,
       dateTauxPlein: initialState.dateTauxPlein
     };
 
@@ -114,14 +114,14 @@ const createNewDossierBenefModal = (state = initialState, action) => {
   case UPDATE_DATE_ENTREE_NEW_BENEF_DOSSIER_MODAL:
     return {
       ...state,
-      dateEntree: action.dateEntree,
+      dateEntreeDispositif: action.dateEntree,
       time: action.time
     };
 
   case UPDATE_DATE_SORTIE_NEW_BENEF_DOSSIER_MODAL:
     return {
       ...state,
-      dateSortie: action.dateSortie,
+      dateSortieDispositif: action.dateSortie,
       time: action.time
     };
 
