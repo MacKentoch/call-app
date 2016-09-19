@@ -250,10 +250,6 @@ export const fetchMockAddBenefNewDossier = (benefId, payload, timeToWait = appCo
       'error': 'fetchMockAddBenefNewDossier should be supplied a valid id'
     });
   }
-  console.log('will return payload: ', {
-    id: 10,
-    ...payload
-  });
 
   return new Promise(
     resolve => {
@@ -283,6 +279,50 @@ export const fetchMockUpdateBenefDossier = (payload, timeToWait = appConfig.FAKE
        }),
        timeToWait
      );
+    }
+  );
+};
+
+export const fetchMockGetGestBenefAllContactsAndActivites = (benefId, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!benefId) {
+    return Promise.reject({
+      'error': 'fetchMockGetGestBenefAllContactsAndActivites error: benefId is not valid'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+        () => resolve([...gestBenefMock.contactEtActivites]),
+        timeToWait
+      );
+    }
+  );
+};
+
+export const fetchMockGetGestBenefContactsAndActivitesForThisNumDossier = (benefId, numDossier, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!benefId) {
+    return Promise.reject({
+      'error': 'fetchMockGetGestBenefContactsAndActivitesForThisNumDossier error: benefId is not valid'
+    });
+  }
+
+  if (!numDossier || String(numDossier).trim().length === 0) {
+    return Promise.reject({
+      'error': 'fetchMockGetGestBenefContactsAndActivitesForThisNumDossier error: numDossier is not valid'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+        () => resolve(
+          gestBenefMock.contactEtActivites.filter(
+            contact => contact.numDossier === numDossier
+          )
+        ),
+        timeToWait
+      );
     }
   );
 };

@@ -190,3 +190,38 @@ export const updateGestBenefDossier = (payload = {}) => {
     .then(data => data)
     .catch(error => Promise.reject(error));
 };
+
+
+// get all "benef Contact et activites only" related to benefId (no dossier filter)
+export const getGestBenefAllContactsAndActivites = benefId => {
+  const api = appConfig.gestBenef.getContactEtActivites.API;
+  const url = `${getLocationOrigin()}/${api}/${benefId}`;
+  const options = {...defaultOptions};
+
+  if (!benefId) {
+    return Promise.reject({error: 'getGestBenefAllContactsAndActivites API: benefId is not valid'});
+  }
+
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(error => Promise.reject(error));
+};
+
+// get "benef Contact et activites only" related to benefId + numDossier (dossier FILTERED!!)
+export const getGestBenefContactsAndActivites = (benefId, numDossier) => {
+  const api = appConfig.gestBenef.getContactEtActivites.API;
+  const url = `${getLocationOrigin()}/${api}/${benefId}/${numDossier}`;
+  const options = {...defaultOptions};
+
+  if (!benefId) {
+    return Promise.reject({error: 'getGestBenefAllContactsAndActivites API: benefId is not valid'});
+  }
+
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(error => Promise.reject(error));
+};

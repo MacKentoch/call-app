@@ -232,6 +232,9 @@ export const appConfig = {
     },
     updateDossier: {
       API: 'api/gestBenefUpdateDossier'
+    },
+    getContactEtActivites: {
+      API: 'api/getContactEtActivites'
     }
   },
 

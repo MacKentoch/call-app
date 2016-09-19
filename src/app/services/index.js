@@ -24,7 +24,9 @@ import {
   fetchMockPostBenefContactData,
   fetchMockGetGestBenefDossiers,
   fetchMockAddBenefNewDossier,
-  fetchMockUpdateBenefDossier
+  fetchMockUpdateBenefDossier,
+  fetchMockGetGestBenefAllContactsAndActivites,
+  fetchMockGetGestBenefContactsAndActivitesForThisNumDossier
 }                     from './fetchMock/fetchMocks';
 // API
 import {
@@ -101,6 +103,8 @@ export {
   fetchMockGetGestBenefDossiers,
   fetchMockAddBenefNewDossier,
   fetchMockUpdateBenefDossier,
+  fetchMockGetGestBenefAllContactsAndActivites,
+  fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
 
   // API
   getUserBoitesMails,
