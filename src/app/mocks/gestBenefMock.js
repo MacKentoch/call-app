@@ -1,3 +1,8 @@
+// canaux de contact et activités
+const canaux = ['Téléphone', 'Email', 'Courrier', ''];
+const contactActiviteStatuts = ['En cours', 'Clôturée'];
+const motifsContactEtActivites = ['Multiple', 'Demande justificatifs'];
+
 
 export const gestBenefMock = {
   // general fields
@@ -59,6 +64,88 @@ export const gestBenefMock = {
       dateEntreeDispositif: '17/11/2015',
       dateSortieDispositif: '',
       dateTauxPlein: '01/01/2022'
+    }
+  ],
+  contactEtActivites: [
+    // => numDossier: '1543'
+    {
+      id: 1,
+      numDossier: '1543',
+      numFiche: '500',
+
+      dateCreation: '01/04/2015 10:23:43',
+      dateReception: '01/04/2015 10:23:43',
+      canal: canaux[0],
+      reclamation: false,
+
+      statut: contactActiviteStatuts[0],
+      creePar: 'T. Test',
+      traiteePar: 'A. Autre',
+      ficheTransmiseA: '',
+
+      motif: motifsContactEtActivites[0],
+
+      delais: '2' // en jours
+    },
+    {
+      id: 2,
+      numDossier: '1543',
+      numFiche: '900',
+
+      dateCreation: '03/04/2015 16:01:03',
+      dateReception: '02/04/2015 08:27:12',
+      canal: canaux[1],
+      reclamation: true,
+
+      statut: contactActiviteStatuts[1],
+      creePar: 'T. Test',
+      traiteePar: 'A. Autre',
+      ficheTransmiseA: '',
+
+      motif: motifsContactEtActivites[1],
+
+      delais: '4' // en jours
+    },
+
+
+    // => numDossier: '1543'
+    {
+      id: 3,
+      numDossier: '5673',
+      numFiche: '400',
+
+      dateCreation: '01/04/2014 18:23:43',
+      dateReception: '01/04/2014 18:23:43',
+      canal: canaux[1],
+      reclamation: true,
+
+      statut: contactActiviteStatuts[1],
+      creePar: 'T. Test',
+      traiteePar: 'A. Autre',
+      ficheTransmiseA: '',
+
+      motif: motifsContactEtActivites[0],
+
+      delais: '1' // en jours
+    },
+    {
+      id: 4,
+      numDossier: '5673',
+      numFiche: '401',
+
+      dateCreation: '03/04/2015 16:01:03',
+      dateReception: '02/04/2015 08:27:12',
+      canal: canaux[1],
+      reclamation: false,
+
+      statut: contactActiviteStatuts[1],
+      creePar: 'T. Test',
+      traiteePar: 'A. Autre',
+      ficheTransmiseA: '',
+
+      motif: motifsContactEtActivites[1],
+
+      delais: '4' // en jours
     }
   ]
 };
