@@ -42,16 +42,7 @@ export const UNSET_IS_COLLAPSED_DOSSIERS            = 'UNSET_IS_COLLAPSED_DOSSIE
 export const RESET_GEST_BENEF_DOSSIERS              = 'RESET_GEST_BENEF_DOSSIERS';
 
 //  -----------------------------------------------------------------
-//    reset dossiers (ex: new benef -> cancel edition)
-//  -----------------------------------------------------------------
-export const resetGestBenefDossier = (time = moment().format(formatDate)) => {
-  return {
-    type: RESET_GEST_BENEF_DOSSIERS,
-    time
-  };
-};
-//  -----------------------------------------------------------------
-//    GET benef all dossiers
+//    GET contacts et activités
 //  -----------------------------------------------------------------
 const requestGetGestBenefAllDossiers = (benefId = 0, time = moment().format(formatDate)) => {
   return {
