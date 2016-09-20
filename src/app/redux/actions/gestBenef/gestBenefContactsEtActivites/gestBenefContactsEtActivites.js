@@ -2,44 +2,34 @@ import moment         from 'moment';
 import { appConfig }  from '../../../../config';
 import {
   // API:
-  getGestBenefDossiers,
-  addGestBenefNewDossier,
-  updateGestBenefDossier,
+  getGestBenefAllContactsAndActivites,
+  getGestBenefContactsAndActivites,
+
   // fecth mocks:
-  fetchMockGetGestBenefDossiers,
-  fetchMockAddBenefNewDossier,
-  fetchMockUpdateBenefDossier
+  fetchMockGetGestBenefAllContactsAndActivites,
+  fetchMockGetGestBenefContactsAndActivitesForThisNumDossier
 }                     from '../../../../services';
 
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
-// all dossiers:
-export const REQUEST_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES    = 'REQUEST_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES';
-export const RECEIVED_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES   = 'RECEIVED_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES';
-export const ERROR_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES      = 'ERROR_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES';
+// all contacts et activités:
+export const REQUEST_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES   = 'REQUEST_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES';
+export const RECEIVED_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES  = 'RECEIVED_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES';
+export const ERROR_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES     = 'ERROR_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES';
 
-
-// for UI (set a flag): to get informed when saving a new dossier to backend
-export const SET_IS_SAVING_NEW_DOSSIER              = 'SET_IS_SAVING_NEW_DOSSIER';
-export const UNSET_IS_SAVING_NEW_DOSSIER            = 'UNSET_IS_SAVING_NEW_DOSSIER';
-
-// for UI (set a flag): to get informed when editing mode enabled or disabled
-export const SET_IS_EDITING_DOSSIER                 = 'SET_IS_EDITING_DOSSIER';
-export const UNSET_IS_EDITING_DOSSIER               = 'UNSET_IS_EDITING_DOSSIER';
-
-// update a dossier:
-export const REQUEST_UPDATE_GEST_BENEF_DOSSIER      = 'REQUEST_UPDATE_GEST_BENEF_DOSSIER';
-export const RECEIVED_UPDATE_GEST_BENEF_DOSSIER     = 'RECEIVED_UPDATE_GEST_BENEF_DOSSIER';
-export const ERROR_UPDATE_GEST_BENEF_DOSSIER        = 'ERROR_UPDATE_GEST_BENEF_DOSSIER';
+// contact et activités specific 1 numDossier
+export const REQUEST_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES    = 'REQUEST_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES';
+export const RECEIVED_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES   = 'RECEIVED_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES';
+export const ERROR_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES      = 'ERROR_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES';
 
 // ui dossier collpased
-export const SET_IS_COLLAPSED_DOSSIERS              = 'SET_IS_COLLAPSED_DOSSIERS';
-export const UNSET_IS_COLLAPSED_DOSSIERS            = 'UNSET_IS_COLLAPSED_DOSSIERS';
+export const SET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES   = 'SET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES';
+export const UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES = 'UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES';
 
 // RESET dossiers
-export const RESET_GEST_BENEF_DOSSIERS              = 'RESET_GEST_BENEF_DOSSIERS';
+export const RESET_GEST_BENEF_UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES = 'RESET_GEST_BENEF_UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES';
 
 //  -----------------------------------------------------------------
 //    GET contacts et activités
@@ -522,7 +512,6 @@ function shouldUpdateGestBenefDossier(state) {
     return true;
   }
 }
-
 
 function sortByIdPropertyAsc(a, b) {
   if (a.id < b.id) {
