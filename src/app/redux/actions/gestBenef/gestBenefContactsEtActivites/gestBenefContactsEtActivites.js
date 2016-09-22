@@ -10,7 +10,6 @@ import {
   fetchMockGetGestBenefContactsAndActivitesForThisNumDossier
 }                     from '../../../../services';
 
-
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
@@ -29,12 +28,12 @@ export const SET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES   = 'SET_IS_COLLAPSED_CONTAC
 export const UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES = 'UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES';
 
 //  -----------------------------------------------------------------
-//    GET contacts et activités
+//    GET all contacts et activités
 //  -----------------------------------------------------------------
 const requestGetGestBenefAllContactsEtActivites = (benefId = 0, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
-    isFetchingDossiers : true,
+    isFetchingContactsEtActivites : true,
     benefId,
     time
   };
@@ -43,7 +42,7 @@ const requestGetGestBenefAllContactsEtActivites = (benefId = 0, time = moment().
 const receivedGetGestBenefAllContactsEtActivites = (dossiers = [], time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
-    isFetchingDossiers : false,
+    isFetchingContactsEtActivites : false,
     dossiers,
     time
   };
@@ -52,7 +51,7 @@ const receivedGetGestBenefAllContactsEtActivites = (dossiers = [], time = moment
 const errorGetGestBenefAllContactsEtActivites = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
-    isFetchingDossiers : false,
+    isFetchingContactsEtActivites : false,
     error,
     time
   };
@@ -60,9 +59,9 @@ const errorGetGestBenefAllContactsEtActivites = (error, time = moment().format(f
 
 const getQueryGestBenefAllContactsEtActivites = (benefId) => dispatch => {
   if (!benefId) {
-    dispatch(errorGetGestBenefAllContactsEtActivites('getQueryGestBenefAllDossiers API error: benefId is not defined or not valid'));
+    dispatch(errorGetGestBenefAllContactsEtActivites('getQueryGestBenefAllContactsEtActivites API error: benefId is not defined or not valid'));
     return Promise.reject({
-      message: 'Rafraichissement des données "Dossiers" du bénéficiaire en erreur (identifiant non valide)',
+      message: 'Rafraichissement des données "Contacts et Activités" du bénéficiaire en erreur (identifiant non valide)',
       level: 'error',
       showNotification: true
     });
@@ -76,7 +75,7 @@ const getQueryGestBenefAllContactsEtActivites = (benefId) => dispatch => {
               data => {
                 dispatch(receivedGetGestBenefAllContactsEtActivites(data));
                 return Promise.resolve({
-                  message: 'Données "Dossiers" du bénéficiaire raffraichies',
+                  message: 'Données "Contacts et Activités" du bénéficiaire raffraichies',
                   level: 'success',
                   showNotification: true
                 });
@@ -86,7 +85,7 @@ const getQueryGestBenefAllContactsEtActivites = (benefId) => dispatch => {
               err => {
                 dispatch(errorGetGestBenefAllContactsEtActivites(err));
                 return Promise.reject({
-                  message: 'Données "Dossiers" du bénéficiaire non raffraichies',
+                  message: 'Données "Contacts et Activités" du bénéficiaire non raffraichies',
                   level: 'error',
                   showNotification: true
                 });
@@ -98,7 +97,7 @@ const getQueryGestBenefAllContactsEtActivites = (benefId) => dispatch => {
               response => {
                 dispatch(receivedGetGestBenefAllContactsEtActivites(response));
                 return Promise.resolve({
-                  message: 'Données "Dossiers" du bénéficiaire raffraichies',
+                  message: 'Données "Contacts et Activités" du bénéficiaire raffraichies',
                   level: 'success',
                   showNotification: true
                 });
@@ -108,7 +107,7 @@ const getQueryGestBenefAllContactsEtActivites = (benefId) => dispatch => {
               error => {
                 dispatch(errorGetGestBenefAllContactsEtActivites(error));
                 return Promise.reject({
-                  message: 'Données "Dossiers" du bénéficiaire non raffraichies',
+                  message: 'Données "Contacts et Activités" du bénéficiaire non raffraichies',
                   level: 'error',
                   showNotification: true
                 });
@@ -122,7 +121,7 @@ export const getGestBenefAllContactsEtActivitesIfNeeded = benefId => (dispatch, 
     return dispatch(getQueryGestBenefAllContactsEtActivites(benefId));
   }
   return Promise.resolve({
-    message: 'fetch des modifications des informations "Dossiers" déjà en cours',
+    message: 'fetch des modifications des informations "Contacts et Activités" déjà en cours',
     level: 'info',
     showNotification: false
   });
@@ -131,7 +130,126 @@ export const getGestBenefAllContactsEtActivitesIfNeeded = benefId => (dispatch, 
 function shouldGetGestBenefAllContactsEtActivites(state) {
   const gestBenef = state.gestBenef;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
-  if (gestBenef.isFetchingDossiers) {
+  if (gestBenef.isFetchingContactsEtActivites) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//  -----------------------------------------------------------------
+//    GET contacts et activités
+//  -----------------------------------------------------------------
+const requestGetGestBenefThisDossierContactsEtActivites = (benefId = 0, numDossier = 0, time = moment().format(formatDate)) => {
+  return {
+    type: REQUEST_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES
+    isFetchingContactsEtActivites : true,
+    benefId,
+    time
+  };
+};
+
+const receivedGetGestBenefThisDossierContactsEtActivites = (dossiers = [], time = moment().format(formatDate)) => {
+  return {
+    type: RECEIVED_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES,
+    isFetchingContactsEtActivites : false,
+    dossiers,
+    time
+  };
+};
+
+const errorGetGestBenefThisDossierContactsEtActivites = (error, time = moment().format(formatDate)) => {
+  return {
+    type: ERROR_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES,
+    isFetchingContactsEtActivites : false,
+    error,
+    time
+  };
+};
+
+const getQueryGestBenefThisDossierContactsEtActivites = (benefId, numDossier) => dispatch => {
+  if (!benefId) {
+    dispatch(errorGetGestBenefThisDossierContactsEtActivites('getQueryGestBenefThisDossierContactsEtActivites API error: benefId is not defined or not valid'));
+    return Promise.reject({
+      message: 'Rafraichissement des données "Contacts et Activités" du bénéficiaire en erreur (identifiant non valide)',
+      level: 'error',
+      showNotification: true
+    });
+  }
+
+  if (!numDossier) {
+    dispatch(errorGetGestBenefThisDossierContactsEtActivites('getQueryGestBenefThisDossierContactsEtActivites API error: numDossier is not defined or not valid'));
+    return Promise.reject({
+      message: 'Rafraichissement des données "Contacts et Activités" du bénéficiaire en erreur (numDossier non valide)',
+      level: 'error',
+      showNotification: true
+    });
+  }
+
+  dispatch(requestGetGestBenefAllContactsEtActivites(benefId));
+  if (appConfig.DEV_MODE) {
+    // DEV ONLY
+    return fetchMockGetGestBenefAllContactsAndActivites(benefId)
+            .then(
+              data => {
+                dispatch(receivedGetGestBenefAllContactsEtActivites(data));
+                return Promise.resolve({
+                  message: 'Données "Contacts et Activités" du bénéficiaire raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
+            )
+            .catch(
+              err => {
+                dispatch(errorGetGestBenefAllContactsEtActivites(err));
+                return Promise.reject({
+                  message: 'Données "Contacts et Activités" du bénéficiaire non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
+            );
+  } else {
+    return getGestBenefAllContactsAndActivites(benefId)
+            .then(
+              response => {
+                dispatch(receivedGetGestBenefAllContactsEtActivites(response));
+                return Promise.resolve({
+                  message: 'Données "Contacts et Activités" du bénéficiaire raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
+            )
+            .catch(
+              error => {
+                dispatch(errorGetGestBenefAllContactsEtActivites(error));
+                return Promise.reject({
+                  message: 'Données "Contacts et Activités" du bénéficiaire non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
+            );
+  }
+};
+
+export const getGestBenefAllContactsEtActivitesIfNeeded = benefId => (dispatch, getState) => {
+  if (shouldGetGestBenefAllContactsEtActivites(getState())) {
+    return dispatch(getQueryGestBenefAllContactsEtActivites(benefId));
+  }
+  return Promise.resolve({
+    message: 'fetch des modifications des informations "Contacts et Activités" déjà en cours',
+    level: 'info',
+    showNotification: false
+  });
+};
+
+function shouldGetGestBenefAllContactsEtActivites(state) {
+  const gestBenef = state.gestBenef;
+  // just check wether fetching (assuming data could be refreshed and should not persist in store)
+  if (gestBenef.isFetchingContactsEtActivites) {
     return false;
   } else {
     return true;
@@ -144,14 +262,14 @@ function shouldGetGestBenefAllContactsEtActivites(state) {
 export const setIsCollapsedContactsEtActivites = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES,
-    isCollapsedDossiers: true,
+    isCollapsedContactsEtActivites: true,
     time
   };
 };
 export const unsetIsCollapsedContactsEtActivites = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES,
-    isCollapsedDossiers: false,
+    isCollapsedContactsEtActivites: false,
     time
   };
 };
