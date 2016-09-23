@@ -142,7 +142,7 @@ function shouldGetGestBenefAllContactsEtActivites(state) {
 //  -----------------------------------------------------------------
 const requestGetGestBenefThisDossierContactsEtActivites = (benefId = 0, numDossier = 0, time = moment().format(formatDate)) => {
   return {
-    type: REQUEST_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES
+    type: REQUEST_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES,
     isFetchingContactsEtActivites : true,
     benefId,
     time
@@ -186,13 +186,13 @@ const getQueryGestBenefThisDossierContactsEtActivites = (benefId, numDossier) =>
     });
   }
 
-  dispatch(requestGetGestBenefAllContactsEtActivites(benefId));
+  dispatch(requestGetGestBenefThisDossierContactsEtActivites(benefId, numDossier));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockGetGestBenefAllContactsAndActivites(benefId)
+    return fetchMockGetGestBenefContactsAndActivitesForThisNumDossier(benefId, numDossier)
             .then(
               data => {
-                dispatch(receivedGetGestBenefAllContactsEtActivites(data));
+                dispatch(receivedGetGestBenefThisDossierContactsEtActivites(data));
                 return Promise.resolve({
                   message: 'Données "Contacts et Activités" du bénéficiaire raffraichies',
                   level: 'success',
@@ -202,7 +202,7 @@ const getQueryGestBenefThisDossierContactsEtActivites = (benefId, numDossier) =>
             )
             .catch(
               err => {
-                dispatch(errorGetGestBenefAllContactsEtActivites(err));
+                dispatch(errorGetGestBenefThisDossierContactsEtActivites(err));
                 return Promise.reject({
                   message: 'Données "Contacts et Activités" du bénéficiaire non raffraichies',
                   level: 'error',
@@ -211,10 +211,10 @@ const getQueryGestBenefThisDossierContactsEtActivites = (benefId, numDossier) =>
               }
             );
   } else {
-    return getGestBenefAllContactsAndActivites(benefId)
+    return getGestBenefContactsAndActivites(benefId, numDossier)
             .then(
               response => {
-                dispatch(receivedGetGestBenefAllContactsEtActivites(response));
+                dispatch(receivedGetGestBenefThisDossierContactsEtActivites(response));
                 return Promise.resolve({
                   message: 'Données "Contacts et Activités" du bénéficiaire raffraichies',
                   level: 'success',
@@ -224,7 +224,7 @@ const getQueryGestBenefThisDossierContactsEtActivites = (benefId, numDossier) =>
             )
             .catch(
               error => {
-                dispatch(errorGetGestBenefAllContactsEtActivites(error));
+                dispatch(errorGetGestBenefThisDossierContactsEtActivites(error));
                 return Promise.reject({
                   message: 'Données "Contacts et Activités" du bénéficiaire non raffraichies',
                   level: 'error',
@@ -235,9 +235,9 @@ const getQueryGestBenefThisDossierContactsEtActivites = (benefId, numDossier) =>
   }
 };
 
-export const getGestBenefAllContactsEtActivitesIfNeeded = benefId => (dispatch, getState) => {
-  if (shouldGetGestBenefAllContactsEtActivites(getState())) {
-    return dispatch(getQueryGestBenefAllContactsEtActivites(benefId));
+export const getGestBenefThisDossierContactsEtActivitesIfNeeded = (benefId, numDossier) => (dispatch, getState) => {
+  if (shouldGetGestBenefThisDossierContactsEtActivites(getState())) {
+    return dispatch(getQueryGestBenefThisDossierContactsEtActivites(benefId, numDossier));
   }
   return Promise.resolve({
     message: 'fetch des modifications des informations "Contacts et Activités" déjà en cours',
@@ -246,7 +246,7 @@ export const getGestBenefAllContactsEtActivitesIfNeeded = benefId => (dispatch, 
   });
 };
 
-function shouldGetGestBenefAllContactsEtActivites(state) {
+function shouldGetGestBenefThisDossierContactsEtActivites(state) {
   const gestBenef = state.gestBenef;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
   if (gestBenef.isFetchingContactsEtActivites) {
