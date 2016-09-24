@@ -160,7 +160,12 @@ import {
   unsetIsEditingDossier,
   addGestBenefNewDossierIfNeeded,
   updateGestBenefDossierIfNeeded,
-  resetGestBenefDossier
+  resetGestBenefDossier,
+  // benef contact et activites:
+  getGestBenefAllContactsEtActivitesIfNeeded,
+  getGestBenefThisDossierContactsEtActivitesIfNeeded,
+  setIsCollapsedContactsEtActivites,
+  unsetIsCollapsedContactsEtActivites
 }                                 from './gestBenef';
 import {
   addNotificationMessage
@@ -300,6 +305,11 @@ export {
   addGestBenefNewDossierIfNeeded,
   updateGestBenefDossierIfNeeded,
   resetGestBenefDossier,
+
+  getGestBenefAllContactsEtActivitesIfNeeded,
+  getGestBenefThisDossierContactsEtActivitesIfNeeded,
+  setIsCollapsedContactsEtActivites,
+  unsetIsCollapsedContactsEtActivites,
 
   // notifications:
   addNotificationMessage

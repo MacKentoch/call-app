@@ -62,8 +62,15 @@ import {
 
   updateGestBenefDossierIfNeeded,
 
-  resetGestBenefDossier  
+  resetGestBenefDossier
 }                               from './gestBenefDossiers/gestBenefDossiers';
+import {
+  getGestBenefAllContactsEtActivitesIfNeeded,
+  getGestBenefThisDossierContactsEtActivitesIfNeeded,
+
+  setIsCollapsedContactsEtActivites,
+  unsetIsCollapsedContactsEtActivites
+}                               from './gestBenefContactsEtActivites/gestBenefContactsEtActivites';
 export {
   // all benef fields (identite + contact + dossiers)
   getGestBenefIfNeeded,
@@ -111,5 +118,10 @@ export {
   unsetIsEditingDossier,
   addGestBenefNewDossierIfNeeded,
   updateGestBenefDossierIfNeeded,
-  resetGestBenefDossier
+  resetGestBenefDossier,
+  // benef contact et activites:
+  getGestBenefAllContactsEtActivitesIfNeeded,
+  getGestBenefThisDossierContactsEtActivitesIfNeeded,
+  setIsCollapsedContactsEtActivites,
+  unsetIsCollapsedContactsEtActivites
 };
