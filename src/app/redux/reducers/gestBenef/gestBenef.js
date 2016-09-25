@@ -87,7 +87,18 @@ import {
 
   RESET_GEST_BENEF_DOSSIERS
 }                                     from '../../actions/gestBenef/gestBenefDossiers/gestBenefDossiers';
+import {
+  REQUEST_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
+  RECEIVED_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
+  ERROR_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
 
+  REQUEST_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES,
+  RECEIVED_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES,
+  ERROR_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES,
+
+  SET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES,
+  UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES
+}                                     from '../../actions/gestBenef/gestBenefContactsEtActivites/gestBenefContactsEtActivites';
 const initialState = {
   actionTime: '',
   // error:
