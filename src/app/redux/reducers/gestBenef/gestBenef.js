@@ -185,6 +185,8 @@ const initialState = {
   editDossierId: 0,
 
   // contacts Et activites
+  isFetchingContactsEtActivites: false,
+  lastFetchTimeContactsEtActivites: '',
   contactsEtActivites: [],
   numDossierSelected: 0
 };
@@ -223,6 +225,8 @@ const gestBenef = (state = initialState, action) => {
       dossiers:  [...initialState.dossiers],
       editDossierId: initialState.editDossierId,
       // contacts Et activites
+      isFetchingContactsEtActivites: initialState.isFetchingContactsEtActivites,
+      lastFetchTimeContactsEtActivites: initialState.lastFetchTimeContactsEtActivites,
       contactsEtActivites: [...initialState.contactsEtActivites],
       numDossierSelected: initialState.numDossierSelected,
 
@@ -836,6 +840,24 @@ const gestBenef = (state = initialState, action) => {
       isCollapsedDossiers: action.isCollapsedDossiers,
       actionTime: action.time
     };
+
+  case REQUEST_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES:
+    return {
+      ...state,
+      isFetchingContactsEtActivites: action.isFetchingContactsEtActivites,
+      lastFetchTimeContactsEtActivites: action.time,
+      actionTime: action.time
+    };
+
+  case RECEIVED_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES:
+    return {
+      ...state,
+      isFetchingContactsEtActivites: action.isFetchingContactsEtActivites,
+      actionTime: action.time,
+      lastFetchTimeContactsEtActivites: action.time,
+      contactsEtActivites: [...action.contactsEtActivites]
+    };
+
 
   default:
     return state;

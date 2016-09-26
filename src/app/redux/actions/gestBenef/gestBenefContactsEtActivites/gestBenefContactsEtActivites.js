@@ -33,7 +33,7 @@ export const UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES = 'UNSET_IS_COLLAPSED_CONT
 const requestGetGestBenefAllContactsEtActivites = (benefId = 0, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
-    isFetchingContactsEtActivites : true,
+    isFetchingContactsEtActivites: true,
     benefId,
     time
   };
@@ -42,7 +42,7 @@ const requestGetGestBenefAllContactsEtActivites = (benefId = 0, time = moment().
 const receivedGetGestBenefAllContactsEtActivites = (dossiers = [], time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
-    isFetchingContactsEtActivites : false,
+    isFetchingContactsEtActivites: false,
     dossiers,
     time
   };
@@ -51,7 +51,7 @@ const receivedGetGestBenefAllContactsEtActivites = (dossiers = [], time = moment
 const errorGetGestBenefAllContactsEtActivites = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
-    isFetchingContactsEtActivites : false,
+    isFetchingContactsEtActivites: false,
     error,
     time
   };
