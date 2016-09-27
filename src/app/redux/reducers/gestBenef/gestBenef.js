@@ -857,6 +857,39 @@ const gestBenef = (state = initialState, action) => {
       lastFetchTimeContactsEtActivites: action.time,
       contactsEtActivites: [...action.contactsEtActivites]
     };
+  case ERROR_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES:
+    return {
+      ...state,
+      isFetchingContactsEtActivites: action.isFetchingContactsEtActivites,
+      lastFetchTimeContactsEtActivites: action.time,
+      actionTime: action.time,
+      error: action.error
+    };
+
+  case REQUEST_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES:
+    return {
+      ...state,
+      isFetchingContactsEtActivites: action.isFetchingContactsEtActivites,
+      lastFetchTimeContactsEtActivites: action.time,
+      actionTime: action.time
+    };
+
+  case RECEIVED_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES:
+    return {
+      ...state,
+      isFetchingContactsEtActivites: action.isFetchingContactsEtActivites,
+      actionTime: action.time,
+      lastFetchTimeContactsEtActivites: action.time,
+      contactsEtActivites: [...action.contactsEtActivites]
+    };
+  case ERROR_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES:
+    return {
+      ...state,
+      isFetchingContactsEtActivites: action.isFetchingContactsEtActivites,
+      lastFetchTimeContactsEtActivites: action.time,
+      actionTime: action.time,
+      error: action.error
+    };
 
 
   default:
