@@ -188,7 +188,8 @@ const initialState = {
   isFetchingContactsEtActivites: false,
   lastFetchTimeContactsEtActivites: '',
   contactsEtActivites: [],
-  numDossierSelected: 0
+  numDossierSelected: 0,
+  isCollapsedContactsEtActivites: false
 };
 
 const gestBenef = (state = initialState, action) => {
@@ -882,6 +883,7 @@ const gestBenef = (state = initialState, action) => {
       lastFetchTimeContactsEtActivites: action.time,
       contactsEtActivites: [...action.contactsEtActivites]
     };
+
   case ERROR_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES:
     return {
       ...state,
@@ -891,6 +893,13 @@ const gestBenef = (state = initialState, action) => {
       error: action.error
     };
 
+  case SET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES:
+  case UNSET_IS_COLLAPSED_CONTACTS_ET_ACTIVITES:
+    return {
+      ...state,
+      isCollapsedContactsEtActivites: action.isCollapsedContactsEtActivites,
+      actionTime: action.time
+    };
 
   default:
     return state;
