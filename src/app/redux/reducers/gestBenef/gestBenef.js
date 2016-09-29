@@ -230,6 +230,7 @@ const gestBenef = (state = initialState, action) => {
       lastFetchTimeContactsEtActivites: initialState.lastFetchTimeContactsEtActivites,
       contactsEtActivites: [...initialState.contactsEtActivites],
       numDossierSelected: initialState.numDossierSelected,
+      isCollapsedContactsEtActivites: initialState.isCollapsedContactsEtActivites,
 
       actionTime: action.time
     };

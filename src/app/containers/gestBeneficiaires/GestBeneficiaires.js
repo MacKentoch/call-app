@@ -49,7 +49,13 @@ const mapStateToProps = (state) => {
     editDossierId: state.gestBenef.editDossierId,
     isSavingDossiers: state.gestBenef.isSavingDossiers,
     isCollapsedDossiers: state.gestBenef.isCollapsedDossiers,
-    dossiers: state.gestBenef.dossiers
+    dossiers: state.gestBenef.dossiers,
+    // contacts Et activites
+    isFetchingContactsEtActivites: state.gestBenef.isFetchingContactsEtActivites,
+    lastFetchTimeContactsEtActivites: state.gestBenef.lastFetchTimeContactsEtActivites,
+    contactsEtActivites: state.gestBenef.contactsEtActivites,
+    numDossierSelected: state.gestBenef.numDossierSelected,
+    isCollapsedContactsEtActivites: state.gestBenef.isCollapsedContactsEtActivites
   };
 };
 
