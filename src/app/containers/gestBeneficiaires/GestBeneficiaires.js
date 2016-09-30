@@ -135,7 +135,16 @@ const mapDispatchToProps = (dispatch) => {
         unsetIsEditingDossier: actions.unsetIsEditingDossier,
         // modal create new dossier:
         showNewBenefDossierModal: actions.showNewBenefDossierModal, // return promise with notification data
-        hideNewBenefDossierModal: actions.hideNewBenefDossierModal
+        hideNewBenefDossierModal: actions.hideNewBenefDossierModal,
+        // //////////////////
+        // contacts Et activites
+        // /////////////////
+        // get
+        getGestBenefAllContactsEtActivitesIfNeeded: actions.getGestBenefAllContactsEtActivitesIfNeeded,
+        getGestBenefThisDossierContactsEtActivitesIfNeeded: actions.getGestBenefThisDossierContactsEtActivitesIfNeeded,
+        // UI
+        setIsCollapsedContactsEtActivites: actions.setIsCollapsedContactsEtActivites,
+        unsetIsCollapsedContactsEtActivites: actions.unsetIsCollapsedContactsEtActivites
       },
       dispatch)
   };
