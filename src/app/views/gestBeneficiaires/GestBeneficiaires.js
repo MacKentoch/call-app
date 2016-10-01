@@ -914,6 +914,14 @@ GestBeneficiaires.propTypes = {
   isCollapsedDossiers: PropTypes.bool.isRequired,
   dossiers: PropTypes.array.isRequired,
   editDossierId: PropTypes.number.isRequired,
+  // ///////////////////////
+  // contacts Et activites:
+  // ///////////////////////
+  isFetchingContactsEtActivites: PropTypes.bool.isRequired,
+  lastFetchTimeContactsEtActivites: PropTypes.string.isRequired,
+  contactsEtActivites: PropTypes.array.isRequired,
+  numDossierSelected: PropTypes.string.isRequired,
+  isCollapsedContactsEtActivites: PropTypes.bool.isRequired,
 
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({
@@ -991,7 +999,16 @@ GestBeneficiaires.propTypes = {
     unsetIsEditingDossier: PropTypes.func,
     // modal create new dossier:
     showNewBenefDossierModal: PropTypes.func.isRequired, // returns promise with notification data
-    hideNewBenefDossierModal: PropTypes.func.isRequired
+    hideNewBenefDossierModal: PropTypes.func.isRequired,
+    // ///////////////////////
+    // contacts Et activites:
+    // ///////////////////////
+    // get
+    getGestBenefAllContactsEtActivitesIfNeeded: PropTypes.func.isRequired,
+    getGestBenefThisDossierContactsEtActivitesIfNeeded: PropTypes.func.isRequired,
+    // UI
+    setIsCollapsedContactsEtActivites: PropTypes.func.isRequired,
+    unsetIsCollapsedContactsEtActivites: PropTypes.func.isRequired
   })
 };
 

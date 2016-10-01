@@ -74,7 +74,7 @@ const mapDispatchToProps = (dispatch) => {
         resetGestBenef: actions.resetGestBenef,
         // //////////////////
         // identite
-        // /////////////////
+        // //////////////////
         // get
         getGestBenefIdentiteIfNeeded: actions.getGestBenefIdentiteIfNeeded,
         // post
@@ -95,7 +95,7 @@ const mapDispatchToProps = (dispatch) => {
         updateMaritalStatusIdentite: actions.updateMaritalStatusIdentite,
         // //////////////////
         // contact
-        // /////////////////
+        // //////////////////
         // get
         getGestBenefContactIfNeeded: actions.getGestBenefContactIfNeeded,
         // post
@@ -115,9 +115,9 @@ const mapDispatchToProps = (dispatch) => {
         updateCodePostalContact: actions.updateCodePostalContact,
         updateVilleContact: actions.updateVilleContact,
         updatePaysContact: actions.updatePaysContact,
-        // //////////////////
+        // /////////////////////
         // dossiers
-        // /////////////////
+        // /////////////////////
         // get
         getGestBenefAllDossiersIfNeeded: actions.getGestBenefAllDossiersIfNeeded,
         // post (insert)
@@ -136,9 +136,9 @@ const mapDispatchToProps = (dispatch) => {
         // modal create new dossier:
         showNewBenefDossierModal: actions.showNewBenefDossierModal, // return promise with notification data
         hideNewBenefDossierModal: actions.hideNewBenefDossierModal,
-        // //////////////////
+        // ///////////////////////
         // contacts Et activites
-        // /////////////////
+        // ///////////////////////
         // get
         getGestBenefAllContactsEtActivitesIfNeeded: actions.getGestBenefAllContactsEtActivitesIfNeeded,
         getGestBenefThisDossierContactsEtActivitesIfNeeded: actions.getGestBenefThisDossierContactsEtActivitesIfNeeded,
