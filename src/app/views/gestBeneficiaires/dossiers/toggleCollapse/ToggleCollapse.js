@@ -20,7 +20,8 @@ const ToggleCollapse = ({ isCollapsed, toggleCollapse }) => {
                 <i
                   className="fa fa-caret-down text-blanc"
                   style={{
-                    transform: `rotate(${deg}deg)`
+                    transform: `rotate(${deg}deg)`,
+                    WebkitTransform: `rotate(${deg}deg)`
                   }}
                   aria-hidden="true">
                 </i>
