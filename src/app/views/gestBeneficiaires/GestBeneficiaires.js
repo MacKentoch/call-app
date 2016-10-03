@@ -3,7 +3,9 @@ import cx                               from 'classnames';
 import Identite                         from './identite/Identite';
 import Contact                          from './contact/Contact';
 import Dossiers                         from './dossiers/Dossiers';
+import ContactsEtActivites              from './contactsEtActivites/ContactsEtActivites';
 import FetchingAllContent               from './fetchingAllContent/FetchingAllContent';
+
 
 class GestBeneficiaires extends Component {
   constructor(props) {
@@ -125,6 +127,8 @@ class GestBeneficiaires extends Component {
     // dossiers:
     const { isFetchingDossiers, lastFetchTimeDossiers, isSavingDossiers, isEditingDossiers, isCollapsedDossiers } = this.props;
     const { dossiers, editDossierId } = this.props;
+    // contacts et activitées
+    const { isFetchingContactsEtActivites, lastFetchTimeContactsEtActivites, contactsEtActivites, numDossierSelected, isCollapsedContactsEtActivites } = this.props;
 
     return(
       <section
@@ -286,12 +290,20 @@ class GestBeneficiaires extends Component {
                       />
                       {/* contacts et activites */}
 
+                      <div style={{height: '10px'}}></div>
+
+                      <ContactsEtActivites
+                        isFetchingContactsEtActivites={isFetchingContactsEtActivites}
+                        lastFetchTimeContactsEtActivites={lastFetchTimeContactsEtActivites}
+                        contactsEtActivites={contactsEtActivites}
+                        numDossierSelected={numDossierSelected}
+                        isCollapsedContactsEtActivites={isCollapsedContactsEtActivites}
+                      />
+
                     </div>
                   }
-
                 </div>
               }
-
               </div>
             </section>
           </div>

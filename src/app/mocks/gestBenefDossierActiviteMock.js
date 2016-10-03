@@ -73,5 +73,5 @@ export const gestBenefDossierActiviteMock = [
     ficheTransmiseA: 'Jannette Doe',
     motifs: 'test autre',
     delais: 3 // unit is day
-  },
+  }
 ];
