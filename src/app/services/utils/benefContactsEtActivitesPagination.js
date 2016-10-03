@@ -14,16 +14,14 @@ export const getCurrentSearchContactsEtActivitesResPageContent = (contactsEtActi
     if (filter.trim().length > 0) {
       // 1.a) with filter case:
       const regexFilter = new RegExp(filter, 'gi');
-      return ContactsEtActivites
+      return contactsEtActivites
         .filter(
-          dossier =>  regexFilter.test(dossier.numDossier)  ||
-                      regexFilter.test(dossier.domaine)     ||
-                      regexFilter.test(dossier.regime)      ||
-                      regexFilter.test(dossier.societe)
+          contactsEtActivite =>   regexFilter.test(contactsEtActivite.numDossier)  ||
+                                  regexFilter.test(contactsEtActivite.numFiche)
         );
     } else {
       // 1.b) no filter case:
-      return ContactsEtActivites;
+      return contactsEtActivites;
     }
   }
 
@@ -36,16 +34,14 @@ export const getCurrentSearchContactsEtActivitesResPageContent = (contactsEtActi
   if (filter.trim().length > 0) {
     // 2.a) with filter case:
     const regexFilter = new RegExp(filter, 'gi');
-    return dossiers
+    return contactsEtActivites
       .filter(
-        dossier =>  regexFilter.test(dossier.numDossier)  ||
-                    regexFilter.test(dossier.domaine)     ||
-                    regexFilter.test(dossier.regime)      ||
-                    regexFilter.test(dossier.societe)
+        contactsEtActivite =>   regexFilter.test(contactsEtActivite.numDossier)  ||
+                                regexFilter.test(contactsEtActivite.numFiche)
       )
       .filter(
-      (dossier, dossierIdx) => {
-        if (dossierIdx >= minIdx && dossierIdx <= maxIdx) {
+      (contactsEtActivite, contactsEtActiviteIdx) => {
+        if (contactsEtActiviteIdx >= minIdx && contactsEtActiviteIdx <= maxIdx) {
           return true;
         }
         return false;
@@ -53,9 +49,9 @@ export const getCurrentSearchContactsEtActivitesResPageContent = (contactsEtActi
     );
   } else {
     // 2.b) no filter case:
-    return dossiers.filter(
-      (dossier, dossierIdx) => {
-        if (dossierIdx >= minIdx && dossierIdx <= maxIdx) {
+    return contactsEtActivites.filter(
+      (contactsEtActivite, contactsEtActiviteIdx) => {
+        if (contactsEtActiviteIdx >= minIdx && contactsEtActiviteIdx <= maxIdx) {
           return true;
         }
         return false;
@@ -64,12 +60,12 @@ export const getCurrentSearchContactsEtActivitesResPageContent = (contactsEtActi
   }
 };
 
-export const getSearchDossiersResMinIndex = (dossiers, page = 1, pageSize = numberSearchDossiersResultPerPage) => {
-  if (!Array.isArray(dossiers)) {
+export const getSearchContactsEtActivitesResMinIndex = (contactsEtActivites, page = 1, pageSize = numberSearchContactsEtActivitesResultPerPage) => {
+  if (!Array.isArray(contactsEtActivites)) {
     return 1;
   }
 
-  const total   = dossiers.length;
+  const total   = contactsEtActivites.length;
   if (total <= pageSize - 1) {
     return 1;
   }
@@ -77,12 +73,12 @@ export const getSearchDossiersResMinIndex = (dossiers, page = 1, pageSize = numb
   return ((page - 1) * pageSize) + 1;
 };
 
-export const getSearchDossiersResMaxIndex = (dossiers, page = 1, pageSize = numberSearchDossiersResultPerPage) => {
-  if (!Array.isArray(dossiers)) {
+export const getSearchContactsEtActivitesResMaxIndex = (contactsEtActivites, page = 1, pageSize = numberSearchContactsEtActivitesResultPerPage) => {
+  if (!Array.isArray(contactsEtActivites)) {
     return 1;
   }
 
-  const total   = dossiers.length;
+  const total   = contactsEtActivites.length;
   if (total <= pageSize - 1) {
     return total;
   }

@@ -78,6 +78,11 @@ import {
   getSearchDossiersResMinIndex,
   getSearchDossiersResMaxIndex
 }                     from './utils/benefDossiersPagination';
+import {
+  getCurrentSearchContactsEtActivitesResPageContent,
+  getSearchContactsEtActivitesResMinIndex,
+  getSearchContactsEtActivitesResMaxIndex
+}                     from './utils/benefContactsEtActivitesPagination';
 
 export {
   // utils:
@@ -148,5 +153,10 @@ export {
   // benef dossiers pagination:
   getCurrentSearchDossiersResPageContent,
   getSearchDossiersResMinIndex,
-  getSearchDossiersResMaxIndex
+  getSearchDossiersResMaxIndex,
+
+  // benef contact et activites pagination:
+  getCurrentSearchContactsEtActivitesResPageContent,
+  getSearchContactsEtActivitesResMinIndex,
+  getSearchContactsEtActivitesResMaxIndex
 };
