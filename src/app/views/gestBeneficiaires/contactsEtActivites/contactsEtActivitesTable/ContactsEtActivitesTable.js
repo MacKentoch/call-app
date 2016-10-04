@@ -3,7 +3,7 @@ import {
   ListDossiersBeneficaire
 }                                         from '../../../../components';
 
-const DossiersTable = ({
+const ContactsEtActivitesTable = ({
   dossiers,
   isFetchingDossiers,
 
@@ -58,7 +58,7 @@ const DossiersTable = ({
   );
 };
 
-DossiersTable.propTypes = {
+ContactsEtActivitesTable.propTypes = {
   // pagination & search:
   currentPageDossiers: PropTypes.array.isRequired,
   minPage: PropTypes.number.isRequired,
@@ -95,4 +95,4 @@ DossiersTable.propTypes = {
   onDossierCancelEdition: PropTypes.func.isRequired
 };
 
-export default DossiersTable;
+export default ContactsEtActivitesTable;

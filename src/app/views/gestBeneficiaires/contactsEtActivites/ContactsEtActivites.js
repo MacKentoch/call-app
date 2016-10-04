@@ -11,10 +11,8 @@ import {
   getSearchContactsEtActivitesResMinIndex,
   getSearchContactsEtActivitesResMaxIndex
 }                                         from '../../../services';
-import SavingIndicator                    from '../savingIndicator/SavingIndicator';
-import DossiersTable                      from './dossiersTable/DossiersTable';
+import ContactsEtActivitesTable           from './contactsEtActivitesTable/ContactsEtActivitesTable';
 import ToggleCollapse                     from './toggleCollapse/ToggleCollapse';
-import CreateDossierButton                from './createDossierButton/CreateDossierButton';
 
 
 moment.locale('fr');
@@ -89,10 +87,10 @@ class ContactsEtActivites extends Component {
           Contacts et activités
         </div>
         <Collapse
-          isOpened={!isCollapsedDossiers}
+          isOpened={!isCollapsedContactsEtActivites}
           keepCollapsedContent={false}>
           <div style={{ height: '230px' }}>
-          <DossiersTable
+          <ContactsEtActivitesTable
             contactsEtActivites={contactsEtActivites}
 
             // pagination & search:
