@@ -66,7 +66,7 @@ export const gestBenefMock = {
       dateTauxPlein: '01/01/2022'
     }
   ],
-  contactEtActivites: [
+  contactsEtActivites: [
     // => numDossier: '1543'
     {
       id: 1,

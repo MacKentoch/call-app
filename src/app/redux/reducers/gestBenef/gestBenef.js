@@ -324,9 +324,11 @@ const gestBenef = (state = initialState, action) => {
         ? [...action.gestBenef.dossiers]
         : [...initialState.dossiers],
       // contacts Et activites // fetch all benef means no dossier selected so contactsEtActivites is empty
-      contactsEtActivites: [...initialState.contactsEtActivites],
-      numDossierSelected: initialState.numDossierSelected,
+      contactsEtActivites: action.gestBenef && action.gestBenef.contactsEtActivites
+        ? [...action.gestBenef.contactsEtActivites]
+        : [...initialState.contactsEtActivites],
 
+      numDossierSelected: initialState.numDossierSelected,
       editDossierId: initialState.editDossierId
     };
 
