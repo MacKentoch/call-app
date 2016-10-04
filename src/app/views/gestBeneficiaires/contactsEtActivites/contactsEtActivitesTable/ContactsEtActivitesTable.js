@@ -4,17 +4,10 @@ import {
 }                                         from '../../../../components';
 
 const ContactsEtActivitesTable = ({
-  dossiers,
-  isFetchingDossiers,
-
-  onDossierSelection,
-  onDossierEdition,
-  isEditingDossiers,
-  editDossierId,
-  onDossierValidEdition,
-  onDossierCancelEdition,
+  contactsEtActivites,
+  isFetchingContactsEtActivites,
   // pagination & search:
-  currentPageDossiers,
+  currentPageContactsEtActivites,
   minPage,
   maxPage,
   onPagingPreviousClick,
