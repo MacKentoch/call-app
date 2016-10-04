@@ -12,7 +12,7 @@ import {
   getSearchContactsEtActivitesResMaxIndex
 }                                         from '../../../services';
 import ContactsEtActivitesTable           from './contactsEtActivitesTable/ContactsEtActivitesTable';
-// import ToggleCollapse                     from './toggleCollapse/ToggleCollapse';
+import ToggleCollapse                     from './toggleCollapse/ToggleCollapse';
 
 
 moment.locale('fr');
@@ -85,6 +85,11 @@ class ContactsEtActivites extends Component {
           </i>
           &nbsp;
           Contacts et activités
+          <ToggleCollapse
+            isEditing={isEditingDossiers}
+            isCollapsed={isCollapsedDossiers}
+            toggleCollapse={onCollapseClick}
+          />
         </div>
         <Collapse
           isOpened={!isCollapsedContactsEtActivites}

@@ -48,6 +48,9 @@ class GestBeneficiaires extends Component {
     this.handlesOnDossierValidEdition = this.handlesOnDossierValidEdition.bind(this);
     this.handlesOnDossierCancelEdition = this.handlesOnDossierCancelEdition.bind(this);
     this.handlesOnCreateNewDossiersClick = this.handlesOnCreateNewDossiersClick.bind(this);
+    // contactsEtActivites related methods
+    // dossiers related methods:
+    this.handlesOnContactsEtActivitesCollapseClick = this.handlesOnContactsEtActivitesCollapseClick.bind(this);
   }
 
   componentDidMount() {
@@ -798,8 +801,11 @@ class GestBeneficiaires extends Component {
     }
   }
 
-  handlesOnDossierSelection(dossierSelected) {
+  handlesOnDossierSelection(dossierSelected = 0) {
+    /* eslint-disable no-console */
     console.log('TODO: dossier selected: ', dossierSelected);
+    // finalement pas besoin de cette méthode pour l'instant
+    /* eslint-enable no-console */
   }
 
   handlesOnDossierEdition(dossierToEdit) {
@@ -910,6 +916,10 @@ class GestBeneficiaires extends Component {
       });
     }
   }
+
+  // /////////////////////////////////////
+  //  ContactsEtActivites related methods
+  // /////////////////////////////////////
 }
 
 GestBeneficiaires.propTypes = {
