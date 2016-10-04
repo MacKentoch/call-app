@@ -62,23 +62,23 @@ const Table  = ({ contactsEtActivites }) => {
               motifs,
               delais
             },
-            dossierIdx) => {
+            contactsEtActivitesIdx) => {
               return (
                 <Row
-                  key={dossierIdx}
+                  key={contactsEtActivitesIdx}
                   // contactsEtActivites props:
-                  id,
-                  numDossier,
-                  numFiche,
-                  dateCreation,
-                  dateReception,
-                  canal,
-                  reclamation,
-                  statut,
-                  creePar,
-                  traiteePar,
-                  ficheTransmiseA,
-                  motifs,
+                  id={}
+                  numDossier={}
+                  numFiche={}
+                  dateCreation={}
+                  dateReception={}
+                  canal={}
+                  reclamation={}
+                  statut={}
+                  creePar={}
+                  traiteePar={}
+                  ficheTransmiseA={}
+                  motifs={}
                   delais={}
                 />
               );
