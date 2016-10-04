@@ -298,9 +298,13 @@ class GestBeneficiaires extends Component {
                       <ContactsEtActivites
                         isFetchingContactsEtActivites={isFetchingContactsEtActivites}
                         lastFetchTimeContactsEtActivites={lastFetchTimeContactsEtActivites}
+
                         contactsEtActivites={contactsEtActivites}
+                        
                         numDossierSelected={numDossierSelected}
+
                         isCollapsedContactsEtActivites={isCollapsedContactsEtActivites}
+                        onCollapseClick={this.handlesOnContactsEtActivitesCollapseClick}
                       />
 
                     </div>
@@ -920,6 +924,21 @@ class GestBeneficiaires extends Component {
   // /////////////////////////////////////
   //  ContactsEtActivites related methods
   // /////////////////////////////////////
+  handlesOnContactsEtActivitesCollapseClick() {
+    const {
+      isCollapsedContactsEtActivites,
+      actions: {
+        setIsCollapsedContactsEtActivites,
+        unsetIsCollapsedContactsEtActivites
+      }
+    } = this.props;
+
+    if (isCollapsedContactsEtActivites) {
+      unsetIsCollapsedContactsEtActivites();
+    } else {
+      setIsCollapsedContactsEtActivites();
+    }
+  }
 }
 
 GestBeneficiaires.propTypes = {

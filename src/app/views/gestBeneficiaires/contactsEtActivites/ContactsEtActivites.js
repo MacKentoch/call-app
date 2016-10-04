@@ -69,6 +69,7 @@ class ContactsEtActivites extends Component {
       lastFetchTimeContactsEtActivites,
       // numDossierSelected,
       isCollapsedContactsEtActivites,
+      onCollapseClick,
       contactsEtActivites
     } = this.props;
 
@@ -86,8 +87,7 @@ class ContactsEtActivites extends Component {
           &nbsp;
           Contacts et activités
           <ToggleCollapse
-            isEditing={isEditingDossiers}
-            isCollapsed={isCollapsedDossiers}
+            isCollapsed={isCollapsedContactsEtActivites}
             toggleCollapse={onCollapseClick}
           />
         </div>
@@ -191,7 +191,9 @@ ContactsEtActivites.propTypes = {
   lastFetchTimeContactsEtActivites: PropTypes.string.isRequired,
 
   numDossierSelected: PropTypes.number.isRequired,
+
   isCollapsedContactsEtActivites: PropTypes.bool.isRequired,
+  onCollapseClick: PropTypes.func.isRequired,
 
   contactsEtActivites: PropTypes.arrayOf(
     PropTypes.shape({
@@ -210,13 +212,6 @@ ContactsEtActivites.propTypes = {
       delais: PropTypes.number.isRequired // unit is day
     })
   ).isRequired
-  //
-  // onDossierSelection: PropTypes.func.isRequired,
-  // onDossierEdition: PropTypes.func.isRequired,
-  // onDossierValidEdition: PropTypes.func.isRequired,
-  // onDossierCancelEdition: PropTypes.func.isRequired,
-  //
-  // onCreateDossierClick: PropTypes.func.isRequired
 };
 
 export default ContactsEtActivites;
