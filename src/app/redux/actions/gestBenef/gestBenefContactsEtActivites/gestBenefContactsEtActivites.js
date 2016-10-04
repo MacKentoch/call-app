@@ -39,11 +39,11 @@ const requestGetGestBenefAllContactsEtActivites = (benefId = 0, time = moment().
   };
 };
 
-const receivedGetGestBenefAllContactsEtActivites = (dossiers = [], time = moment().format(formatDate)) => {
+const receivedGetGestBenefAllContactsEtActivites = (contactsEtActivites = [], time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_BENEF_ALL_CONTACTS_ET_ACTIVITES,
     isFetchingContactsEtActivites: false,
-    dossiers,
+    contactsEtActivites,
     time
   };
 };
@@ -149,11 +149,11 @@ const requestGetGestBenefThisDossierContactsEtActivites = (benefId = 0, numDossi
   };
 };
 
-const receivedGetGestBenefThisDossierContactsEtActivites = (dossiers = [], time = moment().format(formatDate)) => {
+const receivedGetGestBenefThisDossierContactsEtActivites = (contactsEtActivites = [], time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_BENEF_THIS_DOSSIER_CONTACTS_ET_ACTIVITES,
     isFetchingContactsEtActivites : false,
-    dossiers,
+    contactsEtActivites,
     time
   };
 };

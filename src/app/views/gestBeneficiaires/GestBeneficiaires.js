@@ -731,6 +731,9 @@ class GestBeneficiaires extends Component {
                 level: notificationPayload.level ? notificationPayload.level : 'info'
               });
             }
+
+            // refresh all contact et activites:
+            this.refreshAllContactEtActivites(idBenef);
           }
         )
         .catch(
@@ -744,6 +747,46 @@ class GestBeneficiaires extends Component {
           }
         );
     }
+  }
+
+  refreshAllContactEtActivites(idBenef = 0, resetMessage = '') {
+    if (!idBenef || !(parseInt(idBenef, 10) > 0)) {
+      return;
+    }
+
+    const {
+      actions: {
+        getGestBenefAllContactsEtActivitesIfNeeded,
+        addNotificationMessage
+      }
+    } = this.props;
+
+    getGestBenefAllContactsEtActivitesIfNeeded(idBenef)
+      .then(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            /* eslint-disable no-nested-ternary */
+            const message = resetMessage
+              ? resetMessage
+              : notificationPayload.message ? notificationPayload.message : '';
+            /* eslint-enable no-nested-ternary */
+            addNotificationMessage({
+              message: message,
+              level: notificationPayload.level ? notificationPayload.level : 'info'
+            });
+          }
+        }
+      )
+      .catch(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'error'
+            });
+          }
+        }
+      );
   }
 
   handlesOnDossiersCollapseClick() {
