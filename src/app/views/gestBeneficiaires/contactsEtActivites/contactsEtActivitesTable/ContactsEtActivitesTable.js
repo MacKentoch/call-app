@@ -16,34 +16,27 @@ const ContactsEtActivitesTable = ({
 }) => {
   return (
     <div>
-      {/* when dossiers not empty */}
+      {/* when contactsEtActivites not empty */}
       {
-        (dossiers.length > 0 && !isFetchingDossiers) &&
+        (contactsEtActivites.length > 0 && !isFetchingContactsEtActivites) &&
         <ListDossiersBeneficaire
-          dossiers={currentPageDossiers}
-
-          isEditingDossiers={isEditingDossiers}
-          editDossierId={editDossierId}
+          contactsEtActivites={currentPageContactsEtActivites}
 
           minPage={minPage}
           maxPage={maxPage}
-          totalDossiers={dossiers.length}
+          totalContactsEtDossiers={contactsEtActivites.length}
 
           onPagingPreviousClick={onPagingPreviousClick}
           onPagingNextClick={onPagingNextClick}
           onSearch={onSearch}
-          onRowClick={onDossierSelection}
-          onRowEditClick={onDossierEdition}
-          onValidEditDossier={onDossierValidEdition}
-          onCancelEditDossier={onDossierCancelEdition}
         />
       }
       {/* when dossiers is empty */}
       {
-        (dossiers.length === 0 && !isFetchingDossiers) &&
+        (contactsEtActivites.length === 0 && !isFetchingContactsEtActivites) &&
         <h3>
           <i>
-            Aucun dossier.
+            Aucun contact.
           </i>
         </h3>
       }
