@@ -36,7 +36,6 @@ const ListContactsEtActivitesBeneficaire = ({
               totalPages={totalContactsEtActivites}
               onPagingPreviousClick={onPagingPreviousClick}
               onPagingNextClick={onPagingNextClick}
-              isEditingDossiers={isEditingDossiers}
             />
             <div className="table-responsive mailbox-messages">
               <Table

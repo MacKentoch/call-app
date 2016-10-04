@@ -12,7 +12,7 @@ import {
   getSearchContactsEtActivitesResMaxIndex
 }                                         from '../../../services';
 import ContactsEtActivitesTable           from './contactsEtActivitesTable/ContactsEtActivitesTable';
-import ToggleCollapse                     from './toggleCollapse/ToggleCollapse';
+// import ToggleCollapse                     from './toggleCollapse/ToggleCollapse';
 
 
 moment.locale('fr');
@@ -67,7 +67,7 @@ class ContactsEtActivites extends Component {
     const {
       isFetchingContactsEtActivites,
       lastFetchTimeContactsEtActivites,
-      numDossierSelected,
+      // numDossierSelected,
       isCollapsedContactsEtActivites,
       contactsEtActivites
     } = this.props;

@@ -3,17 +3,6 @@ import React, {
   PropTypes
 }                     from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-import { appConfig }  from '../../../../config';
-import DatePicker     from 'react-datepicker';
-import moment         from 'moment';
-import {
-  isValidDateOrReturnDefault
-}                     from '../../../../services';
-
-
-moment.locale('fr');
-const formatDate = appConfig.formatDate.defaut;
-
 
 class Row extends Component {
   constructor(props) {
