@@ -291,6 +291,13 @@ class GestBeneficiaires extends Component {
 
                         onCreateDossierClick={this.handlesOnCreateNewDossiersClick}
                       />
+                    </div>
+                  }
+
+                  {/* pas de contactsEtActivites si beneficiaire sans id */}
+                  {
+                    (parseInt(id, 10) > 0) &&
+                    <div>
                       {/* contacts et activites */}
 
                       <div style={{height: '10px'}}></div>
@@ -300,13 +307,14 @@ class GestBeneficiaires extends Component {
                         lastFetchTimeContactsEtActivites={lastFetchTimeContactsEtActivites}
 
                         contactsEtActivites={contactsEtActivites}
-                        
+
                         numDossierSelected={numDossierSelected}
 
                         isCollapsedContactsEtActivites={isCollapsedContactsEtActivites}
                         onCollapseClick={this.handlesOnContactsEtActivitesCollapseClick}
                       />
 
+                      <div style={{height: '10px'}}></div>
                     </div>
                   }
                 </div>
