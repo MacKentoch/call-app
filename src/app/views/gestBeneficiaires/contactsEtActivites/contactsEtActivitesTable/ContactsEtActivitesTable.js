@@ -60,7 +60,7 @@ const ContactsEtActivitesTable = ({
 
 ContactsEtActivitesTable.propTypes = {
   // pagination & search:
-  currentPageDossiers: PropTypes.array.isRequired,
+  currentPageContactsEtActivites: PropTypes.array.isRequired,
   minPage: PropTypes.number.isRequired,
   maxPage: PropTypes.number.isRequired,
   onPagingPreviousClick: PropTypes.func.isRequired,
@@ -68,31 +68,27 @@ ContactsEtActivitesTable.propTypes = {
   onSearch: PropTypes.func.isRequired,
 
   // flags bool
-  isFetchingDossiers: PropTypes.bool.isRequired,
-  lastFetchTimeDossiers: PropTypes.string.isRequired,
-  isEditingDossiers: PropTypes.bool.isRequired,
-  editDossierId: PropTypes.number.isRequired,
-  isSavingDossiers: PropTypes.bool.isRequired,
-  isCollapsedDossiers: PropTypes.bool.isRequired,
+  isFetchingContactsEtActivites: PropTypes.bool.isRequired,
+  lastFetchTimeContactsEtActivites: PropTypes.string.isRequired,
+  isCollapsedContactsEtActivites: PropTypes.bool.isRequired,
   // data
-  dossiers: PropTypes.arrayOf(
+  contactsEtActivites: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      numDossier: PropTypes.string,
-      domaine: PropTypes.string,
-      regime: PropTypes.string,
-      societe: PropTypes.string,
-      numSte: PropTypes.string,
-      statutBenef: PropTypes.string,
-      dateEntreeDispositif: PropTypes.string,
-      dateSortieDispositif: PropTypes.string,
-      dateTauxPlein: PropTypes.string
+      id: PropTypes.number.isRequired,
+      numDossier: PropTypes.string.isRequired,
+      numFiche: PropTypes.number.isRequired,
+      dateCreation: PropTypes.string.isRequired,
+      dateReception: PropTypes.string.isRequired,
+      canal: PropTypes.string.isRequired, // one of 'Mail', 'Téléphone', 'Courrier'
+      reclamation: PropTypes.bool.isRequired,
+      statut: PropTypes.string.isRequired, // one of 'En cours', 'Clôturée', 'Terminée',
+      creePar: PropTypes.string.isRequired,
+      traiteePar: PropTypes.string.isRequired,
+      ficheTransmiseA: PropTypes.string.isRequired,
+      motifs: PropTypes.string.isRequired,
+      delais: PropTypes.number.isRequired // unit is day
     })
-  ).isRequired,
-  onDossierSelection: PropTypes.func.isRequired,
-  onDossierEdition: PropTypes.func.isRequired,
-  onDossierValidEdition: PropTypes.func.isRequired,
-  onDossierCancelEdition: PropTypes.func.isRequired
+  ).isRequired
 };
 
 export default ContactsEtActivitesTable;
