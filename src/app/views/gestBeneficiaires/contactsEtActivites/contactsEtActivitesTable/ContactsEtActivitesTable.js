@@ -1,6 +1,6 @@
 import React, { PropTypes }               from 'react';
 import {
-  ListDossiersBeneficaire
+  ListContactsEtActivitesBeneficaire
 }                                         from '../../../../components';
 
 const ContactsEtActivitesTable = ({
@@ -19,7 +19,7 @@ const ContactsEtActivitesTable = ({
       {/* when contactsEtActivites not empty */}
       {
         (contactsEtActivites.length > 0 && !isFetchingContactsEtActivites) &&
-        <ListDossiersBeneficaire
+        <ListContactsEtActivitesBeneficaire
           contactsEtActivites={currentPageContactsEtActivites}
 
           minPage={minPage}
