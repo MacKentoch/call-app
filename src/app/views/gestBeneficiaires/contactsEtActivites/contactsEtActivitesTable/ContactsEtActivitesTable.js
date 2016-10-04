@@ -24,7 +24,7 @@ const ContactsEtActivitesTable = ({
 
           minPage={minPage}
           maxPage={maxPage}
-          totalContactsEtDossiers={contactsEtActivites.length}
+          totalContactsEtActivites={contactsEtActivites.length}
 
           onPagingPreviousClick={onPagingPreviousClick}
           onPagingNextClick={onPagingNextClick}
