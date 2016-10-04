@@ -44,14 +44,14 @@ class ContactsEtActivites extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { lastFetchTimeDossiers } = this.props;
-    const dossiersAreUpdated = moment(nextProps.lastFetchTimeDossiers, formatDate)
-                                  .diff(moment(lastFetchTimeDossiers, formatDate));
+    const { lastFetchTimeContactsEtActivites } = this.props;
+    const contactsEtActivitesAreUpdated = moment(nextProps.lastFetchTimeContactsEtActivites, formatDate)
+                                            .diff(moment(lastFetchTimeContactsEtActivites, formatDate));
 
-    if (dossiersAreUpdated > 0) {
-      const { dossiers } = nextProps;
-      this.setState({ dossiers: [...dossiers] }); // force all dossiers to refresh
-      this.refreshDossiersBindings([...dossiers]); // force paginated dossiers to refresh
+    if (contactsEtActivitesAreUpdated > 0) {
+      const { contactsEtActivites } = nextProps;
+      this.setState({ contactsEtActivites: [...contactsEtActivites] }); // force all contactsEtActivites to refresh
+      this.refreshDossiersBindings([...contactsEtActivites]); // force paginated contactsEtActivites to refresh
     }
   }
 
@@ -61,90 +61,54 @@ class ContactsEtActivites extends Component {
 
   render() {
     const {
-      currentPageDossiers,
+      currentPageContactsEtActivites,
       currentPage,
-      numberDossiersPerPage
+      numberContactsEtActivitesPerPage
     } = this.state;
 
     const {
-      dossiers,
-      isFetchingDossiers,
-      lastFetchTimeDossiers,
-      isEditingDossiers,
-      editDossierId,
-      isSavingDossiers,
-      isCollapsedDossiers,
-      onCollapseClick,
-      onDossierSelection,
-      onDossierEdition,
-      onDossierValidEdition,
-      onDossierCancelEdition,
-      onCreateDossierClick
+      isFetchingContactsEtActivites,
+      lastFetchTimeContactsEtActivites,
+      numDossierSelected,
+      isCollapsedContactsEtActivites,
+      contactsEtActivites
     } = this.props;
 
-    const minPage = getSearchDossiersResMinIndex(dossiers, currentPage, numberDossiersPerPage);
-    const maxPage= getSearchDossiersResMaxIndex(dossiers, currentPage, numberDossiersPerPage);
+    const minPage = getSearchContactsEtActivitesResMinIndex(contactsEtActivites, currentPage, numberContactsEtActivitesPerPage);
+    const maxPage= getSearchContactsEtActivitesResMaxIndex(contactsEtActivites, currentPage, numberContactsEtActivitesPerPage);
 
     return(
       <div>
         <div className="page-header">
           <i
-            className="fa fa-folder-open"
+            className="fa fa-tasks"
             aria-hidden="true"
             style={{color: '#444444'}}>
           </i>
           &nbsp;
-          Dossiers
-          {
-            !isSavingDossiers &&
-            <CreateDossierButton
-              onClick={onCreateDossierClick}
-            />
-          }
-          {
-            !isSavingDossiers &&
-            <ToggleCollapse
-              isEditing={isEditingDossiers}
-              isCollapsed={isCollapsedDossiers}
-              toggleCollapse={onCollapseClick}
-            />
-          }
+          Contacts et activités
         </div>
         <Collapse
           isOpened={!isCollapsedDossiers}
           keepCollapsedContent={false}>
           <div style={{ height: '230px' }}>
-          {
-            isSavingDossiers
-            ?
-              <SavingIndicator />
-            :
-              <DossiersTable
-                dossiers={dossiers}
-                onDossierSelection={onDossierSelection}
-                onDossierEdition={onDossierEdition}
-                onDossierValidEdition={onDossierValidEdition}
-                onDossierCancelEdition={onDossierCancelEdition}
+          <DossiersTable
+            contactsEtActivites={contactsEtActivites}
 
-                // pagination & search:
-                currentPageDossiers={currentPageDossiers}
-                minPage={minPage}
-                maxPage={maxPage}
-                onPagingPreviousClick={this.handlesOnPagingPreviousClick}
-                onPagingNextClick={this.handlesOnPagingNextClick}
-                onSearch={this.handlesOnSearch}
+            // pagination & search:
+            currentPageContactsEtActivites={currentPageContactsEtActivites}
+            minPage={minPage}
+            maxPage={maxPage}
+            onPagingPreviousClick={this.handlesOnPagingPreviousClick}
+            onPagingNextClick={this.handlesOnPagingNextClick}
+            onSearch={this.handlesOnSearch}
 
-                // flags bool
-                isFetchingDossiers={isFetchingDossiers}
-                lastFetchTimeDossiers={lastFetchTimeDossiers}
+            // flags bool
+            isFetchingContactsEtActivites={isFetchingContactsEtActivites}
+            lastFetchTimeContactsEtActivites={lastFetchTimeContactsEtActivites}
 
-                isEditingDossiers={isEditingDossiers}
-                editDossierId={editDossierId}
-
-                isSavingDossiers={isSavingDossiers}
-                isCollapsedDossiers={isCollapsedDossiers}
-              />
-          }
+            isCollapsedContactsEtActivites={isCollapsedContactsEtActivites}
+          />
           </div>
         </Collapse>
       </div>
@@ -152,39 +116,39 @@ class ContactsEtActivites extends Component {
   }
 
   initContactsEtActivitesBindings() {
-    const { ContactsEtActivites } = this.props;
+    const { contactsEtActivites } = this.props;
     const { currentPage, numberContactsEtActivitesPerPage, filter } = this.state;
 
-    const nextPageContactsEtActivites = getCurrentSearchContactsEtActivitesResPageContent(ContactsEtActivites, currentPage, numberContactsEtActivitesPerPage, filter);
+    const nextPageContactsEtActivites = getCurrentSearchContactsEtActivitesResPageContent(contactsEtActivites, currentPage, numberContactsEtActivitesPerPage, filter);
 
     this.setState({
-      ContactsEtActivites,
+      contactsEtActivites,
       currentPageContactsEtActivites: nextPageContactsEtActivites
     });
   }
 
-  refreshDossiersBindings(dossiers) {
-    const { currentPage, numberDossiersPerPage, filter } = this.state;
+  refreshDossiersBindings(contactsEtActivites) {
+    const { currentPage, numberContactsEtActivitesPerPage, filter } = this.state;
 
-    const nextPageDossiers = getCurrentSearchDossiersResPageContent(dossiers, currentPage, numberDossiersPerPage, filter);
+    const nextPageContactsEtActivites = getCurrentSearchContactsEtActivitesResPageContent(contactsEtActivites, currentPage, numberContactsEtActivitesPerPage, filter);
 
     this.setState({
-      dossiers,
-      currentPageDossiers: nextPageDossiers
+      contactsEtActivites,
+      currentPageContactsEtActivites: nextPageContactsEtActivites
     });
   }
 
   handlesOnPagingPreviousClick(event) {
     event.preventDefault();
 
-    const { dossiers } = this.props;
-    const { currentPage, numberDossiersPerPage, filter } = this.state;
+    const { contactsEtActivites } = this.props;
+    const { currentPage, numberContactsEtActivitesPerPage, filter } = this.state;
 
     const previousPage = currentPage - 1 > 0 ? currentPage - 1 : currentPage;
-    const nextPageDossiers = getCurrentSearchDossiersResPageContent(dossiers, previousPage, numberDossiersPerPage, filter);
+    const nextPageContactsEtActivites = getCurrentSearchContactsEtActivitesResPageContent(contactsEtActivites, previousPage, numberContactsEtActivitesPerPage, filter);
 
     this.setState({
-      currentPageDossiers: nextPageDossiers,
+      currentPageContactsEtActivites: nextPageContactsEtActivites,
       currentPage: previousPage
     });
   }
@@ -192,28 +156,28 @@ class ContactsEtActivites extends Component {
   handlesOnPagingNextClick(event) {
     event.preventDefault();
 
-    const { dossiers } = this.props;
-    const { currentPage, numberDossiersPerPage, filter } = this.state;
+    const { contactsEtActivites } = this.props;
+    const { currentPage, numberContactsEtActivitesPerPage, filter } = this.state;
 
-    const totalDossiers = dossiers.length;
-    const pageMax = Math.ceil(totalDossiers / numberDossiersPerPage);
+    const totalDossiers = contactsEtActivites.length;
+    const pageMax = Math.ceil(totalDossiers / numberContactsEtActivitesPerPage);
     const nextPage = currentPage + 1 <= pageMax ? currentPage + 1 : currentPage;
 
-    const nextPageDossiers = getCurrentSearchDossiersResPageContent(dossiers, nextPage, numberDossiersPerPage, filter);
+    const nextPageContactsEtActivites = getCurrentSearchContactsEtActivitesResPageContent(contactsEtActivites, nextPage, numberContactsEtActivitesPerPage, filter);
     this.setState({
-      currentPageDossiers: nextPageDossiers,
+      currentPageContactsEtActivites: nextPageContactsEtActivites,
       currentPage: nextPage
     });
   }
 
   handlesOnSearch(filter) {
-    const { dossiers } = this.props;
-    const { currentPage, numberDossiersPerPage } = this.state;
+    const { contactsEtActivites } = this.props;
+    const { currentPage, numberContactsEtActivitesPerPage } = this.state;
 
-    const currentPageDossiersFiltered = getCurrentSearchDossiersResPageContent(dossiers, currentPage, numberDossiersPerPage, filter);
+    const currentPageContactsEtActivitesFiltered = getCurrentSearchContactsEtActivitesResPageContent(contactsEtActivites, currentPage, numberContactsEtActivitesPerPage, filter);
 
     this.setState({
-      currentPageDossiers: currentPageDossiersFiltered,
+      currentPageContactsEtActivites: currentPageContactsEtActivitesFiltered,
       filter
     });
   }
