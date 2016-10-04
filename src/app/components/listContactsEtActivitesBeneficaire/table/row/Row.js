@@ -18,101 +18,48 @@ const formatDate = appConfig.formatDate.defaut;
 class Row extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      editDomaine: appConfig.editableDomaine,
-      editRegime: '',
-      editSociete: '',
-      editNumSte: '',
-      editStatutBenef: '',
-      editDateEntree: '',
-      editDateSortie: '',
-      editDateTauxPlein: ''
-    };
-
-    this.handlesOnRowClick = this.handlesOnRowClick.bind(this);
-    this.handlesOnValidEditDossier = this.handlesOnValidEditDossier.bind(this);
-    this.handlesOnCancelEditDossier = this.handlesOnCancelEditDossier.bind(this);
-
-    this.handlesOnEditRowClick = this.handlesOnEditRowClick.bind(this);
-    this.handlesOnEditRegime = this.handlesOnEditRegime.bind(this);
-    this.handlesOnEditSociete = this.handlesOnEditSociete.bind(this);
-    this.handlesOnEditNumSte = this.handlesOnEditNumSte.bind(this);
-    this.handlesOnEditStatutBenef = this.handlesOnEditStatutBenef.bind(this);
-    this.handlesOnDateEntreeDispositifChanged = this.handlesOnDateEntreeDispositifChanged.bind(this);
-    this.handlesOnDateSortieDispositifChanged = this.handlesOnDateSortieDispositifChanged.bind(this);
-    this.handlesOnDateTauxPleinDispositifChanged = this.handlesOnDateTauxPleinDispositifChanged.bind(this);
-  }
-
-  componentDidMount() {
-    this.refreshStateFromProps(this.props);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.refreshStateFromProps(nextProps);
-  }
-
   render() {
     const {
       id,
       numDossier,
-      domaine,
-      regime,
-      societe,
-      numSte,
-      statutBenef,
-      dateEntreeDispositif,
-      dateSortieDispositif,
-      dateTauxPlein,
-      isEditing
+      numFiche,
+      dateCreation,
+      dateReception,
+      canal,
+      reclamation,
+      statut,
+      creePar,
+      traiteePar,
+      ficheTransmiseA,
+      motifs,
+      delais
     } = this.props;
-
-    const {
-      editRegime,
-      editSociete,
-      editNumSte,
-      editStatutBenef,
-      editDateEntree,
-      editDateSortie,
-      editDateTauxPlein
-    } = this.state;
 
     return (
       <tr
         id={id}
-        style={{cursor: 'pointer'}}
-        onClick={this.handlesOnRowClick}>
+        style={{cursor: 'pointer'}}>
 
         <td style={{width: '90px'}}>
           {numDossier}
         </td>
 
-        <td style={{width: '120px'}}>
+        <td style={{width: '90px'}}>
          <span>
-           {domaine}
+           {numFiche}
          </span>
         </td>
 
         <td style={{width: '150px'}}>
-        {
-          isEditing
-          ?
-            <input
-              className="form-control"
-              id="edit"
-              type="text"
-              value={editRegime}
-              onChange={this.handlesOnEditRegime}
-            />
-          :
-           <span>
-             {regime}
-           </span>
-        }
+         <span>
+           {regime}
+         </span>
         </td>
         <td>
         {
@@ -426,26 +373,19 @@ class Row extends Component {
 }
 
 Row.propTypes = {
-  id: PropTypes.number,
-  numDossier: PropTypes.string,
-  domaine: PropTypes.string,
-  regime: PropTypes.string,
-  societe: PropTypes.string,
-  numSte: PropTypes.string,
-  statutBenef: PropTypes.string,
-  dateEntreeDispositif: PropTypes.string,
-  dateSortieDispositif: PropTypes.string,
-  dateTauxPlein: PropTypes.string,
-
-  onRowClick: PropTypes.func.isRequired,
-
-  onRowEditClick: PropTypes.func.isRequired,
-  isEditingDossiers: PropTypes.bool.isRequired,
-
-  isEditing: PropTypes.bool.isRequired,
-
-  onValidEditDossier: PropTypes.func.isRequired,
-  onCancelEditDossier: PropTypes.func.isRequired
+  id: PropTypes.number.isRequired,
+  numDossier: PropTypes.string.isRequired,
+  numFiche: PropTypes.number.isRequired,
+  dateCreation: PropTypes.string.isRequired,
+  dateReception: PropTypes.string.isRequired,
+  canal: PropTypes.string.isRequired,
+  reclamation: PropTypes.bool.isRequired,
+  statut: PropTypes.string.isRequired,
+  creePar: PropTypes.string.isRequired,
+  traiteePar: PropTypes.string.isRequired,
+  ficheTransmiseA: PropTypes.string.isRequired,
+  motifs: PropTypes.string.isRequired,
+  delais: PropTypes.number.isRequired
 };
 
 export default Row;

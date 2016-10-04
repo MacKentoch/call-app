@@ -40,7 +40,7 @@ const ListContactsEtActivitesBeneficaire = ({
             />
             <div className="table-responsive mailbox-messages">
               <Table
-                dossiers={contactsEtActivites}
+                contactsEtActivites={contactsEtActivites}
                 // onRowClick={onRowClick}
               />
             </div>

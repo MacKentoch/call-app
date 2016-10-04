@@ -67,19 +67,19 @@ const Table  = ({ contactsEtActivites }) => {
                 <Row
                   key={contactsEtActivitesIdx}
                   // contactsEtActivites props:
-                  id={}
-                  numDossier={}
-                  numFiche={}
-                  dateCreation={}
-                  dateReception={}
-                  canal={}
-                  reclamation={}
-                  statut={}
-                  creePar={}
-                  traiteePar={}
-                  ficheTransmiseA={}
-                  motifs={}
-                  delais={}
+                  id={id}
+                  numDossier={numDossier}
+                  numFiche={numFiche}
+                  dateCreation={dateCreation}
+                  dateReception={dateReception}
+                  canal={canal}
+                  reclamation={reclamation}
+                  statut={statut}
+                  creePar={creePar}
+                  traiteePar={traiteePar}
+                  ficheTransmiseA={ficheTransmiseA}
+                  motifs={motifs}
+                  delais={delais}
                 />
               );
             }
