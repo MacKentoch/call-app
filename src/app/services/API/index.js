@@ -23,7 +23,9 @@ import {
   getGestBenefAllContactsAndActivites,
   getGestBenefContactsAndActivites
 }                                 from './gestbenef/gestBenef';
-
+import {
+  getGestContacts
+}                                 from './gestContacts/gestContacts';
 export {
   getUserBoitesMails,
   getUserGroupActivity,
@@ -44,5 +46,7 @@ export {
   addGestBenefNewDossier,
   updateGestBenefDossier,
   getGestBenefAllContactsAndActivites,
-  getGestBenefContactsAndActivites
+  getGestBenefContactsAndActivites,
+  // gestContacts:
+  getGestContacts
 };
