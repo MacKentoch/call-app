@@ -29,10 +29,10 @@ class GestContacts extends Component {
     const { params: { benefId } } =  this.props;
     // const { location: { state: { contactCanal } } } = this.props;
 
-    const { actions: { enterGestBeneficiaires, resetGestBenef } } =  this.props;
+    const { actions: { enterGestContacts, resetGestBenef } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
 
-    enterGestBeneficiaires();
+    enterGestContacts();
 
     this.resetContactCollpasing();
     this.resetDossierCollpasing();
@@ -84,8 +84,8 @@ class GestContacts extends Component {
   }
 
   componentWillUnmount() {
-    const { actions: {leaveGestBeneficiaires  } } = this.props;
-    leaveGestBeneficiaires();
+    const { actions: {leaveGestContacts  } } = this.props;
+    leaveGestContacts();
   }
 
   render() {
@@ -420,8 +420,8 @@ GestContacts.propTypes = {
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({
     // view:
-    enterGestBeneficiaires: PropTypes.func,
-    leaveGestBeneficiaires: PropTypes.func,
+    enterGestContacts: PropTypes.func,
+    leaveGestContacts: PropTypes.func,
     // notifications:
     addNotificationMessage: PropTypes.func,
     // get gestBenef:
