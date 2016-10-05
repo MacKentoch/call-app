@@ -14,11 +14,19 @@ import {
   showRechercheBenefModal,
   hideRechercheBenefModal
 }                                     from './rechercheBenefModal';
+import {
+  showSelectBenefModal,
+  hideSelectBenefModal
+}                                     from './selectBenefModal';
 
 export {
-  // recherche benef modal:
+  // recherche benef modal (before benef fedit create):
   showRechercheBenefModal,
   hideRechercheBenefModal,
+
+  // select benef modal (before contact edit/create)
+  showSelectBenefModal,
+  hideSelectBenefModal,
 
   // create new benef Dossier modal:
   showNewBenefDossierModal,
