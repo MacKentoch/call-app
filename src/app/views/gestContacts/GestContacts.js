@@ -17,18 +17,6 @@ class GestContacts extends Component {
     // identite related methods:
     this.handlesOnIdentiteCollapseClick = this.handlesOnIdentiteCollapseClick.bind(this);
     // contact related methods:
-    this.handlesOnFixedPhoneChanged = this.handlesOnFixedPhoneChanged.bind(this);
-    this.handlesOnMobilePhoneChanged = this.handlesOnMobilePhoneChanged.bind(this);
-    this.handlesOnEmailChanged = this.handlesOnEmailChanged.bind(this);
-    this.handlesOnNumAdressChanged = this.handlesOnNumAdressChanged.bind(this);
-    this.handlesOnVoieChanged = this.handlesOnVoieChanged.bind(this);
-    this.handlesOnComplementAdrChanged = this.handlesOnComplementAdrChanged.bind(this);
-    this.handlesOnCodePostalChanged = this.handlesOnCodePostalChanged.bind(this);
-    this.handlesOnVilleChanged = this.handlesOnVilleChanged.bind(this);
-    this.handlesOnPaysChanged = this.handlesOnPaysChanged.bind(this);
-    this.handlesOnSaveContactForm = this.handlesOnSaveContactForm.bind(this);
-    this.handlesOnEditContactClick = this.handlesOnEditContactClick.bind(this);
-    this.handlesOnCancelEditContactClick = this.handlesOnCancelEditContactClick.bind(this);
     this.handlesOnContactCollapseClick = this.handlesOnContactCollapseClick.bind(this);
     // dossiers related methods:
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
@@ -183,42 +171,18 @@ class GestContacts extends Component {
                     isFetchingContact={isFetchingContact}
                     lastFetchTimeContact={lastFetchTimeContact}
 
-                    isSavingContact={isSavingContact}
-                    onSaveFormContact={this.handlesOnSaveContactForm}
-
-                    onEditClick={this.handlesOnEditContactClick}
-                    onCancelEditClick={this.handlesOnCancelEditContactClick}
-                    isEditingContact={isEditingContact}
-
                     isCollapsedContact={isCollapsedContact}
                     onCollapseClick={this.handlesOnContactCollapseClick}
 
                     fixedPhone={fixedPhone}
-                    onFixedPhoneChanged={this.handlesOnFixedPhoneChanged}
-
                     mobilePhone={mobilePhone}
-                    onMobilePhoneChanged={this.handlesOnMobilePhoneChanged}
-
                     email={email}
-                    onEmailChanged={this.handlesOnEmailChanged}
-
                     numAdress={numAdress}
-                    onNumAdressChanged={this.handlesOnNumAdressChanged}
-
                     voie={voie}
-                    onVoieChanged={this.handlesOnVoieChanged}
-
                     complementAdr={complementAdr}
-                    onComplementAdrChanged={this.handlesOnComplementAdrChanged}
-
                     codePostal={codePostal}
-                    onCodePostalChanged={this.handlesOnCodePostalChanged}
-
                     ville={ville}
-                    onVilleChanged={this.handlesOnVilleChanged}
-
                     pays={pays}
-                    onPaysChanged={this.handlesOnPaysChanged}
                   />
 
                   {
@@ -410,51 +374,6 @@ class GestContacts extends Component {
     }
   }
 
-  handlesOnFixedPhoneChanged(fixedPhone) {
-    const { actions: { updateTelephoneFixeContact } } = this.props;
-    updateTelephoneFixeContact(fixedPhone);
-  }
-
-  handlesOnMobilePhoneChanged(mobilePhone) {
-    const { actions: { updateTelephoneMobileContact } } = this.props;
-    updateTelephoneMobileContact(mobilePhone);
-  }
-
-  handlesOnEmailChanged(email) {
-    const { actions: { updateEmailContact } } = this.props;
-    updateEmailContact(email);
-  }
-
-  handlesOnNumAdressChanged(numAdr) {
-    const { actions: { updateNumAdressNumber } } = this.props;
-    updateNumAdressNumber(numAdr);
-  }
-
-  handlesOnVoieChanged(voie) {
-    const { actions: { updateVoieAdressContact } } = this.props;
-    updateVoieAdressContact(voie);
-  }
-
-  handlesOnComplementAdrChanged(complementAdr) {
-    const { actions: { updateComplementAdressContact } } = this.props;
-    updateComplementAdressContact(complementAdr);
-  }
-
-  handlesOnCodePostalChanged(codePostal) {
-    const { actions: { updateCodePostalContact } } = this.props;
-    updateCodePostalContact(codePostal);
-  }
-
-  handlesOnVilleChanged(ville) {
-    const { actions: { updateVilleContact } } = this.props;
-    updateVilleContact(ville);
-  }
-
-  handlesOnPaysChanged(pays) {
-    const { actions: { updatePaysContact } } = this.props;
-    updatePaysContact(pays);
-  }
-
   handlesOnContactCollapseClick() {
     const { isCollapsedContact, actions: { setIsCollapsedContact, unsetIsCollapsedContact } } = this.props;
     if (isCollapsedContact) {
@@ -462,95 +381,6 @@ class GestContacts extends Component {
     } else {
       setIsCollapsedContact();
     }
-  }
-
-  handlesOnEditContactClick() {
-    const { actions: { setIsEditingContact, addNotificationMessage } } = this.props;
-    setIsEditingContact();
-    // notification to inform enter edit mode
-    addNotificationMessage({
-      message: 'Les informations "Contact" sont maintenant éditables',
-      level: 'info'
-    });
-  }
-
-  handlesOnCancelEditContactClick() {
-    const {
-      actions: {
-        unsetIsEditingContact,
-        addNotificationMessage,
-        resetGestBenefContact
-      }
-    } = this.props;
-    const { params: { benefId } } =  this.props;
-
-    unsetIsEditingContact();
-    // notification to inform enter edit mode
-    addNotificationMessage({
-      message: 'Annulation de l\'édition des informations "Contact" (les changements ne seront pas sauvegardés)',
-      level: 'warning'
-    });
-
-    const idBenef = parseInt(benefId, 10);
-    if (idBenef) {
-      // EXISTING BENEF: refresh Contact data from backend to reset changes:
-      const resetMessage = 'Données "Contact" du bénéficiaire réinitialisées';
-      this.refreshContactBenefData(idBenef, resetMessage);
-    } else {
-      // NEW BENEF: reset changes:
-      resetGestBenefContact();
-    }
-  }
-
-  handlesOnSaveContactForm() {
-    const {
-      actions: {
-        postGestBenefContactIfNeeded,
-        unsetIsEditingContact
-      }
-    } = this.props;
-    const {
-      id,
-      fixedPhone,
-      mobilePhone,
-      email,
-      numAdress,
-      voie,
-      complementAdr,
-      codePostal,
-      ville,
-      pays
-    } = this.props;
-
-    const payload = {
-      id,
-      fixedPhone,
-      mobilePhone,
-      email,
-      numAdress,
-      voie,
-      complementAdr,
-      codePostal,
-      ville,
-      pays
-    };
-    postGestBenefContactIfNeeded(payload)
-      .then(
-        response => {
-          unsetIsEditingContact();
-          // fetch from server to refresh
-          this.refreshContactBenefData(response.id);
-        }
-      )
-      .catch(
-        error => {
-          const {actions: {addNotificationMessage}} = this.props;
-          addNotificationMessage({
-            message: error.message ? error.message : 'Enregistrement des modifications des informations "Contact" du bénéficiaire en erreur',
-            level: 'error'
-          });
-        }
-      );
   }
 
   // to reset contact editing state and collapsed state
