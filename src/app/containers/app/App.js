@@ -40,6 +40,7 @@ class App extends Component {
     this.handlesOnSearchButtonClick = this.handlesOnSearchButtonClick.bind(this);
     this.handlesHideRechercheBenefModal = this.handlesHideRechercheBenefModal.bind(this);
     this.handlesHideCreateDossierBenefModal = this.handlesHideCreateDossierBenefModal.bind(this);
+    this.handlesHideSelectBenefModal = this.handlesHideSelectBenefModal.bind(this);
   }
 
   componentDidMount() {
@@ -66,7 +67,7 @@ class App extends Component {
 
   render() {
     const { appName, connectionStatus, helloWord } = this.state;
-    const { rechercheBenefModalOpened, createDossierBenefModalOpened } = this.props;
+    const { rechercheBenefModalOpened, selectBenefModalOpened, createDossierBenefModalOpened } = this.props;
     const { userInfos, userInfoFetching, userIsConnected, currentView, children, sideMenuIsCollapsed } = this.props;
     const { navigationGeneral, navigationGestBen, navigationActivities, navigationMailBoxes } = this.state;
 
@@ -136,7 +137,8 @@ class App extends Component {
         />
         {/* modal select benef avant gestion contact */}
         <SelectBenefModal
-          showModal={true}
+          showModal={selectBenefModalOpened}
+          onClose={this.handlesHideSelectBenefModal}
         />
         {/* modal add dossier to benef */}
         <CreateNewDossierBenefModal
@@ -173,6 +175,11 @@ class App extends Component {
   handlesHideRechercheBenefModal() {
     const { actions: {hideRechercheBenefModal} } = this.props;
     hideRechercheBenefModal();
+  }
+
+  handlesHideSelectBenefModal() {
+    const { actions: {hideSelectBenefModal} } = this.props;
+    hideSelectBenefModal();
   }
 
   handlesHideCreateDossierBenefModal() {
@@ -290,8 +297,10 @@ const mapStateToProps = (state) => {
     // user mailboxes (extends navigation)
     userBoitesMails:      state.userBoitesMails.data,
     userBoitesMailsLastUpdateTime: state.userBoitesMails.time,
-    // modal recherche benef:
+    // modal recherche benef (before edit/create benef):
     rechercheBenefModalOpened: state.rechercheBenefModal.isOpened,
+    // modal select benef (before edit/create contact):
+    selectBenefModalOpened: state.selectBenefModal.isOpened,
     // modal add dossier to benef:
     createDossierBenefModalOpened: state.createNewDossierBenefModal.isOpened,
     // notifications
