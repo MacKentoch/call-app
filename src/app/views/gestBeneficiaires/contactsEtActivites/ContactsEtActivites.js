@@ -29,7 +29,7 @@ class ContactsEtActivites extends Component {
       filter: '',
       currentPageContactsEtActivites: [],
       currentPage: 1,
-      numberContactsEtActivitesPerPage: 2
+      numberContactsEtActivitesPerPage: 10
     };
 
     this.handlesOnPagingPreviousClick = this.handlesOnPagingPreviousClick.bind(this);
@@ -94,7 +94,7 @@ class ContactsEtActivites extends Component {
         <Collapse
           isOpened={!isCollapsedContactsEtActivites}
           keepCollapsedContent={false}>
-          <div style={{ height: '230px' }}>
+          <div style={{ height: '530px' }}>
           <ContactsEtActivitesTable
             contactsEtActivites={contactsEtActivites}
 
