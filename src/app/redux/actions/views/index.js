@@ -32,6 +32,11 @@ import {
   enterGestBeneficiaires,
   leaveGestBeneficiaires
 }                                 from './gestBeneficiaires/gestBeneficiaires';
+// gest/edit Contacts
+import {
+  enterGestContacts,
+  leaveGestContacts
+}                                 from './gestContacts/gestContacts';
 export {
   // home
   enterHome,
@@ -65,5 +70,9 @@ export {
 
   // gest/maj benef:
   enterGestBeneficiaires,
-  leaveGestBeneficiaires
+  leaveGestBeneficiaires,
+
+  // gest/edit Contacts
+  enterGestContacts,
+  leaveGestContacts
 };
