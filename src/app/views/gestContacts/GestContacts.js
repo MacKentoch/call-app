@@ -105,7 +105,7 @@ class GestContacts extends Component {
     const { isFetchingContact, lastFetchTimeContact, isCollapsedContact } = this.props;
     const { fixedPhone, mobilePhone, email, numAdress, voie, complementAdr, codePostal, ville, pays } = this.props;
     // dossiers:
-    const { isFetchingDossiers, lastFetchTimeDossiers, isSavingDossiers, isEditingDossiers, isCollapsedDossiers } = this.props;
+    const { isFetchingDossiers, lastFetchTimeDossiers, isSavingDossiers, isCollapsedDossiers } = this.props;
     const { dossiers, editDossierId } = this.props;
     // contacts et activitées
     const { isFetchingContactsEtActivites, lastFetchTimeContactsEtActivites, contactsEtActivites, numDossierSelected, isCollapsedContactsEtActivites } = this.props;
@@ -208,21 +208,10 @@ class GestContacts extends Component {
                         isFetchingDossiers={isFetchingDossiers}
                         lastFetchTimeDossiers={lastFetchTimeDossiers}
 
-                        isEditingDossiers={isEditingDossiers}
-                        editDossierId={editDossierId}
-                        isSavingDossiers={isSavingDossiers}
-
-                        onDossierValidEdition={this.handlesOnDossierValidEdition}
-                        onDossierCancelEdition={this.handlesOnDossierCancelEdition}
-
                         isCollapsedDossiers={isCollapsedDossiers}
                         onCollapseClick={this.handlesOnDossiersCollapseClick}
 
                         onDossierSelection={this.handlesOnDossierSelection}
-
-                        onDossierEdition={this.handlesOnDossierEdition}
-
-                        onCreateDossierClick={this.handlesOnCreateNewDossiersClick}
                       />
                     </div>
                   }
@@ -665,8 +654,6 @@ GestContacts.propTypes = {
   // ///////////////////////
   isFetchingDossiers: PropTypes.bool.isRequired,
   lastFetchTimeDossiers: PropTypes.string.isRequired,
-
-  isEditingDossiers: PropTypes.bool.isRequired,
 
   isSavingDossiers: PropTypes.bool.isRequired,
 
