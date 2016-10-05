@@ -33,7 +33,7 @@ class Dossiers extends Component {
       filter: '',
       currentPageDossiers: [],
       currentPage: 1,
-      numberDossiersPerPage: 2
+      numberDossiersPerPage: 10
     };
 
     this.handlesOnPagingPreviousClick = this.handlesOnPagingPreviousClick.bind(this);
@@ -99,9 +99,10 @@ class Dossiers extends Component {
           Dossiers
           {
             !isSavingDossiers &&
-            <CreateDossierButton
-              onClick={onCreateDossierClick}
-            />
+            // <CreateDossierButton
+            //   onClick={onCreateDossierClick}
+            // />
+            null
           }
           {
             !isSavingDossiers &&
@@ -115,7 +116,7 @@ class Dossiers extends Component {
         <Collapse
           isOpened={!isCollapsedDossiers}
           keepCollapsedContent={false}>
-          <div style={{ height: '230px' }}>
+          <div style={{ height: '430px' }}>
           {
             isSavingDossiers
             ?
