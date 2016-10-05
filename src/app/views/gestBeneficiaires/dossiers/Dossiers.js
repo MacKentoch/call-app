@@ -116,7 +116,7 @@ class Dossiers extends Component {
         <Collapse
           isOpened={!isCollapsedDossiers}
           keepCollapsedContent={false}>
-          <div style={{ height: '700px' }}>
+          <div style={{ height: '530px' }}>
           {
             isSavingDossiers
             ?
