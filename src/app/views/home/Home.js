@@ -17,7 +17,7 @@ const boiteReceptionPath  = `${appConfig.views.mailbox.root.path}/${appConfig.vi
 const boiteEnvoiPath      = `${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.envoi.path}`;
 
 // canaux de contact:
-const canalContactTypeMails =  'Email';
+const canalContactTypeEmails =  'Email';
 const canalContactTypeTelephone =  'Téléphone';
 const canalContactTypeCourier =  'Courier';
 const canalContactTypePersonnes =  'Personne';
@@ -32,6 +32,9 @@ class Home extends Component {
     };
 
     this.handlesOnMailsLinkClick = this.handlesOnMailsLinkClick.bind(this);
+    this.handlesOnEmailsLinkClick = this.handlesOnEmailsLinkClick.bind(this);
+    this.handlesOnTelephoneLinkClick = this.handlesOnTelephoneLinkClick.bind(this);
+    this.handlesOnPersonnesLinkClick = this.handlesOnPersonnesLinkClick.bind(this);
 
     this.handlesOnFichesTraiteesRefreshClick = this.handlesOnFichesTraiteesRefreshClick.bind(this);
     this.handlesOnFichesParCanalRefreshClick = this.handlesOnFichesParCanalRefreshClick.bind(this);
@@ -59,7 +62,7 @@ class Home extends Component {
     const { fichesTraiteesLabels, fichesTraiteesDataset, fichesTraiteesLegend, fichesTraiteesIsFetching, fichesTraiteesLastFetch } = this.props;
     const { fichesParCanalData, fichesParCanalLegend, fichesParCanalIsFetching, fichesParCanalLastFetch } = this.props;
     const { principauxMotifsLabels, principauxMotifsDataset, principauxMotifsLegend, principauxMotifsIsFetching, principauxMotifsLastFetch } = this.props;
-    const { createFicheContactCourier, createFicheContactMail, createFicheContactTelephone, createFicheContactPersonnes } = appConfig.views;
+    // const { createFicheContactCourier, createFicheContactMail, createFicheContactTelephone, createFicheContactPersonnes } = appConfig.views;
     const { userGroupActivityData, userGroupActivityIsFetching, userGroupActivityLastFetch } = this.props;
     const { userBoitesMailsData, userBoitesMailsIsFetching, userBoitesMailsLastFetch } = this.props;
     return(
@@ -85,7 +88,8 @@ class Home extends Component {
           </div>
           <div className="col-md-3">
             <EmailsLink
-              linkTo={createFicheContactMail.path}
+              // linkTo={createFicheContactMail.path}
+              onClick={this.handlesOnEmailsLinkClick}
               title={'Mails'}
               details={'Créer une fiche contact mail'}
               icon={<i className="fa fa-paper-plane-o" aria-hidden="true"></i>}
@@ -94,7 +98,8 @@ class Home extends Component {
           </div>
           <div className="col-md-3">
             <TelephoneLink
-              linkTo={createFicheContactTelephone.path}
+              // linkTo={createFicheContactTelephone.path}
+              onClick={this.handlesOnTelephoneLinkClick}
               title={'Téléphone'}
               details={'Créer une fiche contact téléphone'}
               icon={<i className="fa fa-phone" aria-hidden="true"></i>}
@@ -103,7 +108,8 @@ class Home extends Component {
           </div>
           <div className="col-md-3">
             <PersonnesLink
-              linkTo={createFicheContactPersonnes.path}
+              // linkTo={createFicheContactPersonnes.path}
+              onClick={this.handlesOnPersonnesLinkClick}
               title={'Personnes'}
               details={'Créer une fiche contact personne'}
               icon={<i className="fa fa-users" aria-hidden="true"></i>}
@@ -187,7 +193,25 @@ class Home extends Component {
   handlesOnMailsLinkClick(event) {
     event.preventDefault();
     const { actions: { showSelectBenefModal } } = this.props;
-    showSelectBenefModal(canalContactTypeMails);
+    showSelectBenefModal(canalContactTypeCourier);
+  }
+
+  handlesOnEmailsLinkClick(event) {
+    event.preventDefault();
+    const { actions: { showSelectBenefModal } } = this.props;
+    showSelectBenefModal(canalContactTypeEmails);
+  }
+
+  handlesOnTelephoneLinkClick(event) {
+    event.preventDefault();
+    const { actions: { showSelectBenefModal } } = this.props;
+    showSelectBenefModal(canalContactTypeTelephone);
+  }
+
+  handlesOnPersonnesLinkClick(event) {
+    event.preventDefault();
+    const { actions: { showSelectBenefModal } } = this.props;
+    showSelectBenefModal(canalContactTypePersonnes);
   }
 
   handlesOnFichesTraiteesRefreshClick(event) {
