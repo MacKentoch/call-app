@@ -11,12 +11,12 @@ import { appConfig }  from '../../../config';
 
 // get "all benef data" related to benefId (identite + contact + dossiers)
 export const getGestContacts = benefId => {
-  const api = appConfig.gestBenef.getData.API;
+  const api = appConfig.gestContacts.getData.API;
   const url = `${getLocationOrigin()}/${api}/${benefId}`;
   const options = {...defaultOptions};
 
   if (!benefId) {
-    return Promise.reject({error: 'getGestBenef API: benefId is not valid'});
+    return Promise.reject({error: 'getGestContacts API: benefId is not valid'});
   }
 
   return fetch(url, options)

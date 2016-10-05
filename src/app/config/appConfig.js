@@ -243,6 +243,12 @@ export const appConfig = {
     }
   },
 
+  gestContacts: {
+    getData: {
+      API: 'api/gestContacts'
+    }
+  },
+
   // userGroupActivity config
   userGroupActivity: {
     data: {
