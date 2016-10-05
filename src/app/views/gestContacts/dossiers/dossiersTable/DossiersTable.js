@@ -6,11 +6,6 @@ const DossiersTable = ({
   isFetchingDossiers,
 
   onDossierSelection,
-  onDossierEdition,
-  isEditingDossiers,
-  editDossierId,
-  onDossierValidEdition,
-  onDossierCancelEdition,
   // pagination & search:
   currentPageDossiers,
   minPage,
@@ -27,9 +22,6 @@ const DossiersTable = ({
         <ListDossiersBeneficaire
           dossiers={currentPageDossiers}
 
-          isEditingDossiers={isEditingDossiers}
-          editDossierId={editDossierId}
-
           minPage={minPage}
           maxPage={maxPage}
           totalDossiers={dossiers.length}
@@ -38,9 +30,6 @@ const DossiersTable = ({
           onPagingNextClick={onPagingNextClick}
           onSearch={onSearch}
           onRowClick={onDossierSelection}
-          onRowEditClick={onDossierEdition}
-          onValidEditDossier={onDossierValidEdition}
-          onCancelEditDossier={onDossierCancelEdition}
         />
       }
 
@@ -69,9 +58,6 @@ DossiersTable.propTypes = {
   // flags bool
   isFetchingDossiers: PropTypes.bool.isRequired,
   lastFetchTimeDossiers: PropTypes.string.isRequired,
-  isEditingDossiers: PropTypes.bool.isRequired,
-  editDossierId: PropTypes.number.isRequired,
-  isSavingDossiers: PropTypes.bool.isRequired,
   isCollapsedDossiers: PropTypes.bool.isRequired,
   // data
   dossiers: PropTypes.arrayOf(
@@ -88,10 +74,7 @@ DossiersTable.propTypes = {
       dateTauxPlein: PropTypes.string
     })
   ).isRequired,
-  onDossierSelection: PropTypes.func.isRequired,
-  onDossierEdition: PropTypes.func.isRequired,
-  onDossierValidEdition: PropTypes.func.isRequired,
-  onDossierCancelEdition: PropTypes.func.isRequired
+  onDossierSelection: PropTypes.func.isRequired
 };
 
 export default DossiersTable;

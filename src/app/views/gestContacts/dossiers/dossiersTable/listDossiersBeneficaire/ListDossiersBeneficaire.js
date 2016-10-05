@@ -10,12 +10,7 @@ const ListDossiersBeneficaire = ({
   minPage,
   maxPage,
   totalDossiers,
-  onRowClick,
-  onRowEditClick,
-  isEditingDossiers,
-  editDossierId,
-  onValidEditDossier,
-  onCancelEditDossier
+  onRowClick
 }) => {
   return (
     <div className="panel">
@@ -44,11 +39,6 @@ const ListDossiersBeneficaire = ({
               <Table
                 dossiers={dossiers}
                 onRowClick={onRowClick}
-                onRowEditClick={onRowEditClick}
-                isEditingDossiers={isEditingDossiers}
-                editDossierId={editDossierId}
-                onValidEditDossier={onValidEditDossier}
-                onCancelEditDossier={onCancelEditDossier}
               />
             </div>
           </div>
@@ -84,14 +74,7 @@ ListDossiersBeneficaire.propTypes = {
   onPagingNextClick: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
 
-  onRowClick: PropTypes.func.isRequired,
-
-  onRowEditClick: PropTypes.func.isRequired,
-  isEditingDossiers: PropTypes.bool.isRequired,
-  editDossierId: PropTypes.number.isRequired,
-
-  onValidEditDossier: PropTypes.func.isRequired,
-  onCancelEditDossier: PropTypes.func.isRequired
+  onRowClick: PropTypes.func.isRequired
 };
 
 export default ListDossiersBeneficaire;
