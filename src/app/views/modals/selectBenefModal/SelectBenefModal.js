@@ -18,7 +18,7 @@ const seachBenefDefaultFilter = searchInputBenefFilters[0].id;
 
 const SearchCriteria = [...appConfig.searchCriterias];
 
-const gestBenefUrl = `${appConfig.views.beneficaires.maj.path}`;
+const gestContactsUrl = `${appConfig.views.contacts.edit.path}`;
 
 
 class SelectBenefModal extends Component {
@@ -406,7 +406,7 @@ class SelectBenefModal extends Component {
       // route to edit contact view (type send through router state)
       const { router } = this.context;
       router.push({
-        pathname: `${gestBenefUrl}/${id}`,
+        pathname: `${gestContactsUrl}/${id}`,
         state: { contactCanal: typeContact }
       });
       // close popup

@@ -149,9 +149,14 @@ export const appConfig = {
     activites: {
       viewName: 'Fiche groupe',
       path: 'consult/fichGroup'
+    },
+    contacts: {
+      edit: {
+        viewName: 'Edit contact',
+        path: 'edit/contact'
+      }
     }
   },
-
   formatDate: {
     defaut: 'DD/MM/YYYY-HH:mm:ss'
   },
