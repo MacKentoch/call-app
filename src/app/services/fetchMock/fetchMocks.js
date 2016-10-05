@@ -10,7 +10,8 @@ import {
   listMailsMock,
   mailContentMock,
   searchBenefResultMock,
-  gestBenefMock
+  gestBenefMock,
+  gestContactsMock
 }                       from '../../mocks';
 
 import {
@@ -325,4 +326,24 @@ export const fetchMockGetGestBenefContactsAndActivitesForThisNumDossier = (benef
       );
     }
   );
+};
+
+/*
+  Gest contacts
+ */
+export const fetchMockGetGestContacts = (benefId, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!benefId) {
+    return Promise.reject({
+      'error': 'fetchMockGetGestContacts error: benefId is not valid'
+    });
+  }
+
+  return new Promise(
+   resolve => {
+     setTimeout(
+       () => resolve({...gestContactsMock}),
+       timeToWait
+     );
+   }
+ );
 };
