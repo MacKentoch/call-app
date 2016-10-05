@@ -17,7 +17,8 @@ import {
 }                             from './mailbox';
 import {
   RechercheBenefModalConnected,
-  CreateNewDossierBenefModalConnected
+  CreateNewDossierBenefModalConnected,
+  SelectBenefModalConnected
 }                             from './modals';
 import GestBeneficiairesConnected from './gestBeneficiaires/GestBeneficiaires';
 
@@ -45,5 +46,6 @@ export {
 
   // modals
   RechercheBenefModalConnected,
-  CreateNewDossierBenefModalConnected
+  CreateNewDossierBenefModalConnected,
+  SelectBenefModalConnected
 };

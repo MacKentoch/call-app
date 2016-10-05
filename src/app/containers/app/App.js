@@ -15,7 +15,8 @@ import {
 }                             from '../../views';
 import {
   RechercheBenefModalConnected as RechercheBenefModal,
-  CreateNewDossierBenefModalConnected as CreateNewDossierBenefModal
+  CreateNewDossierBenefModalConnected as CreateNewDossierBenefModal,
+  SelectBenefModalConnected as SelectBenefModal
 }                             from '../../containers';
 import { appConfig }          from '../../config';
 import { BackToTop }          from '../../components';
@@ -127,11 +128,15 @@ class App extends Component {
         </div>
         {/* modals cannot be placed anywhere (avoid backdrop or modal placement issues) so all grouped in same component and outside .wrapper*/}
         <Modals />
-        {/* modal upload pieces jointes mails */}
+        {/* modal recherche benef avant gestion benef */}
         <RechercheBenefModal
           showModal={rechercheBenefModalOpened}
           title={'Recherche de bénéficiaire'}
           onClose={this.handlesHideRechercheBenefModal}
+        />
+        {/* modal select benef avant gestion contact */}
+        <SelectBenefModal
+          showModal={true}
         />
         {/* modal add dossier to benef */}
         <CreateNewDossierBenefModal
