@@ -15,18 +15,7 @@ class GestContacts extends Component {
       animated: true
     };
     // identite related methods:
-    this.handlesOnCiviliteChanged = this.handlesOnCiviliteChanged.bind(this);
-    this.handlesOnNomChanged = this.handlesOnNomChanged.bind(this);
-    this.handlesOnNomJeuneFilleChanged = this.handlesOnNomJeuneFilleChanged.bind(this);
-    this.handlesOnPrenomChanged = this.handlesOnPrenomChanged.bind(this);
-    this.handlesOnDateNaissanceChanged = this.handlesOnDateNaissanceChanged.bind(this);
-    this.handlesOnNumssChanged = this.handlesOnNumssChanged.bind(this);
-    this.handlesOnDateDecesChanged = this.handlesOnDateDecesChanged.bind(this);
-    this.handlesOnMaritalStatusChanged = this.handlesOnMaritalStatusChanged.bind(this);
     this.handlesOnIdentiteCollapseClick = this.handlesOnIdentiteCollapseClick.bind(this);
-    this.handlesOnEditIdentiteClick = this.handlesOnEditIdentiteClick.bind(this);
-    this.handlesOnCancelEditIdentiteClick = this.handlesOnCancelEditIdentiteClick.bind(this);
-    this.handlesOnSaveIdentiteForm = this.handlesOnSaveIdentiteForm.bind(this);
     // contact related methods:
     this.handlesOnFixedPhoneChanged = this.handlesOnFixedPhoneChanged.bind(this);
     this.handlesOnMobilePhoneChanged = this.handlesOnMobilePhoneChanged.bind(this);
@@ -55,14 +44,13 @@ class GestContacts extends Component {
 
   componentDidMount() {
     const { params: { benefId } } =  this.props;
-    const { location: { state: { contactCanal } } } = this.props;
+    // const { location: { state: { contactCanal } } } = this.props;
 
     const { actions: { enterGestBeneficiaires, resetGestBenef } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
 
     enterGestBeneficiaires();
 
-    this.resetIdentiteEditingAndCollpasing();
     this.resetContactEditingAndCollpasing();
     this.resetDossierEditingAndCollpasing();
 
@@ -92,7 +80,6 @@ class GestContacts extends Component {
 
     if (benefId !== this.props.params.benefId) {
       // search another benef from same page = need to refresh
-      this.resetIdentiteEditingAndCollpasing();
       this.resetContactEditingAndCollpasing();
       this.resetDossierEditingAndCollpasing();
 
@@ -124,7 +111,7 @@ class GestContacts extends Component {
     // id benef if === 0  then create
     const { id } = this.props;
     // identite:
-    const { isFetchingIdentite, lastFetchTimeIdentite, isEditingIdentite, isSavingIdentite, isCollapsedIdentite } = this.props;
+    const { isFetchingIdentite, lastFetchTimeIdentite, isCollapsedIdentite } = this.props;
     const { civilite, nom, prenom, nomJeuneFille, dateNaissance, numss, dateDeces, maritalStatus } = this.props;
     // contact:
     const { isFetchingContact, lastFetchTimeContact, isSavingContact, isEditingContact, isCollapsedContact } = this.props;
@@ -175,36 +162,16 @@ class GestContacts extends Component {
                     isFetchingIdentite={isFetchingIdentite}
                     lastFetchTimeIdentite={lastFetchTimeIdentite}
 
-                    isSavingIdentite={isSavingIdentite}
-                    onSaveFormIdentite={this.handlesOnSaveIdentiteForm}
-
-                    onEditClick={this.handlesOnEditIdentiteClick}
-                    onCancelEditClick={this.handlesOnCancelEditIdentiteClick}
-                    isEditingIdentite={isEditingIdentite}
-
                     isCollapsedIdentite={isCollapsedIdentite}
                     onCollapseClick={this.handlesOnIdentiteCollapseClick}
 
                     civilite={civilite}
-                    onCiviliteChange={this.handlesOnCiviliteChanged}
-
                     nom={nom}
-                    onNomChanged={this.handlesOnNomChanged}
-
                     nomJeuneFille={nomJeuneFille}
-                    onNomJeuneFilleChanged={this.handlesOnNomJeuneFilleChanged}
-
                     prenom={prenom}
-                    onPrenomChanged={this.handlesOnPrenomChanged}
-
                     dateNaissance={dateNaissance}
-                    onDateNaissanceChanged={this.handlesOnDateNaissanceChanged}
-
                     numss={numss}
-                    onNumssChanged={this.handlesOnNumssChanged}
-
                     dateDeces={dateDeces}
-                    onDateDecesChanged={this.handlesOnDateDecesChanged}
 
                     maritalStatus={maritalStatus}
                     onMaritalStatusChanged={this.handlesOnMaritalStatusChanged}
@@ -398,46 +365,6 @@ class GestContacts extends Component {
     }
   }
 
-  handlesOnCiviliteChanged(civilite) {
-    const { actions: { updateCiviliteIdentite } } = this.props;
-    updateCiviliteIdentite(civilite);
-  }
-
-  handlesOnNomChanged(nom) {
-    const { actions: { updateNomIdentite } } = this.props;
-    updateNomIdentite(nom);
-  }
-
-  handlesOnNomJeuneFilleChanged(nomJeuneFille) {
-    const { actions: { updateNomDeJeuneFilleIdentite } } = this.props;
-    updateNomDeJeuneFilleIdentite(nomJeuneFille);
-  }
-
-  handlesOnPrenomChanged(prenom) {
-    const { actions: { updatePrenomIdentite } } = this.props;
-    updatePrenomIdentite(prenom);
-  }
-
-  handlesOnDateNaissanceChanged(dateNaissance) {
-    const { actions: { updateDateNaissanceIdentite } } = this.props;
-    updateDateNaissanceIdentite(dateNaissance);
-  }
-
-  handlesOnNumssChanged(numss) {
-    const { actions: { updateNumssIdentite } } = this.props;
-    updateNumssIdentite(numss);
-  }
-
-  handlesOnDateDecesChanged(dateDeces) {
-    const { actions: { updateDateDecesIdentite } } = this.props;
-    updateDateDecesIdentite(dateDeces);
-  }
-
-  handlesOnMaritalStatusChanged(maritalStatus) {
-    const { actions: { updateMaritalStatusIdentite } } = this.props;
-    updateMaritalStatusIdentite(maritalStatus);
-  }
-
   handlesOnIdentiteCollapseClick() {
     const { isCollapsedIdentite, actions: { setIsCollapsedIdentite, unsetIsCollapsedIdentite } } = this.props;
     if (isCollapsedIdentite) {
@@ -445,100 +372,6 @@ class GestContacts extends Component {
     } else {
       setIsCollapsedIdentite();
     }
-  }
-
-  handlesOnEditIdentiteClick() {
-    const { actions: { setIsEditingIdentite, addNotificationMessage } } = this.props;
-    setIsEditingIdentite();
-    // notification to inform enter edit mode
-    addNotificationMessage({
-      message: 'Les informations "Identité" sont maintenant éditables',
-      level: 'info'
-    });
-  }
-
-  handlesOnCancelEditIdentiteClick() {
-    const {
-      actions: {
-        unsetIsEditingIdentite,
-        addNotificationMessage,
-        resetGestBenefIdentite
-      }
-    } = this.props;
-    const { params: { benefId } } =  this.props;
-
-    unsetIsEditingIdentite();
-    // notification to inform enter edit mode
-    addNotificationMessage({
-      message: 'Annulation de l\'édition des informations "Identité" (les changements ne seront pas sauvegardés)',
-      level: 'warning'
-    });
-
-    const idBenef = parseInt(benefId, 10);
-    if (idBenef) {
-      // EXISTING BENEF: refresh Indentite data from backend to reset changes:
-      const resetMessage = 'Données "Identité" du bénéficiaire réinitialisées';
-      this.refreshIdentiteBenefData(idBenef, resetMessage);
-    } else {
-      // NEW BENEF: reset changes:
-      resetGestBenefIdentite();
-    }
-  }
-
-  // to reset identite editing state and collapsed state
-  resetIdentiteEditingAndCollpasing() {
-    const { actions: { unsetIsEditingIdentite, unsetIsCollapsedIdentite } } = this.props;
-    unsetIsEditingIdentite();
-    unsetIsCollapsedIdentite();
-  }
-
-  handlesOnSaveIdentiteForm() {
-    const {
-      actions: {
-        postGestBenefIdentiteIfNeeded,
-        unsetIsEditingIdentite
-      }
-    } = this.props;
-    const {
-      id,
-      civilite,
-      nom,
-      nomJeuneFille,
-      prenom,
-      dateNaissance,
-      numss,
-      dateDeces,
-      maritalStatus
-    } = this.props;
-
-    const payload = {
-      id,
-      civilite,
-      nom,
-      nomJeuneFille,
-      prenom,
-      dateNaissance,
-      numss,
-      dateDeces,
-      maritalStatus
-    };
-    postGestBenefIdentiteIfNeeded(payload)
-      .then(
-        response => {
-          unsetIsEditingIdentite();
-          // fetch from server to refresh
-          this.refreshIdentiteBenefData(response.id);
-        }
-      )
-      .catch(
-        error => {
-          const {actions: {addNotificationMessage}} = this.props;
-          addNotificationMessage({
-            message: error.message ? error.message : 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur',
-            level: 'error'
-          });
-        }
-      );
   }
 
   // ////////////////////////////////
@@ -969,8 +802,7 @@ GestContacts.propTypes = {
   // ///////////////////////
   isFetchingIdentite: PropTypes.bool.isRequired,
   lastFetchTimeIdentite: PropTypes.string.isRequired,
-  isEditingIdentite: PropTypes.bool.isRequired,
-  isSavingIdentite: PropTypes.bool.isRequired,
+
   isCollapsedIdentite: PropTypes.bool.isRequired,
   civilite: PropTypes.string.isRequired,
   nom: PropTypes.string.isRequired,
@@ -1003,9 +835,13 @@ GestContacts.propTypes = {
   // ///////////////////////
   isFetchingDossiers: PropTypes.bool.isRequired,
   lastFetchTimeDossiers: PropTypes.string.isRequired,
+
   isEditingDossiers: PropTypes.bool.isRequired,
+
   isSavingDossiers: PropTypes.bool.isRequired,
+
   isCollapsedDossiers: PropTypes.bool.isRequired,
+
   dossiers: PropTypes.array.isRequired,
   editDossierId: PropTypes.number.isRequired,
   // ///////////////////////
@@ -1040,6 +876,7 @@ GestContacts.propTypes = {
     // UI: Identite
     setIsEditingIdentite: PropTypes.func,
     unsetIsEditingIdentite: PropTypes.func,
+
     setIsCollapsedIdentite: PropTypes.func,
     unsetIsCollapsedIdentite: PropTypes.func,
     updateCiviliteIdentite: PropTypes.func,
@@ -1087,8 +924,10 @@ GestContacts.propTypes = {
     // UI dossiers
     setIsCollapsedDossiers: PropTypes.func,
     unsetIsCollapsedDossiers: PropTypes.func,
+
     setIsSavingNewDossier: PropTypes.func,
     unsetIsSavingNewDossier: PropTypes.func,
+
     setIsEditingDossier: PropTypes.func,
     unsetIsEditingDossier: PropTypes.func,
     // modal create new dossier:
@@ -1108,8 +947,7 @@ GestContacts.propTypes = {
 
 // to remove when full redux store is done:
 GestContacts.defaultProps = {
-  isEditingIdentite: false,
-  isSavingIdentite: false
+  isEditingIdentite: false
 };
 
 export default GestContacts;
