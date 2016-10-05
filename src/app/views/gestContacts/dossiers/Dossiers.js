@@ -14,8 +14,6 @@ import {
 import SavingIndicator                    from '../savingIndicator/SavingIndicator';
 import DossiersTable                      from './dossiersTable/DossiersTable';
 import ToggleCollapse                     from './toggleCollapse/ToggleCollapse';
-import CreateDossierButton                from './createDossierButton/CreateDossierButton';
-
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
@@ -80,8 +78,7 @@ class Dossiers extends Component {
       onDossierSelection,
       onDossierEdition,
       onDossierValidEdition,
-      onDossierCancelEdition,
-      onCreateDossierClick
+      onDossierCancelEdition
     } = this.props;
 
     const minPage = getSearchDossiersResMinIndex(dossiers, currentPage, numberDossiersPerPage);
@@ -96,58 +93,41 @@ class Dossiers extends Component {
             style={{color: '#444444'}}>
           </i>
           &nbsp;
-          Dossiers
-          {
-            !isSavingDossiers &&
-            // <CreateDossierButton
-            //   onClick={onCreateDossierClick}
-            // />
-            null
-          }
-          {
-            !isSavingDossiers &&
-            <ToggleCollapse
-              isEditing={isEditingDossiers}
-              isCollapsed={isCollapsedDossiers}
-              toggleCollapse={onCollapseClick}
-            />
-          }
+          Informations "dossiers" du bénéficaire
+          <ToggleCollapse
+            isCollapsed={isCollapsedDossiers}
+            toggleCollapse={onCollapseClick}
+          />
         </div>
         <Collapse
           isOpened={!isCollapsedDossiers}
           keepCollapsedContent={false}>
           <div style={{ height: '530px' }}>
-          {
-            isSavingDossiers
-            ?
-              <SavingIndicator />
-            :
-              <DossiersTable
-                dossiers={dossiers}
-                onDossierSelection={onDossierSelection}
-                onDossierEdition={onDossierEdition}
-                onDossierValidEdition={onDossierValidEdition}
-                onDossierCancelEdition={onDossierCancelEdition}
+            <DossiersTable
+              dossiers={dossiers}
+              onDossierSelection={onDossierSelection}
+              onDossierEdition={onDossierEdition}
+              onDossierValidEdition={onDossierValidEdition}
+              onDossierCancelEdition={onDossierCancelEdition}
 
-                // pagination & search:
-                currentPageDossiers={currentPageDossiers}
-                minPage={minPage}
-                maxPage={maxPage}
-                onPagingPreviousClick={this.handlesOnPagingPreviousClick}
-                onPagingNextClick={this.handlesOnPagingNextClick}
-                onSearch={this.handlesOnSearch}
+              // pagination & search:
+              currentPageDossiers={currentPageDossiers}
+              minPage={minPage}
+              maxPage={maxPage}
+              onPagingPreviousClick={this.handlesOnPagingPreviousClick}
+              onPagingNextClick={this.handlesOnPagingNextClick}
+              onSearch={this.handlesOnSearch}
 
-                // flags bool
-                isFetchingDossiers={isFetchingDossiers}
-                lastFetchTimeDossiers={lastFetchTimeDossiers}
+              // flags bool
+              isFetchingDossiers={isFetchingDossiers}
+              lastFetchTimeDossiers={lastFetchTimeDossiers}
 
-                isEditingDossiers={isEditingDossiers}
-                editDossierId={editDossierId}
+              isEditingDossiers={isEditingDossiers}
+              editDossierId={editDossierId}
 
-                isSavingDossiers={isSavingDossiers}
-                isCollapsedDossiers={isCollapsedDossiers}
-              />
-          }
+              isSavingDossiers={isSavingDossiers}
+              isCollapsedDossiers={isCollapsedDossiers}
+            />
           </div>
         </Collapse>
       </div>
