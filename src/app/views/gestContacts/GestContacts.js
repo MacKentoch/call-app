@@ -55,6 +55,8 @@ class GestContacts extends Component {
 
   componentDidMount() {
     const { params: { benefId } } =  this.props;
+    const { location: { state: { contactCanal } } } = this.props;
+
     const { actions: { enterGestBeneficiaires, resetGestBenef } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
 
@@ -152,8 +154,8 @@ class GestContacts extends Component {
               <header className="panel-heading">
                 {
                   (!id || id <= 0)
-                  ? 'Ajout Bénéficiaire'
-                  : 'Détail Bénéficiaire'
+                  ? 'Création de contact'
+                  : 'Edition de contact'
                 }
               </header>
 
