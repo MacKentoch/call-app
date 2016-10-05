@@ -24,6 +24,8 @@ import {
 }                     from './create';
 // gest beneficaires
 import GestBeneficiaires from './gestBeneficiaires/GestBeneficiaires';
+// gest contacts
+import GestContacts from './gestContacts/GestContacts';
 // page not found
 import PageNotFound from './pageNotFound/PageNotFound';
 
@@ -56,5 +58,8 @@ export {
   FicheContactPersonnes,
 
   // gest beneficaires
-  GestBeneficiaires
+  GestBeneficiaires,
+
+  // gest contacts
+  GestContacts
 };

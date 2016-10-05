@@ -21,6 +21,8 @@ import {
   SelectBenefModalConnected
 }                             from './modals';
 import GestBeneficiairesConnected from './gestBeneficiaires/GestBeneficiaires';
+import GestContactsConnected from './gestContacts/GestContacts';
+
 
 export {
   App,
@@ -43,6 +45,9 @@ export {
 
   // gest benef:
   GestBeneficiairesConnected,
+
+  // gest contacts:
+  GestContactsConnected,
 
   // modals
   RechercheBenefModalConnected,
