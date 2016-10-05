@@ -232,8 +232,8 @@ Home.propTypes = {
   userBoitesMailsLastFetch: PropTypes.string,
 
   actions: PropTypes.shape({
-    enterHome: PropTypes.func,
-    leaveHome: PropTypes.func,
+    enterHome: PropTypes.func.isRequired,
+    leaveHome: PropTypes.func.isRequired,
 
     fetchFichesTraiteeDataIfNeeded: PropTypes.func,
 
@@ -243,7 +243,11 @@ Home.propTypes = {
 
     fetchUserGroupActivityDataIfNeeded: PropTypes.func,
 
-    fetchUserBoitesMailsDataIfNeeded: PropTypes.func
+    fetchUserBoitesMailsDataIfNeeded: PropTypes.func,
+
+    // modal create dossier benef:
+    showNewBenefDossierModal: PropTypes.func.isRequired, // return promise with notification data
+    hideNewBenefDossierModal: PropTypes.func.isRequired
   })
 };
 
