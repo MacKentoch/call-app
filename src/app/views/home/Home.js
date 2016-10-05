@@ -20,7 +20,7 @@ const boiteEnvoiPath      = `${appConfig.views.mailbox.root.path}/${appConfig.vi
 const canalContactTypeEmails =  'Email';
 const canalContactTypeTelephone =  'Téléphone';
 const canalContactTypeCourier =  'Courier';
-const canalContactTypePersonnes =  'Personne';
+const canalContactTypePersonnes =  'Personnes';
 
 
 class Home extends Component {
