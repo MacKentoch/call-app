@@ -400,10 +400,15 @@ class SelectBenefModal extends Component {
 
   handlesOnBenefSelection(id = 0) {
     // console.log('handles benef selection, id: ', id);
+    const { typeContact } = this.props;
     if (id > 0) {
-      // route to benef view
+      // using here router from context (see https://github.com/ReactTraining/react-router/blob/master/docs/API.md#contextrouter)
+      // route to edit contact view (type send through router state)
       const { router } = this.context;
-      router.push({pathname: `${gestBenefUrl}/${id}`});
+      router.push({
+        pathname: `${gestBenefUrl}/${id}`,
+        state: { contactCanal: typeContact }
+      });
       // close popup
       this.handlesOnClose();
     }
@@ -419,6 +424,8 @@ SelectBenefModal.propTypes = {
   params: PropTypes.object, // react router
 
   showModal: PropTypes.bool.isRequired,
+  typeContact: PropTypes.string.isRequired,
+
   title: PropTypes.string,
   onClose: PropTypes.func,
 
