@@ -22,7 +22,6 @@ class GestContacts extends Component {
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
     this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
     // contactsEtActivites related methods
-    // dossiers related methods:
     this.handlesOnContactsEtActivitesCollapseClick = this.handlesOnContactsEtActivitesCollapseClick.bind(this);
   }
 
@@ -387,9 +386,9 @@ GestContacts.propTypes = {
   // ///////////////////////
   isFetchingContact: PropTypes.bool.isRequired,
   lastFetchTimeContact: PropTypes.string.isRequired,
-  isEditingContact: PropTypes.bool.isRequired,
-  isSavingContact: PropTypes.bool.isRequired,
+
   isCollapsedContact: PropTypes.bool.isRequired,
+
   fixedPhone: PropTypes.string.isRequired,
   mobilePhone: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
@@ -406,12 +405,9 @@ GestContacts.propTypes = {
   isFetchingDossiers: PropTypes.bool.isRequired,
   lastFetchTimeDossiers: PropTypes.string.isRequired,
 
-  isSavingDossiers: PropTypes.bool.isRequired,
-
   isCollapsedDossiers: PropTypes.bool.isRequired,
 
   dossiers: PropTypes.array.isRequired,
-  editDossierId: PropTypes.number.isRequired,
   // ///////////////////////
   // contacts Et activites:
   // ///////////////////////
@@ -435,65 +431,21 @@ GestContacts.propTypes = {
     // //////////////////
     // identite
     // /////////////////
-    // get
-    getGestBenefIdentiteIfNeeded: PropTypes.func,
-    // post
-    postGestBenefIdentiteIfNeeded: PropTypes.func,
-    // reset:
-    resetGestBenefIdentite: PropTypes.func,
     // UI: Identite
-    setIsEditingIdentite: PropTypes.func,
-    unsetIsEditingIdentite: PropTypes.func,
-
     setIsCollapsedIdentite: PropTypes.func,
     unsetIsCollapsedIdentite: PropTypes.func,
-    updateCiviliteIdentite: PropTypes.func,
-    updateNomIdentite: PropTypes.func,
-    updateNomDeJeuneFilleIdentite: PropTypes.func,
-    updatePrenomIdentite: PropTypes.func,
-    updateDateNaissanceIdentite: PropTypes.func,
-    updateNumssIdentite: PropTypes.func,
-    updateDateDecesIdentite: PropTypes.func,
-    updateMaritalStatusIdentite: PropTypes.func,
     // //////////////////
     // contact
     // /////////////////
-    // get
-    getGestBenefContactIfNeeded: PropTypes.func,
-    // post
-    postGestBenefContactIfNeeded: PropTypes.func,
-    // reset
-    resetGestBenefContact: PropTypes.func,
     // UI: contact
-    setIsEditingContact: PropTypes.func,
     setIsCollapsedContact: PropTypes.func,
     unsetIsCollapsedContact: PropTypes.func,
-    updateTelephoneFixeContact: PropTypes.func,
-    updateTelephoneMobileContact: PropTypes.func,
-    updateEmailContact: PropTypes.func,
-    updateNumAdressNumber: PropTypes.func,
-    updateVoieAdressContact: PropTypes.func,
-    updateComplementAdressContact: PropTypes.func,
-    updateCodePostalContact: PropTypes.func,
-    updateVilleContact: PropTypes.func,
-    updatePaysContact: PropTypes.func,
     // //////////////////
     // dossiers
     // /////////////////
-    // get
-    getGestBenefAllDossiersIfNeeded: PropTypes.func,
-    // post (insert)
-    addGestBenefNewDossierIfNeeded: PropTypes.func,
-    // post (update)
-    updateGestBenefDossierIfNeeded: PropTypes.func,
-    // reset:
-    resetGestBenefDossier: PropTypes.func,
     // UI dossiers
     setIsCollapsedDossiers: PropTypes.func,
     unsetIsCollapsedDossiers: PropTypes.func,
-
-    setIsSavingNewDossier: PropTypes.func,
-    unsetIsSavingNewDossier: PropTypes.func,
 
     setIsEditingDossier: PropTypes.func,
     unsetIsEditingDossier: PropTypes.func,
