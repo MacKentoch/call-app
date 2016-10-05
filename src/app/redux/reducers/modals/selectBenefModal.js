@@ -4,8 +4,9 @@ import {
 }                             from '../../actions/modals/selectBenefModal';
 
 const initialState = {
-  isOpened:  false,
-  time:      ''
+  isOpened:     false,
+  typeContact:  '',
+  time:         ''
 };
 
 const selectBenefModal = (state = initialState, action) => {
@@ -13,14 +14,16 @@ const selectBenefModal = (state = initialState, action) => {
   case SHOW_SELECT_BENEF_MODAL:
     return {
       ...state,
-      isOpened:   true,
-      time:       action.time
+      isOpened:     true,
+      typeContact:  action.typeContact,
+      time:         action.time
     };
   case HIDE_SELECT_BENEF_MODAL:
     return {
       ...state,
-      isOpened:   false,
-      time:       action.time
+      isOpened:     false,
+      typeContact:  initialState.typeContact, // reset it
+      time:         action.time
     };
   default:
     return state;
