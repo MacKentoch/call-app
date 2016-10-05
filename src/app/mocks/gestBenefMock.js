@@ -64,6 +64,102 @@ export const gestBenefMock = {
       dateEntreeDispositif: '17/11/2015',
       dateSortieDispositif: '',
       dateTauxPlein: '01/01/2022'
+    },
+    {
+      id: 4,
+      numDossier: '99',
+      domaine: 'toFill',
+      regime: 'toFill tab',
+      societe: 'to fill tab',
+      numSte: '099',
+      statutBenef: 'none',
+      dateEntreeDispositif: '17/11/2015',
+      dateSortieDispositif: '',
+      dateTauxPlein: '01/01/2022'
+    },
+    {
+      id: 5,
+      numDossier: '99',
+      domaine: 'toFill',
+      regime: 'toFill tab',
+      societe: 'to fill tab',
+      numSte: '099',
+      statutBenef: 'none',
+      dateEntreeDispositif: '17/11/2015',
+      dateSortieDispositif: '',
+      dateTauxPlein: '01/01/2022'
+    },
+    {
+      id: 6,
+      numDossier: '99',
+      domaine: 'toFill',
+      regime: 'toFill tab',
+      societe: 'to fill tab',
+      numSte: '099',
+      statutBenef: 'none',
+      dateEntreeDispositif: '17/11/2015',
+      dateSortieDispositif: '',
+      dateTauxPlein: '01/01/2022'
+    },
+    {
+      id: 7,
+      numDossier: '99',
+      domaine: 'toFill',
+      regime: 'toFill tab',
+      societe: 'to fill tab',
+      numSte: '099',
+      statutBenef: 'none',
+      dateEntreeDispositif: '17/11/2015',
+      dateSortieDispositif: '',
+      dateTauxPlein: '01/01/2022'
+    },
+    {
+      id: 8,
+      numDossier: '99',
+      domaine: 'toFill',
+      regime: 'toFill tab',
+      societe: 'to fill tab',
+      numSte: '099',
+      statutBenef: 'none',
+      dateEntreeDispositif: '17/11/2015',
+      dateSortieDispositif: '',
+      dateTauxPlein: '01/01/2022'
+    },
+    {
+      id: 9,
+      numDossier: '99',
+      domaine: 'toFill',
+      regime: 'toFill tab',
+      societe: 'to fill tab',
+      numSte: '099',
+      statutBenef: 'none',
+      dateEntreeDispositif: '17/11/2015',
+      dateSortieDispositif: '',
+      dateTauxPlein: '01/01/2022'
+    },
+    {
+      id: 10,
+      numDossier: '99',
+      domaine: 'toFill',
+      regime: 'toFill tab',
+      societe: 'to fill tab',
+      numSte: '099',
+      statutBenef: 'none',
+      dateEntreeDispositif: '17/11/2015',
+      dateSortieDispositif: '',
+      dateTauxPlein: '01/01/2022'
+    },
+    {
+      id: 11,
+      numDossier: '99',
+      domaine: 'toFill',
+      regime: 'toFill tab',
+      societe: 'to fill tab',
+      numSte: '099',
+      statutBenef: 'none',
+      dateEntreeDispositif: '17/11/2015',
+      dateSortieDispositif: '',
+      dateTauxPlein: '01/01/2022'
     }
   ],
   contactsEtActivites: [
