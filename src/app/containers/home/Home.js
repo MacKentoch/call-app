@@ -49,7 +49,11 @@ const mapDispatchToProps = (dispatch) => {
 
         fetchUserGroupActivityDataIfNeeded: actions.fetchUserGroupActivityDataIfNeeded,
 
-        fetchUserBoitesMailsDataIfNeeded: actions.fetchUserBoitesMailsDataIfNeeded
+        fetchUserBoitesMailsDataIfNeeded: actions.fetchUserBoitesMailsDataIfNeeded,
+
+        // modals select benef (before contact edit / create):
+        showSelectBenefModal: actions.showSelectBenefModal,
+        hideSelectBenefModal: actions.hideSelectBenefModal
       },
       dispatch)
   };
