@@ -16,21 +16,13 @@ const Identite = ({
   onEditClick,
   onCancelEditClick,
   civilite,
-  onCiviliteChange,
   nom,
-  onNomChanged,
   nomJeuneFille,
-  onNomJeuneFilleChanged,
   prenom,
-  onPrenomChanged,
   dateNaissance,
-  onDateNaissanceChanged,
   numss,
-  onNumssChanged,
   dateDeces,
-  onDateDecesChanged,
-  maritalStatus,
-  onMaritalStatusChanged
+  maritalStatus
 }) => {
   return (
       <div>
@@ -41,7 +33,7 @@ const Identite = ({
             style={{color: '#444444'}}>
           </i>
           &nbsp;
-          Identité
+          Informations "identité" du bénéficaire
           {
             !isSavingIdentite &&
             <EditValidIcons
@@ -64,23 +56,14 @@ const Identite = ({
               <SavingIndicator />
             :
               <Form
-                isEditingIdentite={isEditingIdentite}
                 civilite={civilite}
-                onCiviliteChange={onCiviliteChange}
                 nom={nom}
-                onNomChanged={onNomChanged}
                 nomJeuneFille={nomJeuneFille}
-                onNomJeuneFilleChanged={onNomJeuneFilleChanged}
                 prenom={prenom}
-                onPrenomChanged={onPrenomChanged}
                 dateNaissance={dateNaissance}
-                onDateNaissanceChanged={onDateNaissanceChanged}
                 numss={numss}
-                onNumssChanged={onNumssChanged}
                 dateDeces={dateDeces}
-                onDateDecesChanged={onDateDecesChanged}
                 maritalStatus={maritalStatus}
-                onMaritalStatusChanged={onMaritalStatusChanged}
               />
           }
           </div>
