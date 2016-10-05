@@ -10,6 +10,7 @@ import { mailContentMock }        from './mailContent';
 import { searchBenefResultMock }  from './searchBenefResultMock';
 import { gestBenefMock }          from './gestBenefMock';
 import { gestBenefDossierActiviteMock } from './gestBenefDossierActiviteMock';
+import { gestContactsMock }       from './gestContactsMock';
 
 export {
   motifsContacts,
@@ -25,5 +26,7 @@ export {
   searchBenefResultMock,
   // gest benef
   gestBenefMock,
-  gestBenefDossierActiviteMock
+  gestBenefDossierActiviteMock,
+  // gest contacts:
+  gestContactsMock
 };
