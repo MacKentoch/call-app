@@ -3,12 +3,9 @@ import React, {
   PropTypes
 }                     from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-import { appConfig }  from '../../../../../../../config';
 import moment         from 'moment';
 
-
 moment.locale('fr');
-const formatDate = appConfig.formatDate.defaut;
 
 
 class Row extends Component {
@@ -100,7 +97,7 @@ class Row extends Component {
 
   handlesOnRowClick(event) {
     event.preventDefault();
-    
+
     const {
       id,
       numDossier,
