@@ -11,7 +11,6 @@ import {
   getSearchDossiersResMinIndex,
   getSearchDossiersResMaxIndex
 }                                         from '../../../services';
-import SavingIndicator                    from '../savingIndicator/SavingIndicator';
 import DossiersTable                      from './dossiersTable/DossiersTable';
 import ToggleCollapse                     from './toggleCollapse/ToggleCollapse';
 
@@ -107,10 +106,6 @@ class Dossiers extends Component {
               dossiers={dossiers}
               onDossierSelection={onDossierSelection}
 
-              onDossierEdition={onDossierEdition}
-              onDossierValidEdition={onDossierValidEdition}
-              onDossierCancelEdition={onDossierCancelEdition}
-
               // pagination & search:
               currentPageDossiers={currentPageDossiers}
               minPage={minPage}
@@ -123,10 +118,6 @@ class Dossiers extends Component {
               isFetchingDossiers={isFetchingDossiers}
               lastFetchTimeDossiers={lastFetchTimeDossiers}
 
-              isEditingDossiers={isEditingDossiers}
-              editDossierId={editDossierId}
-
-              isSavingDossiers={isSavingDossiers}
               isCollapsedDossiers={isCollapsedDossiers}
             />
           </div>
