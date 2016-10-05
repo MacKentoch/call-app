@@ -273,9 +273,12 @@ App.propTypes = {
     closeSideMenu:  PropTypes.func,
     toggleSideMenu: PropTypes.func,
     initSideMenu:   PropTypes.func,
-    // modals recherche benef:
+    // modals recherche benef (befre benef edit/create):
     showRechercheBenefModal: PropTypes.func.isRequired,
     hideRechercheBenefModal: PropTypes.func.isRequired,
+    // modals select benef (before contact edit / create):
+    showSelectBenefModal: PropTypes.func.isRequired,
+    hideSelectBenefModal: PropTypes.func.isRequired,
     // modal create dossier benef:
     showNewBenefDossierModal: PropTypes.func.isRequired, // return promise with notification data
     hideNewBenefDossierModal: PropTypes.func.isRequired,
