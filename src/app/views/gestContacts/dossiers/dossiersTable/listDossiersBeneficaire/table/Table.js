@@ -3,12 +3,7 @@ import Row from './row/Row';
 
 const Table  = ({
   dossiers,
-  isEditingDossiers,
-  editDossierId,
-  onRowClick,
-  onRowEditClick,
-  onValidEditDossier,
-  onCancelEditDossier
+  onRowClick
 }) => {
   return (
     <table className="table table-hover">
@@ -64,15 +59,6 @@ const Table  = ({
                   key={dossierIdx}
                   onRowClick={onRowClick}
 
-                  onRowEditClick={onRowEditClick}
-                  onValidEditDossier={onValidEditDossier}
-                  onCancelEditDossier={onCancelEditDossier}
-
-                  isEditing={(editDossierId === id) && isEditingDossiers}
-
-                  isEditingDossiers={isEditingDossiers}
-                  editDossierId={editDossierId}
-
                   id={id}
                   numDossier={numDossier}
                   domaine={domaine}
@@ -95,14 +81,6 @@ const Table  = ({
 
 Table.propTypes = {
   onRowClick: PropTypes.func.isRequired,
-
-  onRowEditClick: PropTypes.func.isRequired,
-
-  onValidEditDossier: PropTypes.func.isRequired,
-  onCancelEditDossier: PropTypes.func.isRequired,
-
-  isEditingDossiers: PropTypes.bool.isRequired,
-  editDossierId: PropTypes.number.isRequired,
 
   dossiers: PropTypes.arrayOf(
     PropTypes.shape({
