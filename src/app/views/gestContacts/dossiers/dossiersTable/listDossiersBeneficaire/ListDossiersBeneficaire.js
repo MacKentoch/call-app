@@ -27,9 +27,6 @@ const ListDossiersBeneficaire = ({
           paddingLeft: '0px',
           paddingRight: '0px'
         }}>
-        {/* <Title
-          mailBoxName={mailBoxName}
-        /> */}
         <div className="box box-primary">
           <div
             className="box-body no-padding">
@@ -61,6 +58,7 @@ const ListDossiersBeneficaire = ({
     </div>
   );
 };
+
 
 ListDossiersBeneficaire.propTypes = {
   dossiers: PropTypes.arrayOf(

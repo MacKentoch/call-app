@@ -680,7 +680,7 @@ GestContacts.propTypes = {
   isFetchingContactsEtActivites: PropTypes.bool.isRequired,
   lastFetchTimeContactsEtActivites: PropTypes.string.isRequired,
   contactsEtActivites: PropTypes.array.isRequired,
-  numDossierSelected: PropTypes.string.isRequired,
+  numDossierSelected: PropTypes.number.isRequired,
   isCollapsedContactsEtActivites: PropTypes.bool.isRequired,
 
   // ///////////////////////// ///////////////////////

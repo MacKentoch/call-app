@@ -3,12 +3,12 @@ import React, {
   PropTypes
 }                     from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-import { appConfig }  from '../../../../config';
+import { appConfig }  from '../../../../../../../config';
 import DatePicker     from 'react-datepicker';
 import moment         from 'moment';
 import {
   isValidDateOrReturnDefault
-}                     from '../../../../services';
+}                     from '../../../../../../../services';
 
 
 moment.locale('fr');

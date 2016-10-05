@@ -1,7 +1,5 @@
 import React, { PropTypes }    from 'react';
-import {
-  ListDossiersBeneficaire
-}                              from './listDossiersBeneficaire/ListDossiersBeneficaire';
+import ListDossiersBeneficaire from './listDossiersBeneficaire/ListDossiersBeneficaire';
 
 const DossiersTable = ({
   dossiers,
@@ -45,6 +43,7 @@ const DossiersTable = ({
           onCancelEditDossier={onDossierCancelEdition}
         />
       }
+
       {/* when dossiers is empty */}
       {
         (dossiers.length === 0 && !isFetchingDossiers) &&
