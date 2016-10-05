@@ -5,7 +5,9 @@ import { SelectBenefModal }     from '../../../views';
 
 const mapStateToProps = (state) => {
   return {
-    isOpened:  state.rechercheBenefModal.isOpened,
+    isOpened:  state.selectBenefModal.isOpened,
+
+    typeContact: state.selectBenefModal.typeContact,
 
     searchFetching: state.search.isFetching,
     searchPayload:  state.search.searchPayload,
@@ -19,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
       {
-        hideRechercheBenefModal: actions.hideRechercheBenefModal,
+        hideSelectBenefModal: actions.hideSelectBenefModal,
         // search post:
         postSearchIfNeeded: actions.postSearchIfNeeded
       },
