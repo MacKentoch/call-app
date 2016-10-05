@@ -97,6 +97,10 @@ import {
   showRechercheBenefModal,
   hideRechercheBenefModal,
 
+  // select benef modal (before contact edit/create)
+  showSelectBenefModal,
+  hideSelectBenefModal,
+
   // create new benef Dossier modal:
   showNewBenefDossierModal,
   hideNewBenefDossierModal,
@@ -239,9 +243,13 @@ export {
   replyMailAddAttachement,
   replyMailRemoveAttachement,
 
-  // recherche benef modal:
+  // recherche benef modal (before benef edit / create)
   showRechercheBenefModal,
   hideRechercheBenefModal,
+
+  // select benef modal (before contact edit/create)
+  showSelectBenefModal,
+  hideSelectBenefModal,
 
   // create new benef Dossier modal:
   showNewBenefDossierModal,
