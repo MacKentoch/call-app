@@ -102,7 +102,7 @@ class GestContacts extends Component {
     const { isFetchingIdentite, lastFetchTimeIdentite, isCollapsedIdentite } = this.props;
     const { civilite, nom, prenom, nomJeuneFille, dateNaissance, numss, dateDeces, maritalStatus } = this.props;
     // contact:
-    const { isFetchingContact, lastFetchTimeContact, isSavingContact, isEditingContact, isCollapsedContact } = this.props;
+    const { isFetchingContact, lastFetchTimeContact, isCollapsedContact } = this.props;
     const { fixedPhone, mobilePhone, email, numAdress, voie, complementAdr, codePostal, ville, pays } = this.props;
     // dossiers:
     const { isFetchingDossiers, lastFetchTimeDossiers, isSavingDossiers, isEditingDossiers, isCollapsedDossiers } = this.props;
