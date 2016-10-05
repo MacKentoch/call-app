@@ -21,10 +21,6 @@ class GestContacts extends Component {
     // dossiers related methods:
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
     this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
-    this.handlesOnDossierEdition = this.handlesOnDossierEdition.bind(this);
-    this.handlesOnDossierValidEdition = this.handlesOnDossierValidEdition.bind(this);
-    this.handlesOnDossierCancelEdition = this.handlesOnDossierCancelEdition.bind(this);
-    this.handlesOnCreateNewDossiersClick = this.handlesOnCreateNewDossiersClick.bind(this);
     // contactsEtActivites related methods
     // dossiers related methods:
     this.handlesOnContactsEtActivitesCollapseClick = this.handlesOnContactsEtActivitesCollapseClick.bind(this);
@@ -39,8 +35,8 @@ class GestContacts extends Component {
 
     enterGestBeneficiaires();
 
-    this.resetContactEditingAndCollpasing();
-    this.resetDossierEditingAndCollpasing();
+    this.resetContactCollpasing();
+    this.resetDossierCollpasing();
 
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
@@ -68,8 +64,8 @@ class GestContacts extends Component {
 
     if (benefId !== this.props.params.benefId) {
       // search another benef from same page = need to refresh
-      this.resetContactEditingAndCollpasing();
-      this.resetDossierEditingAndCollpasing();
+      this.resetContactCollpasing();
+      this.resetDossierCollpasing();
 
       if (idBenef) {
         addNotificationMessage({
@@ -105,8 +101,8 @@ class GestContacts extends Component {
     const { isFetchingContact, lastFetchTimeContact, isCollapsedContact } = this.props;
     const { fixedPhone, mobilePhone, email, numAdress, voie, complementAdr, codePostal, ville, pays } = this.props;
     // dossiers:
-    const { isFetchingDossiers, lastFetchTimeDossiers, isSavingDossiers, isCollapsedDossiers } = this.props;
-    const { dossiers, editDossierId } = this.props;
+    const { isFetchingDossiers, lastFetchTimeDossiers, isCollapsedDossiers } = this.props;
+    const { dossiers } = this.props;
     // contacts et activitées
     const { isFetchingContactsEtActivites, lastFetchTimeContactsEtActivites, contactsEtActivites, numDossierSelected, isCollapsedContactsEtActivites } = this.props;
 
@@ -285,39 +281,6 @@ class GestContacts extends Component {
   // ////////////////////////////////
   //  Identite related methods
   // ////////////////////////////////
-  refreshIdentiteBenefData(idBenef = 0, resetMessage = '') {
-    if (idBenef && (parseInt(idBenef, 10) > 0)) {
-      const { actions: { getGestBenefIdentiteIfNeeded, addNotificationMessage } } = this.props;
-
-      getGestBenefIdentiteIfNeeded(idBenef)
-        .then(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              /* eslint-disable no-nested-ternary */
-              const message = resetMessage
-                ? resetMessage
-                : notificationPayload.message ? notificationPayload.message : '';
-              /* eslint-enable no-nested-ternary */
-              addNotificationMessage({
-                message: message,
-                level: notificationPayload.level ? notificationPayload.level : 'info'
-              });
-            }
-          }
-        )
-        .catch(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              addNotificationMessage({
-                message: notificationPayload.message ? notificationPayload.message : '',
-                level: notificationPayload.level ? notificationPayload.level : 'error'
-              });
-            }
-          }
-        );
-    }
-  }
-
   handlesOnIdentiteCollapseClick() {
     const { isCollapsedIdentite, actions: { setIsCollapsedIdentite, unsetIsCollapsedIdentite } } = this.props;
     if (isCollapsedIdentite) {
@@ -330,39 +293,6 @@ class GestContacts extends Component {
   // ////////////////////////////////
   //  Contact related methods
   // ////////////////////////////////
-  refreshContactBenefData(idBenef = 0, resetMessage = '') {
-    if (idBenef && (parseInt(idBenef, 10) > 0)) {
-      const { actions: { getGestBenefContactIfNeeded, addNotificationMessage } } = this.props;
-
-      getGestBenefContactIfNeeded(idBenef)
-        .then(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              /* eslint-disable no-nested-ternary */
-              const message = resetMessage
-                ? resetMessage
-                : notificationPayload.message ? notificationPayload.message : '';
-              /* eslint-enable no-nested-ternary */
-              addNotificationMessage({
-                message: message,
-                level: notificationPayload.level ? notificationPayload.level : 'info'
-              });
-            }
-          }
-        )
-        .catch(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              addNotificationMessage({
-                message: notificationPayload.message ? notificationPayload.message : '',
-                level: notificationPayload.level ? notificationPayload.level : 'error'
-              });
-            }
-          }
-        );
-    }
-  }
-
   handlesOnContactCollapseClick() {
     const { isCollapsedContact, actions: { setIsCollapsedContact, unsetIsCollapsedContact } } = this.props;
     if (isCollapsedContact) {
@@ -373,90 +303,14 @@ class GestContacts extends Component {
   }
 
   // to reset contact editing state and collapsed state
-  resetContactEditingAndCollpasing() {
-    const { actions: { unsetIsEditingContact, unsetIsCollapsedContact } } = this.props;
-    unsetIsEditingContact();
+  resetContactCollpasing() {
+    const { actions: { unsetIsCollapsedContact } } = this.props;
     unsetIsCollapsedContact();
   }
 
   // ////////////////////////////////
   //  dossiers related methods
   // ////////////////////////////////
-  refreshDossiersBenefData(idBenef = 0, resetMessage = '') {
-    if (idBenef && (parseInt(idBenef, 10) > 0)) {
-      const { actions: { getGestBenefAllDossiersIfNeeded, addNotificationMessage } } = this.props;
-
-      getGestBenefAllDossiersIfNeeded(idBenef)
-        .then(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              /* eslint-disable no-nested-ternary */
-              const message = resetMessage
-                ? resetMessage
-                : notificationPayload.message ? notificationPayload.message : '';
-              /* eslint-enable no-nested-ternary */
-              addNotificationMessage({
-                message: message,
-                level: notificationPayload.level ? notificationPayload.level : 'info'
-              });
-            }
-
-            // refresh all contact et activites:
-            this.refreshAllContactEtActivites(idBenef);
-          }
-        )
-        .catch(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              addNotificationMessage({
-                message: notificationPayload.message ? notificationPayload.message : '',
-                level: notificationPayload.level ? notificationPayload.level : 'error'
-              });
-            }
-          }
-        );
-    }
-  }
-
-  refreshAllContactEtActivites(idBenef = 0, resetMessage = '') {
-    if (!idBenef || !(parseInt(idBenef, 10) > 0)) {
-      return;
-    }
-
-    const {
-      actions: {
-        getGestBenefAllContactsEtActivitesIfNeeded,
-        addNotificationMessage
-      }
-    } = this.props;
-
-    getGestBenefAllContactsEtActivitesIfNeeded(idBenef)
-      .then(
-        notificationPayload => {
-          if (notificationPayload && notificationPayload.showNotification) {
-            /* eslint-disable no-nested-ternary */
-            const message = resetMessage
-              ? resetMessage
-              : notificationPayload.message ? notificationPayload.message : '';
-            /* eslint-enable no-nested-ternary */
-            addNotificationMessage({
-              message: message,
-              level: notificationPayload.level ? notificationPayload.level : 'info'
-            });
-          }
-        }
-      )
-      .catch(
-        notificationPayload => {
-          if (notificationPayload && notificationPayload.showNotification) {
-            addNotificationMessage({
-              message: notificationPayload.message ? notificationPayload.message : '',
-              level: notificationPayload.level ? notificationPayload.level : 'error'
-            });
-          }
-        }
-      );
-  }
 
   handlesOnDossiersCollapseClick() {
     const { isCollapsedDossiers, actions: { setIsCollapsedDossiers, unsetIsCollapsedDossiers } } = this.props;
@@ -474,113 +328,10 @@ class GestContacts extends Component {
     /* eslint-enable no-console */
   }
 
-  handlesOnDossierEdition(dossierToEdit) {
-    const { actions: { addNotificationMessage, setIsEditingDossier } } = this.props;
-    // notification to inform enter edit mode
-    const dossierIdToEdit = dossierToEdit.id;
-    const numDossToEdit = dossierToEdit.numDossier;
-
-    addNotificationMessage({
-      message: `Les informations "Dossier" (${numDossToEdit}) sont maintenant éditables`,
-      level: 'info'
-    });
-    setIsEditingDossier(dossierIdToEdit);
-  }
-
-  handlesOnDossierValidEdition(dossierUpdated) {
-    const {
-      actions: {
-        unsetIsEditingDossier,
-        updateGestBenefDossierIfNeeded
-      },
-      id
-    } = this.props;
-
-    /* eslint-disable no-unused-vars */
-    updateGestBenefDossierIfNeeded(dossierUpdated)
-      .then(
-        response => {
-          unsetIsEditingDossier();
-          // IMPORTANT IF NOT ALREADY: UNCOMMENT LINE BELOW FOR PRODUCTION!!!!
-          this.refreshDossiersBenefData(id); // refresh all dossiers for this bnefId
-        }
-      )
-      .catch(
-        error => {
-          const {actions: {addNotificationMessage}} = this.props;
-          addNotificationMessage({
-            message: error.message ? error.message : 'Enregistrement des modifications du "Dossier" en erreur',
-            level: 'error'
-          });
-        }
-      );
-    /* eslint-enable no-unused-vars */
-  }
-
-  handlesOnDossierCancelEdition() {
-    const {
-      actions: {
-        unsetIsEditingDossier,
-        addNotificationMessage,
-        resetGestBenefDossier
-      }
-    } = this.props;
-    const { params: { benefId } } =  this.props;
-
-    unsetIsEditingDossier();
-    // notification to inform leave edit mode
-    addNotificationMessage({
-      message: 'Annulation de l\'édition du "Dossier" (les changements ne seront pas sauvegardés)',
-      level: 'warning'
-    });
-
-    const idBenef = parseInt(benefId, 10);
-    if (idBenef) {
-      // EXISTING BENEF: refresh Dossier data from backend to reset changes:
-      const resetMessage = 'Données "Dossiers" du bénéficiaire réinitialisées';
-      this.refreshDossiersBenefData(idBenef, resetMessage);
-    } else {
-      // NEW BENEF: reset changes:
-      resetGestBenefDossier();
-    }
-  }
-
   // to reset contact editing state and collapsed state
-  resetDossierEditingAndCollpasing() {
-    const { actions: { unsetIsEditingContact, unsetIsCollapsedContact } } = this.props;
-    unsetIsEditingContact();
+  resetDossierCollpasing() {
+    const { actions: { unsetIsCollapsedContact } } = this.props;
     unsetIsCollapsedContact();
-  }
-
-  handlesOnCreateNewDossiersClick(event) {
-    event.preventDefault();
-    const { params: { benefId } } =  this.props;
-    const { actions: { showNewBenefDossierModal } } = this.props;
-    // needs a benefId to add a dossiers!:
-    const idBenef = parseInt(benefId, 10);
-    if (idBenef) {
-      showNewBenefDossierModal(idBenef)
-        .then(
-          () => {
-            return;
-          }
-        )
-        .catch(
-          error => {
-            const {actions: {addNotificationMessage}} = this.props;
-            addNotificationMessage({
-              message: error.message ? error.message : 'Création d\'un nouveau dossiers impossible',
-              level: 'error'
-            });
-          }
-        );
-    } else {
-      const {actions: {addNotificationMessage}} = this.props;
-      addNotificationMessage({
-        message: 'Veuillez enregister les informations du nouveau bénéficiaire. \nLe bénéficaire doit exister dans l\'application avant de pouvoir lui ajouter des dossiers.',
-        level: 'error'
-      });
-    }
   }
 
   // /////////////////////////////////////
@@ -715,7 +466,6 @@ GestContacts.propTypes = {
     resetGestBenefContact: PropTypes.func,
     // UI: contact
     setIsEditingContact: PropTypes.func,
-    unsetIsEditingContact: PropTypes.func,
     setIsCollapsedContact: PropTypes.func,
     unsetIsCollapsedContact: PropTypes.func,
     updateTelephoneFixeContact: PropTypes.func,
