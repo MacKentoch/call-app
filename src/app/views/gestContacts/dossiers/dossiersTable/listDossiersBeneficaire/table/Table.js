@@ -41,12 +41,6 @@ const Table  = ({
           <th>
             Date taux plein
           </th>
-          <th style={{textAlign: 'center'}}>
-            <i
-              className="fa fa-pencil-square-o"
-              aria-hidden="true">
-            </i>
-          </th>
         </tr>
       </thead>
       <tbody>

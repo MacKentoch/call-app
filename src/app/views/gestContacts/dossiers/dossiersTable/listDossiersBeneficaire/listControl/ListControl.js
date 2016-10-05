@@ -114,13 +114,14 @@ ListControl.propTypes = {
 
   onSearch: PropTypes.func.isRequired,
 
-  isEditingDossiers: PropTypes.bool.isRequired
+  isEditingDossiers: PropTypes.bool
 };
 
 ListControl.defaultProps  ={
   showCheckToggle: false,
   showReply: false,
-  showForward: false
+  showForward: false,
+  isEditingDossiers: false
 };
 
 export default ListControl;
