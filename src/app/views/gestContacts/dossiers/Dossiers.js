@@ -106,6 +106,7 @@ class Dossiers extends Component {
             <DossiersTable
               dossiers={dossiers}
               onDossierSelection={onDossierSelection}
+
               onDossierEdition={onDossierEdition}
               onDossierValidEdition={onDossierValidEdition}
               onDossierCancelEdition={onDossierCancelEdition}
