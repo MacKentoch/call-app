@@ -132,12 +132,13 @@ class App extends Component {
         {/* modal recherche benef avant gestion benef */}
         <RechercheBenefModal
           showModal={rechercheBenefModalOpened}
-          title={'Recherche de bénéficiaire'}
+          title={'Recherche de bénéficiaire à consulter ou éditer'}
           onClose={this.handlesHideRechercheBenefModal}
         />
         {/* modal select benef avant gestion contact */}
         <SelectBenefModal
           showModal={selectBenefModalOpened}
+          title={'Sélection du bénéficiaire avant création ou édition de contact'}
           onClose={this.handlesHideSelectBenefModal}
         />
         {/* modal add dossier to benef */}
