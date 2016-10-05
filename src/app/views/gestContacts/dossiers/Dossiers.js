@@ -24,8 +24,6 @@ class Dossiers extends Component {
 
     this.state = {
       dossiers: [],
-      dossierIdSelected: 0, // when 0: no dossier selected, when > 0, should trigger fiche contact and activ appearance
-      dossierIdBeingEditing: 0, // when > 0 gives id dossier being edited (0 means no dossier is being editing)
       // pagination
       filter: '',
       currentPageDossiers: [],
@@ -69,15 +67,9 @@ class Dossiers extends Component {
       dossiers,
       isFetchingDossiers,
       lastFetchTimeDossiers,
-      isEditingDossiers,
-      editDossierId,
-      isSavingDossiers,
       isCollapsedDossiers,
       onCollapseClick,
-      onDossierSelection,
-      onDossierEdition,
-      onDossierValidEdition,
-      onDossierCancelEdition
+      onDossierSelection
     } = this.props;
 
     const minPage = getSearchDossiersResMinIndex(dossiers, currentPage, numberDossiersPerPage);
@@ -198,11 +190,6 @@ Dossiers.propTypes = {
   isFetchingDossiers: PropTypes.bool.isRequired,
   lastFetchTimeDossiers: PropTypes.string.isRequired,
 
-  isEditingDossiers: PropTypes.bool.isRequired,
-  editDossierId: PropTypes.number.isRequired,
-
-  isSavingDossiers: PropTypes.bool.isRequired,
-
   isCollapsedDossiers: PropTypes.bool.isRequired,
   onCollapseClick: PropTypes.func.isRequired,
 
@@ -221,12 +208,7 @@ Dossiers.propTypes = {
     })
   ).isRequired,
 
-  onDossierSelection: PropTypes.func.isRequired,
-  onDossierEdition: PropTypes.func.isRequired,
-  onDossierValidEdition: PropTypes.func.isRequired,
-  onDossierCancelEdition: PropTypes.func.isRequired,
-
-  onCreateDossierClick: PropTypes.func.isRequired
+  onDossierSelection: PropTypes.func.isRequired
 };
 
 export default Dossiers;
