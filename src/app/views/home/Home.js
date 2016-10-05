@@ -16,6 +16,13 @@ import { appConfig }                    from '../../config';
 const boiteReceptionPath  = `${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.reception.path}`;
 const boiteEnvoiPath      = `${appConfig.views.mailbox.root.path}/${appConfig.views.mailbox.envoi.path}`;
 
+// canaux de contact:
+const canalContactTypeMails =  'Email';
+const canalContactTypeTelephone =  'Téléphone';
+const canalContactTypeCourier =  'Courier';
+const canalContactTypePersonnes =  'Personne';
+
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +30,8 @@ class Home extends Component {
     this.state = {
       animated: true
     };
+
+    this.handlesOnMailsLinkClick = this.handlesOnMailsLinkClick.bind(this);
 
     this.handlesOnFichesTraiteesRefreshClick = this.handlesOnFichesTraiteesRefreshClick.bind(this);
     this.handlesOnFichesParCanalRefreshClick = this.handlesOnFichesParCanalRefreshClick.bind(this);
@@ -66,7 +75,8 @@ class Home extends Component {
           style={{marginBottom: '5px'}}>
           <div className="col-md-3">
             <MailsLink
-              linkTo={createFicheContactCourier.path}
+              // linkTo={createFicheContactCourier.path}
+              onClick={this.handlesOnMailsLinkClick}
               title={'Courier'}
               details={'Créer une fiche contact courier'}
               icon={<i className="fa fa-envelope-o" aria-hidden="true"></i>}
@@ -174,6 +184,12 @@ class Home extends Component {
     );
   }
 
+  handlesOnMailsLinkClick(event) {
+    event.preventDefault();
+    const { actions: { showSelectBenefModal } } = this.props;
+    showSelectBenefModal(canalContactTypeMails);
+  }
+
   handlesOnFichesTraiteesRefreshClick(event) {
     const { actions } = this.props;
     event.preventDefault();
@@ -246,8 +262,8 @@ Home.propTypes = {
     fetchUserBoitesMailsDataIfNeeded: PropTypes.func,
 
     // modal create dossier benef:
-    showNewBenefDossierModal: PropTypes.func.isRequired, // return promise with notification data
-    hideNewBenefDossierModal: PropTypes.func.isRequired
+    showSelectBenefModal: PropTypes.func.isRequired, // return promise with notification data
+    hideSelectBenefModal: PropTypes.func.isRequired
   })
 };
 

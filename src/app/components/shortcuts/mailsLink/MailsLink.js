@@ -1,11 +1,12 @@
 import React, {PropTypes} from 'react';
-import { Link }           from 'react-router';
+// import { Link }           from 'react-router';
 
-const MailsLink = ({title, details, icon, backColor, linkTo}) => {
+const MailsLink = ({title, details, icon, backColor, onClick}) => {
   return (
     <div className="sm-st clearfix shortcut">
-      <Link
-        to={linkTo}
+      <a
+        // to={linkTo}
+        onClick={onClick}
         className="link">
         <span
           className="sm-st-icon"
@@ -20,7 +21,7 @@ const MailsLink = ({title, details, icon, backColor, linkTo}) => {
             {details}
           </div>
         </div>
-      </Link>
+      </a>
     </div>
   );
 };
@@ -30,15 +31,16 @@ MailsLink.propTypes = {
   details: PropTypes.string,
   icon: PropTypes.node,
   backColor: PropTypes.string,
-  linkTo: PropTypes.string
+  // linkTo: PropTypes.string,
+  onClick: PropTypes.func.isRequired
 };
 
 MailsLink.defaultProps = {
   title: '',
   details: '',
   icon: (<i className="fa fa-envelope-o" aria-hidden="true"></i>),
-  backColor: '#E67E22',
-  linkTo: '/'
+  backColor: '#E67E22'
+  // linkTo: '/'
 };
 
 export default MailsLink;
