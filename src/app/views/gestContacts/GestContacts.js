@@ -449,24 +449,13 @@ GestContacts.propTypes = {
 
     setIsEditingDossier: PropTypes.func,
     unsetIsEditingDossier: PropTypes.func,
-    // modal create new dossier:
-    showNewBenefDossierModal: PropTypes.func.isRequired, // returns promise with notification data
-    hideNewBenefDossierModal: PropTypes.func.isRequired,
     // ///////////////////////
     // contacts Et activites:
     // ///////////////////////
-    // get
-    getGestBenefAllContactsEtActivitesIfNeeded: PropTypes.func.isRequired,
-    getGestBenefThisDossierContactsEtActivitesIfNeeded: PropTypes.func.isRequired,
     // UI
     setIsCollapsedContactsEtActivites: PropTypes.func.isRequired,
     unsetIsCollapsedContactsEtActivites: PropTypes.func.isRequired
   })
-};
-
-// to remove when full redux store is done:
-GestContacts.defaultProps = {
-  isEditingIdentite: false
 };
 
 export default GestContacts;
