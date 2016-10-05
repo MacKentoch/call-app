@@ -20,7 +20,8 @@ import replyMailContent     from './mailbox/reply';
 // Modals
 import {
   rechercheBenefModal,
-  createNewDossierBenefModal
+  createNewDossierBenefModal,
+  selectBenefModal
 }                           from './modals';
 // search
 import search               from './search/search';
@@ -57,6 +58,7 @@ export {
   // modals
   rechercheBenefModal,
   createNewDossierBenefModal,
+  selectBenefModal,
 
   // search
   search,
