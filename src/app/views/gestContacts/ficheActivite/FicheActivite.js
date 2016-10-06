@@ -7,7 +7,6 @@ import Collapse             from 'react-collapse';
 
 
 class FicheActivite extends Component {
-
   constructor(props) {
     super(props);
 
@@ -76,16 +75,25 @@ class FicheActivite extends Component {
    */
   initToFirstActivite() {
     const { activites } = this.props;
-    // select 1 st activite:
-    const firstActiviteId = activites[0].id;
-    this.setState({
-      selectedActivite: [...this.getActiviteById(firstActiviteId)]
-    });
+
+    if (Array.isArray(activites) && activites.length > 0) {
+      // select 1st activite:
+      const firstActiviteId = activites[0].id;
+
+      this.setState({
+        selectedActiviteId: firstActiviteId,
+        selectedActivite: [...this.getActiviteById(firstActiviteId)]
+      });
+    }
   }
 
   getActiviteById(id) {
     const { activites } = this.props;
-    return activites.filter(activite => activite.id === id);
+    
+    if (Array.isArray(activites) && activites.length > 0) {
+      return activites.filter(activite => activite.id === id);
+    }
+    return [];
   }
 
   handlesOnSelectActivite() {
