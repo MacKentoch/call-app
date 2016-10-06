@@ -45,7 +45,7 @@ const getQueryGestContacts = (benefId, contactId) => dispatch => {
   if (!benefId) {
     dispatch(errorGetGestContacts('getQueryGestContacts API error: benefId is not defined or not valid'));
     return Promise.reject({
-      message: 'Rafraichissement des données bénéficiaire (edition de contact) en erreur (identifiant non valide)',
+      message: 'Rafraichissement des données bénéficiaire (edition de contact) en erreur (identifiant de bénéficiaire non valide)',
       level: 'error',
       showNotification: true
     });
@@ -54,7 +54,7 @@ const getQueryGestContacts = (benefId, contactId) => dispatch => {
   if (!contactId) {
     dispatch(errorGetGestContacts('getQueryGestContacts API error: contactId is not defined or not valid'));
     return Promise.reject({
-      message: 'Rafraichissement des données bénéficiaire (edition de contact) en erreur (identifiant non valide)',
+      message: 'Rafraichissement des données bénéficiaire (edition de contact) en erreur (identifiant de contact non valide)',
       level: 'error',
       showNotification: true
     });
@@ -68,7 +68,7 @@ const getQueryGestContacts = (benefId, contactId) => dispatch => {
               data => {
                 dispatch(receivedGetGestContacts(data));
                 return Promise.resolve({
-                  message: 'Données bénéficiaire raffraichies',
+                  message: 'Données contact raffraichies',
                   level: 'success',
                   showNotification: true
                 });
@@ -78,19 +78,24 @@ const getQueryGestContacts = (benefId, contactId) => dispatch => {
               err => {
                 dispatch(errorGetGestContacts(err));
                 return Promise.reject({
-                  message: 'Données bénéficiaire non raffraichies',
+                  message: 'Données contact non raffraichies',
                   level: 'error',
                   showNotification: true
                 });
               }
             );
   } else {
-    return getGestContacts(benefId, contactId)
+    // API depends contactId === 0 ot not (since can be new contact or update contact):
+    const apiPromise = contactId > 0
+      ? getGestContactsExistingContact(benefId, contactId)
+      : getGestContactsNewContact(benefId);
+
+    return apiPromise
             .then(
               response => {
                 dispatch(receivedGetGestContacts(response));
                 return Promise.resolve({
-                  message: 'Données bénéficiaire raffraichies',
+                  message: 'Données contact raffraichies',
                   level: 'success',
                   showNotification: true
                 });
@@ -100,7 +105,7 @@ const getQueryGestContacts = (benefId, contactId) => dispatch => {
               error => {
                 dispatch(errorGetGestContacts(error));
                 return Promise.reject({
-                  message: 'Données bénéficiaire non raffraichies',
+                  message: 'Données contact non raffraichies',
                   level: 'error',
                   showNotification: true
                 });
