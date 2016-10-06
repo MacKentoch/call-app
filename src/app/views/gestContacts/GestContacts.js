@@ -31,9 +31,6 @@ class GestContacts extends Component {
 
     enterGestContacts();
 
-    this.resetContactCollpasing();
-    this.resetDossierCollpasing();
-
     const idBenef = parseInt(benefId, 10);
     if (idBenef) {
       addNotificationMessage({
@@ -81,7 +78,7 @@ class GestContacts extends Component {
   }
 
   componentWillUnmount() {
-    const { actions: {leaveGestContacts  } } = this.props;
+    const { actions: { leaveGestContacts } } = this.props;
     leaveGestContacts();
   }
 
