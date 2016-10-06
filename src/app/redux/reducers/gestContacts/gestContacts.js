@@ -24,7 +24,9 @@ const initialState = {
   postPayload: {},
   // general fields
   isFetchingAll: false,
-  id: 0,
+
+  benefId: 0,
+  contactId: 0,
   // identité
   isFetchingIdentite: false,
   lastFetchTimeIdentite: '',
@@ -83,7 +85,8 @@ const gestContacts = (state = initialState, action) => {
       lastFetchTimeDossiers: action.time,
       actionTime: action.time,
 
-      id: action.benefId
+      contactId: action.contactId,
+      benefId: action.benefId
     };
 
   case RECEIVED_GET_GEST_CONTACTS:
@@ -98,7 +101,12 @@ const gestContacts = (state = initialState, action) => {
       lastFetchTimeDossiers: action.time,
       actionTime: action.time,
 
-      id: action.gestBenef && action.gestBenef.id
+      // contactId may be null if creation
+      contactId: action.gestBenef && action.gestBenef.contactId
+        ? action.gestBenef.contactId
+        : initialState.contactId,
+      // benefId should always be returned (as id) since no contact possible without a benef
+      benefId: action.gestBenef && action.gestBenef.id
         ? action.gestBenef.id
         : initialState.id,
 
