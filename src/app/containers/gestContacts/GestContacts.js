@@ -10,8 +10,9 @@ const mapStateToProps = (state) => {
     lastActionTime: state.gestContacts.actionTime,
     // gestContacts data:
     isFetchingAll: state.gestContacts.isFetchingAll,
-    // lastGetTime: state.gestContacts.time,
-    id: state.gestContacts.id,
+    
+    contactId: state.gestContacts.contactId,
+    benefId: state.gestContacts.benefId,
     // identité
     isFetchingIdentite: state.gestContacts.isFetchingIdentite,
     lastFetchTimeIdentite: state.gestContacts.lastFetchTimeIdentite,
