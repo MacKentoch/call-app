@@ -3,7 +3,6 @@ import cx                               from 'classnames';
 import Identite                         from './identite/Identite';
 import Contact                          from './contact/Contact';
 import Dossiers                         from './dossiers/Dossiers';
-import ContactsEtActivites              from './contactsEtActivites/ContactsEtActivites';
 import FetchingAllContent               from './fetchingAllContent/FetchingAllContent';
 
 
@@ -21,8 +20,6 @@ class GestContacts extends Component {
     // dossiers related methods:
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
     this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
-    // contactsEtActivites related methods
-    this.handlesOnContactsEtActivitesCollapseClick = this.handlesOnContactsEtActivitesCollapseClick.bind(this);
   }
 
   componentDidMount() {
@@ -102,8 +99,6 @@ class GestContacts extends Component {
     // dossiers:
     const { isFetchingDossiers, lastFetchTimeDossiers, isCollapsedDossiers } = this.props;
     const { dossiers } = this.props;
-    // contacts et activitées
-    const { isFetchingContactsEtActivites, lastFetchTimeContactsEtActivites, contactsEtActivites, numDossierSelected, isCollapsedContactsEtActivites } = this.props;
 
     return(
       <section
@@ -219,7 +214,7 @@ class GestContacts extends Component {
 
                       <div style={{height: '10px'}}></div>
 
-                      <ContactsEtActivites
+                      {/* <ContactsEtActivites
                         isFetchingContactsEtActivites={isFetchingContactsEtActivites}
                         lastFetchTimeContactsEtActivites={lastFetchTimeContactsEtActivites}
 
@@ -229,7 +224,7 @@ class GestContacts extends Component {
 
                         isCollapsedContactsEtActivites={isCollapsedContactsEtActivites}
                         onCollapseClick={this.handlesOnContactsEtActivitesCollapseClick}
-                      />
+                      /> */}
 
                       <div style={{height: '10px'}}></div>
                     </div>
@@ -444,17 +439,8 @@ GestContacts.propTypes = {
     // dossiers
     // /////////////////
     // UI dossiers
-    setIsCollapsedDossiers: PropTypes.func,
-    unsetIsCollapsedDossiers: PropTypes.func,
-
-    setIsEditingDossier: PropTypes.func,
-    unsetIsEditingDossier: PropTypes.func,
-    // ///////////////////////
-    // contacts Et activites:
-    // ///////////////////////
-    // UI
-    setIsCollapsedContactsEtActivites: PropTypes.func.isRequired,
-    unsetIsCollapsedContactsEtActivites: PropTypes.func.isRequired
+    setIsCollapsedContactsDossiers: PropTypes.func,
+    unsetIsCollapsedContactsDossiers: PropTypes.func
   })
 };
 
