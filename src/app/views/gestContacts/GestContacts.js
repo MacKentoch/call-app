@@ -248,8 +248,6 @@ class GestContacts extends Component {
   refreshAllContactData(idBenef = 0, contactId = 0) {
     const { actions: { getGestContactsIfNeeded, addNotificationMessage } } = this.props;
 
-    console.log(`ideBenf: ${idBenef} - contactId: ${contactId}`);
-
     getGestContactsIfNeeded(idBenef, contactId)
       .then(
         notificationPayload => {
