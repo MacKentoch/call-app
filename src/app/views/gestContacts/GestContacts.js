@@ -26,7 +26,7 @@ class GestContacts extends Component {
     const { params: { benefId } } =  this.props;
     // const { location: { state: { contactId, contactCanal } } } = this.props;
     const { location: { state: { contactId } } } = this.props;
-    const { actions: { enterGestContacts, resetGestBenef } } =  this.props;
+    const { actions: { enterGestContacts } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
 
     enterGestContacts();
@@ -45,43 +45,45 @@ class GestContacts extends Component {
         message: 'Création d\'un nouveau contact',
         level: 'info'
       });
-      // reset gestBenef form model
-      resetGestBenef();
+      // TODO
+      // reset contact and activite form model
+      // resetGestBenef();
     }
   }
 
-  componentWillReceiveProps(newProps) {
-    const { params: { benefId } } =  newProps;
-    // const { location: { state: { contactId, contactCanal } } } = newProps;
-    const { location: { state: { contactId } } } = newProps;
-    const { actions: { resetGestBenef } } =  this.props;
-    const { actions: { addNotificationMessage } } = this.props;
-
-    const idBenef = parseInt(benefId, 10);
-    const contactIdNew = parseInt(contactId, 10);
-
-    if (contactIdNew !== this.props.location.state.contactId) {
-      // search another contact from same page (because of modal) = need to refresh
-      this.resetIdentiteCollapsing();
-      this.resetContactCollpasing();
-      this.resetDossierCollpasing();
-
-      if (contactIdNew) {
-        addNotificationMessage({
-          message: 'Consultation / Edition d\'un contact existant',
-          level: 'info'
-        });
-        this.refreshAllBenefData(idBenef, contactIdNew);
-      } else {
-        addNotificationMessage({
-          message: 'Création d\'un nouveau contact',
-          level: 'info'
-        });
-        // reset gestBenef form model
-        resetGestBenef();
-      }
-    }
-  }
+  // componentWillReceiveProps(newProps) {
+  //   const { params: { benefId } } =  newProps;
+  //   // const { location: { state: { contactId, contactCanal } } } = newProps;
+  //   const { location: { state: { contactId } } } = newProps;
+  //   // const { actions: { resetGestBenef } } =  this.props;
+  //   const { actions: { addNotificationMessage } } = this.props;
+  //
+  //   const idBenef = parseInt(benefId, 10);
+  //   const contactIdNew = parseInt(contactId, 10);
+  //
+  //   if (contactIdNew !== this.props.location.state.contactId) {
+  //     // search another contact from same page (because of modal) = need to refresh
+  //     this.resetIdentiteCollapsing();
+  //     this.resetContactCollpasing();
+  //     this.resetDossierCollpasing();
+  //
+  //     if (contactIdNew) {
+  //       addNotificationMessage({
+  //         message: 'Consultation / Edition d\'un contact existant',
+  //         level: 'info'
+  //       });
+  //       this.refreshAllBenefData(idBenef, contactIdNew);
+  //     } else {
+  //       addNotificationMessage({
+  //         message: 'Création d\'un nouveau contact',
+  //         level: 'info'
+  //       });
+  //       // TODO
+  //       // reset gestBenef form model
+  //       // resetGestBenef();
+  //     }
+  //   }
+  // }
 
   componentWillUnmount() {
     const { actions: { leaveGestContacts } } = this.props;
