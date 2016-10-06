@@ -118,8 +118,13 @@ class FicheActivite extends Component {
     return [];
   }
 
-  handlesOnSelectActivite() {
-
+  handlesOnSelectActivite(activiteId) {
+    const { activites } = this.props;
+    
+    if (Array.isArray(activites) && activites.length > 0) {
+      return activites.filter(activite => activite.id === activiteId);
+    }
+    return [];
   }
 }
 
