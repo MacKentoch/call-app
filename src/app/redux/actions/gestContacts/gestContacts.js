@@ -62,7 +62,7 @@ const getQueryGestContacts = (benefId, contactId) => dispatch => {
 
   dispatch(requestGetGestContacts(benefId, contactId));
   if (appConfig.DEV_MODE) {
-    // DEV ONLY
+    // DEV ONLY (no test for contactId in DEV_MODE)
     return fetchMockGetGestContacts(benefId, contactId)
             .then(
               data => {
