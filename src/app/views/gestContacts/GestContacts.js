@@ -24,7 +24,7 @@ class GestContacts extends Component {
 
   componentDidMount() {
     const { params: { benefId } } =  this.props;
-    // const { location: { state: { contactCanal } } } = this.props;
+    const { location: { state: { contactCanal } } } = this.props;
 
     const { actions: { enterGestContacts, resetGestBenef } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
