@@ -51,7 +51,9 @@ const getQueryGestContacts = (benefId, contactId) => dispatch => {
     });
   }
 
-  if (!contactId) {
+  console.log(parseInt(contactId, 10));
+  
+  if (!(parseInt(contactId, 10) >= 0)) {
     dispatch(errorGetGestContacts('getQueryGestContacts API error: contactId is not defined or not valid'));
     return Promise.reject({
       message: 'Rafraichissement des données bénéficiaire (edition de contact) en erreur (identifiant de contact non valide)',

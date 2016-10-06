@@ -338,7 +338,7 @@ export const fetchMockGetGestContacts = (benefId, contactId, timeToWait = appCon
     });
   }
 
-  if (!contactId) {
+  if (!(parseInt(contactId, 10) >= 0)) {
     return Promise.reject({
       'error': 'fetchMockGetGestContacts error: contactId is not valid'
     });
