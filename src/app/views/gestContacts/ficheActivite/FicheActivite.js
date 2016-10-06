@@ -20,10 +20,7 @@ class FicheActivite extends Component {
   }
 
   componentDidMount() {
-    const { activites } = this.props;
-    // select 1 st activite:
-    const firstActiviteId = activites[0].id;
-    this.getActiviteById(firstActiviteId);
+    this.initToFirstActivite();
   }
 
   render() {
@@ -74,14 +71,25 @@ class FicheActivite extends Component {
        </div>
      );
   }
-
-  handlesOnSelectActivite() {
-
+  /*
+    init state (selectedActivite) by default
+   */
+  initToFirstActivite() {
+    const { activites } = this.props;
+    // select 1 st activite:
+    const firstActiviteId = activites[0].id;
+    this.setState({
+      selectedActivite: [...this.getActiviteById(firstActiviteId)]
+    });
   }
 
   getActiviteById(id) {
     const { activites } = this.props;
     return activites.filter(activite => activite.id === id);
+  }
+
+  handlesOnSelectActivite() {
+
   }
 }
 
