@@ -24,23 +24,25 @@ class GestContacts extends Component {
 
   componentDidMount() {
     const { params: { benefId } } =  this.props;
-    const { location: { state: { contactCanal } } } = this.props;
-
+    // const { location: { state: { contactId, contactCanal } } } = this.props;
+    const { location: { state: { contactId } } } = this.props;
     const { actions: { enterGestContacts, resetGestBenef } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
 
     enterGestContacts();
 
-    const idBenef = parseInt(benefId, 10);
-    if (idBenef) {
+    const contactIdx = parseInt(contactId, 10);
+
+    if (contactIdx > 0) {
       addNotificationMessage({
-        message: 'Consultation / Edition d\'un bénéficiaire existant',
+        message: 'Consultation / Edition d\'un contact existant',
         level: 'info'
       });
-      this.refreshAllBenefData(idBenef);
+      this.refreshAllBenefData(benefId, contactIdx);
+      this.refreshAllContactData(); // contacts + activite data
     } else {
       addNotificationMessage({
-        message: 'Création d\'un nouveau bénéficiaire',
+        message: 'Création d\'un nouveau contact',
         level: 'info'
       });
       // reset gestBenef form model
@@ -50,22 +52,26 @@ class GestContacts extends Component {
 
   componentWillReceiveProps(newProps) {
     const { params: { benefId } } =  newProps;
+    // const { location: { state: { contactId, contactCanal } } } = newProps;
+    const { location: { state: { contactId } } } = newProps;
     const { actions: { resetGestBenef } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
 
     const idBenef = parseInt(benefId, 10);
+    const contactIdNew = parseInt(contactId, 10);
 
-    if (benefId !== this.props.params.benefId) {
-      // search another benef from same page = need to refresh
+    if (contactIdNew !== this.props.location.state.contactId) {
+      // search another contact from same page (because of modal) = need to refresh
+      this.resetIdentiteCollapsing();
       this.resetContactCollpasing();
       this.resetDossierCollpasing();
 
-      if (idBenef) {
+      if (contactIdNew) {
         addNotificationMessage({
           message: 'Consultation / Edition d\'un bénéficiaire existant',
           level: 'info'
         });
-        this.refreshAllBenefData(idBenef);
+        this.refreshAllBenefData(idBenef, contactIdNew);
       } else {
         addNotificationMessage({
           message: 'Création d\'un nouveau bénéficiaire',
@@ -288,6 +294,12 @@ class GestContacts extends Component {
     }
   }
 
+  // to reset identite collapsed state
+  resetIdentiteCollapsing() {
+    const { actions: { unsetIsCollapsedContactsIdentite } } = this.props;
+    unsetIsCollapsedContactsIdentite();
+  }
+
   // ////////////////////////////////
   //  Contact related methods
   // ////////////////////////////////
@@ -307,7 +319,7 @@ class GestContacts extends Component {
     }
   }
 
-  // to reset contact editing state and collapsed state
+  // to reset contact collapsed state
   resetContactCollpasing() {
     const { actions: { unsetIsCollapsedContactsContact } } = this.props;
     unsetIsCollapsedContactsContact();
