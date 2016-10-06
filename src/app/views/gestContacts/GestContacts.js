@@ -38,8 +38,6 @@ class GestContacts extends Component {
         message: 'Consultation / Edition d\'un contact existant',
         level: 'info'
       });
-      this.refreshAllBenefData(benefId, contactIdx);
-      this.refreshAllContactData(); // contacts + activite data
     } else {
       addNotificationMessage({
         message: 'Création d\'un nouveau contact',
@@ -47,8 +45,10 @@ class GestContacts extends Component {
       });
       // TODO
       // reset contact and activite form model
-      // resetGestBenef();
+      // resetGestContacts();
     }
+
+    this.refreshAllContactData(benefId, contactIdx);
   }
 
   // componentWillReceiveProps(newProps) {
@@ -72,7 +72,7 @@ class GestContacts extends Component {
   //         message: 'Consultation / Edition d\'un contact existant',
   //         level: 'info'
   //       });
-  //       this.refreshAllBenefData(idBenef, contactIdNew);
+  //       this.refreshAllContactData(idBenef, contactIdNew);
   //     } else {
   //       addNotificationMessage({
   //         message: 'Création d\'un nouveau contact',
@@ -245,32 +245,30 @@ class GestContacts extends Component {
   // ////////////////////////////////
 
   // fetch all contacts benef data and add notifications
-  refreshAllBenefData(idBenef = 0, contactId = 0) {
-    if (contactId && (parseInt(contactId, 10) > 0)) {
-      const { actions: { getGestContactsIfNeeded, addNotificationMessage } } = this.props;
+  refreshAllContactData(idBenef = 0, contactId = 0) {
+    const { actions: { getGestContactsIfNeeded, addNotificationMessage } } = this.props;
 
-      getGestContactsIfNeeded(idBenef, contactId)
-        .then(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              addNotificationMessage({
-                message: notificationPayload.message ? notificationPayload.message : '',
-                level: notificationPayload.level ? notificationPayload.level : 'info'
-              });
-            }
+    getGestContactsIfNeeded(idBenef, contactId)
+      .then(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'info'
+            });
           }
-        )
-        .catch(
-          notificationPayload => {
-            if (notificationPayload && notificationPayload.showNotification) {
-              addNotificationMessage({
-                message: notificationPayload.message ? notificationPayload.message : '',
-                level: notificationPayload.level ? notificationPayload.level : 'error'
-              });
-            }
+        }
+      )
+      .catch(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'error'
+            });
           }
-        );
-    }
+        }
+      );
   }
 
   // ////////////////////////////////

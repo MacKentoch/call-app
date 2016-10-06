@@ -130,7 +130,9 @@ function shouldGetGestContacts(state) {
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
   if (gestContacts.isFetching) {
     return false;
+    // console.log('will NOT refresh');
   } else {
     return true;
+    // console.log('will refresh');
   }
 }
