@@ -21,7 +21,6 @@ export const resetGestContacts = (time = moment().format(formatDate)) => {
     time
   };
 };
-
 const requestGetGestContacts = (benefId = 0, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_GET_GEST_CONTACTS,
@@ -30,7 +29,6 @@ const requestGetGestContacts = (benefId = 0, time = moment().format(formatDate))
     time
   };
 };
-
 const receivedGetGestContacts = (gestBenef, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_CONTACTS,
@@ -39,7 +37,6 @@ const receivedGetGestContacts = (gestBenef, time = moment().format(formatDate)) 
     time
   };
 };
-
 const errorGetGestContacts = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_GET_GEST_CONTACTS,
