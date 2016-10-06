@@ -4,6 +4,7 @@ import Identite                         from './identite/Identite';
 import Contact                          from './contact/Contact';
 import Dossiers                         from './dossiers/Dossiers';
 import FetchingAllContent               from './fetchingAllContent/FetchingAllContent';
+import FicheActivite                    from './ficheActivite/FicheActivite';
 
 
 class GestContacts extends Component {
@@ -214,6 +215,13 @@ class GestContacts extends Component {
                       {/* contacts et activites */}
 
                       <div style={{height: '10px'}}></div>
+
+                      <FicheActivite
+                        isCollapsedFicheActivite={false}
+                        onCollapseClick={()=>console.log('TODO: onCollapseClick FicheActivite')}
+                        lastFetchTimeActivites={''}
+                        activites={[]}
+                      />
 
                       {/* <ContactsEtActivites
                         isFetchingContactsEtActivites={isFetchingContactsEtActivites}

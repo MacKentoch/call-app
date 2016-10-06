@@ -71,18 +71,18 @@ class FicheActivite extends Component {
              <div className="row">
 
                <div className="col-xs-3">
-                 <ListActivites
+                 {/* <ListActivites
                    activites={activites}
                    selectedActiviteId={selectedActiviteId}
                    onSelectActivite={this.handlesOnSelectActivite}
-                 />
+                 /> */}
                </div>
 
                <div className="col-xs-9">
-                 <ActiviteContent
+                 {/* <ActiviteContent
                    activites={activites}
                    selectedActiviteId={selectedActiviteId}
-                 />
+                 /> */}
                </div>
 
              </div>
@@ -120,7 +120,7 @@ class FicheActivite extends Component {
 
   handlesOnSelectActivite(activiteId) {
     const { activites } = this.props;
-    
+
     if (Array.isArray(activites) && activites.length > 0) {
       return activites.filter(activite => activite.id === activiteId);
     }
@@ -129,7 +129,7 @@ class FicheActivite extends Component {
 }
 
 FicheActivite.propTypes = {
-  isCollapsedIdentite: PropTypes.bool.isRequired,
+  isCollapsedFicheActivite: PropTypes.bool.isRequired,
   onCollapseClick: PropTypes.func.isRequired,
 
   lastFetchTimeActivites: PropTypes.string.isRequired,
