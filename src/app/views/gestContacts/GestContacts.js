@@ -68,13 +68,13 @@ class GestContacts extends Component {
 
       if (contactIdNew) {
         addNotificationMessage({
-          message: 'Consultation / Edition d\'un bénéficiaire existant',
+          message: 'Consultation / Edition d\'un contact existant',
           level: 'info'
         });
         this.refreshAllBenefData(idBenef, contactIdNew);
       } else {
         addNotificationMessage({
-          message: 'Création d\'un nouveau bénéficiaire',
+          message: 'Création d\'un nouveau contact',
           level: 'info'
         });
         // reset gestBenef form model
