@@ -367,7 +367,9 @@ GestContacts.propTypes = {
   // ///////////////////////
   lastActionTime: PropTypes.string.isRequired,
   isFetchingAll: PropTypes.bool.isRequired,
-  id: PropTypes.number.isRequired,
+
+  contactId: PropTypes.number.isRequired,
+  benefId: PropTypes.number.isRequired,
   // ///////////////////////
   // identité
   // ///////////////////////
