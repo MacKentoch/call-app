@@ -276,11 +276,18 @@ class GestContacts extends Component {
   //  Identite related methods
   // ////////////////////////////////
   handlesOnIdentiteCollapseClick() {
-    const { isCollapsedIdentite, actions: { setIsCollapsedIdentite, unsetIsCollapsedIdentite } } = this.props;
+    const {
+      isCollapsedIdentite,
+      actions: {
+        setIsCollapsedContactsIdentite,
+        unsetIsCollapsedContactsIdentite
+      }
+    } = this.props;
+
     if (isCollapsedIdentite) {
-      unsetIsCollapsedIdentite();
+      unsetIsCollapsedContactsIdentite();
     } else {
-      setIsCollapsedIdentite();
+      setIsCollapsedContactsIdentite();
     }
   }
 
@@ -288,18 +295,25 @@ class GestContacts extends Component {
   //  Contact related methods
   // ////////////////////////////////
   handlesOnContactCollapseClick() {
-    const { isCollapsedContact, actions: { setIsCollapsedContact, unsetIsCollapsedContact } } = this.props;
+    const {
+      isCollapsedContact,
+      actions: {
+        setIsCollapsedContactsContact,
+        unsetIsCollapsedContactsContact
+      }
+    } = this.props;
+
     if (isCollapsedContact) {
-      unsetIsCollapsedContact();
+      unsetIsCollapsedContactsContact();
     } else {
-      setIsCollapsedContact();
+      setIsCollapsedContactsContact();
     }
   }
 
   // to reset contact editing state and collapsed state
   resetContactCollpasing() {
-    const { actions: { unsetIsCollapsedContact } } = this.props;
-    unsetIsCollapsedContact();
+    const { actions: { unsetIsCollapsedContactsContact } } = this.props;
+    unsetIsCollapsedContactsContact();
   }
 
   // ////////////////////////////////
@@ -307,11 +321,18 @@ class GestContacts extends Component {
   // ////////////////////////////////
 
   handlesOnDossiersCollapseClick() {
-    const { isCollapsedDossiers, actions: { setIsCollapsedDossiers, unsetIsCollapsedDossiers } } = this.props;
+    const {
+      isCollapsedDossiers,
+      actions: {
+        setIsCollapsedContactsDossiers,
+        unsetIsCollapsedContactsDossiers
+      }
+    } = this.props;
+
     if (isCollapsedDossiers) {
-      unsetIsCollapsedDossiers();
+      unsetIsCollapsedContactsDossiers();
     } else {
-      setIsCollapsedDossiers();
+      setIsCollapsedContactsDossiers();
     }
   }
 
