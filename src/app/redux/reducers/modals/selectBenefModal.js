@@ -5,6 +5,7 @@ import {
 
 const initialState = {
   isOpened:     false,
+  contactId:    0,
   typeContact:  '',
   time:         ''
 };
@@ -15,6 +16,7 @@ const selectBenefModal = (state = initialState, action) => {
     return {
       ...state,
       isOpened:     true,
+      contactId:    action.contactId,
       typeContact:  action.typeContact,
       time:         action.time
     };
@@ -22,6 +24,7 @@ const selectBenefModal = (state = initialState, action) => {
     return {
       ...state,
       isOpened:     false,
+      contactId:    initialState.contactId,   // reset it
       typeContact:  initialState.typeContact, // reset it
       time:         action.time
     };

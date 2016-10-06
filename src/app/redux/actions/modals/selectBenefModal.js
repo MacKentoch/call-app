@@ -8,11 +8,12 @@ export const SHOW_SELECT_BENEF_MODAL = 'SHOW_SELECT_BENEF_MODAL';
 export const HIDE_SELECT_BENEF_MODAL = 'HIDE_SELECT_BENEF_MODAL';
 
 
-export const showSelectBenefModal = (typeContact = '', time = moment().format(formatDate)) => {
+export const showSelectBenefModal = (typeContact = '', contactId = 0, time = moment().format(formatDate)) => {
   if (typeContact.trim().length > 0) {
     return {
       type: SHOW_SELECT_BENEF_MODAL,
-      typeContact, // will edit / create a contact so we need contact type (email, phone etc..)
+      contactId,    // if contactId > 0 -> this is an update | if contactId === 0 -> this is a creation
+      typeContact,  // will edit / create a contact so we need contact type (email, phone etc..)
       time
     };
   } else {
