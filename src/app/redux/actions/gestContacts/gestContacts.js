@@ -52,7 +52,7 @@ const errorGetGestContacts = (error, time = moment().format(formatDate)) => {
 
 const getQueryGestContacts = (benefId) => dispatch => {
   if (!benefId) {
-    dispatch(errorGetGestContacts('getGestContacts API error: benefId is not defined or not valid'));
+    dispatch(errorGetGestContacts('getQueryGestContacts API error: benefId is not defined or not valid'));
     return Promise.reject({
       message: 'Rafraichissement des données bénéficiaire (edition de contact) en erreur (identifiant non valide)',
       level: 'error',
