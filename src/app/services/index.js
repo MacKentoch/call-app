@@ -46,7 +46,8 @@ import {
   updateGestBenefDossier,
   getGestBenefAllContactsAndActivites,
   getGestBenefContactsAndActivites,
-  getGestContacts
+  getGestContactsNewContact,
+  getGestContactsExistingContact
 }                     from './API';
 
 // date tools
@@ -133,7 +134,8 @@ export {
   updateGestBenefDossier,
   getGestBenefAllContactsAndActivites,
   getGestBenefContactsAndActivites,
-  getGestContacts,
+  getGestContactsNewContact,
+  getGestContactsExistingContact,
 
   // date tools
   getLastThreeMonthNames,

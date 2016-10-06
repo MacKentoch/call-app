@@ -245,11 +245,11 @@ class GestContacts extends Component {
   // ////////////////////////////////
 
   // fetch all contacts benef data and add notifications
-  refreshAllBenefData(idBenef = 0) {
-    if (idBenef && (parseInt(idBenef, 10) > 0)) {
+  refreshAllBenefData(idBenef = 0, contactId = 0) {
+    if (contactId && (parseInt(contactId, 10) > 0)) {
       const { actions: { getGestContactsIfNeeded, addNotificationMessage } } = this.props;
 
-      getGestContactsIfNeeded(idBenef)
+      getGestContactsIfNeeded(idBenef, contactId)
         .then(
           notificationPayload => {
             if (notificationPayload && notificationPayload.showNotification) {

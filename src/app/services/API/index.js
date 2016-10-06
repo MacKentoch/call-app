@@ -24,7 +24,8 @@ import {
   getGestBenefContactsAndActivites
 }                                 from './gestbenef/gestBenef';
 import {
-  getGestContacts
+  getGestContactsNewContact,
+  getGestContactsExistingContact
 }                                 from './gestContacts/gestContacts';
 export {
   getUserBoitesMails,
@@ -48,5 +49,6 @@ export {
   getGestBenefAllContactsAndActivites,
   getGestBenefContactsAndActivites,
   // gestContacts:
-  getGestContacts
+  getGestContactsNewContact,
+  getGestContactsExistingContact
 };

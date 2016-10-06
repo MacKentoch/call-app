@@ -331,10 +331,16 @@ export const fetchMockGetGestBenefContactsAndActivitesForThisNumDossier = (benef
 /*
   Gest contacts
  */
-export const fetchMockGetGestContacts = (benefId, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+export const fetchMockGetGestContacts = (benefId, contactId, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
   if (!benefId) {
     return Promise.reject({
       'error': 'fetchMockGetGestContacts error: benefId is not valid'
+    });
+  }
+
+  if (!contactId) {
+    return Promise.reject({
+      'error': 'fetchMockGetGestContacts error: contactId is not valid'
     });
   }
 
