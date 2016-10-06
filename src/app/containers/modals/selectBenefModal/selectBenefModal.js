@@ -6,7 +6,8 @@ import { SelectBenefModal }     from '../../../views';
 const mapStateToProps = (state) => {
   return {
     isOpened:  state.selectBenefModal.isOpened,
-
+    
+    contactId:  state.selectBenefModal.contactId,
     typeContact: state.selectBenefModal.typeContact,
 
     searchFetching: state.search.isFetching,
