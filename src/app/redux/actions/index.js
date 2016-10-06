@@ -174,6 +174,20 @@ import {
   setIsCollapsedContactsEtActivites,
   unsetIsCollapsedContactsEtActivites
 }                                 from './gestBenef';
+// gestContacts:
+import {
+  // all contacts (benef info) fields (identite + contact + dossiers)
+  getGestContactsIfNeeded,
+  // contacts identite only
+  setIsCollapsedContactsIdentite,
+  unsetIsCollapsedContactsIdentite,
+  // benef contact only
+  setIsCollapsedContactsContact,
+  unsetIsCollapsedContactsContact,
+  // benef dossiers:
+  setIsCollapsedContactsDossiers,
+  unsetIsCollapsedContactsDossiers
+}                                 from './gestContacts';
 import {
   addNotificationMessage
 }                                 from './notifications/notifications';
@@ -325,5 +339,14 @@ export {
   unsetIsCollapsedContactsEtActivites,
 
   // notifications:
-  addNotificationMessage
+  addNotificationMessage,
+
+  // gestContacts:
+  getGestContactsIfNeeded,
+  setIsCollapsedContactsIdentite,
+  unsetIsCollapsedContactsIdentite,
+  setIsCollapsedContactsContact,
+  unsetIsCollapsedContactsContact,
+  setIsCollapsedContactsDossiers,
+  unsetIsCollapsedContactsDossiers
 };
