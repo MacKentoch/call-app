@@ -53,28 +53,31 @@ const mapDispatchToProps = (dispatch) => {
         // view:
         enterGestContacts: actions.enterGestContacts,
         leaveGestContacts: actions.leaveGestContacts,
+
         // notifications
         addNotificationMessage: actions.addNotificationMessage,
+
         // get gestContacts:
-        getGestContactsIfNeeded: actions.getGestBenefIfNeeded,
+        getGestContactsIfNeeded: actions.getGestContactsIfNeeded,
+
         // //////////////////
         // identite
         // //////////////////
         // UI: Identite
-        setIsCollapsedIdentite: actions.setIsCollapsedIdentite,
-        unsetIsCollapsedIdentite: actions.unsetIsCollapsedIdentite,
+        setIsCollapsedContactsIdentite: actions.setIsCollapsedContactsIdentite,
+        unsetIsCollapsedContactsIdentite: actions.unsetIsCollapsedContactsIdentite,
         // //////////////////
         // contact
         // //////////////////
         // UI: contact
-        setIsCollapsedContact: actions.setIsCollapsedContact,
-        unsetIsCollapsedContact: actions.unsetIsCollapsedContact,
+        setIsCollapsedContactsContact: actions.setIsCollapsedContactsContact,
+        unsetIsCollapsedContactsContact: actions.unsetIsCollapsedContactsContact,
         // /////////////////////
         // dossiers
         // /////////////////////
         // UI dossiers
-        setIsCollapsedDossiers: actions.setIsCollapsedDossiers,
-        unsetIsCollapsedDossiers: actions.unsetIsCollapsedDossiers,
+        setIsCollapsedContactsDossiers: actions.setIsCollapsedContactsDossiers,
+        unsetIsCollapsedContactsDossiers: actions.unsetIsCollapsedContactsDossiers
         // ///////////////////////
         // contacts (TO ADD)
         // ///////////////////////
