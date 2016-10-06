@@ -243,12 +243,12 @@ class GestContacts extends Component {
   //  general
   // ////////////////////////////////
 
-  // fetch all benef data and add notifications
+  // fetch all contacts benef data and add notifications
   refreshAllBenefData(idBenef = 0) {
     if (idBenef && (parseInt(idBenef, 10) > 0)) {
-      const { actions: { getGestBenefIfNeeded, addNotificationMessage } } = this.props;
+      const { actions: { getGestContactsIfNeeded, addNotificationMessage } } = this.props;
 
-      getGestBenefIfNeeded(idBenef)
+      getGestContactsIfNeeded(idBenef)
         .then(
           notificationPayload => {
             if (notificationPayload && notificationPayload.showNotification) {
@@ -354,14 +354,12 @@ GestContacts.propTypes = {
   // react router
   params: PropTypes.object,
   location: PropTypes.object,
-
   currentView:  PropTypes.string.isRequired,
   // ///////////////////////
   // gestBenef data:
   // ///////////////////////
   lastActionTime: PropTypes.string.isRequired,
   isFetchingAll: PropTypes.bool.isRequired,
-
   id: PropTypes.number.isRequired,
   // ///////////////////////
   // identité
