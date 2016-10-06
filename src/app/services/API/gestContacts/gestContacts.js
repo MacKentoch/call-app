@@ -10,13 +10,13 @@ import { appConfig }  from '../../../config';
 
 // get all gestContact data when creating new contact
 export const getGestContactsNewContact = benefId => {
-  const api = appConfig.gestContacts.getData.API;
-  const url = `${getLocationOrigin()}/${api}/${benefId}`;
-  const options = {...defaultOptions};
-
   if (!benefId) {
     return Promise.reject({error: 'getGestContactsNewContact API: benefId is not valid'});
   }
+
+  const api = appConfig.gestContacts.getData.API;
+  const url = `${getLocationOrigin()}/${api}/${benefId}`;
+  const options = {...defaultOptions};
 
   return fetch(url, options)
     .then(checkStatus)
@@ -28,10 +28,6 @@ export const getGestContactsNewContact = benefId => {
 
 // get all gestContact data when updating existing contact
 export const getGestContactsExistingContact = (benefId, contactId) => {
-  const api = appConfig.gestContacts.getData.API;
-  const url = `${getLocationOrigin()}/${api}/${benefId}`;
-  const options = {...defaultOptions};
-
   if (!benefId) {
     return Promise.reject({error: 'getGestContactsExistingContact API: benefId is not valid'});
   }
@@ -39,6 +35,10 @@ export const getGestContactsExistingContact = (benefId, contactId) => {
   if (!contactId) {
     return Promise.reject({error: 'getGestContactsExistingContact API: contactId is not valid'});
   }
+
+  const api = appConfig.gestContacts.getData.API;
+  const url = `${getLocationOrigin()}/${api}/${benefId}/${contactId}`;
+  const options = {...defaultOptions};
 
   return fetch(url, options)
     .then(checkStatus)

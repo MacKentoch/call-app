@@ -1,7 +1,8 @@
 import moment         from 'moment';
 import { appConfig }  from '../../../config';
 import {
-  getGestContacts,
+  getGestContactsNewContact,
+  getGestContactsExistingContact,
   fetchMockGetGestContacts
 }                     from '../../../services';
 
