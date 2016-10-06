@@ -324,27 +324,8 @@ class GestContacts extends Component {
 
   // to reset contact editing state and collapsed state
   resetDossierCollpasing() {
-    const { actions: { unsetIsCollapsedContact } } = this.props;
-    unsetIsCollapsedContact();
-  }
-
-  // /////////////////////////////////////
-  //  ContactsEtActivites related methods
-  // /////////////////////////////////////
-  handlesOnContactsEtActivitesCollapseClick() {
-    const {
-      isCollapsedContactsEtActivites,
-      actions: {
-        setIsCollapsedContactsEtActivites,
-        unsetIsCollapsedContactsEtActivites
-      }
-    } = this.props;
-
-    if (isCollapsedContactsEtActivites) {
-      unsetIsCollapsedContactsEtActivites();
-    } else {
-      setIsCollapsedContactsEtActivites();
-    }
+    const { actions: { unsetIsCollapsedContactsContact } } = this.props;
+    unsetIsCollapsedContactsContact();
   }
 }
 
@@ -366,7 +347,6 @@ GestContacts.propTypes = {
   // ///////////////////////
   isFetchingIdentite: PropTypes.bool.isRequired,
   lastFetchTimeIdentite: PropTypes.string.isRequired,
-
   isCollapsedIdentite: PropTypes.bool.isRequired,
   civilite: PropTypes.string.isRequired,
   nom: PropTypes.string.isRequired,
@@ -381,9 +361,7 @@ GestContacts.propTypes = {
   // ///////////////////////
   isFetchingContact: PropTypes.bool.isRequired,
   lastFetchTimeContact: PropTypes.string.isRequired,
-
   isCollapsedContact: PropTypes.bool.isRequired,
-
   fixedPhone: PropTypes.string.isRequired,
   mobilePhone: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
@@ -399,18 +377,8 @@ GestContacts.propTypes = {
   // ///////////////////////
   isFetchingDossiers: PropTypes.bool.isRequired,
   lastFetchTimeDossiers: PropTypes.string.isRequired,
-
   isCollapsedDossiers: PropTypes.bool.isRequired,
-
   dossiers: PropTypes.array.isRequired,
-  // ///////////////////////
-  // contacts Et activites:
-  // ///////////////////////
-  isFetchingContactsEtActivites: PropTypes.bool.isRequired,
-  lastFetchTimeContactsEtActivites: PropTypes.string.isRequired,
-  contactsEtActivites: PropTypes.array.isRequired,
-  numDossierSelected: PropTypes.number.isRequired,
-  isCollapsedContactsEtActivites: PropTypes.bool.isRequired,
 
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({
@@ -420,21 +388,19 @@ GestContacts.propTypes = {
     // notifications:
     addNotificationMessage: PropTypes.func,
     // get gestBenef:
-    getGestBenefIfNeeded: PropTypes.func,
-    // reset:
-    resetGestBenef: PropTypes.func.isRequired,
+    getGestContactsIfNeeded: PropTypes.func,
     // //////////////////
     // identite
     // /////////////////
     // UI: Identite
-    setIsCollapsedIdentite: PropTypes.func,
-    unsetIsCollapsedIdentite: PropTypes.func,
+    setIsCollapsedContactsIdentite: PropTypes.func,
+    unsetIsCollapsedContactsIdentite: PropTypes.func,
     // //////////////////
     // contact
     // /////////////////
     // UI: contact
-    setIsCollapsedContact: PropTypes.func,
-    unsetIsCollapsedContact: PropTypes.func,
+    setIsCollapsedContactsContact: PropTypes.func,
+    unsetIsCollapsedContactsContact: PropTypes.func,
     // //////////////////
     // dossiers
     // /////////////////
