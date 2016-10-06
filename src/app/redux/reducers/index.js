@@ -29,6 +29,8 @@ import search               from './search/search';
 import gestBenef            from './gestBenef/gestBenef';
 // notifications
 import notifications        from './notifications/notifications';
+// gestContacts:
+import gestContacts         from './gestContacts/gestContacts';
 
 export {
   // views:
@@ -67,5 +69,8 @@ export {
   gestBenef,
 
   // notifications
-  notifications
+  notifications,
+
+  // gestContacts:
+  gestContacts
 };
