@@ -13,14 +13,6 @@ export const REQUEST_GET_GEST_CONTACTS   = 'REQUEST_GET_GEST_CONTACTS';
 export const RECEIVED_GET_GEST_CONTACTS  = 'RECEIVED_GET_GEST_CONTACTS';
 export const ERROR_GET_GEST_CONTACTS     = 'ERROR_GET_GEST_CONTACTS';
 
-export const RESET_GEST_CONTACTS         = 'RESET_GEST_CONTACTS';
-
-export const resetGestContacts = (time = moment().format(formatDate)) => {
-  return {
-    type: RESET_GEST_CONTACTS,
-    time
-  };
-};
 const requestGetGestContacts = (benefId = 0, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_GET_GEST_CONTACTS,
