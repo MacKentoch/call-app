@@ -12,10 +12,18 @@ class FicheActivite extends Component {
     super(props);
 
     this.state = {
-
+      selectedActiviteId: 0,
+      selectedActivite: []
     };
 
     this.handlesOnSelectActivite = this.handlesOnSelectActivite.bind(this);
+  }
+
+  componentDidMount() {
+    const { activites } = this.props;
+    // select 1 st activite:
+    const firstActiviteId = activites[0].id;
+    this.getActiviteById(firstActiviteId);
   }
 
   render() {
@@ -70,16 +78,20 @@ class FicheActivite extends Component {
   handlesOnSelectActivite() {
 
   }
+
+  getActiviteById(id) {
+    const { activites } = this.props;
+    return activites.filter(activite => activite.id === id);
+  }
 }
 
 FicheActivite.propTypes = {
   isCollapsedIdentite: PropTypes.bool.isRequired,
   onCollapseClick: PropTypes.func.isRequired,
 
-  selectedActiviteId: PropTypes.number.isRequired,
   activites: PropTypes.arrayOf(
     PropTypes.shape({
-      idActivite: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
       contactId: PropTypes.number.isRequired,
 
       libelleActiviteNiv2: PropTypes.string.isRequired,
