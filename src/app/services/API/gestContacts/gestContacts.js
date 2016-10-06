@@ -32,7 +32,7 @@ export const getGestContactsExistingContact = (benefId, contactId) => {
     return Promise.reject({error: 'getGestContactsExistingContact API: benefId is not valid'});
   }
 
-  if (!contactId) {
+  if (!(parseInt(contactId, 10) > 0)) {
     return Promise.reject({error: 'getGestContactsExistingContact API: contactId is not valid'});
   }
 

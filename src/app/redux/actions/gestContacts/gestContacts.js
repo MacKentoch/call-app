@@ -50,8 +50,6 @@ const getQueryGestContacts = (benefId, contactId) => dispatch => {
       showNotification: true
     });
   }
-
-  console.log(parseInt(contactId, 10));
   
   if (!(parseInt(contactId, 10) >= 0)) {
     dispatch(errorGetGestContacts('getQueryGestContacts API error: contactId is not defined or not valid'));
