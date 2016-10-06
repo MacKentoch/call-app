@@ -193,24 +193,20 @@ class GestContacts extends Component {
                   <div style={{height: '10px'}}></div>
 
                   {/* pas de dossier si beneficiaire sans id (il suffit de sauvegarder une fois pour lui créer un id et passer à modification de benef) */}
-                  {
-                    (parseInt(id, 10) > 0) &&
-                    <div>
-                      {/* dossiers */}
-                      <Dossiers
-                        dossiers={dossiers}
+                  <div>
+                    {/* dossiers */}
+                    <Dossiers
+                      dossiers={dossiers}
 
-                        isFetchingDossiers={isFetchingDossiers}
-                        lastFetchTimeDossiers={lastFetchTimeDossiers}
+                      isFetchingDossiers={isFetchingDossiers}
+                      lastFetchTimeDossiers={lastFetchTimeDossiers}
 
-                        isCollapsedDossiers={isCollapsedDossiers}
-                        onCollapseClick={this.handlesOnDossiersCollapseClick}
+                      isCollapsedDossiers={isCollapsedDossiers}
+                      onCollapseClick={this.handlesOnDossiersCollapseClick}
 
-                        onDossierSelection={this.handlesOnDossierSelection}
-                      />
-                    </div>
-                  }
-
+                      onDossierSelection={this.handlesOnDossierSelection}
+                    />
+                  </div>
                   {/* pas de contactsEtActivites si beneficiaire sans id */}
                   {
                     (parseInt(id, 10) > 0) &&
