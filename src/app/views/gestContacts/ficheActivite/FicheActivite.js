@@ -2,8 +2,15 @@ import React, {
   Component,
   PropTypes
 }                           from 'react';
+import moment               from 'moment';
+import { appConfig }        from '../../../config';
 import ToggleCollapse       from './toggleCollapse/ToggleCollapse';
 import Collapse             from 'react-collapse';
+import shallowCompare       from 'react-addons-shallow-compare';
+
+
+moment.locale('fr');
+const formatDate = appConfig.formatDate.defaut;
 
 
 class FicheActivite extends Component {
@@ -22,9 +29,24 @@ class FicheActivite extends Component {
     this.initToFirstActivite();
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { lastFetchTimeActivites } = this.props;
+    const activitesAreUpdated = moment(nextProps.lastFetchTimeActivites, formatDate)
+                                  .diff(moment(lastFetchTimeActivites, formatDate));
+
+    if (activitesAreUpdated > 0) {
+      // force all activite to init
+      this.initToFirstActivite();
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
     const { isCollapsedIdentite, onCollapseClick } = this.props;
-    const { selectedActiviteId, activites } = this.props;
+    const { activites } = this.props;
 
     return (
        <div>
@@ -89,7 +111,7 @@ class FicheActivite extends Component {
 
   getActiviteById(id) {
     const { activites } = this.props;
-    
+
     if (Array.isArray(activites) && activites.length > 0) {
       return activites.filter(activite => activite.id === id);
     }
@@ -105,6 +127,7 @@ FicheActivite.propTypes = {
   isCollapsedIdentite: PropTypes.bool.isRequired,
   onCollapseClick: PropTypes.func.isRequired,
 
+  lastFetchTimeActivites: PropTypes.string.isRequired,
   activites: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
