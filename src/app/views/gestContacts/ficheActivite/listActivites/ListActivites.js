@@ -44,27 +44,7 @@ class ListActivites extends Component {
 
               <li className="active">
                 <a href="#">
-                  <span
-                    style={{
-                      display: 'block',
-                      fontSize: '10px'
-                    }}>
-                    niveau2
-                  </span>
-                  <span
-                    style={{
-                      display: 'block',
-                      fontSize: '10px'
-                    }}>
-                    niveau3
-                  </span>
-                  <span
-                    style={{
-                      display: 'block',
-                      fontSize: '10px'
-                    }}>
-                    niveau4
-                  </span>
+                  niveau4
                 </a>
               </li>
 
