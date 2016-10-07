@@ -210,7 +210,7 @@ class GestContacts extends Component {
                   </div>
                   {/* pas de contactsEtActivites si beneficiaire sans id */}
                   {
-                    (parseInt(id, 10) > 0) &&
+                    // (parseInt(id, 10) > 0) &&
                     <div>
                       {/* contacts et activites */}
 

@@ -45,26 +45,26 @@ class FicheActivite extends Component {
   }
 
   render() {
-    const { isCollapsedIdentite, onCollapseClick } = this.props;
+    const { isCollapsedFicheActivite, onCollapseClick } = this.props;
     const { activites } = this.props;
 
     return (
        <div>
          <div className="page-header">
            <i
-             className="fa fa-user"
+             className="fa fa-sort-numeric-asc"
              aria-hidden="true"
              style={{color: '#444444'}}>
            </i>
            &nbsp;
            activités
            <ToggleCollapse
-             isCollapsed={isCollapsedIdentite}
+             isCollapsed={isCollapsedFicheActivite}
              toggleCollapse={onCollapseClick}
            />
          </div>
          <Collapse
-           isOpened={!isCollapsedIdentite}
+           isOpened={!isCollapsedFicheActivite}
            keepCollapsedContent={false}>
            <div style={{ height: '230px' }}>
 

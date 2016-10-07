@@ -27,7 +27,7 @@ const Contact = ({
             style={{color: '#444444'}}>
           </i>
           &nbsp;
-          Informations "contact" du bénéficaire
+          Informations "contact" du bénéficiaire
           <ToggleCollapse
             isCollapsed={isCollapsedContact}
             toggleCollapse={onCollapseClick}

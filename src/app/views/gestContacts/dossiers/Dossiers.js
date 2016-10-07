@@ -84,7 +84,7 @@ class Dossiers extends Component {
             style={{color: '#444444'}}>
           </i>
           &nbsp;
-          Informations "dossiers" du bénéficaire
+          Informations "dossiers" du bénéficiaire
           <ToggleCollapse
             isCollapsed={isCollapsedDossiers}
             toggleCollapse={onCollapseClick}

@@ -26,7 +26,7 @@ const Identite = ({
             style={{color: '#444444'}}>
           </i>
           &nbsp;
-          Informations "identité" du bénéficaire
+          Informations "identité" du bénéficiaire
           <ToggleCollapse
             isCollapsed={isCollapsedIdentite}
             toggleCollapse={onCollapseClick}
