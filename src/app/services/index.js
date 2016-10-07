@@ -88,6 +88,9 @@ import {
   getSearchContactsEtActivitesResMinIndex,
   getSearchContactsEtActivitesResMaxIndex
 }                     from './utils/benefContactsEtActivitesPagination';
+import {
+  limitStringToNChars
+}                     from './utils/stringManipulation';
 
 export {
   // utils:
@@ -97,6 +100,7 @@ export {
   parseJSON,
   getLocationOrigin,
   encodeBase64,
+  limitStringToNChars,
 
   // fetch mocks:
   fetchMockUserInfosData,
