@@ -26,7 +26,16 @@ class ActiviteLink extends Component  {
       <li
         id={id}
         className={cx({'active' : isSelected})}>
-        <a onClick={this.handlesOnClick}>
+        <a
+          style={{
+            borderTopColor: '#F1F2F3',
+            borderTopWidth: '1px',
+            borderTopStyle: 'solid',
+            borderLeftColor: '#F1F2F3',
+            borderLeftWidth: '1px',
+            borderLeftStyle: 'solid'
+          }}
+          onClick={this.handlesOnClick}>
           {limitStringToNChars(label)}
         </a>
       </li>
