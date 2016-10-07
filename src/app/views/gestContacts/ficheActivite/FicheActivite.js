@@ -71,7 +71,7 @@ class FicheActivite extends Component {
 
              <div className="row">
 
-               <div className="col-xs-3">
+               <div className="col-xs-4">
                  <ListActivites
                    activites={activites}
                   //  selectedActiviteId={selectedActiviteId}
@@ -79,7 +79,7 @@ class FicheActivite extends Component {
                  />
                </div>
 
-               <div className="col-xs-9">
+               <div className="col-xs-8">
                  {/* <ActiviteContent
                    activites={activites}
                    selectedActiviteId={selectedActiviteId}

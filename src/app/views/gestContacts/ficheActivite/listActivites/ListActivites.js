@@ -2,6 +2,7 @@ import React, {
   Component,
   PropTypes
 }                           from 'react';
+import cx                   from 'classnames';
 // import moment               from 'moment';
 // import { appConfig }        from '../../../../config';
 import shallowCompare       from 'react-addons-shallow-compare';
@@ -32,7 +33,7 @@ class ListActivites extends Component {
                 borderBottom: '1px solid rgb(241, 241, 241)'
               }}>
               <h4 style={{fontWeight: 500}}>
-                activités:
+                Activités de ce contact:
               </h4>
             </div>
           </div>
@@ -40,10 +41,37 @@ class ListActivites extends Component {
         <div className="panel-body">
           <div className="box-body no-padding">
             <ul className="nav nav-pills nav-stacked">
-              <li className="active"><a href="#">Home</a></li>
+
+              <li className="active">
+                <a href="#">
+                  <span
+                    style={{
+                      display: 'block',
+                      fontSize: '10px'
+                    }}>
+                    niveau2
+                  </span>
+                  <span
+                    style={{
+                      display: 'block',
+                      fontSize: '10px'
+                    }}>
+                    niveau3
+                  </span>
+                  <span
+                    style={{
+                      display: 'block',
+                      fontSize: '10px'
+                    }}>
+                    niveau4
+                  </span>
+                </a>
+              </li>
+
               <li><a href="#">Menu 1</a></li>
               <li><a href="#">Menu 2</a></li>
               <li><a href="#">Menu 3</a></li>
+
             </ul>
           </div>
         </div>
