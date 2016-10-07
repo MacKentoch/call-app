@@ -30,7 +30,7 @@ class FicheContact extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { lastFetchTimeActivites } = this.props;
+    const { lastFetchTimeContact } = this.props;
     const activitesAreUpdated = moment(nextProps.lastFetchTimeActivites, formatDate)
                                   .diff(moment(lastFetchTimeActivites, formatDate));
 
