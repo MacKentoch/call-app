@@ -6,6 +6,9 @@ import cx                   from 'classnames';
 // import moment               from 'moment';
 // import { appConfig }        from '../../../../config';
 import shallowCompare       from 'react-addons-shallow-compare';
+import {
+  limitStringToNChars
+}                           from '../../../../services';
 
 class ListActivites extends Component {
   constructor(props) {
@@ -44,7 +47,7 @@ class ListActivites extends Component {
 
               <li className="active">
                 <a href="#">
-                  niveau4
+                  {limitStringToNChars('niveau4')}
                 </a>
               </li>
 
