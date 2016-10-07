@@ -5,6 +5,7 @@ import Contact                          from './contact/Contact';
 import Dossiers                         from './dossiers/Dossiers';
 import FetchingAllContent               from './fetchingAllContent/FetchingAllContent';
 import FicheActivite                    from './ficheActivite/FicheActivite';
+import FicheContact                     from './ficheContact/FicheContact';
 
 
 class GestContacts extends Component {
@@ -216,24 +217,19 @@ class GestContacts extends Component {
 
                       <div style={{height: '10px'}}></div>
 
+                      <FicheContact
+                        isCollapsedFicheContact={false}
+                        onCollapseClick={()=>console.log('TODO: onCollapseClick FicheActivite')}
+                        lastFetchTimeContact={''}
+                        activites={[]}
+                      />
+
                       <FicheActivite
                         isCollapsedFicheActivite={false}
                         onCollapseClick={()=>console.log('TODO: onCollapseClick FicheActivite')}
                         lastFetchTimeActivites={''}
                         activites={[]}
                       />
-
-                      {/* <ContactsEtActivites
-                        isFetchingContactsEtActivites={isFetchingContactsEtActivites}
-                        lastFetchTimeContactsEtActivites={lastFetchTimeContactsEtActivites}
-
-                        contactsEtActivites={contactsEtActivites}
-
-                        numDossierSelected={numDossierSelected}
-
-                        isCollapsedContactsEtActivites={isCollapsedContactsEtActivites}
-                        onCollapseClick={this.handlesOnContactsEtActivitesCollapseClick}
-                      /> */}
 
                       <div style={{height: '10px'}}></div>
                     </div>
