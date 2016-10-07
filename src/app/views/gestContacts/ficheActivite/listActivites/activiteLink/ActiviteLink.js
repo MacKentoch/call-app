@@ -33,7 +33,8 @@ class ActiviteLink extends Component  {
             borderTopStyle: 'solid',
             borderLeftColor: '#F1F2F3',
             borderLeftWidth: '1px',
-            borderLeftStyle: 'solid'
+            borderLeftStyle: 'solid',
+            cursor: 'pointer'
           }}
           onClick={this.handlesOnClick}>
           {limitStringToNChars(label)}
