@@ -65,6 +65,10 @@ class ListActivites extends Component {
 
 ListActivites.propTypes = {
   lastFetchTimeActivites: PropTypes.string.isRequired,
+
+  selectedActiviteId: PropTypes.number.isRequired,
+  onSelectActivite: PropTypes.func.isRequired,
+
   activites: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

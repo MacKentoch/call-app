@@ -48,6 +48,7 @@ class FicheActivite extends Component {
   render() {
     const { isCollapsedFicheActivite, onCollapseClick } = this.props;
     const { activites } = this.props;
+    const { selectedActiviteId } = this.state;
 
     return (
        <div>
@@ -74,6 +75,7 @@ class FicheActivite extends Component {
                <div className="col-xs-4">
                  <ListActivites
                    activites={activites}
+                   selectedActiviteId={selectedActiviteId}
                   //  selectedActiviteId={selectedActiviteId}
                    onSelectActivite={this.handlesOnSelectActivite}
                  />
