@@ -76,7 +76,6 @@ class FicheActivite extends Component {
                  <ListActivites
                    activites={activites}
                    selectedActiviteId={selectedActiviteId}
-                  //  selectedActiviteId={selectedActiviteId}
                    onSelectActivite={this.handlesOnSelectActivite}
                  />
                </div>

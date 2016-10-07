@@ -20,13 +20,15 @@ class ActiviteLink extends Component  {
   }
 
   render() {
-    const {id, label, isSelected, onClick} = this.props;
+    const { id, label, isSelected } = this.props;
 
     return (
-      <li className={cx({'active' : isSelected})}>
+      <li
+        id={id}
+        className={cx({'active' : isSelected})}>
         <a onClick={this.handlesOnClick}>
-          {limitStringToNChars('niveau4')}
-        </a>s
+          {limitStringToNChars(label)}
+        </a>
       </li>
     );
   }

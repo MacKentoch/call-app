@@ -2,13 +2,37 @@ import React, {
   Component,
   PropTypes
 }                           from 'react';
-import cx                   from 'classnames';
 // import moment               from 'moment';
 // import { appConfig }        from '../../../../config';
 import shallowCompare       from 'react-addons-shallow-compare';
 import {
   limitStringToNChars
 }                           from '../../../../services';
+import ActiviteLink         from './activiteLink/ActiviteLink';
+
+const mock = [
+  {
+    id: 1,
+    label: 'activite label 1 de test',
+  },
+  {
+    id: 2,
+    label: 'activite label 2 de test',
+  },
+  {
+    id: 3,
+    label: 'activite label 3 de test',
+  },
+  {
+    id: 4,
+    label: 'activite label 4 de test',
+  },
+  {
+    id: 5,
+    label: 'activite label 5 de test',
+  },
+];
+const mockSelectedActiviteId = 2;
 
 class ListActivites extends Component {
   constructor(props) {
@@ -44,17 +68,21 @@ class ListActivites extends Component {
         <div className="panel-body">
           <div className="box-body no-padding">
             <ul className="nav nav-pills nav-stacked">
-
-              <li className="active">
-                <a href="#">
-                  {limitStringToNChars('niveau4')}
-                </a>
-              </li>
-
-              <li><a href="#">Menu 1</a></li>
-              <li><a href="#">Menu 2</a></li>
-              <li><a href="#">Menu 3</a></li>
-
+              {
+                mock.map(
+                  (activite, activiteIdx) => {
+                    const { id, label } = activite;
+                    return (
+                      <ActiviteLink
+                        key={activiteIdx}
+                        id={id}
+                        label={label}
+                        isSelected={id === mockSelectedActiviteId}
+                      />
+                    );
+                  }
+                )
+              }
             </ul>
           </div>
         </div>
