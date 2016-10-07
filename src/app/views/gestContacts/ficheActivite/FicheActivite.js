@@ -7,6 +7,7 @@ import { appConfig }        from '../../../config';
 import ToggleCollapse       from './toggleCollapse/ToggleCollapse';
 import Collapse             from 'react-collapse';
 import shallowCompare       from 'react-addons-shallow-compare';
+import ListActivites        from './listActivites/ListActivites';
 
 
 moment.locale('fr');
@@ -71,11 +72,11 @@ class FicheActivite extends Component {
              <div className="row">
 
                <div className="col-xs-3">
-                 {/* <ListActivites
+                 <ListActivites
                    activites={activites}
-                   selectedActiviteId={selectedActiviteId}
+                  //  selectedActiviteId={selectedActiviteId}
                    onSelectActivite={this.handlesOnSelectActivite}
-                 /> */}
+                 />
                </div>
 
                <div className="col-xs-9">
