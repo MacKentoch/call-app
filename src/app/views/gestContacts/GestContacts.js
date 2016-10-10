@@ -23,8 +23,10 @@ class GestContacts extends Component {
     // dossiers related methods:
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
     this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
-    // fiche contact (activite) related methods:
+    // fiche contact related methods:
     this.handlesOnFicheContactCollapseClick = this.handlesOnFicheContactCollapseClick.bind(this);
+    // fiche activite related methods:
+    this.handlesOnFicheActiviteCollapseClick = this.handlesOnFicheActiviteCollapseClick.bind(this);
   }
 
   componentDidMount() {
@@ -108,6 +110,8 @@ class GestContacts extends Component {
     const { dossiers } = this.props;
     // fiche contact
     const { isCollapsedFicheContact } = this.props;
+    // fiche activite
+    const { isCollapsedFicheActivite } = this.props;
 
     return(
       <section
@@ -227,8 +231,8 @@ class GestContacts extends Component {
                       />
 
                       <FicheActivite
-                        isCollapsedFicheActivite={false}
-                        onCollapseClick={()=>console.log('TODO: onCollapseClick FicheActivite')}
+                        isCollapsedFicheActivite={isCollapsedFicheActivite}
+                        onCollapseClick={this.handlesOnFicheActiviteCollapseClick}
                         lastFetchTimeActivites={''}
                         activites={[]}
                       />
@@ -361,7 +365,7 @@ class GestContacts extends Component {
   }
 
   // /////////////////////////////////////
-  //  fiches Contact (activites) related methods
+  //  fiches Contact related methods
   // /////////////////////////////////////
   handlesOnFicheContactCollapseClick() {
     const {
@@ -379,6 +383,24 @@ class GestContacts extends Component {
     }
   }
 
+  // /////////////////////////////////////
+  //  fiches activite related methods
+  // /////////////////////////////////////
+  handlesOnFicheActiviteCollapseClick() {
+    const {
+      isCollapsedFicheActivite,
+      actions: {
+        setIsCollapsedContactsFicheActivite,
+        unsetIsCollapsedContactsFicheActivite
+      }
+    } = this.props;
+
+    if (isCollapsedFicheActivite) {
+      unsetIsCollapsedContactsFicheActivite();
+    } else {
+      setIsCollapsedContactsFicheActivite();
+    }
+  }
 }
 
 GestContacts.propTypes = {
@@ -432,11 +454,13 @@ GestContacts.propTypes = {
   isCollapsedDossiers: PropTypes.bool.isRequired,
   dossiers: PropTypes.array.isRequired,
   // ///////////////////////
-  // contact data (activites)
+  // fiche contact data
   // ///////////////////////
-  // isFetchingContact: PropTypes.bool.isRequired,
-  // lastFetchTimeContact: PropTypes.string.isRequired,
   isCollapsedFicheContact: PropTypes.bool.isRequired,
+  // ///////////////////////
+  // fiche activite data
+  // ///////////////////////
+  isCollapsedFicheActivite: PropTypes.bool.isRequired,
 
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({
@@ -466,11 +490,17 @@ GestContacts.propTypes = {
     setIsCollapsedContactsDossiers: PropTypes.func,
     unsetIsCollapsedContactsDossiers: PropTypes.func,
     // //////////////////
-    // contacts (activites)
+    // fiche contacts
     // /////////////////
-    // UI contacts
+    // UI fiche contacts
     setIsCollapsedContactsFicheContact: PropTypes.func,
-    unsetIsCollapsedContactsFicheContact: PropTypes.func
+    unsetIsCollapsedContactsFicheContact: PropTypes.func,
+    // //////////////////
+    // fiche activites
+    // /////////////////
+    // UI fiche activites
+    setIsCollapsedContactsFicheActivite: PropTypes.func,
+    unsetIsCollapsedContactsFicheActivite: PropTypes.func
   })
 };
 
