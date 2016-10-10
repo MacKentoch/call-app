@@ -17,9 +17,9 @@ import {
 }                               from './gestContactsDossiers/gestContactsDossiers';
 // contacts contact:
 import {
-  setIsCollapsedContactsContact,
-  unsetIsCollapsedContactsContact
-}                               from './gestContactsContact/gestContactsContact';
+  setIsCollapsedContactsFicheContact,
+  unsetIsCollapsedContactsFicheContact
+}                               from './gestContactsContact/gestContactsFicheContact';
 
 
 export {
