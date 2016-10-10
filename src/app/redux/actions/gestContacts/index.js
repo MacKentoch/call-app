@@ -19,7 +19,7 @@ import {
 import {
   setIsCollapsedContactsFicheContact,
   unsetIsCollapsedContactsFicheContact
-}                               from './gestContactsContact/gestContactsFicheContact';
+}                               from './gestContactsFicheContact/gestContactsFicheContact';
 
 
 export {
@@ -35,6 +35,6 @@ export {
   setIsCollapsedContactsDossiers,
   unsetIsCollapsedContactsDossiers,
   // contact only
-  setIsCollapsedContactsContact,
-  unsetIsCollapsedContactsContact
+  setIsCollapsedContactsFicheContact,
+  unsetIsCollapsedContactsFicheContact
 };

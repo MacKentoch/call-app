@@ -23,8 +23,8 @@ class GestContacts extends Component {
     // dossiers related methods:
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
     this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
-    // contact (activite) related methods:
-    this.handlesOnContactCollapseClick = this.handlesOnContactCollapseClick.bind(this);
+    // fiche contact (activite) related methods:
+    this.handlesOnFicheContactCollapseClick = this.handlesOnFicheContactCollapseClick.bind(this);
   }
 
   componentDidMount() {
@@ -107,7 +107,7 @@ class GestContacts extends Component {
     const { isFetchingDossiers, lastFetchTimeDossiers, isCollapsedDossiers } = this.props;
     const { dossiers } = this.props;
     // fiche contact
-    const { isCollapsedContact } = this.props;
+    const { isCollapsedFicheContact } = this.props;
 
     return(
       <section
@@ -220,8 +220,8 @@ class GestContacts extends Component {
                       <div style={{height: '10px'}}></div>
 
                       <FicheContact
-                        isCollapsedFicheContact={isCollapsedContact}
-                        onCollapseClick={this.handlesOnContactCollapseClick}
+                        isCollapsedFicheContact={isCollapsedFicheContact}
+                        onCollapseClick={this.handlesOnFicheContactCollapseClick}
                         lastFetchTimeContact={''}
                         activites={[]}
                       />
@@ -361,21 +361,21 @@ class GestContacts extends Component {
   }
 
   // /////////////////////////////////////
-  //  Contact (activites) related methods
+  //  fiches Contact (activites) related methods
   // /////////////////////////////////////
-  handlesOnContactCollapseClick() {
+  handlesOnFicheContactCollapseClick() {
     const {
-      isCollapsedContact,
+      isCollapsedFicheContact,
       actions: {
-        setIsCollapsedContactsContact,
-        unsetIsCollapsedContactsContact
+        setIsCollapsedContactsFicheContact,
+        unsetIsCollapsedContactsFicheContact
       }
     } = this.props;
 
-    if (isCollapsedContact) {
-      unsetIsCollapsedContactsContact();
+    if (isCollapsedFicheContact) {
+      unsetIsCollapsedContactsFicheContact();
     } else {
-      setIsCollapsedContactsContact();
+      setIsCollapsedContactsFicheContact();
     }
   }
 
@@ -436,7 +436,7 @@ GestContacts.propTypes = {
   // ///////////////////////
   // isFetchingContact: PropTypes.bool.isRequired,
   // lastFetchTimeContact: PropTypes.string.isRequired,
-  isCollapsedContact: PropTypes.bool.isRequired,
+  isCollapsedFicheContact: PropTypes.bool.isRequired,
 
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({
@@ -469,8 +469,8 @@ GestContacts.propTypes = {
     // contacts (activites)
     // /////////////////
     // UI contacts
-    setIsCollapsedContactsContact: PropTypes.func,
-    unsetIsCollapsedContactsContact: PropTypes.func
+    setIsCollapsedContactsFicheContact: PropTypes.func,
+    unsetIsCollapsedContactsFicheContact: PropTypes.func
   })
 };
 

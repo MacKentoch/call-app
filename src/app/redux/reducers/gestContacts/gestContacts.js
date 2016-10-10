@@ -16,9 +16,9 @@ import {
   UNSET_IS_COLLAPSED_CONTACTS_DOSSIERS
 }                                     from '../../actions/gestContacts/gestContactsDossiers/gestContactsDossiers';
 import {
-  SET_IS_COLLAPSED_CONTACTS_CONTACT,
-  UNSET_IS_COLLAPSED_CONTACTS_CONTACT
-}                                     from '../../actions/gestContacts/gestContactsContact/gestContactsContact';
+  SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT,
+  UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT
+}                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 
 const initialState = {
   actionTime: '',
@@ -70,7 +70,7 @@ const initialState = {
   dossiers: [],
 
   // contact
-  isCollapsedContact: true
+  isCollapsedFicheContact: true
 };
 
 
@@ -227,11 +227,11 @@ const gestContacts = (state = initialState, action) => {
   // /////////////////
   // contact
   // ////////////////
-  case SET_IS_COLLAPSED_CONTACTS_CONTACT:
-  case UNSET_IS_COLLAPSED_CONTACTS_CONTACT:
+  case SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT:
+  case UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT:
     return {
       ...state,
-      isCollapsedContact: action.isCollapsedContact,
+      isCollapsedFicheContact: action.isCollapsedFicheContact,
       actionTime: action.time
     };
 

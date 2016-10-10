@@ -20,6 +20,7 @@ export const ERROR_GET_GEST_CONTACTS_FICHE_CONTACT      = 'ERROR_GET_GEST_CONTAC
 export const SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT    = 'SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT';
 export const UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT  = 'UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT';
 
+
 //  -----------------------------------------------------------------
 //    GET contacts contact
 //  -----------------------------------------------------------------
@@ -144,14 +145,14 @@ function shouldGetGestContactsFicheContact(state) {
 //  -----------------------------------------------------------------
 //    set / unset isCollapsed flag
 //  -----------------------------------------------------------------
-export const setIsCollapsedContactsContact = (time = moment().format(formatDate)) => {
+export const setIsCollapsedContactsFicheContact = (time = moment().format(formatDate)) => {
   return {
     type: SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT,
     isCollapsedFicheContact: true,
     time
   };
 };
-export const unsetIsCollapsedContactsContact = (time = moment().format(formatDate)) => {
+export const unsetIsCollapsedContactsFicheContact = (time = moment().format(formatDate)) => {
   return {
     type: UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT,
     isCollapsedFicheContact: false,

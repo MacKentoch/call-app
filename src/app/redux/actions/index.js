@@ -188,8 +188,8 @@ import {
   setIsCollapsedContactsDossiers,
   unsetIsCollapsedContactsDossiers,
   // contact
-  setIsCollapsedContactsContact,
-  unsetIsCollapsedContactsContact
+  setIsCollapsedContactsFicheContact,
+  unsetIsCollapsedContactsFicheContact
 }                                 from './gestContacts';
 import {
   addNotificationMessage
@@ -352,6 +352,6 @@ export {
   unsetIsCollapsedContactsBenefContact,
   setIsCollapsedContactsDossiers,
   unsetIsCollapsedContactsDossiers,
-  setIsCollapsedContactsContact,
-  unsetIsCollapsedContactsContact
+  setIsCollapsedContactsFicheContact,
+  unsetIsCollapsedContactsFicheContact
 };

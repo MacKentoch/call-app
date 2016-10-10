@@ -46,7 +46,7 @@ const mapStateToProps = (state) => {
     dossiers: state.gestContacts.dossiers,
 
     // contact (activite)
-    isCollapsedContact: state.gestContacts.isCollapsedContact
+    isCollapsedFicheContact: state.gestContacts.isCollapsedFicheContact
   };
 };
 
@@ -85,9 +85,8 @@ const mapDispatchToProps = (dispatch) => {
         // ///////////////////////
         // contacts (TO ADD)
         // ///////////////////////
-        setIsCollapsedContactsContact: actions.setIsCollapsedContactsContact,
-        unsetIsCollapsedContactsContact: actions.unsetIsCollapsedContactsContact
-
+        setIsCollapsedContactsFicheContact: actions.setIsCollapsedContactsFicheContact,
+        unsetIsCollapsedContactsFicheContact: actions.unsetIsCollapsedContactsFicheContact
         // ///////////////////////
         // activites (TO ADD)
         // ///////////////////////
