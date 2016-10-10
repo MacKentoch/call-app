@@ -13,7 +13,6 @@ export const getGestContactsNewContact = benefId => {
   if (!benefId) {
     return Promise.reject({error: 'getGestContactsNewContact API: benefId is not valid'});
   }
-
   const api = appConfig.gestContacts.getData.API;
   const url = `${getLocationOrigin()}/${api}/${benefId}`;
   const options = {...defaultOptions};
@@ -25,17 +24,14 @@ export const getGestContactsNewContact = benefId => {
     .catch(error => Promise.reject(error));
 };
 
-
 // get all gestContact data when updating existing contact
 export const getGestContactsExistingContact = (benefId, contactId) => {
   if (!benefId) {
     return Promise.reject({error: 'getGestContactsExistingContact API: benefId is not valid'});
   }
-
   if (!(parseInt(contactId, 10) > 0)) {
     return Promise.reject({error: 'getGestContactsExistingContact API: contactId is not valid'});
   }
-
   const api = appConfig.gestContacts.getData.API;
   const url = `${getLocationOrigin()}/${api}/${benefId}/${contactId}`;
   const options = {...defaultOptions};
@@ -46,8 +42,8 @@ export const getGestContactsExistingContact = (benefId, contactId) => {
     .then(data => data)
     .catch(error => Promise.reject(error));
 };
-//
-//
+
+
 // // get "benef identite only" related to benefId
 // export const getGestBenefIdentite = benefId => {
 //   const api = appConfig.gestBenef.getIdentite.API;

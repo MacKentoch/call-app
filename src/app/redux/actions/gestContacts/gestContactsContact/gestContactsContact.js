@@ -1,7 +1,8 @@
 import moment               from 'moment';
 import { appConfig }        from '../../../../config';
 import {
-  fetchMockGetGestContacts
+  fetchMockGetGestContacts,
+  getGestContactsExistingContact
 }                           from '../../../../services';
 
 moment.locale('fr');
@@ -94,7 +95,7 @@ const getQueryGestContactsContact = (benefId, contactId) => dispatch => {
               }
             );
   } else {
-    return getGestContactsContact(benefId, contactId)
+    return getGestContactsExistingContact(benefId, contactId)
             .then(
               response => {
                 dispatch(receivedGetGestContactsContact(response));
