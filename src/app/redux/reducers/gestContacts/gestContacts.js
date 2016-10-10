@@ -8,6 +8,10 @@ import {
   UNSET_IS_COLLAPSED_GEST_CONTACTS_IDENTITE
 }                                     from '../../actions/gestContacts/gestContactsIdentite/gestContactsIdentite';
 import {
+  SET_IS_COLLAPSED_CONTACTS_BENEF_CONTACT,
+  UNSET_IS_COLLAPSED_CONTACTS_BENEF_CONTACT
+}                                     from '../../actions/gestContacts/gestContactsBenefContact/gestContactsBenefContact';
+import {
   SET_IS_COLLAPSED_CONTACTS_CONTACT,
   UNSET_IS_COLLAPSED_CONTACTS_CONTACT
 }                                     from '../../actions/gestContacts/gestContactsContact/gestContactsContact';
@@ -15,6 +19,7 @@ import {
   SET_IS_COLLAPSED_CONTACTS_DOSSIERS,
   UNSET_IS_COLLAPSED_CONTACTS_DOSSIERS
 }                                     from '../../actions/gestContacts/gestContactsDossiers/gestContactsDossiers';
+
 
 const initialState = {
   actionTime: '',
@@ -44,7 +49,7 @@ const initialState = {
   // contact data
   isFetchingContact: false,
   lastFetchTimeContact: '',
-  isCollapsedContact: true,
+  isCollapsedBenefContact: true,
 
   fixedPhone: '',
   mobilePhone: '',
@@ -63,7 +68,10 @@ const initialState = {
   lastFetchTimeDossiers: '',
   isCollapsedDossiers: true,
 
-  dossiers: []
+  dossiers: [],
+
+  // contact
+  isCollapsedContact: true
 };
 
 
@@ -196,15 +204,16 @@ const gestContacts = (state = initialState, action) => {
     };
 
   // /////////////////
-  // contact
+  // contact (benef)
   // ////////////////
-  case SET_IS_COLLAPSED_CONTACTS_CONTACT:
-  case UNSET_IS_COLLAPSED_CONTACTS_CONTACT:
+  case SET_IS_COLLAPSED_CONTACTS_BENEF_CONTACT:
+  case UNSET_IS_COLLAPSED_CONTACTS_BENEF_CONTACT:
     return {
       ...state,
-      isCollapsedContact: action.isCollapsedContact,
+      isCollapsedBenefContact: action.isCollapsedBenefContact,
       actionTime: action.time
     };
+
   // /////////////////
   // dossiers
   // ////////////////
@@ -215,6 +224,17 @@ const gestContacts = (state = initialState, action) => {
       isCollapsedDossiers: action.isCollapsedDossiers,
       actionTime: action.time
     };
+
+  // // /////////////////
+  // // contact
+  // // ////////////////
+  // case SET_IS_COLLAPSED_CONTACTS_CONTACT:
+  // case UNSET_IS_COLLAPSED_CONTACTS_CONTACT:
+  //   return {
+  //     ...state,
+  //     isCollapsedContact: action.isCollapsedContact,
+  //     actionTime: action.time
+  //   };
 
   default:
     return state;

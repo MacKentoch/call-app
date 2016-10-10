@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
     lastActionTime: state.gestContacts.actionTime,
     // gestContacts data:
     isFetchingAll: state.gestContacts.isFetchingAll,
-    
+
     contactId: state.gestContacts.contactId,
     benefId: state.gestContacts.benefId,
     // identité
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
     // contact data
     isFetchingContact: state.gestContacts.isFetchingContact,
     lastFetchTimeContact: state.gestContacts.lastFetchTimeContact,
-    isCollapsedContact: state.gestContacts.isCollapsedContact,
+    isCollapsedBenefContact: state.gestContacts.isCollapsedBenefContact,
     fixedPhone: state.gestContacts.fixedPhone,
     mobilePhone: state.gestContacts.mobilePhone,
     email: state.gestContacts.email,
@@ -68,11 +68,11 @@ const mapDispatchToProps = (dispatch) => {
         setIsCollapsedContactsIdentite: actions.setIsCollapsedContactsIdentite,
         unsetIsCollapsedContactsIdentite: actions.unsetIsCollapsedContactsIdentite,
         // //////////////////
-        // contact
+        // contact (benef part)
         // //////////////////
         // UI: contact
-        setIsCollapsedContactsContact: actions.setIsCollapsedContactsContact,
-        unsetIsCollapsedContactsContact: actions.unsetIsCollapsedContactsContact,
+        setIsCollapsedContactsBenefContact: actions.setIsCollapsedContactsBenefContact,
+        unsetIsCollapsedContactsBenefContact: actions.unsetIsCollapsedContactsBenefContact,
         // /////////////////////
         // dossiers
         // /////////////////////
@@ -82,7 +82,8 @@ const mapDispatchToProps = (dispatch) => {
         // ///////////////////////
         // contacts (TO ADD)
         // ///////////////////////
-
+        // setIsCollapsedContactsContact: actions.setIsCollapsedContactsContact,
+        // unsetIsCollapsedContactsContact: actions.unsetIsCollapsedContactsContact
 
         // ///////////////////////
         // activites (TO ADD)

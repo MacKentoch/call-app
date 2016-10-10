@@ -101,7 +101,7 @@ class GestContacts extends Component {
     const { isFetchingIdentite, lastFetchTimeIdentite, isCollapsedIdentite } = this.props;
     const { civilite, nom, prenom, nomJeuneFille, dateNaissance, numss, dateDeces, maritalStatus } = this.props;
     // contact:
-    const { isFetchingContact, lastFetchTimeContact, isCollapsedContact } = this.props;
+    const { isFetchingContact, lastFetchTimeContact, isCollapsedBenefContact } = this.props;
     const { fixedPhone, mobilePhone, email, numAdress, voie, complementAdr, codePostal, ville, pays } = this.props;
     // dossiers:
     const { isFetchingDossiers, lastFetchTimeDossiers, isCollapsedDossiers } = this.props;
@@ -168,7 +168,7 @@ class GestContacts extends Component {
                     isFetchingContact={isFetchingContact}
                     lastFetchTimeContact={lastFetchTimeContact}
 
-                    isCollapsedContact={isCollapsedContact}
+                    isCollapsedContact={isCollapsedBenefContact}
                     onCollapseClick={this.handlesOnContactCollapseClick}
 
                     fixedPhone={fixedPhone}
@@ -188,7 +188,7 @@ class GestContacts extends Component {
                   }
 
                   {
-                    !isCollapsedContact &&
+                    !isCollapsedBenefContact &&
                       <div style={{height: '40px'}}></div>
                   }
 
@@ -305,24 +305,24 @@ class GestContacts extends Component {
   // ////////////////////////////////
   handlesOnContactCollapseClick() {
     const {
-      isCollapsedContact,
+      isCollapsedBenefContact,
       actions: {
-        setIsCollapsedContactsContact,
-        unsetIsCollapsedContactsContact
+        setIsCollapsedContactsBenefContact,
+        unsetIsCollapsedContactsBenefContact
       }
     } = this.props;
 
-    if (isCollapsedContact) {
-      unsetIsCollapsedContactsContact();
+    if (isCollapsedBenefContact) {
+      unsetIsCollapsedContactsBenefContact();
     } else {
-      setIsCollapsedContactsContact();
+      setIsCollapsedContactsBenefContact();
     }
   }
 
   // to reset contact collapsed state
   resetContactCollpasing() {
-    const { actions: { unsetIsCollapsedContactsContact } } = this.props;
-    unsetIsCollapsedContactsContact();
+    const { actions: { unsetIsCollapsedContactsBenefContact } } = this.props;
+    unsetIsCollapsedContactsBenefContact();
   }
 
   // ////////////////////////////////
@@ -354,8 +354,8 @@ class GestContacts extends Component {
 
   // to reset contact editing state and collapsed state
   resetDossierCollpasing() {
-    const { actions: { unsetIsCollapsedContactsContact } } = this.props;
-    unsetIsCollapsedContactsContact();
+    const { actions: { unsetIsCollapsedContactsBenefContact } } = this.props;
+    unsetIsCollapsedContactsBenefContact();
   }
 }
 
@@ -391,7 +391,7 @@ GestContacts.propTypes = {
   // ///////////////////////
   isFetchingContact: PropTypes.bool.isRequired,
   lastFetchTimeContact: PropTypes.string.isRequired,
-  isCollapsedContact: PropTypes.bool.isRequired,
+  isCollapsedBenefContact: PropTypes.bool.isRequired,
   fixedPhone: PropTypes.string.isRequired,
   mobilePhone: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
@@ -425,12 +425,12 @@ GestContacts.propTypes = {
     // UI: Identite
     setIsCollapsedContactsIdentite: PropTypes.func,
     unsetIsCollapsedContactsIdentite: PropTypes.func,
-    // //////////////////
-    // contact
-    // /////////////////
+    // //////////////////////
+    // contact (benef part)
+    // /////////////////////
     // UI: contact
-    setIsCollapsedContactsContact: PropTypes.func,
-    unsetIsCollapsedContactsContact: PropTypes.func,
+    setIsCollapsedContactsBenefContact: PropTypes.func,
+    unsetIsCollapsedContactsBenefContact: PropTypes.func,
     // //////////////////
     // dossiers
     // /////////////////

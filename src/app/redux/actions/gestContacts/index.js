@@ -15,7 +15,10 @@ import {
   setIsCollapsedContactsDossiers,
   unsetIsCollapsedContactsDossiers
 }                               from './gestContactsDossiers/gestContactsDossiers';
-
+import {
+  setIsCollapsedContactsBenefContact,
+  unsetIsCollapsedContactsBenefContact
+}                                from './gestContactsBenefContact/gestContactsBenefContact';
 
 export {
   // all contacts (benef info) fields (identite + contact + dossiers)
@@ -23,10 +26,13 @@ export {
   // contacts identite only
   setIsCollapsedContactsIdentite,
   unsetIsCollapsedContactsIdentite,
-  // benef contact only
-  setIsCollapsedContactsContact,
-  unsetIsCollapsedContactsContact,
+  // benef contact (part of identite naming is a...)
+  setIsCollapsedContactsBenefContact,
+  unsetIsCollapsedContactsBenefContact,
   // benef dossiers:
   setIsCollapsedContactsDossiers,
-  unsetIsCollapsedContactsDossiers
+  unsetIsCollapsedContactsDossiers,
+  // contact only
+  setIsCollapsedContactsContact,
+  unsetIsCollapsedContactsContact
 };

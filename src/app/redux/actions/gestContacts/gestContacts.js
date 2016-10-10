@@ -14,6 +14,7 @@ export const REQUEST_GET_GEST_CONTACTS   = 'REQUEST_GET_GEST_CONTACTS';
 export const RECEIVED_GET_GEST_CONTACTS  = 'RECEIVED_GET_GEST_CONTACTS';
 export const ERROR_GET_GEST_CONTACTS     = 'ERROR_GET_GEST_CONTACTS';
 
+
 const requestGetGestContacts = (benefId = 0, contactId = 0, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_GET_GEST_CONTACTS,
@@ -23,6 +24,7 @@ const requestGetGestContacts = (benefId = 0, contactId = 0, time = moment().form
     time
   };
 };
+
 const receivedGetGestContacts = (gestBenef, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_CONTACTS,
@@ -31,6 +33,7 @@ const receivedGetGestContacts = (gestBenef, time = moment().format(formatDate)) 
     time
   };
 };
+
 const errorGetGestContacts = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_GET_GEST_CONTACTS,
@@ -50,7 +53,7 @@ const getQueryGestContacts = (benefId, contactId) => dispatch => {
       showNotification: true
     });
   }
-  
+
   if (!(parseInt(contactId, 10) >= 0)) {
     dispatch(errorGetGestContacts('getQueryGestContacts API error: contactId is not defined or not valid'));
     return Promise.reject({

@@ -182,11 +182,14 @@ import {
   setIsCollapsedContactsIdentite,
   unsetIsCollapsedContactsIdentite,
   // benef contact only
-  setIsCollapsedContactsContact,
-  unsetIsCollapsedContactsContact,
+  setIsCollapsedContactsBenefContact,
+  unsetIsCollapsedContactsBenefContact,
   // benef dossiers:
   setIsCollapsedContactsDossiers,
-  unsetIsCollapsedContactsDossiers
+  unsetIsCollapsedContactsDossiers,
+  // contact
+  // setIsCollapsedContactsContact,
+  // unsetIsCollapsedContactsContact,
 }                                 from './gestContacts';
 import {
   addNotificationMessage
@@ -345,8 +348,10 @@ export {
   getGestContactsIfNeeded,
   setIsCollapsedContactsIdentite,
   unsetIsCollapsedContactsIdentite,
-  setIsCollapsedContactsContact,
-  unsetIsCollapsedContactsContact,
+  setIsCollapsedContactsBenefContact,
+  unsetIsCollapsedContactsBenefContact,
   setIsCollapsedContactsDossiers,
-  unsetIsCollapsedContactsDossiers
+  unsetIsCollapsedContactsDossiers // ,
+  // setIsCollapsedContactsContact,
+  // unsetIsCollapsedContactsContact,
 };
