@@ -5,20 +5,22 @@ import {
   setIsCollapsedContactsIdentite,
   unsetIsCollapsedContactsIdentite
 }                               from './gestContactsIdentite/gestContactsIdentite';
-// contacts contact:
+// contacts (benef)
 import {
-  setIsCollapsedContactsContact,
-  unsetIsCollapsedContactsContact
-}                               from './gestContactsContact/gestContactsContact';
+  setIsCollapsedContactsBenefContact,
+  unsetIsCollapsedContactsBenefContact
+}                                from './gestContactsBenefContact/gestContactsBenefContact';
 // contacts dossiers:
 import {
   setIsCollapsedContactsDossiers,
   unsetIsCollapsedContactsDossiers
 }                               from './gestContactsDossiers/gestContactsDossiers';
+// contacts contact:
 import {
-  setIsCollapsedContactsBenefContact,
-  unsetIsCollapsedContactsBenefContact
-}                                from './gestContactsBenefContact/gestContactsBenefContact';
+  setIsCollapsedContactsContact,
+  unsetIsCollapsedContactsContact
+}                               from './gestContactsContact/gestContactsContact';
+
 
 export {
   // all contacts (benef info) fields (identite + contact + dossiers)

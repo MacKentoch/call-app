@@ -78,12 +78,12 @@ const mapDispatchToProps = (dispatch) => {
         // /////////////////////
         // UI dossiers
         setIsCollapsedContactsDossiers: actions.setIsCollapsedContactsDossiers,
-        unsetIsCollapsedContactsDossiers: actions.unsetIsCollapsedContactsDossiers
+        unsetIsCollapsedContactsDossiers: actions.unsetIsCollapsedContactsDossiers,
         // ///////////////////////
         // contacts (TO ADD)
         // ///////////////////////
-        // setIsCollapsedContactsContact: actions.setIsCollapsedContactsContact,
-        // unsetIsCollapsedContactsContact: actions.unsetIsCollapsedContactsContact
+        setIsCollapsedContactsContact: actions.setIsCollapsedContactsContact,
+        unsetIsCollapsedContactsContact: actions.unsetIsCollapsedContactsContact
 
         // ///////////////////////
         // activites (TO ADD)
