@@ -45,7 +45,7 @@ const initialState = {
   dateDeces: '',
   maritalStatus: '',
 
-  // contact data
+  // contact benef data
   isFetchingContact: false,
   lastFetchTimeContact: '',
   isCollapsedBenefContact: true,
@@ -54,7 +54,7 @@ const initialState = {
   mobilePhone: '',
   email: '',
   emailIsValid: false,
-  // contact data > sub: adress
+  // contact benef data > sub: adress
   numAdress: '',
   voie: '',
   complementAdr: '',

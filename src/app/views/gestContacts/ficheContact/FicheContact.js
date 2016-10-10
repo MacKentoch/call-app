@@ -32,7 +32,7 @@ class FicheContact extends Component {
   componentWillReceiveProps(nextProps) {
     const { lastFetchTimeContact } = this.props;
     const activitesAreUpdated = moment(nextProps.lastFetchTimeActivites, formatDate)
-                                  .diff(moment(lastFetchTimeActivites, formatDate));
+                                  .diff(moment(lastFetchTimeContact, formatDate));
 
     if (activitesAreUpdated > 0) {
       // force all activite to init

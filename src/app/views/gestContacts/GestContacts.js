@@ -15,13 +15,16 @@ class GestContacts extends Component {
     this.state = {
       animated: true
     };
+
     // identite related methods:
     this.handlesOnIdentiteCollapseClick = this.handlesOnIdentiteCollapseClick.bind(this);
-    // contact related methods:
-    this.handlesOnContactCollapseClick = this.handlesOnContactCollapseClick.bind(this);
+    // contact (benef) related methods:
+    this.handlesOnContactBenefCollapseClick = this.handlesOnContactBenefCollapseClick.bind(this);
     // dossiers related methods:
     this.handlesOnDossiersCollapseClick = this.handlesOnDossiersCollapseClick.bind(this);
     this.handlesOnDossierSelection = this.handlesOnDossierSelection.bind(this);
+    // contact (activite) related methods:
+    this.handlesOnContactCollapseClick = this.handlesOnContactCollapseClick.bind(this);
   }
 
   componentDidMount() {
@@ -30,11 +33,9 @@ class GestContacts extends Component {
     const { location: { state: { contactId } } } = this.props;
     const { actions: { enterGestContacts } } =  this.props;
     const { actions: { addNotificationMessage } } = this.props;
-
     enterGestContacts();
 
     const contactIdx = parseInt(contactId, 10);
-
     if (contactIdx > 0) {
       addNotificationMessage({
         message: 'Consultation / Edition d\'un contact existant',
@@ -49,7 +50,6 @@ class GestContacts extends Component {
       // reset contact and activite form model
       // resetGestContacts();
     }
-
     this.refreshAllContactData(benefId, contactIdx);
   }
 
@@ -96,7 +96,7 @@ class GestContacts extends Component {
     const { animated } = this.state;
     const { isFetchingAll } = this.props;
     // id benef if === 0  then create
-    const { id } = this.props;
+    const { contactId } = this.props;
     // identite:
     const { isFetchingIdentite, lastFetchTimeIdentite, isCollapsedIdentite } = this.props;
     const { civilite, nom, prenom, nomJeuneFille, dateNaissance, numss, dateDeces, maritalStatus } = this.props;
@@ -106,6 +106,8 @@ class GestContacts extends Component {
     // dossiers:
     const { isFetchingDossiers, lastFetchTimeDossiers, isCollapsedDossiers } = this.props;
     const { dossiers } = this.props;
+    // fiche contact
+    const { isCollapsedContact } = this.props;
 
     return(
       <section
@@ -125,7 +127,7 @@ class GestContacts extends Component {
               style={{ paddingBottom: '10px'}}>
               <header className="panel-heading">
                 {
-                  (!id || id <= 0)
+                  (!contactId || contactId <= 0)
                   ? 'Création de contact'
                   : 'Edition de contact'
                 }
@@ -169,7 +171,7 @@ class GestContacts extends Component {
                     lastFetchTimeContact={lastFetchTimeContact}
 
                     isCollapsedContact={isCollapsedBenefContact}
-                    onCollapseClick={this.handlesOnContactCollapseClick}
+                    onCollapseClick={this.handlesOnContactBenefCollapseClick}
 
                     fixedPhone={fixedPhone}
                     mobilePhone={mobilePhone}
@@ -218,8 +220,8 @@ class GestContacts extends Component {
                       <div style={{height: '10px'}}></div>
 
                       <FicheContact
-                        isCollapsedFicheContact={false}
-                        onCollapseClick={()=>console.log('TODO: onCollapseClick FicheActivite')}
+                        isCollapsedFicheContact={isCollapsedContact}
+                        onCollapseClick={this.handlesOnContactCollapseClick}
                         lastFetchTimeContact={''}
                         activites={[]}
                       />
@@ -301,9 +303,9 @@ class GestContacts extends Component {
   }
 
   // ////////////////////////////////
-  //  Contact related methods
+  //  Contact (benef) related methods
   // ////////////////////////////////
-  handlesOnContactCollapseClick() {
+  handlesOnContactBenefCollapseClick() {
     const {
       isCollapsedBenefContact,
       actions: {
@@ -357,6 +359,26 @@ class GestContacts extends Component {
     const { actions: { unsetIsCollapsedContactsBenefContact } } = this.props;
     unsetIsCollapsedContactsBenefContact();
   }
+
+  // /////////////////////////////////////
+  //  Contact (activites) related methods
+  // /////////////////////////////////////
+  handlesOnContactCollapseClick() {
+    const {
+      isCollapsedContact,
+      actions: {
+        setIsCollapsedContactsContact,
+        unsetIsCollapsedContactsContact
+      }
+    } = this.props;
+
+    if (isCollapsedContact) {
+      unsetIsCollapsedContactsContact();
+    } else {
+      setIsCollapsedContactsContact();
+    }
+  }
+
 }
 
 GestContacts.propTypes = {
@@ -387,7 +409,7 @@ GestContacts.propTypes = {
   dateDeces: PropTypes.string.isRequired,
   maritalStatus: PropTypes.string.isRequired,
   // ///////////////////////
-  // contact data
+  // contact data (benef)
   // ///////////////////////
   isFetchingContact: PropTypes.bool.isRequired,
   lastFetchTimeContact: PropTypes.string.isRequired,
@@ -409,6 +431,12 @@ GestContacts.propTypes = {
   lastFetchTimeDossiers: PropTypes.string.isRequired,
   isCollapsedDossiers: PropTypes.bool.isRequired,
   dossiers: PropTypes.array.isRequired,
+  // ///////////////////////
+  // contact data (activites)
+  // ///////////////////////
+  // isFetchingContact: PropTypes.bool.isRequired,
+  // lastFetchTimeContact: PropTypes.string.isRequired,
+  isCollapsedContact: PropTypes.bool.isRequired,
 
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({
@@ -436,7 +464,13 @@ GestContacts.propTypes = {
     // /////////////////
     // UI dossiers
     setIsCollapsedContactsDossiers: PropTypes.func,
-    unsetIsCollapsedContactsDossiers: PropTypes.func
+    unsetIsCollapsedContactsDossiers: PropTypes.func,
+    // //////////////////
+    // contacts (activites)
+    // /////////////////
+    // UI contacts
+    setIsCollapsedContactsContact: PropTypes.func,
+    unsetIsCollapsedContactsContact: PropTypes.func
   })
 };
 

@@ -43,7 +43,10 @@ const mapStateToProps = (state) => {
     isFetchingDossiers: state.gestContacts.isFetchingDossiers,
     lastFetchTimeDossiers: state.gestContacts.lastFetchTimeDossiers,
     isCollapsedDossiers: state.gestContacts.isCollapsedDossiers,
-    dossiers: state.gestContacts.dossiers
+    dossiers: state.gestContacts.dossiers,
+
+    // contact (activite)
+    isCollapsedContact: state.gestContacts.isCollapsedContact
   };
 };
 
