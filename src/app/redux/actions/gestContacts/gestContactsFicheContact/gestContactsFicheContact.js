@@ -140,6 +140,7 @@ function shouldGetGestContactsFicheContact(state) {
   }
 }
 
+
 //  -----------------------------------------------------------------
 //    set / unset isCollapsed flag
 //  -----------------------------------------------------------------
