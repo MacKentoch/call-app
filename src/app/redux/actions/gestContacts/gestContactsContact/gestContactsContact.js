@@ -1,8 +1,10 @@
-import moment         from 'moment';
-import { appConfig }  from '../../../../config';
+import moment               from 'moment';
+import { appConfig }        from '../../../../config';
+import {
+  fetchMockGetGestContacts
+}                           from '../../../../services';
 
 moment.locale('fr');
-
 const formatDate = appConfig.formatDate.defaut;
 
 const formatDateCreation = 'DD/MM/YYYY';
@@ -70,7 +72,7 @@ const getQueryGestContactsContact = (benefId, contactId) => dispatch => {
   dispatch(requestGetGestContactsContact(benefId, contactId));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockGetGestContactsContact(benefId, contactId) // mock is the as all gestBenef object
+    return fetchMockGetGestContacts(benefId, contactId) // mock is the as all gestBenef object
             .then(
               data => {
                 dispatch(receivedGetGestContactsContact(data));
