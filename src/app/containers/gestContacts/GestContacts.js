@@ -45,8 +45,11 @@ const mapStateToProps = (state) => {
     isCollapsedDossiers: state.gestContacts.isCollapsedDossiers,
     dossiers: state.gestContacts.dossiers,
 
-    // contact (activite)
-    isCollapsedFicheContact: state.gestContacts.isCollapsedFicheContact
+    // fiche contact
+    isCollapsedFicheContact: state.gestContacts.isCollapsedFicheContact,
+
+    // fiche activites
+    isCollapsedFicheActivite: state.gestContacts.isCollapsedFicheActivite
   };
 };
 
@@ -83,13 +86,15 @@ const mapDispatchToProps = (dispatch) => {
         setIsCollapsedContactsDossiers: actions.setIsCollapsedContactsDossiers,
         unsetIsCollapsedContactsDossiers: actions.unsetIsCollapsedContactsDossiers,
         // ///////////////////////
-        // contacts (TO ADD)
+        // contacts
         // ///////////////////////
         setIsCollapsedContactsFicheContact: actions.setIsCollapsedContactsFicheContact,
-        unsetIsCollapsedContactsFicheContact: actions.unsetIsCollapsedContactsFicheContact
+        unsetIsCollapsedContactsFicheContact: actions.unsetIsCollapsedContactsFicheContact,
         // ///////////////////////
-        // activites (TO ADD)
+        // activites
         // ///////////////////////
+        setIsCollapsedContactsFicheActivite: actions.setIsCollapsedContactsFicheActivite,
+        unsetIsCollapsedContactsFicheActivite: actions.unsetIsCollapsedContactsFicheActivite
       },
       dispatch)
   };

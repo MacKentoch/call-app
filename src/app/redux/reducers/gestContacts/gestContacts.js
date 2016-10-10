@@ -75,6 +75,7 @@ const initialState = {
 
   // fiche contact
   isCollapsedFicheContact: false,
+
   // fiche activites
   isCollapsedFicheActivite: false
 };
