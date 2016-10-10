@@ -12,14 +12,13 @@ import {
   UNSET_IS_COLLAPSED_CONTACTS_BENEF_CONTACT
 }                                     from '../../actions/gestContacts/gestContactsBenefContact/gestContactsBenefContact';
 import {
-  SET_IS_COLLAPSED_CONTACTS_CONTACT,
-  UNSET_IS_COLLAPSED_CONTACTS_CONTACT
-}                                     from '../../actions/gestContacts/gestContactsContact/gestContactsContact';
-import {
   SET_IS_COLLAPSED_CONTACTS_DOSSIERS,
   UNSET_IS_COLLAPSED_CONTACTS_DOSSIERS
 }                                     from '../../actions/gestContacts/gestContactsDossiers/gestContactsDossiers';
-
+import {
+  SET_IS_COLLAPSED_CONTACTS_CONTACT,
+  UNSET_IS_COLLAPSED_CONTACTS_CONTACT
+}                                     from '../../actions/gestContacts/gestContactsContact/gestContactsContact';
 
 const initialState = {
   actionTime: '',
@@ -225,16 +224,16 @@ const gestContacts = (state = initialState, action) => {
       actionTime: action.time
     };
 
-  // // /////////////////
-  // // contact
-  // // ////////////////
-  // case SET_IS_COLLAPSED_CONTACTS_CONTACT:
-  // case UNSET_IS_COLLAPSED_CONTACTS_CONTACT:
-  //   return {
-  //     ...state,
-  //     isCollapsedContact: action.isCollapsedContact,
-  //     actionTime: action.time
-  //   };
+  // /////////////////
+  // contact
+  // ////////////////
+  case SET_IS_COLLAPSED_CONTACTS_CONTACT:
+  case UNSET_IS_COLLAPSED_CONTACTS_CONTACT:
+    return {
+      ...state,
+      isCollapsedContact: action.isCollapsedContact,
+      actionTime: action.time
+    };
 
   default:
     return state;
