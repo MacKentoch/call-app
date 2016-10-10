@@ -2,7 +2,9 @@ import moment         from 'moment';
 import { appConfig }  from '../../../../config';
 
 moment.locale('fr');
+
 const formatDate = appConfig.formatDate.defaut;
+
 const formatDateCreation = 'DD/MM/YYYY';
 const formatDateReception = 'DD/MM/YYYY';
 const formatDateCloture = 'DD/MM/YYYY';
@@ -28,7 +30,6 @@ const requestGetGestContactsContact = (benefId = 0, contactId = 0, time = moment
     time
   };
 };
-
 const receivedGetGestContactsContact = (gestContact, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_CONTACTS_CONTACT,
@@ -37,7 +38,6 @@ const receivedGetGestContactsContact = (gestContact, time = moment().format(form
     time
   };
 };
-
 const errorGetGestContactsContact = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_GET_GEST_CONTACTS_CONTACT,
@@ -67,10 +67,10 @@ const getQueryGestContactsContact = (benefId, contactId) => dispatch => {
     });
   }
 
-  dispatch(requestGetGestContactsContact(benefId));
+  dispatch(requestGetGestContactsContact(benefId, contactId));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockGetGestContactsContact(benefId) // mock is the as all gestBenef object
+    return fetchMockGetGestContactsContact(benefId, contactId) // mock is the as all gestBenef object
             .then(
               data => {
                 dispatch(receivedGetGestContactsContact(data));
@@ -92,7 +92,7 @@ const getQueryGestContactsContact = (benefId, contactId) => dispatch => {
               }
             );
   } else {
-    return getGestContactsContact(benefId)
+    return getGestContactsContact(benefId, contactId)
             .then(
               response => {
                 dispatch(receivedGetGestContactsContact(response));
@@ -128,9 +128,9 @@ export const getGestContactsContactIfNeeded = benefId => (dispatch, getState) =>
 };
 
 function shouldGetGestContactsContact(state) {
-  const gestBenef = state.gestBenef;
+  const gestContact = state.gestContact;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
-  if (gestBenef.isFetchingIdentite) {
+  if (gestContact.isFetchingContact) {
     return false;
   } else {
     return true;
