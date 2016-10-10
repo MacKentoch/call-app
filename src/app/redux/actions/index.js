@@ -187,9 +187,12 @@ import {
   // benef dossiers:
   setIsCollapsedContactsDossiers,
   unsetIsCollapsedContactsDossiers,
-  // contact
+  // fiche contact
   setIsCollapsedContactsFicheContact,
-  unsetIsCollapsedContactsFicheContact
+  unsetIsCollapsedContactsFicheContact,
+  // fiches activites
+  setIsCollapsedContactsFicheActivite,
+  unsetIsCollapsedContactsFicheActivite
 }                                 from './gestContacts';
 import {
   addNotificationMessage
@@ -353,5 +356,7 @@ export {
   setIsCollapsedContactsDossiers,
   unsetIsCollapsedContactsDossiers,
   setIsCollapsedContactsFicheContact,
-  unsetIsCollapsedContactsFicheContact
+  unsetIsCollapsedContactsFicheContact,
+  setIsCollapsedContactsFicheActivite,
+  unsetIsCollapsedContactsFicheActivite
 };

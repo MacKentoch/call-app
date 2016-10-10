@@ -15,12 +15,16 @@ import {
   setIsCollapsedContactsDossiers,
   unsetIsCollapsedContactsDossiers
 }                               from './gestContactsDossiers/gestContactsDossiers';
-// contacts contact:
+// contacts fiche contact:
 import {
   setIsCollapsedContactsFicheContact,
   unsetIsCollapsedContactsFicheContact
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
-
+// contacts fiche activites:
+import {
+  setIsCollapsedContactsFicheActivite,
+  unsetIsCollapsedContactsFicheActivite
+}                               from './gestContactsFicheActivite/gestContactsFicheActivite';
 
 export {
   // all contacts (benef info) fields (identite + contact + dossiers)
@@ -34,7 +38,10 @@ export {
   // benef dossiers:
   setIsCollapsedContactsDossiers,
   unsetIsCollapsedContactsDossiers,
-  // contact only
+  // fiche contact
   setIsCollapsedContactsFicheContact,
-  unsetIsCollapsedContactsFicheContact
+  unsetIsCollapsedContactsFicheContact,
+  // fiches activites
+  setIsCollapsedContactsFicheActivite,
+  unsetIsCollapsedContactsFicheActivite
 };
