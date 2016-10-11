@@ -500,7 +500,11 @@ GestContacts.propTypes = {
     // /////////////////
     // UI fiche activites
     setIsCollapsedContactsFicheActivite: PropTypes.func,
-    unsetIsCollapsedContactsFicheActivite: PropTypes.func
+    unsetIsCollapsedContactsFicheActivite: PropTypes.func,
+    // //////////////////
+    // listes de motifs
+    // /////////////////
+    getGestContactsAllMotifsIfNeeded: PropTypes.func
   })
 };
 

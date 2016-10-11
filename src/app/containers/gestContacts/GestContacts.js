@@ -94,7 +94,11 @@ const mapDispatchToProps = (dispatch) => {
         // activites
         // ///////////////////////
         setIsCollapsedContactsFicheActivite: actions.setIsCollapsedContactsFicheActivite,
-        unsetIsCollapsedContactsFicheActivite: actions.unsetIsCollapsedContactsFicheActivite
+        unsetIsCollapsedContactsFicheActivite: actions.unsetIsCollapsedContactsFicheActivite,
+        // ///////////////////////
+        // lists motifs ref
+        // ///////////////////////
+        getGestContactsAllMotifsIfNeeded: actions.getGestContactsAllMotifsIfNeeded
       },
       dispatch)
   };
