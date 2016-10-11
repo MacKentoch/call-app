@@ -159,13 +159,9 @@ const gestContacts = (state = initialState, action) => {
       isFetchingIdentite: action.isFetching,
       isFetchingContact: action.isFetching,
       isFetchingDossiers: action.isFetching,
-      // isFetchingFicheContact: action.isFetchingFicheContact,
-      // isFetchingFicheActivite: action.isFetchingFicheActivite,
       lastFetchTimeIdentite: action.time,
       lastFetchTimeContact: action.time,
       lastFetchTimeDossiers: action.time,
-      // lastFetchTimeFicheContact: action.lastFetchTimeFicheContact,
-      // lastFetchTimeFicheActivite: action.lastFetchTimeFicheActivite,
       actionTime: action.time,
 
       contactId: action.contactId,
