@@ -28,7 +28,7 @@ import {
   fetchMockGetGestBenefAllContactsAndActivites,
   fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
   // gest contacts:
-  fetchMockGetGestContacts
+  fetchMockGetGestContacts,
   // liste de motifs:
   fetchMockGetGestContactsAllMotifs
 }                     from './fetchMock/fetchMocks';
@@ -49,7 +49,8 @@ import {
   getGestBenefAllContactsAndActivites,
   getGestBenefContactsAndActivites,
   getGestContactsNewContact,
-  getGestContactsExistingContact
+  getGestContactsExistingContact,
+  getGestContactsAllMotifs
 }                     from './API';
 
 // date tools
@@ -124,6 +125,7 @@ export {
   fetchMockGetGestBenefAllContactsAndActivites,
   fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
   fetchMockGetGestContacts,
+  fetchMockGetGestContactsAllMotifs,
 
   // API
   getUserBoitesMails,
@@ -142,6 +144,7 @@ export {
   getGestBenefContactsAndActivites,
   getGestContactsNewContact,
   getGestContactsExistingContact,
+  getGestContactsAllMotifs,
 
   // date tools
   getLastThreeMonthNames,
@@ -172,5 +175,8 @@ export {
   // benef contact et activites pagination:
   getCurrentSearchContactsEtActivitesResPageContent,
   getSearchContactsEtActivitesResMinIndex,
-  getSearchContactsEtActivitesResMaxIndex
+  getSearchContactsEtActivitesResMaxIndex,
+
+  // all motisf reference:
+  fetchMockGetGestContactsAllMotifs,
 };

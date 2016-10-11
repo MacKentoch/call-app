@@ -249,6 +249,12 @@ export const appConfig = {
     }
   },
 
+  listMotifs: {
+    getData: {
+      API: 'api/getAllMotifsRef'
+    }
+  },
+
   // userGroupActivity config
   userGroupActivity: {
     data: {
