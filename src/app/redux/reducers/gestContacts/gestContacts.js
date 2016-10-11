@@ -82,15 +82,29 @@ const initialState = {
   lastFetchTimeFicheContact: '',
   isCollapsedFicheContact: false,
 
+  dateCreationFicheContact: '',
+  creeParFicheContact: '',
+  dateReceptionFicheContact: '',
 
-  dateCreation: '',
-  creePar: '',
-  dateReception: '',
-  statutIndexFicheContact: 0, // index de statut de 'listStatutFicheContact'
-  listStatutFicheContact: ['En-cours', 'Clôturée'], // tous les stattus de fiche de contact
+  statutIndexFicheContact: 0, // index de statut par défault de 'listStatutFicheContact'
+  listStatutFicheContact: ['En-cours', 'Clôturée'], // tous (enum) les statuts de fiche de contact
 
-  dateCloture: '',
-  cloturePar: '',
+  dateClotureFicheContact: '',
+  clotureParFicheContact: '',
+
+  typeIndexFicheContact: 0, // index par default du type de fiche contact de listTypeFicheContact
+  listTypeFicheContact: ['Information', 'Réclamation'], // tous (enum) les types de fiche de contact
+
+  canalIndexFicheContact: 0,
+  listCanauxFicheContact: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'],
+
+  listNumDossierFicheContact: [], // benef numDossiers list
+  domaineFicheContact: '',
+  statutBenefFicheContact: '',
+
+  motifsFicheContact: [],
+  attachmentsFicheContact: [],
+
 
   // fiche activites
   isCollapsedFicheActivite: false,
