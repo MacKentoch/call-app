@@ -255,6 +255,12 @@ export const appConfig = {
     }
   },
 
+  gestFicheContact: {
+    getData: {
+      API: 'api/getFicheContact'
+    }
+  },
+
   // userGroupActivity config
   userGroupActivity: {
     data: {
