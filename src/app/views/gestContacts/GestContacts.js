@@ -483,17 +483,65 @@ GestContacts.propTypes = {
   domaineFicheContact: PropTypes.string.isRequired,
   statutBenefFicheContact: PropTypes.string.isRequired,
 
-  attachmentsFicheContact: PropTypes.array.isRequired,
+  attachmentsFicheContact: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      filePath: PropTypes.string.isRequired,
+      size: PropTypes.string.isRequired
+    })
+  ).isRequired,
   commentaireFicheContact: PropTypes.string.isRequired,
 
   groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
-  groupeDestinataireIdSelected: PropTypes.bool.isRequired,
-  listGroupeDestinataire: PropTypes.bool.isRequired, // to fill from server query
+  groupeDestinataireIdSelected: PropTypes.number.isRequired,
+  listGroupeDestinataire: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      libelle: PropTypes.string
+    })
+  ).isRequired, // to fill from server query
 
   // ///////////////////////
   // fiche activite data
   // ///////////////////////
   isCollapsedFicheActivite: PropTypes.bool.isRequired,
+  isFetchingFicheActivite: PropTypes.bool.isRequired,
+  lastFetchTimeFicheActivite: PropTypes.string.isRequired,
+  isSavingActivite: PropTypes.bool.isRequired,
+
+  activiteIdBeingEditing: PropTypes.number.isRequired, // utle si changement de motif sur une activite
+
+  selectedActiviteId: PropTypes.number.isRequired,
+  listCanauxFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
+  activites: PropTypes.arrayOf(
+    PropTypes.shape({
+      activiteId: PropTypes.number.isRequired, // activite est un combinaison de motifLevel2+motifLevel3+motifLevel4
+      isEditable: PropTypes.bool, // si activiteId === 0 alors reste editable (on peut changer les motifs) sinon plus editable et les motifs sont bloqués
+      selectMotifLevel2IdFicheContact: PropTypes.number, // from listMotifLevel2
+      selectMotifLevel3IdFicheContact: PropTypes.number, // from listMotifLevel3
+      selectMotifLevel4IdFicheContact: PropTypes.number, // from listMotifLevel4
+      // affiche libelle d emotif niveau 4 dna sle champs motif des activites
+      dateCreation: PropTypes.string,
+      creePar: PropTypes.string,
+      traiteePar: PropTypes.string,
+      statutIndex: PropTypes.number, // En-cours
+      // listStatut: ['En-cours', 'Clôturée'], // tous (enum) les statuts de fiche de contact
+      dateCloture: PropTypes.string,
+      cloturePar: PropTypes.string,
+      // libelle motif de niveau 4 a afficher dans motif
+      canalIndexFicheActivite: PropTypes.number,
+      listAttachements: PropTypes.arrayOf(
+        PropTypes.shape({
+          type: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+          filePath: PropTypes.string.isRequired,
+          size: PropTypes.string.isRequired
+        })
+      ),
+      listCommenatire: PropTypes.arrayOf(PropTypes.string)
+    })
+  ),
 
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({
