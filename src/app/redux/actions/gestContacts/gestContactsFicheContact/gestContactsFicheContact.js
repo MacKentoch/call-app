@@ -34,11 +34,11 @@ const requestGetGestContactsFicheContact = (benefId = 0, contactId = 0, time = m
   };
 };
 
-const receivedGetGestContactsFicheContact = (gestContact, time = moment().format(formatDate)) => {
+const receivedGetGestContactsFicheContact = (ficheContact, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT,
     isFetchingFicheContact : false,
-    gestContact,
+    ficheContact,
     time
   };
 };

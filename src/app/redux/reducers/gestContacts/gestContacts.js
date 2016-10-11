@@ -17,7 +17,11 @@ import {
 }                                     from '../../actions/gestContacts/gestContactsDossiers/gestContactsDossiers';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT,
-  UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT
+  UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT,
+
+  REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT,
+  RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT,
+  ERROR_GET_GEST_CONTACTS_FICHE_CONTACT
 }                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
@@ -74,10 +78,14 @@ const initialState = {
   dossiers: [],
 
   // fiche contact
+  isFetchingFicheContact: false,
+  lastFetchTimeFicheContact: '',
   isCollapsedFicheContact: false,
 
   // fiche activites
-  isCollapsedFicheActivite: false
+  isCollapsedFicheActivite: false,
+  isFetchingFicheActivite: false,
+  lastFetchTimeFicheActivite: false
 };
 
 
@@ -94,9 +102,13 @@ const gestContacts = (state = initialState, action) => {
       isFetchingIdentite: action.isFetching,
       isFetchingContact: action.isFetching,
       isFetchingDossiers: action.isFetching,
+      // isFetchingFicheContact: action.isFetchingFicheContact,
+      // isFetchingFicheActivite: action.isFetchingFicheActivite,
       lastFetchTimeIdentite: action.time,
       lastFetchTimeContact: action.time,
       lastFetchTimeDossiers: action.time,
+      // lastFetchTimeFicheContact: action.lastFetchTimeFicheContact,
+      // lastFetchTimeFicheActivite: action.lastFetchTimeFicheActivite,
       actionTime: action.time,
 
       contactId: action.contactId,
@@ -222,7 +234,7 @@ const gestContacts = (state = initialState, action) => {
 
   // /////////////////
   // dossiers
-  // ////////////////
+  // /////////////////
   case SET_IS_COLLAPSED_CONTACTS_DOSSIERS:
   case UNSET_IS_COLLAPSED_CONTACTS_DOSSIERS:
     return {
@@ -233,7 +245,7 @@ const gestContacts = (state = initialState, action) => {
 
   // /////////////////
   // fiche contact
-  // ////////////////
+  // /////////////////
   case SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT:
   case UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT:
     return {
@@ -251,6 +263,27 @@ const gestContacts = (state = initialState, action) => {
       ...state,
       isCollapsedFicheActivite: action.isCollapsedFicheActivite,
       actionTime: action.time
+    };
+
+  case REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT:
+    return {
+      ..state,
+      isCollapsedFicheContact: action.isCollapsedFicheContact,
+      isFetchingFicheContact: action.isFetchingFicheContact,
+      lastFetchTimeFicheContact: action.lastFetchTimeFicheContact
+    };
+
+  case RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT:
+    return {
+      ...state,
+      isFetchingFicheContact: action.isFetchingFicheContact,
+      lastFetchTimeFicheContact: action.lastFetchTimeFicheContact,
+      ficheContact: action.ficheContact
+    };
+
+  case ERROR_GET_GEST_CONTACTS_FICHE_CONTACT:
+    return {
+
     };
 
   default:
