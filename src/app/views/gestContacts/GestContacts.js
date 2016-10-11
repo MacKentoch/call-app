@@ -475,16 +475,16 @@ GestContacts.propTypes = {
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
 
   canalIndexFicheContact: PropTypes.number.isRequired,
-  listCanauxFicheContact: PropTypes.bool.isRequired,
+  listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-  numDossierIndexSelected: PropTypes.bool.isRequired,
-  listNumDossierFicheContact: PropTypes.bool.isRequired,
+  numDossierIndexSelected: PropTypes.number.isRequired,
+  listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-  domaineFicheContact: PropTypes.bool.isRequired,
-  statutBenefFicheContact: PropTypes.bool.isRequired,
+  domaineFicheContact: PropTypes.string.isRequired,
+  statutBenefFicheContact: PropTypes.string.isRequired,
 
-  attachmentsFicheContact: PropTypes.bool.isRequired,
-  commentaireFicheContact: PropTypes.bool.isRequired,
+  attachmentsFicheContact: PropTypes.array.isRequired,
+  commentaireFicheContact: PropTypes.string.isRequired,
 
   groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
   groupeDestinataireIdSelected: PropTypes.bool.isRequired,
