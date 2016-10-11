@@ -9,9 +9,10 @@ import { listMailsMock }          from './listMails';
 import { mailContentMock }        from './mailContent';
 import { searchBenefResultMock }  from './searchBenefResultMock';
 import { gestBenefMock }          from './gestBenefMock';
-import { gestBenefDossierActiviteMock }   from './gestBenefDossierActiviteMock';
-import { gestContactsMock }               from './gestContactsMock';
+import { gestBenefDossierActiviteMock }       from './gestBenefDossierActiviteMock';
+import { gestContactsMock }                   from './gestContactsMock';
 import { gestContactAllMotifsReferenceMock }  from './gestContactAllMotifsReference';
+import { gestContactFicheContactInitMock }    from './gestContactFicheContactInitMock';
 
 export {
   motifsContacts,
@@ -31,5 +32,7 @@ export {
   // gest contacts:
   gestContactsMock,
   // list motifs reference:
-  gestContactAllMotifsReferenceMock
+  gestContactAllMotifsReferenceMock,
+  // fiche contact + activite init:
+  gestContactFicheContactInitMock
 };
