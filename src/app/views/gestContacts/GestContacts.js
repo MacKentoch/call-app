@@ -465,16 +465,16 @@ GestContacts.propTypes = {
   creeParFicheContact: PropTypes.string.isRequired,
   dateReceptionFicheContact: PropTypes.string.isRequired,
 
-  statutIndexFicheContact: PropTypes.bool.isRequired,
-  listStatutFicheContact: PropTypes.bool.isRequired,
+  statutIndexFicheContact: PropTypes.number.isRequired,
+  listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-  dateClotureFicheContact: PropTypes.bool.isRequired,
-  clotureParFicheContact: PropTypes.bool.isRequired,
+  dateClotureFicheContact: PropTypes.string.isRequired,
+  clotureParFicheContact: PropTypes.string.isRequired,
 
-  typeIndexFicheContact: PropTypes.bool.isRequired, // index par default du type de fiche contact de listTypeFicheContact
-  listTypeFicheContact: PropTypes.bool.isRequired, // tous (enum) les types de fiche de contact
+  typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
+  listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
 
-  canalIndexFicheContact: PropTypes.bool.isRequired,
+  canalIndexFicheContact: PropTypes.number.isRequired,
   listCanauxFicheContact: PropTypes.bool.isRequired,
 
   numDossierIndexSelected: PropTypes.bool.isRequired,
