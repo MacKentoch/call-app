@@ -105,13 +105,9 @@ const initialState = {
   domaineFicheContact: '',
   statutBenefFicheContact: '',
 
-  listMotifLevel2: [], // to fetch from server
-  listMotifLevel3: [], // to fetch from server
-  listMotifLevel4: [], // to fetch from server
-
-  selectMotifLevel2IndexFicheContact: 0,
-  selectMotifLevel3IndexFicheContact: 0,
-  selectMotifLevel4IndexFicheContact: 0,
+  listMotifLevel2: [], // enum to fetch from server: {id: number, libelle: string}
+  listMotifLevel3: [], // enum to fetch from server: {id: number, libelle: string}
+  listMotifLevel4: [], // enum to fetch from server: {id: number, libelle: string}
 
   attachmentsFicheContact: [],
   commentaireFicheContact: '',
@@ -121,22 +117,23 @@ const initialState = {
   defaultGroupeDestinataireValue: 'Choisir le groupe destinataire',
   listGroupeDestinataire: ['Choisir le groupe destinataire'], // to fill from server query
 
-  // fiche activites
+  // fiche activites + ficheContactMotifs
   isCollapsedFicheActivite: false,
   isFetchingFicheActivite: false,
   lastFetchTimeFicheActivite: false,
 
   // pour info: object activite (dans motif):
 
+  selectMotifLevel2IdFicheContact: 0, // from listMotifLevel2
+  selectMotifLevel3IdFicheContact: 0, // from listMotifLevel3
+  selectMotifLevel4IdFicheContact: 0, // from listMotifLevel4
 
   dateCreation: '',
   creePar: '',
   traiteePar: '',
   statutIndex: 0, // index de statut par défault de 'listStatutFicheContact'
-  listStatut: ['En-cours', 'Clôturée'] // tous (enum) les statuts de fiche de contact
-  dateCloture: '',
-
-
+  listStatut: ['En-cours', 'Clôturée'], // tous (enum) les statuts de fiche de contact
+  dateCloture: ''
 };
 
 
