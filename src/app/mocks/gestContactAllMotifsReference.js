@@ -1,4 +1,4 @@
-export const gestContactAllMotifsReference= {
+export const gestContactAllMotifsReferenceMock = {
   niveau2 : [
     'testMotifs_niveau2_1',
     'testMotifs_niveau2_2'

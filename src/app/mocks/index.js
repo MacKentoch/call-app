@@ -11,7 +11,7 @@ import { searchBenefResultMock }  from './searchBenefResultMock';
 import { gestBenefMock }          from './gestBenefMock';
 import { gestBenefDossierActiviteMock }   from './gestBenefDossierActiviteMock';
 import { gestContactsMock }               from './gestContactsMock';
-import { gestContactAllMotifsReference }  from './gestContactAllMotifsReference';
+import { gestContactAllMotifsReferenceMock }  from './gestContactAllMotifsReference';
 
 export {
   motifsContacts,
@@ -31,5 +31,5 @@ export {
   // gest contacts:
   gestContactsMock,
   // list motifs reference:
-  gestContactAllMotifsReference
+  gestContactAllMotifsReferenceMock
 };

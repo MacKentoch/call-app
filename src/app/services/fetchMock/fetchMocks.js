@@ -11,7 +11,8 @@ import {
   mailContentMock,
   searchBenefResultMock,
   gestBenefMock,
-  gestContactsMock
+  gestContactsMock,
+  gestContactAllMotifsReferenceMock
 }                       from '../../mocks';
 
 import {
@@ -357,13 +358,13 @@ export const fetchMockGetGestContacts = (benefId, contactId, timeToWait = appCon
 /*
     liste de motifs:
  */
- export const fetchMockGetGestContacts = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
-   return new Promise(
+export const fetchMockGetGestContactsAllMotifs = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  return new Promise(
     resolve => {
       setTimeout(
-        () => resolve({...gestContactsMock}),
+        () => resolve({...gestContactAllMotifsReferenceMock}),
         timeToWait
       );
     }
   );
- };
+};
