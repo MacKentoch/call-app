@@ -105,7 +105,14 @@ const initialState = {
   domaineFicheContact: '',
   statutBenefFicheContact: '',
 
-  motifsFicheContact: [],
+  listMotifLevel2: [], // to fetch from server
+  listMotifLevel3: [], // to fetch from server
+  listMotifLevel4: [], // to fetch from server
+
+  selectMotifLevel2IndexFicheContact: 0,
+  selectMotifLevel3IndexFicheContact: 0,
+  selectMotifLevel4IndexFicheContact: 0,
+
   attachmentsFicheContact: [],
   commentaireFicheContact: '',
 
@@ -117,7 +124,19 @@ const initialState = {
   // fiche activites
   isCollapsedFicheActivite: false,
   isFetchingFicheActivite: false,
-  lastFetchTimeFicheActivite: false
+  lastFetchTimeFicheActivite: false,
+
+  // pour info: object activite (dans motif):
+
+
+  dateCreation: '',
+  creePar: '',
+  traiteePar: '',
+  statutIndex: 0, // index de statut par défault de 'listStatutFicheContact'
+  listStatut: ['En-cours', 'Clôturée'] // tous (enum) les statuts de fiche de contact
+  dateCloture: '',
+
+
 };
 
 
