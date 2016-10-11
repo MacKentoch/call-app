@@ -81,6 +81,7 @@ const initialState = {
   isFetchingFicheContact: false,
   lastFetchTimeFicheContact: '',
   isCollapsedFicheContact: false,
+  isSavingFicheContact: false,
 
   dateCreationFicheContact: '',
   creeParFicheContact: '',
@@ -98,13 +99,20 @@ const initialState = {
   canalIndexFicheContact: 0,
   listCanauxFicheContact: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'],
 
+  numDossierIndexSelected: 0,
   listNumDossierFicheContact: [], // benef numDossiers list
+
   domaineFicheContact: '',
   statutBenefFicheContact: '',
 
   motifsFicheContact: [],
   attachmentsFicheContact: [],
+  commentaireFicheContact: '',
 
+  groupeDestinataireIsActive: true,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
+  groupeDestinataireIndexSelected: 0,
+  defaultGroupeDestinataireValue: 'Choisir le groupe destinataire',
+  listGroupeDestinataire: ['Choisir le groupe destinataire'], // to fill from server query
 
   // fiche activites
   isCollapsedFicheActivite: false,
