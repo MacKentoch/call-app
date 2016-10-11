@@ -317,8 +317,8 @@ const gestContacts = (state = initialState, action) => {
   case RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT:
     return {
       ...state,
-      isFetchingFicheContact: action.isFetching,
-      isFetchingFicheActivite: action.isFetching,
+      isFetchingFicheContact: false,
+      isFetchingFicheActivite: false,
       lastFetchTimeFicheContact: action.time,
       lastFetchTimeFicheActivite: action.time,
       actionTime: action.time,

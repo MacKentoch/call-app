@@ -123,7 +123,7 @@ export const getGestContactsFicheContactIfNeeded = (contactId) => (dispatch, get
 };
 
 function shouldGetGestContactsFicheContact(state) {
-  const gestContact = state.gestContact;
+  const gestContact = state.gestContacts;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
   if (gestContact.isFetchingFicheContact) {
     return false;
