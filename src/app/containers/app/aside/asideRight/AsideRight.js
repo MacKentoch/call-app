@@ -5,6 +5,7 @@ const AsideRight = (props) => {
   const asideRightClasses = classNames({
     'right-side': true,
     'right-side--top-margin': true,
+    'aside-right-animated': props.isAnimated,
     'strech': props.isExpanded
   });
   return (
