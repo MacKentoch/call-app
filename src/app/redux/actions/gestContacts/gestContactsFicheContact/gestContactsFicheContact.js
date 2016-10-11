@@ -12,7 +12,6 @@ const formatDate = appConfig.formatDate.defaut;
 // const formatDateReception = 'DD/MM/YYYY';
 // const formatDateCloture   = 'DD/MM/YYYY';
 
-
 export const REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT    = 'REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT';
 export const RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT   = 'RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT';
 export const ERROR_GET_GEST_CONTACTS_FICHE_CONTACT      = 'ERROR_GET_GEST_CONTACTS_FICHE_CONTACT';
