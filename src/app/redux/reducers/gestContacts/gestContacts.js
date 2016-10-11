@@ -123,20 +123,26 @@ const initialState = {
   lastFetchTimeFicheActivite: false,
 
   selectedActiviteId: 0,
+  listCanauxFicheActivite: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'] // ,
 
-  // pour info: object activite (dans motif):
-  activiteId: 0, // activite est un combinaison de motifLevel2+motifLevel3+motifLevel4
-
-  selectMotifLevel2IdFicheContact: 0, // from listMotifLevel2
-  selectMotifLevel3IdFicheContact: 0, // from listMotifLevel3
-  selectMotifLevel4IdFicheContact: 0, // from listMotifLevel4
-  // affiche libelle d emotif niveau 4 dna sle champs motif des activites
-  dateCreation: '',
-  creePar: '',
-  traiteePar: '',
-  statutIndex: 0, // index de statut par défault de 'listStatutFicheContact'
-  listStatut: ['En-cours', 'Clôturée'], // tous (enum) les statuts de fiche de contact
-  dateCloture: ''
+  // // pour info: object activite (dans motif):
+  // activiteId: 0, // activite est un combinaison de motifLevel2+motifLevel3+motifLevel4
+  //
+  // selectMotifLevel2IdFicheContact: 0, // from listMotifLevel2
+  // selectMotifLevel3IdFicheContact: 0, // from listMotifLevel3
+  // selectMotifLevel4IdFicheContact: 0, // from listMotifLevel4
+  // // affiche libelle d emotif niveau 4 dna sle champs motif des activites
+  // dateCreation: '',
+  // creePar: '',
+  // traiteePar: '',
+  // statutIndex: 0, // index de statut par défault de 'listStatutFicheContact'
+  // listStatut: ['En-cours', 'Clôturée'], // tous (enum) les statuts de fiche de contact
+  // dateCloture: '',
+  // cloturePar: '',
+  // // libelle motif de niveau 4 a afficher dans motif
+  // canalIndexFicheActivite: 0,
+  // listAttachements: [],
+  // listCommenatire: []
 };
 
 
