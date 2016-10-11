@@ -43,7 +43,7 @@ export const getGestContactsExistingContact = (benefId, contactId) => {
     .catch(error => Promise.reject(error));
 };
 
-export const getGestContactsFicheContact = contactId => {
+export const getGestContactsFicheContactInit = contactId => {
   if (!contactId) {
     return Promise.reject({error: 'getGestContactsFicheContact API: benefId is not valid'});
   }

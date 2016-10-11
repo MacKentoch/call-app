@@ -52,7 +52,8 @@ import {
   getGestBenefContactsAndActivites,
   getGestContactsNewContact,
   getGestContactsExistingContact,
-  getGestContactsAllMotifs
+  getGestContactsAllMotifs,
+  getGestContactsFicheContactInit
 }                     from './API';
 
 // date tools
@@ -148,6 +149,7 @@ export {
   getGestContactsNewContact,
   getGestContactsExistingContact,
   getGestContactsAllMotifs,
+  getGestContactsFicheContactInit,
 
   // date tools
   getLastThreeMonthNames,
@@ -181,5 +183,5 @@ export {
   getSearchContactsEtActivitesResMaxIndex,
 
   // all motisf reference:
-  fetchMockGetGestContactsAllMotifs,
+  fetchMockGetGestContactsAllMotifs
 };

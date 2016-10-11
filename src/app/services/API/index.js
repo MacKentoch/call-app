@@ -27,7 +27,8 @@ import {
 }                                 from './gestbenef/gestBenef';
 import {
   getGestContactsNewContact,
-  getGestContactsExistingContact
+  getGestContactsExistingContact,
+  getGestContactsFicheContactInit
 }                                 from './gestContacts/gestContacts';
 export {
   getUserBoitesMails,
@@ -53,6 +54,7 @@ export {
   // gestContacts:
   getGestContactsNewContact,
   getGestContactsExistingContact,
+  getGestContactsFicheContactInit,
   // liste motifs reference:
   getGestContactsAllMotifs
 };
