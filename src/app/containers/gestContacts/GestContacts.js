@@ -45,9 +45,29 @@ const mapStateToProps = (state) => {
     isCollapsedDossiers: state.gestContacts.isCollapsedDossiers,
     dossiers: state.gestContacts.dossiers,
 
+    // lists motifs reference
+    isFetchingAllMotifs: state.gestContacts.isFetchingAllMotifs, // fetch pour refresh de la liste des motifs de reference
+    lastFetchTimeAllMotifs: state.gestContacts.lastFetchTimeAllMotifs,
+    listMotifLevel2: state.gestContacts.listMotifLevel2, // enum to fetch from server: {id: number, libelle: string}
+    listMotifLevel3: state.gestContacts.listMotifLevel3, // enum to fetch from server: {id: number, libelle: string}
+    listMotifLevel4: state.gestContacts.listMotifLevel4, // enum to fetch from server: {id: number, libelle: string}
+
     // fiche contact
     isCollapsedFicheContact: state.gestContacts.isCollapsedFicheContact,
+    lastFetchTimeFicheContact: state.gestContacts.lastFetchTimeFicheContact,
+    isFetchingFicheContact: state.gestContacts.isFetchingFicheContact,
+    isSavingFicheContact: state.gestContacts.isSavingFicheContact,
 
+    dateCreationFicheContact: state.gestContacts.dateCreationFicheContact,
+    creeParFicheContact: state.gestContacts.creeParFicheContact,
+    dateReceptionFicheContact: state.gestContacts.dateReceptionFicheContact,
+
+    statutIndexFicheContact: state.gestContacts.statutIndexFicheContact,
+    listStatutFicheContact: state.gestContacts.listStatutFicheContact,
+
+    dateClotureFicheContact: state.gestContacts.dateClotureFicheContact,
+    clotureParFicheContact: state.gestContacts.clotureParFicheContact,
+    
     // fiche activites
     isCollapsedFicheActivite: state.gestContacts.isCollapsedFicheActivite
   };
