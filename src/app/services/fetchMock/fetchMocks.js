@@ -12,7 +12,8 @@ import {
   searchBenefResultMock,
   gestBenefMock,
   gestContactsMock,
-  gestContactAllMotifsReferenceMock
+  gestContactAllMotifsReferenceMock,
+  gestContactFicheContactInitMock
 }                       from '../../mocks';
 
 import {
@@ -353,6 +354,27 @@ export const fetchMockGetGestContacts = (benefId, contactId, timeToWait = appCon
      );
    }
  );
+};
+
+/*
+  fiche contact
+  gestContactFicheContactInitMock
+ */
+export const fetchMockGetGestContactsFicheContact = (contactId, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!(parseInt(contactId, 10) >= 0)) {
+    return Promise.reject({
+      'error': 'fetchMockGetGestContactsFicheContact error: contactId is not valid'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+        () => resolve({...gestContactFicheContactInitMock}),
+        timeToWait
+      );
+    }
+  );
 };
 
 /*

@@ -53,15 +53,7 @@ const errorGetGestContactsFicheContact = (error, time = moment().format(formatDa
   };
 };
 
-const getQueryGestContactsFicheContact = (benefId, contactId) => dispatch => {
-  if (!benefId) {
-    dispatch(errorGetGestContactsFicheContact('getGestContactsFicheContact API error: benefId is not defined or not valid'));
-    return Promise.reject({
-      message: 'Rafraichissement des données "Contact" de la fiche de contact en erreur (identifiant de bénéficaire non valide)',
-      level: 'error',
-      showNotification: true
-    });
-  }
+const getQueryGestContactsFicheContact = (contactId) => dispatch => {
   if (!contactId) {
     dispatch(errorGetGestContactsFicheContact('getGestContactsFicheContact API error: contactId is not defined or not valid'));
     return Promise.reject({
@@ -71,10 +63,10 @@ const getQueryGestContactsFicheContact = (benefId, contactId) => dispatch => {
     });
   }
 
-  dispatch(requestGetGestContactsFicheContact(benefId, contactId));
+  dispatch(requestGetGestContactsFicheContact(contactId));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockGetGestContacts(benefId, contactId) // mock is the as all gestBenef object
+    return fetchMockGetGestContactsFicheContact(contactId) // mock is the as all gestBenef object
             .then(
               data => {
                 dispatch(receivedGetGestContactsFicheContact(data));
@@ -96,7 +88,7 @@ const getQueryGestContactsFicheContact = (benefId, contactId) => dispatch => {
               }
             );
   } else {
-    return getGestContactsExistingContact(benefId, contactId)
+    return getGestContactsExistingContact(contactId)
             .then(
               response => {
                 dispatch(receivedGetGestContactsFicheContact(response));
@@ -120,9 +112,9 @@ const getQueryGestContactsFicheContact = (benefId, contactId) => dispatch => {
   }
 };
 
-export const getGestContactsFicheContactIfNeeded = (benefId, contactId) => (dispatch, getState) => {
+export const getGestContactsFicheContactIfNeeded = (contactId) => (dispatch, getState) => {
   if (shouldGetGestContactsFicheContact(getState())) {
-    return dispatch(getQueryGestContactsFicheContact(benefId, contactId));
+    return dispatch(getQueryGestContactsFicheContact(contactId));
   }
   return Promise.resolve({
     message: 'fetch des modifications des informations "Contact" de la fiche de contact déjà en cours',

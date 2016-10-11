@@ -30,7 +30,9 @@ import {
   // gest contacts:
   fetchMockGetGestContacts,
   // liste de motifs:
-  fetchMockGetGestContactsAllMotifs
+  fetchMockGetGestContactsAllMotifs,
+  // fiche contact:
+  fetchMockGetGestContactsFicheContact
 }                     from './fetchMock/fetchMocks';
 // API
 import {
@@ -126,6 +128,7 @@ export {
   fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
   fetchMockGetGestContacts,
   fetchMockGetGestContactsAllMotifs,
+  fetchMockGetGestContactsFicheContact,
 
   // API
   getUserBoitesMails,
