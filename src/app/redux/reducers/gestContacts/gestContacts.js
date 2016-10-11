@@ -120,14 +120,18 @@ const initialState = {
   // fiche activites + ficheContactMotifs
   isCollapsedFicheActivite: false,
   isFetchingFicheActivite: false,
-  lastFetchTimeFicheActivite: false,
+  lastFetchTimeFicheActivite: '',
+  isSavingActivite: false,
+
+  activiteIdBeingEditing: 0, // utle si changement de motif sur une activite
 
   selectedActiviteId: 0,
-  listCanauxFicheActivite: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'] // ,
+  listCanauxFicheActivite: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'],
+  activites: []
 
-  // // pour info: object activite (dans motif):
+  // // pour info: dans activites => object activite:
   // activiteId: 0, // activite est un combinaison de motifLevel2+motifLevel3+motifLevel4
-  //
+  // isEditable: true, // si activiteId === 0 alors reste editable (on peut changer les motifs) sinon plus editable et les motifs sont bloqués
   // selectMotifLevel2IdFicheContact: 0, // from listMotifLevel2
   // selectMotifLevel3IdFicheContact: 0, // from listMotifLevel3
   // selectMotifLevel4IdFicheContact: 0, // from listMotifLevel4
@@ -310,8 +314,10 @@ const gestContacts = (state = initialState, action) => {
   case REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT:
     return {
       ...state,
-      isFetchingContact: action.isFetchingContact,
-      lastFetchTimeContact: action.time,
+      isFetchingFicheContact: true,
+      isFetchingFicheActivite: true,
+      lastFetchTimeFicheContact: action.time,
+      lastFetchTimeFicheActivite: action.time,
       actionTime: action.time,
 
       contactId: action.contactId,
@@ -321,13 +327,10 @@ const gestContacts = (state = initialState, action) => {
   case RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT:
     return {
       ...state,
-      isFetchingAll: false,
-      isFetchingIdentite: action.isFetching,
-      isFetchingContact: action.isFetching,
-      isFetchingDossiers: action.isFetching,
-      lastFetchTimeIdentite: action.time,
-      lastFetchTimeContact: action.time,
-      lastFetchTimeDossiers: action.time,
+      isFetchingFicheContact: action.isFetching,
+      isFetchingFicheActivite: action.isFetching,
+      lastFetchTimeFicheContact: action.time,
+      lastFetchTimeFicheActivite: action.time,
       actionTime: action.time,
 
       // contactId may be null if creation
@@ -402,9 +405,12 @@ const gestContacts = (state = initialState, action) => {
   case ERROR_GET_GEST_CONTACTS_FICHE_CONTACT:
     return {
       ...state,
-      isFetchingContact: action.isFetchingContact,
-      lastFetchTimeContact: action.time,
+      isFetchingFicheContact: false,
+      isFetchingFicheActivite: false,
+      lastFetchTimeFicheContact: action.time,
+      lastFetchTimeFicheActivite: action.time,
       actionTime: action.time,
+
       error: action.error
     };
 
@@ -418,27 +424,6 @@ const gestContacts = (state = initialState, action) => {
       ...state,
       isCollapsedFicheActivite: action.isCollapsedFicheActivite,
       actionTime: action.time
-    };
-
-  case REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT:
-    return {
-      ...state,
-      isCollapsedFicheContact: action.isCollapsedFicheContact,
-      isFetchingFicheContact: action.isFetchingFicheContact,
-      lastFetchTimeFicheContact: action.lastFetchTimeFicheContact
-    };
-
-  case RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT:
-    return {
-      ...state,
-      isFetchingFicheContact: action.isFetchingFicheContact,
-      lastFetchTimeFicheContact: action.lastFetchTimeFicheContact,
-      ficheContact: action.ficheContact
-    };
-
-  case ERROR_GET_GEST_CONTACTS_FICHE_CONTACT:
-    return {
-
     };
 
   default:
