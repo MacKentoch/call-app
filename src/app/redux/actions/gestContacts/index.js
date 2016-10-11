@@ -25,6 +25,10 @@ import {
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite
 }                               from './gestContactsFicheActivite/gestContactsFicheActivite';
+// contacts-activite liste de motifs de référence:
+import {
+  getGestContactsAllMotifsIfNeeded
+}                               from './gestContactsFicheActivite/gestContactsFicheActivite';
 
 export {
   // all contacts (benef info) fields (identite + contact + dossiers)
@@ -43,5 +47,7 @@ export {
   unsetIsCollapsedContactsFicheContact,
   // fiches activites
   setIsCollapsedContactsFicheActivite,
-  unsetIsCollapsedContactsFicheActivite
+  unsetIsCollapsedContactsFicheActivite,
+  // contacts-activite liste de motifs de référence:
+  getGestContactsAllMotifsIfNeeded
 };
