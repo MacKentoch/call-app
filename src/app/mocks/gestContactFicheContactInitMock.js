@@ -5,7 +5,7 @@ export const gestContactFicheContactInitMock = {
   statutIndexFicheContact: 0, // En-cours
   dateClotureFicheContact: '',
   clotureParFicheContact: '',
-  typeIndexFicheContact: 0, // inforamtion
+  typeIndexFicheContact: 0, // information
   canalIndexFicheContact: 0, // téléphone
   numDossierIndexSelected: 0,
   listNumDossierFicheContact: ['0123', '0321'],

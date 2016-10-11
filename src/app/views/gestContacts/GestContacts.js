@@ -457,6 +457,39 @@ GestContacts.propTypes = {
   // fiche contact data
   // ///////////////////////
   isCollapsedFicheContact: PropTypes.bool.isRequired,
+  lastFetchTimeFicheContact: PropTypes.string.isRequired,
+  isFetchingFicheContact: PropTypes.bool.isRequired,
+  isSavingFicheContact: PropTypes.bool.isRequired,
+
+  dateCreationFicheContact: PropTypes.string.isRequired,
+  creeParFicheContact: PropTypes.string.isRequired,
+  dateReceptionFicheContact: PropTypes.string.isRequired,
+
+  statutIndexFicheContact: PropTypes.bool.isRequired,
+  listStatutFicheContact: PropTypes.bool.isRequired,
+
+  dateClotureFicheContact: PropTypes.bool.isRequired,
+  clotureParFicheContact: PropTypes.bool.isRequired,
+
+  typeIndexFicheContact: PropTypes.bool.isRequired, // index par default du type de fiche contact de listTypeFicheContact
+  listTypeFicheContact: PropTypes.bool.isRequired, // tous (enum) les types de fiche de contact
+
+  canalIndexFicheContact: PropTypes.bool.isRequired,
+  listCanauxFicheContact: PropTypes.bool.isRequired,
+
+  numDossierIndexSelected: PropTypes.bool.isRequired,
+  listNumDossierFicheContact: PropTypes.bool.isRequired,
+
+  domaineFicheContact: PropTypes.bool.isRequired,
+  statutBenefFicheContact: PropTypes.bool.isRequired,
+
+  attachmentsFicheContact: PropTypes.bool.isRequired,
+  commentaireFicheContact: PropTypes.bool.isRequired,
+
+  groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
+  groupeDestinataireIdSelected: PropTypes.bool.isRequired,
+  listGroupeDestinataire: PropTypes.bool.isRequired, // to fill from server query
+
   // ///////////////////////
   // fiche activite data
   // ///////////////////////
