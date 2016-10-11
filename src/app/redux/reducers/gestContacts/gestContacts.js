@@ -27,6 +27,12 @@ import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
   UNSET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE
 }                                     from '../../actions/gestContacts/gestContactsFicheActivite/gestContactsFicheActivite';
+import {
+  REQUEST_GET_GEST_CONTACTS_ALL_MOTIFS,
+  RECEIVED_GET_GEST_CONTACTS_ALL_MOTIFS,
+  ERROR_GET_GEST_CONTACTS_ALL_MOTIFS
+}                                     from '../../actions/gestContacts/gestContactListMotifs/gestContactListMotifs';
+
 
 const initialState = {
   actionTime: '',
@@ -105,6 +111,7 @@ const initialState = {
   domaineFicheContact: '',
   statutBenefFicheContact: '',
 
+  isFetchingAllMotifs: false, // fetch pour refresh de la liste des motifs de reference
   listMotifLevel2: [], // enum to fetch from server: {id: number, libelle: string}
   listMotifLevel3: [], // enum to fetch from server: {id: number, libelle: string}
   listMotifLevel4: [], // enum to fetch from server: {id: number, libelle: string}
@@ -425,6 +432,14 @@ const gestContacts = (state = initialState, action) => {
       isCollapsedFicheActivite: action.isCollapsedFicheActivite,
       actionTime: action.time
     };
+
+  // //////////////////////
+  // list motifs reference
+  // //////////////////////
+
+    // REQUEST_GET_GEST_CONTACTS_ALL_MOTIFS,
+    // RECEIVED_GET_GEST_CONTACTS_ALL_MOTIFS,
+    // ERROR_GET_GEST_CONTACTS_ALL_MOTIFS
 
   default:
     return state;
