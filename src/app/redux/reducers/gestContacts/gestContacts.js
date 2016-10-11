@@ -112,6 +112,7 @@ const initialState = {
   statutBenefFicheContact: '',
 
   isFetchingAllMotifs: false, // fetch pour refresh de la liste des motifs de reference
+  lastFetchTimeAllMotifs: '',
   listMotifLevel2: [], // enum to fetch from server: {id: number, libelle: string}
   listMotifLevel3: [], // enum to fetch from server: {id: number, libelle: string}
   listMotifLevel4: [], // enum to fetch from server: {id: number, libelle: string}
@@ -347,66 +348,7 @@ const gestContacts = (state = initialState, action) => {
       // benefId should always be returned (as id) since no contact possible without a benef
       benefId: action.gestBenef && action.gestBenef.id
         ? action.gestBenef.id
-        : initialState.id,
-
-      // identité
-      civilite: action.gestBenef && action.gestBenef.civilite
-        ? action.gestBenef.civilite
-        : initialState.civilite,
-      nom: action.gestBenef && action.gestBenef.nom
-        ? action.gestBenef.nom
-        : initialState.nom,
-      nomJeuneFille: action.gestBenef && action.gestBenef.nomJeuneFille
-        ? action.gestBenef.nomJeuneFille
-        : initialState.nomJeuneFille,
-      prenom: action.gestBenef && action.gestBenef.prenom
-        ? action.gestBenef.prenom
-        : initialState.prenom,
-      dateNaissance: action.gestBenef && action.gestBenef.dateNaissance
-        ? action.gestBenef.dateNaissance
-        : initialState.dateNaissance,
-      numss: action.gestBenef && action.gestBenef.numss
-        ? action.gestBenef.numss
-        : initialState.numss,
-      dateDeces: action.gestBenef && action.gestBenef.dateDeces
-        ? action.gestBenef.dateDeces
-        : initialState.dateDeces,
-      maritalStatus: action.gestBenef && action.gestBenef.maritalStatus
-        ? action.gestBenef.maritalStatus
-        : initialState.maritalStatus,
-      // contact data
-      fixedPhone: action.gestBenef && action.gestBenef.fixedPhone
-        ? action.gestBenef.fixedPhone
-        : initialState.fixedPhone,
-      mobilePhone: action.gestBenef && action.gestBenef.mobilePhone
-        ? action.gestBenef.mobilePhone
-        : initialState.mobilePhone,
-      email: action.gestBenef && action.gestBenef.email
-        ? action.gestBenef.email
-        : initialState.email,
-      // contact data > sub: adress
-      numAdress: action.gestBenef && action.gestBenef.numAdress
-        ? action.gestBenef.numAdress
-        : initialState.numAdress,
-      voie: action.gestBenef && action.gestBenef.voie
-        ? action.gestBenef.voie
-        : initialState.voie,
-      complementAdr: action.gestBenef && action.gestBenef.complementAdr
-        ? action.gestBenef.complementAdr
-        : initialState.complementAdr,
-      codePostal: action.gestBenef && action.gestBenef.codePostal
-        ? action.gestBenef.codePostal
-        : initialState.codePostal,
-      ville: action.gestBenef && action.gestBenef.ville
-        ? action.gestBenef.ville
-        : initialState.ville,
-      pays: action.gestBenef && action.gestBenef.pays
-        ? action.gestBenef.pays
-        : initialState.pays,
-      // dossiers:
-      dossiers: action.gestBenef && action.gestBenef.dossiers
-        ? [...action.gestBenef.dossiers]
-        : [...initialState.dossiers]
+        : initialState.id
     };
 
   case ERROR_GET_GEST_CONTACTS_FICHE_CONTACT:
@@ -437,9 +379,40 @@ const gestContacts = (state = initialState, action) => {
   // list motifs reference
   // //////////////////////
 
-    // REQUEST_GET_GEST_CONTACTS_ALL_MOTIFS,
-    // RECEIVED_GET_GEST_CONTACTS_ALL_MOTIFS,
-    // ERROR_GET_GEST_CONTACTS_ALL_MOTIFS
+  case REQUEST_GET_GEST_CONTACTS_ALL_MOTIFS:
+    return {
+      ...state,
+      isFetchingAllMotifs: action.isFetchingAllMotifs,
+      lastFetchTimeAllMotifs: action.time,
+      actionTime: action.time
+    };
+  case RECEIVED_GET_GEST_CONTACTS_ALL_MOTIFS:
+    return {
+      ...state,
+      isFetchingAllMotifs: action.isFetchingAllMotifs,
+      lastFetchTimeAllMotifs: action.time,
+      actionTime: action.time,
+
+      listMotifLevel2: action.gestContacts && action.gestContacts.motifs &&  action.gestContacts.motifs.niveau2
+        ? [...action.gestContacts.motifs.niveau2]
+        : initialState.listMotifLevel2,
+      listMotifLevel3: action.gestContacts && action.gestContacts.motifs &&  action.gestContacts.motifs.niveau3
+        ? [...action.gestContacts.motifs.niveau3]
+        : initialState.listMotifLevel3,
+      listMotifLevel4: action.gestContacts && action.gestContacts.motifs &&  action.gestContacts.motifs.niveau4
+        ? [...action.gestContacts.motifs.niveau4]
+        : initialState.listMotifLevel4
+    };
+
+  case ERROR_GET_GEST_CONTACTS_ALL_MOTIFS:
+    return {
+      ...state,
+      isFetchingAllMotifs: action.isFetchingAllMotifs,
+      lastFetchTimeAllMotifs: action.time,
+      actionTime: action.time,
+
+      error: action.error
+    };
 
   default:
     return state;
