@@ -1,8 +1,8 @@
 import moment               from 'moment';
 import { appConfig }        from '../../../../config';
 import {
-  fetchMockGetGestContacts,
-  getGestContactsExistingContact
+  fetchMockGetGestContactsFicheContact,
+  getGestContactsFicheContact
 }                           from '../../../../services';
 
 moment.locale('fr');
