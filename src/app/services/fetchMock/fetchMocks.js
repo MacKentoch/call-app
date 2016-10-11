@@ -353,3 +353,17 @@ export const fetchMockGetGestContacts = (benefId, contactId, timeToWait = appCon
    }
  );
 };
+
+/*
+    liste de motifs:
+ */
+ export const fetchMockGetGestContacts = (timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+   return new Promise(
+    resolve => {
+      setTimeout(
+        () => resolve({...gestContactsMock}),
+        timeToWait
+      );
+    }
+  );
+ };

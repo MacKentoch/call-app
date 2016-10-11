@@ -29,6 +29,8 @@ import {
   fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
   // gest contacts:
   fetchMockGetGestContacts
+  // liste de motifs:
+  fetchMockGetGestContactsAllMotifs
 }                     from './fetchMock/fetchMocks';
 // API
 import {
