@@ -122,12 +122,15 @@ const initialState = {
   isFetchingFicheActivite: false,
   lastFetchTimeFicheActivite: false,
 
+  selectedActiviteId: 0,
+
   // pour info: object activite (dans motif):
+  activiteId: 0, // activite est un combinaison de motifLevel2+motifLevel3+motifLevel4
 
   selectMotifLevel2IdFicheContact: 0, // from listMotifLevel2
   selectMotifLevel3IdFicheContact: 0, // from listMotifLevel3
   selectMotifLevel4IdFicheContact: 0, // from listMotifLevel4
-
+  // affiche libelle d emotif niveau 4 dna sle champs motif des activites
   dateCreation: '',
   creePar: '',
   traiteePar: '',
