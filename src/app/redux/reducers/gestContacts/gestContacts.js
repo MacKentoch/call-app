@@ -82,6 +82,16 @@ const initialState = {
   lastFetchTimeFicheContact: '',
   isCollapsedFicheContact: false,
 
+
+  dateCreation: '',
+  creePar: '',
+  dateReception: '',
+  statutIndexFicheContact: 0, // index de statut de 'listStatutFicheContact'
+  listStatutFicheContact: ['En-cours', 'Clôturée'], // tous les stattus de fiche de contact
+
+  dateCloture: '',
+  cloturePar: '',
+
   // fiche activites
   isCollapsedFicheActivite: false,
   isFetchingFicheActivite: false,
@@ -267,7 +277,7 @@ const gestContacts = (state = initialState, action) => {
 
   case REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT:
     return {
-      ..state,
+      ...state,
       isCollapsedFicheContact: action.isCollapsedFicheContact,
       isFetchingFicheContact: action.isFetchingFicheContact,
       lastFetchTimeFicheContact: action.lastFetchTimeFicheContact
