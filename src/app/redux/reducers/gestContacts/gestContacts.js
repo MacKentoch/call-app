@@ -83,6 +83,13 @@ const initialState = {
 
   dossiers: [],
 
+  // lists motifs reference
+  isFetchingAllMotifs: false, // fetch pour refresh de la liste des motifs de reference
+  lastFetchTimeAllMotifs: '',
+  listMotifLevel2: [], // enum to fetch from server: {id: number, libelle: string}
+  listMotifLevel3: [], // enum to fetch from server: {id: number, libelle: string}
+  listMotifLevel4: [], // enum to fetch from server: {id: number, libelle: string}
+
   // fiche contact
   isFetchingFicheContact: false,
   lastFetchTimeFicheContact: '',
@@ -110,12 +117,6 @@ const initialState = {
 
   domaineFicheContact: '',
   statutBenefFicheContact: '',
-
-  isFetchingAllMotifs: false, // fetch pour refresh de la liste des motifs de reference
-  lastFetchTimeAllMotifs: '',
-  listMotifLevel2: [], // enum to fetch from server: {id: number, libelle: string}
-  listMotifLevel3: [], // enum to fetch from server: {id: number, libelle: string}
-  listMotifLevel4: [], // enum to fetch from server: {id: number, libelle: string}
 
   attachmentsFicheContact: [],
   commentaireFicheContact: '',
@@ -342,13 +343,36 @@ const gestContacts = (state = initialState, action) => {
       actionTime: action.time,
 
       // contactId may be null if creation
-      contactId: action.gestBenef && action.gestBenef.contactId
+      dateCreationFicheContact: action. && action.gestBenef.contactId
         ? action.gestBenef.contactId
         : initialState.contactId,
       // benefId should always be returned (as id) since no contact possible without a benef
-      benefId: action.gestBenef && action.gestBenef.id
+      creeParFicheContact: action.gestBenef && action.gestBenef.id
         ? action.gestBenef.id
-        : initialState.id
+        : initialState.id,
+
+      dateReceptionFicheContact: ,
+
+      statutIndexFicheContact: ,
+
+      dateClotureFicheContact: ,
+      clotureParFicheContact: ,
+      typeIndexFicheContact: ,
+      canalIndexFicheContact: ,
+      numDossierIndexSelected: ,
+      listNumDossierFicheContact: ,
+      domaineFicheContact: ,
+      statutBenefFicheContact: ,
+      attachmentsFicheContact: ,
+      commentaireFicheContact: ,
+      groupeDestinataireIsActive: ,
+      groupeDestinataireIndexSelected: ,
+      listGroupeDestinataire: , // dont forget to add initialState.defaultGroupeDestinataireValue as 1st element
+
+      activiteIdBeingEditing: ,
+      selectedActiviteId: ,
+      activites:
+
     };
 
   case ERROR_GET_GEST_CONTACTS_FICHE_CONTACT:
@@ -393,14 +417,14 @@ const gestContacts = (state = initialState, action) => {
       lastFetchTimeAllMotifs: action.time,
       actionTime: action.time,
 
-      listMotifLevel2: action.gestContacts && action.gestContacts.motifs && action.gestContacts.motifs.niveau2
-        ? [...action.gestContacts.motifs.niveau2]
+      listMotifLevel2: action.motifs && action.motifs.niveau2
+        ? [...action.motifs.niveau2]
         : initialState.listMotifLevel2,
-      listMotifLevel3: action.gestContacts && action.gestContacts.motifs && action.gestContacts.motifs.niveau3
-        ? [...action.gestContacts.motifs.niveau3]
+      listMotifLevel3: action.motifs && action.motifs.niveau3
+        ? [...action.motifs.niveau3]
         : initialState.listMotifLevel3,
-      listMotifLevel4: action.gestContacts && action.gestContacts.motifs && action.gestContacts.motifs.niveau4
-        ? [...action.gestContacts.motifs.niveau4]
+      listMotifLevel4: action.motifs && action.motifs.niveau4
+        ? [...action.motifs.niveau4]
         : initialState.listMotifLevel4
     };
 
