@@ -1,7 +1,7 @@
 import {
   defaultOptions,
-  postMethod,
-  jsonHeader,
+  // postMethod,
+  // jsonHeader,
   checkStatus,
   parseJSON,
   getLocationOrigin
