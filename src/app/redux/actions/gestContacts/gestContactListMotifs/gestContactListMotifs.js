@@ -104,9 +104,9 @@ export const getGestContactsAllMotifsIfNeeded = () => (dispatch, getState) => {
 };
 
 function shouldGetGestContactsAllMotifs(state) {
-  const gestContact = state.gestContact;
+  const gestContacts = state.gestContacts;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
-  if (gestContact.isFetchingAllMotifs) {
+  if (gestContacts.isFetchingAllMotifs) {
     return false;
   } else {
     return true;

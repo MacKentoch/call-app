@@ -29,7 +29,7 @@ import {
 // contacts-activite liste de motifs de référence:
 import {
   getGestContactsAllMotifsIfNeeded
-}                               from './gestContactsFicheActivite/gestContactsFicheActivite';
+}                               from './gestContactListMotifs/gestContactListMotifs';
 
 export {
   // all contacts (benef info) fields (identite + contact + dossiers)
