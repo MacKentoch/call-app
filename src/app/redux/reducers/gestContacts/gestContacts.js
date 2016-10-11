@@ -378,7 +378,6 @@ const gestContacts = (state = initialState, action) => {
   // //////////////////////
   // list motifs reference
   // //////////////////////
-
   case REQUEST_GET_GEST_CONTACTS_ALL_MOTIFS:
     return {
       ...state,
@@ -386,6 +385,7 @@ const gestContacts = (state = initialState, action) => {
       lastFetchTimeAllMotifs: action.time,
       actionTime: action.time
     };
+
   case RECEIVED_GET_GEST_CONTACTS_ALL_MOTIFS:
     return {
       ...state,
@@ -393,13 +393,13 @@ const gestContacts = (state = initialState, action) => {
       lastFetchTimeAllMotifs: action.time,
       actionTime: action.time,
 
-      listMotifLevel2: action.gestContacts && action.gestContacts.motifs &&  action.gestContacts.motifs.niveau2
+      listMotifLevel2: action.gestContacts && action.gestContacts.motifs && action.gestContacts.motifs.niveau2
         ? [...action.gestContacts.motifs.niveau2]
         : initialState.listMotifLevel2,
-      listMotifLevel3: action.gestContacts && action.gestContacts.motifs &&  action.gestContacts.motifs.niveau3
+      listMotifLevel3: action.gestContacts && action.gestContacts.motifs && action.gestContacts.motifs.niveau3
         ? [...action.gestContacts.motifs.niveau3]
         : initialState.listMotifLevel3,
-      listMotifLevel4: action.gestContacts && action.gestContacts.motifs &&  action.gestContacts.motifs.niveau4
+      listMotifLevel4: action.gestContacts && action.gestContacts.motifs && action.gestContacts.motifs.niveau4
         ? [...action.gestContacts.motifs.niveau4]
         : initialState.listMotifLevel4
     };
