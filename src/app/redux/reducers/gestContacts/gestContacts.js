@@ -343,36 +343,68 @@ const gestContacts = (state = initialState, action) => {
       actionTime: action.time,
 
       // contactId may be null if creation
-      dateCreationFicheContact: action. && action.gestBenef.contactId
-        ? action.gestBenef.contactId
-        : initialState.contactId,
+      dateCreationFicheContact: action.ficheContact && action.ficheContact.dateCreationFicheContact
+        ? action.ficheContact.dateCreationFicheContact
+        : initialState.dateCreationFicheContact,
       // benefId should always be returned (as id) since no contact possible without a benef
-      creeParFicheContact: action.gestBenef && action.gestBenef.id
-        ? action.gestBenef.id
-        : initialState.id,
-
-      dateReceptionFicheContact: ,
-
-      statutIndexFicheContact: ,
-
-      dateClotureFicheContact: ,
-      clotureParFicheContact: ,
-      typeIndexFicheContact: ,
-      canalIndexFicheContact: ,
-      numDossierIndexSelected: ,
-      listNumDossierFicheContact: ,
-      domaineFicheContact: ,
-      statutBenefFicheContact: ,
-      attachmentsFicheContact: ,
-      commentaireFicheContact: ,
-      groupeDestinataireIsActive: ,
-      groupeDestinataireIndexSelected: ,
-      listGroupeDestinataire: , // dont forget to add initialState.defaultGroupeDestinataireValue as 1st element
-
-      activiteIdBeingEditing: ,
-      selectedActiviteId: ,
-      activites:
-
+      creeParFicheContact: action.ficheContact && action.ficheContact.creeParFicheContact
+        ? action.ficheContact.creeParFicheContact
+        : initialState.creeParFicheContact,
+      dateReceptionFicheContact: action.ficheContact && action.ficheContact.dateReceptionFicheContact
+        ? action.ficheContact.dateReceptionFicheContact
+        : initialState.dateReceptionFicheContact,
+      statutIndexFicheContact: action.ficheContact && action.ficheContact.statutIndexFicheContact
+        ? action.ficheContact.statutIndexFicheContact
+        : initialState.statutIndexFicheContact,
+      dateClotureFicheContact: action.ficheContact && action.ficheContact.dateClotureFicheContact
+        ? action.ficheContact.dateClotureFicheContact
+        : initialState.dateClotureFicheContact,
+      clotureParFicheContact: action.ficheContact && action.ficheContact.clotureParFicheContact
+        ? action.ficheContact.clotureParFicheContact
+        : initialState.clotureParFicheContact,
+      typeIndexFicheContact: action.ficheContact && action.ficheContact.typeIndexFicheContact
+        ? action.ficheContact.typeIndexFicheContact
+        : initialState.typeIndexFicheContact,
+      canalIndexFicheContact: action.ficheContact && action.ficheContact.canalIndexFicheContact
+        ? action.ficheContact.canalIndexFicheContact
+        : initialState.canalIndexFicheContact,
+      numDossierIndexSelected: action.ficheContact && action.ficheContact.numDossierIndexSelected
+        ? action.ficheContact.numDossierIndexSelected
+        : initialState.numDossierIndexSelected,
+      listNumDossierFicheContact: action.ficheContact && action.ficheContact.listNumDossierFicheContact
+        ? [...action.ficheContact.listNumDossierFicheContact]
+        : [...initialState.listNumDossierFicheContact],
+      domaineFicheContact: action.ficheContact && action.ficheContact.domaineFicheContact
+        ? action.ficheContact.domaineFicheContact
+        : initialState.domaineFicheContact,
+      statutBenefFicheContact: action.ficheContact && action.ficheContact.statutBenefFicheContact
+        ? action.ficheContact.statutBenefFicheContact
+        : initialState.statutBenefFicheContact,
+      attachmentsFicheContact: action.ficheContact && action.ficheContact.attachmentsFicheContact
+        ? [...action.ficheContact.attachmentsFicheContact]
+        : [...initialState.attachmentsFicheContact],
+      commentaireFicheContact: action.ficheContact && action.ficheContact.commentaireFicheContact
+        ? action.ficheContact.commentaireFicheContact
+        : initialState.commentaireFicheContact,
+      groupeDestinataireIsActive: action.ficheContact && action.ficheContact.groupeDestinataireIsActive
+        ? action.ficheContact.groupeDestinataireIsActive
+        : initialState.groupeDestinataireIsActive,
+      groupeDestinataireIndexSelected: action.ficheContact && action.ficheContact.groupeDestinataireIndexSelected
+        ? action.ficheContact.groupeDestinataireIndexSelected
+        : initialState.groupeDestinataireIndexSelected,
+      // dont forget to add initialState.defaultGroupeDestinataireValue as 1st element
+      listGroupeDestinataire: action.ficheContact && action.ficheContact.listGroupeDestinataire
+        ? [initialState.defaultGroupeDestinataireValue, ...action.ficheContact.listGroupeDestinataire]
+        : [...initialState.listGroupeDestinataire],
+      activiteIdBeingEditing: action.ficheContact && action.ficheContact.activiteIdBeingEditing
+        ? action.ficheContact.activiteIdBeingEditing
+        : initialState.activiteIdBeingEditing,
+      selectedActiviteId: action.ficheContact && action.ficheContact.selectedActiviteId
+        ? action.ficheContact.selectedActiviteId
+        : initialState.selectedActiviteId,
+      activites: action.ficheContact && action.ficheContact.activites
+        ? [...action.ficheContact.activites]
+        : [...initialState.activites]
     };
 
   case ERROR_GET_GEST_CONTACTS_FICHE_CONTACT:
