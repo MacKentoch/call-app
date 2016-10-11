@@ -67,9 +67,37 @@ const mapStateToProps = (state) => {
 
     dateClotureFicheContact: state.gestContacts.dateClotureFicheContact,
     clotureParFicheContact: state.gestContacts.clotureParFicheContact,
-    
+
+    typeIndexFicheContact: state.gestContacts.typeIndexFicheContact, // index par default du type de fiche contact de listTypeFicheContact
+    listTypeFicheContact: state.gestContacts.listTypeFicheContact, // tous (enum) les types de fiche de contact
+
+    canalIndexFicheContact: state.gestContacts.canalIndexFicheContact,
+    listCanauxFicheContact: state.gestContacts.listCanauxFicheContact,
+
+    numDossierIndexSelected: state.gestContacts.numDossierIndexSelected,
+    listNumDossierFicheContact: state.gestContacts.listNumDossierFicheContact, // benef numDossiers list
+
+    domaineFicheContact: state.gestContacts.domaineFicheContact,
+    statutBenefFicheContact: state.gestContacts.statutBenefFicheContact,
+
+    attachmentsFicheContact: state.gestContacts.attachmentsFicheContact,
+    commentaireFicheContact: state.gestContacts.commentaireFicheContact,
+
+    groupeDestinataireIsActive: state.gestContacts.groupeDestinataireIsActive,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
+    groupeDestinataireIdSelected: state.gestContacts.groupeDestinataireIdSelected,
+    listGroupeDestinataire: state.gestContacts.listGroupeDestinataire, // to fill from server query
+
     // fiche activites
-    isCollapsedFicheActivite: state.gestContacts.isCollapsedFicheActivite
+    isCollapsedFicheActivite: state.gestContacts.isCollapsedFicheActivite,
+    isFetchingFicheActivite: state.gestContacts.isFetchingFicheActivite,
+    lastFetchTimeFicheActivite: state.gestContacts.lastFetchTimeFicheActivite,
+    isSavingActivite: state.gestContacts.isSavingActivite,
+
+    activiteIdBeingEditing: state.gestContacts.activiteIdBeingEditing,
+
+    selectedActiviteId: state.gestContacts.selectedActiviteId,
+    listCanauxFicheActivite: state.gestContacts.listCanauxFicheActivite,
+    activites: state.gestContacts.activites
   };
 };
 
