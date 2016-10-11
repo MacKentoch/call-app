@@ -37,12 +37,21 @@ class GestContacts extends Component {
     const { actions: { addNotificationMessage } } = this.props;
     enterGestContacts();
 
-    const contactIdx = parseInt(contactId, 10);
+
+    // test (fix a contactId) to delete:
+    const contactIdx = parseInt(1, 10);
+
+    // // to uncomment:
+    // const contactIdx = parseInt(contactId, 10);
+
+
+    this.refreshAllContactData(benefId, contactIdx);
     if (contactIdx > 0) {
       addNotificationMessage({
         message: 'Consultation / Edition d\'un contact existant',
         level: 'info'
       });
+      this.refreshFicheContactFicheActiviteData(benefId, contactIdx);
     } else {
       addNotificationMessage({
         message: 'Création d\'un nouveau contact',
@@ -52,7 +61,6 @@ class GestContacts extends Component {
       // reset contact and activite form model
       // resetGestContacts();
     }
-    this.refreshAllContactData(benefId, contactIdx);
   }
 
   // componentWillReceiveProps(newProps) {
@@ -367,6 +375,52 @@ class GestContacts extends Component {
   // /////////////////////////////////////
   //  fiches Contact related methods
   // /////////////////////////////////////
+  refreshFicheContactFicheActiviteData(benefId = 0, contactId = 0) {
+    const {
+      actions: {
+        addNotificationMessage,
+        getGestContactsAllMotifsIfNeeded,
+        getGestContactsFicheContactIfNeeded
+      }
+    } = this.props;
+
+    const promises = [
+      getGestContactsAllMotifsIfNeeded(),
+      getGestContactsFicheContactIfNeeded(contactId)
+    ];
+
+    Promise
+      .all(promises)
+      .then(
+        notificationPayloadArray => {
+          notificationPayloadArray.forEach(
+            notificationPayload => {
+              if (notificationPayload && notificationPayload.showNotification) {
+                addNotificationMessage({
+                  message: notificationPayload.message ? notificationPayload.message : '',
+                  level: notificationPayload.level ? notificationPayload.level : 'info'
+                });
+              }
+            }
+          );
+        }
+      )
+      .catch(
+        notificationPayloadArray => {
+          notificationPayloadArray.forEach(
+            notificationPayload => {
+              if (notificationPayload && notificationPayload.showNotification) {
+                addNotificationMessage({
+                  message: notificationPayload.message ? notificationPayload.message : '',
+                  level: notificationPayload.level ? notificationPayload.level : 'error'
+                });
+              }
+            }
+          );
+        }
+      );
+  }
+
   handlesOnFicheContactCollapseClick() {
     const {
       isCollapsedFicheContact,
@@ -546,17 +600,17 @@ GestContacts.propTypes = {
   // ///////////////////////// ///////////////////////
   actions: PropTypes.shape({
     // view:
-    enterGestContacts: PropTypes.func,
-    leaveGestContacts: PropTypes.func,
+    enterGestContacts: PropTypes.func.isRequired,
+    leaveGestContacts: PropTypes.func.isRequired,
     // notifications:
-    addNotificationMessage: PropTypes.func,
+    addNotificationMessage: PropTypes.func.isRequired,
     // get gestBenef:
-    getGestContactsIfNeeded: PropTypes.func,
+    getGestContactsIfNeeded: PropTypes.func.isRequired,
     // //////////////////
     // identite
     // /////////////////
     // UI: Identite
-    setIsCollapsedContactsIdentite: PropTypes.func,
+    setIsCollapsedContactsIdentite: PropTypes.func.isRequired,
     unsetIsCollapsedContactsIdentite: PropTypes.func,
     // //////////////////////
     // contact (benef part)
