@@ -18,7 +18,8 @@ import {
 // contacts fiche contact:
 import {
   setIsCollapsedContactsFicheContact,
-  unsetIsCollapsedContactsFicheContact
+  unsetIsCollapsedContactsFicheContact,
+  getGestContactsFicheContactIfNeeded
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
 // contacts fiche activites:
 import {
@@ -45,6 +46,7 @@ export {
   // fiche contact
   setIsCollapsedContactsFicheContact,
   unsetIsCollapsedContactsFicheContact,
+  getGestContactsFicheContactIfNeeded,
   // fiches activites
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,

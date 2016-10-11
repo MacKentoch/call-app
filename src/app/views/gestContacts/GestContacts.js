@@ -492,6 +492,8 @@ GestContacts.propTypes = {
     // //////////////////
     // fiche contacts
     // /////////////////
+    // get:
+    getGestContactsFicheContactIfNeeded: PropTypes.func,
     // UI fiche contacts
     setIsCollapsedContactsFicheContact: PropTypes.func,
     unsetIsCollapsedContactsFicheContact: PropTypes.func,

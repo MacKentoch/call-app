@@ -190,6 +190,7 @@ import {
   // fiche contact
   setIsCollapsedContactsFicheContact,
   unsetIsCollapsedContactsFicheContact,
+  getGestContactsFicheContactIfNeeded,
   // fiches activites
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
@@ -359,6 +360,7 @@ export {
   unsetIsCollapsedContactsDossiers,
   setIsCollapsedContactsFicheContact,
   unsetIsCollapsedContactsFicheContact,
+  getGestContactsFicheContactIfNeeded,
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
   getGestContactsAllMotifsIfNeeded

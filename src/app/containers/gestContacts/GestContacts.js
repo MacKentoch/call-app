@@ -88,6 +88,9 @@ const mapDispatchToProps = (dispatch) => {
         // ///////////////////////
         // contacts
         // ///////////////////////
+        // get:
+        getGestContactsFicheContactIfNeeded: actions.getGestContactsFicheContactIfNeeded,
+        // ui
         setIsCollapsedContactsFicheContact: actions.setIsCollapsedContactsFicheContact,
         unsetIsCollapsedContactsFicheContact: actions.unsetIsCollapsedContactsFicheContact,
         // ///////////////////////
