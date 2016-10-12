@@ -3,7 +3,7 @@ import React, {
   PropTypes
 }                           from 'react';
 import moment               from 'moment';
-import { appConfig }        from '../../../config';
+// import { appConfig }        from '../../../config';
 import ToggleCollapse       from './toggleCollapse/ToggleCollapse';
 import Collapse             from 'react-collapse';
 import shallowCompare       from 'react-addons-shallow-compare';

@@ -17,193 +17,104 @@ moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
 const Form = ({
-  isEditingIdentite,
-  civilite,
-  onCiviliteChange,
-  nom,
-  onNomChanged,
-  nomJeuneFille,
-  onNomJeuneFilleChanged,
-  prenom,
-  onPrenomChanged,
-  dateNaissance,
-  onDateNaissanceChanged,
-  numss,
-  onNumssChanged,
-  dateDeces,
-  onDateDecesChanged,
-  maritalStatus,
-  onMaritalStatusChanged
+  isCollapsedFicheContact,
+  onCollapseClick,
+  lastFetchTimeFicheContact,
+  isFetchingFicheContact,
+  isSavingFicheContact,
+  dateCreationFicheContact,
+  onDateCreationFicheContactChanged,
+  creeParFicheContact,
+  onCreeParFicheContactChanged,
+  dateReceptionFicheContact,
+  onDateReceptionFicheContactChanged,
+  statutIndexFicheContact,
+  onStatutIndexFicheContactChanged,
+  listStatutFicheContact,
+  onListStatutFicheContactChanged,
+  dateClotureFicheContact,
+  onDateClotureFicheContactChanged,
+  clotureParFicheContact,
+  onClotureParFicheContactChanged,
+  typeIndexFicheContact,
+  onTypeIndexFicheContactChanged,
+  listTypeFicheContact,
+  onListTypeFicheContactChanged,
+  canalIndexFicheContact,
+  onCanalIndexFicheContactChanged,
+  listCanauxFicheContact,
+  onListCanauxFicheContactChanged,
+  numDossierIndexSelected,
+  onNumDossierIndexSelectedChanged,
+  listNumDossierFicheContact,
+  onListNumDossierFicheContactChanged,
+  domaineFicheContact,
+  onDomaineFicheContactChanged,
+  statutBenefFicheContact,
+  onStatutBenefFicheContactChanged,
+  attachmentsFicheContact,
+  onAttachmentsFicheContactChanged,
+  commentaireFicheContact,
+  onCommentaireFicheContactChanged,
+  groupeDestinataireIsActive,
+  onGroupeDestinataireIsActiveChanged,
+  groupeDestinataireIdSelected,
+  onGroupeDestinataireIdSelectedChanged,
+  listGroupeDestinataire,
+  onListGroupeDestinataireChanged,
+  activites
 }) => {
   return (
     <form role="form">
+
       {/* 1st row */}
       <div className="row">
-
-        {/* civilite */}
+        {/* date de création */}
         <div className="col-md-2">
-          {
-            isEditingIdentite
-            ?
-              <CiviliteDropDown
-                id="inputCivilite"
-                label={'Civilité'}
-                value={civilite}
-                onChange={onCiviliteChange}
-              />
-            :
-              <FormLabel
-                id="inputCivilite"
-                label={'Civilité'}
-                value={civilite || ' --- '}
-              />
-          }
+          <DateInput
+            id="inputDateCreation"
+            label={'Date de création'}
+            value={isValidDateOrReturnDefault(dateCreationFicheContact, formatDate)}
+            onChange={onDateCreationFicheContactChanged}
+          />
         </div>
-
-        {/* nom */}
-        <div className="col-md-3">
-          {
-            isEditingIdentite
-            ?
-              <TextInput
-                id="inputNom"
-                label={'Nom'}
-                value={nom}
-                onChange={onNomChanged}
-              />
-            :
-              <FormLabel
-                id="inputNom"
-                label={'Nom'}
-                value={nom}
-              />
-          }
+        {/* créé par */}
+        <div className="col-md-2">
+          <TextInput
+            id="inputCreePar"
+            label={'Par'}
+            value={creeParFicheContact}
+            onChange={onCreeParFicheContactChanged}
+          />
         </div>
-
-        {/* nomDe Jeunefille */}
-        <div className="col-md-3">
-          {
-            isEditingIdentite
-            ?
-              <TextInput
-                id="inputNomDeJeuneFille"
-                label={'Nom de jeune fille'}
-                value={nomJeuneFille}
-                onChange={onNomJeuneFilleChanged}
-              />
-            :
-              <FormLabel
-                id="inputNomDeJeuneFille"
-                label={'Nom de jeune fille'}
-                value={nomJeuneFille}
-              />
-          }
+        {/* traité par */}
+        <div className="col-md-2 col-md-offset-6">
+          <TextInput
+            id="inputCreePar"
+            label={'Par'}
+            value={creeParFicheContact}
+            onChange={onCreeParFicheContactChanged}
+          />
         </div>
-
-        {/* prenom */}
-        <div className="col-md-3">
-          {
-            isEditingIdentite
-            ?
-              <TextInput
-                id="inputPrenom"
-                label={'Prénom'}
-                value={prenom}
-                onChange={onPrenomChanged}
-              />
-            :
-              <FormLabel
-                id="inputPrenom"
-                label={'Prénom'}
-                value={prenom}
-              />
-          }
-        </div>
-
       </div>
 
       {/* 2nd row */}
       <div className="row">
         <div className="col-md-6">
-          {
-            isEditingIdentite
-            ?
-              <DateInput
-                id="inputDateNaissance"
-                label={'Date de naissance'}
-                value={isValidDateOrReturnDefault(dateNaissance, formatDate)}
-                onChange={onDateNaissanceChanged}
-              />
-            :
-              <FormLabel
-                id="inputDateNaissance"
-                label={'Date de naissance'}
-                value={dateNaissance}
-              />
-          }
         </div>
 
         {/* numss */}
         <div className="col-md-6">
-          {
-            isEditingIdentite
-            ?
-              <NumssInput
-                id="inputNumss"
-                label={'Numéro sécurité sociale'}
-                value={numss}
-                onChange={onNumssChanged}
-              />
-            :
-              <FormLabel
-                id="inputNumss"
-                label={'Numéro sécurité sociale'}
-                value={numss}
-              />
-          }
         </div>
-
       </div>
 
       {/* 3rd row */}
       <div className="row">
         <div className="col-md-6">
-          {
-            isEditingIdentite
-            ?
-              <DateInput
-                id="inputDateDeces"
-                label={'Date de décès'}
-                value={isValidDateOrReturnDefault(dateDeces, formatDate)}
-                onChange={onDateDecesChanged}
-              />
-            :
-              <FormLabel
-                id="inputDateDeces"
-                label={'Date de décès'}
-                value={dateDeces}
-              />
-          }
         </div>
 
         {/* statut marital */}
         <div className="col-md-6">
-          {
-            isEditingIdentite
-            ?
-              <TextInput
-                id="inputStatutMarital"
-                label={'Statut marital'}
-                value={maritalStatus}
-                onChange={onMaritalStatusChanged}
-              />
-            :
-              <FormLabel
-                id="inputStatutMarital"
-                label={'Statut marital'}
-                value={maritalStatus}
-              />
-          }
         </div>
 
       </div>
