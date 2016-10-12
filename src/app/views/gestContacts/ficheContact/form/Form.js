@@ -107,7 +107,6 @@ const Form = ({
             listeStatutFiche={listStatutFicheContact}
           />
         </div>
-
         {/* date cloture */}
         <div className="col-md-2 col-md-offset-4">
           <DateInput
