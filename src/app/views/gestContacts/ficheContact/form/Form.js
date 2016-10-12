@@ -213,31 +213,58 @@ const Form = ({
 };
 
 Form.propTypes = {
-  isEditingIdentite: PropTypes.bool,
+  isCollapsedFicheContact: PropTypes.bool.isRequired,
+  lastFetchTimeFicheContact: PropTypes.string.isRequired,
+  isFetchingFicheContact: PropTypes.bool.isRequired,
+  isSavingFicheContact: PropTypes.bool.isRequired,
 
-  civilite: PropTypes.string.isRequired,
-  onCiviliteChange: PropTypes.func.isRequired,
+  dateCreationFicheContact: PropTypes.string.isRequired,
+  onDateCreationFicheContactChanged: PropTypes.func.isRequired,
 
-  nom: PropTypes.string.isRequired,
-  onNomChanged: PropTypes.func.isRequired,
+  creeParFicheContact: PropTypes.string.isRequired,
+  onCreeParFicheContactChanged: PropTypes.func.isRequired,
 
-  nomJeuneFille: PropTypes.string.isRequired,
-  onNomJeuneFilleChanged: PropTypes.func.isRequired,
+  dateReceptionFicheContact: PropTypes.string.isRequired,
+  onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
 
-  prenom: PropTypes.string.isRequired,
-  onPrenomChanged: PropTypes.func.isRequired,
+  statutIndexFicheContact: PropTypes.number.isRequired,
+  onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
 
-  dateNaissance: PropTypes.string.isRequired,
-  onDateNaissanceChanged: PropTypes.func.isRequired,
+  listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-  numss: PropTypes.string.isRequired,
-  onNumssChanged: PropTypes.func.isRequired,
+  dateClotureFicheContact: PropTypes.string.isRequired,
+  clotureParFicheContact: PropTypes.string.isRequired,
 
-  dateDeces: PropTypes.string.isRequired,
-  onDateDecesChanged: PropTypes.func.isRequired,
+  typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
+  listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
 
-  maritalStatus: PropTypes.string.isRequired,
-  onMaritalStatusChanged: PropTypes.func.isRequired
+  canalIndexFicheContact: PropTypes.number.isRequired,
+  listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
+
+  numDossierIndexSelected: PropTypes.number.isRequired,
+  listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
+
+  domaineFicheContact: PropTypes.string.isRequired,
+  statutBenefFicheContact: PropTypes.string.isRequired,
+
+  attachmentsFicheContact: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      filePath: PropTypes.string.isRequired,
+      size: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  commentaireFicheContact: PropTypes.string.isRequired,
+
+  groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
+  groupeDestinataireIdSelected: PropTypes.number.isRequired,
+  listGroupeDestinataire: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      libelle: PropTypes.string
+    })
+  ).isRequired, // to fill from server query
 };
 
 export default Form;

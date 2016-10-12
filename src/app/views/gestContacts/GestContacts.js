@@ -122,10 +122,19 @@ class GestContacts extends Component {
       lastFetchTimeFicheContact,
       isFetchingFicheContact,
       isSavingFicheContact,
+
       dateCreationFicheContact,
+      onDateCreationFicheContactChanged,
+
       creeParFicheContact,
+      onCreeParFicheContactChanged,
+
       dateReceptionFicheContact,
+      onDateReceptionFicheContactChanged,
+
       statutIndexFicheContact,
+      onStatutIndexFicheContactChanged,
+
       listStatutFicheContact,
       dateClotureFicheContact,
       clotureParFicheContact,
@@ -272,10 +281,19 @@ class GestContacts extends Component {
                         lastFetchTimeFicheContact={lastFetchTimeFicheContact}
                         isFetchingFicheContact={isFetchingFicheContact}
                         isSavingFicheContact={isSavingFicheContact}
+
                         dateCreationFicheContact={dateCreationFicheContact}
+                        onDateCreationFicheContactChanged={onDateCreationFicheContactChanged}
+
                         creeParFicheContact={creeParFicheContact}
+                        onCreeParFicheContactChanged={onCreeParFicheContactChanged}
+
                         dateReceptionFicheContact={dateReceptionFicheContact}
+                        onDateReceptionFicheContactChanged={onDateReceptionFicheContactChanged}
+
                         statutIndexFicheContact={statutIndexFicheContact}
+                        onStatutIndexFicheContactChanged={onStatutIndexFicheContactChanged}
+
                         listStatutFicheContact={listStatutFicheContact}
                         dateClotureFicheContact={dateClotureFicheContact}
                         clotureParFicheContact={clotureParFicheContact}
@@ -577,10 +595,17 @@ GestContacts.propTypes = {
   isSavingFicheContact: PropTypes.bool.isRequired,
 
   dateCreationFicheContact: PropTypes.string.isRequired,
+  onDateCreationFicheContactChanged: PropTypes.func.isRequired,
+
   creeParFicheContact: PropTypes.string.isRequired,
+  onCreeParFicheContactChanged: PropTypes.func.isRequired,
+
   dateReceptionFicheContact: PropTypes.string.isRequired,
+  onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
 
   statutIndexFicheContact: PropTypes.number.isRequired,
+  onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
+
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   dateClotureFicheContact: PropTypes.string.isRequired,
