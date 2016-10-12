@@ -7,6 +7,8 @@ import { appConfig }        from '../../../config';
 import ToggleCollapse       from './toggleCollapse/ToggleCollapse';
 import Collapse             from 'react-collapse';
 import shallowCompare       from 'react-addons-shallow-compare';
+import Form                 from './form/Form';
+import SavingIndicator      from '../savingIndicator/SavingIndicator';
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
@@ -15,28 +17,6 @@ const formatDate = appConfig.formatDate.defaut;
 class FicheContact extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      selectedActiviteId: 0,
-      selectedActivite: []
-    };
-
-    this.handlesOnSelectActivite = this.handlesOnSelectActivite.bind(this);
-  }
-
-  componentDidMount() {
-    this.initToFirstActivite();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { lastFetchTimeContact } = this.props;
-    const activitesAreUpdated = moment(nextProps.lastFetchTimeActivites, formatDate)
-                                  .diff(moment(lastFetchTimeContact, formatDate));
-
-    if (activitesAreUpdated > 0) {
-      // force all activite to init
-      this.initToFirstActivite();
-    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -112,64 +92,85 @@ class FicheContact extends Component {
            isOpened={!isCollapsedFicheContact}
            keepCollapsedContent={false}>
            <div style={{ height: '230px' }}>
+           {
+             isSavingFicheContact
+             ?
+               <SavingIndicator />
+             :
+              <Form
+                isCollapsedFicheContact={isCollapsedFicheContact}
+                onCollapseClick={this.handlesOnFicheContactCollapseClick}
+                lastFetchTimeFicheContact={lastFetchTimeFicheContact}
+                isFetchingFicheContact={isFetchingFicheContact}
+                isSavingFicheContact={isSavingFicheContact}
 
-             <div className="row">
+                dateCreationFicheContact={dateCreationFicheContact}
+                onDateCreationFicheContactChanged={onDateCreationFicheContactChanged}
 
-               <div className="col-xs-3">
-                 {/* <ListActivites
-                   activites={activites}
-                   selectedActiviteId={selectedActiviteId}
-                   onSelectActivite={this.handlesOnSelectActivite}
-                 /> */}
-               </div>
+                creeParFicheContact={creeParFicheContact}
+                onCreeParFicheContactChanged={onCreeParFicheContactChanged}
 
-               <div className="col-xs-9">
-                 {/* <ActiviteContent
-                   activites={activites}
-                   selectedActiviteId={selectedActiviteId}
-                 /> */}
-               </div>
+                dateReceptionFicheContact={dateReceptionFicheContact}
+                onDateReceptionFicheContactChanged={onDateReceptionFicheContactChanged}
 
-             </div>
+                statutIndexFicheContact={statutIndexFicheContact}
+                onStatutIndexFicheContactChanged={onStatutIndexFicheContactChanged}
 
+                listStatutFicheContact={listStatutFicheContact}
+                onListStatutFicheContactChanged={onListStatutFicheContactChanged}
+
+                dateClotureFicheContact={dateClotureFicheContact}
+                onDateClotureFicheContactChanged={onDateClotureFicheContactChanged}
+
+                clotureParFicheContact={clotureParFicheContact}
+                onClotureParFicheContactChanged={onClotureParFicheContactChanged}
+
+                typeIndexFicheContact={typeIndexFicheContact}
+                onTypeIndexFicheContactChanged={onTypeIndexFicheContactChanged}
+
+                listTypeFicheContact={listTypeFicheContact}
+                onListTypeFicheContactChanged={onListTypeFicheContactChanged}
+
+                canalIndexFicheContact={canalIndexFicheContact}
+                onCanalIndexFicheContactChanged={onCanalIndexFicheContactChanged}
+
+                listCanauxFicheContact={listCanauxFicheContact}
+                onListCanauxFicheContactChanged={onListCanauxFicheContactChanged}
+
+                numDossierIndexSelected={numDossierIndexSelected}
+                onNumDossierIndexSelectedChanged={onNumDossierIndexSelectedChanged}
+
+                listNumDossierFicheContact={listNumDossierFicheContact}
+                onListNumDossierFicheContactChanged={onListNumDossierFicheContactChanged}
+
+                domaineFicheContact={domaineFicheContact}
+                onDomaineFicheContactChanged={onDomaineFicheContactChanged}
+
+                statutBenefFicheContact={statutBenefFicheContact}
+                onStatutBenefFicheContactChanged= {onStatutBenefFicheContactChanged}
+
+                attachmentsFicheContact={attachmentsFicheContact}
+                onAttachmentsFicheContactChanged={onAttachmentsFicheContactChanged}
+
+                commentaireFicheContact={commentaireFicheContact}
+                onCommentaireFicheContactChanged={onCommentaireFicheContactChanged}
+
+                groupeDestinataireIsActive={groupeDestinataireIsActive}
+                onGroupeDestinataireIsActiveChanged={onGroupeDestinataireIsActiveChanged}
+
+                groupeDestinataireIdSelected={groupeDestinataireIdSelected}
+                onGroupeDestinataireIdSelectedChanged={onGroupeDestinataireIdSelectedChanged}
+
+                listGroupeDestinataire={listGroupeDestinataire}
+                onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
+
+                activites={activites}
+              />
+           }
            </div>
          </Collapse>
        </div>
      );
-  }
-  /*
-    init state (selectedActivite) by default
-   */
-  initToFirstActivite() {
-    const { activites } = this.props;
-
-    if (Array.isArray(activites) && activites.length > 0) {
-      // select 1st activite:
-      const firstActiviteId = activites[0].id;
-
-      this.setState({
-        selectedActiviteId: firstActiviteId,
-        selectedActivite: [...this.getActiviteById(firstActiviteId)]
-      });
-    }
-  }
-
-  getActiviteById(id) {
-    const { activites } = this.props;
-
-    if (Array.isArray(activites) && activites.length > 0) {
-      return activites.filter(activite => activite.id === id);
-    }
-    return [];
-  }
-
-  handlesOnSelectActivite(activiteId) {
-    const { activites } = this.props;
-
-    if (Array.isArray(activites) && activites.length > 0) {
-      return activites.filter(activite => activite.id === activiteId);
-    }
-    return [];
   }
 }
 
