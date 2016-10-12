@@ -8,7 +8,6 @@ import ToggleCollapse       from './toggleCollapse/ToggleCollapse';
 import Collapse             from 'react-collapse';
 import shallowCompare       from 'react-addons-shallow-compare';
 
-
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 

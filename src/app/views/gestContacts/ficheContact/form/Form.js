@@ -288,7 +288,42 @@ Form.propTypes = {
       libelle: PropTypes.string
     })
   ).isRequired, // to fill from server query
-  onListGroupeDestinataireChanged: PropTypes.func.isRequired
+  onListGroupeDestinataireChanged: PropTypes.func.isRequired,
+
+  activites: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      contactId: PropTypes.number.isRequired,
+      libelleActiviteNiv2: PropTypes.string.isRequired,
+      libelleActiviteNiv3: PropTypes.string.isRequired,
+      libelleActiviteNiv4: PropTypes.string.isRequired,
+      dateCreation: PropTypes.string,
+      creePar: PropTypes.string,
+      traiteePar: PropTypes.string,
+      statut: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          libelle: PropTypes.string.isRequired
+        })
+      ),
+      dateCloture: PropTypes.string,
+      motif: PropTypes.string,
+      canal: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          libelle: PropTypes.string.isRequired
+        })
+      ),
+      piecesJointesEmises: PropTypes.arrayOf(
+        PropTypes.shape({
+          nomFichier: PropTypes.string,
+          extensionFichier: PropTypes.string,
+          lienFichier: PropTypes.string
+        })
+      ),
+      commentaires: PropTypes.arrayOf(PropTypes.string)
+    })
+  )
 };
 
 export default Form;
