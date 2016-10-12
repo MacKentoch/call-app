@@ -231,14 +231,18 @@ Form.propTypes = {
   onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
 
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onListStatutFicheContactChanged: PropTypes.func.isRequired,
 
   dateClotureFicheContact: PropTypes.string.isRequired,
+
   clotureParFicheContact: PropTypes.string.isRequired,
 
   typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
+
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
 
   canalIndexFicheContact: PropTypes.number.isRequired,
+
   listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   numDossierIndexSelected: PropTypes.number.isRequired,
