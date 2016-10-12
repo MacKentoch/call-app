@@ -117,9 +117,34 @@ class GestContacts extends Component {
     const { isFetchingDossiers, lastFetchTimeDossiers, isCollapsedDossiers } = this.props;
     const { dossiers } = this.props;
     // fiche contact
-    const { isCollapsedFicheContact } = this.props;
+    const {
+      isCollapsedFicheContact,
+      lastFetchTimeFicheContact,
+      isFetchingFicheContact,
+      isSavingFicheContact,
+      dateCreationFicheContact,
+      creeParFicheContact,
+      dateReceptionFicheContact,
+      statutIndexFicheContact,
+      listStatutFicheContact,
+      dateClotureFicheContact,
+      clotureParFicheContact,
+      typeIndexFicheContact,
+      listTypeFicheContact,
+      canalIndexFicheContact,
+      listCanauxFicheContact,
+      numDossierIndexSelected,
+      listNumDossierFicheContact,
+      domaineFicheContact,
+      statutBenefFicheContact,
+      attachmentsFicheContact,
+      commentaireFicheContact,
+      groupeDestinataireIsActive,
+      groupeDestinataireIdSelected,
+      listGroupeDestinataire,
+    } = this.props;
     // fiche activite
-    const { isCollapsedFicheActivite } = this.props;
+    const { isCollapsedFicheActivite, selectedActiviteId, activites } = this.props;
 
     return(
       <section
@@ -232,10 +257,34 @@ class GestContacts extends Component {
                       <div style={{height: '10px'}}></div>
 
                       <FicheContact
+                        activites={[]}
+
                         isCollapsedFicheContact={isCollapsedFicheContact}
                         onCollapseClick={this.handlesOnFicheContactCollapseClick}
-                        lastFetchTimeContact={''}
-                        activites={[]}
+
+                        lastFetchTimeFicheContact={lastFetchTimeFicheContact}
+                        isFetchingFicheContact={isFetchingFicheContact}
+                        isSavingFicheContact={isSavingFicheContact}
+                        dateCreationFicheContact={dateCreationFicheContact}
+                        creeParFicheContact={creeParFicheContact}
+                        dateReceptionFicheContact={dateReceptionFicheContact}
+                        statutIndexFicheContact={statutIndexFicheContact}
+                        listStatutFicheContact={listStatutFicheContact}
+                        dateClotureFicheContact={dateClotureFicheContact}
+                        clotureParFicheContact={clotureParFicheContact}
+                        typeIndexFicheContact={typeIndexFicheContact}
+                        listTypeFicheContact={listTypeFicheContact}
+                        canalIndexFicheContact={canalIndexFicheContact}
+                        listCanauxFicheContact={listCanauxFicheContact}
+                        numDossierIndexSelected={numDossierIndexSelected}
+                        listNumDossierFicheContact={listNumDossierFicheContact}
+                        domaineFicheContact={domaineFicheContact}
+                        statutBenefFicheContact={statutBenefFicheContact}
+                        attachmentsFicheContact={attachmentsFicheContact}
+                        commentaireFicheContact={commentaireFicheContact}
+                        groupeDestinataireIsActive={groupeDestinataireIsActive}
+                        groupeDestinataireIdSelected={groupeDestinataireIdSelected}
+                        listGroupeDestinataire={listGroupeDestinataire}
                       />
 
                       <FicheActivite
