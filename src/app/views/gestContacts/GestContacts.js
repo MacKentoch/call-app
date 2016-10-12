@@ -306,7 +306,6 @@ class GestContacts extends Component {
                       <div style={{height: '10px'}}></div>
 
                       <FicheContact
-                        activites={[]}
                         isCollapsedFicheContact={isCollapsedFicheContact}
                         onCollapseClick={this.handlesOnFicheContactCollapseClick}
                         lastFetchTimeFicheContact={lastFetchTimeFicheContact}
@@ -372,6 +371,8 @@ class GestContacts extends Component {
 
                         listGroupeDestinataire={listGroupeDestinataire}
                         onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
+
+                        activites={activites}
                       />
 
                       <FicheActivite
