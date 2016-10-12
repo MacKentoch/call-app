@@ -1,8 +1,5 @@
 import React, { PropTypes } from 'react';
-// import moment               from 'moment';
-// import { appConfig }        from '../../../../config';
 import { FormLabel }        from '../../../../components';
-
 
 const Form = ({
   civilite,
