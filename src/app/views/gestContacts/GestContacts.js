@@ -163,12 +163,25 @@ class GestContacts extends Component {
       onListNumDossierFicheContactChanged,
 
       domaineFicheContact,
+      onDomaineFicheContactChanged,
+
       statutBenefFicheContact,
+      onStatutBenefFicheContactChanged,
+
       attachmentsFicheContact,
+      onAttachmentsFicheContactChanged,
+
       commentaireFicheContact,
+      onCommentaireFicheContactChanged,
+
       groupeDestinataireIsActive,
+      onGroupeDestinataireIsActiveChanged,
+
       groupeDestinataireIdSelected,
+      onGroupeDestinataireIdSelectedChanged,
+
       listGroupeDestinataire,
+      onListGroupeDestinataireChanged
     } = this.props;
     // fiche activite
     const {
@@ -340,12 +353,25 @@ class GestContacts extends Component {
                         onListNumDossierFicheContactChanged={onListNumDossierFicheContactChanged}
 
                         domaineFicheContact={domaineFicheContact}
+                        onDomaineFicheContactChanged={onDomaineFicheContactChanged}
+
                         statutBenefFicheContact={statutBenefFicheContact}
+                        onStatutBenefFicheContactChanged= {onStatutBenefFicheContactChanged}
+
                         attachmentsFicheContact={attachmentsFicheContact}
+                        onAttachmentsFicheContactChanged={onAttachmentsFicheContactChanged}
+
                         commentaireFicheContact={commentaireFicheContact}
+                        onCommentaireFicheContactChanged={onCommentaireFicheContactChanged}
+
                         groupeDestinataireIsActive={groupeDestinataireIsActive}
+                        onGroupeDestinataireIsActiveChanged={onGroupeDestinataireIsActiveChanged}
+
                         groupeDestinataireIdSelected={groupeDestinataireIdSelected}
+                        onGroupeDestinataireIdSelectedChanged={onGroupeDestinataireIdSelectedChanged}
+
                         listGroupeDestinataire={listGroupeDestinataire}
+                        onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
                       />
 
                       <FicheActivite
@@ -670,7 +696,10 @@ GestContacts.propTypes = {
   onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
 
   domaineFicheContact: PropTypes.string.isRequired,
+  onDomaineFicheContactChanged: PropTypes.func.isRequired,
+
   statutBenefFicheContact: PropTypes.string.isRequired,
+  onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
 
   attachmentsFicheContact: PropTypes.arrayOf(
     PropTypes.shape({
@@ -680,16 +709,24 @@ GestContacts.propTypes = {
       size: PropTypes.string.isRequired
     })
   ).isRequired,
+  onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
+
   commentaireFicheContact: PropTypes.string.isRequired,
+  onCommentaireFicheContactChanged: PropTypes.func.isRequired,
 
   groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
+  onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
+
   groupeDestinataireIdSelected: PropTypes.number.isRequired,
+  onGroupeDestinataireIdSelectedChanged: PropTypes.func.isRequired,
+
   listGroupeDestinataire: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       libelle: PropTypes.string
     })
   ).isRequired, // to fill from server query
+  onListGroupeDestinataireChanged: PropTypes.func.isRequired,
 
   // ///////////////////////
   // fiche activite data

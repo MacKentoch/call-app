@@ -258,7 +258,10 @@ Form.propTypes = {
   onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
 
   domaineFicheContact: PropTypes.string.isRequired,
+  onDomaineFicheContactChanged: PropTypes.func.isRequired,
+
   statutBenefFicheContact: PropTypes.string.isRequired,
+  onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
 
   attachmentsFicheContact: PropTypes.arrayOf(
     PropTypes.shape({
@@ -268,16 +271,24 @@ Form.propTypes = {
       size: PropTypes.string.isRequired
     })
   ).isRequired,
+  onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
+
   commentaireFicheContact: PropTypes.string.isRequired,
+  onCommentaireFicheContactChanged: PropTypes.func.isRequired,
 
   groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
+  onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
+
   groupeDestinataireIdSelected: PropTypes.number.isRequired,
+  onGroupeDestinataireIdSelectedChanged: PropTypes.func.isRequired,
+
   listGroupeDestinataire: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       libelle: PropTypes.string
     })
   ).isRequired, // to fill from server query
+  onListGroupeDestinataireChanged: PropTypes.func.isRequired
 };
 
 export default Form;
