@@ -267,10 +267,8 @@ class GestContacts extends Component {
 
                       <FicheContact
                         activites={[]}
-
                         isCollapsedFicheContact={isCollapsedFicheContact}
                         onCollapseClick={this.handlesOnFicheContactCollapseClick}
-
                         lastFetchTimeFicheContact={lastFetchTimeFicheContact}
                         isFetchingFicheContact={isFetchingFicheContact}
                         isSavingFicheContact={isSavingFicheContact}
@@ -297,10 +295,15 @@ class GestContacts extends Component {
                       />
 
                       <FicheActivite
+                        activites={activites}
                         isCollapsedFicheActivite={isCollapsedFicheActivite}
                         onCollapseClick={this.handlesOnFicheActiviteCollapseClick}
-                        lastFetchTimeActivites={''}
-                        activites={[]}
+                        isFetchingFicheActivite={isFetchingFicheActivite}
+                        lastFetchTimeFicheActivite={lastFetchTimeFicheActivite}
+                        isSavingActivite={isSavingActivite}
+                        activiteIdBeingEditing={activiteIdBeingEditing}
+                        selectedActiviteId={selectedActiviteId}
+                        listCanauxFicheActivite={listCanauxFicheActivite}
                       />
 
                       <div style={{height: '10px'}}></div>
