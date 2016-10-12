@@ -11,7 +11,7 @@ import Form                 from './form/Form';
 import SavingIndicator      from '../savingIndicator/SavingIndicator';
 
 moment.locale('fr');
-const formatDate = appConfig.formatDate.defaut;
+// const formatDate = appConfig.formatDate.defaut;
 
 
 class FicheContact extends Component {
