@@ -38,12 +38,12 @@ class StatutFicheDropDown extends Component {
             title={ this.valueIsStatutFiche(value) ? value : listeStatutFiche[0] }>
             {
               listeStatutFiche.map(
-                ({id, libelle}, idx) => {
+                (statut, idx) => {
                   return (
                     <MenuItem
                       key={idx}
-                      eventKey={id}>
-                      {libelle}
+                      eventKey={idx}>
+                      {statut}
                     </MenuItem>
                   );
                 }
@@ -80,12 +80,7 @@ StatutFicheDropDown.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   // list statut ref
-  listeStatutFiche: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      libelle: PropTypes.string.isRequired
-    })
-  )
+  listeStatutFiche: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default StatutFicheDropDown;

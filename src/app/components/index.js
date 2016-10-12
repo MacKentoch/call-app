@@ -26,6 +26,7 @@ import NumssInput from './textInput/NumssInput';
 import DateInput from './dateInput/DateInput';
 import ListDossiersBeneficaire from './listDossiersBeneficaire/ListDossiersBeneficaire';
 import ListContactsEtActivitesBeneficaire from './listContactsEtActivitesBeneficaire/ListContactsEtActivitesBeneficaire';
+import StatutFicheDropDown from './statutFicheDropDown/StatutFicheDropDown';
 
 import {
   FichesTraitee,
@@ -60,6 +61,7 @@ export {
   EditValidIcons,
   TelephoneInput,
   NumssInput,
+  StatutFicheDropDown,
 
   // mailbox
   MailboxRepertoires,

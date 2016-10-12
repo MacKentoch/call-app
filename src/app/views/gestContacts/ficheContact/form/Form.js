@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import moment               from 'moment';
 import { appConfig }        from '../../../../config';
 import {
-  CiviliteDropDown,
+  StatutFicheDropDown,
   FormLabel,
   TextInput,
   DateInput,
@@ -100,7 +100,15 @@ const Form = ({
 
       {/* 2nd row */}
       <div className="row">
-        <div className="col-md-6">
+        {/* statut */}
+        <div className="col-md-4">
+          <StatutFicheDropDown
+            id="statutFiche"
+            label={'Statut'}
+            value={statutIndexFicheContact}
+            onChange={onStatutIndexFicheContactChanged}
+            listeStatutFiche={listStatutFicheContact}
+          />
         </div>
 
         {/* numss */}
