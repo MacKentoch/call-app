@@ -139,7 +139,11 @@ class GestContacts extends Component {
       onListStatutFicheContactChanged,
 
       dateClotureFicheContact,
+      onDateClotureFicheContactChanged,
+
       clotureParFicheContact,
+      onClotureParFicheContactChanged,
+
       typeIndexFicheContact,
       listTypeFicheContact,
       canalIndexFicheContact,
@@ -300,7 +304,11 @@ class GestContacts extends Component {
                         onListStatutFicheContactChanged={onListStatutFicheContactChanged}
 
                         dateClotureFicheContact={dateClotureFicheContact}
+                        onDateClotureFicheContactChanged={onDateClotureFicheContactChanged}
+
                         clotureParFicheContact={clotureParFicheContact}
+                        onClotureParFicheContactChanged={onClotureParFicheContactChanged}
+
                         typeIndexFicheContact={typeIndexFicheContact}
                         listTypeFicheContact={listTypeFicheContact}
                         canalIndexFicheContact={canalIndexFicheContact}
@@ -614,7 +622,10 @@ GestContacts.propTypes = {
   onListStatutFicheContactChanged: PropTypes.func.isRequired,
 
   dateClotureFicheContact: PropTypes.string.isRequired,
+  onDateClotureFicheContactChanged: PropTypes.func.isRequired,
+
   clotureParFicheContact: PropTypes.string.isRequired,
+  onClotureParFicheContactChanged: PropTypes.func.isRequired,
 
   typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
