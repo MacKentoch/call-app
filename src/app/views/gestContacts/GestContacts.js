@@ -145,11 +145,23 @@ class GestContacts extends Component {
       onClotureParFicheContactChanged,
 
       typeIndexFicheContact,
+      onTypeIndexFicheContactChanged,
+
       listTypeFicheContact,
+      onListTypeFicheContactChanged,
+
       canalIndexFicheContact,
+      onCanalIndexFicheContactChanged,
+
       listCanauxFicheContact,
+      onListCanauxFicheContactChanged,
+
       numDossierIndexSelected,
+      onNumDossierIndexSelectedChanged,
+
       listNumDossierFicheContact,
+      onListNumDossierFicheContactChanged,
+
       domaineFicheContact,
       statutBenefFicheContact,
       attachmentsFicheContact,
@@ -310,11 +322,23 @@ class GestContacts extends Component {
                         onClotureParFicheContactChanged={onClotureParFicheContactChanged}
 
                         typeIndexFicheContact={typeIndexFicheContact}
+                        onTypeIndexFicheContactChanged={onTypeIndexFicheContactChanged}
+
                         listTypeFicheContact={listTypeFicheContact}
+                        onListTypeFicheContactChanged={onListTypeFicheContactChanged}
+
                         canalIndexFicheContact={canalIndexFicheContact}
+                        onCanalIndexFicheContactChanged={onCanalIndexFicheContactChanged}
+
                         listCanauxFicheContact={listCanauxFicheContact}
+                        onListCanauxFicheContactChanged={onListCanauxFicheContactChanged}
+
                         numDossierIndexSelected={numDossierIndexSelected}
+                        onNumDossierIndexSelectedChanged={onNumDossierIndexSelectedChanged}
+
                         listNumDossierFicheContact={listNumDossierFicheContact}
+                        onListNumDossierFicheContactChanged={onListNumDossierFicheContactChanged}
+
                         domaineFicheContact={domaineFicheContact}
                         statutBenefFicheContact={statutBenefFicheContact}
                         attachmentsFicheContact={attachmentsFicheContact}
@@ -628,13 +652,22 @@ GestContacts.propTypes = {
   onClotureParFicheContactChanged: PropTypes.func.isRequired,
 
   typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
+  onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
+
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
+  onListTypeFicheContactChanged: PropTypes.func.isRequired,
 
   canalIndexFicheContact: PropTypes.number.isRequired,
+  onCanalIndexFicheContactChanged: PropTypes.func.isRequired,
+
   listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onListCanauxFicheContactChanged: PropTypes.func.isRequired,
 
   numDossierIndexSelected: PropTypes.number.isRequired,
+  onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
+
   listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
 
   domaineFicheContact: PropTypes.string.isRequired,
   statutBenefFicheContact: PropTypes.string.isRequired,
