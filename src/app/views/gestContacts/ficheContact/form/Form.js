@@ -3,11 +3,8 @@ import moment               from 'moment';
 import { appConfig }        from '../../../../config';
 import {
   StatutFicheDropDown,
-  FormLabel,
   TextInput,
-  DateInput,
-  TelephoneInput,
-  NumssInput
+  DateInput
 }                           from '../../../../components';
 import {
   isValidDateOrReturnDefault
@@ -111,8 +108,22 @@ const Form = ({
           />
         </div>
 
-        {/* numss */}
-        <div className="col-md-6">
+        {/* date cloture */}
+        <div className="col-md-2 col-md-offset-4">
+          <DateInput
+            id="inputDateCloture"
+            label={'Date de clôture'}
+            value={isValidDateOrReturnDefault(dateClotureFicheContact, formatDate)}
+            onChange={onDateClotureFicheContactChanged}
+          />
+        </div>
+        <div className="col-md-2">
+          <TextInput
+            id="inputCloturePar"
+            label={'Par'}
+            value={clotureParFicheContact}
+            onChange={onClotureParFicheContactChanged}
+          />
         </div>
       </div>
 
