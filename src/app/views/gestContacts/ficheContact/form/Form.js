@@ -4,7 +4,8 @@ import { appConfig }        from '../../../../config';
 import {
   StatutFicheDropDown,
   TextInput,
-  DateInput
+  DateInput,
+  typeFicheContactRadio
 }                           from '../../../../components';
 import {
   isValidDateOrReturnDefault

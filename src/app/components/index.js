@@ -28,7 +28,6 @@ import ListDossiersBeneficaire from './listDossiersBeneficaire/ListDossiersBenef
 import ListContactsEtActivitesBeneficaire from './listContactsEtActivitesBeneficaire/ListContactsEtActivitesBeneficaire';
 import StatutFicheDropDown from './statutFicheDropDown/StatutFicheDropDown';
 import TypeFicheContactRadio from './typeFicheContactRadio/TypeFicheContactRadio';
-
 import {
   FichesTraitee,
   FichesParCanal,
