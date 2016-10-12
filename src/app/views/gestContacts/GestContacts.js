@@ -144,7 +144,16 @@ class GestContacts extends Component {
       listGroupeDestinataire,
     } = this.props;
     // fiche activite
-    const { isCollapsedFicheActivite, selectedActiviteId, activites } = this.props;
+    const {
+      activites,
+      isCollapsedFicheActivite,
+      isFetchingFicheActivite,
+      lastFetchTimeFicheActivite,
+      isSavingActivite,
+      activiteIdBeingEditing,
+      selectedActiviteId,
+      listCanauxFicheActivite
+    } = this.props;
 
     return(
       <section
