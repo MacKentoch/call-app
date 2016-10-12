@@ -28,7 +28,7 @@ const Form = ({
   statutIndexFicheContact,
   onStatutIndexFicheContactChanged,
   listStatutFicheContact,
-  onListStatutFicheContactChanged,
+  // onListStatutFicheContactChanged,
   dateClotureFicheContact,
   onDateClotureFicheContactChanged,
   clotureParFicheContact,
@@ -67,7 +67,7 @@ const Form = ({
       {/* 1st row */}
       <div className="row">
         {/* date de création */}
-        <div className="col-md-2">
+        <div className="col-md-4">
           <DateInput
             id="inputDateCreation"
             label={'Date de création'}
@@ -76,21 +76,21 @@ const Form = ({
           />
         </div>
         {/* créé par */}
-        <div className="col-md-2">
+        <div className="col-md-4">
           <TextInput
             id="inputCreePar"
-            label={'Par'}
+            label={'créé par'}
             value={creeParFicheContact}
             onChange={onCreeParFicheContactChanged}
           />
         </div>
-        {/* traité par */}
-        <div className="col-md-2 col-md-offset-6">
-          <TextInput
-            id="inputCreePar"
-            label={'Par'}
-            value={creeParFicheContact}
-            onChange={onCreeParFicheContactChanged}
+        {/* date reception */}
+        <div className="col-md-4">
+          <DateInput
+            id="inputDateReception"
+            label={'Date de réception'}
+            value={dateReceptionFicheContact}
+            onChange={onDateReceptionFicheContactChanged}
           />
         </div>
       </div>
@@ -108,7 +108,7 @@ const Form = ({
           />
         </div>
         {/* date cloture */}
-        <div className="col-md-2 col-md-offset-4">
+        <div className="col-md-4">
           <DateInput
             id="inputDateCloture"
             label={'Date de clôture'}
@@ -116,10 +116,11 @@ const Form = ({
             onChange={onDateClotureFicheContactChanged}
           />
         </div>
-        <div className="col-md-2">
+        {/* cloture par */}
+        <div className="col-md-4">
           <TextInput
             id="inputCloturePar"
-            label={'Par'}
+            label={'Clôturé par'}
             value={clotureParFicheContact}
             onChange={onClotureParFicheContactChanged}
           />
@@ -160,7 +161,7 @@ Form.propTypes = {
   onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
 
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onListStatutFicheContactChanged: PropTypes.func.isRequired,
+  // onListStatutFicheContactChanged: PropTypes.func.isRequired,
 
   dateClotureFicheContact: PropTypes.string.isRequired,
   onDateClotureFicheContactChanged: PropTypes.func.isRequired,

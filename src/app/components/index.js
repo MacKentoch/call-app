@@ -27,6 +27,7 @@ import DateInput from './dateInput/DateInput';
 import ListDossiersBeneficaire from './listDossiersBeneficaire/ListDossiersBeneficaire';
 import ListContactsEtActivitesBeneficaire from './listContactsEtActivitesBeneficaire/ListContactsEtActivitesBeneficaire';
 import StatutFicheDropDown from './statutFicheDropDown/StatutFicheDropDown';
+import TypeFicheContactRadio from './typeFicheContactRadio/TypeFicheContactRadio';
 
 import {
   FichesTraitee,
@@ -62,6 +63,7 @@ export {
   TelephoneInput,
   NumssInput,
   StatutFicheDropDown,
+  TypeFicheContactRadio,
 
   // mailbox
   MailboxRepertoires,

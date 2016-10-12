@@ -34,7 +34,8 @@ class StatutFicheDropDown extends Component {
             id={id}
             onSelect={this.handlesOnChange}
             bsSize="sm"
-            bsStyle={'default'}
+            block
+            bsStyle={'block'}
             title={ this.valueIsStatutFiche(value) ? value : listeStatutFiche[0] }>
             {
               listeStatutFiche.map(
