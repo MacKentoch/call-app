@@ -12,7 +12,7 @@ import {
 import {
   isValidDateOrReturnDefault
 }                           from '../../../../services';
-import Attachments          from 'attachments/Attachments';
+import ListAttachments      from 'listAttachments/ListAttachments';
 
 
 moment.locale('fr');
@@ -190,6 +190,7 @@ const Form = ({
         </div>
       </div>
 
+      {/* 5th row */}
       <div className="row">
 
       </div>
