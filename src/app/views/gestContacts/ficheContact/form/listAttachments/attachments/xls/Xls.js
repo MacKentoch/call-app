@@ -19,7 +19,9 @@ class Xls extends Component {
     const { name, filePath, size } = this.props;
     return (
       <li>
-        <span className="mailbox-attachment-icon">
+        <span
+          className="mailbox-attachment-icon"
+          style={{fontSize: '45px'}}>
           <i className="fa fa-file-excel-o"></i>
         </span>
         <div className="mailbox-attachment-info">
