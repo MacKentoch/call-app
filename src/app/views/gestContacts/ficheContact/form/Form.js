@@ -27,7 +27,6 @@ const Form = ({
   dateCreationFicheContact,
   onDateCreationFicheContactChanged,
   creeParFicheContact,
-  onCreeParFicheContactChanged,
   dateReceptionFicheContact,
   onDateReceptionFicheContactChanged,
   statutIndexFicheContact,
@@ -83,11 +82,10 @@ const Form = ({
         </div>
         {/* créé par */}
         <div className="col-md-4">
-          <TextInput
+          <FormLabel
             id="inputCreePar"
             label={'créé par'}
             value={creeParFicheContact}
-            onChange={onCreeParFicheContactChanged}
           />
         </div>
         {/* date reception */}
@@ -214,7 +212,6 @@ Form.propTypes = {
   onDateCreationFicheContactChanged: PropTypes.func.isRequired,
 
   creeParFicheContact: PropTypes.string.isRequired,
-  onCreeParFicheContactChanged: PropTypes.func.isRequired,
 
   dateReceptionFicheContact: PropTypes.string.isRequired,
   onDateReceptionFicheContactChanged: PropTypes.func.isRequired,

@@ -33,7 +33,6 @@ class FicheContact extends Component {
       dateCreationFicheContact,
       onDateCreationFicheContactChanged,
       creeParFicheContact,
-      onCreeParFicheContactChanged,
       dateReceptionFicheContact,
       onDateReceptionFicheContactChanged,
       statutIndexFicheContact,
@@ -108,7 +107,6 @@ class FicheContact extends Component {
                 onDateCreationFicheContactChanged={onDateCreationFicheContactChanged}
 
                 creeParFicheContact={creeParFicheContact}
-                onCreeParFicheContactChanged={onCreeParFicheContactChanged}
 
                 dateReceptionFicheContact={dateReceptionFicheContact}
                 onDateReceptionFicheContactChanged={onDateReceptionFicheContactChanged}
@@ -185,7 +183,6 @@ FicheContact.propTypes = {
   onDateCreationFicheContactChanged: PropTypes.func.isRequired,
 
   creeParFicheContact: PropTypes.string.isRequired,
-  onCreeParFicheContactChanged: PropTypes.func.isRequired,
 
   dateReceptionFicheContact: PropTypes.string.isRequired,
   onDateReceptionFicheContactChanged: PropTypes.func.isRequired,

@@ -124,10 +124,9 @@ class GestContacts extends Component {
       isSavingFicheContact,
 
       dateCreationFicheContact,
-      onDateCreationFicheContactChanged,
+      // onDateCreationFicheContactChanged,
 
       creeParFicheContact,
-      onCreeParFicheContactChanged,
 
       dateReceptionFicheContact,
       onDateReceptionFicheContactChanged,
@@ -183,6 +182,13 @@ class GestContacts extends Component {
       listGroupeDestinataire,
       onListGroupeDestinataireChanged
     } = this.props;
+
+    const {
+      actions: {
+        onDateCreationFicheContactChanged
+      }
+    } = this.props;
+
     // fiche activite
     const {
       activites,
@@ -316,7 +322,6 @@ class GestContacts extends Component {
                         onDateCreationFicheContactChanged={onDateCreationFicheContactChanged}
 
                         creeParFicheContact={creeParFicheContact}
-                        onCreeParFicheContactChanged={onCreeParFicheContactChanged}
 
                         dateReceptionFicheContact={dateReceptionFicheContact}
                         onDateReceptionFicheContactChanged={onDateReceptionFicheContactChanged}
@@ -678,10 +683,8 @@ GestContacts.propTypes = {
   isSavingFicheContact: PropTypes.bool.isRequired,
 
   dateCreationFicheContact: PropTypes.string.isRequired,
-  onDateCreationFicheContactChanged: PropTypes.func.isRequired,
 
   creeParFicheContact: PropTypes.string.isRequired,
-  onCreeParFicheContactChanged: PropTypes.func.isRequired,
 
   dateReceptionFicheContact: PropTypes.string.isRequired,
   onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
@@ -825,6 +828,8 @@ GestContacts.propTypes = {
     // UI fiche contacts
     setIsCollapsedContactsFicheContact: PropTypes.func,
     unsetIsCollapsedContactsFicheContact: PropTypes.func,
+    // form update:
+    onDateCreationFicheContactChanged: PropTypes.func.isRequired,
     // //////////////////
     // fiche activites
     // /////////////////
