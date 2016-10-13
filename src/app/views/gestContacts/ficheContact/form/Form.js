@@ -130,6 +130,8 @@ const Form = ({
         </div>
       </div>
 
+      <div style={{height: '20px'}}></div>
+
       {/* 3rd row */}
       <div className="row">
         {/* type */}
@@ -141,6 +143,8 @@ const Form = ({
           />
         </div>
       </div>
+
+      <div style={{height: '15px'}}></div>
 
       {/* 4th row */}
       <div className="row">
@@ -155,7 +159,7 @@ const Form = ({
 
         {/* nums dossier */}
         <div className="col-xs-3">
-          
+
         </div>
 
       </div>
