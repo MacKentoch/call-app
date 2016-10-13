@@ -147,6 +147,7 @@ const mapDispatchToProps = (dispatch) => {
         onStatutIndexFicheContactChanged: actions.updateStatutIndexFicheContact,
         onDateClotureFicheContactChanged: actions.updateDateClotureFicheContact,
         onTypeIndexFicheContactChanged: actions.updateTypeIndexFicheContact,
+        onNumDossierIndexSelectedChanged: actions.updateNumDossierIndexSelected,
         // ///////////////////////
         // activites
         // ///////////////////////

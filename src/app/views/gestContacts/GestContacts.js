@@ -137,7 +137,6 @@ class GestContacts extends Component {
       listCanauxFicheContact,
       // onListCanauxFicheContactChanged,
       numDossierIndexSelected,
-      onNumDossierIndexSelectedChanged,
 
       listNumDossierFicheContact,
       onListNumDossierFicheContactChanged,
@@ -171,6 +170,7 @@ class GestContacts extends Component {
         onStatutIndexFicheContactChanged,
         // onDateClotureFicheContactChanged,
         onTypeIndexFicheContactChanged,
+        onNumDossierIndexSelectedChanged,
       }
     } = this.props;
 
@@ -682,7 +682,6 @@ GestContacts.propTypes = {
   // onListCanauxFicheContactChanged: PropTypes.func.isRequired,
 
   numDossierIndexSelected: PropTypes.number.isRequired,
-  onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
 
   listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
   onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
@@ -802,6 +801,7 @@ GestContacts.propTypes = {
     onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
     onDateClotureFicheContactChanged: PropTypes.func.isRequired,
     onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
+    onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
     // //////////////////
     // fiche activites
     // /////////////////
