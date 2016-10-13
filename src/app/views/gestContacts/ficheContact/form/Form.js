@@ -138,11 +138,6 @@ const Form = ({
             onChange={onTypeIndexFicheContactChanged}
           />
         </div>
-
-        {/* type */}
-        <div className="col-md-6">
-        </div>
-
       </div>
 
     </form>
