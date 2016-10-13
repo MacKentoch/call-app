@@ -40,6 +40,7 @@ class NumsDossiersDropDown extends Component {
             {
               listNumDossierFicheContact.map(
                 (numDossier, idx) => {
+                  console.log('listNumDossierFicheContact: ', listNumDossierFicheContact);
                   return (
                     <MenuItem
                       key={idx}
