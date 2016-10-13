@@ -192,6 +192,7 @@ import {
   unsetIsCollapsedContactsFicheContact,
   getGestContactsFicheContactIfNeeded,
   updateDateCreationFicheContact,
+  updateDateReceptionFicheContact,
   // fiches activites
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
@@ -361,7 +362,10 @@ export {
   unsetIsCollapsedContactsDossiers,
   setIsCollapsedContactsFicheContact,
   unsetIsCollapsedContactsFicheContact,
+
   updateDateCreationFicheContact,
+  updateDateReceptionFicheContact,
+
   getGestContactsFicheContactIfNeeded,
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,

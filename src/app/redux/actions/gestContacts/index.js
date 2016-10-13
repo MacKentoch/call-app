@@ -21,7 +21,8 @@ import {
   unsetIsCollapsedContactsFicheContact,
   getGestContactsFicheContactIfNeeded,
   // form updates:
-  updateDateCreationFicheContact
+  updateDateCreationFicheContact,
+  updateDateReceptionFicheContact
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
 // contacts fiche activites:
 import {
@@ -50,6 +51,8 @@ export {
   unsetIsCollapsedContactsFicheContact,
   getGestContactsFicheContactIfNeeded,
   updateDateCreationFicheContact,
+  updateDateReceptionFicheContact,
+
   // fiches activites
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
