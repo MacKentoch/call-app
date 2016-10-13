@@ -12,19 +12,26 @@ class NavItem extends Component {
     this.handlesOnClick = this.handlesOnClick.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
   render() {
-    const { itemText, isSelected  } = this.props;
+    const { itemText, isSelected } = this.props;
     return (
-      <li className="active">
-        <a href="#">
-          Home
+      <li
+        className={cx({
+          'active': isSelected
+        })}>
+        <a onClick={this.handlesOnClick}>
+          {itemText}
         </a>
       </li>
     );
   }
 
   handlesOnClick(event) {
-    event.preventDefault()
+    event.preventDefault();
     const { onClick, itemId } = this.props;
     onClick(itemId);
   }
@@ -35,6 +42,6 @@ NavItem.propTypes = {
   itemText: PropTypes.string.isRequired,
   isSelected: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired
-}
+};
 
 export default NavItem;
