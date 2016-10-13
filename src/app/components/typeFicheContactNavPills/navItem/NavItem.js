@@ -21,9 +21,12 @@ class NavItem extends Component {
     return (
       <li
         className={cx({
-          'active': isSelected
+          'active': isSelected,
+          'col-xs-5': true
         })}>
-        <a onClick={this.handlesOnClick}>
+        <a
+          onClick={this.handlesOnClick}
+          style={{textAlign: 'center'}}>
           {itemText}
         </a>
       </li>

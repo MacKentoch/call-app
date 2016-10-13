@@ -5,7 +5,8 @@ import {
   StatutFicheDropDown,
   TextInput,
   DateInput,
-  TypeFicheContactRadio
+  TypeFicheContactRadio,
+  TypeFicheContactNavPills
 }                           from '../../../../components';
 import {
   isValidDateOrReturnDefault
@@ -132,7 +133,7 @@ const Form = ({
       <div className="row">
         {/* type */}
         <div className="col-md-12">
-          <TypeFicheContactRadio
+          <TypeFicheContactNavPills
             selectedValue={typeIndexFicheContact}
             onChange={onTypeIndexFicheContactChanged}
           />
