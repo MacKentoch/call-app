@@ -535,30 +535,50 @@ class GestContacts extends Component {
       .all(promises)
       .then(
         notificationPayloadArray => {
-          notificationPayloadArray.forEach(
-            notificationPayload => {
-              if (notificationPayload && notificationPayload.showNotification) {
-                addNotificationMessage({
-                  message: notificationPayload.message ? notificationPayload.message : '',
-                  level: notificationPayload.level ? notificationPayload.level : 'info'
-                });
-              }
+          console.log('notificationPayloadArray: ', notificationPayloadArray);
+          if (!Array.isArray(notificationPayloadArray)) {
+            if (notificationPayloadArray && notificationPayloadArray.showNotification) {
+              addNotificationMessage({
+                message: notificationPayloadArray.message ? notificationPayloadArray.message : '',
+                level: notificationPayloadArray.level ? notificationPayloadArray.level : 'info'
+              });
             }
-          );
+          } else {
+            notificationPayloadArray.forEach(
+              notificationPayload => {
+                if (notificationPayload && notificationPayload.showNotification) {
+                  addNotificationMessage({
+                    message: notificationPayload.message ? notificationPayload.message : '',
+                    level: notificationPayload.level ? notificationPayload.level : 'info'
+                  });
+                }
+              }
+            );
+          }
         }
       )
       .catch(
         notificationPayloadArray => {
-          notificationPayloadArray.forEach(
-            notificationPayload => {
-              if (notificationPayload && notificationPayload.showNotification) {
-                addNotificationMessage({
-                  message: notificationPayload.message ? notificationPayload.message : '',
-                  level: notificationPayload.level ? notificationPayload.level : 'error'
-                });
-              }
+          console.log('notificationPayloadArray: ', notificationPayloadArray);
+          if (!Array.isArray(notificationPayloadArray)) {
+            if (notificationPayloadArray && notificationPayloadArray.showNotification) {
+              addNotificationMessage({
+                message: notificationPayloadArray.message ? notificationPayloadArray.message : '',
+                level: notificationPayloadArray.level ? notificationPayloadArray.level : 'error'
+              });
             }
-          );
+          } else {
+            notificationPayloadArray.forEach(
+              notificationPayload => {
+                if (notificationPayload && notificationPayload.showNotification) {
+                  addNotificationMessage({
+                    message: notificationPayload.message ? notificationPayload.message : '',
+                    level: notificationPayload.level ? notificationPayload.level : 'error'
+                  });
+                }
+              }
+            );
+          }
         }
       );
   }
