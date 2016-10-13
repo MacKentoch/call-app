@@ -14,6 +14,7 @@ class NumsDossiersDropDown extends Component {
     super(props);
 
     this.handlesOnChange = this.handlesOnChange.bind(this);
+    this.valueIsNumDossier = this.valueIsNumDossier.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -22,7 +23,7 @@ class NumsDossiersDropDown extends Component {
 
   render() {
     const { label, id, value, listNumDossierFicheContact } = this.props;
-    console.log('listNumDossierFicheContact: ', listNumDossierFicheContact);
+    console.log('NumsDossiersDropDown - listNumDossierFicheContact: ', listNumDossierFicheContact);
     return (
       <div className="form-group">
         <label
@@ -37,7 +38,7 @@ class NumsDossiersDropDown extends Component {
             bsSize="sm"
             block
             bsStyle={'block'}
-            title={ this.valueIsNumDossier(value) ? value : listNumDossierFicheContact[0] }>
+            title={ this.valueIsNumDossier(value) ? value : ' --- ' }>
             {
               listNumDossierFicheContact.map(
                 (numDossier, idx) => {
