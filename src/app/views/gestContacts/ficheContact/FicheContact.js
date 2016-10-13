@@ -41,7 +41,7 @@ class FicheContact extends Component {
       dateClotureFicheContact,
       onDateClotureFicheContactChanged,
       clotureParFicheContact,
-      onClotureParFicheContactChanged,
+      // onClotureParFicheContactChanged,
       typeIndexFicheContact,
       onTypeIndexFicheContactChanged,
       listTypeFicheContact,
@@ -119,7 +119,7 @@ class FicheContact extends Component {
                 onDateClotureFicheContactChanged={onDateClotureFicheContactChanged}
 
                 clotureParFicheContact={clotureParFicheContact}
-                onClotureParFicheContactChanged={onClotureParFicheContactChanged}
+                // onClotureParFicheContactChanged={onClotureParFicheContactChanged}
 
                 typeIndexFicheContact={typeIndexFicheContact}
                 onTypeIndexFicheContactChanged={onTypeIndexFicheContactChanged}
@@ -194,7 +194,7 @@ FicheContact.propTypes = {
   onDateClotureFicheContactChanged: PropTypes.func.isRequired,
 
   clotureParFicheContact: PropTypes.string.isRequired,
-  onClotureParFicheContactChanged: PropTypes.func.isRequired,
+  // onClotureParFicheContactChanged: PropTypes.func.isRequired,
 
   typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
   onTypeIndexFicheContactChanged: PropTypes.func.isRequired,

@@ -33,9 +33,9 @@ const Form = ({
   onStatutIndexFicheContactChanged,
   listStatutFicheContact,
   dateClotureFicheContact,
-  onDateClotureFicheContactChanged,
+  // onDateClotureFicheContactChanged,
   clotureParFicheContact,
-  onClotureParFicheContactChanged,
+  // onClotureParFicheContactChanged,
   typeIndexFicheContact,
   onTypeIndexFicheContactChanged,
   listTypeFicheContact,
@@ -92,7 +92,7 @@ const Form = ({
           <DateInput
             id="inputDateReception"
             label={'Date de réception'}
-            value={dateReceptionFicheContact}
+            value={isValidDateOrReturnDefault(dateReceptionFicheContact, formatDate)}
             onChange={onDateReceptionFicheContactChanged}
           />
         </div>
@@ -112,20 +112,30 @@ const Form = ({
         </div>
         {/* date cloture */}
         <div className="col-md-4">
-          <DateInput
+          {/* <DateInput
             id="inputDateCloture"
             label={'Date de clôture'}
             value={isValidDateOrReturnDefault(dateClotureFicheContact, formatDate)}
             onChange={onDateClotureFicheContactChanged}
+          /> */}
+          <FormLabel
+            id="inputDateCloture"
+            label={'Date de clôture'}
+            value={isValidDateOrReturnDefault(dateClotureFicheContact, formatDate)}
           />
         </div>
         {/* cloture par */}
         <div className="col-md-4">
-          <TextInput
+          {/* <TextInput
             id="inputCloturePar"
             label={'Clôturé par'}
             value={clotureParFicheContact}
             onChange={onClotureParFicheContactChanged}
+          /> */}
+          <FormLabel
+            id="inputCloturePar"
+            label={'Clôturé par'}
+            value={clotureParFicheContact}
           />
         </div>
       </div>
@@ -221,10 +231,10 @@ Form.propTypes = {
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   dateClotureFicheContact: PropTypes.string.isRequired,
-  onDateClotureFicheContactChanged: PropTypes.func.isRequired,
+  // onDateClotureFicheContactChanged: PropTypes.func.isRequired,
 
   clotureParFicheContact: PropTypes.string.isRequired,
-  onClotureParFicheContactChanged: PropTypes.func.isRequired,
+  // onClotureParFicheContactChanged: PropTypes.func.isRequired,
 
   typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
   onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
