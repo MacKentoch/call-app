@@ -22,6 +22,7 @@ class NumsDossiersDropDown extends Component {
 
   render() {
     const { label, id, value, listNumDossierFicheContact } = this.props;
+    console.log('listNumDossierFicheContact: ', listNumDossierFicheContact);
     return (
       <div className="form-group">
         <label
@@ -40,7 +41,6 @@ class NumsDossiersDropDown extends Component {
             {
               listNumDossierFicheContact.map(
                 (numDossier, idx) => {
-                  console.log('listNumDossierFicheContact: ', listNumDossierFicheContact);
                   return (
                     <MenuItem
                       key={idx}
