@@ -6,7 +6,7 @@ import {
   TextInput,
   FormLabel,
   DateInput,
-  TypeFicheContactRadio,
+  NumsDossiersDropDown,
   TypeFicheContactNavPills
 }                           from '../../../../components';
 import {
@@ -159,7 +159,13 @@ const Form = ({
 
         {/* nums dossier */}
         <div className="col-xs-3">
-
+          <NumsDossiersDropDown
+            id="numsDossiers"
+            label={'N° Dossier'}
+            value={numDossierIndexSelected}
+            onChange={onNumDossierIndexSelectedChanged}
+            listNumDossierFicheContact={listNumDossierFicheContact}
+          />
         </div>
 
       </div>

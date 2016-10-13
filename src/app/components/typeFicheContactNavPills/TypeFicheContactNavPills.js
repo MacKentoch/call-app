@@ -20,6 +20,7 @@ const TypeFicheContactNavPills = ({ onClick, listTypeFicheContact, selectedValue
             (typeFicheContact, idx) => {
               return (
                 <NavItem
+                  key={idx}
                   itemId={idx}
                   itemText={typeFicheContact}
                   isSelected={selectedValue === idx}
