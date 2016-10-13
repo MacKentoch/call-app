@@ -23,6 +23,7 @@ export const UPDATE_GEST_CONTACTS_DATE_CREATION         = 'UPDATE_GEST_CONTACTS_
 export const UPDATE_GEST_CONTACTS_DATE_RECEPTION        = 'UPDATE_GEST_CONTACTS_DATE_RECEPTION';
 export const UPDATE_GEST_CONTACTS_STATUT_FICHE          = 'UPDATE_GEST_CONTACTS_STATUT_FICHE';
 export const UPDATE_GEST_CONTACTS_DATE_CLOTURE          = 'UPDATE_GEST_CONTACTS_DATE_CLOTURE';
+export const UPDATE_GEST_CONTACTS_TYPE_INDEX            = 'UPDATE_GEST_CONTACTS_TYPE_INDEX';
 
 //  -----------------------------------------------------------------
 //    update dateCreationFicheContact value
@@ -74,6 +75,19 @@ export const updateDateClotureFicheContact = (dateCloture = null, time = moment(
     return {
       type: UPDATE_GEST_CONTACTS_DATE_CLOTURE,
       dateClotureFicheContact: dateClotureStr,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update updateTypeIndexFicheContact value
+//  -----------------------------------------------------------------
+export const updateTypeIndexFicheContact = (typeIndex = null, time = moment().format(formatDate)) => {
+  if (typeIndex) {
+    return {
+      type: UPDATE_GEST_CONTACTS_TYPE_INDEX,
+      typeIndexFicheContact: typeIndex,
       time
     };
   }

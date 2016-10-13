@@ -130,9 +130,7 @@ class GestContacts extends Component {
       listStatutFicheContact,
       dateClotureFicheContact,
       clotureParFicheContact,
-
       typeIndexFicheContact,
-      onTypeIndexFicheContactChanged,
 
       listTypeFicheContact,
       onListTypeFicheContactChanged,
@@ -176,7 +174,8 @@ class GestContacts extends Component {
         onDateCreationFicheContactChanged,
         onDateReceptionFicheContactChanged,
         onStatutIndexFicheContactChanged,
-        onDateClotureFicheContactChanged,
+        // onDateClotureFicheContactChanged,
+        onTypeIndexFicheContactChanged,
       }
     } = this.props;
 
@@ -678,9 +677,7 @@ GestContacts.propTypes = {
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
   dateClotureFicheContact: PropTypes.string.isRequired,
   clotureParFicheContact: PropTypes.string.isRequired,
-
   typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
-  onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
 
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
   onListTypeFicheContactChanged: PropTypes.func.isRequired,
@@ -811,6 +808,7 @@ GestContacts.propTypes = {
     onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
     onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
     onDateClotureFicheContactChanged: PropTypes.func.isRequired,
+    onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
     // //////////////////
     // fiche activites
     // /////////////////

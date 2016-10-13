@@ -195,6 +195,7 @@ import {
   updateDateReceptionFicheContact,
   updateStatutIndexFicheContact,
   updateDateClotureFicheContact,
+  updateTypeIndexFicheContact,
 
   // fiches activites
   setIsCollapsedContactsFicheActivite,
@@ -370,6 +371,7 @@ export {
   updateDateReceptionFicheContact,
   updateStatutIndexFicheContact,
   updateDateClotureFicheContact,
+  updateTypeIndexFicheContact,
 
   getGestContactsFicheContactIfNeeded,
   setIsCollapsedContactsFicheActivite,
