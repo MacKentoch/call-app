@@ -39,11 +39,10 @@ const Form = ({
   typeIndexFicheContact,
   onTypeIndexFicheContactChanged,
   listTypeFicheContact,
-  onListTypeFicheContactChanged,
   canalIndexFicheContact,
-  onCanalIndexFicheContactChanged,
+  // onCanalIndexFicheContactChanged,
   listCanauxFicheContact,
-  onListCanauxFicheContactChanged,
+  // onListCanauxFicheContactChanged,
   numDossierIndexSelected,
   onNumDossierIndexSelectedChanged,
   listNumDossierFicheContact,
@@ -242,13 +241,12 @@ Form.propTypes = {
   onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
 
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
-  onListTypeFicheContactChanged: PropTypes.func.isRequired,
 
   canalIndexFicheContact: PropTypes.number.isRequired,
-  onCanalIndexFicheContactChanged: PropTypes.func.isRequired,
+  // onCanalIndexFicheContactChanged: PropTypes.func.isRequired,
 
   listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onListCanauxFicheContactChanged: PropTypes.func.isRequired,
+  // onListCanauxFicheContactChanged: PropTypes.func.isRequired,
 
   numDossierIndexSelected: PropTypes.number.isRequired,
   onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,

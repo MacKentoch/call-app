@@ -131,16 +131,11 @@ class GestContacts extends Component {
       dateClotureFicheContact,
       clotureParFicheContact,
       typeIndexFicheContact,
-
       listTypeFicheContact,
-      onListTypeFicheContactChanged,
-
       canalIndexFicheContact,
-      onCanalIndexFicheContactChanged,
-
+      // onCanalIndexFicheContactChanged,
       listCanauxFicheContact,
-      onListCanauxFicheContactChanged,
-
+      // onListCanauxFicheContactChanged,
       numDossierIndexSelected,
       onNumDossierIndexSelectedChanged,
 
@@ -330,13 +325,12 @@ class GestContacts extends Component {
                         onTypeIndexFicheContactChanged={onTypeIndexFicheContactChanged}
 
                         listTypeFicheContact={listTypeFicheContact}
-                        onListTypeFicheContactChanged={onListTypeFicheContactChanged}
 
                         canalIndexFicheContact={canalIndexFicheContact}
-                        onCanalIndexFicheContactChanged={onCanalIndexFicheContactChanged}
+                        // onCanalIndexFicheContactChanged={onCanalIndexFicheContactChanged}
 
                         listCanauxFicheContact={listCanauxFicheContact}
-                        onListCanauxFicheContactChanged={onListCanauxFicheContactChanged}
+                        // onListCanauxFicheContactChanged={onListCanauxFicheContactChanged}
 
                         numDossierIndexSelected={numDossierIndexSelected}
                         onNumDossierIndexSelectedChanged={onNumDossierIndexSelectedChanged}
@@ -680,13 +674,12 @@ GestContacts.propTypes = {
   typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
 
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
-  onListTypeFicheContactChanged: PropTypes.func.isRequired,
 
   canalIndexFicheContact: PropTypes.number.isRequired,
-  onCanalIndexFicheContactChanged: PropTypes.func.isRequired,
+  // onCanalIndexFicheContactChanged: PropTypes.func.isRequired,
 
   listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onListCanauxFicheContactChanged: PropTypes.func.isRequired,
+  // onListCanauxFicheContactChanged: PropTypes.func.isRequired,
 
   numDossierIndexSelected: PropTypes.number.isRequired,
   onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
