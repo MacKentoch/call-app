@@ -200,12 +200,14 @@ const Form = ({
 
       {/* 5th row */}
       <div className="row">
-        <ListAttachments
-          id={'ficheContactPJ'}
-          label={'Pièces jointes reçus'}
-          attachments={attachmentsFicheContact}
-          onDelete={()=>console.log('on fiche contact delete attachments')}
-        />
+        <div className="col-xs-12">
+          <ListAttachments
+            id={'ficheContactPJ'}
+            label={'Pièces jointes reçus'}
+            attachments={attachmentsFicheContact}
+            onDelete={()=>console.log('on fiche contact delete attachments')}
+          />
+        </div>
       </div>
     </form>
   );
