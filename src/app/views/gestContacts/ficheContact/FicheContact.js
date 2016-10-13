@@ -91,7 +91,7 @@ class FicheContact extends Component {
          <Collapse
            isOpened={!isCollapsedFicheContact}
            keepCollapsedContent={false}>
-           <div style={{ height: '230px' }}>
+           <div style={{ height: '430px' }}>
            {
              isSavingFicheContact
              ?

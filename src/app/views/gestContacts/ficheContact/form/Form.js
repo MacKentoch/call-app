@@ -4,6 +4,7 @@ import { appConfig }        from '../../../../config';
 import {
   StatutFicheDropDown,
   TextInput,
+  FormLabel,
   DateInput,
   TypeFicheContactRadio,
   TypeFicheContactNavPills
@@ -141,6 +142,18 @@ const Form = ({
         </div>
       </div>
 
+      {/* 4th row */}
+      <div className="row">
+        {/* canal */}
+        <div className="col-xs-3">
+          <FormLabel
+            id="labelCanal"
+            label={'Canal'}
+            value={listCanauxFicheContact[canalIndexFicheContact] ? listCanauxFicheContact[canalIndexFicheContact] : ' --- '}
+          />
+        </div>
+
+      </div>
     </form>
   );
 };
