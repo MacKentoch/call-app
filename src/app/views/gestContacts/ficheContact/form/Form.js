@@ -153,6 +153,11 @@ const Form = ({
           />
         </div>
 
+        {/* nums dossier */}
+        <div className="col-xs-3">
+          
+        </div>
+
       </div>
     </form>
   );
