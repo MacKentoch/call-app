@@ -23,7 +23,8 @@ import {
   // form updates:
   updateDateCreationFicheContact,
   updateDateReceptionFicheContact,
-  updateStatutIndexFicheContact
+  updateStatutIndexFicheContact,
+  updateDateClotureFicheContact
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
 // contacts fiche activites:
 import {
@@ -54,6 +55,7 @@ export {
   updateDateCreationFicheContact,
   updateDateReceptionFicheContact,
   updateStatutIndexFicheContact,
+  updateDateClotureFicheContact,
 
   // fiches activites
   setIsCollapsedContactsFicheActivite,

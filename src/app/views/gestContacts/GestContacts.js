@@ -126,14 +126,9 @@ class GestContacts extends Component {
       dateCreationFicheContact,
       creeParFicheContact,
       dateReceptionFicheContact,
-
       statutIndexFicheContact,
-
       listStatutFicheContact,
-      onListStatutFicheContactChanged,
-
       dateClotureFicheContact,
-      onDateClotureFicheContactChanged,
 
       clotureParFicheContact,
       onClotureParFicheContactChanged,
@@ -182,7 +177,8 @@ class GestContacts extends Component {
       actions: {
         onDateCreationFicheContactChanged,
         onDateReceptionFicheContactChanged,
-        onStatutIndexFicheContactChanged
+        onStatutIndexFicheContactChanged,
+        onDateClotureFicheContactChanged,
       }
     } = this.props;
 
@@ -327,7 +323,6 @@ class GestContacts extends Component {
                         onStatutIndexFicheContactChanged={onStatutIndexFicheContactChanged}
 
                         listStatutFicheContact={listStatutFicheContact}
-                        onListStatutFicheContactChanged={onListStatutFicheContactChanged}
 
                         dateClotureFicheContact={dateClotureFicheContact}
                         onDateClotureFicheContactChanged={onDateClotureFicheContactChanged}
@@ -683,12 +678,8 @@ GestContacts.propTypes = {
   creeParFicheContact: PropTypes.string.isRequired,
   dateReceptionFicheContact: PropTypes.string.isRequired,
   statutIndexFicheContact: PropTypes.number.isRequired,
-
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onListStatutFicheContactChanged: PropTypes.func.isRequired,
-
   dateClotureFicheContact: PropTypes.string.isRequired,
-  onDateClotureFicheContactChanged: PropTypes.func.isRequired,
 
   clotureParFicheContact: PropTypes.string.isRequired,
   onClotureParFicheContactChanged: PropTypes.func.isRequired,
@@ -824,6 +815,7 @@ GestContacts.propTypes = {
     onDateCreationFicheContactChanged: PropTypes.func.isRequired,
     onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
     onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
+    onDateClotureFicheContactChanged: PropTypes.func.isRequired,
     // //////////////////
     // fiche activites
     // /////////////////

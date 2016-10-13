@@ -32,7 +32,6 @@ const Form = ({
   statutIndexFicheContact,
   onStatutIndexFicheContactChanged,
   listStatutFicheContact,
-  // onListStatutFicheContactChanged,
   dateClotureFicheContact,
   onDateClotureFicheContactChanged,
   clotureParFicheContact,
@@ -220,7 +219,6 @@ Form.propTypes = {
   onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
 
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // onListStatutFicheContactChanged: PropTypes.func.isRequired,
 
   dateClotureFicheContact: PropTypes.string.isRequired,
   onDateClotureFicheContactChanged: PropTypes.func.isRequired,

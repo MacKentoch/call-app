@@ -10,7 +10,7 @@ const formatDate = appConfig.formatDate.defaut;
 
 const formatDateCreation  = 'DD/MM/YYYY';
 const formatDateReception = 'DD/MM/YYYY';
-// const formatDateCloture   = 'DD/MM/YYYY';
+const formatDateCloture   = 'DD/MM/YYYY';
 
 export const REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT    = 'REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT';
 export const RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT   = 'RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT';
@@ -22,7 +22,7 @@ export const UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT  = 'UNSET_IS_COLLAPSED_CO
 export const UPDATE_GEST_CONTACTS_DATE_CREATION         = 'UPDATE_GEST_CONTACTS_DATE_CREATION';
 export const UPDATE_GEST_CONTACTS_DATE_RECEPTION        = 'UPDATE_GEST_CONTACTS_DATE_RECEPTION';
 export const UPDATE_GEST_CONTACTS_STATUT_FICHE          = 'UPDATE_GEST_CONTACTS_STATUT_FICHE';
-
+export const UPDATE_GEST_CONTACTS_DATE_CLOTURE          = 'UPDATE_GEST_CONTACTS_DATE_CLOTURE';
 
 //  -----------------------------------------------------------------
 //    update dateCreationFicheContact value
@@ -60,6 +60,20 @@ export const updateStatutIndexFicheContact = (statutIndex = null, time = moment(
     return {
       type: UPDATE_GEST_CONTACTS_STATUT_FICHE,
       statutIndexFicheContact: statutIndex,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update updateDateClotureFicheContact value
+//  -----------------------------------------------------------------
+export const updateDateClotureFicheContact = (dateCloture = null, time = moment().format(formatDate)) => {
+  if (dateCloture) {
+    const dateClotureStr = moment(dateCloture, formatDateCloture).format(formatDateCloture);
+    return {
+      type: UPDATE_GEST_CONTACTS_DATE_CLOTURE,
+      dateClotureFicheContact: dateClotureStr,
       time
     };
   }
