@@ -168,6 +168,23 @@ const Form = ({
           />
         </div>
 
+        {/* domaine */}
+        <div className="col-xs-3">
+          <FormLabel
+            id="labelDomaine"
+            label={'Domaine'}
+            value={domaineFicheContact}
+          />
+        </div>
+
+        {/* statut */}
+        <div className="col-xs-3">
+          <FormLabel
+            id="labelStatut"
+            label={'Statut'}
+            value={listStatutFicheContact[statutIndexFicheContact] ? listStatutFicheContact[statutIndexFicheContact] : ' --- '}
+          />
+        </div>
       </div>
     </form>
   );
