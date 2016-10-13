@@ -23,7 +23,10 @@ class NavItem extends Component {
         className={cx({
           'active': isSelected,
           'col-xs-5': true
-        })}>
+        })}
+        style={{
+          cursor: 'default'
+        }}>
         <a
           onClick={this.handlesOnClick}
           style={{textAlign: 'center'}}>
