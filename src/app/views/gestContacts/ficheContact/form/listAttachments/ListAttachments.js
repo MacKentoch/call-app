@@ -3,7 +3,7 @@ import React, {
   PropTypes
 }                           from 'react';
 import shallowCompare       from 'react-addons-shallow-compare';
-import Attachments          from 'attachments/Attachments';
+import Attachments          from './attachments/Attachments';
 
 
 class ListAttachments extends Component {
@@ -19,7 +19,7 @@ class ListAttachments extends Component {
 
   render() {
     const { id, label, attachments } = this.props;
-
+    console.log('---- attachments: ', attachments);
     return (
       <div className="form-group">
         <label
@@ -43,6 +43,11 @@ class ListAttachments extends Component {
         </div>
       </div>
     );
+  }
+
+  handlesOnDelete(attachmentName) {
+    const { onDelete } = this.props;
+    onDelete(attachmentName);
   }
 }
 

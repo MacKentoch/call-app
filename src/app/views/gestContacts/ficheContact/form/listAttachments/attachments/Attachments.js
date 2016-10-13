@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { appConfig }        from '../../../config';
+import { appConfig }        from '../../../../../../config';
 import Pdf                  from './pdf/Pdf';
 import Txt                  from './txt/Txt';
 import Doc                  from './doc/Doc';
@@ -121,7 +121,7 @@ const Attachments = ({attachments, onTrashClick}) => {
                   onTrashClick={onTrashClick}
                 />
               );
-            
+
             default:
               return null;
             }

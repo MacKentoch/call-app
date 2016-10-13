@@ -12,7 +12,7 @@ import {
 import {
   isValidDateOrReturnDefault
 }                           from '../../../../services';
-import ListAttachments      from 'listAttachments/ListAttachments';
+import ListAttachments      from './listAttachments/ListAttachments';
 
 
 moment.locale('fr');
@@ -66,6 +66,7 @@ const Form = ({
   onListGroupeDestinataireChanged,
   activites
 }) => {
+  console.log('---- attachmentsFicheContact: ', attachmentsFicheContact);
   return (
     <form role="form">
 
@@ -192,7 +193,12 @@ const Form = ({
 
       {/* 5th row */}
       <div className="row">
-
+        <ListAttachments
+          id={'ficheContactPJ'}
+          label={'Pièces jointes reçus'}
+          attachments={attachmentsFicheContact}
+          onDelete={()=>console.log('on fiche contact delete attachments')}
+        />
       </div>
     </form>
   );
