@@ -724,7 +724,7 @@ GestContacts.propTypes = {
 
   attachmentsFicheContact: PropTypes.arrayOf(
     PropTypes.shape({
-      type: PropTypes.string.isRequired,
+      type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
       name: PropTypes.string.isRequired,
       filePath: PropTypes.string.isRequired,
       size: PropTypes.string.isRequired
@@ -780,7 +780,7 @@ GestContacts.propTypes = {
       canalIndexFicheActivite: PropTypes.number,
       listAttachements: PropTypes.arrayOf(
         PropTypes.shape({
-          type: PropTypes.string.isRequired,
+          type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
           name: PropTypes.string.isRequired,
           filePath: PropTypes.string.isRequired,
           size: PropTypes.string.isRequired

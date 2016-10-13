@@ -12,6 +12,8 @@ import {
 import {
   isValidDateOrReturnDefault
 }                           from '../../../../services';
+import Attachments          from 'attachments/Attachments';
+
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
@@ -177,6 +179,7 @@ const Form = ({
           />
         </div>
 
+
         {/* statut */}
         <div className="col-xs-3">
           <FormLabel
@@ -185,6 +188,10 @@ const Form = ({
             value={listStatutFicheContact[statutIndexFicheContact] ? listStatutFicheContact[statutIndexFicheContact] : ' --- '}
           />
         </div>
+      </div>
+
+      <div className="row">
+
       </div>
     </form>
   );
