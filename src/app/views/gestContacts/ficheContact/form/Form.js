@@ -136,6 +136,7 @@ const Form = ({
           <TypeFicheContactNavPills
             selectedValue={typeIndexFicheContact}
             onChange={onTypeIndexFicheContactChanged}
+            listTypeFicheContact={listTypeFicheContact}
           />
         </div>
       </div>
