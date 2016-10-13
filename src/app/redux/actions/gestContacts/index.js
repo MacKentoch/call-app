@@ -19,7 +19,9 @@ import {
 import {
   setIsCollapsedContactsFicheContact,
   unsetIsCollapsedContactsFicheContact,
-  getGestContactsFicheContactIfNeeded
+  getGestContactsFicheContactIfNeeded,
+  // form updates:
+  updateDateCreationFicheContact
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
 // contacts fiche activites:
 import {
@@ -47,6 +49,7 @@ export {
   setIsCollapsedContactsFicheContact,
   unsetIsCollapsedContactsFicheContact,
   getGestContactsFicheContactIfNeeded,
+  updateDateCreationFicheContact,
   // fiches activites
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,

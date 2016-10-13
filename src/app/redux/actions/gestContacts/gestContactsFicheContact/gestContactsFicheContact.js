@@ -8,7 +8,7 @@ import {
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
-// const formatDateCreation  = 'DD/MM/YYYY';
+const formatDateCreation  = 'DD/MM/YYYY';
 // const formatDateReception = 'DD/MM/YYYY';
 // const formatDateCloture   = 'DD/MM/YYYY';
 
@@ -18,6 +18,23 @@ export const ERROR_GET_GEST_CONTACTS_FICHE_CONTACT      = 'ERROR_GET_GEST_CONTAC
 
 export const SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT    = 'SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT';
 export const UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT  = 'UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT';
+
+export const UPDATE_GEST_CONTACTS_DATE_CREATION         = 'UPDATE_GEST_CONTACTS_DATE_CREATION';
+
+//  -----------------------------------------------------------------
+//    update dateCreationFicheContact value
+//  -----------------------------------------------------------------
+export const updateDateCreationFicheContact = (dateCreation = '', time = moment().format(formatDate)) => {
+  if (dateCreation) {
+    const dateCreationStr = moment(dateCreation, formatDateCreation).format(formatDateCreation);
+    return {
+      type: UPDATE_GEST_CONTACTS_DATE_CREATION,
+      dateCreationFicheContact: dateCreationStr,
+      time
+    };
+  }
+  return false;
+};
 
 
 //  -----------------------------------------------------------------
