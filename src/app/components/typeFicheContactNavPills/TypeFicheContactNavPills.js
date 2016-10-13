@@ -1,32 +1,30 @@
 import React, {
-  Component,
   PropTypes
 }                     from 'react';
-import shallowCompare from 'react-addons-shallow-compare';
 import NavItem        from './navItem/NavItem';
 
-
-const TypeFicheContactNavPills = ({ onClick }) => {
+const TypeFicheContactNavPills = ({ onClick, selectedValue }) => {
   return (
     <ul className="nav nav-pills">
       <NavItem
-        itemId={}
-        itemText={}
-        isSelected={}
+        itemId={'information'}
+        itemText={'Information'}
+        isSelected={selectedValue === 'information'}
         onClick={onClick}
       />
       <NavItem
-        itemId={}
-        itemText={}
-        isSelected={}
+        itemId={'reclamation'}
+        itemText={'Réclamation'}
+        isSelected={selectedValue === 'reclamation'}
         onClick={onClick}
       />
     </ul>
   );
-}
+};
 
 TypeFicheContactNavPills.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  selectedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default TypeFicheContactNavPills;
