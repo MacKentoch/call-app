@@ -21,6 +21,8 @@ export const UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT  = 'UNSET_IS_COLLAPSED_CO
 
 export const UPDATE_GEST_CONTACTS_DATE_CREATION         = 'UPDATE_GEST_CONTACTS_DATE_CREATION';
 export const UPDATE_GEST_CONTACTS_DATE_RECEPTION        = 'UPDATE_GEST_CONTACTS_DATE_RECEPTION';
+export const UPDATE_GEST_CONTACTS_STATUT_FICHE          = 'UPDATE_GEST_CONTACTS_STATUT_FICHE';
+
 
 //  -----------------------------------------------------------------
 //    update dateCreationFicheContact value
@@ -36,7 +38,6 @@ export const updateDateCreationFicheContact = (dateCreation = '', time = moment(
   }
   return false;
 };
-
 //  -----------------------------------------------------------------
 //    update updateDateReceptionFicheContact value
 //  -----------------------------------------------------------------
@@ -46,6 +47,19 @@ export const updateDateReceptionFicheContact = (dateReception = '', time = momen
     return {
       type: UPDATE_GEST_CONTACTS_DATE_RECEPTION,
       dateReceptionFicheContact: dateReceptionStr,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update updateStatutIndexFicheContact value
+//  -----------------------------------------------------------------
+export const updateStatutIndexFicheContact = (statutIndex = null, time = moment().format(formatDate)) => {
+  if (statutIndex) {
+    return {
+      type: UPDATE_GEST_CONTACTS_STATUT_FICHE,
+      statutIndexFicheContact: statutIndex,
       time
     };
   }

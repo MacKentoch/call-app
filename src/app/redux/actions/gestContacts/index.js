@@ -22,7 +22,8 @@ import {
   getGestContactsFicheContactIfNeeded,
   // form updates:
   updateDateCreationFicheContact,
-  updateDateReceptionFicheContact
+  updateDateReceptionFicheContact,
+  updateStatutIndexFicheContact
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
 // contacts fiche activites:
 import {
@@ -52,6 +53,7 @@ export {
   getGestContactsFicheContactIfNeeded,
   updateDateCreationFicheContact,
   updateDateReceptionFicheContact,
+  updateStatutIndexFicheContact,
 
   // fiches activites
   setIsCollapsedContactsFicheActivite,
