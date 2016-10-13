@@ -143,6 +143,7 @@ const mapDispatchToProps = (dispatch) => {
         unsetIsCollapsedContactsFicheContact: actions.unsetIsCollapsedContactsFicheContact,
         // form updates:
         onDateCreationFicheContactChanged: actions.updateDateCreationFicheContact,
+        onDateReceptionFicheContactChanged: actions.updateDateReceptionFicheContact,
         // ///////////////////////
         // activites
         // ///////////////////////

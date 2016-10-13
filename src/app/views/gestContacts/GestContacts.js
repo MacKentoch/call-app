@@ -124,12 +124,8 @@ class GestContacts extends Component {
       isSavingFicheContact,
 
       dateCreationFicheContact,
-      // onDateCreationFicheContactChanged,
-
       creeParFicheContact,
-
       dateReceptionFicheContact,
-      onDateReceptionFicheContactChanged,
 
       statutIndexFicheContact,
       onStatutIndexFicheContactChanged,
@@ -185,7 +181,8 @@ class GestContacts extends Component {
 
     const {
       actions: {
-        onDateCreationFicheContactChanged
+        onDateCreationFicheContactChanged,
+        onDateReceptionFicheContactChanged
       }
     } = this.props;
 
@@ -687,7 +684,6 @@ GestContacts.propTypes = {
   creeParFicheContact: PropTypes.string.isRequired,
 
   dateReceptionFicheContact: PropTypes.string.isRequired,
-  onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
 
   statutIndexFicheContact: PropTypes.number.isRequired,
   onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
@@ -830,6 +826,7 @@ GestContacts.propTypes = {
     unsetIsCollapsedContactsFicheContact: PropTypes.func,
     // form update:
     onDateCreationFicheContactChanged: PropTypes.func.isRequired,
+    onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
     // //////////////////
     // fiche activites
     // /////////////////
