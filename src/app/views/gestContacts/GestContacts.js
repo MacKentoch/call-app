@@ -195,9 +195,6 @@ class GestContacts extends Component {
       listCanauxFicheActivite
     } = this.props;
 
-
-    // console.log('GestContact - listNumDossierFicheContact: ', listNumDossierFicheContact)
-
     return(
       <section
         className={cx({
