@@ -28,7 +28,8 @@ import {
 import {
   getGestContactsNewContact,
   getGestContactsExistingContact,
-  getGestContactsFicheContactInit
+  getGestContactsFicheContactInit,
+  getGestContactsFicheContactDomaineStatutfFromNumDossier
 }                                 from './gestContacts/gestContacts';
 export {
   getUserBoitesMails,
@@ -55,6 +56,7 @@ export {
   getGestContactsNewContact,
   getGestContactsExistingContact,
   getGestContactsFicheContactInit,
+  getGestContactsFicheContactDomaineStatutfFromNumDossier,
   // liste motifs reference:
   getGestContactsAllMotifs
 };
