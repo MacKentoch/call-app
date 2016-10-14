@@ -139,7 +139,7 @@ class GestContacts extends Component {
       numDossierIndexSelected,
 
       listNumDossierFicheContact,
-      onListNumDossierFicheContactChanged,
+      // onListNumDossierFicheContactChanged,
 
       domaineFicheContact,
       onDomaineFicheContactChanged,
@@ -336,7 +336,7 @@ class GestContacts extends Component {
                         onNumDossierIndexSelectedChanged={onNumDossierIndexSelectedChanged}
 
                         listNumDossierFicheContact={listNumDossierFicheContact}
-                        onListNumDossierFicheContactChanged={onListNumDossierFicheContactChanged}
+                        // onListNumDossierFicheContactChanged={onListNumDossierFicheContactChanged}
 
                         domaineFicheContact={domaineFicheContact}
                         onDomaineFicheContactChanged={onDomaineFicheContactChanged}
@@ -684,7 +684,7 @@ GestContacts.propTypes = {
   numDossierIndexSelected: PropTypes.number.isRequired,
 
   listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
+  // onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
 
   domaineFicheContact: PropTypes.string.isRequired,
   onDomaineFicheContactChanged: PropTypes.func.isRequired,

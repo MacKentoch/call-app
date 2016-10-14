@@ -52,7 +52,7 @@ class FicheContact extends Component {
       numDossierIndexSelected,
       onNumDossierIndexSelectedChanged,
       listNumDossierFicheContact,
-      onListNumDossierFicheContactChanged,
+      // onListNumDossierFicheContactChanged,
       domaineFicheContact,
       onDomaineFicheContactChanged,
       statutBenefFicheContact,
@@ -135,7 +135,7 @@ class FicheContact extends Component {
                 onNumDossierIndexSelectedChanged={onNumDossierIndexSelectedChanged}
 
                 listNumDossierFicheContact={listNumDossierFicheContact}
-                onListNumDossierFicheContactChanged={onListNumDossierFicheContactChanged}
+                // onListNumDossierFicheContactChanged={onListNumDossierFicheContactChanged}
 
                 domaineFicheContact={domaineFicheContact}
                 onDomaineFicheContactChanged={onDomaineFicheContactChanged}
@@ -209,7 +209,7 @@ FicheContact.propTypes = {
   onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
 
   listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
+  // onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
 
   domaineFicheContact: PropTypes.string.isRequired,
   onDomaineFicheContactChanged: PropTypes.func.isRequired,

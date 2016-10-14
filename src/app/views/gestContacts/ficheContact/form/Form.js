@@ -46,7 +46,7 @@ const Form = ({
   numDossierIndexSelected,
   onNumDossierIndexSelectedChanged,
   listNumDossierFicheContact,
-  onListNumDossierFicheContactChanged,
+  // onListNumDossierFicheContactChanged,
   domaineFicheContact,
   onDomaineFicheContactChanged,
   statutBenefFicheContact,
@@ -252,7 +252,7 @@ Form.propTypes = {
   onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
 
   listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
+  // onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
 
   domaineFicheContact: PropTypes.string.isRequired,
   onDomaineFicheContactChanged: PropTypes.func.isRequired,
