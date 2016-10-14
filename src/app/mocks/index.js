@@ -13,7 +13,7 @@ import { gestBenefDossierActiviteMock }       from './gestBenefDossierActiviteMo
 import { gestContactsMock }                   from './gestContactsMock';
 import { gestContactAllMotifsReferenceMock }  from './gestContactAllMotifsReference';
 import { gestContactFicheContactInitMock }    from './gestContactFicheContactInitMock';
-import { gestContactsNumDossierDomaineStatutBenefMock } from './gestContactsNumDossierDomaineStatutBenefMock';
+import { gestContactsNumDossierDomaineStatutBenefMock }     from './gestContactsNumDossierDomaineStatutBenefMock';
 import { gestContactsFicheContactGroupesDestinatairesMock } from './gestContactsFicheContactGroupesDestinatairesMock';
 
 export {

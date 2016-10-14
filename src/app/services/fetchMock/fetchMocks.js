@@ -14,7 +14,8 @@ import {
   gestContactsMock,
   gestContactAllMotifsReferenceMock,
   gestContactFicheContactInitMock,
-  gestContactsNumDossierDomaineStatutBenefMock
+  gestContactsNumDossierDomaineStatutBenefMock,
+  gestContactsFicheContactGroupesDestinatairesMock
 }                       from '../../mocks';
 
 import {
@@ -415,6 +416,26 @@ export const fetchMockGestContactsNumDossierDomaineStatutBenef = (benefId = 0, n
             infos => infos.numDossier === numDossier
           )[0]
         ),
+        timeToWait
+      );
+    }
+  );
+};
+
+/*
+    gestContacts fiche contact list groupe destintaires
+ */
+export const gestContactsFicheContactGroupesDestinatairesMock = (benefId = 0, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!benefId) {
+    return Promise.reject({
+      'error': 'gestContactsFicheContactGroupesDestinatairesMock error: benefId is not valid'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+        () => resolve([...gestContactsFicheContactGroupesDestinatairesMock]),
         timeToWait
       );
     }
