@@ -31,7 +31,6 @@ class FicheContactMotifs extends Component {
     return (
       <div className="row">
         <div className="col-xs-3">
-
           <div className="row">
             <div className="col-xs-12">
               <label
@@ -41,7 +40,6 @@ class FicheContactMotifs extends Component {
               </label>
             </div>
           </div>
-
           <div className="row">
             <div className="col-xs-12">
               {
@@ -66,7 +64,6 @@ class FicheContactMotifs extends Component {
               }
             </div>
           </div>
-
         </div>
         <div className="col-xs-9">
           {

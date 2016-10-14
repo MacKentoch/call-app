@@ -154,6 +154,9 @@ class GestContacts extends Component {
       groupeDestinataireIdSelected,
 
       listGroupeDestinataire,
+      listMotifLevel2,
+      listMotifLevel3,
+      listMotifLevel4
       // onListGroupeDestinataireChanged
     } = this.props;
 
@@ -755,6 +758,11 @@ GestContacts.propTypes = {
 
   selectedActiviteId: PropTypes.number.isRequired,
   listCanauxFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
+
+  listMotifLevel2: PropTypes.array.isRequired,
+  listMotifLevel3: PropTypes.array.isRequired,
+  listMotifLevel4: PropTypes.array.isRequired,
+
   activites: PropTypes.arrayOf(
     PropTypes.shape({
       activiteId: PropTypes.number.isRequired, // activite est un combinaison de motifLevel2+motifLevel3+motifLevel4
