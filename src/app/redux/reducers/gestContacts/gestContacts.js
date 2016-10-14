@@ -21,7 +21,14 @@ import {
 
   REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT,
   RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT,
-  ERROR_GET_GEST_CONTACTS_FICHE_CONTACT
+  ERROR_GET_GEST_CONTACTS_FICHE_CONTACT,
+  // form updates:
+  UPDATE_GEST_CONTACTS_DATE_CREATION,
+  UPDATE_GEST_CONTACTS_DATE_RECEPTION,
+  UPDATE_GEST_CONTACTS_STATUT_FICHE,
+  UPDATE_GEST_CONTACTS_DATE_CLOTURE,
+  UPDATE_GEST_CONTACTS_TYPE_INDEX,
+  UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX
 }                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
@@ -142,7 +149,6 @@ const initialState = {
 
 const gestContacts = (state = initialState, action) => {
   switch (action.type) {
-
   // /////////////////
   // common
   // ////////////////
@@ -399,6 +405,43 @@ const gestContacts = (state = initialState, action) => {
 
       error: action.error
     };
+  case UPDATE_GEST_CONTACTS_DATE_CREATION:
+    return {
+      ...state,
+      dateCreationFicheContact: action.dateCreationFicheContact,
+      actionTime: action.time
+    }
+  case UPDATE_GEST_CONTACTS_DATE_RECEPTION:
+    return {
+      ...state,
+      dateReceptionFicheContact: action.dateReceptionFicheContact,
+      actionTime: action.time
+    }
+  case UPDATE_GEST_CONTACTS_STATUT_FICHE:
+    return {
+      ...state,
+      statutIndexFicheContact: action.statutIndexFicheContact,
+      actionTime: action.time
+    }
+  case UPDATE_GEST_CONTACTS_DATE_CLOTURE:
+    return {
+      ...state,
+      dateClotureFicheContact: action.dateClotureFicheContact,
+      actionTime: action.time
+    }
+  case UPDATE_GEST_CONTACTS_TYPE_INDEX:
+    return {
+      ...state,
+      typeIndexFicheContact: action.typeIndexFicheContact,
+      actionTime: action.time
+    }
+  case UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX:
+    return {
+      ...state,
+      numDossierIndexSelected: action.numDossierIndexSelected,
+      actionTime: action.time
+    }
+
 
 
   // /////////////////

@@ -98,7 +98,7 @@ export const updateTypeIndexFicheContact = (typeIndex = null, time = moment().fo
 //    update updateNumDossierIndexSelected value
 //  -----------------------------------------------------------------
 export const updateNumDossierIndexSelected = (numDossierIndex = null, time = moment().format(formatDate)) => {
-  if (parseInt(numDossierIndex, 10) >= 0) {
+  if (numDossierIndex) {
     return {
       type: UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX,
       numDossierIndexSelected: numDossierIndex,

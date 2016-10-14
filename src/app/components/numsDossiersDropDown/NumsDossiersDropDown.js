@@ -37,7 +37,7 @@ class NumsDossiersDropDown extends Component {
             bsSize="sm"
             block
             bsStyle={'block'}
-            title={ this.valueIsNumDossier(value) ? value : ' --- ' }>
+            title={ this.valueIsNumDossier(value) ? value : '' }>
             {
               listNumDossierFicheContact.map(
                 (numDossier, idx) => {
@@ -60,13 +60,12 @@ class NumsDossiersDropDown extends Component {
   handlesOnChange(event, key) {
     event.preventDefault();
     const { onChange, listNumDossierFicheContact } = this.props;
-    onChange(key);
-    // onChange(listNumDossierFicheContact[key]);
+    onChange(listNumDossierFicheContact[key]);
   }
 
   valueIsNumDossier(value) {
     const { listNumDossierFicheContact } = this.props;
-    if (value) {
+    if (parseInt(value, 10) >= 0) {
       const index = listNumDossierFicheContact.findIndex(
         valeur => value === valeur
       );
