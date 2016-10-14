@@ -23,6 +23,10 @@ import {
   RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT,
   ERROR_GET_GEST_CONTACTS_FICHE_CONTACT,
 
+  REQUEST_SAVE_GEST_CONTACTS_FICHE_CONTACT,
+  RECEIVED_SAVE_GEST_CONTACTS_FICHE_CONTACT,
+  ERROR_SAVE_GEST_CONTACTS_FICHE_CONTACT,
+
   REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER,
   RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER,
   ERROR_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER,
@@ -468,6 +472,30 @@ const gestContacts = (state = initialState, action) => {
       groupeDestinataireIdSelected: action.groupeDestinataireIdSelected,
       actionTime: action.time
     };
+
+  case REQUEST_SAVE_GEST_CONTACTS_FICHE_CONTACT:
+    return {
+      ...state,
+      isFetchingFicheContact: action.isFetchingFicheContact,
+      isSavingFicheContact: action.isSavingFicheContact,
+      actionTime: action.time
+    };
+  case RECEIVED_SAVE_GEST_CONTACTS_FICHE_CONTACT:
+    return {
+      ...state,
+      isFetchingFicheContact: action.isFetchingFicheContact,
+      isSavingFicheContact: action.isSavingFicheContact,
+      actionTime: action.time
+    };
+  case ERROR_SAVE_GEST_CONTACTS_FICHE_CONTACT:
+    return {
+      ...state,
+      isFetchingFicheContact: action.isFetchingFicheContact,
+      isSavingFicheContact: action.isSavingFicheContact,
+      error: action.error,
+      actionTime: action.time
+    };
+
   // /////////////////
   // fiche activite
   // /////////////////
