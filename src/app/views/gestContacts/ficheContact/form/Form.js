@@ -67,7 +67,6 @@ const Form = ({
   onListGroupeDestinataireChanged,
   activites
 }) => {
-  console.log('---- attachmentsFicheContact: ', attachmentsFicheContact);
   return (
     <form role="form">
 
@@ -234,7 +233,7 @@ const Form = ({
         </div>
 
       </div>
-      <div style={{height: '20px'}}></div>
+      {/* <div style={{height: '20px'}}></div> */}
 
       {/* 7th row */}
       <div className="row">
@@ -250,10 +249,11 @@ const Form = ({
         <div className="col-xs-6">
           {/* buttons */}
           <div className="pull-right">
-            
+
           </div>
         </div>
       </div>
+      <div style={{height: '20px'}}></div>
     </form>
   );
 };

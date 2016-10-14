@@ -89,7 +89,7 @@ class FicheContact extends Component {
          <Collapse
            isOpened={!isCollapsedFicheContact}
            keepCollapsedContent={false}>
-           <div style={{ height: '650px' }}>
+           <div style={{ height: '670px' }}>
             <div className="row">
 
               <div className="col-xs-12">
