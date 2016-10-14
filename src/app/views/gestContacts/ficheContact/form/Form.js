@@ -9,7 +9,8 @@ import {
   NumsDossiersDropDown,
   TypeFicheContactNavPills,
   StatutBenefFicheContactDropDown,
-  FicheContactGroupeDestinataireDropDown
+  FicheContactGroupeDestinataireDropDown,
+  FicheContactMotifs
 }                           from '../../../../components';
 import {
   isValidDateOrReturnDefault
@@ -204,6 +205,14 @@ const Form = ({
             id="labelStatut"
             label={'Statut'}
             value={listStatutBenefFicheContact[statutIndexFicheContact] ? listStatutBenefFicheContact[statutIndexFicheContact] : ' --- '}
+          />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-xs-12">
+          <FicheContactMotifs
+
           />
         </div>
       </div>

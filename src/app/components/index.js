@@ -33,6 +33,7 @@ import NumsDossiersDropDown from './numsDossiersDropDown/NumsDossiersDropDown';
 import StatutBenefFicheContactDropDown from './statutBenefFicheContactDropDown/StatutBenefFicheContactDropDown';
 import FicheContactGroupeDestinataireDropDown from './ficheContactGroupeDestinataireDropDown/FicheContactGroupeDestinataireDropDown';
 import TextAreaInput from './textInput/TextAreaInput';
+import FicheContactMotifs from './ficheContactMotifs/FicheContactMotifs';
 import {
   FichesTraitee,
   FichesParCanal,
@@ -73,6 +74,7 @@ export {
   NumsDossiersDropDown,
   StatutBenefFicheContactDropDown,
   FicheContactGroupeDestinataireDropDown,
+  FicheContactMotifs,
 
   // mailbox
   MailboxRepertoires,
