@@ -197,8 +197,4 @@ FicheContactMotifs.propTypes = {
   ).isRequired
 };
 
-FicheContactMotifs.defaultProps = {
-  isEditing: false
-};
-
 export default FicheContactMotifs;
