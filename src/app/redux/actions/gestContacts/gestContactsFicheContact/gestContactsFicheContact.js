@@ -2,7 +2,9 @@ import moment               from 'moment';
 import { appConfig }        from '../../../../config';
 import {
   fetchMockGetGestContactsFicheContact,
-  getGestContactsFicheContactInit
+  getGestContactsFicheContactInit,
+  getGestContactsFicheContactDomaineStatutfFromNumDossier,
+  fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
 }                           from '../../../../services';
 
 moment.locale('fr');
@@ -305,7 +307,7 @@ const errorGetGestContactsBenefInfoFromNumDossier = (error, time = moment().form
 
 const getQueryGestContactsBenefInfoFromNumDossier = (benefId = 0, numDossier = null) => dispatch => {
   if (!benefId) {
-    dispatch(errorGetGestContactsFicheContact('getQueryGestContactsBenefInfoFromNumDossier API error: benefId is not defined or not valid'));
+    dispatch(errorGetGestContactsBenefInfoFromNumDossier('getQueryGestContactsBenefInfoFromNumDossier API error: benefId is not defined or not valid'));
     return Promise.reject({
       message: 'Rafraichissement des données suite à la sélection de "numDossier" de la fiche de contact en erreur (identifiant de bénéficaire non valide)',
       level: 'error',
@@ -313,7 +315,7 @@ const getQueryGestContactsBenefInfoFromNumDossier = (benefId = 0, numDossier = n
     });
   }
   if (!numDossier) {
-    dispatch(errorGetGestContactsFicheContact('getQueryGestContactsBenefInfoFromNumDossier API error: numDossier is not defined or not valid'));
+    dispatch(errorGetGestContactsBenefInfoFromNumDossier('getQueryGestContactsBenefInfoFromNumDossier API error: numDossier is not defined or not valid'));
     return Promise.reject({
       message: 'Rafraichissement des données suite à la sélection de "numDossier" de la fiche de contact en erreur (numDossier non valide)',
       level: 'error',
@@ -321,15 +323,15 @@ const getQueryGestContactsBenefInfoFromNumDossier = (benefId = 0, numDossier = n
     });
   }
 
-  dispatch(requestGetGestContactsFicheContact(contactId));
+  dispatch(requestGetGestContactsBenefInfoFromNumDossier(benefId, numDossier));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockGetGestContactsFicheContact(contactId) // mock is the as all gestBenef object
+    return fetchMockGetGestBenefContactsAndActivitesForThisNumDossier(benefId, numDossier) // mock is the as all gestBenef object
             .then(
               data => {
-                dispatch(receivedGetGestContactsFicheContact(data));
+                dispatch(receivedGetGestContactsBenefInfoFromNumDossier(data));
                 return Promise.resolve({
-                  message: 'Données "Contact" de la fiche de contact raffraichies',
+                  message: 'Rafraichissement des données suite à la sélection de "numDossier" terminé avec succès.',
                   level: 'success',
                   showNotification: true
                 });
@@ -337,21 +339,21 @@ const getQueryGestContactsBenefInfoFromNumDossier = (benefId = 0, numDossier = n
             )
             .catch(
               err => {
-                dispatch(errorGetGestContactsFicheContact(err));
+                dispatch(errorGetGestContactsBenefInfoFromNumDossier(err));
                 return Promise.reject({
-                  message: 'Données "Contact" de la fiche de contact non raffraichies',
+                  message: 'Rafraichissement des données suite à la sélection de "numDossier" en erreur.',
                   level: 'error',
                   showNotification: true
                 });
               }
             );
   } else {
-    return getGestContactsFicheContactInit(contactId)
+    return getGestContactsFicheContactDomaineStatutfFromNumDossier(benefId, numDossier)
             .then(
               response => {
-                dispatch(receivedGetGestContactsFicheContact(response));
+                dispatch(receivedGetGestContactsBenefInfoFromNumDossier(response));
                 return Promise.resolve({
-                  message: 'Données "Contact" de la fiche de contact raffraichies',
+                  message: 'Rafraichissement des données suite à la sélection de "numDossier" terminé avec succès.',
                   level: 'success',
                   showNotification: true
                 });
@@ -359,9 +361,9 @@ const getQueryGestContactsBenefInfoFromNumDossier = (benefId = 0, numDossier = n
             )
             .catch(
               error => {
-                dispatch(errorGetGestContactsFicheContact(error));
+                dispatch(errorGetGestContactsBenefInfoFromNumDossier(error));
                 return Promise.reject({
-                  message: 'Données "Contact" de la fiche de contact non raffraichies',
+                  message: 'Rafraichissement des données suite à la sélection de "numDossier" en erreur.',
                   level: 'error',
                   showNotification: true
                 });
@@ -370,12 +372,12 @@ const getQueryGestContactsBenefInfoFromNumDossier = (benefId = 0, numDossier = n
   }
 };
 
-export const getGestContactsBenefInfoFromNumDossierIfNeeded = (contactId) => (dispatch, getState) => {
+export const getGestContactsBenefInfoFromNumDossierIfNeeded = (benefId, numDossier) => (dispatch, getState) => {
   if (shouldGetGestContactsBenefInfoFromNumDossier(getState())) {
-    return dispatch(getQueryGestContactsBenefInfoFromNumDossier(contactId));
+    return dispatch(getQueryGestContactsBenefInfoFromNumDossier(benefId, numDossier));
   }
   return Promise.resolve({
-    message: 'fetch des modifications des informations "Contact" de la fiche de contact déjà en cours',
+    message: 'fetch des des données suite à la sélection de "numDossier" de la fiche de contact déjà en cours',
     level: 'info',
     showNotification: false
   });
