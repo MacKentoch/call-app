@@ -37,7 +37,7 @@ class NumsDossiersDropDown extends Component {
             bsSize="sm"
             block
             bsStyle={'block'}
-            title={ this.valueIsNumDossier(value) ? value : '' }>
+            title={ this.valueIsNumDossier(value) ? value : ' --- ' }>
             {
               listNumDossierFicheContact.map(
                 (numDossier, idx) => {

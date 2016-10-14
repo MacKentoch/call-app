@@ -142,7 +142,6 @@ class GestContacts extends Component {
       // onListNumDossierFicheContactChanged,
 
       domaineFicheContact,
-      onDomaineFicheContactChanged,
 
       statutBenefFicheContact,
       onStatutBenefFicheContactChanged,
@@ -171,6 +170,7 @@ class GestContacts extends Component {
         // onDateClotureFicheContactChanged,
         onTypeIndexFicheContactChanged,
         onNumDossierIndexSelectedChanged,
+        onDomaineFicheContactChanged,
       }
     } = this.props;
 
@@ -672,22 +672,15 @@ GestContacts.propTypes = {
   dateClotureFicheContact: PropTypes.string.isRequired,
   clotureParFicheContact: PropTypes.string.isRequired,
   typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
-
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
-
   canalIndexFicheContact: PropTypes.number.isRequired,
   // onCanalIndexFicheContactChanged: PropTypes.func.isRequired,
-
   listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
   // onListCanauxFicheContactChanged: PropTypes.func.isRequired,
-
   numDossierIndexSelected: PropTypes.number.isRequired,
-
   listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
   // onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
-
   domaineFicheContact: PropTypes.string.isRequired,
-  onDomaineFicheContactChanged: PropTypes.func.isRequired,
 
   statutBenefFicheContact: PropTypes.string.isRequired,
   onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
@@ -802,6 +795,7 @@ GestContacts.propTypes = {
     onDateClotureFicheContactChanged: PropTypes.func.isRequired,
     onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
     onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
+    onDomaineFicheContactChanged: PropTypes.func.isRequired,
     // //////////////////
     // fiche activites
     // /////////////////
