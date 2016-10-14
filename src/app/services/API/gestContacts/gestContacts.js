@@ -45,7 +45,7 @@ export const getGestContactsExistingContact = (benefId, contactId) => {
 
 export const getGestContactsFicheContactInit = contactId => {
   if (!contactId) {
-    return Promise.reject({error: 'getGestContactsFicheContact API: benefId is not valid'});
+    return Promise.reject({error: 'getGestContactsFicheContact API: contactId is not valid'});
   }
   const api = appConfig.gestFicheContact.getData.API;
   const url = `${getLocationOrigin()}/${api}/${contactId}`;
@@ -58,7 +58,10 @@ export const getGestContactsFicheContactInit = contactId => {
     .catch(error => Promise.reject(error));
 };
 
-export const getGestContactsFicheContactDomaineStatutfFromNumDossier = (numDossier = null) => {
+export const getGestContactsFicheContactDomaineStatutfFromNumDossier = (benefId = 0, numDossier = null) => {
+  if (!benefId) {
+    return Promise.reject({error: 'getGestContactsFicheContactDomaineStatutfFromNumDossier API: benefId is not valid'});
+  }
   if (!numDossier) {
     return Promise.reject({error: 'getGestContactsFicheContactDomaineStatutfFromNumDossier API: numDossier is not valid'});
   }
