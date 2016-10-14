@@ -27,7 +27,11 @@ class ListAttachments extends Component {
           htmlFor={id}>
           {label}
         </label>
-        <div>
+        <div
+          style={{
+            height: '220px',
+            overflowY: 'scroll'
+          }}>
           {
             attachments.map(
               ({ type, name, filePath, size }, idx) => {

@@ -208,11 +208,7 @@ const Form = ({
       {/* 5th row */}
       <div className="row">
         <div
-          className="col-xs-12"
-          style={{
-            height: '220px',
-            overflowY: 'scroll'
-          }}>
+          className="col-xs-12">
           <ListAttachments
             id={'ficheContactPJ'}
             label={'Pièces jointes reçus'}

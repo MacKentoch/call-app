@@ -17,6 +17,30 @@ export const gestContactFicheContactInitMock = {
       name: 'fake.pdf',
       filePath: '#',
       size: '1.23kb'
+    },
+    {
+      type: 'doc',
+      name: 'fakeDoc.pdf',
+      filePath: '#',
+      size: '100.87kb'
+    },
+    {
+      type: 'xlsx',
+      name: 'fakeXlsx.pdf',
+      filePath: '#',
+      size: '21.00kb'
+    },
+    {
+      type: 'pdf',
+      name: 'fake.pdf',
+      filePath: '#',
+      size: '1.23kb'
+    },
+    {
+      type: 'pdf',
+      name: 'fake.pdf',
+      filePath: '#',
+      size: '1.23kb'
     }
   ],
   commentaireFicheContact: '',
