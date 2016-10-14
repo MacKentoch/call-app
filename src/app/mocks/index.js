@@ -14,6 +14,7 @@ import { gestContactsMock }                   from './gestContactsMock';
 import { gestContactAllMotifsReferenceMock }  from './gestContactAllMotifsReference';
 import { gestContactFicheContactInitMock }    from './gestContactFicheContactInitMock';
 import { gestContactsNumDossierDomaineStatutBenefMock } from './gestContactsNumDossierDomaineStatutBenefMock';
+import { gestContactsFicheContactGroupesDestinatairesMock } from './gestContactsFicheContactGroupesDestinatairesMock';
 
 export {
   motifsContacts,
@@ -37,5 +38,7 @@ export {
   // fiche contact + activite init:
   gestContactFicheContactInitMock,
 
-  gestContactsNumDossierDomaineStatutBenefMock
+  gestContactsNumDossierDomaineStatutBenefMock,
+
+  gestContactsFicheContactGroupesDestinatairesMock
 };
