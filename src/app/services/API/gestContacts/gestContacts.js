@@ -57,3 +57,18 @@ export const getGestContactsFicheContactInit = contactId => {
     .then(data => data)
     .catch(error => Promise.reject(error));
 };
+
+export const getGestContactsFicheContactDomaineStatutfFromNumDossier = (numDossier = null) => {
+  if (!numDossier) {
+    return Promise.reject({error: 'getGestContactsFicheContactDomaineStatutfFromNumDossier API: numDossier is not valid'});
+  }
+  const api = appConfig.gestFicheContactBenefInfoFromNumDossier.getData.API;
+  const url = `${getLocationOrigin()}/${api}/${numDossier}`;
+  const options = {...defaultOptions};
+
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(error => Promise.reject(error));
+};

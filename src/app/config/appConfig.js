@@ -261,6 +261,12 @@ export const appConfig = {
     }
   },
 
+  gestFicheContactBenefInfoFromNumDossier: {
+    getData: {
+      API: 'api/getFicheContactBenefInfoFromNumDossier'
+    }
+  },
+
   // userGroupActivity config
   userGroupActivity: {
     data: {
