@@ -41,7 +41,7 @@ class FicheContact extends Component {
       onStatutIndexFicheContactChanged,
       listStatutFicheContact,
       dateClotureFicheContact,
-      onDateClotureFicheContactChanged,
+      // onDateClotureFicheContactChanged,
       clotureParFicheContact,
       // onClotureParFicheContactChanged,
       typeIndexFicheContact,
@@ -65,11 +65,11 @@ class FicheContact extends Component {
       commentaireFicheContact,
       onCommentaireFicheContactChanged,
       groupeDestinataireIsActive,
-      onGroupeDestinataireIsActiveChanged,
+      // onGroupeDestinataireIsActiveChanged,
       groupeDestinataireIdSelected,
       onGroupeDestinataireIdSelectedChanged,
       listGroupeDestinataire,
-      onListGroupeDestinataireChanged,
+      // onListGroupeDestinataireChanged,
       activites
     } = this.props;
 
@@ -125,7 +125,7 @@ class FicheContact extends Component {
                    listStatutFicheContact={listStatutFicheContact}
 
                    dateClotureFicheContact={dateClotureFicheContact}
-                   onDateClotureFicheContactChanged={onDateClotureFicheContactChanged}
+                  //  onDateClotureFicheContactChanged={onDateClotureFicheContactChanged}
 
                    clotureParFicheContact={clotureParFicheContact}
                    // onClotureParFicheContactChanged={onClotureParFicheContactChanged}
@@ -160,13 +160,13 @@ class FicheContact extends Component {
                    onCommentaireFicheContactChanged={onCommentaireFicheContactChanged}
 
                    groupeDestinataireIsActive={groupeDestinataireIsActive}
-                   onGroupeDestinataireIsActiveChanged={onGroupeDestinataireIsActiveChanged}
+                  //  onGroupeDestinataireIsActiveChanged={onGroupeDestinataireIsActiveChanged}
 
                    groupeDestinataireIdSelected={groupeDestinataireIdSelected}
                    onGroupeDestinataireIdSelectedChanged={onGroupeDestinataireIdSelectedChanged}
 
                    listGroupeDestinataire={listGroupeDestinataire}
-                   onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
+                  //  onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
 
                    activites={activites}
 
@@ -249,7 +249,7 @@ FicheContact.propTypes = {
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   dateClotureFicheContact: PropTypes.string.isRequired,
-  onDateClotureFicheContactChanged: PropTypes.func.isRequired,
+  // onDateClotureFicheContactChanged: PropTypes.func.isRequired,
 
   clotureParFicheContact: PropTypes.string.isRequired,
   // onClotureParFicheContactChanged: PropTypes.func.isRequired,
@@ -293,7 +293,7 @@ FicheContact.propTypes = {
   onCommentaireFicheContactChanged: PropTypes.func.isRequired,
 
   groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
-  onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
+  // onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
 
   groupeDestinataireIdSelected: PropTypes.number.isRequired,
   onGroupeDestinataireIdSelectedChanged: PropTypes.func.isRequired,
@@ -304,7 +304,7 @@ FicheContact.propTypes = {
       libelle: PropTypes.string
     })
   ).isRequired, // to fill from server query
-  onListGroupeDestinataireChanged: PropTypes.func.isRequired,
+  // onListGroupeDestinataireChanged: PropTypes.func.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

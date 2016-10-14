@@ -60,11 +60,11 @@ const Form = ({
   commentaireFicheContact,
   onCommentaireFicheContactChanged,
   groupeDestinataireIsActive,
-  onGroupeDestinataireIsActiveChanged,
+  // onGroupeDestinataireIsActiveChanged,
   groupeDestinataireIdSelected,
   onGroupeDestinataireIdSelectedChanged,
   listGroupeDestinataire,
-  onListGroupeDestinataireChanged,
+  // onListGroupeDestinataireChanged,
   activites,
   saveFicheContact
 }) => {
@@ -315,7 +315,7 @@ Form.propTypes = {
   onCommentaireFicheContactChanged: PropTypes.func.isRequired,
 
   groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
-  onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
+  // onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
 
   groupeDestinataireIdSelected: PropTypes.number.isRequired,
   onGroupeDestinataireIdSelectedChanged: PropTypes.func.isRequired,
@@ -326,7 +326,7 @@ Form.propTypes = {
       libelle: PropTypes.string
     })
   ).isRequired, // to fill from server query
-  onListGroupeDestinataireChanged: PropTypes.func.isRequired,
+  // onListGroupeDestinataireChanged: PropTypes.func.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

@@ -150,11 +150,11 @@ class GestContacts extends Component {
       // onAttachmentsFicheContactChanged,
       commentaireFicheContact,
       groupeDestinataireIsActive,
-      onGroupeDestinataireIsActiveChanged,
+      // onGroupeDestinataireIsActiveChanged,
       groupeDestinataireIdSelected,
 
       listGroupeDestinataire,
-      onListGroupeDestinataireChanged
+      // onListGroupeDestinataireChanged
     } = this.props;
 
     const {
@@ -299,6 +299,8 @@ class GestContacts extends Component {
 
                         contactId={contactId}
 
+                        lastFetchTimeFicheActivite={lastFetchTimeFicheActivite}
+
                         isCollapsedFicheContact={isCollapsedFicheContact}
                         onCollapseClick={this.handlesOnFicheContactCollapseClick}
                         lastFetchTimeFicheContact={lastFetchTimeFicheContact}
@@ -355,13 +357,13 @@ class GestContacts extends Component {
                         onCommentaireFicheContactChanged={onCommentaireFicheContactChanged}
 
                         groupeDestinataireIsActive={groupeDestinataireIsActive}
-                        onGroupeDestinataireIsActiveChanged={onGroupeDestinataireIsActiveChanged}
+                        // onGroupeDestinataireIsActiveChanged={onGroupeDestinataireIsActiveChanged}
 
                         groupeDestinataireIdSelected={groupeDestinataireIdSelected}
                         onGroupeDestinataireIdSelectedChanged={onGroupeDestinataireIdSelectedChanged}
 
                         listGroupeDestinataire={listGroupeDestinataire}
-                        onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
+                        // onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
 
                         activites={activites}
 
@@ -374,7 +376,7 @@ class GestContacts extends Component {
                         isCollapsedFicheActivite={isCollapsedFicheActivite}
                         onCollapseClick={this.handlesOnFicheActiviteCollapseClick}
                         isFetchingFicheActivite={isFetchingFicheActivite}
-                        lastFetchTimeFicheActivite={lastFetchTimeFicheActivite}
+                        lastFetchTimeActivites={lastFetchTimeFicheActivite}
                         isSavingActivite={isSavingActivite}
                         activiteIdBeingEditing={activiteIdBeingEditing}
                         selectedActiviteId={selectedActiviteId}
@@ -730,7 +732,7 @@ GestContacts.propTypes = {
   // onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
   commentaireFicheContact: PropTypes.string.isRequired,
   groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
-  onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
+  // onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
   groupeDestinataireIdSelected: PropTypes.number.isRequired,
 
   listGroupeDestinataire: PropTypes.arrayOf(
@@ -739,7 +741,7 @@ GestContacts.propTypes = {
       libelle: PropTypes.string
     })
   ).isRequired, // to fill from server query
-  onListGroupeDestinataireChanged: PropTypes.func.isRequired,
+  // onListGroupeDestinataireChanged: PropTypes.func.isRequired,
 
   // ///////////////////////
   // fiche activite data
@@ -821,7 +823,7 @@ GestContacts.propTypes = {
     onDateCreationFicheContactChanged: PropTypes.func.isRequired,
     onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
     onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
-    onDateClotureFicheContactChanged: PropTypes.func.isRequired,
+    // onDateClotureFicheContactChanged: PropTypes.func.isRequired,
     onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
     onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
     onDomaineFicheContactChanged: PropTypes.func.isRequired,
