@@ -28,6 +28,9 @@ export const UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX     = 'UPDATE_GEST_CONTACTS_
 export const UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT = 'UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT';
 export const UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT = 'UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT';
 
+export const REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER  = 'REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER';
+export const RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER = 'RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER';
+export const ERROR_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER    = 'ERROR_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER';
 
 //  -----------------------------------------------------------------
 //    update dateCreationFicheContact value
@@ -136,6 +139,7 @@ export const updateCommentaireFicheContactChanged = (commentaires = null, time =
   }
   return false;
 };
+
 
 //  -----------------------------------------------------------------
 //    GET contacts contact
@@ -267,3 +271,122 @@ export const unsetIsCollapsedContactsFicheContact = (time = moment().format(form
     time
   };
 };
+
+
+//  -----------------------------------------------------------------
+//    GET contacts contact benef info from numDossier
+//  -----------------------------------------------------------------
+const requestGetGestContactsBenefInfoFromNumDossier = (benefId = 0, numDossier = null, time = moment().format(formatDate)) => {
+  return {
+    type: REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER,
+    isFetchingBenefInfoFromNumDossier : true,
+    benefId,
+    numDossier,
+    time
+  };
+};
+const receivedGetGestContactsBenefInfoFromNumDossier = (benefInfos, time = moment().format(formatDate)) => {
+  return {
+    type: RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER,
+    isFetchingBenefInfoFromNumDossier : false,
+    benefInfos,
+    time
+  };
+};
+const errorGetGestContactsBenefInfoFromNumDossier = (error, time = moment().format(formatDate)) => {
+  return {
+    type: ERROR_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER,
+    isFetchingBenefInfoFromNumDossier : false,
+    data: [],
+    error,
+    time
+  };
+};
+
+const getQueryGestContactsBenefInfoFromNumDossier = (benefId = 0, numDossier = null) => dispatch => {
+  if (!benefId) {
+    dispatch(errorGetGestContactsFicheContact('getQueryGestContactsBenefInfoFromNumDossier API error: benefId is not defined or not valid'));
+    return Promise.reject({
+      message: 'Rafraichissement des données suite à la sélection de "numDossier" de la fiche de contact en erreur (identifiant de bénéficaire non valide)',
+      level: 'error',
+      showNotification: true
+    });
+  }
+  if (!numDossier) {
+    dispatch(errorGetGestContactsFicheContact('getQueryGestContactsBenefInfoFromNumDossier API error: numDossier is not defined or not valid'));
+    return Promise.reject({
+      message: 'Rafraichissement des données suite à la sélection de "numDossier" de la fiche de contact en erreur (numDossier non valide)',
+      level: 'error',
+      showNotification: true
+    });
+  }
+
+  dispatch(requestGetGestContactsFicheContact(contactId));
+  if (appConfig.DEV_MODE) {
+    // DEV ONLY
+    return fetchMockGetGestContactsFicheContact(contactId) // mock is the as all gestBenef object
+            .then(
+              data => {
+                dispatch(receivedGetGestContactsFicheContact(data));
+                return Promise.resolve({
+                  message: 'Données "Contact" de la fiche de contact raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
+            )
+            .catch(
+              err => {
+                dispatch(errorGetGestContactsFicheContact(err));
+                return Promise.reject({
+                  message: 'Données "Contact" de la fiche de contact non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
+            );
+  } else {
+    return getGestContactsFicheContactInit(contactId)
+            .then(
+              response => {
+                dispatch(receivedGetGestContactsFicheContact(response));
+                return Promise.resolve({
+                  message: 'Données "Contact" de la fiche de contact raffraichies',
+                  level: 'success',
+                  showNotification: true
+                });
+              }
+            )
+            .catch(
+              error => {
+                dispatch(errorGetGestContactsFicheContact(error));
+                return Promise.reject({
+                  message: 'Données "Contact" de la fiche de contact non raffraichies',
+                  level: 'error',
+                  showNotification: true
+                });
+              }
+            );
+  }
+};
+
+export const getGestContactsBenefInfoFromNumDossierIfNeeded = (contactId) => (dispatch, getState) => {
+  if (shouldGetGestContactsBenefInfoFromNumDossier(getState())) {
+    return dispatch(getQueryGestContactsBenefInfoFromNumDossier(contactId));
+  }
+  return Promise.resolve({
+    message: 'fetch des modifications des informations "Contact" de la fiche de contact déjà en cours',
+    level: 'info',
+    showNotification: false
+  });
+};
+
+function shouldGetGestContactsBenefInfoFromNumDossier(state) {
+  const gestContact = state.gestContacts;
+  // just check wether fetching (assuming data could be refreshed and should not persist in store)
+  if (gestContact.isFetchingBenefInfoFromNumDossier) {
+    return false;
+  } else {
+    return true;
+  }
+}
