@@ -31,6 +31,7 @@ import TypeFicheContactRadio from './typeFicheContactRadio/TypeFicheContactRadio
 import TypeFicheContactNavPills from './typeFicheContactNavPills/TypeFicheContactNavPills';
 import NumsDossiersDropDown from './numsDossiersDropDown/NumsDossiersDropDown';
 import StatutBenefFicheContactDropDown from './statutBenefFicheContactDropDown/StatutBenefFicheContactDropDown';
+import TextAreaInput from './textInput/TextAreaInput';
 import {
   FichesTraitee,
   FichesParCanal,
@@ -64,6 +65,7 @@ export {
   EditValidIcons,
   TelephoneInput,
   NumssInput,
+  TextAreaInput,
   StatutFicheDropDown,
   TypeFicheContactRadio,
   TypeFicheContactNavPills,
