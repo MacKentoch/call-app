@@ -13,6 +13,7 @@ import { gestBenefDossierActiviteMock }       from './gestBenefDossierActiviteMo
 import { gestContactsMock }                   from './gestContactsMock';
 import { gestContactAllMotifsReferenceMock }  from './gestContactAllMotifsReference';
 import { gestContactFicheContactInitMock }    from './gestContactFicheContactInitMock';
+import { gestContactsNumDossierDomaineStatutBenefMock } from './gestContactsNumDossierDomaineStatutBenefMock';
 
 export {
   motifsContacts,
@@ -34,5 +35,7 @@ export {
   // list motifs reference:
   gestContactAllMotifsReferenceMock,
   // fiche contact + activite init:
-  gestContactFicheContactInitMock
+  gestContactFicheContactInitMock,
+
+  gestContactsNumDossierDomaineStatutBenefMock
 };
