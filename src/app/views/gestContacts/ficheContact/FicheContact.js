@@ -70,8 +70,7 @@ class FicheContact extends Component {
       onGroupeDestinataireIdSelectedChanged,
       listGroupeDestinataire,
       onListGroupeDestinataireChanged,
-      activites,
-      saveFicheContact
+      activites
     } = this.props;
 
     return (
