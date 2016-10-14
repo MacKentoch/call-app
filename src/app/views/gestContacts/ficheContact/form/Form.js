@@ -51,10 +51,10 @@ const Form = ({
   domaineFicheContact,
   onDomaineFicheContactChanged,
   statutBenefFicheContact,
-  onStatutBenefFicheContactChanged,
+  // onStatutBenefFicheContactChanged,
   listStatutBenefFicheContact,
   attachmentsFicheContact,
-  onAttachmentsFicheContactChanged,
+  // onAttachmentsFicheContactChanged,
   commentaireFicheContact,
   onCommentaireFicheContactChanged,
   groupeDestinataireIsActive,
@@ -188,21 +188,20 @@ const Form = ({
           />
         </div>
 
-
         {/* statut */}
         <div className="col-xs-3">
-          <StatutBenefFicheContactDropDown
+          {/* <StatutBenefFicheContactDropDown
             id="statutBenefDropDownFicheContact"
             label={'Statut'}
             value={statutBenefFicheContact}
             onChange={onStatutBenefFicheContactChanged}
             listStatutBenefFicheContact={listStatutBenefFicheContact}
-          />
-          {/* <FormLabel
+          /> */}
+          <FormLabel
             id="labelStatut"
             label={'Statut'}
-            value={listStatutFicheContact[statutIndexFicheContact] ? listStatutFicheContact[statutIndexFicheContact] : ' --- '}
-          /> */}
+            value={listStatutBenefFicheContact[statutIndexFicheContact] ? listStatutBenefFicheContact[statutIndexFicheContact] : ' --- '}
+          />
         </div>
       </div>
 
@@ -269,7 +268,7 @@ Form.propTypes = {
   onDomaineFicheContactChanged: PropTypes.func.isRequired,
 
   statutBenefFicheContact: PropTypes.string.isRequired,
-  onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
+  // onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
 
   listStatutBenefFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
@@ -281,7 +280,7 @@ Form.propTypes = {
       size: PropTypes.string.isRequired
     })
   ).isRequired,
-  onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
+  // onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
 
   commentaireFicheContact: PropTypes.string.isRequired,
   onCommentaireFicheContactChanged: PropTypes.func.isRequired,

@@ -56,10 +56,10 @@ class FicheContact extends Component {
       domaineFicheContact,
       onDomaineFicheContactChanged,
       statutBenefFicheContact,
-      onStatutBenefFicheContactChanged,
+      // onStatutBenefFicheContactChanged,
       listStatutBenefFicheContact,
       attachmentsFicheContact,
-      onAttachmentsFicheContactChanged,
+      // onAttachmentsFicheContactChanged,
       commentaireFicheContact,
       onCommentaireFicheContactChanged,
       groupeDestinataireIsActive,
@@ -144,10 +144,10 @@ class FicheContact extends Component {
                 onDomaineFicheContactChanged={onDomaineFicheContactChanged}
 
                 statutBenefFicheContact={statutBenefFicheContact}
-                onStatutBenefFicheContactChanged= {onStatutBenefFicheContactChanged}
+                // onStatutBenefFicheContactChanged= {onStatutBenefFicheContactChanged}
 
                 attachmentsFicheContact={attachmentsFicheContact}
-                onAttachmentsFicheContactChanged={onAttachmentsFicheContactChanged}
+                // onAttachmentsFicheContactChanged={onAttachmentsFicheContactChanged}
 
                 commentaireFicheContact={commentaireFicheContact}
                 onCommentaireFicheContactChanged={onCommentaireFicheContactChanged}
@@ -218,7 +218,7 @@ FicheContact.propTypes = {
   onDomaineFicheContactChanged: PropTypes.func.isRequired,
 
   statutBenefFicheContact: PropTypes.string.isRequired,
-  onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
+  // onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
 
   listStatutBenefFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
@@ -230,7 +230,7 @@ FicheContact.propTypes = {
       size: PropTypes.string.isRequired
     })
   ).isRequired,
-  onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
+  // onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
 
   commentaireFicheContact: PropTypes.string.isRequired,
   onCommentaireFicheContactChanged: PropTypes.func.isRequired,

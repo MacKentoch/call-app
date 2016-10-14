@@ -143,10 +143,10 @@ class GestContacts extends Component {
 
       statutBenefFicheContact,
       listStatutBenefFicheContact,
-      onStatutBenefFicheContactChanged,
+      // onStatutBenefFicheContactChanged,
 
       attachmentsFicheContact,
-      onAttachmentsFicheContactChanged,
+      // onAttachmentsFicheContactChanged,
 
       commentaireFicheContact,
       onCommentaireFicheContactChanged,
@@ -341,12 +341,12 @@ class GestContacts extends Component {
                         onDomaineFicheContactChanged={onDomaineFicheContactChanged}
 
                         statutBenefFicheContact={statutBenefFicheContact}
-                        onStatutBenefFicheContactChanged= {onStatutBenefFicheContactChanged}
+                        // onStatutBenefFicheContactChanged= {onStatutBenefFicheContactChanged}
 
                         listStatutBenefFicheContact={listStatutBenefFicheContact}
 
                         attachmentsFicheContact={attachmentsFicheContact}
-                        onAttachmentsFicheContactChanged={onAttachmentsFicheContactChanged}
+                        // onAttachmentsFicheContactChanged={onAttachmentsFicheContactChanged}
 
                         commentaireFicheContact={commentaireFicheContact}
                         onCommentaireFicheContactChanged={onCommentaireFicheContactChanged}
@@ -682,7 +682,7 @@ GestContacts.propTypes = {
   domaineFicheContact: PropTypes.string.isRequired,
 
   statutBenefFicheContact: PropTypes.string.isRequired,
-  onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
+  // onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
 
   listStatutBenefFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
@@ -694,7 +694,7 @@ GestContacts.propTypes = {
       size: PropTypes.string.isRequired
     })
   ).isRequired,
-  onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
+  // onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
 
   commentaireFicheContact: PropTypes.string.isRequired,
   onCommentaireFicheContactChanged: PropTypes.func.isRequired,
