@@ -138,8 +138,8 @@ const initialState = {
 
   groupeDestinataireIsActive: true,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
   groupeDestinataireIdSelected: 0,
-  defaultGroupeDestinataireValue: 'Choisir le groupe destinataire',
-  listGroupeDestinataire: ['Choisir le groupe destinataire'], // to fill from server query
+  defaultGroupeDestinataireValue: {id: 0, libelle: 'Choisir le groupe destinataire'},
+  listGroupeDestinataire: [{id: 0, libelle: 'Choisir le groupe destinataire'}], // to fill from server query
 
   // fiche activites + ficheContactMotifs
   isCollapsedFicheActivite: false,
@@ -389,7 +389,7 @@ const gestContacts = (state = initialState, action) => {
         : initialState.groupeDestinataireIdSelected,
       // dont forget to add initialState.defaultGroupeDestinataireValue as 1st element
       listGroupeDestinataire: action.ficheContact && action.ficheContact.listGroupeDestinataire
-        ? [initialState.defaultGroupeDestinataireValue, ...action.ficheContact.listGroupeDestinataire]
+        ? [{...initialState.defaultGroupeDestinataireValue}, ...action.ficheContact.listGroupeDestinataire]
         : [...initialState.listGroupeDestinataire],
       activiteIdBeingEditing: action.ficheContact && action.ficheContact.activiteIdBeingEditing
         ? action.ficheContact.activiteIdBeingEditing
