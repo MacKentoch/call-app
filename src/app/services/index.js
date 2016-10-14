@@ -27,6 +27,7 @@ import {
   fetchMockUpdateBenefDossier,
   fetchMockGetGestBenefAllContactsAndActivites,
   fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
+  fetchMockGestContactsNumDossierDomaineStatutBenef,
   // gest contacts:
   fetchMockGetGestContacts,
   // liste de motifs:
@@ -127,6 +128,7 @@ export {
   fetchMockUpdateBenefDossier,
   fetchMockGetGestBenefAllContactsAndActivites,
   fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
+  fetchMockGestContactsNumDossierDomaineStatutBenef,
   fetchMockGetGestContacts,
   fetchMockGetGestContactsAllMotifs,
   fetchMockGetGestContactsFicheContact,
