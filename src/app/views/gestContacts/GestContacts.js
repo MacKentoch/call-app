@@ -362,7 +362,8 @@ class GestContacts extends Component {
 
                         activites={activites}
                       />
-
+                      <div style={{height: '10px'}}></div>
+                      
                       <FicheActivite
                         activites={activites}
                         isCollapsedFicheActivite={isCollapsedFicheActivite}

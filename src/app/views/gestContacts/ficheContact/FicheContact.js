@@ -90,80 +90,90 @@ class FicheContact extends Component {
            isOpened={!isCollapsedFicheContact}
            keepCollapsedContent={false}>
            <div style={{ height: '650px' }}>
-           {
-             isSavingFicheContact
-             ?
-               <SavingIndicator />
-             :
-              <Form
-                isCollapsedFicheContact={isCollapsedFicheContact}
-                onCollapseClick={this.handlesOnFicheContactCollapseClick}
-                lastFetchTimeFicheContact={lastFetchTimeFicheContact}
-                isFetchingFicheContact={isFetchingFicheContact}
-                isSavingFicheContact={isSavingFicheContact}
+            <div className="row">
 
-                dateCreationFicheContact={dateCreationFicheContact}
-                onDateCreationFicheContactChanged={onDateCreationFicheContactChanged}
+              <div className="col-xs-12">
 
-                creeParFicheContact={creeParFicheContact}
+              {
+                isSavingFicheContact
+                ?
+                  <SavingIndicator />
+                :
+                 <Form
+                   isCollapsedFicheContact={isCollapsedFicheContact}
+                   onCollapseClick={this.handlesOnFicheContactCollapseClick}
+                   lastFetchTimeFicheContact={lastFetchTimeFicheContact}
+                   isFetchingFicheContact={isFetchingFicheContact}
+                   isSavingFicheContact={isSavingFicheContact}
 
-                dateReceptionFicheContact={dateReceptionFicheContact}
-                onDateReceptionFicheContactChanged={onDateReceptionFicheContactChanged}
+                   dateCreationFicheContact={dateCreationFicheContact}
+                   onDateCreationFicheContactChanged={onDateCreationFicheContactChanged}
 
-                statutIndexFicheContact={statutIndexFicheContact}
-                onStatutIndexFicheContactChanged={onStatutIndexFicheContactChanged}
+                   creeParFicheContact={creeParFicheContact}
 
-                listStatutBenefFicheContact={listStatutBenefFicheContact}
+                   dateReceptionFicheContact={dateReceptionFicheContact}
+                   onDateReceptionFicheContactChanged={onDateReceptionFicheContactChanged}
 
-                listStatutFicheContact={listStatutFicheContact}
+                   statutIndexFicheContact={statutIndexFicheContact}
+                   onStatutIndexFicheContactChanged={onStatutIndexFicheContactChanged}
 
-                dateClotureFicheContact={dateClotureFicheContact}
-                onDateClotureFicheContactChanged={onDateClotureFicheContactChanged}
+                   listStatutBenefFicheContact={listStatutBenefFicheContact}
 
-                clotureParFicheContact={clotureParFicheContact}
-                // onClotureParFicheContactChanged={onClotureParFicheContactChanged}
+                   listStatutFicheContact={listStatutFicheContact}
 
-                typeIndexFicheContact={typeIndexFicheContact}
-                onTypeIndexFicheContactChanged={onTypeIndexFicheContactChanged}
+                   dateClotureFicheContact={dateClotureFicheContact}
+                   onDateClotureFicheContactChanged={onDateClotureFicheContactChanged}
 
-                listTypeFicheContact={listTypeFicheContact}
+                   clotureParFicheContact={clotureParFicheContact}
+                   // onClotureParFicheContactChanged={onClotureParFicheContactChanged}
 
-                canalIndexFicheContact={canalIndexFicheContact}
-                // onCanalIndexFicheContactChanged={onCanalIndexFicheContactChanged}
+                   typeIndexFicheContact={typeIndexFicheContact}
+                   onTypeIndexFicheContactChanged={onTypeIndexFicheContactChanged}
 
-                listCanauxFicheContact={listCanauxFicheContact}
-                // onListCanauxFicheContactChanged={onListCanauxFicheContactChanged}
+                   listTypeFicheContact={listTypeFicheContact}
 
-                numDossierIndexSelected={numDossierIndexSelected}
-                onNumDossierIndexSelectedChanged={onNumDossierIndexSelectedChanged}
+                   canalIndexFicheContact={canalIndexFicheContact}
+                   // onCanalIndexFicheContactChanged={onCanalIndexFicheContactChanged}
 
-                listNumDossierFicheContact={listNumDossierFicheContact}
-                // onListNumDossierFicheContactChanged={onListNumDossierFicheContactChanged}
+                   listCanauxFicheContact={listCanauxFicheContact}
+                   // onListCanauxFicheContactChanged={onListCanauxFicheContactChanged}
 
-                domaineFicheContact={domaineFicheContact}
-                onDomaineFicheContactChanged={onDomaineFicheContactChanged}
+                   numDossierIndexSelected={numDossierIndexSelected}
+                   onNumDossierIndexSelectedChanged={onNumDossierIndexSelectedChanged}
 
-                statutBenefFicheContact={statutBenefFicheContact}
-                // onStatutBenefFicheContactChanged= {onStatutBenefFicheContactChanged}
+                   listNumDossierFicheContact={listNumDossierFicheContact}
+                   // onListNumDossierFicheContactChanged={onListNumDossierFicheContactChanged}
 
-                attachmentsFicheContact={attachmentsFicheContact}
-                // onAttachmentsFicheContactChanged={onAttachmentsFicheContactChanged}
+                   domaineFicheContact={domaineFicheContact}
+                   onDomaineFicheContactChanged={onDomaineFicheContactChanged}
 
-                commentaireFicheContact={commentaireFicheContact}
-                onCommentaireFicheContactChanged={onCommentaireFicheContactChanged}
+                   statutBenefFicheContact={statutBenefFicheContact}
+                   // onStatutBenefFicheContactChanged= {onStatutBenefFicheContactChanged}
 
-                groupeDestinataireIsActive={groupeDestinataireIsActive}
-                onGroupeDestinataireIsActiveChanged={onGroupeDestinataireIsActiveChanged}
+                   attachmentsFicheContact={attachmentsFicheContact}
+                   // onAttachmentsFicheContactChanged={onAttachmentsFicheContactChanged}
 
-                groupeDestinataireIdSelected={groupeDestinataireIdSelected}
-                onGroupeDestinataireIdSelectedChanged={onGroupeDestinataireIdSelectedChanged}
+                   commentaireFicheContact={commentaireFicheContact}
+                   onCommentaireFicheContactChanged={onCommentaireFicheContactChanged}
 
-                listGroupeDestinataire={listGroupeDestinataire}
-                onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
+                   groupeDestinataireIsActive={groupeDestinataireIsActive}
+                   onGroupeDestinataireIsActiveChanged={onGroupeDestinataireIsActiveChanged}
 
-                activites={activites}
-              />
-           }
+                   groupeDestinataireIdSelected={groupeDestinataireIdSelected}
+                   onGroupeDestinataireIdSelectedChanged={onGroupeDestinataireIdSelectedChanged}
+
+                   listGroupeDestinataire={listGroupeDestinataire}
+                   onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
+
+                   activites={activites}
+                 />
+              }
+
+
+              </div>
+
+            </div>
+
            </div>
          </Collapse>
        </div>
