@@ -205,7 +205,9 @@ import {
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
   // motifs de référence:
-  getGestContactsAllMotifsIfNeeded
+  getGestContactsAllMotifsIfNeeded,
+  // post:
+  postGestContactsSaveFicheContactIfNeeded
 }                                 from './gestContacts';
 import {
   addNotificationMessage
@@ -384,5 +386,6 @@ export {
   getGestContactsFicheContactIfNeeded,
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
-  getGestContactsAllMotifsIfNeeded
+  getGestContactsAllMotifsIfNeeded,
+  postGestContactsSaveFicheContactIfNeeded
 };

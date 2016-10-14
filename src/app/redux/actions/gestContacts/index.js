@@ -29,7 +29,8 @@ import {
   updateNumDossierIndexSelected,
   updateDomaineFicheContactChanged,
   updateCommentaireFicheContactChanged,
-  updateGroupeDestinataireIdSelected
+  updateGroupeDestinataireIdSelected,
+  postGestContactsSaveFicheContactIfNeeded
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
 // contacts fiche activites:
 import {
@@ -66,6 +67,7 @@ export {
   updateDomaineFicheContactChanged,
   updateCommentaireFicheContactChanged,
   updateGroupeDestinataireIdSelected,
+  postGestContactsSaveFicheContactIfNeeded,
 
   // fiches activites
   setIsCollapsedContactsFicheActivite,
