@@ -36,7 +36,7 @@ class FicheContactGroupeDestinataireDropDown extends Component {
             bsSize="sm"
             block
             bsStyle={'block'}
-            title={ this.valueIsGroupeDestinataire(value) ? value : groupDestinataires[0].libelle }>
+            title={ this.valueIsGroupeDestinataire(value) ? value.libelle : groupDestinataires[0].libelle }>
             {
               groupDestinataires.map(
                 ({id, libelle}, idx) => {
@@ -71,7 +71,7 @@ class FicheContactGroupeDestinataireDropDown extends Component {
           if (valeur &&
               Object.prototype.hasOwnProperty.call(valeur, 'id') &&
               Object.prototype.hasOwnProperty.call(valeur, 'libelle')) {
-            return valeur.id === value;
+            return valeur.id === value.id;
           } else {
             return false;
           }

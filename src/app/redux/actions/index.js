@@ -114,8 +114,7 @@ import {
   updateStatutBenefNewBenefDossier,
   updateDateEntreeNewBenefDossier,
   updateDateSortieNewBenefDossier,
-  updateDateTauxPleinNewBenefDossier,
-  updateGroupeDestinataireIdSelected
+  updateDateTauxPleinNewBenefDossier
 }                                 from './modals';
 // search benef
 import {
@@ -200,6 +199,7 @@ import {
   updateNumDossierIndexSelected,
   updateDomaineFicheContactChanged,
   updateCommentaireFicheContactChanged,
+  updateGroupeDestinataireIdSelected,
 
   // fiches activites
   setIsCollapsedContactsFicheActivite,
