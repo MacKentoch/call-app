@@ -258,6 +258,9 @@ export const appConfig = {
   gestFicheContact: {
     getData: {
       API: 'api/getFicheContact'
+    },
+    postFicheContact: {
+      API: 'api/postFicheContact'
     }
   },
 

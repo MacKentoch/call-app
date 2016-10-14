@@ -1,7 +1,7 @@
 import {
   defaultOptions,
-  // postMethod,
-  // jsonHeader,
+  postMethod,
+  jsonHeader,
   checkStatus,
   parseJSON,
   getLocationOrigin
@@ -68,6 +68,33 @@ export const getGestContactsFicheContactDomaineStatutfFromNumDossier = (benefId 
   const api = appConfig.gestFicheContactBenefInfoFromNumDossier.getData.API;
   const url = `${getLocationOrigin()}/${api}/${numDossier}`;
   const options = {...defaultOptions};
+
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(error => Promise.reject(error));
+};
+
+
+/*
+    POST fiche contact
+ */
+export const postGestContactsSaveFicheContact = payload => {
+  if (!payload) {
+    return Promise.reject({error: 'postGestContactsSaveFicheContact API: payload is not valid '});
+  }
+
+  const api = appConfig.gestFicheContact.postFicheContact.API;
+  const url = `${getLocationOrigin()}/${api}/${payload.id}`;
+  const body = { ...payload };
+
+  const options = {
+    ...defaultOptions,
+    ...postMethod,
+    ...jsonHeader,
+    ...body
+  };
 
   return fetch(url, options)
     .then(checkStatus)

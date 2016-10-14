@@ -4,7 +4,8 @@ import {
   fetchMockGetGestContactsFicheContact,
   getGestContactsFicheContactInit,
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
-  fetchMockGestContactsNumDossierDomaineStatutBenef
+  fetchMockGestContactsNumDossierDomaineStatutBenef,
+  postGestContactsSaveFicheContact
 }                           from '../../../../services';
 
 moment.locale('fr');
