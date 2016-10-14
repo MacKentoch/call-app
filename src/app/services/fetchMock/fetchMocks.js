@@ -199,12 +199,7 @@ export const fetchMockPostBenefIdentite = (payload, timeToWait = appConfig.FAKE_
       'error': 'fetchMockPostBenefIdentite has no valid payload'
     });
   }
-  // if (!parseInt(payload.id, 10)) {
-  //   return Promise.reject({
-  //     'error': 'fetchMockPostBenefIdentite payload is not valid'
-  //   });
-  // }
-  // BACKEND TIP: if !payload.id => it means insert other update this id
+  // BACKEND TIP: if !payload.id => it means insert otherwise update this id
   return new Promise(
     resolve => {
       setTimeout(
@@ -438,6 +433,31 @@ export const fetchMockGestContactsFicheContactGroupesDestinataires = (benefId = 
         () => resolve([...gestContactsFicheContactGroupesDestinatairesMock]),
         timeToWait
       );
+    }
+  );
+};
+
+
+/*
+    POST fiche contact mock
+ */
+export const fetchMockPostGestContactsSaveFicheContact = (payload = null, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!payload) {
+    return Promise.reject({
+      'error': 'fetchMockPostGestContactsSaveFicheContact error: payload is not valid'
+    });
+  }
+
+  // BACKEND TIP: if !payload.id => it means insert otherwise update this id
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({
+         status: 'success',
+         id: 10
+       }),
+       timeToWait
+     );
     }
   );
 };
