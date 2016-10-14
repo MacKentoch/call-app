@@ -28,7 +28,8 @@ import {
   UPDATE_GEST_CONTACTS_STATUT_FICHE,
   UPDATE_GEST_CONTACTS_DATE_CLOTURE,
   UPDATE_GEST_CONTACTS_TYPE_INDEX,
-  UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX
+  UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX,
+  UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT
 }                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
@@ -410,39 +411,43 @@ const gestContacts = (state = initialState, action) => {
       ...state,
       dateCreationFicheContact: action.dateCreationFicheContact,
       actionTime: action.time
-    }
+    };
   case UPDATE_GEST_CONTACTS_DATE_RECEPTION:
     return {
       ...state,
       dateReceptionFicheContact: action.dateReceptionFicheContact,
       actionTime: action.time
-    }
+    };
   case UPDATE_GEST_CONTACTS_STATUT_FICHE:
     return {
       ...state,
       statutIndexFicheContact: action.statutIndexFicheContact,
       actionTime: action.time
-    }
+    };
   case UPDATE_GEST_CONTACTS_DATE_CLOTURE:
     return {
       ...state,
       dateClotureFicheContact: action.dateClotureFicheContact,
       actionTime: action.time
-    }
+    };
   case UPDATE_GEST_CONTACTS_TYPE_INDEX:
     return {
       ...state,
       typeIndexFicheContact: action.typeIndexFicheContact,
       actionTime: action.time
-    }
+    };
   case UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX:
     return {
       ...state,
       numDossierIndexSelected: action.numDossierIndexSelected,
       actionTime: action.time
-    }
-
-
+    };
+  case UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT:
+    return {
+      ...state,
+      domaineFicheContact: action.domaineFicheContact,
+      actionTime: action.time
+    };
 
   // /////////////////
   // fiche activite
