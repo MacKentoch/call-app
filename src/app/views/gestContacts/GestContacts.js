@@ -166,6 +166,7 @@ class GestContacts extends Component {
         onDomaineFicheContactChanged,
         onCommentaireFicheContactChanged,
         onGroupeDestinataireIdSelectedChanged,
+        saveFicheContact
       }
     } = this.props;
 
@@ -359,6 +360,8 @@ class GestContacts extends Component {
                         onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
 
                         activites={activites}
+
+                        saveFicheContact={saveFicheContact}
                       />
                       <div style={{height: '10px'}}></div>
 
@@ -790,6 +793,8 @@ GestContacts.propTypes = {
     onDomaineFicheContactChanged: PropTypes.func.isRequired,
     onCommentaireFicheContactChanged: PropTypes.func.isRequired,
     onGroupeDestinataireIdSelectedChanged: PropTypes.func.isRequired,
+    // POST:
+    saveFicheContact: PropTypes.func.isRequired,
     // //////////////////
     // fiche activites
     // /////////////////

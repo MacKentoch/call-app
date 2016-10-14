@@ -68,7 +68,8 @@ class FicheContact extends Component {
       onGroupeDestinataireIdSelectedChanged,
       listGroupeDestinataire,
       onListGroupeDestinataireChanged,
-      activites
+      activites,
+      saveFicheContact
     } = this.props;
 
     return (
@@ -167,6 +168,8 @@ class FicheContact extends Component {
                    onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
 
                    activites={activites}
+
+                   saveFicheContact={saveFicheContact}
                  />
               }
               </div>
@@ -290,7 +293,8 @@ FicheContact.propTypes = {
       ),
       commentaires: PropTypes.arrayOf(PropTypes.string)
     })
-  )
+  ),
+  saveFicheContact: PropTypes.func.isRequired
 };
 
 

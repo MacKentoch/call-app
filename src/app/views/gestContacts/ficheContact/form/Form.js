@@ -360,7 +360,8 @@ Form.propTypes = {
       ),
       commentaires: PropTypes.arrayOf(PropTypes.string)
     })
-  )
+  ),
+  saveFicheContact: PropTypes.func.isRequired
 };
 
 export default Form;
