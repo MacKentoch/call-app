@@ -182,6 +182,7 @@ class FicheContact extends Component {
 }
 
 FicheContact.propTypes = {
+  benefId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   isCollapsedFicheContact: PropTypes.bool.isRequired,
   onCollapseClick: PropTypes.func.isRequired,
   lastFetchTimeFicheContact: PropTypes.string.isRequired,

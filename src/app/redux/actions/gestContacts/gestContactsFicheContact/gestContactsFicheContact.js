@@ -4,7 +4,7 @@ import {
   fetchMockGetGestContactsFicheContact,
   getGestContactsFicheContactInit,
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
-  fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
+  fetchMockGetGestBenefContactsAndActivitesForThisNumDossier
 }                           from '../../../../services';
 
 moment.locale('fr');
@@ -102,19 +102,7 @@ export const updateTypeIndexFicheContact = (typeIndex = null, time = moment().fo
   }
   return false;
 };
-//  -----------------------------------------------------------------
-//    update updateNumDossierIndexSelected value
-//  -----------------------------------------------------------------
-export const updateNumDossierIndexSelected = (numDossierIndex = null, time = moment().format(formatDate)) => {
-  if (numDossierIndex) {
-    return {
-      type: UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX,
-      numDossierIndexSelected: numDossierIndex,
-      time
-    };
-  }
-  return false;
-};
+
 //  -----------------------------------------------------------------
 //    update updateDomaineFicheContactChanged value
 //  -----------------------------------------------------------------
@@ -392,3 +380,18 @@ function shouldGetGestContactsBenefInfoFromNumDossier(state) {
     return true;
   }
 }
+
+//  -----------------------------------------------------------------
+//    update updateNumDossierIndexSelected value
+//  -----------------------------------------------------------------
+export const updateNumDossierIndexSelected = (benefId, numDossierIndex) => dispatch => {
+  return dispatch(getGestContactsBenefInfoFromNumDossierIfNeeded(benefId, numDossierIndex));
+  // if (numDossierIndex) {
+  //   return {
+  //     type: UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX,
+  //     numDossierIndexSelected: numDossierIndex,
+  //     time
+  //   };
+  // }
+  // return false;
+};

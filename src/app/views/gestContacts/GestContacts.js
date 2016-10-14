@@ -103,6 +103,7 @@ class GestContacts extends Component {
   }
 
   render() {
+    const { params: { benefId } } =  this.props;
     const { animated } = this.state;
     const { isFetchingAll } = this.props;
     // id benef if === 0  then create
@@ -293,6 +294,8 @@ class GestContacts extends Component {
                       <div style={{height: '10px'}}></div>
 
                       <FicheContact
+                        benefId={benefId}
+
                         isCollapsedFicheContact={isCollapsedFicheContact}
                         onCollapseClick={this.handlesOnFicheContactCollapseClick}
                         lastFetchTimeFicheContact={lastFetchTimeFicheContact}
