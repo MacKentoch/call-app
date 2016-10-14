@@ -16,6 +16,8 @@ moment.locale('fr');
 class FicheContact extends Component {
   constructor(props) {
     super(props);
+
+    this.handlesOnSaveFicheContact = this.handlesOnSaveFicheContact.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -169,7 +171,7 @@ class FicheContact extends Component {
 
                    activites={activites}
 
-                   saveFicheContact={saveFicheContact}
+                   saveFicheContact={this.handlesOnSaveFicheContact}
                  />
               }
               </div>
@@ -178,6 +180,51 @@ class FicheContact extends Component {
          </Collapse>
        </div>
      );
+  }
+
+  handlesOnSaveFicheContact(event) {
+    event.preventDefault();
+    const {
+      benefId,
+      contactId,
+      dateCreationFicheContact,
+      creeParFicheContact,
+      dateReceptionFicheContact,
+      statutIndexFicheContact,
+      dateClotureFicheContact,
+      clotureParFicheContact,
+      typeIndexFicheContact,
+      canalIndexFicheContact,
+      numDossierIndexSelected,
+      domaineFicheContact,
+      statutBenefFicheContact,
+      // motif TO ADD
+      attachmentsFicheContact,
+      commentaireFicheContact,
+
+      saveFicheContact
+    } = this.props;
+
+    const payload = {
+      id: contactId,
+      benefId,
+      dateCreationFicheContact,
+      creeParFicheContact,
+      dateReceptionFicheContact,
+      statutIndexFicheContact,
+      dateClotureFicheContact,
+      clotureParFicheContact,
+      typeIndexFicheContact,
+      canalIndexFicheContact,
+      numDossierIndexSelected,
+      domaineFicheContact,
+      statutBenefFicheContact,
+      // motif TO ADD
+      attachmentsFicheContact,
+      commentaireFicheContact
+    };
+
+    saveFicheContact(payload);
   }
 }
 

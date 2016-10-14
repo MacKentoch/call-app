@@ -295,6 +295,8 @@ class GestContacts extends Component {
                       <FicheContact
                         benefId={benefId}
 
+                        contactId={contactId}
+
                         isCollapsedFicheContact={isCollapsedFicheContact}
                         onCollapseClick={this.handlesOnFicheContactCollapseClick}
                         lastFetchTimeFicheContact={lastFetchTimeFicheContact}

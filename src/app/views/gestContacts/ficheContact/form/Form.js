@@ -65,7 +65,8 @@ const Form = ({
   onGroupeDestinataireIdSelectedChanged,
   listGroupeDestinataire,
   onListGroupeDestinataireChanged,
-  activites
+  activites,
+  saveFicheContact
 }) => {
   return (
     <form role="form">
@@ -253,7 +254,7 @@ const Form = ({
           <a
             className="btn btn-primary btn-block mailBoxNewEmailButton_button"
             style={{width: '120px'}}
-            onClick={()=>console.log('save contact')}>
+            onClick={saveFicheContact}>
             <i className="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
             Enregister
           </a>
