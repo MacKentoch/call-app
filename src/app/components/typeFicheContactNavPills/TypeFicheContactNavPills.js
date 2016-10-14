@@ -37,7 +37,7 @@ const TypeFicheContactNavPills = ({ onClick, listTypeFicheContact, selectedValue
 };
 
 TypeFicheContactNavPills.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
