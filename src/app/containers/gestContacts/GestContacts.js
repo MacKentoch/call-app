@@ -153,7 +153,7 @@ const mapDispatchToProps = (dispatch) => {
         onCommentaireFicheContactChanged: actions.updateCommentaireFicheContactChanged,
         onGroupeDestinataireIdSelectedChanged: actions.updateGroupeDestinataireIdSelected,
         // POST:
-        saveFicheContact: actions.saveFicheContact,
+        saveFicheContact: actions.postGestContactsSaveFicheContactIfNeeded,
         // ///////////////////////
         // activites
         // ///////////////////////
