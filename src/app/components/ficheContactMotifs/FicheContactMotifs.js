@@ -164,7 +164,7 @@ class FicheContactMotifs extends Component {
 
   oneMotifAtLeastIsEditing() {
     const { listMotifs } = this.props;
-
+    return listMotifs.some(motif => motif.isEditing);
   }
 }
 
