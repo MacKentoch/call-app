@@ -13,7 +13,8 @@ import {
   gestBenefMock,
   gestContactsMock,
   gestContactAllMotifsReferenceMock,
-  gestContactFicheContactInitMock
+  gestContactFicheContactInitMock,
+  gestContactsNumDossierDomaineStatutBenefMock
 }                       from '../../mocks';
 
 import {
@@ -385,6 +386,26 @@ export const fetchMockGetGestContactsAllMotifs = (timeToWait = appConfig.FAKE_AS
     resolve => {
       setTimeout(
         () => resolve({...gestContactAllMotifsReferenceMock}),
+        timeToWait
+      );
+    }
+  );
+};
+
+/*
+    gestContacts : fetch domaine and staut benef from nulmDossier value
+ */
+export const fetchMockGestContactsNumDossierDomaineStatutBenef = (numDossier = null, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!numDossier) {
+    return Promise.reject({
+      'error': 'fetchMockGestContactsNumDossierDomaineStatutBenef error: numDossier is not valid'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+        () => resolve({...gestContactsNumDossierDomaineStatutBenefMock}),
         timeToWait
       );
     }
