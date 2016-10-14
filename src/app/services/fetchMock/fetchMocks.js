@@ -395,7 +395,12 @@ export const fetchMockGetGestContactsAllMotifs = (timeToWait = appConfig.FAKE_AS
 /*
     gestContacts : fetch domaine and staut benef from nulmDossier value
  */
-export const fetchMockGestContactsNumDossierDomaineStatutBenef = (numDossier = null, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+export const fetchMockGestContactsNumDossierDomaineStatutBenef = (benefId = 0, numDossier = null, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!benefId) {
+    return Promise.reject({
+      'error': 'fetchMockGestContactsNumDossierDomaineStatutBenef error: benefId is not valid'
+    });
+  }
   if (!numDossier) {
     return Promise.reject({
       'error': 'fetchMockGestContactsNumDossierDomaineStatutBenef error: numDossier is not valid'
