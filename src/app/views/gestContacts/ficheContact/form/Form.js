@@ -237,20 +237,26 @@ const Form = ({
 
       {/* 7th row */}
       <div className="row">
-        <div className="col-xs-6">
-          <FicheContactGroupeDestinataireDropDown
-            id={'groupdDestDropDownFicheContact'}
-            label={''}
-            value={groupeDestinataireIdSelected}
-            onChange={onGroupeDestinataireIdSelectedChanged}
-            groupDestinataires={listGroupeDestinataire}
-          />
+        <div className="col-xs-6 ">
+          <div className="pull-right">
+            <FicheContactGroupeDestinataireDropDown
+              id={'groupdDestDropDownFicheContact'}
+              label={''}
+              value={groupeDestinataireIdSelected}
+              onChange={onGroupeDestinataireIdSelectedChanged}
+              groupDestinataires={listGroupeDestinataire}
+            />
+          </div>
         </div>
         <div className="col-xs-6">
           {/* buttons */}
-          <div className="pull-right">
-
-          </div>
+            <a
+              className="btn btn-primary btn-block mailBoxNewEmailButton_button"
+              style={{width: '120px'}}
+              onClick={()=>console.log('save contact')}>
+              <i className="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
+              Enregister
+            </a>
         </div>
       </div>
       <div style={{height: '20px'}}></div>
