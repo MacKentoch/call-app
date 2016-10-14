@@ -152,6 +152,8 @@ const mapDispatchToProps = (dispatch) => {
         onDomaineFicheContactChanged: actions.updateDomaineFicheContactChanged,
         onCommentaireFicheContactChanged: actions.updateCommentaireFicheContactChanged,
         onGroupeDestinataireIdSelectedChanged: actions.updateGroupeDestinataireIdSelected,
+        // POST:
+        saveFicheContact: actions.saveFicheContact,
         // ///////////////////////
         // activites
         // ///////////////////////
