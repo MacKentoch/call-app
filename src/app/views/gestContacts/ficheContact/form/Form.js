@@ -211,7 +211,7 @@ const Form = ({
           className="col-xs-12">
           <ListAttachments
             id={'ficheContactPJ'}
-            label={'Pièces jointes reçus'}
+            label={attachmentsFicheContact.length > 0 ?  `Pièces jointes reçus (${attachmentsFicheContact.length})` : 'Pièces jointes reçus'}
             attachments={attachmentsFicheContact}
             onDelete={()=>console.log('on fiche contact delete attachments: disabled')}
           />
