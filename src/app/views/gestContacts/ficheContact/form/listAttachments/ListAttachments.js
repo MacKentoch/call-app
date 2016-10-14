@@ -32,18 +32,9 @@ class ListAttachments extends Component {
             height: '220px',
             overflowY: 'scroll'
           }}>
-          {
-            attachments.map(
-              ({ type, name, filePath, size }, idx) => {
-                return (
-                  <Attachments
-                    key={idx}
-                    attachments={attachments}
-                  />
-                );
-              }
-            )
-          }
+          <Attachments
+            attachments={attachments}
+          />
         </div>
       </div>
     );
