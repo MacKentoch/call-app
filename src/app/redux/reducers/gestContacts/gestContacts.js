@@ -22,6 +22,10 @@ import {
   REQUEST_GET_GEST_CONTACTS_FICHE_CONTACT,
   RECEIVED_GET_GEST_CONTACTS_FICHE_CONTACT,
   ERROR_GET_GEST_CONTACTS_FICHE_CONTACT,
+
+  REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER,
+  RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER,
+  ERROR_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER,
   // form updates:
   UPDATE_GEST_CONTACTS_DATE_CREATION,
   UPDATE_GEST_CONTACTS_DATE_RECEPTION,
@@ -121,6 +125,7 @@ const initialState = {
   canalIndexFicheContact: 0,
   listCanauxFicheContact: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'],
 
+  isFetchingBenefInfoFromNumDossier: false,
   numDossierIndexSelected: 0,
   listNumDossierFicheContact: [], // benef numDossiers list
 
@@ -504,6 +509,30 @@ const gestContacts = (state = initialState, action) => {
       lastFetchTimeAllMotifs: action.time,
       actionTime: action.time,
 
+      error: action.error
+    };
+
+  case REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER:
+    return {
+      ...state,
+      isFetchingBenefInfoFromNumDossier: true,
+
+      actionTime: action.time
+    };
+
+  case RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER:
+    return {
+      ...state,
+      isFetchingBenefInfoFromNumDossier: false,
+      domaineFicheContact: action.benefInfos.domaine,
+      statutBenefFicheContact: action.benefInfos.statut,
+      actionTime: action.time
+    };
+  case ERROR_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER:
+    return {
+      ...state,
+      isFetchingBenefInfoFromNumDossier: false,
+      actionTime: action.time,
       error: action.error
     };
 
