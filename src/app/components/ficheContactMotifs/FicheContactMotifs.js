@@ -45,7 +45,7 @@ class FicheContactMotifs extends Component {
           <div className="row">
             <div className="col-xs-12">
               {
-                isEditing &&
+                this.oneMotifAtLeastIsEditing() &&
                 <a
                   className="btn btn-primary btn-block mailBoxNewEmailButton_button"
                   style={{width: '120px'}}
@@ -55,7 +55,7 @@ class FicheContactMotifs extends Component {
                 </a>
               }
               {
-                !isEditing &&
+                !this.oneMotifAtLeastIsEditing() &&
                 <a
                   className="btn btn-primary btn-block mailBoxNewEmailButton_button"
                   style={{width: '120px'}}
@@ -93,40 +93,62 @@ class FicheContactMotifs extends Component {
 
                 if (isEditing) {
                   return (
-                    <div className="row">
+                    <div
+                      key={MotifIdx}
+                      className="row">
                       <div className="col-xs-4">
                         <MotifDropDown
-
+                          id={idNiveau2}
+                          label={labelNiveau2}
+                          value={valueNiveau2}
+                          onChange={onChangeNiveau2}
+                          listMotifsRef={listMotifsNiveau2}
                         />
                       </div>
                       <div className="col-xs-4">
                         <MotifDropDown
-
+                          id={idNiveau3}
+                          label={labelNiveau3}
+                          value={valueNiveau3}
+                          onChange={onChangeNiveau3}
+                          listMotifsRef={listMotifsNiveau3}
                         />
                       </div>
                       <div className="col-xs-4">
                         <MotifDropDown
-
+                          id={idNiveau4}
+                          label={labelNiveau4}
+                          value={valueNiveau4}
+                          onChange={onChangeNiveau4}
+                          listMotifsRef={listMotifsNiveau4}
                         />
                       </div>
                     </div>
                   );
                 } else {
                   return (
-                    <div className="row">
+                    <div
+                      key={MotifIdx}
+                      className="row">
                       <div className="col-xs-4">
                         <LabelMotif
-
+                          id={idNiveau2}
+                          label={labelNiveau2}
+                          value={valueNiveau2}
                         />
                       </div>
                       <div className="col-xs-4">
                         <LabelMotif
-
-                        />                        
+                          id={idNiveau3}
+                          label={labelNiveau3}
+                          value={valueNiveau3}
+                        />
                       </div>
                       <div className="col-xs-4">
                         <LabelMotif
-
+                          id={idNiveau4}
+                          label={labelNiveau4}
+                          value={valueNiveau4}
                         />
                       </div>
                     </div>
@@ -138,6 +160,11 @@ class FicheContactMotifs extends Component {
         </div>
       </div>
     );
+  }
+
+  oneMotifAtLeastIsEditing() {
+    const { listMotifs } = this.props;
+
   }
 }
 
