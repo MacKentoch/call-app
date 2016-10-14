@@ -24,11 +24,11 @@ class FicheContactGroupeDestinataireDropDown extends Component {
     const { label, id, value, groupDestinataires } = this.props;
     return (
       <div className="form-group">
-        <label
+        {/* <label
           className="control-label"
           htmlFor={id}>
           {label}
-        </label>
+        </label> */}
         <div>
           <DropdownButton
             id={id}
