@@ -30,6 +30,7 @@ import StatutFicheDropDown from './statutFicheDropDown/StatutFicheDropDown';
 import TypeFicheContactRadio from './typeFicheContactRadio/TypeFicheContactRadio';
 import TypeFicheContactNavPills from './typeFicheContactNavPills/TypeFicheContactNavPills';
 import NumsDossiersDropDown from './numsDossiersDropDown/NumsDossiersDropDown';
+import StatutBenefFicheContactDropDown from './statutBenefFicheContactDropDown/StatutBenefFicheContactDropDown';
 import {
   FichesTraitee,
   FichesParCanal,
@@ -67,6 +68,7 @@ export {
   TypeFicheContactRadio,
   TypeFicheContactNavPills,
   NumsDossiersDropDown,
+  StatutBenefFicheContactDropDown,
 
   // mailbox
   MailboxRepertoires,

@@ -7,7 +7,8 @@ import {
   FormLabel,
   DateInput,
   NumsDossiersDropDown,
-  TypeFicheContactNavPills
+  TypeFicheContactNavPills,
+  StatutBenefFicheContactDropDown
 }                           from '../../../../components';
 import {
   isValidDateOrReturnDefault
@@ -181,7 +182,7 @@ const Form = ({
         {/* domaine */}
         <div className="col-xs-3">
           <FormLabel
-            id="labelDomaine"
+            id="labelDomaineFicheContact"
             label={'Domaine'}
             value={domaineFicheContact}
           />
@@ -190,11 +191,18 @@ const Form = ({
 
         {/* statut */}
         <div className="col-xs-3">
-          <FormLabel
+          <StatutBenefFicheContactDropDown
+            id="statutBenefDropDownFicheContact"
+            label={'Statut'}
+            value={statutBenefFicheContact}
+            onChange={onStatutBenefFicheContactChanged}
+            listStatutBenefFicheContact={listStatutBenefFicheContact}
+          />
+          {/* <FormLabel
             id="labelStatut"
             label={'Statut'}
             value={listStatutFicheContact[statutIndexFicheContact] ? listStatutFicheContact[statutIndexFicheContact] : ' --- '}
-          />
+          /> */}
         </div>
       </div>
 
