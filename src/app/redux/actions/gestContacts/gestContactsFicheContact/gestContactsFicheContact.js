@@ -5,7 +5,8 @@ import {
   getGestContactsFicheContactInit,
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
   fetchMockGestContactsNumDossierDomaineStatutBenef,
-  postGestContactsSaveFicheContact
+  postGestContactsSaveFicheContact,
+  fetchMockPostGestContactsSaveFicheContact
 }                           from '../../../../services';
 
 moment.locale('fr');
@@ -462,9 +463,9 @@ const postQueryGestContactsSaveFicheContact = payload => dispatch => {
             .then(
               data => {
                 if (!data || !data.id) { // ATTENTION: doit retourner l'id de la fiche contact en update ou insert
-                  dispatch(errorPostGestContactsSaveFicheContact({'error': 'post benef identite unsuccessfull with no server error'}));
+                  dispatch(errorPostGestContactsSaveFicheContact({'error': 'post fiche contact unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (retour invalide)',
+                    message: 'Enregistrement de la fiche contact en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
@@ -472,7 +473,7 @@ const postQueryGestContactsSaveFicheContact = payload => dispatch => {
                 dispatch(receivedPostGestContactsSaveFicheContact(data));
                 return Promise.resolve({
                   id: data.id,
-                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire terminé',
+                  message: 'Enregistrement de la fiche contact terminé',
                   level: 'success',
                   showNotification: true
                 });
@@ -482,7 +483,7 @@ const postQueryGestContactsSaveFicheContact = payload => dispatch => {
               err => {
                 dispatch(errorPostGestContactsSaveFicheContact(err));
                 return Promise.reject({
-                  message: 'Enregistrement des modifications des informations "Identité" du bénéficiaire en erreur (erreur serveur)',
+                  message: 'Enregistrement de la fiche contact en erreur (erreur serveur)',
                   level: 'error',
                   showNotification: true
                 });
