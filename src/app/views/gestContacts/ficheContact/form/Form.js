@@ -250,13 +250,13 @@ const Form = ({
         </div>
         <div className="col-xs-6">
           {/* buttons */}
-            <a
-              className="btn btn-primary btn-block mailBoxNewEmailButton_button"
-              style={{width: '120px'}}
-              onClick={()=>console.log('save contact')}>
-              <i className="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
-              Enregister
-            </a>
+          <a
+            className="btn btn-primary btn-block mailBoxNewEmailButton_button"
+            style={{width: '120px'}}
+            onClick={()=>console.log('save contact')}>
+            <i className="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
+            Enregister
+          </a>
         </div>
       </div>
       <div style={{height: '20px'}}></div>
