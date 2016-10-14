@@ -413,7 +413,7 @@ export const fetchMockGestContactsNumDossierDomaineStatutBenef = (benefId = 0, n
         () => resolve(
           gestContactsNumDossierDomaineStatutBenefMock.filter(
             infos => infos.numDossier === numDossier
-          )
+          )[0]
         ),
         timeToWait
       );

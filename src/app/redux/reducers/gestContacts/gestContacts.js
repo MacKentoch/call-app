@@ -524,6 +524,7 @@ const gestContacts = (state = initialState, action) => {
     return {
       ...state,
       isFetchingBenefInfoFromNumDossier: false,
+      numDossierIndexSelected: action.benefInfos.numDossier,
       domaineFicheContact: action.benefInfos.domaine,
       statutBenefFicheContact: action.benefInfos.statut,
       actionTime: action.time
