@@ -198,6 +198,7 @@ import {
   updateTypeIndexFicheContact,
   updateNumDossierIndexSelected,
   updateDomaineFicheContactChanged,
+  updateCommentaireFicheContactChanged,
 
   // fiches activites
   setIsCollapsedContactsFicheActivite,
@@ -298,6 +299,7 @@ export {
   updateDateEntreeNewBenefDossier,
   updateDateSortieNewBenefDossier,
   updateDateTauxPleinNewBenefDossier,
+  updateCommentaireFicheContactChanged,
 
   // search benef
   postSearchIfNeeded,

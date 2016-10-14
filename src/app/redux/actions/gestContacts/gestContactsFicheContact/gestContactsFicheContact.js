@@ -26,6 +26,8 @@ export const UPDATE_GEST_CONTACTS_DATE_CLOTURE          = 'UPDATE_GEST_CONTACTS_
 export const UPDATE_GEST_CONTACTS_TYPE_INDEX            = 'UPDATE_GEST_CONTACTS_TYPE_INDEX';
 export const UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX     = 'UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX';
 export const UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT = 'UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT';
+export const UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT = 'UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT';
+
 
 //  -----------------------------------------------------------------
 //    update dateCreationFicheContact value
@@ -116,6 +118,19 @@ export const updateDomaineFicheContactChanged = (domaine = null, time = moment()
     return {
       type: UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT,
       domaineFicheContact: domaine,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update updateCommentaireFicheContactChanged value
+//  -----------------------------------------------------------------
+export const updateCommentaireFicheContactChanged = (commentaires = null, time = moment().format(formatDate)) => {
+  if (commentaires) {
+    return {
+      type: UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT,
+      commentaireFicheContact: commentaires,
       time
     };
   }

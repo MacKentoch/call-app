@@ -27,7 +27,8 @@ import {
   updateDateClotureFicheContact,
   updateTypeIndexFicheContact,
   updateNumDossierIndexSelected,
-  updateDomaineFicheContactChanged
+  updateDomaineFicheContactChanged,
+  updateCommentaireFicheContactChanged
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
 // contacts fiche activites:
 import {
@@ -62,6 +63,7 @@ export {
   updateTypeIndexFicheContact,
   updateNumDossierIndexSelected,
   updateDomaineFicheContactChanged,
+  updateCommentaireFicheContactChanged,
 
   // fiches activites
   setIsCollapsedContactsFicheActivite,

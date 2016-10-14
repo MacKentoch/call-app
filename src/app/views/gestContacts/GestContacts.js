@@ -140,16 +140,12 @@ class GestContacts extends Component {
       listNumDossierFicheContact,
       // onListNumDossierFicheContactChanged,
       domaineFicheContact,
-
       statutBenefFicheContact,
       listStatutBenefFicheContact,
       // onStatutBenefFicheContactChanged,
-
       attachmentsFicheContact,
       // onAttachmentsFicheContactChanged,
-
       commentaireFicheContact,
-      onCommentaireFicheContactChanged,
 
       groupeDestinataireIsActive,
       onGroupeDestinataireIsActiveChanged,
@@ -170,6 +166,7 @@ class GestContacts extends Component {
         onTypeIndexFicheContactChanged,
         onNumDossierIndexSelectedChanged,
         onDomaineFicheContactChanged,
+        onCommentaireFicheContactChanged,
       }
     } = this.props;
 
@@ -363,7 +360,7 @@ class GestContacts extends Component {
                         activites={activites}
                       />
                       <div style={{height: '10px'}}></div>
-                      
+
                       <FicheActivite
                         activites={activites}
                         isCollapsedFicheActivite={isCollapsedFicheActivite}
@@ -681,12 +678,9 @@ GestContacts.propTypes = {
   listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
   // onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
   domaineFicheContact: PropTypes.string.isRequired,
-
   statutBenefFicheContact: PropTypes.string.isRequired,
   // onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
-
   listStatutBenefFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-
   attachmentsFicheContact: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
@@ -696,9 +690,7 @@ GestContacts.propTypes = {
     })
   ).isRequired,
   // onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
-
   commentaireFicheContact: PropTypes.string.isRequired,
-  onCommentaireFicheContactChanged: PropTypes.func.isRequired,
 
   groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
   onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
@@ -798,6 +790,7 @@ GestContacts.propTypes = {
     onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
     onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
     onDomaineFicheContactChanged: PropTypes.func.isRequired,
+    onCommentaireFicheContactChanged: PropTypes.func.isRequired,
     // //////////////////
     // fiche activites
     // /////////////////
