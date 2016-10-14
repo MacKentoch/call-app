@@ -23,7 +23,6 @@ class NumsDossiersDropDown extends Component {
 
   render() {
     const { label, id, value, listNumDossierFicheContact } = this.props;
-    console.log('NumsDossiersDropDown - listNumDossierFicheContact: ', listNumDossierFicheContact);
     return (
       <div className="form-group">
         <label
@@ -61,8 +60,8 @@ class NumsDossiersDropDown extends Component {
   handlesOnChange(event, key) {
     event.preventDefault();
     const { onChange, listNumDossierFicheContact } = this.props;
-
-    onChange(listNumDossierFicheContact[key]);
+    onChange(key);
+    // onChange(listNumDossierFicheContact[key]);
   }
 
   valueIsNumDossier(value) {
