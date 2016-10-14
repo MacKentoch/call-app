@@ -212,7 +212,9 @@ const Form = ({
       <div className="row">
         <div className="col-xs-12">
           <FicheContactMotifs
-
+            saveMotifs={() => console.log('TODO FicheContactMotifs -> save')}
+            addnewMotifs={() => console.log('TODO FicheContactMotifs -> add')}
+            listMotifs={}
           />
         </div>
       </div>
