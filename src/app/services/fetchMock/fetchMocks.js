@@ -423,12 +423,12 @@ export const fetchMockGestContactsNumDossierDomaineStatutBenef = (benefId = 0, n
 };
 
 /*
-    gestContacts fiche contact list groupe destintaires
+  gestContacts fiche contact list groupe destintaires
  */
-export const gestContactsFicheContactGroupesDestinatairesMock = (benefId = 0, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+export const fetchMockGestContactsFicheContactGroupesDestinataires = (benefId = 0, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
   if (!benefId) {
     return Promise.reject({
-      'error': 'gestContactsFicheContactGroupesDestinatairesMock error: benefId is not valid'
+      'error': 'fetchMockGestContactsFicheContactGroupesDestinataires error: benefId is not valid'
     });
   }
 

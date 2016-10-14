@@ -28,6 +28,7 @@ import {
   fetchMockGetGestBenefAllContactsAndActivites,
   fetchMockGetGestBenefContactsAndActivitesForThisNumDossier,
   fetchMockGestContactsNumDossierDomaineStatutBenef,
+  fetchMockGestContactsFicheContactGroupesDestinataires,
   // gest contacts:
   fetchMockGetGestContacts,
   // liste de motifs:
@@ -133,6 +134,7 @@ export {
   fetchMockGetGestContacts,
   fetchMockGetGestContactsAllMotifs,
   fetchMockGetGestContactsFicheContact,
+  fetchMockGestContactsFicheContactGroupesDestinataires,
 
   // API
   getUserBoitesMails,
