@@ -28,7 +28,8 @@ export const UPDATE_GEST_CONTACTS_DATE_CLOTURE          = 'UPDATE_GEST_CONTACTS_
 export const UPDATE_GEST_CONTACTS_TYPE_INDEX            = 'UPDATE_GEST_CONTACTS_TYPE_INDEX';
 export const UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX     = 'UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX';
 export const UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT = 'UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT';
-export const UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT = 'UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT';
+export const UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT    = 'UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT';
+export const UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT  = 'UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT';
 
 export const REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER  = 'REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER';
 export const RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER = 'RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER';
@@ -124,6 +125,19 @@ export const updateCommentaireFicheContactChanged = (commentaires = null, time =
     return {
       type: UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT,
       commentaireFicheContact: commentaires,
+      time
+    };
+  }
+  return false;
+};
+//  -----------------------------------------------------------------
+//    update updateGroupeDestinataireIdSelected value
+//  -----------------------------------------------------------------
+export const updateGroupeDestinataireIdSelected = (groupeDestinataireId = null, time = moment().format(formatDate)) => {
+  if (!parseInt(groupeDestinataireId, 10 > 0)) {
+    return {
+      type: UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT,
+      groupeDestinataireIdSelected: groupeDestinataireId,
       time
     };
   }

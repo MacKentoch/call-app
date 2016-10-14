@@ -114,7 +114,8 @@ import {
   updateStatutBenefNewBenefDossier,
   updateDateEntreeNewBenefDossier,
   updateDateSortieNewBenefDossier,
-  updateDateTauxPleinNewBenefDossier
+  updateDateTauxPleinNewBenefDossier,
+  updateGroupeDestinataireIdSelected
 }                                 from './modals';
 // search benef
 import {
@@ -300,6 +301,7 @@ export {
   updateDateSortieNewBenefDossier,
   updateDateTauxPleinNewBenefDossier,
   updateCommentaireFicheContactChanged,
+  updateGroupeDestinataireIdSelected,
 
   // search benef
   postSearchIfNeeded,

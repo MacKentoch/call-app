@@ -34,7 +34,8 @@ import {
   UPDATE_GEST_CONTACTS_TYPE_INDEX,
   UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX,
   UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT,
-  UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT
+  UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT,
+  UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT
 }                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
@@ -461,7 +462,12 @@ const gestContacts = (state = initialState, action) => {
       commentaireFicheContact: action.commentaireFicheContact,
       actionTime: action.time
     };
-
+  case UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT:
+    return {
+      ...state,
+      groupeDestinataireIdSelected: action.groupeDestinataireIdSelected,
+      actionTime: action.time
+    };
   // /////////////////
   // fiche activite
   // /////////////////
