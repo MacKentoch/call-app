@@ -11,7 +11,6 @@ import Form                 from './form/Form';
 import SavingIndicator      from '../savingIndicator/SavingIndicator';
 
 moment.locale('fr');
-// const formatDate = appConfig.formatDate.defaut;
 
 
 class FicheContact extends Component {
@@ -25,6 +24,7 @@ class FicheContact extends Component {
 
   render() {
     const {
+      benefId,
       isCollapsedFicheContact,
       onCollapseClick,
       lastFetchTimeFicheContact,
@@ -100,6 +100,7 @@ class FicheContact extends Component {
                   <SavingIndicator />
                 :
                  <Form
+                   benefId={benefId}
                    isCollapsedFicheContact={isCollapsedFicheContact}
                    onCollapseClick={this.handlesOnFicheContactCollapseClick}
                    lastFetchTimeFicheContact={lastFetchTimeFicheContact}
@@ -168,12 +169,8 @@ class FicheContact extends Component {
                    activites={activites}
                  />
               }
-
-
               </div>
-
             </div>
-
            </div>
          </Collapse>
        </div>

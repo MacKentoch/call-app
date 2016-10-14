@@ -20,6 +20,7 @@ moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
 const Form = ({
+  benefId,
   isCollapsedFicheContact,
   onCollapseClick,
   lastFetchTimeFicheContact,
@@ -173,6 +174,7 @@ const Form = ({
           <NumsDossiersDropDown
             id="numsDossiers"
             label={'N° Dossier'}
+            benefId={benefId}
             value={numDossierIndexSelected}
             onChange={onNumDossierIndexSelectedChanged}
             listNumDossierFicheContact={listNumDossierFicheContact}
@@ -237,52 +239,36 @@ const Form = ({
 };
 
 Form.propTypes = {
+  benefId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   isCollapsedFicheContact: PropTypes.bool.isRequired,
   lastFetchTimeFicheContact: PropTypes.string.isRequired,
   isFetchingFicheContact: PropTypes.bool.isRequired,
   isSavingFicheContact: PropTypes.bool.isRequired,
-
   dateCreationFicheContact: PropTypes.string.isRequired,
   onDateCreationFicheContactChanged: PropTypes.func.isRequired,
-
   creeParFicheContact: PropTypes.string.isRequired,
-
   dateReceptionFicheContact: PropTypes.string.isRequired,
   onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
-
   statutIndexFicheContact: PropTypes.number.isRequired,
   onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
-
-
-
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-
   dateClotureFicheContact: PropTypes.string.isRequired,
   // onDateClotureFicheContactChanged: PropTypes.func.isRequired,
-
   clotureParFicheContact: PropTypes.string.isRequired,
   // onClotureParFicheContactChanged: PropTypes.func.isRequired,
-
   typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
   onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
-
   listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
-
   canalIndexFicheContact: PropTypes.number.isRequired,
   // onCanalIndexFicheContactChanged: PropTypes.func.isRequired,
-
   listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
   // onListCanauxFicheContactChanged: PropTypes.func.isRequired,
-
   numDossierIndexSelected: PropTypes.number.isRequired,
   onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
-
   listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
   // onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
-
   domaineFicheContact: PropTypes.string.isRequired,
   onDomaineFicheContactChanged: PropTypes.func.isRequired,
-
   statutBenefFicheContact: PropTypes.string.isRequired,
   // onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
 

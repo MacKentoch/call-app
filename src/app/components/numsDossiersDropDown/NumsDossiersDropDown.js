@@ -59,8 +59,8 @@ class NumsDossiersDropDown extends Component {
 
   handlesOnChange(event, key) {
     event.preventDefault();
-    const { onChange, listNumDossierFicheContact } = this.props;
-    onChange(listNumDossierFicheContact[key]);
+    const { onChange, listNumDossierFicheContact, benefId } = this.props;
+    onChange(benefId, listNumDossierFicheContact[key]);
   }
 
   valueIsNumDossier(value) {
@@ -81,7 +81,8 @@ NumsDossiersDropDown.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   // list statut ref
-  listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired
+  listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
+  benefId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default NumsDossiersDropDown;
