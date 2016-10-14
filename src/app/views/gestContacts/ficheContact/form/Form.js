@@ -3,7 +3,7 @@ import moment               from 'moment';
 import { appConfig }        from '../../../../config';
 import {
   StatutFicheDropDown,
-  TextInput,
+  TextAreaInput,
   FormLabel,
   DateInput,
   NumsDossiersDropDown,
@@ -207,7 +207,12 @@ const Form = ({
 
       {/* 5th row */}
       <div className="row">
-        <div className="col-xs-12">
+        <div
+          className="col-xs-12"
+          style={{
+            height: '220px',
+            overflowY: 'scroll'
+          }}>
           <ListAttachments
             id={'ficheContactPJ'}
             label={'Pièces jointes reçus'}
@@ -215,6 +220,20 @@ const Form = ({
             onDelete={()=>console.log('on fiche contact delete attachments: disabled')}
           />
         </div>
+      </div>
+
+      {/* 6th row */}
+      <div className="row">
+        <div className="col-xs-12">
+          <TextAreaInput
+            id={'ficheContactCommentaireTextArea'}
+            label={'Commentaires'}
+            value={commentaireFicheContact}
+            nbrows={3}
+            onChange={onCommentaireFicheContactChanged}
+          />
+        </div>
+
       </div>
     </form>
   );
