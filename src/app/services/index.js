@@ -56,7 +56,8 @@ import {
   getGestContactsExistingContact,
   getGestContactsAllMotifs,
   getGestContactsFicheContactInit,
-  getGestContactsFicheContactDomaineStatutfFromNumDossier
+  getGestContactsFicheContactDomaineStatutfFromNumDossier,
+  postGestContactsSaveFicheContact
 }                     from './API';
 
 // date tools
@@ -156,6 +157,7 @@ export {
   getGestContactsAllMotifs,
   getGestContactsFicheContactInit,
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
+  postGestContactsSaveFicheContact,
 
   // date tools
   getLastThreeMonthNames,
