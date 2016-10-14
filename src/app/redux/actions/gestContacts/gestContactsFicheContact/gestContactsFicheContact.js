@@ -107,7 +107,6 @@ export const updateTypeIndexFicheContact = (typeIndex = null, time = moment().fo
   }
   return false;
 };
-
 //  -----------------------------------------------------------------
 //    update updateDomaineFicheContactChanged value
 //  -----------------------------------------------------------------
