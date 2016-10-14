@@ -321,7 +321,7 @@ export const fetchMockGetGestBenefContactsAndActivitesForThisNumDossier = (benef
     resolve => {
       setTimeout(
         () => resolve(
-          gestBenefMock.contactEtActivites.filter(
+          gestBenefMock.contactsEtActivites.filter(
             contact => contact.numDossier === numDossier
           )
         ),
