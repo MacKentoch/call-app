@@ -27,6 +27,8 @@ class GestContacts extends Component {
     this.handlesOnFicheContactCollapseClick = this.handlesOnFicheContactCollapseClick.bind(this);
     // fiche activite related methods:
     this.handlesOnFicheActiviteCollapseClick = this.handlesOnFicheActiviteCollapseClick.bind(this);
+    // save fiche contact
+    this.handlesSaveFicheContact = this.handlesSaveFicheContact.bind(this);
   }
 
   componentDidMount() {
@@ -363,7 +365,7 @@ class GestContacts extends Component {
 
                         activites={activites}
 
-                        saveFicheContact={saveFicheContact}
+                        saveFicheContact={this.handlesSaveFicheContact}
                       />
                       <div style={{height: '10px'}}></div>
 
@@ -589,6 +591,36 @@ class GestContacts extends Component {
     }
   }
 
+  handlesSaveFicheContact(payload) {
+    const {
+      actions: {
+        saveFicheContact,
+        addNotificationMessage
+      }
+    } = this.props;
+
+    saveFicheContact(payload)
+      .then(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'info'
+            });
+          }
+        }
+      )
+      .catch(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'error'
+            });
+          }
+        }
+      );
+  }
   // /////////////////////////////////////
   //  fiches activite related methods
   // /////////////////////////////////////
