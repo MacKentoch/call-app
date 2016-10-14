@@ -31,6 +31,7 @@ import TypeFicheContactRadio from './typeFicheContactRadio/TypeFicheContactRadio
 import TypeFicheContactNavPills from './typeFicheContactNavPills/TypeFicheContactNavPills';
 import NumsDossiersDropDown from './numsDossiersDropDown/NumsDossiersDropDown';
 import StatutBenefFicheContactDropDown from './statutBenefFicheContactDropDown/StatutBenefFicheContactDropDown';
+import FicheContactGroupeDestinataireDropDown from './ficheContactGroupeDestinataireDropDown/FicheContactGroupeDestinataireDropDown';
 import TextAreaInput from './textInput/TextAreaInput';
 import {
   FichesTraitee,
@@ -71,6 +72,7 @@ export {
   TypeFicheContactNavPills,
   NumsDossiersDropDown,
   StatutBenefFicheContactDropDown,
+  FicheContactGroupeDestinataireDropDown,
 
   // mailbox
   MailboxRepertoires,

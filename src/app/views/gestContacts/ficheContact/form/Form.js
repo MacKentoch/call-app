@@ -8,7 +8,8 @@ import {
   DateInput,
   NumsDossiersDropDown,
   TypeFicheContactNavPills,
-  StatutBenefFicheContactDropDown
+  StatutBenefFicheContactDropDown,
+  FicheContactGroupeDestinataireDropDown
 }                           from '../../../../components';
 import {
   isValidDateOrReturnDefault
@@ -237,8 +238,20 @@ const Form = ({
 
       {/* 7th row */}
       <div className="row">
-        <div className="col-xs-12">
-
+        <div className="col-xs-6">
+          <FicheContactGroupeDestinataireDropDown
+            id={'groupdDestDropDownFicheContact'}
+            label={''}
+            value={groupeDestinataireIdSelected}
+            onChange={onGroupeDestinataireIdSelectedChanged}
+            groupDestinataires={listGroupeDestinataire}
+          />
+        </div>
+        <div className="col-xs-6">
+          {/* buttons */}
+          <div className="pull-right">
+            
+          </div>
         </div>
       </div>
     </form>
