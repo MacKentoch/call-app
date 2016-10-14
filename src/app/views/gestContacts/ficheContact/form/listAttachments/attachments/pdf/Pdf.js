@@ -15,7 +15,7 @@ class Pdf extends Component {
   }
 
   render() {
-    const {name, filePath, size} = this.props;
+    const {name, filePath, size, hideTrash} = this.props;
     return (
       <li>
         <span
@@ -33,11 +33,14 @@ class Pdf extends Component {
           </a>
           <span className="mailbox-attachment-size">
             {size}
-            <button
-              className="btn btn-default btn-xs pull-right"
-              onClick={this.handlesOnTrashClick}>
-              <i className="fa fa-trash-o"></i>
-            </button>
+            {
+              !hideTrash &&
+              <button
+                className="btn btn-default btn-xs pull-right"
+                onClick={this.handlesOnTrashClick}>
+                <i className="fa fa-trash-o"></i>
+              </button>
+            }
           </span>
         </div>
       </li>
@@ -55,7 +58,8 @@ Pdf.propTypes = {
   name: PropTypes.string.isRequired,
   filePath: PropTypes.string,
   size: PropTypes.any.isRequired,
-  onTrashClick: PropTypes.func
+  onTrashClick: PropTypes.func,
+  hideTrash: PropTypes.bool
 };
 
 Pdf.defaultProps = {

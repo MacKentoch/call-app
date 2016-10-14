@@ -19,7 +19,7 @@ class ListAttachments extends Component {
 
   render() {
     const { id, label, attachments } = this.props;
-    console.log('---- attachments: ', attachments);
+
     return (
       <div className="form-group">
         <label

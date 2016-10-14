@@ -8,7 +8,7 @@ import Csv                  from './csv/Csv';
 import Img                  from './img/Img';
 import Zip                  from './zip/Zip';
 
-const Attachments = ({attachments, onTrashClick}) => {
+const Attachments = ({attachments, onTrashClick, hideTrash}) => {
   return (
     <ul className="mailbox-attachments clearfix">
       {
@@ -26,6 +26,7 @@ const Attachments = ({attachments, onTrashClick}) => {
                   filePath={filePath}
                   size={size}
                   onTrashClick={onTrashClick}
+                  hideTrash={hideTrash}
                 />
               );
 
@@ -39,6 +40,7 @@ const Attachments = ({attachments, onTrashClick}) => {
                   filePath={filePath}
                   size={size}
                   onTrashClick={onTrashClick}
+                  hideTrash={hideTrash}
                 />
               );
 
@@ -53,6 +55,7 @@ const Attachments = ({attachments, onTrashClick}) => {
                   filePath={filePath}
                   size={size}
                   onTrashClick={onTrashClick}
+                  hideTrash={hideTrash}
                 />
               );
 
@@ -70,6 +73,7 @@ const Attachments = ({attachments, onTrashClick}) => {
                   filePath={filePath}
                   size={size}
                   onTrashClick={onTrashClick}
+                  hideTrash={hideTrash}
                 />
               );
 
@@ -82,6 +86,7 @@ const Attachments = ({attachments, onTrashClick}) => {
                   filePath={filePath}
                   size={size}
                   onTrashClick={onTrashClick}
+                  hideTrash={hideTrash}
                 />
               );
             case 'png':
@@ -101,6 +106,7 @@ const Attachments = ({attachments, onTrashClick}) => {
                   filePath={filePath}
                   size={size}
                   onTrashClick={onTrashClick}
+                  hideTrash={hideTrash}
                 />
               );
 
@@ -119,6 +125,7 @@ const Attachments = ({attachments, onTrashClick}) => {
                   filePath={filePath}
                   size={size}
                   onTrashClick={onTrashClick}
+                  hideTrash={hideTrash}
                 />
               );
 
@@ -141,7 +148,12 @@ Attachments.propTypes = {
       filePath: PropTypes.string,
       size: PropTypes.any.isRequired
     })
-  )
+  ),
+  hideTrash: PropTypes.bool
+};
+
+Attachments.defaultProps = {
+  hideTrash: true
 };
 
 export default Attachments;
