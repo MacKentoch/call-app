@@ -410,7 +410,11 @@ export const fetchMockGestContactsNumDossierDomaineStatutBenef = (benefId = 0, n
   return new Promise(
     resolve => {
       setTimeout(
-        () => resolve({...gestContactsNumDossierDomaineStatutBenefMock}),
+        () => resolve(
+          gestContactsNumDossierDomaineStatutBenefMock.filter(
+            infos => infos.numDossier === numDossier
+          )
+        ),
         timeToWait
       );
     }

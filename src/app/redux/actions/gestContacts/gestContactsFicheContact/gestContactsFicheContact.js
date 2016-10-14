@@ -4,7 +4,7 @@ import {
   fetchMockGetGestContactsFicheContact,
   getGestContactsFicheContactInit,
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
-  fetchMockGetGestBenefContactsAndActivitesForThisNumDossier
+  fetchMockGestContactsNumDossierDomaineStatutBenef
 }                           from '../../../../services';
 
 moment.locale('fr');
@@ -314,7 +314,7 @@ const getQueryGestContactsBenefInfoFromNumDossier = (benefId = 0, numDossier = n
   dispatch(requestGetGestContactsBenefInfoFromNumDossier(benefId, numDossier));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockGetGestBenefContactsAndActivitesForThisNumDossier(benefId, numDossier) // mock is the as all gestBenef object
+    return fetchMockGestContactsNumDossierDomaineStatutBenef(benefId, numDossier) // mock is the as all gestBenef object
             .then(
               data => {
                 dispatch(receivedGetGestContactsBenefInfoFromNumDossier(data));
