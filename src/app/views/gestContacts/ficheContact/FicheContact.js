@@ -57,6 +57,7 @@ class FicheContact extends Component {
       onDomaineFicheContactChanged,
       statutBenefFicheContact,
       onStatutBenefFicheContactChanged,
+      listStatutBenefFicheContact,
       attachmentsFicheContact,
       onAttachmentsFicheContactChanged,
       commentaireFicheContact,
@@ -111,6 +112,8 @@ class FicheContact extends Component {
 
                 statutIndexFicheContact={statutIndexFicheContact}
                 onStatutIndexFicheContactChanged={onStatutIndexFicheContactChanged}
+
+                listStatutBenefFicheContact={listStatutBenefFicheContact}
 
                 listStatutFicheContact={listStatutFicheContact}
 
@@ -216,6 +219,8 @@ FicheContact.propTypes = {
 
   statutBenefFicheContact: PropTypes.string.isRequired,
   onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
+
+  listStatutBenefFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   attachmentsFicheContact: PropTypes.arrayOf(
     PropTypes.shape({

@@ -125,6 +125,7 @@ const initialState = {
 
   domaineFicheContact: '',
   statutBenefFicheContact: '',
+  listStatutBenefFicheContact: ['retraité', 'pré-retraité'],
 
   attachmentsFicheContact: [],
   commentaireFicheContact: '',

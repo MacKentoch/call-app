@@ -79,6 +79,7 @@ const mapStateToProps = (state) => {
 
     domaineFicheContact: state.gestContacts.domaineFicheContact,
     statutBenefFicheContact: state.gestContacts.statutBenefFicheContact,
+    listStatutBenefFicheContact: state.gestContacts.listStatutBenefFicheContact,
 
     attachmentsFicheContact: state.gestContacts.attachmentsFicheContact,
     commentaireFicheContact: state.gestContacts.commentaireFicheContact,

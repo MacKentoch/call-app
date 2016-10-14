@@ -51,6 +51,7 @@ const Form = ({
   onDomaineFicheContactChanged,
   statutBenefFicheContact,
   onStatutBenefFicheContactChanged,
+  listStatutBenefFicheContact,
   attachmentsFicheContact,
   onAttachmentsFicheContactChanged,
   commentaireFicheContact,
@@ -204,7 +205,7 @@ const Form = ({
             id={'ficheContactPJ'}
             label={'Pièces jointes reçus'}
             attachments={attachmentsFicheContact}
-            onDelete={()=>console.log('on fiche contact delete attachments')}
+            onDelete={()=>console.log('on fiche contact delete attachments: disabled')}
           />
         </div>
       </div>
@@ -228,6 +229,8 @@ Form.propTypes = {
 
   statutIndexFicheContact: PropTypes.number.isRequired,
   onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
+
+
 
   listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
@@ -259,6 +262,8 @@ Form.propTypes = {
 
   statutBenefFicheContact: PropTypes.string.isRequired,
   onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
+
+  listStatutBenefFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   attachmentsFicheContact: PropTypes.arrayOf(
     PropTypes.shape({

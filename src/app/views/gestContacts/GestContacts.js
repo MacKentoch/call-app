@@ -137,13 +137,12 @@ class GestContacts extends Component {
       listCanauxFicheContact,
       // onListCanauxFicheContactChanged,
       numDossierIndexSelected,
-
       listNumDossierFicheContact,
       // onListNumDossierFicheContactChanged,
-
       domaineFicheContact,
 
       statutBenefFicheContact,
+      listStatutBenefFicheContact,
       onStatutBenefFicheContactChanged,
 
       attachmentsFicheContact,
@@ -344,6 +343,8 @@ class GestContacts extends Component {
                         statutBenefFicheContact={statutBenefFicheContact}
                         onStatutBenefFicheContactChanged= {onStatutBenefFicheContactChanged}
 
+                        listStatutBenefFicheContact={listStatutBenefFicheContact}
+
                         attachmentsFicheContact={attachmentsFicheContact}
                         onAttachmentsFicheContactChanged={onAttachmentsFicheContactChanged}
 
@@ -522,7 +523,6 @@ class GestContacts extends Component {
       .all(promises)
       .then(
         notificationPayloadArray => {
-          console.log('notificationPayloadArray: ', notificationPayloadArray);
           if (!Array.isArray(notificationPayloadArray)) {
             if (notificationPayloadArray && notificationPayloadArray.showNotification) {
               addNotificationMessage({
@@ -546,7 +546,6 @@ class GestContacts extends Component {
       )
       .catch(
         notificationPayloadArray => {
-          console.log('notificationPayloadArray: ', notificationPayloadArray);
           if (!Array.isArray(notificationPayloadArray)) {
             if (notificationPayloadArray && notificationPayloadArray.showNotification) {
               addNotificationMessage({
@@ -684,6 +683,8 @@ GestContacts.propTypes = {
 
   statutBenefFicheContact: PropTypes.string.isRequired,
   onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
+
+  listStatutBenefFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   attachmentsFicheContact: PropTypes.arrayOf(
     PropTypes.shape({
