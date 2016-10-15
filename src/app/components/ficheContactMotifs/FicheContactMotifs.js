@@ -174,24 +174,22 @@ FicheContactMotifs.propTypes = {
       isEditing: PropTypes.bool,
 
       idNiveau2: PropTypes.string.isRequired,
-      labelNiveau2: PropTypes.string.isRequired,
-      valueNiveau2: PropTypes.string,
-      listMotifsNiveau2: PropTypes.arrayOf(PropTypes.string).isRequired,
-      onChangeNiveau2: PropTypes.func.isRequired,
-
       idNiveau3: PropTypes.string.isRequired,
-      labelNiveau3: PropTypes.string.isRequired,
-      valueNiveau3: PropTypes.string,
-      listMotifsNiveau3: PropTypes.arrayOf(PropTypes.string).isRequired,
-      onChangeNiveau3: PropTypes.func.isRequired,
-
-      idNiveau4: PropTypes.string.isRequired,
-      labelNiveau4: PropTypes.string.isRequired,
-      valueNiveau4: PropTypes.string,
-      listMotifsNiveau4: PropTypes.arrayOf(PropTypes.string).isRequired,
-      onChangeNiveau4: PropTypes.func.isRequired
+      idNiveau4: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+
+  labelNiveau2: PropTypes.string.isRequired,
+  labelNiveau3: PropTypes.string.isRequired,
+  labelNiveau4: PropTypes.string.isRequired,
+
+  listMotifsNiveau3: PropTypes.arrayOf(PropTypes.string).isRequired,
+  listMotifsNiveau2: PropTypes.arrayOf(PropTypes.string).isRequired,
+  listMotifsNiveau4: PropTypes.arrayOf(PropTypes.string).isRequired,
+
+  onChangeNiveau2: PropTypes.func.isRequired,
+  onChangeNiveau3: PropTypes.func.isRequired,
+  onChangeNiveau4: PropTypes.func.isRequired
 };
 
 export default FicheContactMotifs;
