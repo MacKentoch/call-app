@@ -173,7 +173,10 @@ class GestContacts extends Component {
         onGroupeDestinataireIdSelectedChanged,
         saveFicheContact,
         addNewCombinaisonMotifsFicheContact,
-        removeNewCombinaisonMotifsFicheContact
+        removeNewCombinaisonMotifsFicheContact,
+        onChangeFicheContactMotifNiveau2,
+        onChangeFicheContactMotifNiveau3,
+        onChangeFicheContactMotifNiveau4
       }
     } = this.props;
 
@@ -186,10 +189,7 @@ class GestContacts extends Component {
       isSavingActivite,
       activiteIdBeingEditing,
       selectedActiviteId,
-      listCanauxFicheActivite,
-      onChangeFicheContactMotifNiveau2,
-      onChangeFicheContactMotifNiveau3,
-      onChangeFicheContactMotifNiveau4
+      listCanauxFicheActivite
     } = this.props;
 
     return(

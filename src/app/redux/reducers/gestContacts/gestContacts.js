@@ -42,7 +42,11 @@ import {
   UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT,
 
   ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
-  REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT
+  REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
+
+  ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2,
+  ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3,
+  ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4
 }                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
@@ -606,6 +610,17 @@ const gestContacts = (state = initialState, action) => {
       actionTime: action.time,
       activites: [...action.activites]
     };
+
+  case ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2:
+    return {
+      ...state,
+      actionTime: action.time,
+      activites: [...action.activites]
+    };
+
+    // ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2,
+    // ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3,
+    // ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4
 
   default:
     return state;

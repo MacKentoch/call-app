@@ -37,12 +37,16 @@ export const UPDATE_GEST_CONTACTS_DATE_CLOTURE          = 'UPDATE_GEST_CONTACTS_
 export const UPDATE_GEST_CONTACTS_TYPE_INDEX            = 'UPDATE_GEST_CONTACTS_TYPE_INDEX';
 export const UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX     = 'UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX';
 export const UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT = 'UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT';
-export const UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT    = 'UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT';
-export const UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT  = 'UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT';
+export const UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT        = 'UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT';
+export const UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT      = 'UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT';
 
 export const REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER  = 'REQUEST_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER';
 export const RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER = 'RECEIVED_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER';
 export const ERROR_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER    = 'ERROR_GET_GEST_CONTACTS_BENEF_INFO_FROM_NUM_DOSSIER';
+
+export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2';
+export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3';
+export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4';
 
 //  -----------------------------------------------------------------
 //    update dateCreationFicheContact value
@@ -574,3 +578,32 @@ export const removeNewCombinaisonMotifsFicheContact = (activiteIndex = 0, time =
   }
   return false;
 };
+//  -----------------------------------------------------------------
+//    fiche contact add new activite = combinaison of motifs 2,3 and 4
+//  -----------------------------------------------------------------
+export const onChangeMotifFicheContactMotifNiveau2 = (indexActivite = 0, indexMotif = -1, time = moment().format(formatDate)) => {
+  return function (dispatch, getState) {
+    if (!parseInt(indexActivite, 10) > 0) {
+      return;
+    }
+
+    if (!parseInt(indexMotif, 10) > -1) {
+      return;
+    }
+
+    const previousState = getState().gestContacts;
+    const activites = [...previousState.activites];
+    activites[indexActivite].selectMotifLevel2IdFicheContact = indexMotif;
+
+    dispatch({
+      type : ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2,
+      time,
+      activites: [...activites]
+    });
+  };
+};
+
+
+// export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2';
+// export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3';
+// export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4';
