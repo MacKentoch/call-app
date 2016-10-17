@@ -594,8 +594,35 @@ export const onChangeFicheContactMotifNiveau2 = (payload = {}, time = moment().f
     });
   };
 };
+//  -----------------------------------------------------------------
+//    fiche contact change motif niveau 3
+//  -----------------------------------------------------------------
+export const onChangeFicheContactMotifNiveau3 = (payload = {}, time = moment().format(formatDate)) => {
+  return function (dispatch, getState) {
+    const previousState = getState().gestContacts;
+    const activites = [...previousState.activites];
+    activites[payload.motifLineIndex].selectMotifLevel3IdFicheContact = payload.indexMotif;
 
+    dispatch({
+      type : ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3,
+      time,
+      activites: [...activites]
+    });
+  };
+};
+//  -----------------------------------------------------------------
+//    fiche contact change motif niveau 4
+//  -----------------------------------------------------------------
+export const onChangeFicheContactMotifNiveau4 = (payload = {}, time = moment().format(formatDate)) => {
+  return function (dispatch, getState) {
+    const previousState = getState().gestContacts;
+    const activites = [...previousState.activites];
+    activites[payload.motifLineIndex].selectMotifLevel4IdFicheContact = payload.indexMotif;
 
-// export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2';
-// export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3';
-// export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4';
+    dispatch({
+      type : ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4,
+      time,
+      activites: [...activites]
+    });
+  };
+};

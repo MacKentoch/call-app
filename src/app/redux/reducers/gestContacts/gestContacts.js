@@ -613,16 +613,14 @@ const gestContacts = (state = initialState, action) => {
     };
 
   case ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2:
+  case ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3:
+  case ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4:
     return {
       ...state,
       actionTime: action.time,
       activiteUpdateTime: action.time,
       activites: [...action.activites]
     };
-
-    // ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2,
-    // ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3,
-    // ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4
 
   default:
     return state;
