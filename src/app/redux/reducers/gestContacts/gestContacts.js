@@ -39,7 +39,9 @@ import {
   UPDATE_GEST_CONTACTS_NUM_DOSSIER_INDEX,
   UPDATE_GEST_CONTACTS_DOMAINE_FICHE_CONTACT,
   UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT,
-  UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT
+  UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT,
+
+  ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT
 }                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
@@ -157,6 +159,25 @@ const initialState = {
   selectedActiviteId: 0,
   listCanauxFicheActivite: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'],
   activites: []
+};
+
+const emptyActivite = {
+  activiteId: 0, // nouvelle activite sans id tant que pas enregister en BDD
+  isEditable: true, // si activiteId === 0 alors reste editable (on peut changer les motifs) sinon plus editable et les motifs sont bloqués
+  selectMotifLevel2IdFicheContact: 0, // from listMotifLevel2
+  selectMotifLevel3IdFicheContact: 0, // from listMotifLevel3
+  selectMotifLevel4IdFicheContact: 0, // from listMotifLevel4
+  // affiche libelle d emotif niveau 4 dna sle champs motif des activites
+  dateCreation: '',
+  creePar: '',
+  traiteePar: '',
+  statutIndex: 1, // En-cours
+  dateCloture: '',
+  cloturePar: '',
+  // libelle motif de niveau 4 a afficher dans motif
+  canalIndexFicheActivite: 1,
+  listAttachements: [],
+  listCommenatire: []
 };
 
 
@@ -569,6 +590,13 @@ const gestContacts = (state = initialState, action) => {
       isFetchingBenefInfoFromNumDossier: false,
       actionTime: action.time,
       error: action.error
+    };
+
+  case ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT:
+    return {
+      ...state,
+      actionTime: action.time,
+      activites: [...state.activites, {...emptyActivite}]
     };
 
   default:
