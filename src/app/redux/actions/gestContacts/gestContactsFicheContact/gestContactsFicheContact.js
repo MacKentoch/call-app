@@ -561,12 +561,15 @@ export const addNewCombinaisonMotifsFicheContact = (time = moment().format(forma
 //  -----------------------------------------------------------------
 //    fiche contact remove new activite = combinaison of motifs 2,3 and 4
 //  -----------------------------------------------------------------
-export const addNewCombinaisonMotifsFicheContact = (activiteIndex = 0, time = moment().format(formatDate)) => {
+export const removeNewCombinaisonMotifsFicheContact = (activiteIndex = 0, time = moment().format(formatDate)) => (dispatch, getState) => {
   if (parseInt(activiteIndex, 10) > 0) {
+    const previsousState = getState().gestContacts;
+    const activites = previsousState.activites.filter((_, idx)=>idx !== activiteIndex);
+
     return {
       type : REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
       time,
-      activiteIndex
+      newActivites
     };
   }
   return false;

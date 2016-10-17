@@ -172,7 +172,8 @@ class GestContacts extends Component {
         onCommentaireFicheContactChanged,
         onGroupeDestinataireIdSelectedChanged,
         saveFicheContact,
-        addNewCombinaisonMotifsFicheContact
+        addNewCombinaisonMotifsFicheContact,
+        removeNewCombinaisonMotifsFicheContact
       }
     } = this.props;
 
@@ -846,6 +847,8 @@ GestContacts.propTypes = {
     onGroupeDestinataireIdSelectedChanged: PropTypes.func.isRequired,
 
     addNewCombinaisonMotifsFicheContact: PropTypes.func.isRequired,
+    removeNewCombinaisonMotifsFicheContact: PropTypes.func.isRequired,
+    
     // POST:
     saveFicheContact: PropTypes.func.isRequired,
     // //////////////////

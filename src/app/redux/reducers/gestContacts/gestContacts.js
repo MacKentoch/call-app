@@ -41,7 +41,8 @@ import {
   UPDATE_GEST_CONTACTS_COMMENTAIRES_FICHE_CONTACT,
   UPDATE_GEST_CONTACTS_GROUPE_DEST_ID_FICHE_CONTACT,
 
-  ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT
+  ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
+  REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT
 }                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
@@ -597,6 +598,13 @@ const gestContacts = (state = initialState, action) => {
       ...state,
       actionTime: action.time,
       activites: [...state.activites, {...emptyActivite}]
+    };
+
+  case REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT:
+    return {
+      ...state,
+      actionTime: action.time,
+      activites: [...action.activites]
     };
 
   default:
