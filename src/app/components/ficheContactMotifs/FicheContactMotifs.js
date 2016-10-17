@@ -10,10 +10,6 @@ import LabelMotif     from './labelMotif/LabelMotif';
 class FicheContactMotifs extends Component {
   constructor(props) {
     super(props);
-
-    this.handlesOnChangeNiveau2 = this.handlesOnChangeNiveau2.bind(this);
-    this.handlesOnChangeNiveau3 = this.handlesOnChangeNiveau3.bind(this);
-    this.handlesOnChangeNiveau4 = this.handlesOnChangeNiveau4.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -170,18 +166,6 @@ class FicheContactMotifs extends Component {
   oneMotifAtLeastIsEditing() {
     const { listMotifs } = this.props;
     return listMotifs.some(motif => motif.isEditing);
-  }
-
-  handlesOnChangeNiveau2() {
-
-  }
-
-  handlesOnChangeNiveau3() {
-
-  }
-
-  handlesOnChangeNiveau4() {
-
   }
 }
 
