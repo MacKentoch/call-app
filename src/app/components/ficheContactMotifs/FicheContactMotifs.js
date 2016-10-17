@@ -82,14 +82,16 @@ class FicheContactMotifs extends Component {
             listMotifs.map(
               (motif, MotifIdx) => {
                 const {
-                  isEditing,
+                  isEditable,
 
                   selectMotifLevel2IdFicheContact,
                   selectMotifLevel3IdFicheContact,
                   selectMotifLevel4IdFicheContact
                 } = motif;
 
-                if (isEditing) {
+                if (isEditable) {
+                  console.log('isEditable: ', isEditable);
+
                   return (
                     <div
                       key={MotifIdx}
@@ -124,9 +126,9 @@ class FicheContactMotifs extends Component {
                     </div>
                   );
                 } else {
-                  console.log('list motif level 2: ', listMotifsNiveau2);
-                  console.log('value: ', selectMotifLevel2IdFicheContact);
-                  console.log('label', listMotifsNiveau2[selectMotifLevel2IdFicheContact]);
+                  // console.log('list motif level 2: ', listMotifsNiveau2);
+                  // console.log('value: ', selectMotifLevel2IdFicheContact);
+                  // console.log('label', listMotifsNiveau2[selectMotifLevel2IdFicheContact]);
                   return (
                     <div
                       key={MotifIdx}
