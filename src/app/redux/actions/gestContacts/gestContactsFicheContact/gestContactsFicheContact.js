@@ -566,11 +566,11 @@ export const removeNewCombinaisonMotifsFicheContact = (activiteIndex = 0, time =
     const previsousState = getState().gestContacts;
     const activites = previsousState.activites.filter((_, idx)=>idx !== activiteIndex);
 
-    return {
+    dispatch({
       type : REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
       time,
-      newActivites
-    };
+      activites
+    });
   }
   return false;
 };

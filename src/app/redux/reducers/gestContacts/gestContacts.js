@@ -601,6 +601,7 @@ const gestContacts = (state = initialState, action) => {
     };
 
   case REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT:
+  console.log('should remoce activite')
     return {
       ...state,
       actionTime: action.time,
