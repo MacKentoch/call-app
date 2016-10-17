@@ -231,7 +231,6 @@ const Form = ({
           />
         </div>
       </div>
-
       {/* 5th row */}
       <div className="row">
         <div
@@ -244,7 +243,6 @@ const Form = ({
           />
         </div>
       </div>
-
       {/* 6th row */}
       <div className="row">
         <div className="col-xs-12">

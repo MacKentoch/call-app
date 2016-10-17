@@ -90,8 +90,6 @@ class FicheContactMotifs extends Component {
                 } = motif;
 
                 if (isEditable) {
-                  console.log('isEditable: ', isEditable);
-
                   return (
                     <div
                       key={MotifIdx}
@@ -99,7 +97,7 @@ class FicheContactMotifs extends Component {
                       <div className="col-xs-4">
                         <MotifDropDown
                           id={selectMotifLevel2IdFicheContact}
-                          label={listMotifsNiveau2[selectMotifLevel2IdFicheContact] ? listMotifsNiveau2[selectMotifLevel2IdFicheContact] : ''}
+                          label={labelNiveau2}
                           value={selectMotifLevel2IdFicheContact}
                           onChange={onChangeNiveau2}
                           listMotifsRef={listMotifsNiveau2}
@@ -108,7 +106,7 @@ class FicheContactMotifs extends Component {
                       <div className="col-xs-4">
                         <MotifDropDown
                           id={selectMotifLevel3IdFicheContact}
-                          label={listMotifsNiveau3[selectMotifLevel3IdFicheContact] ? listMotifsNiveau3[selectMotifLevel3IdFicheContact] : ''}
+                          label={labelNiveau3}
                           value={selectMotifLevel3IdFicheContact}
                           onChange={onChangeNiveau3}
                           listMotifsRef={listMotifsNiveau3}
@@ -117,7 +115,7 @@ class FicheContactMotifs extends Component {
                       <div className="col-xs-4">
                         <MotifDropDown
                           id={selectMotifLevel4IdFicheContact}
-                          label={listMotifsNiveau4[selectMotifLevel4IdFicheContact] ? listMotifsNiveau4[selectMotifLevel4IdFicheContact] : ''}
+                          label={labelNiveau4}
                           value={selectMotifLevel4IdFicheContact}
                           onChange={onChangeNiveau4}
                           listMotifsRef={listMotifsNiveau4}
@@ -136,21 +134,21 @@ class FicheContactMotifs extends Component {
                       <div className="col-xs-4">
                         <LabelMotif
                           id={selectMotifLevel2IdFicheContact}
-                          label={listMotifsNiveau2[selectMotifLevel2IdFicheContact]}
+                          label={labelNiveau2}
                           value={selectMotifLevel2IdFicheContact}
                         />
                       </div>
                       <div className="col-xs-4">
                         <LabelMotif
                           id={selectMotifLevel3IdFicheContact}
-                          label={listMotifsNiveau3[selectMotifLevel3IdFicheContact]}
+                          label={labelNiveau3}
                           value={selectMotifLevel3IdFicheContact}
                         />
                       </div>
                       <div className="col-xs-4">
                         <LabelMotif
                           id={selectMotifLevel4IdFicheContact}
-                          label={listMotifsNiveau4[selectMotifLevel4IdFicheContact]}
+                          label={labelNiveau4}
                           value={selectMotifLevel4IdFicheContact}
                         />
                       </div>
