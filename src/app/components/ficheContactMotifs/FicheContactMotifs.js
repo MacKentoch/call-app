@@ -24,17 +24,13 @@ class FicheContactMotifs extends Component {
     const {
       saveMotifs,
       addNewMotifs,
-
       listMotifs,
-
       labelNiveau2,
       labelNiveau3,
       labelNiveau4,
-
       listMotifsNiveau3,
       listMotifsNiveau2,
       listMotifsNiveau4,
-
       onChangeNiveau2,
       onChangeNiveau3,
       onChangeNiveau4
@@ -83,7 +79,6 @@ class FicheContactMotifs extends Component {
               (motif, MotifIdx) => {
                 const {
                   isEditable,
-
                   selectMotifLevel2IdFicheContact,
                   selectMotifLevel3IdFicheContact,
                   selectMotifLevel4IdFicheContact

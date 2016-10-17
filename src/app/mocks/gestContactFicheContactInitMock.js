@@ -62,7 +62,7 @@ export const gestContactFicheContactInitMock = {
   activites: [
     {
       activiteId: 1, // activite est un combinaison de motifLevel2+motifLevel3+motifLevel4
-      isEditable: true, // si activiteId === 0 alors reste editable (on peut changer les motifs) sinon plus editable et les motifs sont bloqués
+      isEditable: false, // si activiteId === 0 alors reste editable (on peut changer les motifs) sinon plus editable et les motifs sont bloqués
       selectMotifLevel2IdFicheContact: 0, // from listMotifLevel2
       selectMotifLevel3IdFicheContact: 0, // from listMotifLevel3
       selectMotifLevel4IdFicheContact: 0, // from listMotifLevel4

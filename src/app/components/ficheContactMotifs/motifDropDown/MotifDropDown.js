@@ -56,8 +56,10 @@ class MotifDropDown extends Component {
 
   handlesOnChange(event, key) {
     event.preventDefault();
-    const { onChange, listMotifsRef } = this.props;
-    onChange(listMotifsRef[key]);
+    const { onChange } = this.props;
+    // const { onChange, listMotifsRef } = this.props;
+    // onChange(listMotifsRef[key]);
+    onChange(key);
   }
 
   valueIsMotif = (value) => {
