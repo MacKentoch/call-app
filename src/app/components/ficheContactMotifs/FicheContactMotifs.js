@@ -5,11 +5,14 @@ import React, {
 import shallowCompare from 'react-addons-shallow-compare';
 import MotifDropDown  from './motifDropDown/MotifDropDown';
 import LabelMotif     from './labelMotif/LabelMotif';
+import DeleteMotifButton from './deleteMotifButton/DeleteMotifButton';
 
 
 class FicheContactMotifs extends Component {
   constructor(props) {
     super(props);
+
+    this.handlesOnRemoveMotifs = this.handlesOnRemoveMotifs.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -20,6 +23,7 @@ class FicheContactMotifs extends Component {
     const {
       saveMotifs,
       addNewMotifs,
+      onRemoveMotifs,
       listMotifs,
       labelNiveau2,
       labelNiveau3,
@@ -79,22 +83,17 @@ class FicheContactMotifs extends Component {
               } = motif;
 
               return (
-                <div className="row">
+                <div
+                  key={motifIdx}
+                  className="row">
                   <div className="col-xs-12">
                   {
                     isEditable
                     ?
-                      <div
-                        style={{
-                          height: '70px'
-                        }}>
-                        <button
-                          className="btn mailBoxNewEmailButton_button pull-right"
-                          style={{color: '#F1F1F1'}}
-                          onClick={()=>console.log('remove new non saved motifs')}>
-                          <i className="fa fa-eraser" aria-hidden="true"></i>
-                        </button>
-                      </div>
+                      <DeleteMotifButton
+                        rowIdx={motifIdx}
+                        onRemoveMotifs={onRemoveMotifs}
+                      />
                     :
                       <div style={{height: '70px'}}></div>
                   }
@@ -209,6 +208,7 @@ class FicheContactMotifs extends Component {
 FicheContactMotifs.propTypes = {
   saveMotifs: PropTypes.func.isRequired,
   addNewMotifs: PropTypes.func.isRequired,
+  onRemoveMotifs: PropTypes.func.isRequired,
 
   listMotifs: PropTypes.arrayOf(
     PropTypes.shape({

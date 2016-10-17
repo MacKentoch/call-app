@@ -377,6 +377,7 @@ class GestContacts extends Component {
 
                         saveFicheContact={this.handlesSaveFicheContact}
                         onAddNewMotifs={addNewCombinaisonMotifsFicheContact}
+                        onRemoveMotifs={removeNewCombinaisonMotifsFicheContact}
                       />
                       <div style={{height: '10px'}}></div>
 

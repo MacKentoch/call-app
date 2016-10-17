@@ -73,7 +73,8 @@ const Form = ({
   listMotifsNiveau3,
   listMotifsNiveau4,
 
-  addNewMotifs
+  addNewMotifs,
+  onRemoveMotifs
 }) => {
   return (
     <form role="form">
@@ -222,6 +223,7 @@ const Form = ({
           <FicheContactMotifs
             saveMotifs={() => console.log('TODO FicheContactMotifs -> save')}
             addNewMotifs={addNewMotifs}
+            onRemoveMotifs={onRemoveMotifs}
             listMotifs={activites}
             labelNiveau2={'Niveau 2'}
             labelNiveau3={'Niveau 3'}
@@ -237,7 +239,7 @@ const Form = ({
       </div>
 
       <div style={{height: '20px'}}></div>
-      
+
       {/* 5th row */}
       <div className="row">
         <div
@@ -360,6 +362,9 @@ Form.propTypes = {
   listMotifsNiveau2: PropTypes.array.isRequired,
   listMotifsNiveau3: PropTypes.array.isRequired,
   listMotifsNiveau4: PropTypes.array.isRequired,
+
+  addNewMotifs: PropTypes.func.isRequired,
+  onRemoveMotifs: PropTypes.func.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({
