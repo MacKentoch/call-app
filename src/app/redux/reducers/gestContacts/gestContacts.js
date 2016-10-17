@@ -163,7 +163,8 @@ const initialState = {
 
   selectedActiviteId: 0,
   listCanauxFicheActivite: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'],
-  activites: []
+  activites: [],
+  activiteUpdateTime: ''
 };
 
 const emptyActivite = {
@@ -615,6 +616,7 @@ const gestContacts = (state = initialState, action) => {
     return {
       ...state,
       actionTime: action.time,
+      activiteUpdateTime: action.time,
       activites: [...action.activites]
     };
 

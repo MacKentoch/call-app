@@ -183,6 +183,7 @@ class GestContacts extends Component {
     // fiche activite
     const {
       activites,
+      activiteUpdateTime,
       isCollapsedFicheActivite,
       isFetchingFicheActivite,
       lastFetchTimeFicheActivite,
@@ -374,6 +375,7 @@ class GestContacts extends Component {
                         // onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
 
                         activites={activites}
+                        activiteUpdateTime={activiteUpdateTime}
 
                         listMotifsNiveau2={listMotifLevel2}
                         listMotifsNiveau3={listMotifLevel3}
@@ -778,6 +780,7 @@ GestContacts.propTypes = {
   listMotifLevel3: PropTypes.array.isRequired,
   listMotifLevel4: PropTypes.array.isRequired,
 
+  activiteUpdateTime: PropTypes.string.isRequired,
   activites: PropTypes.arrayOf(
     PropTypes.shape({
       activiteId: PropTypes.number.isRequired, // activite est un combinaison de motifLevel2+motifLevel3+motifLevel4

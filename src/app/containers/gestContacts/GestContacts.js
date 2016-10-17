@@ -98,7 +98,9 @@ const mapStateToProps = (state) => {
 
     selectedActiviteId: state.gestContacts.selectedActiviteId,
     listCanauxFicheActivite: state.gestContacts.listCanauxFicheActivite,
-    activites: state.gestContacts.activites
+    activites: state.gestContacts.activites,
+
+    activiteUpdateTime: state.gestContacts.activiteUpdateTime
   };
 };
 
