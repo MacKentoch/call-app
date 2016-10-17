@@ -34,7 +34,7 @@ class FicheContactMotifs extends Component {
 
     return (
       <div className="row">
-        <div className="col-xs-3">
+        <div className="col-xs-2">
           <div className="row">
             <div className="col-xs-12">
               <label
@@ -69,6 +69,43 @@ class FicheContactMotifs extends Component {
             </div>
           </div>
         </div>
+
+        <div className="col-xs-1">
+        {
+          listMotifs.map(
+            (motif, motifIdx) => {
+              const {
+                isEditable
+              } = motif;
+
+              return (
+                <div className="row">
+                  <div className="col-xs-12">
+                  {
+                    isEditable
+                    ?
+                      <div
+                        style={{
+                          height: '70px'
+                        }}>
+                        <button
+                          className="btn mailBoxNewEmailButton_button pull-right"
+                          style={{color: '#F1F1F1'}}
+                          onClick={()=>console.log('remove new non saved motifs')}>
+                          <i className="fa fa-eraser" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    :
+                      <div style={{height: '70px'}}></div>
+                  }
+                  </div>
+                </div>
+              );
+            }
+          )
+        }
+        </div>
+
         <div className="col-xs-9">
           {
             listMotifs.map(
