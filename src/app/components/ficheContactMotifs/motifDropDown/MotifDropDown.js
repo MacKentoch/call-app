@@ -34,7 +34,7 @@ class MotifDropDown extends Component {
             onSelect={this.handlesOnChange}
             bsSize="sm"
             bsStyle={'default'}
-            title={ this.valueIsMotif(value) ? value : listMotifsRef[0] }>
+            title={ this.valueIsMotif(value) ? value : ' sélectionner ' }>
             {
               listMotifsRef.map(
                 (motif, idx) => {
