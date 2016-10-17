@@ -11,8 +11,6 @@ import DeleteMotifButton from './deleteMotifButton/DeleteMotifButton';
 class FicheContactMotifs extends Component {
   constructor(props) {
     super(props);
-
-    this.handlesOnRemoveMotifs = this.handlesOnRemoveMotifs.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
