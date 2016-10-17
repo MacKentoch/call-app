@@ -67,7 +67,11 @@ const Form = ({
   listGroupeDestinataire,
   // onListGroupeDestinataireChanged,
   activites,
-  saveFicheContact
+  saveFicheContact,
+
+  listMotifsNiveau2,
+  listMotifsNiveau3,
+  listMotifsNiveau4
 }) => {
   return (
     <form role="form">
@@ -213,8 +217,17 @@ const Form = ({
         <div className="col-xs-12">
           <FicheContactMotifs
             saveMotifs={() => console.log('TODO FicheContactMotifs -> save')}
-            addnewMotifs={() => console.log('TODO FicheContactMotifs -> add')}
-            listMotifs={}
+            addNewMotifs={() => console.log('TODO FicheContactMotifs -> add')}
+            listMotifs={activites}
+            labelNiveau2={'Niveau 2'}
+            labelNiveau3={'Niveau 3'}
+            labelNiveau4={'Niveau 4'}
+            listMotifsNiveau2={listMotifsNiveau2}
+            listMotifsNiveau3={listMotifsNiveau3}
+            listMotifsNiveau4={listMotifsNiveau4}
+            onChangeNiveau2={()=>console.log('TODO FicheContactMotifs -> onChangeNiveau2')}
+            onChangeNiveau3={()=>console.log('TODO FicheContactMotifs -> onChangeNiveau3')}
+            onChangeNiveau4={()=>console.log('TODO FicheContactMotifs -> onChangeNiveau4')}
           />
         </div>
       </div>
@@ -338,6 +351,10 @@ Form.propTypes = {
     })
   ).isRequired, // to fill from server query
   // onListGroupeDestinataireChanged: PropTypes.func.isRequired,
+
+  listMotifLevel2: PropTypes.array.isRequired,
+  listMotifLevel3: PropTypes.array.isRequired,
+  listMotifLevel4: PropTypes.array.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

@@ -171,7 +171,10 @@ class GestContacts extends Component {
         onDomaineFicheContactChanged,
         onCommentaireFicheContactChanged,
         onGroupeDestinataireIdSelectedChanged,
-        saveFicheContact
+        saveFicheContact,
+        listMotifsNiveau2,
+        listMotifsNiveau3,
+        listMotifsNiveau4
       }
     } = this.props;
 
@@ -369,6 +372,10 @@ class GestContacts extends Component {
                         // onListGroupeDestinataireChanged={onListGroupeDestinataireChanged}
 
                         activites={activites}
+
+                        listMotifsNiveau2={listMotifsNiveau2}
+                        listMotifsNiveau3={listMotifsNiveau3}
+                        listMotifsNiveau4={listMotifsNiveau4}
 
                         saveFicheContact={this.handlesSaveFicheContact}
                       />

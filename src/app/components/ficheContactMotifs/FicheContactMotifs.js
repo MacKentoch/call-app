@@ -23,7 +23,7 @@ class FicheContactMotifs extends Component {
   render() {
     const {
       saveMotifs,
-      addnewMotifs,
+      addNewMotifs,
 
       listMotifs
     } = this.props;
@@ -57,7 +57,7 @@ class FicheContactMotifs extends Component {
                 <a
                   className="btn btn-primary btn-block mailBoxNewEmailButton_button"
                   style={{width: '120px'}}
-                  onClick={addnewMotifs}>
+                  onClick={addNewMotifs}>
                   <i className="fa fa-plus" aria-hidden="true"></i>&nbsp;
                   Ajouter
                 </a>
@@ -167,15 +167,15 @@ class FicheContactMotifs extends Component {
 
 FicheContactMotifs.propTypes = {
   saveMotifs: PropTypes.func.isRequired,
-  addnewMotifs: PropTypes.func.isRequired,
+  addNewMotifs: PropTypes.func.isRequired,
 
   listMotifs: PropTypes.arrayOf(
     PropTypes.shape({
-      isEditing: PropTypes.bool,
+      isEditable: PropTypes.bool,
 
-      idNiveau2: PropTypes.string.isRequired,
-      idNiveau3: PropTypes.string.isRequired,
-      idNiveau4: PropTypes.string.isRequired
+      selectMotifLevel2IdFicheContact: PropTypes.number.isRequired,
+      selectMotifLevel3IdFicheContact: PropTypes.number.isRequired,
+      selectMotifLevel4IdFicheContact: PropTypes.number.isRequired
     })
   ).isRequired,
 
