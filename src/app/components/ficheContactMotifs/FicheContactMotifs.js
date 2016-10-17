@@ -25,7 +25,19 @@ class FicheContactMotifs extends Component {
       saveMotifs,
       addNewMotifs,
 
-      listMotifs
+      listMotifs,
+
+      labelNiveau2,
+      labelNiveau3,
+      labelNiveau4,
+
+      listMotifsNiveau3,
+      listMotifsNiveau2,
+      listMotifsNiveau4,
+
+      onChangeNiveau2,
+      onChangeNiveau3,
+      onChangeNiveau4
     } = this.props;
 
     return (
@@ -71,21 +83,10 @@ class FicheContactMotifs extends Component {
               (motif, MotifIdx) => {
                 const {
                   isEditing,
-                  idNiveau2,
-                  labelNiveau2,
-                  valueNiveau2,
-                  listMotifsNiveau2,
-                  onChangeNiveau2,
-                  idNiveau3,
-                  labelNiveau3,
-                  valueNiveau3,
-                  listMotifsNiveau3,
-                  onChangeNiveau3,
-                  idNiveau4,
-                  labelNiveau4,
-                  valueNiveau4,
-                  listMotifsNiveau4,
-                  onChangeNiveau4
+
+                  selectMotifLevel2IdFicheContact,
+                  selectMotifLevel3IdFicheContact,
+                  selectMotifLevel4IdFicheContact
                 } = motif;
 
                 if (isEditing) {
@@ -95,27 +96,27 @@ class FicheContactMotifs extends Component {
                       className="row">
                       <div className="col-xs-4">
                         <MotifDropDown
-                          id={idNiveau2}
-                          label={labelNiveau2}
-                          value={valueNiveau2}
+                          id={selectMotifLevel2IdFicheContact}
+                          label={listMotifsNiveau2[selectMotifLevel2IdFicheContact] ? listMotifsNiveau2[selectMotifLevel2IdFicheContact] : ''}
+                          value={selectMotifLevel2IdFicheContact}
                           onChange={onChangeNiveau2}
                           listMotifsRef={listMotifsNiveau2}
                         />
                       </div>
                       <div className="col-xs-4">
                         <MotifDropDown
-                          id={idNiveau3}
-                          label={labelNiveau3}
-                          value={valueNiveau3}
+                          id={selectMotifLevel3IdFicheContact}
+                          label={listMotifsNiveau3[selectMotifLevel3IdFicheContact] ? listMotifsNiveau3[selectMotifLevel3IdFicheContact] : ''}
+                          value={selectMotifLevel3IdFicheContact}
                           onChange={onChangeNiveau3}
                           listMotifsRef={listMotifsNiveau3}
                         />
                       </div>
                       <div className="col-xs-4">
                         <MotifDropDown
-                          id={idNiveau4}
-                          label={labelNiveau4}
-                          value={valueNiveau4}
+                          id={selectMotifLevel4IdFicheContact}
+                          label={listMotifsNiveau4[selectMotifLevel4IdFicheContact] ? listMotifsNiveau4[selectMotifLevel4IdFicheContact] : ''}
+                          value={selectMotifLevel4IdFicheContact}
                           onChange={onChangeNiveau4}
                           listMotifsRef={listMotifsNiveau4}
                         />
@@ -123,29 +124,32 @@ class FicheContactMotifs extends Component {
                     </div>
                   );
                 } else {
+                  console.log('list motif level 2: ', listMotifsNiveau2);
+                  console.log('value: ', selectMotifLevel2IdFicheContact);
+                  console.log('label', listMotifsNiveau2[selectMotifLevel2IdFicheContact]);
                   return (
                     <div
                       key={MotifIdx}
                       className="row">
                       <div className="col-xs-4">
                         <LabelMotif
-                          id={idNiveau2}
-                          label={labelNiveau2}
-                          value={valueNiveau2}
+                          id={selectMotifLevel2IdFicheContact}
+                          label={listMotifsNiveau2[selectMotifLevel2IdFicheContact]}
+                          value={selectMotifLevel2IdFicheContact}
                         />
                       </div>
                       <div className="col-xs-4">
                         <LabelMotif
-                          id={idNiveau3}
-                          label={labelNiveau3}
-                          value={valueNiveau3}
+                          id={selectMotifLevel3IdFicheContact}
+                          label={listMotifsNiveau3[selectMotifLevel3IdFicheContact]}
+                          value={selectMotifLevel3IdFicheContact}
                         />
                       </div>
                       <div className="col-xs-4">
                         <LabelMotif
-                          id={idNiveau4}
-                          label={labelNiveau4}
-                          value={valueNiveau4}
+                          id={selectMotifLevel4IdFicheContact}
+                          label={listMotifsNiveau4[selectMotifLevel4IdFicheContact]}
+                          value={selectMotifLevel4IdFicheContact}
                         />
                       </div>
                     </div>
