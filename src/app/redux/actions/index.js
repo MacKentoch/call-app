@@ -203,6 +203,9 @@ import {
 
   addNewCombinaisonMotifsFicheContact,
   removeNewCombinaisonMotifsFicheContact,
+  onChangeFicheContactMotifNiveau2,
+  onChangeFicheContactMotifNiveau3,
+  onChangeFicheContactMotifNiveau4,
 
   // fiches activites
   setIsCollapsedContactsFicheActivite,
@@ -310,6 +313,10 @@ export {
 
   addNewCombinaisonMotifsFicheContact,
   removeNewCombinaisonMotifsFicheContact,
+
+  onChangeFicheContactMotifNiveau2,
+  onChangeFicheContactMotifNiveau3,
+  onChangeFicheContactMotifNiveau4,
 
   // search benef
   postSearchIfNeeded,
