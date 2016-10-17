@@ -579,21 +579,13 @@ export const removeNewCombinaisonMotifsFicheContact = (activiteIndex = 0, time =
   return false;
 };
 //  -----------------------------------------------------------------
-//    fiche contact add new activite = combinaison of motifs 2,3 and 4
+//    fiche contact change motif niveau 2
 //  -----------------------------------------------------------------
-export const onChangeMotifFicheContactMotifNiveau2 = (indexActivite = 0, indexMotif = -1, time = moment().format(formatDate)) => {
+export const onChangeFicheContactMotifNiveau2 = (payload = {}, time = moment().format(formatDate)) => {
   return function (dispatch, getState) {
-    if (!parseInt(indexActivite, 10) > 0) {
-      return;
-    }
-
-    if (!parseInt(indexMotif, 10) > -1) {
-      return;
-    }
-
     const previousState = getState().gestContacts;
     const activites = [...previousState.activites];
-    activites[indexActivite].selectMotifLevel2IdFicheContact = indexMotif;
+    activites[payload.motifLineIndex].selectMotifLevel2IdFicheContact = payload.indexMotif;
 
     dispatch({
       type : ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2,
