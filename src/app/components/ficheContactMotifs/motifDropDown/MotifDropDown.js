@@ -54,12 +54,14 @@ class MotifDropDown extends Component {
     );
   }
 
-  handlesOnChange(event, key) {
+  handlesOnChange(event, indexMotif) {
     event.preventDefault();
-    const { onChange } = this.props;
-    // const { onChange, listMotifsRef } = this.props;
-    // onChange(listMotifsRef[key]);
-    onChange(key);
+    const { onChange, motifLineIndex } = this.props;
+
+    onChange({
+      motifLineIndex,
+      indexMotif
+    });
   }
 
   valueIsMotif = (value) => {
@@ -79,7 +81,8 @@ MotifDropDown.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  listMotifsRef: PropTypes.arrayOf(PropTypes.string).isRequired
+  listMotifsRef: PropTypes.arrayOf(PropTypes.string).isRequired,
+  motifLineIndex: PropTypes.number.isRequired
 };
 
 export default MotifDropDown;

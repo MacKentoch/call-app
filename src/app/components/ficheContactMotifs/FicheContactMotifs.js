@@ -123,6 +123,7 @@ class FicheContactMotifs extends Component {
                         <MotifDropDown
                           id={selectMotifLevel2IdFicheContact}
                           label={labelNiveau2}
+                          motifLineIndex={MotifIdx}
                           value={selectMotifLevel2IdFicheContact}
                           onChange={onChangeNiveau2}
                           listMotifsRef={listMotifsNiveau2}
@@ -132,6 +133,7 @@ class FicheContactMotifs extends Component {
                         <MotifDropDown
                           id={selectMotifLevel3IdFicheContact}
                           label={labelNiveau3}
+                          motifLineIndex={MotifIdx}
                           value={selectMotifLevel3IdFicheContact}
                           onChange={onChangeNiveau3}
                           listMotifsRef={listMotifsNiveau3}
@@ -141,6 +143,7 @@ class FicheContactMotifs extends Component {
                         <MotifDropDown
                           id={selectMotifLevel4IdFicheContact}
                           label={labelNiveau4}
+                          motifLineIndex={MotifIdx}
                           value={selectMotifLevel4IdFicheContact}
                           onChange={onChangeNiveau4}
                           listMotifsRef={listMotifsNiveau4}
