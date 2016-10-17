@@ -163,6 +163,18 @@ class FicheContactMotifs extends Component {
     const { listMotifs } = this.props;
     return listMotifs.some(motif => motif.isEditing);
   }
+
+  handlesOnChangeNiveau2() {
+
+  }
+
+  handlesOnChangeNiveau3() {
+
+  }
+
+  handlesOnChangeNiveau4() {
+
+  }
 }
 
 FicheContactMotifs.propTypes = {
