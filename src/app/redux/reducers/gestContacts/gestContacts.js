@@ -170,9 +170,9 @@ const initialState = {
 const emptyActivite = {
   activiteId: 0, // nouvelle activite sans id tant que pas enregister en BDD
   isEditable: true, // si activiteId === 0 alors reste editable (on peut changer les motifs) sinon plus editable et les motifs sont bloqués
-  selectMotifLevel2IdFicheContact: 0, // from listMotifLevel2
-  selectMotifLevel3IdFicheContact: 0, // from listMotifLevel3
-  selectMotifLevel4IdFicheContact: 0, // from listMotifLevel4
+  selectMotifLevel2IdFicheContact: -1, // from listMotifLevel2
+  selectMotifLevel3IdFicheContact: -1, // from listMotifLevel3
+  selectMotifLevel4IdFicheContact: -1, // from listMotifLevel4
   // affiche libelle d emotif niveau 4 dna sle champs motif des activites
   dateCreation: '',
   creePar: '',
