@@ -124,9 +124,6 @@ class FicheContactMotifs extends Component {
                     </div>
                   );
                 } else {
-                  // console.log('list motif level 2: ', listMotifsNiveau2);
-                  // console.log('value: ', selectMotifLevel2IdFicheContact);
-                  // console.log('label', listMotifsNiveau2[selectMotifLevel2IdFicheContact]);
                   return (
                     <div
                       key={MotifIdx}
@@ -135,21 +132,33 @@ class FicheContactMotifs extends Component {
                         <LabelMotif
                           id={selectMotifLevel2IdFicheContact}
                           label={labelNiveau2}
-                          value={selectMotifLevel2IdFicheContact}
+                          value={
+                            listMotifsNiveau2[selectMotifLevel2IdFicheContact]
+                              ? listMotifsNiveau2[selectMotifLevel2IdFicheContact]
+                              : 'Motif de niveau 2'
+                          }
                         />
                       </div>
                       <div className="col-xs-4">
                         <LabelMotif
                           id={selectMotifLevel3IdFicheContact}
                           label={labelNiveau3}
-                          value={selectMotifLevel3IdFicheContact}
+                          value={
+                            listMotifsNiveau3[selectMotifLevel3IdFicheContact]
+                              ? listMotifsNiveau3[selectMotifLevel3IdFicheContact]
+                              : 'Motif de niveau 3'
+                          }
                         />
                       </div>
                       <div className="col-xs-4">
                         <LabelMotif
                           id={selectMotifLevel4IdFicheContact}
                           label={labelNiveau4}
-                          value={selectMotifLevel4IdFicheContact}
+                          value={
+                            listMotifsNiveau4[selectMotifLevel4IdFicheContact]
+                              ? listMotifsNiveau4[selectMotifLevel4IdFicheContact]
+                              : 'Motif de niveau 4'
+                          }
                         />
                       </div>
                     </div>
