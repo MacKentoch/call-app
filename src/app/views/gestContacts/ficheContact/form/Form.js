@@ -352,9 +352,9 @@ Form.propTypes = {
   ).isRequired, // to fill from server query
   // onListGroupeDestinataireChanged: PropTypes.func.isRequired,
 
-  listMotifLevel2: PropTypes.array.isRequired,
-  listMotifLevel3: PropTypes.array.isRequired,
-  listMotifLevel4: PropTypes.array.isRequired,
+  listMotifsNiveau2: PropTypes.array.isRequired,
+  listMotifsNiveau3: PropTypes.array.isRequired,
+  listMotifsNiveau4: PropTypes.array.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

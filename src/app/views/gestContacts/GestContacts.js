@@ -373,9 +373,9 @@ class GestContacts extends Component {
 
                         activites={activites}
 
-                        listMotifsNiveau2={listMotifsNiveau2}
-                        listMotifsNiveau3={listMotifsNiveau3}
-                        listMotifsNiveau4={listMotifsNiveau4}
+                        listMotifsNiveau2={listMotifLevel2}
+                        listMotifsNiveau3={listMotifLevel3}
+                        listMotifsNiveau4={listMotifLevel4}
 
                         saveFicheContact={this.handlesSaveFicheContact}
                       />

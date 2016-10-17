@@ -72,9 +72,9 @@ class FicheContact extends Component {
       // onListGroupeDestinataireChanged,
       activites,
 
-      listMotifLevel2,
-      listMotifLevel3,
-      listMotifLevel4
+      listMotifsNiveau2,
+      listMotifsNiveau3,
+      listMotifsNiveau4
     } = this.props;
 
     return (
@@ -174,9 +174,9 @@ class FicheContact extends Component {
 
                    activites={activites}
 
-                   listMotifsNiveau2={listMotifLevel2}
-                   listMotifsNiveau3={listMotifLevel3}
-                   listMotifsNiveau4={listMotifLevel4}
+                   listMotifsNiveau2={listMotifsNiveau2}
+                   listMotifsNiveau3={listMotifsNiveau3}
+                   listMotifsNiveau4={listMotifsNiveau4}
 
                    saveFicheContact={this.handlesOnSaveFicheContact}
                  />
@@ -314,9 +314,9 @@ FicheContact.propTypes = {
   ).isRequired, // to fill from server query
   // onListGroupeDestinataireChanged: PropTypes.func.isRequired,
   //
-  listMotifLevel2: PropTypes.array.isRequired,
-  listMotifLevel3: PropTypes.array.isRequired,
-  listMotifLevel4: PropTypes.array.isRequired,
+  listMotifsNiveau2: PropTypes.array.isRequired,
+  listMotifsNiveau3: PropTypes.array.isRequired,
+  listMotifsNiveau4: PropTypes.array.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({
