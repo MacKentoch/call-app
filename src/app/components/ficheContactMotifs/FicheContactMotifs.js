@@ -211,7 +211,6 @@ FicheContactMotifs.propTypes = {
   listMotifs: PropTypes.arrayOf(
     PropTypes.shape({
       isEditable: PropTypes.bool,
-
       selectMotifLevel2IdFicheContact: PropTypes.number.isRequired,
       selectMotifLevel3IdFicheContact: PropTypes.number.isRequired,
       selectMotifLevel4IdFicheContact: PropTypes.number.isRequired
