@@ -215,6 +215,8 @@ const Form = ({
         </div>
       </div>
 
+      <div style={{height: '20px'}}></div>
+
       <div className="row">
         <div className="col-xs-12">
           <FicheContactMotifs
@@ -233,6 +235,9 @@ const Form = ({
           />
         </div>
       </div>
+
+      <div style={{height: '20px'}}></div>
+      
       {/* 5th row */}
       <div className="row">
         <div
