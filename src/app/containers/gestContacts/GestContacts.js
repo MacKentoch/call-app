@@ -156,6 +156,10 @@ const mapDispatchToProps = (dispatch) => {
         addNewCombinaisonMotifsFicheContact: actions.addNewCombinaisonMotifsFicheContact,
         removeNewCombinaisonMotifsFicheContact: actions.removeNewCombinaisonMotifsFicheContact,
 
+        onChangeFicheContactMotifNiveau2: actions.onChangeFicheContactMotifNiveau2,
+        onChangeFicheContactMotifNiveau3: actions.onChangeFicheContactMotifNiveau3,
+        onChangeFicheContactMotifNiveau4: actions.onChangeFicheContactMotifNiveau4,
+
         // POST:
         saveFicheContact: actions.postGestContactsSaveFicheContactIfNeeded,
         // ///////////////////////

@@ -186,7 +186,10 @@ class GestContacts extends Component {
       isSavingActivite,
       activiteIdBeingEditing,
       selectedActiviteId,
-      listCanauxFicheActivite
+      listCanauxFicheActivite,
+      onChangeFicheContactMotifNiveau2,
+      onChangeFicheContactMotifNiveau3,
+      onChangeFicheContactMotifNiveau4
     } = this.props;
 
     return(
@@ -379,6 +382,10 @@ class GestContacts extends Component {
                         saveFicheContact={this.handlesSaveFicheContact}
                         onAddNewMotifs={addNewCombinaisonMotifsFicheContact}
                         onRemoveMotifs={removeNewCombinaisonMotifsFicheContact}
+
+                        onChangeNiveau2={onChangeFicheContactMotifNiveau2}
+                        onChangeNiveau3={onChangeFicheContactMotifNiveau3}
+                        onChangeNiveau4={onChangeFicheContactMotifNiveau4}
                       />
                       <div style={{height: '10px'}}></div>
 
@@ -848,7 +855,11 @@ GestContacts.propTypes = {
 
     addNewCombinaisonMotifsFicheContact: PropTypes.func.isRequired,
     removeNewCombinaisonMotifsFicheContact: PropTypes.func.isRequired,
-    
+
+    onChangeFicheContactMotifNiveau2: PropTypes.func.isRequired,
+    onChangeFicheContactMotifNiveau3: PropTypes.func.isRequired,
+    onChangeFicheContactMotifNiveau4: PropTypes.func.isRequired,
+
     // POST:
     saveFicheContact: PropTypes.func.isRequired,
     // //////////////////

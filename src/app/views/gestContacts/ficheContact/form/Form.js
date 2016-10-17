@@ -74,7 +74,11 @@ const Form = ({
   listMotifsNiveau4,
 
   addNewMotifs,
-  onRemoveMotifs
+  onRemoveMotifs,
+
+  onChangeNiveau2,
+  onChangeNiveau3,
+  onChangeNiveau4
 }) => {
   return (
     <form role="form">
@@ -231,9 +235,9 @@ const Form = ({
             listMotifsNiveau2={listMotifsNiveau2}
             listMotifsNiveau3={listMotifsNiveau3}
             listMotifsNiveau4={listMotifsNiveau4}
-            onChangeNiveau2={()=>console.log('TODO FicheContactMotifs -> onChangeNiveau2')}
-            onChangeNiveau3={()=>console.log('TODO FicheContactMotifs -> onChangeNiveau3')}
-            onChangeNiveau4={()=>console.log('TODO FicheContactMotifs -> onChangeNiveau4')}
+            onChangeNiveau2={onChangeNiveau2}
+            onChangeNiveau3={onChangeNiveau3}
+            onChangeNiveau4={onChangeNiveau4}
           />
         </div>
       </div>
@@ -365,6 +369,10 @@ Form.propTypes = {
 
   addNewMotifs: PropTypes.func.isRequired,
   onRemoveMotifs: PropTypes.func.isRequired,
+
+  onChangeNiveau2: PropTypes.func.isRequired,
+  onChangeNiveau3: PropTypes.func.isRequired,
+  onChangeNiveau4: PropTypes.func.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({
