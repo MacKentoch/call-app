@@ -27,6 +27,8 @@ export const ERROR_SAVE_GEST_CONTACTS_FICHE_CONTACT      = 'ERROR_SAVE_GEST_CONT
 export const SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT    = 'SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT';
 export const UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT  = 'UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT';
 
+export const ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT = 'ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT';
+
 export const UPDATE_GEST_CONTACTS_DATE_CREATION         = 'UPDATE_GEST_CONTACTS_DATE_CREATION';
 export const UPDATE_GEST_CONTACTS_DATE_RECEPTION        = 'UPDATE_GEST_CONTACTS_DATE_RECEPTION';
 export const UPDATE_GEST_CONTACTS_STATUT_FICHE          = 'UPDATE_GEST_CONTACTS_STATUT_FICHE';
@@ -544,3 +546,15 @@ function shouldPostGestContactsSaveFicheContact(state) {
     return true;
   }
 }
+
+
+//  -----------------------------------------------------------------
+//    fiche contact add new activite = combinaison of motifs 2,3 and 4
+//  -----------------------------------------------------------------
+export const addNewCombinaisonMotifsFicheContact = (time = moment().format(formatDate)) => {
+  return {
+    type : ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
+    time
+  };
+};
+//  ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT

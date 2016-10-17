@@ -71,7 +71,9 @@ const Form = ({
 
   listMotifsNiveau2,
   listMotifsNiveau3,
-  listMotifsNiveau4
+  listMotifsNiveau4,
+
+  addNewMotifs
 }) => {
   return (
     <form role="form">
@@ -217,7 +219,7 @@ const Form = ({
         <div className="col-xs-12">
           <FicheContactMotifs
             saveMotifs={() => console.log('TODO FicheContactMotifs -> save')}
-            addNewMotifs={() => console.log('TODO FicheContactMotifs -> add')}
+            addNewMotifs={addNewMotifs}
             listMotifs={activites}
             labelNiveau2={'Niveau 2'}
             labelNiveau3={'Niveau 3'}

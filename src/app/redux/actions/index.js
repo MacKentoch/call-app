@@ -201,6 +201,8 @@ import {
   updateCommentaireFicheContactChanged,
   updateGroupeDestinataireIdSelected,
 
+  addNewCombinaisonMotifsFicheContact,
+
   // fiches activites
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
@@ -304,6 +306,8 @@ export {
   updateDateTauxPleinNewBenefDossier,
   updateCommentaireFicheContactChanged,
   updateGroupeDestinataireIdSelected,
+
+  addNewCombinaisonMotifsFicheContact,
 
   // search benef
   postSearchIfNeeded,
