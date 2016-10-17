@@ -154,6 +154,8 @@ const mapDispatchToProps = (dispatch) => {
         onGroupeDestinataireIdSelectedChanged: actions.updateGroupeDestinataireIdSelected,
 
         addNewCombinaisonMotifsFicheContact: actions.addNewCombinaisonMotifsFicheContact,
+        removeNewCombinaisonMotifsFicheContact: actions.removeNewCombinaisonMotifsFicheContact,
+
         // POST:
         saveFicheContact: actions.postGestContactsSaveFicheContactIfNeeded,
         // ///////////////////////

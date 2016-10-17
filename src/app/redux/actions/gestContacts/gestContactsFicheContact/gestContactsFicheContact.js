@@ -27,7 +27,8 @@ export const ERROR_SAVE_GEST_CONTACTS_FICHE_CONTACT      = 'ERROR_SAVE_GEST_CONT
 export const SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT    = 'SET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT';
 export const UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT  = 'UNSET_IS_COLLAPSED_CONTACTS_FICHE_CONTACT';
 
-export const ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT = 'ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT';
+export const ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT     = 'ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT';
+export const REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT  = 'REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT';
 
 export const UPDATE_GEST_CONTACTS_DATE_CREATION         = 'UPDATE_GEST_CONTACTS_DATE_CREATION';
 export const UPDATE_GEST_CONTACTS_DATE_RECEPTION        = 'UPDATE_GEST_CONTACTS_DATE_RECEPTION';
@@ -557,4 +558,16 @@ export const addNewCombinaisonMotifsFicheContact = (time = moment().format(forma
     time
   };
 };
-//  ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT
+//  -----------------------------------------------------------------
+//    fiche contact remove new activite = combinaison of motifs 2,3 and 4
+//  -----------------------------------------------------------------
+export const addNewCombinaisonMotifsFicheContact = (activiteIndex = 0, time = moment().format(formatDate)) => {
+  if (parseInt(activiteIndex, 10) > 0) {
+    return {
+      type : REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
+      time,
+      activiteIndex
+    };
+  }
+  return false;
+};

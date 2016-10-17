@@ -31,7 +31,8 @@ import {
   updateCommentaireFicheContactChanged,
   updateGroupeDestinataireIdSelected,
   postGestContactsSaveFicheContactIfNeeded,
-  addNewCombinaisonMotifsFicheContact
+  addNewCombinaisonMotifsFicheContact,
+  removeNewCombinaisonMotifsFicheContact
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
 // contacts fiche activites:
 import {
@@ -70,7 +71,8 @@ export {
   updateGroupeDestinataireIdSelected,
   postGestContactsSaveFicheContactIfNeeded,
   addNewCombinaisonMotifsFicheContact,
-
+  removeNewCombinaisonMotifsFicheContact,
+  
   // fiches activites
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,

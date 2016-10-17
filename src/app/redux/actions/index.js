@@ -202,6 +202,7 @@ import {
   updateGroupeDestinataireIdSelected,
 
   addNewCombinaisonMotifsFicheContact,
+  removeNewCombinaisonMotifsFicheContact,
 
   // fiches activites
   setIsCollapsedContactsFicheActivite,
@@ -308,6 +309,7 @@ export {
   updateGroupeDestinataireIdSelected,
 
   addNewCombinaisonMotifsFicheContact,
+  removeNewCombinaisonMotifsFicheContact,
 
   // search benef
   postSearchIfNeeded,
