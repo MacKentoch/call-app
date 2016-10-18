@@ -74,6 +74,7 @@ const Form = ({
   listMotifsNiveau4,
 
   addNewMotifs,
+  saveMotifs,
   onRemoveMotifs,
 
   onChangeNiveau2,
@@ -225,7 +226,7 @@ const Form = ({
       <div className="row">
         <div className="col-xs-12">
           <FicheContactMotifs
-            saveMotifs={() => console.log('TODO FicheContactMotifs -> save')}
+            saveMotifs={saveMotifs}
             addNewMotifs={addNewMotifs}
             onRemoveMotifs={onRemoveMotifs}
             listMotifs={activites}
@@ -368,6 +369,7 @@ Form.propTypes = {
   listMotifsNiveau4: PropTypes.array.isRequired,
 
   addNewMotifs: PropTypes.func.isRequired,
+  saveMotifs: PropTypes.func.isRequired,
   onRemoveMotifs: PropTypes.func.isRequired,
 
   onChangeNiveau2: PropTypes.func.isRequired,

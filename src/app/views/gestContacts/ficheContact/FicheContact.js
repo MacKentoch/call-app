@@ -77,6 +77,7 @@ class FicheContact extends Component {
       listMotifsNiveau4,
 
       onAddNewMotifs,
+      saveMotifs,
       onRemoveMotifs,
 
       onChangeNiveau2,
@@ -187,6 +188,7 @@ class FicheContact extends Component {
 
                    saveFicheContact={this.handlesOnSaveFicheContact}
 
+                   saveMotifs={saveMotifs}
                    addNewMotifs={onAddNewMotifs}
                    onRemoveMotifs={onRemoveMotifs}
 
@@ -333,6 +335,7 @@ FicheContact.propTypes = {
   listMotifsNiveau4: PropTypes.array.isRequired,
 
   onAddNewMotifs: PropTypes.func.isRequired,
+  saveMotifs: PropTypes.func.isRequired,
   onRemoveMotifs: PropTypes.func.isRequired,
 
   onChangeNiveau2: PropTypes.func.isRequired,

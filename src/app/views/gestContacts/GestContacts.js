@@ -172,6 +172,7 @@ class GestContacts extends Component {
         onCommentaireFicheContactChanged,
         onGroupeDestinataireIdSelectedChanged,
         saveFicheContact,
+        saveMotifFicheContact,
         addNewCombinaisonMotifsFicheContact,
         removeNewCombinaisonMotifsFicheContact,
         onChangeFicheContactMotifNiveau2,
@@ -383,6 +384,7 @@ class GestContacts extends Component {
 
                         saveFicheContact={this.handlesSaveFicheContact}
                         onAddNewMotifs={addNewCombinaisonMotifsFicheContact}
+                        saveMotifs={saveMotifFicheContact}
                         onRemoveMotifs={removeNewCombinaisonMotifsFicheContact}
 
                         onChangeNiveau2={onChangeFicheContactMotifNiveau2}
@@ -862,6 +864,7 @@ GestContacts.propTypes = {
     onChangeFicheContactMotifNiveau2: PropTypes.func.isRequired,
     onChangeFicheContactMotifNiveau3: PropTypes.func.isRequired,
     onChangeFicheContactMotifNiveau4: PropTypes.func.isRequired,
+    saveMotifFicheContact: PropTypes.func.isRequired,
 
     // POST:
     saveFicheContact: PropTypes.func.isRequired,
