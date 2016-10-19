@@ -9,8 +9,8 @@ export const gestContactFicheContactInitMock = {
   canalIndexFicheContact: 0, // téléphone
   numDossierIndexSelected: 0,
   listNumDossierFicheContact: ['0123', '0321'],
-  domaineFicheContact: 'domaine test',
-  statutBenefFicheContact: 'ret',
+  domaineFicheContact: '',
+  statutBenefFicheContact: '',
   attachmentsFicheContact: [
     {
       type: 'pdf',
