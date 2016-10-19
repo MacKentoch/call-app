@@ -161,7 +161,8 @@ class GestContacts extends Component {
       listMotifLevel2,
       listMotifLevel3,
       listMotifLevel4,
-      isSavingFicheNewActivite
+      isSavingFicheNewActivite,
+      listStatutFicheActivite
       // onListGroupeDestinataireChanged
     } = this.props;
 
@@ -403,6 +404,8 @@ class GestContacts extends Component {
                         activites={activites}
 
                         listMotifsNiveau4={listMotifLevel4}
+
+                        listStatutFicheActivite={listStatutFicheActivite}
 
                         isCollapsedFicheActivite={isCollapsedFicheActivite}
                         onCollapseClick={this.handlesOnFicheActiviteCollapseClick}
@@ -879,6 +882,8 @@ GestContacts.propTypes = {
   isFetchingFicheActivite: PropTypes.bool.isRequired,
   lastFetchTimeFicheActivite: PropTypes.string.isRequired,
   isSavingActivite: PropTypes.bool.isRequired,
+
+  listStatutFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   activiteIdBeingEditing: PropTypes.number.isRequired, // utle si changement de motif sur une activite
 

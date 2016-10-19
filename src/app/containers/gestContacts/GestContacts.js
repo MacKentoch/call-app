@@ -100,6 +100,8 @@ const mapStateToProps = (state) => {
     listCanauxFicheActivite: state.gestContacts.listCanauxFicheActivite,
     activites: state.gestContacts.activites,
 
+    listStatutFicheActivite: state.gestContacts.listStatutFicheActivite,
+
     activiteUpdateTime: state.gestContacts.activiteUpdateTime,
     isSavingFicheNewActivite: state.gestContacts.isSavingFicheNewActivite
   };

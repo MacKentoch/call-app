@@ -168,6 +168,7 @@ const initialState = {
   selectedActiviteId: 0,
   listCanauxFicheActivite: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'],
   activites: [],
+  listStatutFicheActivite: ['En-cours', 'Clôturée'], // tous (enum) les statuts de fiche de'activite
 
   activiteUpdateTime: '',
   isFetchingFicheContactListMotifs: false,
