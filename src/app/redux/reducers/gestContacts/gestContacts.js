@@ -46,7 +46,11 @@ import {
 
   ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2,
   ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3,
-  ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4
+  ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4,
+
+  REQUEST_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE,
+  RECEIVED_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE,
+  ERROR_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE
 }                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
@@ -164,7 +168,11 @@ const initialState = {
   selectedActiviteId: 0,
   listCanauxFicheActivite: ['Téléphone', 'Mail', 'Courier reçu', 'Fax reçu'],
   activites: [],
-  activiteUpdateTime: ''
+
+  activiteUpdateTime: '',
+  isFetchingFicheContactListMotifs: false,
+  isSavingFicheNewActivite: false,
+  newActivite: {}
 };
 
 const emptyActivite = {
