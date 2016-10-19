@@ -690,9 +690,9 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
   }
 };
 
-export const postGestContactsSaveFicheContactIfNeeded = payload => (dispatch, getState) => {
-  if (shouldPostGestContactsSaveFicheContact(getState())) {
-    return dispatch(postQueryGestContactsSaveFicheContact(payload));
+export const postGestContactsSaveNewActiviteIfNeeded = payload => (dispatch, getState) => {
+  if (shouldPostGestContactsSaveNewActivite(getState())) {
+    return dispatch(postQueryGestContactsSaveNewActivite(payload));
   }
   return Promise.resolve({
     message: 'post des modifications de la fiche contact déjà en cours',
@@ -701,11 +701,12 @@ export const postGestContactsSaveFicheContactIfNeeded = payload => (dispatch, ge
   });
 };
 
-function shouldPostGestContactsSaveFicheContact(state) {
+function shouldPostGestContactsSaveNewActivite(state) {
   const gestContacts = state.gestContacts;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
   if (gestContacts.isFetchingFicheContact ||
-      gestContacts.isSavingFicheContact) {
+      gestContacts.isSavingFicheContact   ||
+      gestContacts.isFetchingFicheContactListMotifs)  {
     return false;
   } else {
     return true;
