@@ -407,6 +407,8 @@ class GestContacts extends Component {
 
                         listStatutFicheActivite={listStatutFicheActivite}
 
+                        listCanauxFiche={listCanauxFicheContact}
+
                         isCollapsedFicheActivite={isCollapsedFicheActivite}
                         onCollapseClick={this.handlesOnFicheActiviteCollapseClick}
 

@@ -22,10 +22,29 @@ moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
 const ActiviteContent = ({
-  dateCreationFicheContact,
-  onDateCreationFicheContactChanged,
+  selectedActiviteId,
+  lastFetchTimeActivites,
+  listMotifsNiveau4,
+
+  listStatutFicheActivite,
+
+  listCanauxFicheContact,
+
+  activites
 
 }) => {
+  if (activites.length === 0) {
+    return (
+      <div>
+        <h2>
+          Aucune activité pour ce contact.
+        </h2>
+      </div>
+    );
+  }
+
+  const currentActivite = activites[selectedActiviteId];
+
   return (
     <form role="form">
 
@@ -36,8 +55,8 @@ const ActiviteContent = ({
           <DateInput
             id="inputDateCreationFicheActivite"
             label={'Date de création'}
-            value={isValidDateOrReturnDefault(dateCreationFicheActivite, formatDate)}
-            onChange={onDateCreationFicheContactChanged}
+            value={isValidDateOrReturnDefault(currentActivite.dateCreation, formatDate)}
+            onChange={()=>console.log('TODO: onDateCreationFicheActiviteChanged')}
           />
         </div>
 
@@ -57,116 +76,44 @@ const ActiviteContent = ({
 };
 
 ActiviteContent.propTypes = {
-  benefId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  isCollapsedFicheContact: PropTypes.bool.isRequired,
-  lastFetchTimeFicheContact: PropTypes.string.isRequired,
-  isFetchingFicheContact: PropTypes.bool.isRequired,
-  isSavingFicheContact: PropTypes.bool.isRequired,
-  dateCreationFicheContact: PropTypes.string.isRequired,
-  onDateCreationFicheContactChanged: PropTypes.func.isRequired,
-  creeParFicheContact: PropTypes.string.isRequired,
-  dateReceptionFicheContact: PropTypes.string.isRequired,
-  onDateReceptionFicheContactChanged: PropTypes.func.isRequired,
-  statutIndexFicheContact: PropTypes.number.isRequired,
-  onStatutIndexFicheContactChanged: PropTypes.func.isRequired,
-  listStatutFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  dateClotureFicheContact: PropTypes.string.isRequired,
-  // onDateClotureFicheContactChanged: PropTypes.func.isRequired,
-  clotureParFicheContact: PropTypes.string.isRequired,
-  // onClotureParFicheContactChanged: PropTypes.func.isRequired,
-  typeIndexFicheContact: PropTypes.number.isRequired, // index par default du type de fiche contact de listTypeFicheContact
-  onTypeIndexFicheContactChanged: PropTypes.func.isRequired,
-  listTypeFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired, // tous (enum) les types de fiche de contact
-  canalIndexFicheContact: PropTypes.number.isRequired,
-  // onCanalIndexFicheContactChanged: PropTypes.func.isRequired,
-  listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // onListCanauxFicheContactChanged: PropTypes.func.isRequired,
-  numDossierIndexSelected: PropTypes.number.isRequired,
-  onNumDossierIndexSelectedChanged: PropTypes.func.isRequired,
-  listNumDossierFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // onListNumDossierFicheContactChanged: PropTypes.func.isRequired,
-  domaineFicheContact: PropTypes.string.isRequired,
-  onDomaineFicheContactChanged: PropTypes.func.isRequired,
-  statutBenefFicheContact: PropTypes.string.isRequired,
-  // onStatutBenefFicheContactChanged: PropTypes.func.isRequired,
+  selectedActiviteId: PropTypes.number.isRequired,
+  isCollapsedFicheActivite: PropTypes.bool.isRequired,
+  onCollapseClick: PropTypes.func.isRequired,
 
-  listStatutBenefFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
-
-  attachmentsFicheContact: PropTypes.arrayOf(
-    PropTypes.shape({
-      type: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      filePath: PropTypes.string.isRequired,
-      size: PropTypes.string.isRequired
-    })
-  ).isRequired,
-  // onAttachmentsFicheContactChanged: PropTypes.func.isRequired,
-
-  commentaireFicheContact: PropTypes.string.isRequired,
-  onCommentaireFicheContactChanged: PropTypes.func.isRequired,
-
-  groupeDestinataireIsActive: PropTypes.bool.isRequired,  // la list de choix doit être desactivée si statutIndexFicheContact <> En-cours
-  // onGroupeDestinataireIsActiveChanged: PropTypes.func.isRequired,
-
-  groupeDestinataireIdSelected: PropTypes.number.isRequired,
-  onGroupeDestinataireIdSelectedChanged: PropTypes.func.isRequired,
-
-  listGroupeDestinataire: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      libelle: PropTypes.string
-    })
-  ).isRequired, // to fill from server query
-  // onListGroupeDestinataireChanged: PropTypes.func.isRequired,
-
-  listMotifsNiveau2: PropTypes.array.isRequired,
-  listMotifsNiveau3: PropTypes.array.isRequired,
+  lastFetchTimeActivites: PropTypes.string.isRequired,
   listMotifsNiveau4: PropTypes.array.isRequired,
 
-  addNewMotifs: PropTypes.func.isRequired,
-  saveMotifs: PropTypes.func.isRequired,
-  onRemoveMotifs: PropTypes.func.isRequired,
-  isSavingFicheNewActivite: PropTypes.bool.isRequired,
+  listStatutFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-  onChangeNiveau2: PropTypes.func.isRequired,
-  onChangeNiveau3: PropTypes.func.isRequired,
-  onChangeNiveau4: PropTypes.func.isRequired,
+  listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      contactId: PropTypes.number.isRequired,
-      libelleActiviteNiv2: PropTypes.string.isRequired,
-      libelleActiviteNiv3: PropTypes.string.isRequired,
-      libelleActiviteNiv4: PropTypes.string.isRequired,
-      dateCreation: PropTypes.string,
-      creePar: PropTypes.string,
-      traiteePar: PropTypes.string,
-      statut: PropTypes.arrayOf(
+      activiteId: PropTypes.number.isRequired, // nouvelle activite sans id tant que pas enregister en BDD
+      isEditable: true, // si activiteId === 0 alors reste editable (on peut changer les motifs) sinon plus editable et les motifs sont bloqués
+      selectMotifLevel2IdFicheContact: -1, // from listMotifLevel2
+      selectMotifLevel3IdFicheContact: -1, // from listMotifLevel3
+      selectMotifLevel4IdFicheContact: -1, // from listMotifLevel4
+      // affiche libelle d emotif niveau 4 dna sle champs motif des activites
+      dateCreation: '',
+      creePar: '',
+      traiteePar: '',
+      statutIndex: 1, // En-cours
+      dateCloture: '',
+      cloturePar: '',
+      // libelle motif de niveau 4 a afficher dans motif
+      canalIndexFicheActivite: 1,
+      listAttachements: PropTypes.arrayOf(
         PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          libelle: PropTypes.string.isRequired
+          type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
+          name: PropTypes.string.isRequired,
+          filePath: PropTypes.string.isRequired,
+          size: PropTypes.string.isRequired
         })
-      ),
-      dateCloture: PropTypes.string,
-      motif: PropTypes.string,
-      canal: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          libelle: PropTypes.string.isRequired
-        })
-      ),
-      piecesJointesEmises: PropTypes.arrayOf(
-        PropTypes.shape({
-          nomFichier: PropTypes.string,
-          extensionFichier: PropTypes.string,
-          lienFichier: PropTypes.string
-        })
-      ),
-      commentaires: PropTypes.arrayOf(PropTypes.string)
+      ).isRequired,
+      listCommenatire: PropTypes.arrayOf(PropTypes.string)
     })
-  ),
-  saveFicheContact: PropTypes.func.isRequired
+  )
 };
 
 export default ActiviteContent;

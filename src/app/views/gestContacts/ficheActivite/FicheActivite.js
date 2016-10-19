@@ -8,7 +8,7 @@ import ToggleCollapse       from './toggleCollapse/ToggleCollapse';
 import Collapse             from 'react-collapse';
 import shallowCompare       from 'react-addons-shallow-compare';
 import ListActivites        from './listActivites/ListActivites';
-
+import ActiviteContent      from './activiteContent/ActiviteContent';
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
@@ -46,11 +46,20 @@ class FicheActivite extends Component {
   }
 
   render() {
-    const { isCollapsedFicheActivite, onCollapseClick } = this.props;
     const {
-      activites,
-      listMotifsNiveau4
+      isCollapsedFicheActivite,
+      onCollapseClick,
+
+      lastFetchTimeActivites,
+      listMotifsNiveau4,
+
+      listStatutFicheActivite,
+
+      listCanauxFicheContact,
+
+      activites
     } = this.props;
+
     const { selectedActiviteId } = this.state;
 
     return (
@@ -85,10 +94,20 @@ class FicheActivite extends Component {
                </div>
 
                <div className="col-xs-8">
-                 {/* <ActiviteContent
+                 <ActiviteContent
                    activites={activites}
                    selectedActiviteId={selectedActiviteId}
-                 /> */}
+
+                   lastFetchTimeActivites={lastFetchTimeActivites}
+                   listMotifsNiveau4={listMotifsNiveau4}
+
+                   listStatutFicheActivite={listStatutFicheActivite}
+
+                   listCanauxFicheContact={listCanauxFicheContact}
+
+                   activites={activites}
+                   listMotifsNiveau4={listMotifsNiveau4}
+                 />
                </div>
 
              </div>
@@ -146,7 +165,6 @@ FicheActivite.propTypes = {
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({
-
       activiteId: PropTypes.number.isRequired, // nouvelle activite sans id tant que pas enregister en BDD
       isEditable: true, // si activiteId === 0 alors reste editable (on peut changer les motifs) sinon plus editable et les motifs sont bloqués
       selectMotifLevel2IdFicheContact: -1, // from listMotifLevel2
