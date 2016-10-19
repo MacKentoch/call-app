@@ -618,7 +618,7 @@ const errorPostGestContactsSaveNewActivite = (error, time = moment().format(form
   };
 };
 
-const postQueryGestContactsSaveNewActivite = payload => dispatch => {
+const postQueryGestContactsSaveNewActivite = payload => (dispatch, getState) => {
   if (!payload) {
     dispatch(errorPostGestContactsSaveNewActivite('postQueryGestContactsSaveNewActivite API error: payload is not defined or not valid'));
     return Promise.reject({
@@ -642,6 +642,9 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
                     showNotification: true
                   });
                 }
+                const previousGestContactState = getState().gestContacts;
+                const mockActiviteReturnedByServer = previousGestContactState.activites;
+
                 dispatch(receivedPostGestContactsSaveNewActivite(data));
                 return Promise.resolve({
                   message: 'Enregistrement de la nouvelle activité terminé',
