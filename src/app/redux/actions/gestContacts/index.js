@@ -33,10 +33,10 @@ import {
   postGestContactsSaveFicheContactIfNeeded,
   addNewCombinaisonMotifsFicheContact,
   removeNewCombinaisonMotifsFicheContact,
-  saveMotifFicheContact,
+  postGestContactsSaveNewActiviteIfNeeded,
   onChangeFicheContactMotifNiveau2,
   onChangeFicheContactMotifNiveau3,
-  onChangeFicheContactMotifNiveau4,
+  onChangeFicheContactMotifNiveau4
 }                               from './gestContactsFicheContact/gestContactsFicheContact';
 // contacts fiche activites:
 import {
@@ -76,7 +76,7 @@ export {
   postGestContactsSaveFicheContactIfNeeded,
   addNewCombinaisonMotifsFicheContact,
   removeNewCombinaisonMotifsFicheContact,
-  saveMotifFicheContact,
+  postGestContactsSaveNewActiviteIfNeeded,
 
   onChangeFicheContactMotifNiveau2,
   onChangeFicheContactMotifNiveau3,

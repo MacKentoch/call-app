@@ -203,7 +203,7 @@ import {
 
   addNewCombinaisonMotifsFicheContact,
   removeNewCombinaisonMotifsFicheContact,
-  saveMotifFicheContact,
+  postGestContactsSaveNewActiviteIfNeeded,
 
   onChangeFicheContactMotifNiveau2,
   onChangeFicheContactMotifNiveau3,
@@ -315,7 +315,7 @@ export {
 
   addNewCombinaisonMotifsFicheContact,
   removeNewCombinaisonMotifsFicheContact,
-  saveMotifFicheContact,
+  postGestContactsSaveNewActiviteIfNeeded,
 
   onChangeFicheContactMotifNiveau2,
   onChangeFicheContactMotifNiveau3,
