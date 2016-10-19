@@ -95,6 +95,35 @@ const ActiviteContent = ({
         </div>
       </div>
 
+      {/* 3rd row */}
+      <div className="row">
+        {/* canal */}
+        <div className="col-md-2">
+
+        </div>
+        {/* motif : libelle level4 */}
+        <div className="col-md-10">
+
+        </div>
+      </div>
+
+      {/* 4th row */}
+      <div className="row">
+        {/* attachements */}
+        <div className="col-md-12">
+
+        </div>
+      </div>
+
+
+      {/* 5th row to N: comments */}
+      <div className="row">
+        {/* attachements */}
+        <div className="col-md-12">
+        
+        </div>
+      </div>
+
     </form>
   );
 };
