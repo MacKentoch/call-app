@@ -7,6 +7,10 @@ import {
   fetchMockGestContactsNumDossierDomaineStatutBenef,
   postGestContactsSaveFicheContact,
   fetchMockPostGestContactsSaveFicheContact
+  // fiche activite
+  postGestContactsSaveNewActivite,
+  fetchMockPostGestContactsSaveNewActivite
+
 }                           from '../../../../services';
 
 moment.locale('fr');
@@ -629,7 +633,7 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
     return fetchMockPostGestContactsSaveNewActivite(payload) // mock is the same all gestBenef object
             .then(
               data => {
-                if (!data || !data.id) { // ATTENTION: doit retourner l'id de la fiche contact en update ou insert
+                if (!data) { // ATTENTION: doit retourner toutes les activites de la fiche contact
                   dispatch(errorPostGestContactsSaveNewActivite({'error': 'post de la nouvelle activité unsuccessfull with no server error'}));
                   return Promise.reject({
                     message: 'Enregistrement de la nouvelle activité en erreur (retour invalide)',
@@ -639,7 +643,6 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
                 }
                 dispatch(receivedPostGestContactsSaveNewActivite(data));
                 return Promise.resolve({
-                  id: data.id,
                   message: 'Enregistrement de la nouvelle activité terminé',
                   level: 'success',
                   showNotification: true
@@ -657,7 +660,7 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
               }
             );
   } else {
-    return postGestContactsSaveFicheContact(payload)
+    return postGestContactsSaveNewActivite(payload)
             .then(
               response => {
                 if (!response || !response.id) {
