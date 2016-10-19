@@ -574,7 +574,18 @@ export const addNewCombinaisonMotifsFicheContact = (time = moment().format(forma
     dispatch({
       type : ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
       time
-    });    
+    });
+    return Promise.resolve({
+      message: 'Ajout d\'un nouveau motif. Editer le motif puis cliquez enregistrer pour confirmer.',
+      level: 'success',
+      showNotification: true
+    });
+  } else {
+    return Promise.reject({
+      message: 'Ajout d\'un nouveau motif impossible. Veuillez enregister ou annuler le motif en cours d\édition.',
+      level: 'error',
+      showNotification: true
+    });
   }
 };
 //  -----------------------------------------------------------------
@@ -589,6 +600,11 @@ export const removeNewCombinaisonMotifsFicheContact = (activiteIndex = 0, time =
       type : REMOVE_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
       time,
       activites
+    });
+    return Promise.resolve({
+      message: 'Ajout du nouveau motif annulé',
+      level: 'warning',
+      showNotification: true
     });
   }
   return false;

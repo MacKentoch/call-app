@@ -29,6 +29,10 @@ class GestContacts extends Component {
     this.handlesOnFicheActiviteCollapseClick = this.handlesOnFicheActiviteCollapseClick.bind(this);
     // save fiche contact
     this.handlesSaveFicheContact = this.handlesSaveFicheContact.bind(this);
+    // (fiche contact) add combinaison motif to edit
+    this.handlesAddNewActivite = this.handlesAddNewActivite.bind(this);
+    // (fiche contact) remove combinaison motif to edit
+    this.handlesRemoveNewMotif = this.handlesRemoveNewMotif.bind(this);
   }
 
   componentDidMount() {
@@ -383,9 +387,9 @@ class GestContacts extends Component {
                         listMotifsNiveau4={listMotifLevel4}
 
                         saveFicheContact={this.handlesSaveFicheContact}
-                        onAddNewMotifs={addNewCombinaisonMotifsFicheContact}
+                        onAddNewMotifs={this.handlesAddNewActivite}
                         saveMotifs={saveMotifFicheContact}
-                        onRemoveMotifs={removeNewCombinaisonMotifsFicheContact}
+                        onRemoveMotifs={this.handlesRemoveNewMotif}
 
                         onChangeNiveau2={onChangeFicheContactMotifNiveau2}
                         onChangeNiveau3={onChangeFicheContactMotifNiveau3}
@@ -624,6 +628,68 @@ class GestContacts extends Component {
     } = this.props;
 
     saveFicheContact(payload)
+      .then(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'info'
+            });
+          }
+        }
+      )
+      .catch(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'error'
+            });
+          }
+        }
+      );
+  }
+
+  handlesAddNewActivite() {
+    const {
+      actions: {
+        addNewCombinaisonMotifsFicheContact,
+        addNotificationMessage
+      }
+    } = this.props;
+
+    addNewCombinaisonMotifsFicheContact()
+      .then(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'info'
+            });
+          }
+        }
+      )
+      .catch(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'error'
+            });
+          }
+        }
+      );
+  }
+
+  handlesRemoveNewMotif(activiteIndex) {
+    const {
+      actions: {
+        removeNewCombinaisonMotifsFicheContact,
+        addNotificationMessage
+      }
+    } = this.props;
+
+    removeNewCombinaisonMotifsFicheContact(activiteIndex)
       .then(
         notificationPayload => {
           if (notificationPayload && notificationPayload.showNotification) {
