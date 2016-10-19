@@ -33,6 +33,8 @@ class GestContacts extends Component {
     this.handlesAddNewActivite = this.handlesAddNewActivite.bind(this);
     // (fiche contact) remove combinaison motif to edit
     this.handlesRemoveNewMotif = this.handlesRemoveNewMotif.bind(this);
+
+    this.handlesSaveMotifFicheContact = this.handlesSaveMotifFicheContact.bind(this);
   }
 
   componentDidMount() {
@@ -176,7 +178,7 @@ class GestContacts extends Component {
         onCommentaireFicheContactChanged,
         onGroupeDestinataireIdSelectedChanged,
         saveFicheContact,
-        saveMotifFicheContact,
+        // saveMotifFicheContact,
         // addNewCombinaisonMotifsFicheContact,
         // removeNewCombinaisonMotifsFicheContact,
         onChangeFicheContactMotifNiveau2,
@@ -388,7 +390,7 @@ class GestContacts extends Component {
 
                         saveFicheContact={this.handlesSaveFicheContact}
                         onAddNewMotifs={this.handlesAddNewActivite}
-                        saveMotifs={saveMotifFicheContact}
+                        saveMotifs={this.handlesSaveMotifFicheContact}
                         onRemoveMotifs={this.handlesRemoveNewMotif}
 
                         onChangeNiveau2={onChangeFicheContactMotifNiveau2}
@@ -630,6 +632,8 @@ class GestContacts extends Component {
     saveFicheContact(payload)
       .then(
         notificationPayload => {
+          console.log('should show notification');
+
           if (notificationPayload && notificationPayload.showNotification) {
             addNotificationMessage({
               message: notificationPayload.message ? notificationPayload.message : '',
@@ -690,6 +694,37 @@ class GestContacts extends Component {
     } = this.props;
 
     removeNewCombinaisonMotifsFicheContact(activiteIndex)
+      .then(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'info'
+            });
+          }
+        }
+      )
+      .catch(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'error'
+            });
+          }
+        }
+      );
+  }
+
+  handlesSaveMotifFicheContact(activiteIndex) {
+    const {
+      actions: {
+        saveMotifFicheContact,
+        addNotificationMessage
+      }
+    } = this.props;
+
+    saveMotifFicheContact(activiteIndex)
       .then(
         notificationPayload => {
           if (notificationPayload && notificationPayload.showNotification) {
