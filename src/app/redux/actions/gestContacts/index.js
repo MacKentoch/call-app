@@ -33,6 +33,7 @@ import {
   postGestContactsSaveFicheContactIfNeeded,
   addNewCombinaisonMotifsFicheContact,
   removeNewCombinaisonMotifsFicheContact,
+  saveMotifFicheContact,
   onChangeFicheContactMotifNiveau2,
   onChangeFicheContactMotifNiveau3,
   onChangeFicheContactMotifNiveau4,
@@ -75,6 +76,7 @@ export {
   postGestContactsSaveFicheContactIfNeeded,
   addNewCombinaisonMotifsFicheContact,
   removeNewCombinaisonMotifsFicheContact,
+  saveMotifFicheContact,
 
   onChangeFicheContactMotifNiveau2,
   onChangeFicheContactMotifNiveau3,
