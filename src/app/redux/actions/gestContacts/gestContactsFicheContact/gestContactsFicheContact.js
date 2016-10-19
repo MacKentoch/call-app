@@ -6,7 +6,7 @@ import {
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
   fetchMockGestContactsNumDossierDomaineStatutBenef,
   postGestContactsSaveFicheContact,
-  fetchMockPostGestContactsSaveFicheContact
+  fetchMockPostGestContactsSaveFicheContact,
   // fiche activite
   postGestContactsSaveNewActivite,
   fetchMockPostGestContactsSaveNewActivite
@@ -618,20 +618,22 @@ const errorPostGestContactsSaveNewActivite = (error, time = moment().format(form
   };
 };
 
-const postQueryGestContactsSaveNewActivite = payload => (dispatch, getState) => {
-  if (!payload) {
-    dispatch(errorPostGestContactsSaveNewActivite('postQueryGestContactsSaveNewActivite API error: payload is not defined or not valid'));
+const postQueryGestContactsSaveNewActivite = (activiteIndex = 0) => (dispatch, getState) => {
+  if (!(parseInt(activiteIndex, 10) >= 0)) {
+    dispatch(errorPostGestContactsSaveNewActivite('postQueryGestContactsSaveNewActivite API error: activiteIndex is not defined or not valid'));
     return Promise.reject({
       message: 'Enregistrement de la fiche contact en erreur (payload non valide)',
       level: 'error',
       showNotification: true
     });
   }
+  // new activite lives in state but its fields like id tell us it is not saved into server
+  const unSavedNewActivite = getState().gestContacts.activites[activiteIndex];
 
-  dispatch(requestPostGestContactsSaveNewActivite(payload));
+  dispatch(requestPostGestContactsSaveNewActivite(unSavedNewActivite));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockPostGestContactsSaveNewActivite(payload) // mock is the same all gestBenef object
+    return fetchMockPostGestContactsSaveNewActivite(unSavedNewActivite) // mock is the same all gestBenef object
             .then(
               data => {
                 if (!data) { // ATTENTION: doit retourner toutes les activites de la fiche contact
@@ -642,10 +644,24 @@ const postQueryGestContactsSaveNewActivite = payload => (dispatch, getState) => 
                     showNotification: true
                   });
                 }
-                const previousGestContactState = getState().gestContacts;
-                const mockActiviteReturnedByServer = previousGestContactState.activites;
+                // mock : API will return all activites but mock won't so just polyfill some fake server behaviour:
+                // previous state contains unseved activite => filter it then reconcat to state with updated fileds from server
+                const newActivites = getState()
+                                      .gestContacts
+                                      .map(
+                                        (activite, activiteIdx) => {
+                                          if (activiteIdx === activiteIndex) {
+                                            // update inserted activite fields (merge fields) in state:
+                                            return {
+                                              ...activite,
+                                              ...data.activiteSaved
+                                            };
+                                          } else {
+                                            return { ...activite };
+                                          }
+                                        });
 
-                dispatch(receivedPostGestContactsSaveNewActivite(data));
+                dispatch(receivedPostGestContactsSaveNewActivite(newActivites));
                 return Promise.resolve({
                   message: 'Enregistrement de la nouvelle activité terminé',
                   level: 'success',
@@ -664,10 +680,10 @@ const postQueryGestContactsSaveNewActivite = payload => (dispatch, getState) => 
               }
             );
   } else {
-    return postGestContactsSaveNewActivite(payload)
+    return postGestContactsSaveNewActivite(unSavedNewActivite)
             .then(
               response => {
-                if (!response || !response.id) {
+                if (!response || Array.isArray(response)) {
                   dispatch(errorPostGestContactsSaveFicheContact({'error': 'post de la nouvelle activité unsuccessfull with no server error'}));
                   return Promise.reject({
                     message: 'Enregistrement de la nouvelle activité en erreur (retour invalide)',
@@ -697,9 +713,9 @@ const postQueryGestContactsSaveNewActivite = payload => (dispatch, getState) => 
   }
 };
 
-export const postGestContactsSaveNewActiviteIfNeeded = payload => (dispatch, getState) => {
+export const postGestContactsSaveNewActiviteIfNeeded = activiteIndex => (dispatch, getState) => {
   if (shouldPostGestContactsSaveNewActivite(getState())) {
-    return dispatch(postQueryGestContactsSaveNewActivite(payload));
+    return dispatch(postQueryGestContactsSaveNewActivite(activiteIndex));
   }
   return Promise.resolve({
     message: 'post d\ajout de motif de la fiche contact déjà en cours',

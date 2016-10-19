@@ -477,7 +477,14 @@ export const fetchMockPostGestContactsSaveNewActivite = (payload = null, timeToW
       setTimeout(
        () => resolve({
          status: 'success',
-         activites: [] // hould be filled by all activites containing new one saved
+         activiteSaved: {
+           ...payload,
+           // merge some fields to simulate server response to insert:
+           activiteId: 10,
+           isEditable: false,
+           dateCreation: '01/01/2017',
+           creePar: 'mock de test'
+         } // in real API: it should be filled by all activites containing new one saved
        }),
        timeToWait
      );
