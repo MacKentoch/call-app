@@ -36,7 +36,7 @@ const ActiviteContent = ({
           <DateInput
             id="inputDateCreationFicheActivite"
             label={'Date de création'}
-            value={isValidDateOrReturnDefault(dateCreationFicheContact, formatDate)}
+            value={isValidDateOrReturnDefault(dateCreationFicheActivite, formatDate)}
             onChange={onDateCreationFicheContactChanged}
           />
         </div>
