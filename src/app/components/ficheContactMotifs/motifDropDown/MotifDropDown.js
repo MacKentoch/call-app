@@ -34,7 +34,10 @@ class MotifDropDown extends Component {
             onSelect={this.handlesOnChange}
             bsSize="sm"
             disabled={disabled}
-            bsStyle={'default'}
+            // bsStyle={'default'}
+            // bsSize="sm"
+            // block
+            bsStyle={'block'}
             title={ listMotifsRef[value] ? listMotifsRef[value] : ' sélectionner ' }>
             {
               listMotifsRef.map(
