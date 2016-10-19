@@ -48,6 +48,10 @@ export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_2 = 'ON_CHANGE_FICHE_CONTACT_M
 export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_3';
 export const ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4 = 'ON_CHANGE_FICHE_CONTACT_MOTIF_NIVEAU_4';
 
+export const REQUEST_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE   = 'REQUEST_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE';
+export const RECEIVED_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE  = 'RECEIVED_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE';
+export const ERROR_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE     = 'ERROR_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE';
+
 //  -----------------------------------------------------------------
 //    update dateCreationFicheContact value
 //  -----------------------------------------------------------------
@@ -584,7 +588,7 @@ export const removeNewCombinaisonMotifsFicheContact = (activiteIndex = 0, time =
 const requestPostGestContactsSaveNewActivite = (activite = {}, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE,
-    isFetchingFicheContact: true,
+    isFetchingFicheContactListMotifs: true,
     isSavingFicheNewActivite: true,
     newActivite: activite,
     time
@@ -593,8 +597,8 @@ const requestPostGestContactsSaveNewActivite = (activite = {}, time = moment().f
 const receivedPostGestContactsSaveNewActivite = (response = {}, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE,
-    isFetchingFicheContact : false,
-    isSavingFicheContact: false,
+    isFetchingFicheContactListMotifs : false,
+    isSavingFicheNewActivite: false,
     response,
     time
   };
@@ -602,16 +606,16 @@ const receivedPostGestContactsSaveNewActivite = (response = {}, time = moment().
 const errorPostGestContactsSaveNewActivite = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE,
-    isFetchingFicheContact : false,
-    isSavingFicheContact: false,
+    isFetchingFicheContactListMotifs : false,
+    isSavingFicheNewActivite: false,
     error,
     time
   };
 };
 
-const postQueryGestContactsSaveFicheContact = payload => dispatch => {
+const postQueryGestContactsSaveNewActivite = payload => dispatch => {
   if (!payload) {
-    dispatch(errorPostGestContactsSaveFicheContact('postQueryGestContactsSaveFicheContact API error: payload is not defined or not valid'));
+    dispatch(errorPostGestContactsSaveNewActivite('postQueryGestContactsSaveNewActivite API error: payload is not defined or not valid'));
     return Promise.reject({
       message: 'Enregistrement de la fiche contact en erreur (payload non valide)',
       level: 'error',
