@@ -668,18 +668,21 @@ const postQueryGestContactsSaveNewActivite = (activiteIndex = 0) => (dispatch, g
                 }
                 // mock : API will return all activites but mock won't so just polyfill some fake server behaviour:
                 // previous state contains unseved activite => filter it then reconcat to state with updated fileds from server
+                const newActiviteSaved = {...data.activiteSaved};
+
                 const newActivites = getState()
                                       .gestContacts
+                                      .activites
                                       .map(
                                         (activite, activiteIdx) => {
                                           if (activiteIdx === activiteIndex) {
                                             // update inserted activite fields (merge fields) in state:
                                             return {
                                               ...activite,
-                                              ...data.activiteSaved
+                                              ...newActiviteSaved
                                             };
                                           } else {
-                                            return { ...activite };
+                                            return activite;
                                           }
                                         });
 

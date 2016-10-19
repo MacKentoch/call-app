@@ -472,22 +472,28 @@ export const fetchMockPostGestContactsSaveNewActivite = (payload = null, timeToW
     });
   }
 
+  const fakeUpdatedfields = {
+    activiteId: 10,
+    isEditable: false,
+    dateCreation: '01/01/2017',
+    creePar: 'mock de test'
+  };
+
+  const successPayload = {
+    status: 'success',
+    activiteSaved: {
+      ...payload,
+      // merge some fields to simulate server response to insert:
+      ...fakeUpdatedfields
+    } // in real API: it should be filled by all activites containing new one saved
+  };
+
   return new Promise(
     resolve => {
       setTimeout(
-       () => resolve({
-         status: 'success',
-         activiteSaved: {
-           ...payload,
-           // merge some fields to simulate server response to insert:
-           activiteId: 10,
-           isEditable: false,
-           dateCreation: '01/01/2017',
-           creePar: 'mock de test'
-         } // in real API: it should be filled by all activites containing new one saved
-       }),
+       () => resolve({...successPayload}),
        timeToWait
-     );
+      );
     }
   );
 };
