@@ -606,6 +606,34 @@ const gestContacts = (state = initialState, action) => {
       error: action.error
     };
 
+  case REQUEST_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE:
+    return {
+      ...state,
+      isFetchingFicheContactListMotifs: true,
+      isSavingFicheNewActivite: true,
+
+      activiteUpdateTime: action.time
+    };
+
+  case RECEIVED_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE:
+    return {
+      ...state,
+      isFetchingFicheContactListMotifs: false,
+      isSavingFicheNewActivite: false,
+      activites: [...action.response],
+
+      activiteUpdateTime: action.time
+    };
+
+  case ERROR_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE:
+    return {
+      ...state,
+      isFetchingFicheContactListMotifs: false,
+      isSavingFicheNewActivite: false,
+
+      activiteUpdateTime: action.time
+    };
+
   case ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT:
     return {
       ...state,
