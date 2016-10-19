@@ -62,10 +62,34 @@ const ActiviteContent = ({
 
         {/* créé par */}
         <div className="col-md-4">
-
+          <FormLabel
+            id="inputCreeParFicheActivite"
+            label={'créé par'}
+            value={currentActivite.creePar}
+          />
         </div>
 
         {/* date de réception */}
+        <div className="col-md-4">
+          <FormLabel
+            id="inputTraiteeParFicheActivite"
+            label={'Traitée par'}
+            value={currentActivite.traiteePar}
+          />
+        </div>
+      </div>
+
+      {/* 2nd row */}
+      <div className="row">
+        {/* statut fiche activite */}
+        <div className="col-md-4">
+
+        </div>
+        {/* date de cloture */}
+        <div className="col-md-4">
+
+        </div>
+        {/* cloture par */}
         <div className="col-md-4">
 
         </div>

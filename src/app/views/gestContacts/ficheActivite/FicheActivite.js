@@ -49,14 +49,10 @@ class FicheActivite extends Component {
     const {
       isCollapsedFicheActivite,
       onCollapseClick,
-
       lastFetchTimeActivites,
       listMotifsNiveau4,
-
       listStatutFicheActivite,
-
       listCanauxFicheContact,
-
       activites
     } = this.props;
 
