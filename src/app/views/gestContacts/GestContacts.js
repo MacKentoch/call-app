@@ -162,7 +162,8 @@ class GestContacts extends Component {
       listGroupeDestinataire,
       listMotifLevel2,
       listMotifLevel3,
-      listMotifLevel4
+      listMotifLevel4,
+      isSavingFicheNewActivite
       // onListGroupeDestinataireChanged
     } = this.props;
 
@@ -383,6 +384,7 @@ class GestContacts extends Component {
 
                         activites={activites}
                         activiteUpdateTime={activiteUpdateTime}
+                        isSavingFicheNewActivite={isSavingFicheNewActivite}
 
                         listMotifsNiveau2={listMotifLevel2}
                         listMotifsNiveau3={listMotifLevel3}
@@ -884,6 +886,8 @@ GestContacts.propTypes = {
   listMotifLevel4: PropTypes.array.isRequired,
 
   activiteUpdateTime: PropTypes.string.isRequired,
+  isSavingFicheNewActivite: PropTypes.bool.isRequired,
+
   activites: PropTypes.arrayOf(
     PropTypes.shape({
       activiteId: PropTypes.number.isRequired, // activite est un combinaison de motifLevel2+motifLevel3+motifLevel4
