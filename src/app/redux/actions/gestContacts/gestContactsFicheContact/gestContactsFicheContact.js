@@ -623,24 +623,24 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
     });
   }
 
-  dispatch(requestPostGestContactsSaveFicheContact(payload));
+  dispatch(requestPostGestContactsSaveNewActivite(payload));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockPostGestContactsSaveFicheContact(payload) // mock is the same all gestBenef object
+    return fetchMockPostGestContactsSaveNewActivite(payload) // mock is the same all gestBenef object
             .then(
               data => {
                 if (!data || !data.id) { // ATTENTION: doit retourner l'id de la fiche contact en update ou insert
-                  dispatch(errorPostGestContactsSaveFicheContact({'error': 'post fiche contact unsuccessfull with no server error'}));
+                  dispatch(errorPostGestContactsSaveNewActivite({'error': 'post de la nouvelle activité unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement de la fiche contact en erreur (retour invalide)',
+                    message: 'Enregistrement de la nouvelle activité en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
                 }
-                dispatch(receivedPostGestContactsSaveFicheContact(data));
+                dispatch(receivedPostGestContactsSaveNewActivite(data));
                 return Promise.resolve({
                   id: data.id,
-                  message: 'Enregistrement de la fiche contact terminé',
+                  message: 'Enregistrement de la nouvelle activité terminé',
                   level: 'success',
                   showNotification: true
                 });
@@ -648,9 +648,9 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
             )
             .catch(
               err => {
-                dispatch(errorPostGestContactsSaveFicheContact(err));
+                dispatch(errorPostGestContactsSaveNewActivite(err));
                 return Promise.reject({
-                  message: 'Enregistrement de la fiche contact en erreur (erreur serveur)',
+                  message: 'Enregistrement de la nouvelle activité en erreur (erreur serveur)',
                   level: 'error',
                   showNotification: true
                 });
@@ -661,9 +661,9 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
             .then(
               response => {
                 if (!response || !response.id) {
-                  dispatch(errorPostGestContactsSaveFicheContact({'error': 'post benef identite unsuccessfull with no server error'}));
+                  dispatch(errorPostGestContactsSaveFicheContact({'error': 'post de la nouvelle activité unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement de la fiche contact en erreur (retour invalide)',
+                    message: 'Enregistrement de la nouvelle activité en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
@@ -671,7 +671,7 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
                 dispatch(receivedPostGestContactsSaveFicheContact(response));
                 return Promise.resolve({
                   id: response.id,
-                  message: 'Enregistrement de la fiche contact terminé',
+                  message: 'Enregistrement de la nouvelle activité terminé',
                   level: 'success',
                   showNotification: true
                 });
@@ -681,7 +681,7 @@ const postQueryGestContactsSaveNewActivite = payload => dispatch => {
               error => {
                 dispatch(errorPostGestContactsSaveFicheContact(error));
                 return Promise.reject({
-                  message: 'Enregistrement de la fiche contact en erreur (erreur serveur)',
+                  message: 'Enregistrement de la nouvelle activité en erreur (erreur serveur)',
                   level: 'error',
                   showNotification: true
                 });
@@ -695,7 +695,7 @@ export const postGestContactsSaveNewActiviteIfNeeded = payload => (dispatch, get
     return dispatch(postQueryGestContactsSaveNewActivite(payload));
   }
   return Promise.resolve({
-    message: 'post des modifications de la fiche contact déjà en cours',
+    message: 'post d\ajout de motif de la fiche contact déjà en cours',
     level: 'info',
     showNotification: false
   });
