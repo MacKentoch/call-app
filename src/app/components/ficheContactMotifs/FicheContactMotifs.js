@@ -11,6 +11,8 @@ import DeleteMotifButton from './deleteMotifButton/DeleteMotifButton';
 class FicheContactMotifs extends Component {
   constructor(props) {
     super(props);
+
+    this.handlesOnSaveMotifs = this.handlesOnSaveMotifs.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -203,6 +205,12 @@ class FicheContactMotifs extends Component {
   oneMotifAtLeastIsEditing() {
     const { listMotifs } = this.props;
     return listMotifs.some(motif => motif.isEditable);
+  }
+
+  handlesOnSaveMotifs() {
+    const { saveMotifs, listMotifs } = this.props;
+    const activiteNewToSave = listMotifs.findIndex(activite => activite.isEditable === true);
+    saveMotifs(activiteNewToSave);
   }
 }
 

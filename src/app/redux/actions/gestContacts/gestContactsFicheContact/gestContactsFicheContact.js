@@ -565,11 +565,17 @@ function shouldPostGestContactsSaveFicheContact(state) {
 //  -----------------------------------------------------------------
 //    fiche contact add new activite = combinaison of motifs 2,3 and 4
 //  -----------------------------------------------------------------
-export const addNewCombinaisonMotifsFicheContact = (time = moment().format(formatDate)) => {
-  return {
-    type : ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
-    time
-  };
+export const addNewCombinaisonMotifsFicheContact = (time = moment().format(formatDate)) => (dispatch, getState) => {
+  // check there is no unsaved listMotif otherwise can't accept to add new one until saved
+  const currentActivities = getState().gestContacts.activites;
+  const isBeingEditing = currentActivities.some(activite => activite.isEditable === true);
+
+  if (!isBeingEditing) {
+    dispatch({
+      type : ADD_NEW_COMBINAISON_MOTIS_CONTACTS_FICHE_CONTACT,
+      time
+    });    
+  }
 };
 //  -----------------------------------------------------------------
 //    fiche contact remove new activite = combinaison of motifs 2,3 and 4
