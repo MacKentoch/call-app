@@ -56,6 +56,7 @@ export const REQUEST_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE   = 'REQUEST_SAVE_GEST
 export const RECEIVED_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE  = 'RECEIVED_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE';
 export const ERROR_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE     = 'ERROR_SAVE_GEST_CONTACTS_SAVE_NEW_ACTIVITE';
 
+
 //  -----------------------------------------------------------------
 //    update dateCreationFicheContact value
 //  -----------------------------------------------------------------
