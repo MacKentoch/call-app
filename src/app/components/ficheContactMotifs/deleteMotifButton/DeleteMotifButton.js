@@ -17,6 +17,7 @@ class DeleteMotifButton extends Component {
   }
 
   render() {
+    const { disabled } = this.props;
     return(
       <div
         style={{
@@ -25,6 +26,7 @@ class DeleteMotifButton extends Component {
         <button
           className="btn mailBoxNewEmailButton_button pull-right"
           style={{color: '#F1F1F1'}}
+          disabled={disabled}
           onClick={this.handlesOnRemoveMotifs}>
           <i className="fa fa-eraser" aria-hidden="true"></i>
         </button>
@@ -41,6 +43,7 @@ class DeleteMotifButton extends Component {
 
 DeleteMotifButton.propTypes = {
   rowIdx: PropTypes.number.isRequired,
+  disabled: PropTypes.bool.isRequired,
   onRemoveMotifs: PropTypes.func.isRequired
 };
 

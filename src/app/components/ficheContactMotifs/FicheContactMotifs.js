@@ -95,6 +95,7 @@ class FicheContactMotifs extends Component {
                     ?
                       <DeleteMotifButton
                         rowIdx={motifIdx}
+                        disabled={isSavingFicheNewActivite}
                         onRemoveMotifs={onRemoveMotifs}
                       />
                     :
@@ -132,6 +133,7 @@ class FicheContactMotifs extends Component {
                           value={selectMotifLevel2IdFicheContact}
                           onChange={onChangeNiveau2}
                           listMotifsRef={listMotifsNiveau2}
+                          disabled={isSavingFicheNewActivite}
                         />
                       </div>
                       <div className="col-xs-4">
@@ -142,6 +144,7 @@ class FicheContactMotifs extends Component {
                           value={selectMotifLevel3IdFicheContact}
                           onChange={onChangeNiveau3}
                           listMotifsRef={listMotifsNiveau3}
+                          disabled={isSavingFicheNewActivite}
                         />
                       </div>
                       <div className="col-xs-4">
@@ -152,6 +155,7 @@ class FicheContactMotifs extends Component {
                           value={selectMotifLevel4IdFicheContact}
                           onChange={onChangeNiveau4}
                           listMotifsRef={listMotifsNiveau4}
+                          disabled={isSavingFicheNewActivite}
                         />
                       </div>
                     </div>

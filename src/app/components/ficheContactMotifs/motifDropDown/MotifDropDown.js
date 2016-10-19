@@ -20,7 +20,7 @@ class MotifDropDown extends Component {
   }
 
   render() {
-    const { label, id, value, listMotifsRef } = this.props;
+    const { label, id, value, listMotifsRef, disabled } = this.props;
     return (
       <div className="form-group">
         <label
@@ -33,6 +33,7 @@ class MotifDropDown extends Component {
             id={id}
             onSelect={this.handlesOnChange}
             bsSize="sm"
+            disabled={disabled}
             bsStyle={'default'}
             title={ listMotifsRef[value] ? listMotifsRef[value] : ' sélectionner ' }>
             {
@@ -80,7 +81,8 @@ MotifDropDown.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   listMotifsRef: PropTypes.arrayOf(PropTypes.string).isRequired,
-  motifLineIndex: PropTypes.number.isRequired
+  motifLineIndex: PropTypes.number.isRequired,
+  disabled: PropTypes.bool.isRequired
 };
 
 export default MotifDropDown;
