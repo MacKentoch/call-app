@@ -739,8 +739,16 @@ const postQueryGestContactsSaveNewActivite = (activiteIndex = 0) => (dispatch, g
 };
 
 export const postGestContactsSaveNewActiviteIfNeeded = activiteIndex => (dispatch, getState) => {
-  if (shouldPostGestContactsSaveNewActivite(getState())) {
+  const allMotifsAreValid = checkAllMotifAreValid(activiteIndex, getState());
+  if (shouldPostGestContactsSaveNewActivite(getState()) && allMotifsAreValid) {
     return dispatch(postQueryGestContactsSaveNewActivite(activiteIndex));
+  }
+  if (!allMotifsAreValid) {
+    return Promise.resolve({
+      message: 'Tous les motifs doivent être valides avant de pouvoir les sauvegarder',
+      level: 'warning',
+      showNotification: true
+    });
   }
   return Promise.resolve({
     message: 'post d\ajout de motif de la fiche contact déjà en cours',
@@ -758,6 +766,24 @@ function shouldPostGestContactsSaveNewActivite(state) {
     return false;
   } else {
     return true;
+  }
+}
+
+function checkAllMotifAreValid(activiteIndex, state) {
+  const gestContacts = state.gestContacts;
+  if (!(parseInt(activiteIndex, 10) >= 0)) {
+    return false;
+  }
+
+  const activiteToCheck = gestContacts.activites[activiteIndex];
+  if (activiteToCheck) {
+    return (
+      (parseInt(activiteToCheck.selectMotifLevel2IdFicheContact, 10) > -1) &&
+      (parseInt(activiteToCheck.selectMotifLevel3IdFicheContact, 10) > -1) &&
+      (parseInt(activiteToCheck.selectMotifLevel4IdFicheContact, 10) > -1)
+    );
+  } else {
+    return false;
   }
 }
 
