@@ -177,8 +177,8 @@ class GestContacts extends Component {
         onGroupeDestinataireIdSelectedChanged,
         saveFicheContact,
         saveMotifFicheContact,
-        addNewCombinaisonMotifsFicheContact,
-        removeNewCombinaisonMotifsFicheContact,
+        // addNewCombinaisonMotifsFicheContact,
+        // removeNewCombinaisonMotifsFicheContact,
         onChangeFicheContactMotifNiveau2,
         onChangeFicheContactMotifNiveau3,
         onChangeFicheContactMotifNiveau4

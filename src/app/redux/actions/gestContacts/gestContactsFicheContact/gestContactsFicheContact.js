@@ -641,7 +641,6 @@ const errorPostGestContactsSaveNewActivite = (error, time = moment().format(form
 };
 
 const postQueryGestContactsSaveNewActivite = (activiteIndex = 0) => (dispatch, getState) => {
-  console.log('activiteIndex: ', activiteIndex);
   if (!(parseInt(activiteIndex, 10) >= 0)) {
     dispatch(errorPostGestContactsSaveNewActivite('postQueryGestContactsSaveNewActivite API error: activiteIndex is not defined or not valid'));
     return Promise.reject({

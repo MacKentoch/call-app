@@ -55,7 +55,7 @@ class FicheContactMotifs extends Component {
                 <a
                   className="btn btn-primary btn-block mailBoxNewEmailButton_button"
                   style={{width: '120px'}}
-                  onClick={saveMotifs}>
+                  onClick={this.handlesOnSaveMotifs}>
                   <i className="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
                   Enregister
                 </a>
@@ -207,7 +207,8 @@ class FicheContactMotifs extends Component {
     return listMotifs.some(motif => motif.isEditable);
   }
 
-  handlesOnSaveMotifs() {
+  handlesOnSaveMotifs(event) {
+    event.preventDefault();
     const { saveMotifs, listMotifs } = this.props;
     const activiteNewToSave = listMotifs.findIndex(activite => activite.isEditable === true);
     saveMotifs(activiteNewToSave);
