@@ -8,7 +8,7 @@ import {
   DateInput,
   NumsDossiersDropDown,
   TypeFicheContactNavPills,
-  StatutBenefFicheContactDropDown,
+  // StatutBenefFicheContactDropDown,
   FicheContactGroupeDestinataireDropDown,
   FicheContactMotifs
 }                           from '../../../../components';
@@ -67,6 +67,7 @@ const Form = ({
   listGroupeDestinataire,
   // onListGroupeDestinataireChanged,
   activites,
+  isSavingFicheNewActivite,
   saveFicheContact,
 
   listMotifsNiveau2,
@@ -227,6 +228,7 @@ const Form = ({
         <div className="col-xs-12">
           <FicheContactMotifs
             saveMotifs={saveMotifs}
+            isSavingFicheNewActivite={isSavingFicheNewActivite}
             addNewMotifs={addNewMotifs}
             onRemoveMotifs={onRemoveMotifs}
             listMotifs={activites}
@@ -371,6 +373,7 @@ Form.propTypes = {
   addNewMotifs: PropTypes.func.isRequired,
   saveMotifs: PropTypes.func.isRequired,
   onRemoveMotifs: PropTypes.func.isRequired,
+  isSavingFicheNewActivite: PropTypes.bool.isRequired,
 
   onChangeNiveau2: PropTypes.func.isRequired,
   onChangeNiveau3: PropTypes.func.isRequired,

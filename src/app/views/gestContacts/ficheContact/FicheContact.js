@@ -82,7 +82,9 @@ class FicheContact extends Component {
 
       onChangeNiveau2,
       onChangeNiveau3,
-      onChangeNiveau4
+      onChangeNiveau4,
+
+      isSavingFicheNewActivite
     } = this.props;
 
     return (
@@ -187,6 +189,7 @@ class FicheContact extends Component {
                    listMotifsNiveau4={listMotifsNiveau4}
 
                    saveFicheContact={this.handlesOnSaveFicheContact}
+                   isSavingFicheNewActivite={isSavingFicheNewActivite}
 
                    saveMotifs={saveMotifs}
                    addNewMotifs={onAddNewMotifs}
@@ -341,6 +344,8 @@ FicheContact.propTypes = {
   onChangeNiveau2: PropTypes.func.isRequired,
   onChangeNiveau3: PropTypes.func.isRequired,
   onChangeNiveau4: PropTypes.func.isRequired,
+
+  isSavingFicheNewActivite: PropTypes.bool.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

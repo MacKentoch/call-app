@@ -22,6 +22,7 @@ class FicheContactMotifs extends Component {
   render() {
     const {
       saveMotifs,
+      isSavingFicheNewActivite,
       addNewMotifs,
       onRemoveMotifs,
       listMotifs,
@@ -55,6 +56,7 @@ class FicheContactMotifs extends Component {
                 <a
                   className="btn btn-primary btn-block mailBoxNewEmailButton_button"
                   style={{width: '120px'}}
+                  disabled={isSavingFicheNewActivite}
                   onClick={this.handlesOnSaveMotifs}>
                   <i className="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;
                   Enregister
@@ -65,6 +67,7 @@ class FicheContactMotifs extends Component {
                 <a
                   className="btn btn-primary btn-block mailBoxNewEmailButton_button"
                   style={{width: '120px'}}
+                  disabled={isSavingFicheNewActivite}
                   onClick={addNewMotifs}>
                   <i className="fa fa-plus" aria-hidden="true"></i>&nbsp;
                   Ajouter
@@ -217,6 +220,7 @@ class FicheContactMotifs extends Component {
 
 FicheContactMotifs.propTypes = {
   saveMotifs: PropTypes.func.isRequired,
+  isSavingFicheNewActivite: PropTypes.bool.isRequired,
   addNewMotifs: PropTypes.func.isRequired,
   onRemoveMotifs: PropTypes.func.isRequired,
 
