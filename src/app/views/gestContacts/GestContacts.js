@@ -45,13 +45,11 @@ class GestContacts extends Component {
     const { actions: { addNotificationMessage } } = this.props;
     enterGestContacts();
 
-
     // test (fix a contactId) to delete:
     const contactIdx = parseInt(1, 10);
 
     // // to uncomment:
     // const contactIdx = parseInt(contactId, 10);
-
 
     this.refreshAllContactData(benefId, contactIdx);
     if (contactIdx > 0) {
