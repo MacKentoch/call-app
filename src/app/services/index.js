@@ -35,7 +35,8 @@ import {
   // liste de motifs:
   fetchMockGetGestContactsAllMotifs,
   // fiche contact:
-  fetchMockGetGestContactsFicheContact
+  fetchMockGetGestContactsFicheContact,
+  fetchMockPostGestContactsSaveNewActivite
 }                     from './fetchMock/fetchMocks';
 // API
 import {
@@ -58,7 +59,8 @@ import {
   getGestContactsAllMotifs,
   getGestContactsFicheContactInit,
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
-  postGestContactsSaveFicheContact
+  postGestContactsSaveFicheContact,
+  postGestContactsSaveNewActivite
 }                     from './API';
 
 // date tools
@@ -136,6 +138,7 @@ export {
   fetchMockGetGestContacts,
   fetchMockGetGestContactsAllMotifs,
   fetchMockGetGestContactsFicheContact,
+  fetchMockPostGestContactsSaveNewActivite,
   fetchMockGestContactsFicheContactGroupesDestinataires,
   fetchMockPostGestContactsSaveFicheContact,
 
@@ -160,6 +163,7 @@ export {
   getGestContactsFicheContactInit,
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
   postGestContactsSaveFicheContact,
+  postGestContactsSaveNewActivite,
 
   // date tools
   getLastThreeMonthNames,

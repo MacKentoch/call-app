@@ -461,3 +461,26 @@ export const fetchMockPostGestContactsSaveFicheContact = (payload = null, timeTo
     }
   );
 };
+
+/*
+    POST fiche contact new activite
+ */
+export const fetchMockPostGestContactsSaveNewActivite = (payload = null, timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!payload) {
+    return Promise.reject({
+      'error': 'fetchMockPostGestContactsSaveNewActivite error: payload is not valid'
+    });
+  }
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({
+         status: 'success',
+         activites: [] // hould be filled by all activites containing new one saved
+       }),
+       timeToWait
+     );
+    }
+  );
+};
