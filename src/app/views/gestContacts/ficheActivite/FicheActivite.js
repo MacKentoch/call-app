@@ -47,7 +47,10 @@ class FicheActivite extends Component {
 
   render() {
     const { isCollapsedFicheActivite, onCollapseClick } = this.props;
-    const { activites } = this.props;
+    const {
+      activites,
+      listMotifsNiveau4
+    } = this.props;
     const { selectedActiviteId } = this.state;
 
     return (
@@ -77,6 +80,7 @@ class FicheActivite extends Component {
                    activites={activites}
                    selectedActiviteId={selectedActiviteId}
                    onSelectActivite={this.handlesOnSelectActivite}
+                   listMotifsNiveau4={listMotifsNiveau4}
                  />
                </div>
 
@@ -135,15 +139,15 @@ FicheActivite.propTypes = {
   onCollapseClick: PropTypes.func.isRequired,
 
   lastFetchTimeActivites: PropTypes.string.isRequired,
+  listMotifsNiveau4: PropTypes.array.isRequired,
+
   activites: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       contactId: PropTypes.number.isRequired,
-
       libelleActiviteNiv2: PropTypes.string.isRequired,
       libelleActiviteNiv3: PropTypes.string.isRequired,
       libelleActiviteNiv4: PropTypes.string.isRequired,
-
       dateCreation: PropTypes.string,
       creePar: PropTypes.string,
       traiteePar: PropTypes.string,

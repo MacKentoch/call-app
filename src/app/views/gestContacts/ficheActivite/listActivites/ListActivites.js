@@ -10,28 +10,6 @@ import {
 }                           from '../../../../services';
 import ActiviteLink         from './activiteLink/ActiviteLink';
 
-const mock = [
-  {
-    id: 1,
-    label: 'activite label 1 de test',
-  },
-  {
-    id: 2,
-    label: 'activite label 2 de test',
-  },
-  {
-    id: 3,
-    label: 'activite label 3 de test',
-  },
-  {
-    id: 4,
-    label: 'activite label 4 de test',
-  },
-  {
-    id: 5,
-    label: 'activite label 5 de test',
-  },
-];
 const mockSelectedActiviteId = 2;
 
 class ListActivites extends Component {
@@ -44,6 +22,8 @@ class ListActivites extends Component {
   }
 
   render() {
+    const { activites, listMotifsNiveau4 } = this.props;
+
     return (
       <div className="panel">
         <div className="panel-header">
@@ -69,15 +49,16 @@ class ListActivites extends Component {
           <div className="box-body no-padding">
             <ul className="nav nav-pills nav-stacked">
               {
-                mock.map(
+                activites.map(
                   (activite, activiteIdx) => {
-                    const { id, label } = activite;
+                    const { activiteId, selectMotifLevel4IdFicheContact } = activite;
+                    // console.log('activite', activite);
                     return (
                       <ActiviteLink
                         key={activiteIdx}
-                        id={id}
-                        label={label}
-                        isSelected={id === mockSelectedActiviteId}
+                        id={activiteId}
+                        label={limitStringToNChars(listMotifsNiveau4[selectMotifLevel4IdFicheContact])}
+                        isSelected={activiteId === mockSelectedActiviteId}
                       />
                     );
                   }
@@ -96,6 +77,8 @@ ListActivites.propTypes = {
 
   selectedActiviteId: PropTypes.number.isRequired,
   onSelectActivite: PropTypes.func.isRequired,
+
+  listMotifsNiveau4: PropTypes.array.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

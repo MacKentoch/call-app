@@ -401,12 +401,18 @@ class GestContacts extends Component {
 
                       <FicheActivite
                         activites={activites}
+
+                        listMotifsNiveau4={listMotifLevel4}
+
                         isCollapsedFicheActivite={isCollapsedFicheActivite}
                         onCollapseClick={this.handlesOnFicheActiviteCollapseClick}
+
                         isFetchingFicheActivite={isFetchingFicheActivite}
                         lastFetchTimeActivites={lastFetchTimeFicheActivite}
+
                         isSavingActivite={isSavingActivite}
                         activiteIdBeingEditing={activiteIdBeingEditing}
+
                         selectedActiviteId={selectedActiviteId}
                         listCanauxFicheActivite={listCanauxFicheActivite}
                       />
