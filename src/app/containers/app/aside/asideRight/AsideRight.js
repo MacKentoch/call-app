@@ -8,6 +8,7 @@ const AsideRight = (props) => {
     'aside-right-animated': props.isAnimated,
     'strech': props.isExpanded
   });
+  
   return (
     <aside className={asideRightClasses}>
       { props.children }
