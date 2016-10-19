@@ -22,7 +22,7 @@ class ListActivites extends Component {
   }
 
   render() {
-    const { activites, listMotifsNiveau4 } = this.props;
+    const { activites, listMotifsNiveau4, selectedActiviteId } = this.props;
 
     return (
       <div className="panel">
@@ -58,7 +58,7 @@ class ListActivites extends Component {
                         key={activiteIdx}
                         id={activiteId}
                         label={limitStringToNChars(listMotifsNiveau4[selectMotifLevel4IdFicheContact])}
-                        isSelected={activiteId === mockSelectedActiviteId}
+                        isSelected={activiteId === selectedActiviteId}
                       />
                     );
                   }

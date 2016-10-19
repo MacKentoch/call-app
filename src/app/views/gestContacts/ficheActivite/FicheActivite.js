@@ -27,7 +27,7 @@ class FicheActivite extends Component {
   }
 
   componentDidMount() {
-    this.initToFirstActivite();
+    this.initToFirstActivite(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,7 +37,7 @@ class FicheActivite extends Component {
 
     if (activitesAreUpdated > 0) {
       // force all activite to init
-      this.initToFirstActivite();
+      this.initToFirstActivite(nextProps);
     }
   }
 
@@ -101,13 +101,12 @@ class FicheActivite extends Component {
   /*
     init state (selectedActivite) by default
    */
-  initToFirstActivite() {
-    const { activites } = this.props;
+  initToFirstActivite(props) {
+    const { activites } = props;
 
     if (Array.isArray(activites) && activites.length > 0) {
       // select 1st activite:
-      const firstActiviteId = activites[0].id;
-
+      const firstActiviteId = activites[0].activiteId;
       this.setState({
         selectedActiviteId: firstActiviteId,
         selectedActivite: [...this.getActiviteById(firstActiviteId)]
@@ -119,7 +118,7 @@ class FicheActivite extends Component {
     const { activites } = this.props;
 
     if (Array.isArray(activites) && activites.length > 0) {
-      return activites.filter(activite => activite.id === id);
+      return activites.filter(activite => activite.activiteId === id);
     }
     return [];
   }
