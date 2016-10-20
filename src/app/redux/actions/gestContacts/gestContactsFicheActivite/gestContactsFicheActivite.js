@@ -32,18 +32,19 @@ export const unsetIsCollapsedContactsFicheActivite = (time = moment().format(for
 //  -----------------------------------------------------------------
 //    POST fiche activite new comment
 //  -----------------------------------------------------------------
-const requestSaveGestContactsFicheActiviteNewComment = (payload = {}, time = moment().format(formatDate)) => {
+const requestSaveGestContactsFicheActiviteNewComment = (activiteId = 0, comment = '', time = moment().format(formatDate)) => {
   return {
     type: REQUEST_SAVE_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT,
-    isSavingFicheNewActiviteNewComment: true
-    payload,
+    isSavingFicheNewActiviteNewComment: true,
+    activiteId,
+    comment,
     time
   };
 };
 const receivedPostGestContactsFicheActiviteNewComment = (response = {}, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT,
-    isSavingFicheNewActiviteNewComment: true
+    isSavingFicheNewActiviteNewComment: true,
     response,
     time
   };
@@ -51,7 +52,7 @@ const receivedPostGestContactsFicheActiviteNewComment = (response = {}, time = m
 const errorPostGestContactsFicheActiviteNewComment = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT,
-    isSavingFicheNewActiviteNewComment: true
+    isSavingFicheNewActiviteNewComment: true,
     error,
     time
   };
