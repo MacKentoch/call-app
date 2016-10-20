@@ -4,23 +4,21 @@ import { appConfig }        from '../../../../config';
 import {
   StatutFicheDropDown,
   CanalDropDown,
-  TextAreaInput,
   FormLabel,
-  DateInput,
-  TypeFicheContactNavPills
+  DateInput
 }                           from '../../../../components';
 import {
   isValidDateOrReturnDefault
 }                           from '../../../../services';
 import ListAttachments      from './listAttachments/ListAttachments';
-
+import Comment              from './comment/Comment';
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
 const ActiviteContent = ({
   selectedActiviteId,
-  lastFetchTimeActivites,
+  // lastFetchTimeActivites,
   listMotifsNiveau4,
   listStatutFicheActivite,
   listCanauxFicheActivite,
@@ -172,13 +170,21 @@ const ActiviteContent = ({
           {
             currentActivite.listCommentaire.length > 0 &&
             <div>
+              <label
+                className="control-label">
+                Commentaires:
+              </label>
               {
                 currentActivite.listCommentaire.map(
                   ({id, commentaire, par, dateCreation }, commentaireIdx) => {
                     return (
-                      <div key={commentaireIdx}>
-                       { commentaire }
-                      </div>
+                     <Comment
+                      key={commentaireIdx}
+                      label={par + ' - ' + dateCreation}
+                      id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  commentaireIdx}
+                      value={commentaire}
+                      onChange={()=>console.log('TODO: ficheActivite comment changed')}
+                     />
                     );
                   }
                 )
