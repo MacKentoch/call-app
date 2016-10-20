@@ -198,7 +198,7 @@ const emptyActivite = {
   // libelle motif de niveau 4 a afficher dans motif
   canalIndexFicheActivite: 1,
   listAttachements: [],
-  listCommenatire: []
+  listCommentaire: []
 };
 
 
