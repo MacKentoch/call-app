@@ -28,6 +28,8 @@ class FicheActivite extends Component {
 
     this.handlesOnSelectActivite = this.handlesOnSelectActivite.bind(this);
     this.handlesOnFicheActiviteCommentSetEdition = this.handlesOnFicheActiviteCommentSetEdition.bind(this);
+    this.handlesOnFicheActiviteCommentCancelEdition = this.handlesOnFicheActiviteCommentCancelEdition.bind(this);
+    this.handlesOnFicheActiviteCommentSaveEdition = this.handlesOnFicheActiviteCommentSaveEdition.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +40,6 @@ class FicheActivite extends Component {
     const { lastFetchTimeActivites } = this.props;
     const activitesAreUpdated = moment(nextProps.lastFetchTimeActivites, formatDate)
                                   .diff(moment(lastFetchTimeActivites, formatDate));
-
     if (activitesAreUpdated > 0) {
       // force all activite to init
       this.initToFirstActivite(nextProps);
@@ -106,6 +107,8 @@ class FicheActivite extends Component {
                    selectedActiviteCommentBeingEditingFlag={selectedActiviteCommentBeingEditingFlag}
                    selectedActiviteCommentBeingEditingValue={selectedActiviteCommentBeingEditingValue}
                    onFicheActiviteCommentSetEdition={this.handlesOnFicheActiviteCommentSetEdition}
+                   onFicheActiviteCommentCancelEdition={this.handlesOnFicheActiviteCommentCancelEdition}
+                   onFicheActiviteCommentSaveEdition={this.handlesOnFicheActiviteCommentSaveEdition}
 
                    lastFetchTimeActivites={lastFetchTimeActivites}
                    listMotifsNiveau4={listMotifsNiveau4}
@@ -172,6 +175,17 @@ class FicheActivite extends Component {
       selectedActiviteCommentBeingEditingFlag: true,
       selectedActiviteCommentBeingEditingValue: ''
     });
+  }
+
+  handlesOnFicheActiviteCommentCancelEdition() {
+    this.setState({
+      selectedActiviteCommentBeingEditingFlag: false,
+      selectedActiviteCommentBeingEditingValue: ''
+    });
+  }
+
+  handlesOnFicheActiviteCommentSaveEdition(newComment) {
+    // TODO
   }
 }
 
