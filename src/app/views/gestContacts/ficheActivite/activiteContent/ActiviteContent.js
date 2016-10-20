@@ -135,7 +135,8 @@ const ActiviteContent = ({
             value={
               listMotifsNiveau4[currentActivite.selectMotifLevel4IdFicheContact]
                 ? listMotifsNiveau4[currentActivite.selectMotifLevel4IdFicheContact]
-                : ' --- '}
+                : ' --- '
+              }
           />
         </div>
       </div>
@@ -144,7 +145,16 @@ const ActiviteContent = ({
       <div className="row">
         {/* attachements */}
         <div className="col-md-12">
-
+          <ListAttachments
+            id={'ficheActivitePJ' + '-' + selectedActiviteId}
+            label={
+              currentActivite.listAttachements.length > 0
+                ?  `Pièces jointes reçus (${currentActivite.listAttachements.length})`
+                : 'Pièces jointes reçus'
+              }
+            attachments={currentActivite.listAttachements}
+            onDelete={()=>console.log('on fiche activite delete attachments: disabled')}
+          />
         </div>
       </div>
 
