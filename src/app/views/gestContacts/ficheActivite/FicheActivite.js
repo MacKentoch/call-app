@@ -27,6 +27,7 @@ class FicheActivite extends Component {
     };
 
     this.handlesOnSelectActivite = this.handlesOnSelectActivite.bind(this);
+    this.handlesOnFicheActiviteCommentSetEdition = this.handlesOnFicheActiviteCommentSetEdition.bind(this);
   }
 
   componentDidMount() {
@@ -104,6 +105,7 @@ class FicheActivite extends Component {
 
                    selectedActiviteCommentBeingEditingFlag={selectedActiviteCommentBeingEditingFlag}
                    selectedActiviteCommentBeingEditingValue={selectedActiviteCommentBeingEditingValue}
+                   onFicheActiviteCommentSetEdition={this.handlesOnFicheActiviteCommentSetEdition}
 
                    lastFetchTimeActivites={lastFetchTimeActivites}
                    listMotifsNiveau4={listMotifsNiveau4}
@@ -156,6 +158,20 @@ class FicheActivite extends Component {
       return activites.filter(activite => activite.id === activiteId);
     }
     return [];
+  }
+
+  handlesOnFicheActiviteCommentSetEdition() {
+    // TODO
+    // const {
+    //   selectedActiviteId,
+    //   selectedActiviteCommentBeingEditingFlag,
+    //   selectedActiviteCommentBeingEditingValue
+    // } = this.state;
+
+    this.setState({
+      selectedActiviteCommentBeingEditingFlag: true,
+      selectedActiviteCommentBeingEditingValue: ''
+    });
   }
 }
 

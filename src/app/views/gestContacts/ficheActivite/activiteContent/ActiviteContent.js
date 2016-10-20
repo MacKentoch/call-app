@@ -18,6 +18,9 @@ const formatDate = appConfig.formatDate.defaut;
 
 const ActiviteContent = ({
   selectedActiviteId,
+  selectedActiviteCommentBeingEditingFlag,
+  selectedActiviteCommentBeingEditingValue,
+  onFicheActiviteCommentSetEdition,
   // lastFetchTimeActivites,
   listMotifsNiveau4,
   listStatutFicheActivite,
@@ -176,14 +179,43 @@ const ActiviteContent = ({
               </label>
 
               <div className="pull-right">
+              {
+                !selectedActiviteCommentBeingEditingFlag &&
                 <button
-                  className="btn btn-xs mailBoxNewEmailButton_button">
+                  className="btn btn-xs mailBoxNewEmailButton_button"
+                  onClick={onFicheActiviteCommentSetEdition}>
                   <i
                     className="fa fa-plus"
                     style={{color: '#F1F1F1'}}
                     ariaHidden="true">
                   </i>
                 </button>
+              }
+              {
+                selectedActiviteCommentBeingEditingFlag &&
+                <div>
+                  <button
+                    className="btn btn-xs btn-success"
+                    onClick={onFicheActiviteCommentSetEdition}>
+                    <i
+                      className="fa fa-floppy-o"
+                      style={{color: '#F1F1F1'}}
+                      ariaHidden="true">
+                    </i>
+                  </button>
+                  <button
+                    className="btn btn-xs btn-default"
+                    onClick={onFicheActiviteCommentSetEdition}>
+                    <i
+                      className="fa fa-times"
+                      style={{color: '#4A4A4A'}}
+                      ariaHidden="true">
+                    </i>
+                  </button>
+                </div>
+              }
+
+
               </div>
 
               <div className="row">
@@ -228,8 +260,9 @@ const ActiviteContent = ({
 
 ActiviteContent.propTypes = {
   selectedActiviteId: PropTypes.number.isRequired,
-  // isCollapsedFicheActivite: PropTypes.bool.isRequired,
-  // onCollapseClick: PropTypes.func.isRequired,
+  selectedActiviteCommentBeingEditingFlag: PropTypes.bool.isRequired,
+  selectedActiviteCommentBeingEditingValue: PropTypes.string.isRequired,
+  onFicheActiviteCommentSetEdition: PropTypes.func.isRequired,
 
   lastFetchTimeActivites: PropTypes.string.isRequired,
   listMotifsNiveau4: PropTypes.array.isRequired,
