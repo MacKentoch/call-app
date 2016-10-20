@@ -183,7 +183,14 @@ FicheActivite.propTypes = {
           size: PropTypes.string.isRequired
         })
       ).isRequired,
-      listCommenatire: PropTypes.arrayOf(PropTypes.string)
+      listCommenatire: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          commentaire: PropTypes.string,
+          par: PropTypes.string,
+          dateCreation: PropTypes.string
+        })
+      )
     })
   )
 };

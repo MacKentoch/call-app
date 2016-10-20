@@ -140,7 +140,8 @@ const ActiviteContent = ({
           />
         </div>
       </div>
-
+      
+      <div style={{height: '20px'}}></div>
       {/* 4th row */}
       <div className="row">
         {/* attachements */}
@@ -207,7 +208,14 @@ ActiviteContent.propTypes = {
           size: PropTypes.string.isRequired
         })
       ).isRequired,
-      listCommenatire: PropTypes.arrayOf(PropTypes.string)
+      listCommenatire: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          commentaire: PropTypes.string,
+          par: PropTypes.string,
+          dateCreation: PropTypes.string
+        })
+      )
     })
   )
 };
