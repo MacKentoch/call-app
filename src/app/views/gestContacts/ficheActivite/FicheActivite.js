@@ -161,7 +161,9 @@ class FicheActivite extends Component {
 
   handlesOnSelectActivite(activiteId) {
     const { activites } = this.props;
+
     if (Array.isArray(activites) && activites.length > 0) {
+      this.handlesOnFicheActiviteCommentCancelEdition();
       this.setState({
         selectedActiviteId: activiteId,
         selectedActivite: {...this.getActiviteById(activiteId)}
@@ -177,6 +179,12 @@ class FicheActivite extends Component {
   }
 
   handlesOnFicheActiviteCommentCancelEdition() {
+    const { addNotificationMessage } = this.props;
+
+    addNotificationMessage({
+      message: 'Création d\'un nouveau commentaire annulée',
+      level: 'info'
+    });
     this.setState({
       selectedActiviteCommentBeingEditingFlag: false,
       selectedActiviteCommentBeingEditingValue: ''
@@ -219,6 +227,8 @@ FicheActivite.propTypes = {
   listStatutFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   listCanauxFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
+
+  addNotificationMessage: PropTypes.func.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

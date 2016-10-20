@@ -186,7 +186,8 @@ class GestContacts extends Component {
         // removeNewCombinaisonMotifsFicheContact,
         onChangeFicheContactMotifNiveau2,
         onChangeFicheContactMotifNiveau3,
-        onChangeFicheContactMotifNiveau4
+        onChangeFicheContactMotifNiveau4,
+        addNotificationMessage
       }
     } = this.props;
 
@@ -411,6 +412,8 @@ class GestContacts extends Component {
                         listStatutFicheActivite={listStatutFicheActivite}
 
                         listCanauxFiche={listCanauxFicheContact}
+
+                        addNotificationMessage={addNotificationMessage}
 
                         isCollapsedFicheActivite={isCollapsedFicheActivite}
                         onCollapseClick={this.handlesOnFicheActiviteCollapseClick}
