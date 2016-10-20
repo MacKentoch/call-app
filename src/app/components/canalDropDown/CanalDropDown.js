@@ -33,7 +33,7 @@ class CanalDropDown extends Component {
             id={id}
             onSelect={this.handlesOnChange}
             bsSize="sm"
-            bsStyle={'default'}
+            bsStyle={'block'}
             title={ this.valueIsCanal(value) ? value : listCanaux[0] }>
             {
               listCanaux.map(

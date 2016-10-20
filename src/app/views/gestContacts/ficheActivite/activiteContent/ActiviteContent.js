@@ -129,7 +129,14 @@ const ActiviteContent = ({
         </div>
         {/* motif : libelle level4 */}
         <div className="col-md-10">
-
+          <FormLabel
+            id={'labelLibelleMotifFicheActivite' + '-' + selectedActiviteId}
+            label={'Motif'}
+            value={
+              listMotifsNiveau4[currentActivite.selectMotifLevel4IdFicheContact]
+                ? listMotifsNiveau4[currentActivite.selectMotifLevel4IdFicheContact]
+                : ' --- '}
+          />
         </div>
       </div>
 
