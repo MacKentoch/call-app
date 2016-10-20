@@ -89,7 +89,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => (d
                 const newComment = {...data.commentSaved};
                 // update activites array
                 const previousActivites = [...getState().gestContacts.activites];
-                const previousActivite = {...previousActivites[activiteId]};
+                const previousActivite = {...previousActivites.find(activ => activ.activiteId === activiteId)};
 
                 const newActiviteListCommentaire = previousActivite
                                         .listCommentaire
@@ -142,7 +142,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => (d
                 const newComment = {...response.commentSaved};
                 // update activites array
                 const previousActivites = [...getState().gestContacts.activites];
-                const previousActivite = {...previousActivites[activiteId]};
+                const previousActivite = {...previousActivites.find(activ => activ.activiteId === activiteId)};
 
                 const newActiviteListCommentaire = previousActivite
                                         .listCommentaire
