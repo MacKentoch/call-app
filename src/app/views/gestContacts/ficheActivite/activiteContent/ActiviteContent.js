@@ -86,7 +86,7 @@ const ActiviteContent = ({
             id={'statutFicheFicheActivite' + '-' + selectedActiviteId}
             label={'Statut'}
             value={currentActivite.statutIndex}
-            onChange={()=>console.log('TODO: onStatutIndexFicheActiviteChanged')}
+            onChange={onGestContactsFicheActiviteCanalChange}
             listeStatutFiche={listStatutFicheActivite}
           />
         </div>
@@ -121,6 +121,7 @@ const ActiviteContent = ({
           <CanalDropDown
             id={'inputCanalFicheActivite' + '-' + selectedActiviteId}
             label={'Canal'}
+            selectedActiviteId={selectedActiviteId}
             value={
               listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
                 ? listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]

@@ -37,6 +37,8 @@ class GestContacts extends Component {
     this.handlesSaveMotifFicheContact = this.handlesSaveMotifFicheContact.bind(this);
 
     this.handlesOnSaveFicheActiviteNewComment = this.handlesOnSaveFicheActiviteNewComment.bind(this);
+
+    this.handlesOnGestContactsFicheActiviteCanalChange = this.handlesOnGestContactsFicheActiviteCanalChange.bind(this);
   }
 
   componentDidMount() {
@@ -431,7 +433,7 @@ class GestContacts extends Component {
                         isSavingFicheNewActiviteNewComment={isSavingFicheNewActiviteNewComment}
                         onSaveFicheActiviteNewComment={this.handlesOnSaveFicheActiviteNewComment}
 
-                        onGestContactsFicheActiviteCanalChange={onGestContactsFicheActiviteCanalChange}
+                        onGestContactsFicheActiviteCanalChange={this.handlesOnGestContactsFicheActiviteCanalChange}
                       />
 
                       <div style={{height: '10px'}}></div>
@@ -817,6 +819,11 @@ class GestContacts extends Component {
           }
         }
       );
+  }
+
+  handlesOnGestContactsFicheActiviteCanalChange(canalId, activiteId) {
+    const { actions: { onGestContactsFicheActiviteCanalChange } } = this.props;
+    onGestContactsFicheActiviteCanalChange(activiteId, canalId);
   }
 }
 

@@ -56,8 +56,8 @@ class CanalDropDown extends Component {
 
   handlesOnChange(event, key) {
     event.preventDefault();
-    const { onChange, listCanaux } = this.props;
-    onChange(listCanaux[key]);
+    const { onChange, listCanaux, selectedActiviteId } = this.props;
+    onChange(listCanaux[key], selectedActiviteId);
   }
 
   valueIsCanal(value) {
@@ -75,7 +75,8 @@ CanalDropDown.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  listCanaux: PropTypes.arrayOf(PropTypes.string).isRequired
+  listCanaux: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedActiviteId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default CanalDropDown;
