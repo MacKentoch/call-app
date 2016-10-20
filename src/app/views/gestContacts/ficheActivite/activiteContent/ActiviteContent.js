@@ -23,6 +23,7 @@ const ActiviteContent = ({
   onFicheActiviteCommentSetEdition,
   onFicheActiviteCommentCancelEdition,
   onFicheActiviteCommentSaveEdition,
+  onFicheActiviteCommentChange,
   // lastFetchTimeActivites,
   listMotifsNiveau4,
   listStatutFicheActivite,
@@ -253,7 +254,7 @@ const ActiviteContent = ({
                      label={'Nouveau commentaire:'}
                      id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  'new_Comment'}
                      value={selectedActiviteCommentBeingEditingValue}
-                     onChange={()=>console.log('TODO: onFicheActiviteNewCommentChange')}
+                     onChange={onFicheActiviteCommentChange}
                     />
                   </div>
                 }
@@ -271,6 +272,7 @@ ActiviteContent.propTypes = {
   selectedActiviteCommentBeingEditingFlag: PropTypes.bool.isRequired,
   selectedActiviteCommentBeingEditingValue: PropTypes.string.isRequired,
   onFicheActiviteCommentSetEdition: PropTypes.func.isRequired,
+  onFicheActiviteCommentChange: PropTypes.func.isRequired,
   onFicheActiviteCommentCancelEdition: PropTypes.func.isRequired,
   onFicheActiviteCommentSaveEdition: PropTypes.func.isRequired,
 

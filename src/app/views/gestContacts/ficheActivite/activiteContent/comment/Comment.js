@@ -41,7 +41,7 @@ class Comment extends Component {
   handlesOnChange(event) {
     event.preventDefault();
     const { onChange } = this.props;
-    onChange(event.target.value);
+    onChange(event.target.value.trim());
   }
 }
 

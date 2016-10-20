@@ -166,13 +166,6 @@ class FicheActivite extends Component {
   }
 
   handlesOnFicheActiviteCommentSetEdition() {
-    // TODO
-    // const {
-    //   selectedActiviteId,
-    //   selectedActiviteCommentBeingEditingFlag,
-    //   selectedActiviteCommentBeingEditingValue
-    // } = this.state;
-
     this.setState({
       selectedActiviteCommentBeingEditingFlag: true,
       selectedActiviteCommentBeingEditingValue: ''
@@ -187,7 +180,12 @@ class FicheActivite extends Component {
   }
 
   handlesOnFicheActiviteCommentChange(newComment) {
-    console.log('newComment value: ', newComment);
+    const { selectedActiviteCommentBeingEditingValue } = this.state;
+    if (newComment !== selectedActiviteCommentBeingEditingValue) {
+      this.setState({
+        selectedActiviteCommentBeingEditingValue: newComment
+      });
+    }
   }
 
   handlesOnFicheActiviteCommentSaveEdition(event) {
