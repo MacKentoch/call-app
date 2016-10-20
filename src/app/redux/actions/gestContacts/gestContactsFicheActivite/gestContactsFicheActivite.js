@@ -74,10 +74,10 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
     return fetchMockPostGestContactsFicheActiviteNewComment(activiteId, comment)
             .then(
               data => {
-                if (!data || !data.id) { // ATTENTION: doit retourner l'id de la fiche contact en update ou insert
+                if (!data) {
                   dispatch(errorPostGestContactsFicheActiviteNewComment({'error': 'post fiche contact unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement de la fiche contact en erreur (retour invalide)',
+                    message: 'Enregistrement du nouveau commentaire de fiche d\activité  en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
@@ -85,7 +85,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
                 dispatch(receivedPostGestContactsFicheActiviteNewComment(data));
                 return Promise.resolve({
                   id: data.id,
-                  message: 'Enregistrement de la fiche contact terminé',
+                  message: 'Enregistrement du nouveau commentaire de fiche d\activité terminé',
                   level: 'success',
                   showNotification: true
                 });
@@ -95,7 +95,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
               err => {
                 dispatch(errorPostGestContactsFicheActiviteNewComment(err));
                 return Promise.reject({
-                  message: 'Enregistrement de la fiche contact en erreur (erreur serveur)',
+                  message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (erreur serveur)',
                   level: 'error',
                   showNotification: true
                 });
