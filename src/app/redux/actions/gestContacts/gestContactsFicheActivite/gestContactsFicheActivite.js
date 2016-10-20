@@ -129,7 +129,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
             )
             .catch(
               error => {
-                dispatch(errorPostGestContactsSaveFicheContact(error));
+                dispatch(errorPostGestContactsFicheActiviteNewComment(error));
                 return Promise.reject({
                   message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (erreur serveur)',
                   level: 'error',
@@ -141,17 +141,17 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
 };
 
 export const saveNewCommentFicheActivite = (activiteId, comment) => (dispatch, getState) => {
-  if (shouldPostGestContactsSaveFicheContact(getState())) {
-    return dispatch(postQueryGestContactsSaveFicheContact(payload));
+  if (shouldPostGestContactsFicheActiviteNewComment(getState())) {
+    return dispatch(postQueryGestContactsFicheActiviteNewComment(activiteId, comment));
   }
   return Promise.resolve({
-    message: 'post des modifications de la fiche contact déjà en cours',
+    message: 'post du nouveau commentaire de fiche d\activité déjà en cours',
     level: 'info',
     showNotification: false
   });
 };
 
-function shouldPostGestContactsSaveFicheContact(state) {
+function shouldPostGestContactsFicheActiviteNewComment(state) {
   const gestContacts = state.gestContacts;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
   if (gestContacts.isFetchingFicheContact ||
