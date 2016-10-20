@@ -1,5 +1,9 @@
 import moment               from 'moment';
 import { appConfig }        from '../../../../config';
+import {
+  postGestContactsSaveFicheActiviteNewComment,
+  fetchMockPostGestContactsFicheActiviteNewComment
+}                           from '../../../../services';
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
@@ -10,6 +14,7 @@ export const UNSET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE = 'UNSET_IS_COLLAPSED_CO
 export const REQUEST_SAVE_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT  = 'REQUEST_SAVE_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT';
 export const RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT  = 'RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT';
 export const ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT     = 'ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT';
+
 
 //  -----------------------------------------------------------------
 //    set / unset isCollapsed flag
@@ -75,9 +80,9 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
             .then(
               data => {
                 if (!data) {
-                  dispatch(errorPostGestContactsFicheActiviteNewComment({'error': 'post fiche contact unsuccessfull with no server error'}));
+                  dispatch(errorPostGestContactsFicheActiviteNewComment({'error': 'post fiche activite new comment unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement du nouveau commentaire de fiche d\activité  en erreur (retour invalide)',
+                    message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
@@ -102,21 +107,21 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
               }
             );
   } else {
-    return postGestContactsSaveFicheContact(payload)
+    return postGestContactsSaveFicheActiviteNewComment(activiteId, comment)
             .then(
               response => {
                 if (!response || !response.id) {
-                  dispatch(errorPostGestContactsSaveFicheContact({'error': 'post benef identite unsuccessfull with no server error'}));
+                  dispatch(errorPostGestContactsFicheActiviteNewComment({'error': 'post benef identite unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement de la fiche contact en erreur (retour invalide)',
+                    message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
                 }
-                dispatch(receivedPostGestContactsSaveFicheContact(response));
+                dispatch(receivedPostGestContactsFicheActiviteNewComment(response));
                 return Promise.resolve({
                   id: response.id,
-                  message: 'Enregistrement de la fiche contact terminé',
+                  message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (erreur serveur)',
                   level: 'success',
                   showNotification: true
                 });
@@ -126,7 +131,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
               error => {
                 dispatch(errorPostGestContactsSaveFicheContact(error));
                 return Promise.reject({
-                  message: 'Enregistrement de la fiche contact en erreur (erreur serveur)',
+                  message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (erreur serveur)',
                   level: 'error',
                   showNotification: true
                 });
