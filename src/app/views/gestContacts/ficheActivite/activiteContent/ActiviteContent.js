@@ -28,7 +28,8 @@ const ActiviteContent = ({
   listMotifsNiveau4,
   listStatutFicheActivite,
   listCanauxFicheActivite,
-  activites
+  activites,
+  isSavingFicheNewActiviteNewComment
 }) => {
   if (activites.length === 0) {
     return (
@@ -165,7 +166,7 @@ const ActiviteContent = ({
         {/* attachements */}
         <div className="col-md-12">
           {
-            currentActivite.listCommentaire.length === 0 &&
+            !isSavingFicheNewActiviteNewComment && currentActivite.listCommentaire.length === 0 &&
             <div>
               <h4>
                 Aucun commentaire pour cette activité.
@@ -173,7 +174,7 @@ const ActiviteContent = ({
             </div>
           }
           {
-            currentActivite.listCommentaire.length > 0 &&
+            !isSavingFicheNewActiviteNewComment && currentActivite.listCommentaire.length > 0 &&
             <div>
 
               <label
@@ -261,6 +262,16 @@ const ActiviteContent = ({
               </div>
             </div>
           }
+          {
+            isSavingFicheNewActiviteNewComment &&
+            <div className="row">
+              <div className="col-xs-12">
+                <p>
+                  Enregistrement en cours...
+                </p>
+              </div>
+            </div>
+          }
         </div>
       </div>
     </form>
@@ -282,6 +293,8 @@ ActiviteContent.propTypes = {
   listStatutFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   listCanauxFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
+
+  isSavingFicheNewActiviteNewComment: PropTypes.bool.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

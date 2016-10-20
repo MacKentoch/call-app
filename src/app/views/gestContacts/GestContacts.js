@@ -420,6 +420,9 @@ class GestContacts extends Component {
 
                         selectedActiviteId={selectedActiviteId}
                         listCanauxFicheActivite={listCanauxFicheActivite}
+
+                        isSavingFicheNewActiviteNewComment={false}
+                        onSaveFicheActiviteNewComment={()=>console.log('TODO: GestContacts - onSaveFicheActiviteNewComment')}
                       />
 
                       <div style={{height: '10px'}}></div>

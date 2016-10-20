@@ -59,7 +59,9 @@ class FicheActivite extends Component {
       listMotifsNiveau4,
       listStatutFicheActivite,
       listCanauxFicheActivite,
-      activites
+      activites,
+      isSavingFicheNewActiviteNewComment,
+      onSaveFicheActiviteNewComment
     } = this.props;
 
     const {
@@ -121,6 +123,8 @@ class FicheActivite extends Component {
 
                    activites={activites}
                    listMotifsNiveau4={listMotifsNiveau4}
+
+                   isSavingFicheNewActiviteNewComment={isSavingFicheNewActiviteNewComment}
                  />
                </div>
 
@@ -191,6 +195,8 @@ class FicheActivite extends Component {
   handlesOnFicheActiviteCommentSaveEdition(event) {
     event.preventDefault();
     const { selectedActiviteCommentBeingEditingValue } = this.state;
+    const { onSaveFicheActiviteNewComment } = this.props;
+
     console.log('newComment value to save: ', selectedActiviteCommentBeingEditingValue);
     // save to backend dispatch
 
@@ -208,6 +214,9 @@ FicheActivite.propTypes = {
 
   lastFetchTimeActivites: PropTypes.string.isRequired,
   listMotifsNiveau4: PropTypes.array.isRequired,
+
+  isSavingFicheNewActiviteNewComment: PropTypes.bool.isRequired,
+  onSaveFicheActiviteNewComment: PropTypes.func.isRequired,
 
   listStatutFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
