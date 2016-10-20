@@ -62,27 +62,27 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
   if (!(parseInt(activiteId, 10) > 0)) {
     dispatch(errorPostGestContactsFicheActiviteNewComment('postQueryGestContactsFicheActiviteNewComment API error: activiteId is not defined or not valid'));
     return Promise.reject({
-      message: 'Enregistrement du nouveau commentaire la fiche d\activité en erreur (activiteId non valide)',
+      message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (activiteId non valide)',
       level: 'error',
       showNotification: true
     });
   }
 
-  dispatch(requestPostGestContactsSaveFicheContact(payload));
+  dispatch(requestPostGestContactsFicheActiviteNewComment(activiteId, comment));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
-    return fetchMockPostGestContactsSaveFicheContact(payload) // mock is the same all gestBenef object
+    return fetchMockPostGestContactsFicheActiviteNewComment(activiteId, comment)
             .then(
               data => {
                 if (!data || !data.id) { // ATTENTION: doit retourner l'id de la fiche contact en update ou insert
-                  dispatch(errorPostGestContactsSaveFicheContact({'error': 'post fiche contact unsuccessfull with no server error'}));
+                  dispatch(errorPostGestContactsFicheActiviteNewComment({'error': 'post fiche contact unsuccessfull with no server error'}));
                   return Promise.reject({
                     message: 'Enregistrement de la fiche contact en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
                 }
-                dispatch(receivedPostGestContactsSaveFicheContact(data));
+                dispatch(receivedPostGestContactsFicheActiviteNewComment(data));
                 return Promise.resolve({
                   id: data.id,
                   message: 'Enregistrement de la fiche contact terminé',
@@ -93,7 +93,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
             )
             .catch(
               err => {
-                dispatch(errorPostGestContactsSaveFicheContact(err));
+                dispatch(errorPostGestContactsFicheActiviteNewComment(err));
                 return Promise.reject({
                   message: 'Enregistrement de la fiche contact en erreur (erreur serveur)',
                   level: 'error',
