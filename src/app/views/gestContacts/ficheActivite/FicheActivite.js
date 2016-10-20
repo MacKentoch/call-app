@@ -194,13 +194,11 @@ class FicheActivite extends Component {
 
   handlesOnFicheActiviteCommentSaveEdition(event) {
     event.preventDefault();
-    const { selectedActiviteCommentBeingEditingValue } = this.state;
+    const { selectedActiviteCommentBeingEditingValue, selectedActiviteId } = this.state;
     const { onSaveFicheActiviteNewComment } = this.props;
-
-    console.log('newComment value to save: ', selectedActiviteCommentBeingEditingValue);
-    // save to backend dispatch
-
-    // when promise done sucessful : resets comment edit and displays all comments updated
+    // save to backend dispatch: will set isSavingFicheNewActiviteNewComment during fetch then false after fectch done
+    onSaveFicheActiviteNewComment(selectedActiviteId, selectedActiviteCommentBeingEditingValue);
+    // resets state: during saving it will display a loding since isSavingFicheNewActiviteNewComment will be true:
     this.setState({
       selectedActiviteCommentBeingEditingFlag: false,
       selectedActiviteCommentBeingEditingValue: ''

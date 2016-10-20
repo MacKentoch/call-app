@@ -35,6 +35,8 @@ class GestContacts extends Component {
     this.handlesRemoveNewMotif = this.handlesRemoveNewMotif.bind(this);
 
     this.handlesSaveMotifFicheContact = this.handlesSaveMotifFicheContact.bind(this);
+
+    this.handlesOnSaveFicheActiviteNewComment = this.handlesOnSaveFicheActiviteNewComment.bind(this);
   }
 
   componentDidMount() {
@@ -422,7 +424,7 @@ class GestContacts extends Component {
                         listCanauxFicheActivite={listCanauxFicheActivite}
 
                         isSavingFicheNewActiviteNewComment={false}
-                        onSaveFicheActiviteNewComment={()=>console.log('TODO: GestContacts - onSaveFicheActiviteNewComment')}
+                        onSaveFicheActiviteNewComment={this.handlesOnSaveFicheActiviteNewComment}
                       />
 
                       <div style={{height: '10px'}}></div>
@@ -778,6 +780,37 @@ class GestContacts extends Component {
       setIsCollapsedContactsFicheActivite();
     }
   }
+
+  handlesOnSaveFicheActiviteNewComment(activiteIndex, newCommentValue) {
+    const {
+      actions: {
+        saveNewCommentFicheActivite,
+        addNotificationMessage
+      }
+    } = this.props;
+
+    saveNewCommentFicheActivite(activiteIndex, newCommentValue)
+      .then(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'info'
+            });
+          }
+        }
+      )
+      .catch(
+        notificationPayload => {
+          if (notificationPayload && notificationPayload.showNotification) {
+            addNotificationMessage({
+              message: notificationPayload.message ? notificationPayload.message : '',
+              level: notificationPayload.level ? notificationPayload.level : 'error'
+            });
+          }
+        }
+      );
+  }
 }
 
 GestContacts.propTypes = {
@@ -993,6 +1026,9 @@ GestContacts.propTypes = {
     // UI fiche activites
     setIsCollapsedContactsFicheActivite: PropTypes.func,
     unsetIsCollapsedContactsFicheActivite: PropTypes.func,
+
+    // post:
+    saveNewCommentFicheActivite: PropTypes.func,
     // //////////////////
     // listes de motifs
     // /////////////////
