@@ -170,25 +170,55 @@ const ActiviteContent = ({
           {
             currentActivite.listCommentaire.length > 0 &&
             <div>
+
               <label
-                className="control-label">
+                className="control-label pull-left">
                 Commentaires:
               </label>
-              {
-                currentActivite.listCommentaire.map(
-                  ({id, commentaire, par, dateCreation }, commentaireIdx) => {
-                    return (
-                     <Comment
-                      key={commentaireIdx}
-                      label={par + ' - ' + dateCreation}
-                      id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  commentaireIdx}
-                      value={commentaire}
-                      onChange={()=>console.log('TODO: ficheActivite comment changed')}
-                     />
-                    );
+
+              <div className="pull-right">
+                <button
+                  className="btn btn-xs mailBoxNewEmailButton_button">
+                  <i
+                    className="fa fa-plus"
+                    style={{color: '#F1F1F1'}}
+                    ariaHidden="true">
+                  </i>
+                </button>
+              </div>
+
+              <div className="row">
+                <div className="col-xs-12">
+
+                  {/* existing comments */}
+                  {
+                    currentActivite.listCommentaire.map(
+                      ({id, commentaire, par, dateCreation }, commentaireIdx) => {
+                        return (
+                         <Comment
+                          key={commentaireIdx}
+                          disabled={true}
+                          label={par + ' - ' + dateCreation}
+                          id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  commentaireIdx}
+                          value={commentaire}
+                          onChange={()=>console.log('TODO: ficheActivite comment changed')}
+                         />
+                        );
+                      }
+                    )
                   }
-                )
-              }
+
+                  {/* new comment */}
+                  {/* <Comment
+                   disabled={false}
+                   label={par + ' - ' + dateCreation}
+                   id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  commentaireIdx}
+                   value={''}
+                   onChange={()=>console.log('TODO: ficheActivite comment changed')}
+                  /> */}
+
+                </div>
+              </div>
             </div>
           }
         </div>
