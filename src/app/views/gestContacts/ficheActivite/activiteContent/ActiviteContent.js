@@ -12,6 +12,7 @@ import {
 }                           from '../../../../services';
 import ListAttachments      from './listAttachments/ListAttachments';
 import Comment              from './comment/Comment';
+import CommentIsSaving      from './commentIsSaving/CommentIsSaving';
 
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
@@ -264,12 +265,10 @@ const ActiviteContent = ({
           }
           {
             isSavingFicheNewActiviteNewComment &&
-            <div className="row">
-              <div className="col-xs-12">
-                <p>
-                  Enregistrement en cours...
-                </p>
-              </div>
+            <div
+              className="center-block"
+              style={{width: '40px', height: '14px'}}>
+              <CommentIsSaving />
             </div>
           }
         </div>
