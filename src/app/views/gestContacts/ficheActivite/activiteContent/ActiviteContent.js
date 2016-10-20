@@ -152,7 +152,9 @@ const ActiviteContent = ({
           <ListAttachments
             id={'ficheActivitePJ' + '-' + selectedActiviteId}
             label={
-              currentActivite.listAttachements.length > 0
+              currentActivite.listAttachements
+                && Array.isArray(currentActivite.listAttachements)
+                && currentActivite.listAttachements.length > 0
                 ?  `Pièces jointes reçus (${currentActivite.listAttachements.length})`
                 : 'Pièces jointes reçus'
               }

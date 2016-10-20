@@ -91,7 +91,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => (d
                 const previousActivites = [...getState().gestContacts.activites];
                 const previousActivite = {...previousActivites[activiteId]};
 
-                const newActivite = previousActivite
+                const newActiviteListCommentaire = previousActivite
                                         .listCommentaire
                                         .concat(newComment);
 
@@ -99,7 +99,10 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => (d
                                       .map(
                                         (activite) => {
                                           if (activite.activiteId === activiteId) {
-                                            return newActivite;
+                                            return {
+                                              ...activite,
+                                              listCommentaire: [...newActiviteListCommentaire]
+                                            };
                                           } else {
                                             return activite;
                                           }
@@ -141,7 +144,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => (d
                 const previousActivites = [...getState().gestContacts.activites];
                 const previousActivite = {...previousActivites[activiteId]};
 
-                const newActivite = previousActivite
+                const newActiviteListCommentaire = previousActivite
                                         .listCommentaire
                                         .concat(newComment);
 
@@ -149,7 +152,10 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => (d
                                       .map(
                                         (activite) => {
                                           if (activite.activiteId === activiteId) {
-                                            return newActivite;
+                                            return {
+                                              ...activite,
+                                              listCommentaire: [...newActiviteListCommentaire]
+                                            };
                                           } else {
                                             return activite;
                                           }
@@ -158,7 +164,6 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => (d
 
                 dispatch(receivedPostGestContactsFicheActiviteNewComment(newActivites));
                 return Promise.resolve({
-                  id: response.id,
                   message: 'Enregistrement du nouveau commentaire de fiche d\'activité en erreur (erreur serveur)',
                   level: 'success',
                   showNotification: true
