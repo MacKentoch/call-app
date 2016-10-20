@@ -42,7 +42,7 @@ const ActiviteContent = ({
     );
   }
 
-  const currentActivite = activites[selectedActiviteId];
+  const currentActivite = activites.find(activite => activite.activiteId === selectedActiviteId);
 
   return (
     <form role="form">

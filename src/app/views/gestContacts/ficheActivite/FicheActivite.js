@@ -153,7 +153,6 @@ class FicheActivite extends Component {
 
   getActiviteById(id) {
     const { activites } = this.props;
-
     if (Array.isArray(activites) && activites.length > 0) {
       return activites.filter(activite => activite.activiteId === id);
     }
@@ -162,7 +161,6 @@ class FicheActivite extends Component {
 
   handlesOnSelectActivite(activiteId) {
     const { activites } = this.props;
-
     if (Array.isArray(activites) && activites.length > 0) {
       return activites.filter(activite => activite.id === activiteId);
     }
