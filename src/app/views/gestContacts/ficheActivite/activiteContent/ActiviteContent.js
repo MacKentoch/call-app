@@ -30,7 +30,8 @@ const ActiviteContent = ({
   listStatutFicheActivite,
   listCanauxFicheActivite,
   activites,
-  isSavingFicheNewActiviteNewComment
+  isSavingFicheNewActiviteNewComment,
+  onGestContactsFicheActiviteChange
 }) => {
   if (activites && Array.isArray(activites) && activites.length === 0) {
     return (
@@ -125,7 +126,7 @@ const ActiviteContent = ({
                 ? listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
                 : ' --- '
             }
-            onChange={()=>console.log('TODO: onCanalFicheActiviteChange')}
+            onChange={onGestContactsFicheActiviteChange}
             listCanaux={listCanauxFicheActivite}
           />
         </div>
@@ -297,6 +298,8 @@ ActiviteContent.propTypes = {
   listCanauxFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   isSavingFicheNewActiviteNewComment: PropTypes.bool.isRequired,
+
+  onGestContactsFicheActiviteChange: PropTypes.func.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

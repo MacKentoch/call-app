@@ -62,6 +62,7 @@ class FicheActivite extends Component {
       listCanauxFicheActivite,
       activites,
       isSavingFicheNewActiviteNewComment,
+      onGestContactsFicheActiviteChange,
       onSaveFicheActiviteNewComment
     } = this.props;
 
@@ -124,6 +125,8 @@ class FicheActivite extends Component {
 
                    activites={activites}
                    listMotifsNiveau4={listMotifsNiveau4}
+
+                   onGestContactsFicheActiviteChange={onGestContactsFicheActiviteChange}
 
                    isSavingFicheNewActiviteNewComment={isSavingFicheNewActiviteNewComment}
                  />
@@ -234,6 +237,8 @@ FicheActivite.propTypes = {
   listCanauxFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   addNotificationMessage: PropTypes.func.isRequired,
+
+  onGestContactsFicheActiviteChange: PropTypes.func.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({
