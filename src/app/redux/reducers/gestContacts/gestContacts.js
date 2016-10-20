@@ -63,7 +63,8 @@ import {
 import {
   REQUEST_GET_GEST_CONTACTS_ALL_MOTIFS,
   RECEIVED_GET_GEST_CONTACTS_ALL_MOTIFS,
-  ERROR_GET_GEST_CONTACTS_ALL_MOTIFS
+  ERROR_GET_GEST_CONTACTS_ALL_MOTIFS,
+  UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL
 }                                     from '../../actions/gestContacts/gestContactListMotifs/gestContactListMotifs';
 
 
@@ -689,6 +690,14 @@ const gestContacts = (state = initialState, action) => {
     return {
       ...state,
       isSavingFicheNewActiviteNewComment: false,
+
+      actionTime: action.time
+    };
+
+  case UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL:
+    return {
+      ...state,
+      activites: [...action.activites],
 
       actionTime: action.time
     };

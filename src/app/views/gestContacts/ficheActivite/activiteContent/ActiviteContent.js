@@ -55,7 +55,7 @@ const ActiviteContent = ({
           <FormLabel
             id={'inputDateCreationFicheActivite' + '-' + selectedActiviteId}
             label={'Date de création'}
-            value={isValidDateOrReturnDefault(currentActivite.dateCreation, formatDate)}
+            value={currentActivite.dateCreation}
           />
         </div>
 

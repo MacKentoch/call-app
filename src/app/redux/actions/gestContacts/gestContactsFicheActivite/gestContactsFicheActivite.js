@@ -15,7 +15,7 @@ export const REQUEST_SAVE_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT  = 'REQUEST_S
 export const RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT  = 'RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT';
 export const ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT     = 'ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT';
 
-export const UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL = 'UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL'
+export const UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL = 'UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL';
 
 //  -----------------------------------------------------------------
 //    update canal fiche activite
@@ -43,7 +43,6 @@ export const onGestContactsFicheActiviteCanalChange = (activiteId = 0, canalId =
                               }
                             }
                           );
-
     dispatch({
       type : UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL,
       time,
