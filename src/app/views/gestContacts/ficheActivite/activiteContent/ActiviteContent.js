@@ -31,7 +31,7 @@ const ActiviteContent = ({
   listCanauxFicheActivite,
   activites,
   isSavingFicheNewActiviteNewComment,
-  onGestContactsFicheActiviteChange
+  onGestContactsFicheActiviteCanalChange
 }) => {
   if (activites && Array.isArray(activites) && activites.length === 0) {
     return (
@@ -126,7 +126,7 @@ const ActiviteContent = ({
                 ? listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
                 : ' --- '
             }
-            onChange={onGestContactsFicheActiviteChange}
+            onChange={onGestContactsFicheActiviteCanalChange}
             listCanaux={listCanauxFicheActivite}
           />
         </div>
@@ -299,7 +299,7 @@ ActiviteContent.propTypes = {
 
   isSavingFicheNewActiviteNewComment: PropTypes.bool.isRequired,
 
-  onGestContactsFicheActiviteChange: PropTypes.func.isRequired,
+  onGestContactsFicheActiviteCanalChange: PropTypes.func.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

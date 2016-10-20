@@ -188,7 +188,7 @@ class GestContacts extends Component {
         onChangeFicheContactMotifNiveau3,
         onChangeFicheContactMotifNiveau4,
         addNotificationMessage,
-        onGestContactsFicheActiviteChange
+        onGestContactsFicheActiviteCanalChange
       }
     } = this.props;
 
@@ -431,7 +431,7 @@ class GestContacts extends Component {
                         isSavingFicheNewActiviteNewComment={isSavingFicheNewActiviteNewComment}
                         onSaveFicheActiviteNewComment={this.handlesOnSaveFicheActiviteNewComment}
 
-                        onGestContactsFicheActiviteChange={onGestContactsFicheActiviteChange}
+                        onGestContactsFicheActiviteCanalChange={onGestContactsFicheActiviteCanalChange}
                       />
 
                       <div style={{height: '10px'}}></div>
@@ -1035,7 +1035,7 @@ GestContacts.propTypes = {
     setIsCollapsedContactsFicheActivite: PropTypes.func,
     unsetIsCollapsedContactsFicheActivite: PropTypes.func,
 
-    onGestContactsFicheActiviteChange: PropTypes.func,
+    onGestContactsFicheActiviteCanalChange: PropTypes.func,
 
     // post:
     saveNewCommentFicheActivite: PropTypes.func,

@@ -213,6 +213,7 @@ import {
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
   saveNewCommentFicheActivite,
+  onGestContactsFicheActiviteCanalChange,
   // motifs de référence:
   getGestContactsAllMotifsIfNeeded,
   // post:
@@ -405,5 +406,7 @@ export {
   unsetIsCollapsedContactsFicheActivite,
   saveNewCommentFicheActivite,
   getGestContactsAllMotifsIfNeeded,
-  postGestContactsSaveFicheContactIfNeeded
+  postGestContactsSaveFicheContactIfNeeded,
+
+  onGestContactsFicheActiviteCanalChange
 };
