@@ -67,13 +67,13 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
   if (!(parseInt(activiteId, 10) > 0)) {
     dispatch(errorPostGestContactsFicheActiviteNewComment('postQueryGestContactsFicheActiviteNewComment API error: activiteId is not defined or not valid'));
     return Promise.reject({
-      message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (activiteId non valide)',
+      message: 'Enregistrement du nouveau commentaire de fiche d\'activité en erreur (activiteId non valide)',
       level: 'error',
       showNotification: true
     });
   }
 
-  dispatch(requestPostGestContactsFicheActiviteNewComment(activiteId, comment));
+  dispatch(requestSaveGestContactsFicheActiviteNewComment(activiteId, comment));
   if (appConfig.DEV_MODE) {
     // DEV ONLY
     return fetchMockPostGestContactsFicheActiviteNewComment(activiteId, comment)
@@ -82,7 +82,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
                 if (!data) {
                   dispatch(errorPostGestContactsFicheActiviteNewComment({'error': 'post fiche activite new comment unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (retour invalide)',
+                    message: 'Enregistrement du nouveau commentaire de fiche d\'activité en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
@@ -90,7 +90,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
                 dispatch(receivedPostGestContactsFicheActiviteNewComment(data));
                 return Promise.resolve({
                   id: data.id,
-                  message: 'Enregistrement du nouveau commentaire de fiche d\activité terminé',
+                  message: 'Enregistrement du nouveau commentaire de fiche d\'activité terminé',
                   level: 'success',
                   showNotification: true
                 });
@@ -100,7 +100,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
               err => {
                 dispatch(errorPostGestContactsFicheActiviteNewComment(err));
                 return Promise.reject({
-                  message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (erreur serveur)',
+                  message: 'Enregistrement du nouveau commentaire de fiche d\'activité en erreur (erreur serveur)',
                   level: 'error',
                   showNotification: true
                 });
@@ -113,7 +113,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
                 if (!response || !response.id) {
                   dispatch(errorPostGestContactsFicheActiviteNewComment({'error': 'post benef identite unsuccessfull with no server error'}));
                   return Promise.reject({
-                    message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (retour invalide)',
+                    message: 'Enregistrement du nouveau commentaire de fiche d\'activité en erreur (retour invalide)',
                     level: 'error',
                     showNotification: true
                   });
@@ -121,7 +121,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
                 dispatch(receivedPostGestContactsFicheActiviteNewComment(response));
                 return Promise.resolve({
                   id: response.id,
-                  message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (erreur serveur)',
+                  message: 'Enregistrement du nouveau commentaire de fiche d\'activité en erreur (erreur serveur)',
                   level: 'success',
                   showNotification: true
                 });
@@ -131,7 +131,7 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => di
               error => {
                 dispatch(errorPostGestContactsFicheActiviteNewComment(error));
                 return Promise.reject({
-                  message: 'Enregistrement du nouveau commentaire de fiche d\activité en erreur (erreur serveur)',
+                  message: 'Enregistrement du nouveau commentaire de fiche d\'activité en erreur (erreur serveur)',
                   level: 'error',
                   showNotification: true
                 });
@@ -145,7 +145,7 @@ export const saveNewCommentFicheActivite = (activiteId, comment) => (dispatch, g
     return dispatch(postQueryGestContactsFicheActiviteNewComment(activiteId, comment));
   }
   return Promise.resolve({
-    message: 'post du nouveau commentaire de fiche d\activité déjà en cours',
+    message: 'post du nouveau commentaire de fiche d\'activité déjà en cours',
     level: 'info',
     showNotification: false
   });
@@ -155,7 +155,7 @@ function shouldPostGestContactsFicheActiviteNewComment(state) {
   const gestContacts = state.gestContacts;
   // just check wether fetching (assuming data could be refreshed and should not persist in store)
   if (gestContacts.isFetchingFicheContact ||
-      gestContacts.isSavingFicheContact) {
+      gestContacts.isSavingFicheNewActiviteNewComment) {
     return false;
   } else {
     return true;
