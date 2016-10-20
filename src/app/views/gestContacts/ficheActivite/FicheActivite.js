@@ -20,7 +20,10 @@ class FicheActivite extends Component {
 
     this.state = {
       selectedActiviteId: 0,
-      selectedActivite: []
+      selectedActivite: [],
+
+      selectedActiviteCommentBeingEditingFlag: false, // if comment is editing force (use notification to alert) save or cancel comment before switching activiteId
+      selectedActiviteCommentBeingEditingValue: '' // value of comment being editing => return to empty string when saved or canceled
     };
 
     this.handlesOnSelectActivite = this.handlesOnSelectActivite.bind(this);
@@ -56,7 +59,11 @@ class FicheActivite extends Component {
       activites
     } = this.props;
 
-    const { selectedActiviteId } = this.state;
+    const {
+      selectedActiviteId,
+      selectedActiviteCommentBeingEditingFlag,
+      selectedActiviteCommentBeingEditingValue
+    } = this.state;
 
     return (
        <div>
@@ -94,6 +101,9 @@ class FicheActivite extends Component {
                  <ActiviteContent
                    activites={activites}
                    selectedActiviteId={selectedActiviteId}
+
+                   selectedActiviteCommentBeingEditingFlag={selectedActiviteCommentBeingEditingFlag}
+                   selectedActiviteCommentBeingEditingValue={selectedActiviteCommentBeingEditingValue}
 
                    lastFetchTimeActivites={lastFetchTimeActivites}
                    listMotifsNiveau4={listMotifsNiveau4}
