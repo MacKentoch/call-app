@@ -82,6 +82,24 @@ export const gestContactFicheContactInitMock = {
           name: 'fake.pdf',
           filePath: '#',
           size: '1.23kb'
+        },
+        {
+          type: 'xlsx',
+          name: 'fakeXlsx.pdf',
+          filePath: '#',
+          size: '21.00kb'
+        },
+        {
+          type: 'pdf',
+          name: 'fake.pdf',
+          filePath: '#',
+          size: '1.23kb'
+        },
+        {
+          type: 'pdf',
+          name: 'fake.pdf',
+          filePath: '#',
+          size: '1.23kb'
         }
       ],
       listCommentaire: [
@@ -121,6 +139,24 @@ export const gestContactFicheContactInitMock = {
           name: 'fake2.pdf',
           filePath: '#',
           size: '1.23kb'
+        },
+        {
+          type: 'xlsx',
+          name: 'fakeXlsx.pdf',
+          filePath: '#',
+          size: '21.00kb'
+        },
+        {
+          type: 'pdf',
+          name: 'fake.pdf',
+          filePath: '#',
+          size: '1.23kb'
+        },
+        {
+          type: 'pdf',
+          name: 'fake.pdf',
+          filePath: '#',
+          size: '1.23kb'
         }
       ],
       listCommentaire: [
@@ -129,6 +165,12 @@ export const gestContactFicheContactInitMock = {
           commentaire: 'troisieme commentaire',
           par: 'test3',
           dateCreation: '04/04/2016'
+        },
+        {
+          id: 4,
+          commentaire: 'quatrième commentaire',
+          par: 'test4',
+          dateCreation: '05/05/2016'
         }
       ]
     }
