@@ -41,7 +41,8 @@ import {
 // contacts fiche activites:
 import {
   setIsCollapsedContactsFicheActivite,
-  unsetIsCollapsedContactsFicheActivite
+  unsetIsCollapsedContactsFicheActivite,
+  saveNewCommentFicheActivite
 }                               from './gestContactsFicheActivite/gestContactsFicheActivite';
 // contacts-activite liste de motifs de référence:
 import {
@@ -85,6 +86,7 @@ export {
   // fiches activites
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
+  saveNewCommentFicheActivite,
   // contacts-activite liste de motifs de référence:
   getGestContactsAllMotifsIfNeeded
 };

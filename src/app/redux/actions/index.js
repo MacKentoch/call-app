@@ -212,6 +212,7 @@ import {
   // fiches activites
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
+  saveNewCommentFicheActivite,
   // motifs de référence:
   getGestContactsAllMotifsIfNeeded,
   // post:
@@ -402,6 +403,7 @@ export {
   getGestContactsFicheContactIfNeeded,
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
+  saveNewCommentFicheActivite,
   getGestContactsAllMotifsIfNeeded,
   postGestContactsSaveFicheContactIfNeeded
 };

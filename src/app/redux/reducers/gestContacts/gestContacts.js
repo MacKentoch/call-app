@@ -173,7 +173,9 @@ const initialState = {
   activiteUpdateTime: '',
   isFetchingFicheContactListMotifs: false,
   isSavingFicheNewActivite: false,
-  newActivite: {}
+  newActivite: {},
+
+  isSavingFicheNewActiviteNewComment: false // post a fiche activite new comment flag
 };
 
 const emptyActivite = {
