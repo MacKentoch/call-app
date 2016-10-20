@@ -146,7 +146,7 @@ class FicheActivite extends Component {
       const firstActiviteId = activites[0].activiteId;
       this.setState({
         selectedActiviteId: firstActiviteId,
-        selectedActivite: [...this.getActiviteById(firstActiviteId)]
+        selectedActivite: {...this.getActiviteById(firstActiviteId)}
       });
     }
   }
@@ -162,7 +162,11 @@ class FicheActivite extends Component {
   handlesOnSelectActivite(activiteId) {
     const { activites } = this.props;
     if (Array.isArray(activites) && activites.length > 0) {
-      return activites.filter(activite => activite.id === activiteId);
+      const selectedActivite = activites.filter(activite => activite.id === activiteId);
+      this.setState({
+        selectedActiviteId: selectedActivite,
+        selectedActivite: {...this.getActiviteById(activiteId)}
+      });
     }
     return [];
   }
