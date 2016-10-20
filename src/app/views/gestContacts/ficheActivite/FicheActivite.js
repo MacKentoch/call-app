@@ -162,13 +162,11 @@ class FicheActivite extends Component {
   handlesOnSelectActivite(activiteId) {
     const { activites } = this.props;
     if (Array.isArray(activites) && activites.length > 0) {
-      const selectedActivite = activites.filter(activite => activite.id === activiteId);
       this.setState({
-        selectedActiviteId: selectedActivite,
+        selectedActiviteId: activiteId,
         selectedActivite: {...this.getActiviteById(activiteId)}
       });
     }
-    return [];
   }
 
   handlesOnFicheActiviteCommentSetEdition() {
