@@ -7,11 +7,7 @@ import {
   TextAreaInput,
   FormLabel,
   DateInput,
-  NumsDossiersDropDown,
-  TypeFicheContactNavPills,
-  // StatutBenefFicheContactDropDown,
-  FicheContactGroupeDestinataireDropDown,
-  FicheContactMotifs
+  TypeFicheContactNavPills
 }                           from '../../../../components';
 import {
   isValidDateOrReturnDefault
@@ -26,13 +22,9 @@ const ActiviteContent = ({
   selectedActiviteId,
   lastFetchTimeActivites,
   listMotifsNiveau4,
-
   listStatutFicheActivite,
-
   listCanauxFicheActivite,
-
   activites
-
 }) => {
   if (activites.length === 0) {
     return (
@@ -140,7 +132,7 @@ const ActiviteContent = ({
           />
         </div>
       </div>
-      
+
       <div style={{height: '20px'}}></div>
       {/* 4th row */}
       <div className="row">
