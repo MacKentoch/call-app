@@ -249,5 +249,4 @@ FicheActivite.propTypes = {
   )
 };
 
-
 export default FicheActivite;
