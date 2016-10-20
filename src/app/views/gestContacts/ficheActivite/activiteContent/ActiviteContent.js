@@ -3,6 +3,7 @@ import moment               from 'moment';
 import { appConfig }        from '../../../../config';
 import {
   StatutFicheDropDown,
+  CanalDropDown,
   TextAreaInput,
   FormLabel,
   DateInput,
@@ -53,7 +54,7 @@ const ActiviteContent = ({
         {/* date de création */}
         <div className="col-md-4">
           <DateInput
-            id="inputDateCreationFicheActivite"
+            id={'inputDateCreationFicheActivite' + '-' + selectedActiviteId}
             label={'Date de création'}
             value={isValidDateOrReturnDefault(currentActivite.dateCreation, formatDate)}
             onChange={()=>console.log('TODO: onDateCreationFicheActiviteChanged')}
@@ -63,7 +64,7 @@ const ActiviteContent = ({
         {/* créé par */}
         <div className="col-md-4">
           <FormLabel
-            id="inputCreeParFicheActivite"
+            id={'inputCreeParFicheActivite'  + '-' + selectedActiviteId}
             label={'créé par'}
             value={currentActivite.creePar}
           />
@@ -72,7 +73,7 @@ const ActiviteContent = ({
         {/* date de réception */}
         <div className="col-md-4">
           <FormLabel
-            id="inputTraiteeParFicheActivite"
+            id={'inputTraiteeParFicheActivite'  + '-' + selectedActiviteId}
             label={'Traitée par'}
             value={currentActivite.traiteePar}
           />
@@ -84,7 +85,7 @@ const ActiviteContent = ({
         {/* statut fiche activite */}
         <div className="col-md-4">
           <StatutFicheDropDown
-            id="statutFicheFicheActivite"
+            id={'statutFicheFicheActivite' + '-' + selectedActiviteId}
             label={'Statut'}
             value={currentActivite.statutIndex}
             onChange={()=>console.log('TODO: onStatutIndexFicheActiviteChanged')}
@@ -94,7 +95,7 @@ const ActiviteContent = ({
         {/* date de cloture */}
         <div className="col-md-4">
           <DateInput
-            id="inputDateClotureFicheActivite"
+            id={'inputDateClotureFicheActivite' + '-' + selectedActiviteId}
             label={'Date de clôture'}
             value={isValidDateOrReturnDefault(currentActivite.dateCloture, formatDate)}
             onChange={()=>console.log('TODO: onDateClotureFicheActiviteChanged')}
@@ -103,7 +104,7 @@ const ActiviteContent = ({
         {/* cloture par */}
         <div className="col-md-4">
           <FormLabel
-            id="inputClotureParFicheActivite"
+            id={'inputClotureParFicheActivite' + '-' + selectedActiviteId}
             label={'Clôturée par'}
             value={currentActivite.cloturePar}
           />
@@ -114,7 +115,17 @@ const ActiviteContent = ({
       <div className="row">
         {/* canal */}
         <div className="col-md-2">
-
+          <CanalDropDown
+            id={'inputCanalFicheActivite' + '-' + selectedActiviteId}
+            label={'Canal'}
+            value={
+              listCanauxFicheContact[currentActivite.canalIndexFicheActivite]
+                ? listCanauxFicheContact[currentActivite.canalIndexFicheActivite]
+                : ' --- '
+            }
+            onChange={()=>console.log('TODO: onCanalFicheActiviteChange')}
+            listCanaux={listCanauxFicheContact}
+          />
         </div>
         {/* motif : libelle level4 */}
         <div className="col-md-10">

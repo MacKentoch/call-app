@@ -10,7 +10,6 @@ import {
 }                           from '../../../../services';
 import ActiviteLink         from './activiteLink/ActiviteLink';
 
-const mockSelectedActiviteId = 2;
 
 class ListActivites extends Component {
   constructor(props) {
@@ -59,6 +58,7 @@ class ListActivites extends Component {
                         id={activiteId}
                         label={limitStringToNChars(listMotifsNiveau4[selectMotifLevel4IdFicheContact])}
                         isSelected={activiteId === selectedActiviteId}
+                        onClick={()=>console.log('TODO: onActiviteSelection')}
                       />
                     );
                   }
@@ -82,38 +82,29 @@ ListActivites.propTypes = {
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      contactId: PropTypes.number.isRequired,
-
-      libelleActiviteNiv2: PropTypes.string.isRequired,
-      libelleActiviteNiv3: PropTypes.string.isRequired,
-      libelleActiviteNiv4: PropTypes.string.isRequired,
-
-      dateCreation: PropTypes.string,
-      creePar: PropTypes.string,
-      traiteePar: PropTypes.string,
-      statut: PropTypes.arrayOf(
+      activiteId: PropTypes.number.isRequired, // nouvelle activite sans id tant que pas enregister en BDD
+      isEditable: true, // si activiteId === 0 alors reste editable (on peut changer les motifs) sinon plus editable et les motifs sont bloqués
+      selectMotifLevel2IdFicheContact: -1, // from listMotifLevel2
+      selectMotifLevel3IdFicheContact: -1, // from listMotifLevel3
+      selectMotifLevel4IdFicheContact: -1, // from listMotifLevel4
+      // affiche libelle d emotif niveau 4 dna sle champs motif des activites
+      dateCreation: '',
+      creePar: '',
+      traiteePar: '',
+      statutIndex: 1, // En-cours
+      dateCloture: '',
+      cloturePar: '',
+      // libelle motif de niveau 4 a afficher dans motif
+      canalIndexFicheActivite: 1,
+      listAttachements: PropTypes.arrayOf(
         PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          libelle: PropTypes.string.isRequired
+          type: PropTypes.oneOf(['zip', 'rar', '7zip', 'pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'png', 'jpg', 'jpeg', 'bmp']),
+          name: PropTypes.string.isRequired,
+          filePath: PropTypes.string.isRequired,
+          size: PropTypes.string.isRequired
         })
-      ),
-      dateCloture: PropTypes.string,
-      motif: PropTypes.string,
-      canal: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          libelle: PropTypes.string.isRequired
-        })
-      ),
-      piecesJointesEmises: PropTypes.arrayOf(
-        PropTypes.shape({
-          nomFichier: PropTypes.string,
-          extensionFichier: PropTypes.string,
-          lienFichier: PropTypes.string
-        })
-      ),
-      commentaires: PropTypes.arrayOf(PropTypes.string)
+      ).isRequired,
+      listCommenatire: PropTypes.arrayOf(PropTypes.string)
     })
   )
 };

@@ -34,6 +34,7 @@ import StatutBenefFicheContactDropDown from './statutBenefFicheContactDropDown/S
 import FicheContactGroupeDestinataireDropDown from './ficheContactGroupeDestinataireDropDown/FicheContactGroupeDestinataireDropDown';
 import TextAreaInput from './textInput/TextAreaInput';
 import FicheContactMotifs from './ficheContactMotifs/FicheContactMotifs';
+import CanalDropDown from './canalDropDown/CanalDropDown';
 import {
   FichesTraitee,
   FichesParCanal,
@@ -75,6 +76,7 @@ export {
   StatutBenefFicheContactDropDown,
   FicheContactGroupeDestinataireDropDown,
   FicheContactMotifs,
+  CanalDropDown,
 
   // mailbox
   MailboxRepertoires,

@@ -8,16 +8,10 @@ import {
   MenuItem
 }                     from 'react-bootstrap';
 
-const canalEnum = [
-  'M.',
-  'Mme',
-  'Mlle'
-];
 
 class CanalDropDown extends Component {
   constructor(props) {
     super(props);
-
     this.handlesOnChange = this.handlesOnChange.bind(this);
   }
 
@@ -26,7 +20,7 @@ class CanalDropDown extends Component {
   }
 
   render() {
-    const { label, id, value } = this.props;
+    const { label, id, value, listCanaux } = this.props;
     return (
       <div className="form-group">
         <label
@@ -40,9 +34,9 @@ class CanalDropDown extends Component {
             onSelect={this.handlesOnChange}
             bsSize="sm"
             bsStyle={'default'}
-            title={ this.valueIsCanal(value) ? value : canalEnum[0] }>
+            title={ this.valueIsCanal(value) ? value : listCanaux[0] }>
             {
-              canalEnum.map(
+              listCanaux.map(
                 (canal, idx) => {
                   return (
                     <MenuItem
@@ -62,15 +56,14 @@ class CanalDropDown extends Component {
 
   handlesOnChange(event, key) {
     event.preventDefault();
-    const { onChange } = this.props;
-    onChange(canalEnum[key]);
+    const { onChange, listCanaux } = this.props;
+    onChange(listCanaux[key]);
   }
 
   valueIsCanal(value) {
+    const { listCanaux } = this.props;
     if (value) {
-      const index = canalEnum.findIndex(
-        valeur => value === valeur
-      );
+      const index = listCanaux.findIndex(valeur => value === valeur);
       return index > -1 ? true : false;
     }
     return false;
@@ -81,7 +74,8 @@ CanalDropDown.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  listCanaux: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default CanalDropDown;
