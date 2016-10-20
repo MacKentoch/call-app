@@ -214,41 +214,47 @@ const ActiviteContent = ({
                   </button>
                 </div>
               }
-
-
               </div>
 
               <div className="row">
-                <div className="col-xs-12">
 
-                  {/* existing comments */}
-                  {
-                    currentActivite.listCommentaire.map(
-                      ({id, commentaire, par, dateCreation }, commentaireIdx) => {
-                        return (
-                         <Comment
-                          key={commentaireIdx}
-                          disabled={true}
-                          label={par + ' - ' + dateCreation}
-                          id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  commentaireIdx}
-                          value={commentaire}
-                          onChange={()=>console.log('ficheActivite existing comment edition disabled')}
-                         />
-                        );
-                      }
-                    )
-                  }
 
-                  {/* new comment */}
-                  {/* <Comment
-                   disabled={false}
-                   label={par + ' - ' + dateCreation}
-                   id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  commentaireIdx}
-                   value={''}
-                   onChange={()=>console.log('TODO: ficheActivite comment changed')}
-                  /> */}
+                {/* existing comments */}
+                {
+                  !selectedActiviteCommentBeingEditingFlag &&
+                  <div className="col-xs-12">
+                    {
+                      currentActivite.listCommentaire.map(
+                        ({id, commentaire, par, dateCreation }, commentaireIdx) => {
+                          return (
+                           <Comment
+                            key={commentaireIdx}
+                            disabled={true}
+                            label={par + ' - ' + dateCreation}
+                            id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  commentaireIdx}
+                            value={commentaire}
+                            onChange={()=>console.log('ficheActivite existing comment edition disabled')}
+                           />
+                          );
+                        }
+                      )
+                    }
+                  </div>
+                }
 
-                </div>
+                {/* new comment */}
+                {
+                  selectedActiviteCommentBeingEditingFlag &&
+                  <div className="col-xs-12">
+                    <Comment
+                     disabled={false}
+                     label={'Nouveau commentaire:'}
+                     id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  'new_Comment'}
+                     value={selectedActiviteCommentBeingEditingValue}
+                     onChange={()=>console.log('TODO: onFicheActiviteNewCommentChange')}
+                    />
+                  </div>
+                }
               </div>
             </div>
           }
