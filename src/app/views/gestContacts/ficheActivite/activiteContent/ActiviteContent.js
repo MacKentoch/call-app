@@ -29,7 +29,7 @@ const ActiviteContent = ({
 
   listStatutFicheActivite,
 
-  listCanauxFicheContact,
+  listCanauxFicheActivite,
 
   activites
 
@@ -119,12 +119,12 @@ const ActiviteContent = ({
             id={'inputCanalFicheActivite' + '-' + selectedActiviteId}
             label={'Canal'}
             value={
-              listCanauxFicheContact[currentActivite.canalIndexFicheActivite]
-                ? listCanauxFicheContact[currentActivite.canalIndexFicheActivite]
+              listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
+                ? listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
                 : ' --- '
             }
             onChange={()=>console.log('TODO: onCanalFicheActiviteChange')}
-            listCanaux={listCanauxFicheContact}
+            listCanaux={listCanauxFicheActivite}
           />
         </div>
         {/* motif : libelle level4 */}
@@ -164,7 +164,7 @@ ActiviteContent.propTypes = {
 
   listStatutFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-  listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
+  listCanauxFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

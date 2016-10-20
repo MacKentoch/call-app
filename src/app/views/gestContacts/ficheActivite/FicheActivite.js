@@ -52,7 +52,7 @@ class FicheActivite extends Component {
       lastFetchTimeActivites,
       listMotifsNiveau4,
       listStatutFicheActivite,
-      listCanauxFicheContact,
+      listCanauxFicheActivite,
       activites
     } = this.props;
 
@@ -99,7 +99,7 @@ class FicheActivite extends Component {
 
                    listStatutFicheActivite={listStatutFicheActivite}
 
-                   listCanauxFicheContact={listCanauxFicheContact}
+                   listCanauxFicheActivite={listCanauxFicheActivite}
 
                    activites={activites}
                    listMotifsNiveau4={listMotifsNiveau4}
@@ -157,7 +157,7 @@ FicheActivite.propTypes = {
 
   listStatutFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-  listCanauxFicheContact: PropTypes.arrayOf(PropTypes.string).isRequired,
+  listCanauxFicheActivite: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({
