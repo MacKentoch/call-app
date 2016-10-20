@@ -161,7 +161,30 @@ const ActiviteContent = ({
       <div className="row">
         {/* attachements */}
         <div className="col-md-12">
-
+          {
+            currentActivite.listCommentaire.length === 0 &&
+            <div>
+              <h4>
+                Aucun commentaire pour cette activité.
+              </h4>
+            </div>
+          }
+          {
+            currentActivite.listCommentaire.length > 0 &&
+            <div>
+              {
+                currentActivite.listCommentaire.map(
+                  ({id, commentaire, par, dateCreation }, commentaireIdx) => {
+                    return (
+                      <div key={commentaireIdx}>
+                       { commentaire }
+                      </div>
+                    );
+                  }
+                )
+              }
+            </div>
+          }
         </div>
       </div>
 
@@ -171,8 +194,8 @@ const ActiviteContent = ({
 
 ActiviteContent.propTypes = {
   selectedActiviteId: PropTypes.number.isRequired,
-  isCollapsedFicheActivite: PropTypes.bool.isRequired,
-  onCollapseClick: PropTypes.func.isRequired,
+  // isCollapsedFicheActivite: PropTypes.bool.isRequired,
+  // onCollapseClick: PropTypes.func.isRequired,
 
   lastFetchTimeActivites: PropTypes.string.isRequired,
   listMotifsNiveau4: PropTypes.array.isRequired,
@@ -205,7 +228,7 @@ ActiviteContent.propTypes = {
           size: PropTypes.string.isRequired
         })
       ).isRequired,
-      listCommenatire: PropTypes.arrayOf(
+      listCommentaire: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
           commentaire: PropTypes.string,

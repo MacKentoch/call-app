@@ -86,6 +86,7 @@ class FicheActivite extends Component {
                    selectedActiviteId={selectedActiviteId}
                    onSelectActivite={this.handlesOnSelectActivite}
                    listMotifsNiveau4={listMotifsNiveau4}
+                   lastFetchTimeActivites={lastFetchTimeActivites}
                  />
                </div>
 
@@ -183,7 +184,7 @@ FicheActivite.propTypes = {
           size: PropTypes.string.isRequired
         })
       ).isRequired,
-      listCommenatire: PropTypes.arrayOf(
+      listCommentaire: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
           commentaire: PropTypes.string,

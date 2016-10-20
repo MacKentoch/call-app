@@ -165,7 +165,7 @@ const Form = ({
         <div className="col-md-12">
           <TypeFicheContactNavPills
             selectedValue={typeIndexFicheContact}
-            onChange={onTypeIndexFicheContactChanged}
+            onChange={()=>console.log('TypeFicheContactNavPills onClick disabled')}
             listTypeFicheContact={listTypeFicheContact}
           />
         </div>

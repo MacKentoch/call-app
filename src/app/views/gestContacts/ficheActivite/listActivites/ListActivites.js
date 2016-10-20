@@ -104,7 +104,7 @@ ListActivites.propTypes = {
           size: PropTypes.string.isRequired
         })
       ).isRequired,
-      listCommenatire: PropTypes.arrayOf(
+      listCommentaire: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
           commentaire: PropTypes.string,

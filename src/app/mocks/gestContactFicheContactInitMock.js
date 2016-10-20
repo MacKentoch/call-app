@@ -84,9 +84,19 @@ export const gestContactFicheContactInitMock = {
           size: '1.23kb'
         }
       ],
-      listCommenatire: [
-        'premier commentaire',
-        'deuxième commentaire'
+      listCommentaire: [
+        {
+          id: 1,
+          commentaire: 'premier commentaire',
+          par: 'test1',
+          dateCreation: '02/02/2016'
+        },
+        {
+          id: 2,
+          commentaire: 'deuxième commentaire',
+          par: 'test2',
+          dateCreation: '03/03/2016'
+        }
       ]
     },
     {
@@ -113,9 +123,13 @@ export const gestContactFicheContactInitMock = {
           size: '1.23kb'
         }
       ],
-      listCommenatire: [
-        'premier commentaire',
-        'deuxième commentaire'
+      listCommentaire: [
+        {
+          id: 3,
+          commentaire: 'troisieme commentaire',
+          par: 'test3',
+          dateCreation: '04/04/2016'
+        }
       ]
     }
   ]
