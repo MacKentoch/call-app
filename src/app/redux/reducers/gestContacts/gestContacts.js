@@ -680,6 +680,7 @@ const gestContacts = (state = initialState, action) => {
     return {
       ...state,
       isSavingFicheNewActiviteNewComment: false,
+      activites: [...action.activites],
 
       actionTime: action.time
     };
