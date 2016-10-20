@@ -86,11 +86,16 @@ const ActiviteContent = ({
         </div>
         {/* date de cloture */}
         <div className="col-md-4">
-          <DateInput
+          {/* <DateInput
             id={'inputDateClotureFicheActivite' + '-' + selectedActiviteId}
             label={'Date de clôture'}
             value={isValidDateOrReturnDefault(currentActivite.dateCloture, formatDate)}
             onChange={()=>console.log('TODO: onDateClotureFicheActiviteChanged')}
+          /> */}
+          <FormLabel
+            id={'inputDateClotureFicheActivite' + '-' + selectedActiviteId}
+            label={'Date de clôture'}
+            value={isValidDateOrReturnDefault(currentActivite.dateCloture, formatDate)}
           />
         </div>
         {/* cloture par */}
