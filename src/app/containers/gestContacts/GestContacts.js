@@ -103,7 +103,9 @@ const mapStateToProps = (state) => {
     listStatutFicheActivite: state.gestContacts.listStatutFicheActivite,
 
     activiteUpdateTime: state.gestContacts.activiteUpdateTime,
-    isSavingFicheNewActivite: state.gestContacts.isSavingFicheNewActivite
+    isSavingFicheNewActivite: state.gestContacts.isSavingFicheNewActivite,
+
+    isSavingFicheNewActiviteNewComment: state.gestContacts.isSavingFicheNewActiviteNewComment
   };
 };
 
@@ -173,6 +175,9 @@ const mapDispatchToProps = (dispatch) => {
         // ///////////////////////
         setIsCollapsedContactsFicheActivite: actions.setIsCollapsedContactsFicheActivite,
         unsetIsCollapsedContactsFicheActivite: actions.unsetIsCollapsedContactsFicheActivite,
+        // POST:
+        saveNewCommentFicheActivite: actions.saveNewCommentFicheActivite,
+
         // ///////////////////////
         // lists motifs ref
         // ///////////////////////

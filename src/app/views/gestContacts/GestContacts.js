@@ -164,7 +164,8 @@ class GestContacts extends Component {
       listMotifLevel3,
       listMotifLevel4,
       isSavingFicheNewActivite,
-      listStatutFicheActivite
+      listStatutFicheActivite,
+      isSavingFicheNewActiviteNewComment
       // onListGroupeDestinataireChanged
     } = this.props;
 
@@ -423,7 +424,7 @@ class GestContacts extends Component {
                         selectedActiviteId={selectedActiviteId}
                         listCanauxFicheActivite={listCanauxFicheActivite}
 
-                        isSavingFicheNewActiviteNewComment={false}
+                        isSavingFicheNewActiviteNewComment={isSavingFicheNewActiviteNewComment}
                         onSaveFicheActiviteNewComment={this.handlesOnSaveFicheActiviteNewComment}
                       />
 
@@ -934,6 +935,7 @@ GestContacts.propTypes = {
 
   activiteUpdateTime: PropTypes.string.isRequired,
   isSavingFicheNewActivite: PropTypes.bool.isRequired,
+  isSavingFicheNewActiviteNewComment: PropTypes.bool.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({
