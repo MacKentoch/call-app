@@ -21,6 +21,8 @@ const ActiviteContent = ({
   selectedActiviteCommentBeingEditingFlag,
   selectedActiviteCommentBeingEditingValue,
   onFicheActiviteCommentSetEdition,
+  onFicheActiviteCommentCancelEdition,
+  onFicheActiviteCommentSaveEdition,
   // lastFetchTimeActivites,
   listMotifsNiveau4,
   listStatutFicheActivite,
@@ -196,7 +198,7 @@ const ActiviteContent = ({
                 <div>
                   <button
                     className="btn btn-xs btn-success"
-                    onClick={onFicheActiviteCommentSetEdition}>
+                    onClick={onFicheActiviteCommentSaveEdition}>
                     <i
                       className="fa fa-floppy-o"
                       style={{color: '#F1F1F1'}}
@@ -205,7 +207,7 @@ const ActiviteContent = ({
                   </button>
                   <button
                     className="btn btn-xs btn-default"
-                    onClick={onFicheActiviteCommentSetEdition}>
+                    onClick={onFicheActiviteCommentCancelEdition}>
                     <i
                       className="fa fa-times"
                       style={{color: '#4A4A4A'}}
@@ -269,6 +271,8 @@ ActiviteContent.propTypes = {
   selectedActiviteCommentBeingEditingFlag: PropTypes.bool.isRequired,
   selectedActiviteCommentBeingEditingValue: PropTypes.string.isRequired,
   onFicheActiviteCommentSetEdition: PropTypes.func.isRequired,
+  onFicheActiviteCommentCancelEdition: PropTypes.func.isRequired,
+  onFicheActiviteCommentSaveEdition: PropTypes.func.isRequired,
 
   lastFetchTimeActivites: PropTypes.string.isRequired,
   listMotifsNiveau4: PropTypes.array.isRequired,
