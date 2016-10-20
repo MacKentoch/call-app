@@ -169,15 +169,7 @@ const ActiviteContent = ({
         {/* attachements */}
         <div className="col-md-12">
           {
-            !isSavingFicheNewActiviteNewComment && Array.isArray(currentActivite.listCommentaire) && currentActivite.listCommentaire.length === 0 &&
-            <div>
-              <h4>
-                Aucun commentaire pour cette activité.
-              </h4>
-            </div>
-          }
-          {
-            !isSavingFicheNewActiviteNewComment && Array.isArray(currentActivite.listCommentaire)  && currentActivite.listCommentaire.length > 0 &&
+            !isSavingFicheNewActiviteNewComment && Array.isArray(currentActivite.listCommentaire)  &&
             <div>
 
               <label
@@ -225,7 +217,17 @@ const ActiviteContent = ({
 
               <div className="row">
 
-
+              {
+                !isSavingFicheNewActiviteNewComment
+                && Array.isArray(currentActivite.listCommentaire)
+                && currentActivite.listCommentaire.length === 0
+                && !selectedActiviteCommentBeingEditingFlag &&
+                <div className="col-xs-12">
+                  <h4>
+                    Aucun commentaire pour cette activité.
+                  </h4>
+                </div>
+              }
                 {/* existing comments */}
                 {
                   !selectedActiviteCommentBeingEditingFlag &&
