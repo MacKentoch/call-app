@@ -261,6 +261,9 @@ export const appConfig = {
     },
     postFicheContact: {
       API: 'api/postFicheContact'
+    },
+    postFicheActiviteNewComment: {
+      API: 'api/postFicheActiviteNewComment'
     }
   },
 

@@ -102,3 +102,27 @@ export const postGestContactsSaveFicheContact = payload => {
     .then(data => data)
     .catch(error => Promise.reject(error));
 };
+
+/*
+    POST fiche contact
+ */
+export const postGestContactsSaveFicheActiviteNewComment = (activiteId = 0, comment = '') => {
+  if (!(parseInt(activiteId, 10) > 0)) {
+    return Promise.reject({error: 'postGestContactsSaveFicheActiviteNewComment API: activiteId is not valid '});
+  }
+
+  const api = appConfig.gestFicheContact.postFicheActiviteNewComment.API;
+  const url = `${getLocationOrigin()}/${api}/${activiteId}/${comment}`;
+
+  const options = {
+    ...defaultOptions,
+    ...postMethod,
+    ...jsonHeader
+  };
+
+  return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(data => data)
+    .catch(error => Promise.reject(error));
+};
