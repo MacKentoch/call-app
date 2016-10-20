@@ -200,7 +200,7 @@ const ActiviteContent = ({
                           label={par + ' - ' + dateCreation}
                           id={'textAreaComment'  + '-' + selectedActiviteId + '-' +  commentaireIdx}
                           value={commentaire}
-                          onChange={()=>console.log('TODO: ficheActivite comment changed')}
+                          onChange={()=>console.log('ficheActivite existing comment edition disabled')}
                          />
                         );
                       }
