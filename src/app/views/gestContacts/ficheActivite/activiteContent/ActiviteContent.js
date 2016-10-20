@@ -154,7 +154,6 @@ const ActiviteContent = ({
         </div>
       </div>
 
-
       {/* 5th row to N: comments */}
       <div className="row">
         {/* attachements */}
@@ -223,7 +222,6 @@ const ActiviteContent = ({
           }
         </div>
       </div>
-
     </form>
   );
 };
