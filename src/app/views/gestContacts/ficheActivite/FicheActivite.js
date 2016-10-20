@@ -180,11 +180,15 @@ class FicheActivite extends Component {
 
   handlesOnFicheActiviteCommentCancelEdition() {
     const { addNotificationMessage } = this.props;
+    const { selectedActiviteCommentBeingEditingValue } = this.state;
 
-    addNotificationMessage({
-      message: 'Création d\'un nouveau commentaire annulée',
-      level: 'info'
-    });
+    if (selectedActiviteCommentBeingEditingValue.trim().length > 0) {
+      addNotificationMessage({
+        message: 'Création d\'un nouveau commentaire annulée',
+        level: 'info'
+      });
+    }
+
     this.setState({
       selectedActiviteCommentBeingEditingFlag: false,
       selectedActiviteCommentBeingEditingValue: ''
