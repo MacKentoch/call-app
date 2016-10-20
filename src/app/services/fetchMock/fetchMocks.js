@@ -511,7 +511,9 @@ export const fetchMockPostGestContactsFicheActiviteNewComment = (activiteId = nu
 
   const fakeUpdatedfields = {
     id: 10,
-    comment
+    commentaire: comment,
+    par: 'test mock',
+    dateCreation: '01/01/2017'
   };
 
   const successPayload = {

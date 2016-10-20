@@ -88,12 +88,23 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => (d
                 }
                 const newComment = {...data.commentSaved};
                 // update activites array
-                const previsousActivites = [...getState().gestContacts.activites];
-                const previsousActivite = {...previsousActivites[activiteId]};
+                const previousActivites = [...getState().gestContacts.activites];
+                const previousActivite = {...previousActivites[activiteId]};
 
-                const newActivites = previsousActivite
+                const newActivite = previousActivite
                                         .listCommentaire
                                         .concat(newComment);
+
+                const newActivites = previousActivites
+                                      .map(
+                                        (activite) => {
+                                          if (activite.activiteId === activiteId) {
+                                            return newActivite;
+                                          } else {
+                                            return activite;
+                                          }
+                                        }
+                                      );
 
                 dispatch(receivedPostGestContactsFicheActiviteNewComment(newActivites));
                 return Promise.resolve({
@@ -127,12 +138,24 @@ const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => (d
                 }
                 const newComment = {...response.commentSaved};
                 // update activites array
-                const previsousActivites = [...getState().gestContacts.activites];
-                const previsousActivite = {...previsousActivites[activiteId]};
+                const previousActivites = [...getState().gestContacts.activites];
+                const previousActivite = {...previousActivites[activiteId]};
 
-                const newActivites = previsousActivite
+                const newActivite = previousActivite
                                         .listCommentaire
                                         .concat(newComment);
+
+                const newActivites = previousActivites
+                                      .map(
+                                        (activite) => {
+                                          if (activite.activiteId === activiteId) {
+                                            return newActivite;
+                                          } else {
+                                            return activite;
+                                          }
+                                        }
+                                      );
+
                 dispatch(receivedPostGestContactsFicheActiviteNewComment(newActivites));
                 return Promise.resolve({
                   id: response.id,

@@ -32,7 +32,7 @@ const ActiviteContent = ({
   activites,
   isSavingFicheNewActiviteNewComment
 }) => {
-  if (activites.length === 0) {
+  if (activites && Array.isArray(activites) && activites.length === 0) {
     return (
       <div>
         <h2>
@@ -167,7 +167,7 @@ const ActiviteContent = ({
         {/* attachements */}
         <div className="col-md-12">
           {
-            !isSavingFicheNewActiviteNewComment && currentActivite.listCommentaire.length === 0 &&
+            !isSavingFicheNewActiviteNewComment && Array.isArray(currentActivite.listCommentaire) && currentActivite.listCommentaire.length === 0 &&
             <div>
               <h4>
                 Aucun commentaire pour cette activité.
@@ -175,7 +175,7 @@ const ActiviteContent = ({
             </div>
           }
           {
-            !isSavingFicheNewActiviteNewComment && currentActivite.listCommentaire.length > 0 &&
+            !isSavingFicheNewActiviteNewComment && Array.isArray(currentActivite.listCommentaire)  && currentActivite.listCommentaire.length > 0 &&
             <div>
 
               <label

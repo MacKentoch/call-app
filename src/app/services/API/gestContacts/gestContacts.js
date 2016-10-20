@@ -120,6 +120,14 @@ export const postGestContactsSaveFicheActiviteNewComment = (activiteId = 0, comm
     ...jsonHeader
   };
 
+  // returne :
+  // {
+  //   id,
+  //   commentaire,
+  //   par, // loginNT
+  //   dateCreation
+  // }
+
   return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON)
