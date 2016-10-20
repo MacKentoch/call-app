@@ -30,6 +30,7 @@ import {
   fetchMockGestContactsNumDossierDomaineStatutBenef,
   fetchMockGestContactsFicheContactGroupesDestinataires,
   fetchMockPostGestContactsSaveFicheContact,
+  fetchMockPostGestContactsFicheActiviteNewComment,
   // gest contacts:
   fetchMockGetGestContacts,
   // liste de motifs:
@@ -60,7 +61,8 @@ import {
   getGestContactsFicheContactInit,
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
   postGestContactsSaveFicheContact,
-  postGestContactsSaveNewActivite
+  postGestContactsSaveNewActivite,
+  postGestContactsSaveFicheActiviteNewComment
 }                     from './API';
 
 // date tools
@@ -141,6 +143,7 @@ export {
   fetchMockPostGestContactsSaveNewActivite,
   fetchMockGestContactsFicheContactGroupesDestinataires,
   fetchMockPostGestContactsSaveFicheContact,
+  fetchMockPostGestContactsFicheActiviteNewComment,
 
   // API
   getUserBoitesMails,
@@ -164,6 +167,7 @@ export {
   getGestContactsFicheContactDomaineStatutfFromNumDossier,
   postGestContactsSaveFicheContact,
   postGestContactsSaveNewActivite,
+  postGestContactsSaveFicheActiviteNewComment,
 
   // date tools
   getLastThreeMonthNames,

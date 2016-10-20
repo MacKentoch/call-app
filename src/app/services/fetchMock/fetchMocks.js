@@ -497,3 +497,36 @@ export const fetchMockPostGestContactsSaveNewActivite = (payload = null, timeToW
     }
   );
 };
+
+
+/*
+    POST fiche activite new comment
+ */
+export const fetchMockPostGestContactsFicheActiviteNewComment = (activiteId = null, comment= '', timeToWait = appConfig.FAKE_ASYNC_DELAY) => {
+  if (!(parseInt(activiteId, 10) > 0)) {
+    return Promise.reject({
+      'error': 'fetchMockPostGestContactsFicheActiviteNewComment error: activiteId is not valid'
+    });
+  }
+
+  const fakeUpdatedfields = {
+    id: 10,
+    comment
+  };
+
+  const successPayload = {
+    status: 'success',
+    commentSaved: {
+      ...fakeUpdatedfields
+    } // in real API: it should be filled by all activites containing new one saved
+  };
+
+  return new Promise(
+    resolve => {
+      setTimeout(
+       () => resolve({...successPayload}),
+       timeToWait
+      );
+    }
+  );
+};
