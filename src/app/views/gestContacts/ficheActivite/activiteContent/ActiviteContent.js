@@ -83,15 +83,30 @@ const ActiviteContent = ({
       <div className="row">
         {/* statut fiche activite */}
         <div className="col-md-4">
-
+          <StatutFicheDropDown
+            id="statutFicheFicheActivite"
+            label={'Statut'}
+            value={currentActivite.statutIndex}
+            onChange={()=>console.log('TODO: onStatutIndexFicheActiviteChanged')}
+            listeStatutFiche={listStatutFicheActivite}
+          />
         </div>
         {/* date de cloture */}
         <div className="col-md-4">
-
+          <DateInput
+            id="inputDateClotureFicheActivite"
+            label={'Date de clôture'}
+            value={isValidDateOrReturnDefault(currentActivite.dateCloture, formatDate)}
+            onChange={()=>console.log('TODO: onDateClotureFicheActiviteChanged')}
+          />
         </div>
         {/* cloture par */}
         <div className="col-md-4">
-
+          <FormLabel
+            id="inputClotureParFicheActivite"
+            label={'Clôturée par'}
+            value={currentActivite.cloturePar}
+          />
         </div>
       </div>
 
@@ -120,7 +135,7 @@ const ActiviteContent = ({
       <div className="row">
         {/* attachements */}
         <div className="col-md-12">
-        
+
         </div>
       </div>
 
