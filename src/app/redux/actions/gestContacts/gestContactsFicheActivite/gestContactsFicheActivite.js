@@ -32,7 +32,7 @@ export const unsetIsCollapsedContactsFicheActivite = (time = moment().format(for
 //  -----------------------------------------------------------------
 //    POST fiche activite new comment
 //  -----------------------------------------------------------------
-const requestPostGestContactsSaveFicheContact = (payload = {}, time = moment().format(formatDate)) => {
+const requestSaveGestContactsFicheActiviteNewComment = (payload = {}, time = moment().format(formatDate)) => {
   return {
     type: REQUEST_SAVE_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT,
     isSavingFicheNewActiviteNewComment: true
@@ -40,7 +40,7 @@ const requestPostGestContactsSaveFicheContact = (payload = {}, time = moment().f
     time
   };
 };
-const receivedPostGestContactsSaveFicheContact = (response = {}, time = moment().format(formatDate)) => {
+const receivedPostGestContactsFicheActiviteNewComment = (response = {}, time = moment().format(formatDate)) => {
   return {
     type: RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT,
     isSavingFicheNewActiviteNewComment: true
@@ -48,7 +48,7 @@ const receivedPostGestContactsSaveFicheContact = (response = {}, time = moment()
     time
   };
 };
-const errorPostGestContactsSaveFicheContact = (error, time = moment().format(formatDate)) => {
+const errorPostGestContactsFicheActiviteNewComment = (error, time = moment().format(formatDate)) => {
   return {
     type: ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT,
     isSavingFicheNewActiviteNewComment: true
@@ -57,11 +57,11 @@ const errorPostGestContactsSaveFicheContact = (error, time = moment().format(for
   };
 };
 
-const postQueryGestContactsSaveFicheContact = payload => dispatch => {
-  if (!payload) {
-    dispatch(errorPostGestContactsSaveFicheContact('postQueryGestContactsSaveFicheContact API error: payload is not defined or not valid'));
+const postQueryGestContactsFicheActiviteNewComment = (activiteId, comment) => dispatch => {
+  if (!(parseInt(activiteId, 10) > 0)) {
+    dispatch(errorPostGestContactsFicheActiviteNewComment('postQueryGestContactsFicheActiviteNewComment API error: activiteId is not defined or not valid'));
     return Promise.reject({
-      message: 'Enregistrement de la fiche contact en erreur (payload non valide)',
+      message: 'Enregistrement du nouveau commentaire la fiche d\activité en erreur (activiteId non valide)',
       level: 'error',
       showNotification: true
     });
