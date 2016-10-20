@@ -51,11 +51,10 @@ const ActiviteContent = ({
       <div className="row">
         {/* date de création */}
         <div className="col-md-4">
-          <DateInput
+          <FormLabel
             id={'inputDateCreationFicheActivite' + '-' + selectedActiviteId}
             label={'Date de création'}
             value={isValidDateOrReturnDefault(currentActivite.dateCreation, formatDate)}
-            onChange={()=>console.log('TODO: onDateCreationFicheActiviteChanged')}
           />
         </div>
 

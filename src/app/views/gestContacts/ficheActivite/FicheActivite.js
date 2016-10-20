@@ -23,7 +23,7 @@ class FicheActivite extends Component {
       selectedActivite: [],
 
       selectedActiviteCommentBeingEditingFlag: false, // if comment is editing force (use notification to alert) save or cancel comment before switching activiteId
-      selectedActiviteCommentBeingEditingValue: '' // value of comment being editing => return to empty string when saved or canceled
+      selectedActiviteCommentBeingEditingValue: ''    // value of comment being editing => return to empty string when saved or canceled
     };
 
     this.handlesOnSelectActivite = this.handlesOnSelectActivite.bind(this);
@@ -41,6 +41,7 @@ class FicheActivite extends Component {
     const { lastFetchTimeActivites } = this.props;
     const activitesAreUpdated = moment(nextProps.lastFetchTimeActivites, formatDate)
                                   .diff(moment(lastFetchTimeActivites, formatDate));
+
     if (activitesAreUpdated > 0) {
       // force all activite to init
       this.initToFirstActivite(nextProps);
