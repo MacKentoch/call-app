@@ -29,6 +29,7 @@ class FicheActivite extends Component {
     this.handlesOnSelectActivite = this.handlesOnSelectActivite.bind(this);
     this.handlesOnFicheActiviteCommentSetEdition = this.handlesOnFicheActiviteCommentSetEdition.bind(this);
     this.handlesOnFicheActiviteCommentCancelEdition = this.handlesOnFicheActiviteCommentCancelEdition.bind(this);
+    this.handlesOnFicheActiviteCommentChange = this.handlesOnFicheActiviteCommentChange.bind(this);
     this.handlesOnFicheActiviteCommentSaveEdition = this.handlesOnFicheActiviteCommentSaveEdition.bind(this);
   }
 
@@ -108,6 +109,7 @@ class FicheActivite extends Component {
                    selectedActiviteCommentBeingEditingValue={selectedActiviteCommentBeingEditingValue}
                    onFicheActiviteCommentSetEdition={this.handlesOnFicheActiviteCommentSetEdition}
                    onFicheActiviteCommentCancelEdition={this.handlesOnFicheActiviteCommentCancelEdition}
+                   onFicheActiviteCommentChange={this.handlesOnFicheActiviteCommentChange}
                    onFicheActiviteCommentSaveEdition={this.handlesOnFicheActiviteCommentSaveEdition}
 
                    lastFetchTimeActivites={lastFetchTimeActivites}
@@ -184,8 +186,21 @@ class FicheActivite extends Component {
     });
   }
 
-  handlesOnFicheActiviteCommentSaveEdition(newComment) {
-    // TODO
+  handlesOnFicheActiviteCommentChange(newComment) {
+    console.log('newComment value: ', newComment);
+  }
+
+  handlesOnFicheActiviteCommentSaveEdition(event) {
+    event.preventDefault();
+    const { selectedActiviteCommentBeingEditingValue } = this.state;
+    console.log('newComment value to save: ', selectedActiviteCommentBeingEditingValue);
+    // save to backend dispatch
+
+    // when promise done sucessful : resets comment edit and displays all comments updated
+    this.setState({
+      selectedActiviteCommentBeingEditingFlag: false,
+      selectedActiviteCommentBeingEditingValue: ''
+    });
   }
 }
 
