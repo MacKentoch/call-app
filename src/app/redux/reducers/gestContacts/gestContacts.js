@@ -54,7 +54,11 @@ import {
 }                                     from '../../actions/gestContacts/gestContactsFicheContact/gestContactsFicheContact';
 import {
   SET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
-  UNSET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE
+  UNSET_IS_COLLAPSED_CONTACTS_FICHE_ACTIVITE,
+
+  REQUEST_SAVE_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT,
+  RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT,
+  ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT
 }                                     from '../../actions/gestContacts/gestContactsFicheActivite/gestContactsFicheActivite';
 import {
   REQUEST_GET_GEST_CONTACTS_ALL_MOTIFS,
@@ -659,6 +663,33 @@ const gestContacts = (state = initialState, action) => {
       actionTime: action.time,
       activiteUpdateTime: action.time,
       activites: [...action.activites]
+    };
+
+
+  case REQUEST_SAVE_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT:
+    return {
+      ...state,
+      isSavingFicheNewActiviteNewComment: true,
+      activiteId: action.activiteId,
+      comment: action.comment,
+
+      actionTime: action.time
+    };
+
+  case RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT:
+    return {
+      ...state,
+      isSavingFicheNewActiviteNewComment: false,
+
+      actionTime: action.time
+    };
+
+  case ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT:
+    return {
+      ...state,
+      isSavingFicheNewActiviteNewComment: false,
+
+      actionTime: action.time
     };
 
   default:
