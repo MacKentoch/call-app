@@ -278,6 +278,28 @@ const ActiviteContent = ({
           }
         </div>
       </div>
+
+      <div style={{height: '20px'}}></div>
+
+      {/* button row */}
+      <div className="row">
+        <div
+          className="center-block"
+          style={{width: '120px'}}>
+          <a
+            className="btn btn-primary btn-block mailBoxNewEmailButton_button"
+            style={{width: '120px'}}
+            onClick={()=>console.log('TODO: fiche active to save here')}>
+            <i
+              className="fa fa-floppy-o"
+              aria-hidden="true">
+            </i>
+            &nbsp;
+            Enregister
+          </a>
+        </div>
+      </div>
+      <div style={{height: '20px'}}></div>
     </form>
   );
 };
