@@ -88,6 +88,7 @@ const ActiviteContent = ({
             value={currentActivite.statutIndex}
             onChange={()=> console.log('TODO: onGestContactsFicheActiviteStatutChange')}
             listeStatutFiche={listStatutFicheActivite}
+            selectedActiviteId={selectedActiviteId}
           />
         </div>
         {/* date de cloture */}

@@ -58,17 +58,14 @@ class StatutFicheDropDown extends Component {
 
   handlesOnChange(event, key) {
     event.preventDefault();
-    const { onChange, listeStatutFiche } = this.props;
-
-    onChange(listeStatutFiche[key]);
+    const { onChange, selectedActiviteId } = this.props;
+    onChange(key, selectedActiviteId);
   }
 
   valueIsStatutFiche(value) {
     const { listeStatutFiche } = this.props;
     if (value) {
-      const index = listeStatutFiche.findIndex(
-        valeur => value === valeur
-      );
+      const index = listeStatutFiche.findIndex(valeur => value === valeur);
       return index > -1 ? true : false;
     }
     return false;
@@ -84,7 +81,8 @@ StatutFicheDropDown.propTypes = {
   ]).isRequired,
   onChange: PropTypes.func.isRequired,
   // list statut ref
-  listeStatutFiche: PropTypes.arrayOf(PropTypes.string).isRequired
+  listeStatutFiche: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedActiviteId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default StatutFicheDropDown;
