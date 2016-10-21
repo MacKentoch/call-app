@@ -49,7 +49,7 @@ class TextInput extends Component {
             className="form-control"
             id={id}
             type="text"
-            // value={value}
+            // value={value} 
             defaultValue={stateValue}
             onChange={this.handlesOnChange}
           />
