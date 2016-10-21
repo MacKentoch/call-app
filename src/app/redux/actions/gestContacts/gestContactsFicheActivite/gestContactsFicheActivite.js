@@ -22,10 +22,10 @@ export const UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL = 'UPDATE_GEST_CONTACTS_F
 //  -----------------------------------------------------------------
 export const onGestContactsFicheActiviteCanalChange = (activiteId = 0, canalId = -1, time = moment().format(formatDate)) => {
   return function (dispatch, getState) {
-    if (!parseInt(activiteId, 10) > 0) {
+    if (!(parseInt(activiteId, 10) > 0)) {
       return false;
     }
-    if (!parseInt(canalId, 10) >= 0) {
+    if (!(parseInt(canalId, 10) >= 0)) {
       return false;
     }
 

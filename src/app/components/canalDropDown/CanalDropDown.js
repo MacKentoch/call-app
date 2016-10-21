@@ -56,8 +56,8 @@ class CanalDropDown extends Component {
 
   handlesOnChange(event, key) {
     event.preventDefault();
-    const { onChange, listCanaux, selectedActiviteId } = this.props;
-    onChange(listCanaux[key], selectedActiviteId);
+    const { onChange, selectedActiviteId } = this.props;
+    onChange(key, selectedActiviteId);
   }
 
   valueIsCanal(value) {
