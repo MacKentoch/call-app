@@ -26,6 +26,8 @@ class Comment extends Component {
 
   render() {
     const {label, id, value, disabled} = this.props;
+    const { comment } = this.state;
+
     return (
       <div className="form-group">
         <label
@@ -40,7 +42,7 @@ class Comment extends Component {
             rows="3"
             id={id}
             disabled={disabled}
-            value={value}
+            value={comment}
             onChange={this.handlesOnChange}>
           </textarea>
         </div>
@@ -52,8 +54,8 @@ class Comment extends Component {
     event.preventDefault();
     const { onChange } = this.props;
 
-    this.setState({comment: event.target.value.trim()});
-    onChange(event.target.value.trim());
+    this.setState({comment: event.target.value});
+    onChange(event.target.value;
   }
 }
 

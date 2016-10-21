@@ -52,7 +52,7 @@ class TextAreaInput extends Component {
     event.preventDefault();
     const { onChange } = this.props;
 
-    this.setState({stateValue: event.target.value.trim()});
+    this.setState({stateValue: event.target.value});
     onChange(event.target.value);
   }
 }
