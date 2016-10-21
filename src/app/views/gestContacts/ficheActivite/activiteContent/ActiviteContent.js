@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 import moment               from 'moment';
 import { appConfig }        from '../../../../config';
 import {
-  StatutFicheDropDown,
   CanalDropDown,
-  FormLabel,
-  DateInput
+  FormLabel
+  // DateInput
 }                           from '../../../../components';
+import StatutFicheDropDown  from './statutFicheDropDown/StatutFicheDropDown';
 import {
   isValidDateOrReturnDefault
 }                           from '../../../../services';
