@@ -43,8 +43,17 @@ const ActiviteContent = ({
       </div>
     );
   }
-
   const currentActivite = activites.find(activite => activite.activiteId === selectedActiviteId);
+
+  console.log(`
+    ActiviteContent:
+     - selectedActiviteId=${selectedActiviteId}
+     - canalId=${
+       listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
+         ? listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
+         : ' --- '
+     }
+  `);
 
   return (
     <form role="form">

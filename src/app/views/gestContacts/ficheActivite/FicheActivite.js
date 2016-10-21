@@ -73,6 +73,12 @@ class FicheActivite extends Component {
       selectedActiviteCommentBeingEditingValue
     } = this.state;
 
+    console.log(`
+      ActiviteContent:
+       - selectedActiviteId=${selectedActiviteId}
+       - canalId=${activites && activites.length > 0 && activites[selectedActiviteId].canalIndexFicheActivite}
+    `);
+
     return (
        <div>
          <div className="page-header">
