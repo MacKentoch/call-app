@@ -19,7 +19,7 @@ class TextAreaInput extends Component {
     const { stateValue } = this.state;
     const { value } = nextProps;
 
-    if (value !== stateValue) {
+    if ((value !== stateValue) && stateValue.length === 0) {
       this.setState({stateValue: value});
     }
   }

@@ -19,7 +19,7 @@ class Comment extends Component {
     const { comment } = this.state;
     const { value } = nextProps;
 
-    if (value !== comment) {
+    if ((value !== comment) && comment.length === 0) {
       this.setState({comment: value});
     }
   }
@@ -55,7 +55,7 @@ class Comment extends Component {
     const { onChange } = this.props;
 
     this.setState({comment: event.target.value});
-    onChange(event.target.value;
+    onChange(event.target.value);
   }
 }
 
