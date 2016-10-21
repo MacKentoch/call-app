@@ -15,7 +15,46 @@ export const REQUEST_SAVE_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT  = 'REQUEST_S
 export const RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT  = 'RECEIVED_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT';
 export const ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT     = 'ERROR_GET_GEST_CONTACTS_FICHE_ACTIVITE_NEW_COMMENT';
 
-export const UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL = 'UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL';
+export const UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL  = 'UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL';
+export const UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_STATUT = 'UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_STATUT';
+
+
+//  -----------------------------------------------------------------
+//    update statut fiche activite
+//  -----------------------------------------------------------------
+export const onGestContactsFicheActiviteStatutChange = (activiteId = 0, statutId = '', time = moment().format(formatDate)) => {
+  return function (dispatch, getState) {
+    if (!(parseInt(activiteId, 10) > 0)) {
+      return false;
+    }
+    if (!(parseInt(statutId, 10) >= 0)) {
+      return false;
+    }
+
+    const previousActivites = [...getState().gestContacts.activites];
+    const newActivites = previousActivites
+                          .map(
+                            (activite) => {
+                              if (activite.activiteId === activiteId) {
+                                return {
+                                  ...activite,
+                                  statutIndex: statutId
+                                };
+                              } else {
+                                return {...activite};
+                              }
+                            }
+                          );
+
+    dispatch({
+      type : UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_STATUT,
+      time,
+      activites: [...newActivites]
+    });
+
+    return true;
+  };
+};
 
 //  -----------------------------------------------------------------
 //    update canal fiche activite
@@ -49,7 +88,7 @@ export const onGestContactsFicheActiviteCanalChange = (activiteId = 0, canalId =
       time,
       activites: [...newActivites]
     });
-    
+
     return true;
   };
 };

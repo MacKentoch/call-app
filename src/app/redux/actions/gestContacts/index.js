@@ -43,7 +43,8 @@ import {
   setIsCollapsedContactsFicheActivite,
   unsetIsCollapsedContactsFicheActivite,
   saveNewCommentFicheActivite,
-  onGestContactsFicheActiviteCanalChange
+  onGestContactsFicheActiviteCanalChange,
+  onGestContactsFicheActiviteStatutChange
 }                               from './gestContactsFicheActivite/gestContactsFicheActivite';
 // contacts-activite liste de motifs de référence:
 import {
@@ -89,6 +90,7 @@ export {
   unsetIsCollapsedContactsFicheActivite,
   saveNewCommentFicheActivite,
   onGestContactsFicheActiviteCanalChange,
+  onGestContactsFicheActiviteStatutChange,
   // contacts-activite liste de motifs de référence:
   getGestContactsAllMotifsIfNeeded
 };

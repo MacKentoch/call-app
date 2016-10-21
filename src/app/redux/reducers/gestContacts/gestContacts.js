@@ -702,6 +702,14 @@ const gestContacts = (state = initialState, action) => {
       actionTime: action.time
     };
 
+  case 'UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_STATUT':
+    return {
+      ...state,
+      activites: [...action.activites],
+
+      actionTime: action.time
+    };
+
   default:
     return state;
   }
