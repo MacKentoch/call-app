@@ -51,6 +51,8 @@ class Comment extends Component {
   handlesOnChange(event) {
     event.preventDefault();
     const { onChange } = this.props;
+
+    this.setState({comment: event.target.value.trim()});
     onChange(event.target.value.trim());
   }
 }

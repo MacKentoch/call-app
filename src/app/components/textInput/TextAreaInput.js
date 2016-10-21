@@ -7,6 +7,7 @@ import shallowCompare from 'react-addons-shallow-compare';
 class TextAreaInput extends Component {
   constructor(props) {
     super(props);
+    this.state = { stateValue: '' };
     this.handlesOnChange = this.handlesOnChange.bind(this);
   }
 
@@ -14,8 +15,19 @@ class TextAreaInput extends Component {
     return shallowCompare(this, nextProps, nextState);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { stateValue } = this.state;
+    const { value } = nextProps;
+
+    if (value !== stateValue) {
+      this.setState({stateValue: value});
+    }
+  }
+
   render() {
     const {label, id, value, nbrows} = this.props;
+    const { stateValue } = this.state;
+
     return (
       <div className="form-group">
         <label
@@ -28,7 +40,7 @@ class TextAreaInput extends Component {
             className="form-control"
             rows="3"
             id={id}
-            value={value}
+            value={stateValue}
             onChange={this.handlesOnChange}>
           </textarea>
         </div>
@@ -39,6 +51,8 @@ class TextAreaInput extends Component {
   handlesOnChange(event) {
     event.preventDefault();
     const { onChange } = this.props;
+
+    this.setState({stateValue: event.target.value.trim()});
     onChange(event.target.value);
   }
 }
