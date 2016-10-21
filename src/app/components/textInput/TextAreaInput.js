@@ -20,6 +20,8 @@ class TextAreaInput extends Component {
     const { value } = nextProps;
 
     if ((value !== stateValue) && stateValue.length === 0) {
+      console.log('INITIAL set textArea state');
+
       this.setState({stateValue: value});
     }
   }
@@ -40,7 +42,8 @@ class TextAreaInput extends Component {
             className="form-control"
             rows="3"
             id={id}
-            value={stateValue}
+            // value={stateValue}
+            defaultValue={stateValue}
             onChange={this.handlesOnChange}>
           </textarea>
         </div>
@@ -53,6 +56,9 @@ class TextAreaInput extends Component {
     const { onChange } = this.props;
 
     this.setState({stateValue: event.target.value});
+
+    console.log('CURRENT - set textArea state');
+
     onChange(event.target.value);
   }
 }

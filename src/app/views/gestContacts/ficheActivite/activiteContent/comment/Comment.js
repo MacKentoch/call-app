@@ -42,7 +42,8 @@ class Comment extends Component {
             rows="3"
             id={id}
             disabled={disabled}
-            value={comment}
+            // value={comment}
+            defaultValue={comment}
             onChange={this.handlesOnChange}>
           </textarea>
         </div>
