@@ -32,7 +32,8 @@ const ActiviteContent = ({
   activites,
   isSavingFicheNewActiviteNewComment,
   onGestContactsFicheActiviteCanalChange,
-  isSavingActivite
+  isSavingActivite,
+  onGestContactsFicheActiviteStatutChange
 }) => {
   if (activites && Array.isArray(activites) && activites.length === 0) {
     return (
@@ -86,7 +87,7 @@ const ActiviteContent = ({
             id={'statutFicheFicheActivite' + '-' + selectedActiviteId}
             label={'Statut'}
             value={currentActivite.statutIndex}
-            onChange={()=> console.log('TODO: onGestContactsFicheActiviteStatutChange')}
+            onChange={onGestContactsFicheActiviteStatutChange}
             listeStatutFiche={listStatutFicheActivite}
             selectedActiviteId={selectedActiviteId}
           />
@@ -327,6 +328,7 @@ ActiviteContent.propTypes = {
   isSavingFicheNewActiviteNewComment: PropTypes.bool.isRequired,
 
   onGestContactsFicheActiviteCanalChange: PropTypes.func.isRequired,
+  onGestContactsFicheActiviteStatutChange: PropTypes.func.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

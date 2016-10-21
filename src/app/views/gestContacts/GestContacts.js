@@ -39,6 +39,8 @@ class GestContacts extends Component {
     this.handlesOnSaveFicheActiviteNewComment = this.handlesOnSaveFicheActiviteNewComment.bind(this);
 
     this.handlesOnGestContactsFicheActiviteCanalChange = this.handlesOnGestContactsFicheActiviteCanalChange.bind(this);
+
+    this.handlesOnGestContactsFicheActiviteStatutChange = this.handlesOnGestContactsFicheActiviteStatutChange.bind(this);
   }
 
   componentDidMount() {
@@ -189,8 +191,7 @@ class GestContacts extends Component {
         onChangeFicheContactMotifNiveau2,
         onChangeFicheContactMotifNiveau3,
         onChangeFicheContactMotifNiveau4,
-        addNotificationMessage,
-        onGestContactsFicheActiviteCanalChange
+        addNotificationMessage
       }
     } = this.props;
 
@@ -434,6 +435,7 @@ class GestContacts extends Component {
                         onSaveFicheActiviteNewComment={this.handlesOnSaveFicheActiviteNewComment}
 
                         onGestContactsFicheActiviteCanalChange={this.handlesOnGestContactsFicheActiviteCanalChange}
+                        onGestContactsFicheActiviteStatutChange={this.handlesOnGestContactsFicheActiviteStatutChange}
                       />
 
                       <div style={{height: '10px'}}></div>
@@ -825,6 +827,11 @@ class GestContacts extends Component {
     const { actions: { onGestContactsFicheActiviteCanalChange } } = this.props;
     onGestContactsFicheActiviteCanalChange(activiteId, canalId);
   }
+
+  handlesOnGestContactsFicheActiviteStatutChange(statutId, activiteId) {
+    const { actions: { onGestContactsFicheActiviteStatutChange } } = this.props;
+    onGestContactsFicheActiviteStatutChange(activiteId, statutId);    
+  }
 }
 
 GestContacts.propTypes = {
@@ -1043,6 +1050,7 @@ GestContacts.propTypes = {
     unsetIsCollapsedContactsFicheActivite: PropTypes.func,
 
     onGestContactsFicheActiviteCanalChange: PropTypes.func,
+    onGestContactsFicheActiviteStatutChange: PropTypes.func,
 
     // post:
     saveNewCommentFicheActivite: PropTypes.func,
