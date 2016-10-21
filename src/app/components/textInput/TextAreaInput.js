@@ -15,7 +15,6 @@ class TextAreaInput extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     const shouldUpdate = shallowCompare(this, nextProps, nextState);
-    // console.log('shouldUpdate: ', shouldUpdate);
     return shouldUpdate;
   }
 
