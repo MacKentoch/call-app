@@ -694,7 +694,7 @@ const gestContacts = (state = initialState, action) => {
       actionTime: action.time
     };
 
-  case UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL:
+  case 'UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL':
     return {
       ...state,
       activites: [...action.activites],

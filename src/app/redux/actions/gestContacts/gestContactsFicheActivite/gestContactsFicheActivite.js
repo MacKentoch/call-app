@@ -39,15 +39,17 @@ export const onGestContactsFicheActiviteCanalChange = (activiteId = 0, canalId =
                                   canalIndexFicheActivite: canalId
                                 };
                               } else {
-                                return activite;
+                                return {...activite};
                               }
                             }
                           );
+
     dispatch({
       type : UPDATE_GEST_CONTACTS_FICHE_ACTIVITE_CANAL,
       time,
       activites: [...newActivites]
     });
+    
     return true;
   };
 };

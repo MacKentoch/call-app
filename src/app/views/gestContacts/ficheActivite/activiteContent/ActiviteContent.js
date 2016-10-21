@@ -48,10 +48,10 @@ const ActiviteContent = ({
   console.log(`
     ActiviteContent:
      - selectedActiviteId=${selectedActiviteId}
-     - canalId=${
-       listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
-         ? listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
-         : ' --- '
+     - canalId=${currentActivite.canalIndexFicheActivite
+      //  listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
+      //    ? listCanauxFicheActivite[currentActivite.canalIndexFicheActivite]
+      //    : ' --- '
      }
   `);
 
