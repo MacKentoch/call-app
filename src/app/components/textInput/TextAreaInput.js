@@ -4,6 +4,7 @@ import React, {
 }                     from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 
+
 class TextAreaInput extends Component {
   constructor(props) {
     super(props);
@@ -14,8 +15,7 @@ class TextAreaInput extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const shouldUpdate = shallowCompare(this, nextProps, nextState);
-    return shouldUpdate;
+    return shallowCompare(this, nextProps, nextState);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -61,14 +61,12 @@ class TextAreaInput extends Component {
 
   handlesOnChange(event) {
     event.preventDefault();
-    // const { onChange } = this.props;
     this.setState({stateValue: event.target.value});
-    // perf hack:
-    this.setTimerToApplyStore(event.target.value);
+    this.setTimerBeforeCallback(event.target.value);
   }
 
-  setTimerToApplyStore(value) {
-    const { onChange } = this.props;
+  setTimerBeforeCallback(value) {
+    const { onChange, delay } = this.props;
 
     if (this.timer) {
       clearTimeout(this.timer);
@@ -77,7 +75,7 @@ class TextAreaInput extends Component {
 
     this.timer = setTimeout(
       () => onChange(value),
-      200
+      delay
     );
   }
 }
@@ -87,11 +85,13 @@ TextAreaInput.propTypes = {
   id:       PropTypes.string.isRequired,
   value:    PropTypes.string.isRequired,
   nbrows:   PropTypes.number,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  delay:    PropTypes.number
 };
 
 TextAreaInput.defaultProps = {
-  nbrows: 3
+  nbrows: 3,
+  delay: 200
 };
 
 export default TextAreaInput;

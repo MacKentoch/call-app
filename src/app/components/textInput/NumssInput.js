@@ -11,17 +11,39 @@ const numss15regex = /[1234][ \.\-]?[0-9]{2}[ \.\-]?(0[1-9]|[1][0-2])[ \.\-]?([0
 class NumssInput extends Component {
   constructor(props) {
     super(props);
-    this.state = { valid: true };
+    this.state = {
+      valid: true,
+      stateValue: ''
+    };
     this.handlesOnChange = this.handlesOnChange.bind(this);
+
+    this.timer = null;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { stateValue } = this.state;
+    const { value } = nextProps;
+
+    if ((value !== stateValue) && stateValue.length === 0) {
+      this.setState({stateValue: value});
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
   }
 
+  componentWillUnmount() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    }
+  }
+
   render() {
-    const { label, id, value } = this.props;
+    const { label, id } = this.props;
     const { valid } = this.state;
+    const { stateValue } = this.state;
 
     return (
       <div
@@ -41,7 +63,8 @@ class NumssInput extends Component {
             className="form-control"
             id={id}
             type="text"
-            value={value}
+            // value={value}
+            defaultValue={stateValue}
             onChange={this.handlesOnChange}
           />
         </div>
@@ -51,11 +74,27 @@ class NumssInput extends Component {
 
   handlesOnChange(event) {
     event.preventDefault();
-    const { onChange } = this.props;
     // test numss pattern:
     const isValid = numss15regex.test(event.target.value);
-    this.setState({ valid: isValid });
-    onChange(event.target.value);
+    this.setState({
+      stateValue: event.target.value,
+      valid: isValid
+    });
+    this.setTimerBeforeCallback(event.target.value);
+  }
+
+  setTimerBeforeCallback(value) {
+    const { onChange, delay } = this.props;
+
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    }
+
+    this.timer = setTimeout(
+      () => onChange(value),
+      delay
+    );
   }
 }
 
@@ -63,7 +102,12 @@ NumssInput.propTypes = {
   label:    PropTypes.string.isRequired,
   id:       PropTypes.string.isRequired,
   value:    PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  delay:    PropTypes.number
+};
+
+NumssInput.defaultProps = {
+  delay: 200
 };
 
 export default NumssInput;

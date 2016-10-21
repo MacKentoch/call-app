@@ -4,6 +4,7 @@ import React, {
 }                     from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 
+
 class Comment extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,13 @@ class Comment extends Component {
 
     if ((value !== comment) && comment.length === 0) {
       this.setState({comment: value});
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
     }
   }
 
@@ -60,11 +68,11 @@ class Comment extends Component {
     this.setState({comment: event.target.value});
     // onChange(event.target.value);
     // perf hack:
-    this.setTimerToApplyStore(event.target.value);
+    this.setTimerBeforeCallback(event.target.value);
   }
 
-  setTimerToApplyStore(value) {
-    const { onChange } = this.props;
+  setTimerBeforeCallback(value) {
+    const { onChange, delay } = this.props;
 
     if (this.timer) {
       clearTimeout(this.timer);
@@ -73,7 +81,7 @@ class Comment extends Component {
 
     this.timer = setTimeout(
       () => onChange(value),
-      200
+      delay
     );
   }
 }
@@ -84,12 +92,14 @@ Comment.propTypes = {
   value:    PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   nbrows:   PropTypes.number,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  delay:    PropTypes.number
 };
 
 Comment.defaultProps = {
   nbrows: 3,
-  disabled: false
+  disabled: false,
+  delay: 200
 };
 
 export default Comment;
