@@ -9,6 +9,8 @@ class Comment extends Component {
     super(props);
     this.state = { comment: '' };
     this.handlesOnChange = this.handlesOnChange.bind(this);
+
+    this.timer = null;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -53,10 +55,26 @@ class Comment extends Component {
 
   handlesOnChange(event) {
     event.preventDefault();
-    const { onChange } = this.props;
+    // const { onChange } = this.props;
 
     this.setState({comment: event.target.value});
-    onChange(event.target.value);
+    // onChange(event.target.value);
+    // perf hack:
+    this.setTimerToApplyStore(event.target.value);
+  }
+
+  setTimerToApplyStore(value) {
+    const { onChange } = this.props;
+
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    }
+
+    this.timer = setTimeout(
+      () => onChange(value),
+      200
+    );
   }
 }
 
