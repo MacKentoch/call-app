@@ -87,7 +87,7 @@ const ActiviteContent = ({
             id={'statutFicheFicheActivite' + '-' + selectedActiviteId}
             label={'Statut'}
             value={currentActivite.statutIndex}
-            onChange={onGestContactsFicheActiviteCanalChange}
+            onChange={()=> console.log('TODO: onGestContactsFicheActiviteStatutChange')}
             listeStatutFiche={listStatutFicheActivite}
           />
         </div>
