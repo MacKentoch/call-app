@@ -36,7 +36,9 @@ class StatutFicheDropDown extends Component {
             bsSize="sm"
             block
             bsStyle={'block'}
-            title={ this.valueIsStatutFiche(value) ? value : listeStatutFiche[0] }>
+            title={
+              listeStatutFiche[value] ? listeStatutFiche[value] : listeStatutFiche[0]
+            }>
             {
               listeStatutFiche.map(
                 (statut, idx) => {
