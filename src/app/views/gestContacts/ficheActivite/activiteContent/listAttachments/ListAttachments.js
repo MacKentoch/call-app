@@ -4,6 +4,7 @@ import React, {
 }                           from 'react';
 import shallowCompare       from 'react-addons-shallow-compare';
 import Attachments          from './attachments/Attachments';
+import Upload               from './upload/Upload';
 
 
 class ListAttachments extends Component {
@@ -27,6 +28,11 @@ class ListAttachments extends Component {
           htmlFor={id}>
           {label}
         </label>
+        <div>
+          <Upload
+            onChange={()=>console.log('TODO: on upload')}
+          />
+        </div>
         <div
           style={{
             height: '220px',

@@ -14,6 +14,7 @@ import ListAttachments      from './listAttachments/ListAttachments';
 import Comment              from './comment/Comment';
 import CommentIsSaving      from './commentIsSaving/CommentIsSaving';
 
+
 moment.locale('fr');
 const formatDate = appConfig.formatDate.defaut;
 
