@@ -14,10 +14,6 @@ class TextAreaInput extends Component {
     this.timer = null;
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState);
-  }
-
   componentWillReceiveProps(nextProps) {
     const { stateValue } = this.state;
     const { value } = nextProps;
@@ -25,6 +21,10 @@ class TextAreaInput extends Component {
     if ((value !== stateValue) && stateValue.length === 0) {
       this.setState({stateValue: value});
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   componentWillUnmount() {
