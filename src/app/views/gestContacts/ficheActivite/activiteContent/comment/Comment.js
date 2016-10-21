@@ -7,11 +7,21 @@ import shallowCompare from 'react-addons-shallow-compare';
 class Comment extends Component {
   constructor(props) {
     super(props);
+    this.state = { comment: '' };
     this.handlesOnChange = this.handlesOnChange.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { comment } = this.state;
+    const { value } = nextProps;
+
+    if (value !== comment) {
+      this.setState({comment: value});
+    }
   }
 
   render() {
