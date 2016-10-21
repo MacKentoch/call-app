@@ -63,7 +63,8 @@ class FicheActivite extends Component {
       activites,
       isSavingFicheNewActiviteNewComment,
       onGestContactsFicheActiviteCanalChange,
-      onSaveFicheActiviteNewComment
+      onSaveFicheActiviteNewComment,
+      isSavingActivite
     } = this.props;
 
     const {
@@ -108,6 +109,8 @@ class FicheActivite extends Component {
                  <ActiviteContent
                    activites={activites}
                    selectedActiviteId={selectedActiviteId}
+
+                   isSavingActivite={isSavingActivite}
 
                    selectedActiviteCommentBeingEditingFlag={selectedActiviteCommentBeingEditingFlag}
                    selectedActiviteCommentBeingEditingValue={selectedActiviteCommentBeingEditingValue}
@@ -239,6 +242,8 @@ FicheActivite.propTypes = {
   addNotificationMessage: PropTypes.func.isRequired,
 
   onGestContactsFicheActiviteCanalChange: PropTypes.func.isRequired,
+
+  isSavingActivite: PropTypes.bool.isRequired,
 
   activites: PropTypes.arrayOf(
     PropTypes.shape({

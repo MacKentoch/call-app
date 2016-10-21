@@ -31,7 +31,8 @@ const ActiviteContent = ({
   listCanauxFicheActivite,
   activites,
   isSavingFicheNewActiviteNewComment,
-  onGestContactsFicheActiviteCanalChange
+  onGestContactsFicheActiviteCanalChange,
+  isSavingActivite
 }) => {
   if (activites && Array.isArray(activites) && activites.length === 0) {
     return (
@@ -160,7 +161,7 @@ const ActiviteContent = ({
                 : 'Pièces jointes reçus'
               }
             attachments={currentActivite.listAttachements}
-            onDelete={()=>console.log('on fiche activite delete attachments: disabled')}
+            onDelete={() => console.log('on fiche activite delete attachments: disabled')}
           />
         </div>
       </div>
@@ -286,17 +287,18 @@ const ActiviteContent = ({
         <div
           className="center-block"
           style={{width: '120px'}}>
-          <a
+          <button
             className="btn btn-primary btn-block mailBoxNewEmailButton_button"
             style={{width: '120px'}}
-            onClick={()=>console.log('TODO: fiche active to save here')}>
+            disabled={isSavingActivite || isSavingFicheNewActiviteNewComment}
+            onClick={() => console.log('TODO: fiche active to save here')}>
             <i
               className="fa fa-floppy-o"
               aria-hidden="true">
             </i>
             &nbsp;
             Enregister
-          </a>
+          </button>
         </div>
       </div>
       <div style={{height: '20px'}}></div>
@@ -312,6 +314,8 @@ ActiviteContent.propTypes = {
   onFicheActiviteCommentChange: PropTypes.func.isRequired,
   onFicheActiviteCommentCancelEdition: PropTypes.func.isRequired,
   onFicheActiviteCommentSaveEdition: PropTypes.func.isRequired,
+
+  isSavingActivite: PropTypes.bool.isRequired,
 
   lastFetchTimeActivites: PropTypes.string.isRequired,
   listMotifsNiveau4: PropTypes.array.isRequired,
