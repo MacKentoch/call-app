@@ -176,6 +176,7 @@ const mapDispatchToProps = (dispatch) => {
         setIsCollapsedContactsFicheActivite: actions.setIsCollapsedContactsFicheActivite,
         unsetIsCollapsedContactsFicheActivite: actions.unsetIsCollapsedContactsFicheActivite,
         onGestContactsFicheActiviteCanalChange: actions.onGestContactsFicheActiviteCanalChange,
+        onGestContactsFicheActiviteStatutChange: actions.onGestContactsFicheActiviteStatutChange,
         // POST:
         saveNewCommentFicheActivite: actions.saveNewCommentFicheActivite,
 
