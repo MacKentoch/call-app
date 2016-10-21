@@ -9,10 +9,14 @@ class TextAreaInput extends Component {
     super(props);
     this.state = { stateValue: '' };
     this.handlesOnChange = this.handlesOnChange.bind(this);
+
+    this.timer = null;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState);
+    const shouldUpdate = shallowCompare(this, nextProps, nextState);
+    // console.log('shouldUpdate: ', shouldUpdate);
+    return shouldUpdate;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -20,9 +24,14 @@ class TextAreaInput extends Component {
     const { value } = nextProps;
 
     if ((value !== stateValue) && stateValue.length === 0) {
-      console.log('INITIAL set textArea state');
-
       this.setState({stateValue: value});
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
     }
   }
 
@@ -44,8 +53,8 @@ class TextAreaInput extends Component {
             id={id}
             // value={stateValue}
             defaultValue={stateValue}
-            onChange={this.handlesOnChange}>
-          </textarea>
+            onChange={this.handlesOnChange}
+          />
         </div>
       </div>
     );
@@ -53,13 +62,24 @@ class TextAreaInput extends Component {
 
   handlesOnChange(event) {
     event.preventDefault();
+    // const { onChange } = this.props;
+    this.setState({stateValue: event.target.value});
+    // perf hack:
+    this.setTimerToApplyStore(event.target.value);
+  }
+
+  setTimerToApplyStore(value) {
     const { onChange } = this.props;
 
-    this.setState({stateValue: event.target.value});
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    }
 
-    console.log('CURRENT - set textArea state');
-
-    onChange(event.target.value);
+    this.timer = setTimeout(
+      () => onChange(value),
+      200
+    );
   }
 }
 
