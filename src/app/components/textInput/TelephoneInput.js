@@ -65,7 +65,8 @@ class TelephoneInput extends Component {
             type="text"
             // value={value}
             defaultValue={stateValue}
-            onChange={this.handlesOnChange}
+            onInput={this.handlesOnChange}
+            // onChange={this.handlesOnChange} // react 15.x IE11 bug
           />
         </div>
       </div>

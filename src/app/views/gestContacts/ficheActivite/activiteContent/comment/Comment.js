@@ -54,7 +54,8 @@ class Comment extends Component {
             disabled={disabled}
             // value={comment}
             defaultValue={comment}
-            onChange={this.handlesOnChange}>
+            // onChange={this.handlesOnChange} // IE11 misses some keys entered... yes I know what you think...
+            onInput={this.handlesOnChange}>
           </textarea>
         </div>
       </div>

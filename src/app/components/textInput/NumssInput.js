@@ -65,7 +65,8 @@ class NumssInput extends Component {
             type="text"
             // value={value}
             defaultValue={stateValue}
-            onChange={this.handlesOnChange}
+            // onChange={this.handlesOnChange}
+            onInput={this.handlesOnChange}
           />
         </div>
       </div>
