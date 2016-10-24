@@ -35,7 +35,7 @@ class Comment extends Component {
   }
 
   render() {
-    const {label, id, value, disabled} = this.props;
+    const {label, id, disabled} = this.props;
     const { comment } = this.state;
 
     return (
