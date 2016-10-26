@@ -70,15 +70,12 @@ class SelectMailBoxModal extends Component {
 
   handlesOnClose() {
     const { onClose } = this.props;
-    // all input filters reset
-    this.initFilters();
-    // all value reset
-    this.initInputs();
     onClose();
   }
 
   handlesOnMailboxSelection(id = 0, linkTo = '') {
     const { contactId, typeContact } = this.props;
+
     if ((parseInt(id, 10) > 0) && linkTo && (linkTo.length > 0)) {
       const { router } = this.context;
       router.push({
@@ -88,7 +85,6 @@ class SelectMailBoxModal extends Component {
           contactCanal: typeContact
         }
       });
-      // close popup
       this.handlesOnClose();
     }
   }

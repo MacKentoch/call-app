@@ -13,7 +13,8 @@ import Modals           from './modals/Modals';
 import {
   RechercheBenefModal,
   CreateNewDossierBenefModal,
-  SelectBenefModal
+  SelectBenefModal,
+  SelectMailBoxModal
 }                       from './modals';
 // create
 import {
@@ -50,7 +51,8 @@ export {
   RechercheBenefModal,
   CreateNewDossierBenefModal,
   SelectBenefModal,
-
+  SelectMailBoxModal,
+  
   // create
   FicheContactCourier,
   FicheContactMail,
