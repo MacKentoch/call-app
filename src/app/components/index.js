@@ -35,6 +35,7 @@ import FicheContactGroupeDestinataireDropDown from './ficheContactGroupeDestinat
 import TextAreaInput from './textInput/TextAreaInput';
 import FicheContactMotifs from './ficheContactMotifs/FicheContactMotifs';
 import CanalDropDown from './canalDropDown/CanalDropDown';
+import SelectMailboxList from './selectMailboxList/SelectMailboxList';
 import {
   FichesTraitee,
   FichesParCanal,
@@ -77,6 +78,7 @@ export {
   FicheContactGroupeDestinataireDropDown,
   FicheContactMotifs,
   CanalDropDown,
+  SelectMailboxList,
 
   // mailbox
   MailboxRepertoires,
