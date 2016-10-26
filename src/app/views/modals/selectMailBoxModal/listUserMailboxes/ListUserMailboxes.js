@@ -18,7 +18,7 @@ const formatDate = appConfig.formatDate.defaut;
 const consultBenefPath = '/'; // to be defined
 
 
-class SearchResult extends Component {
+class ListUserMailboxes extends Component {
   constructor(props) {
     super(props);
 
@@ -169,7 +169,7 @@ class SearchResult extends Component {
   }
 }
 
-SearchResult.propTypes = {
+ListUserMailboxes.propTypes = {
   isFetching: PropTypes.bool,
   refreshTime: PropTypes.string,
 
@@ -205,4 +205,4 @@ SearchResult.propTypes = {
   )
 };
 
-export default SearchResult;
+export default ListUserMailboxes;

@@ -11,7 +11,7 @@ import ModalHeader        from './modalHeader/ModalHeader';
 import ModalFooter        from './modalFooter/ModalFooter';
 
 import FetchingIndicator  from './fetchingIndicator/FetchingIndicator';
-import SearchResult       from './searchResult/SearchResult';
+import ListUserMailboxes  from './listUserMailboxes/ListUserMailboxes';
 
 
 class SelectMailBoxModal extends Component {
@@ -50,7 +50,7 @@ class SelectMailBoxModal extends Component {
             }
             {
               !searchFetching &&
-              <SearchResult
+              <ListUserMailboxes
                 isFetching={searchFetching}
                 refreshTime={searchTime}
                 results={searchResult}
