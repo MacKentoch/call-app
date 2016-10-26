@@ -1,88 +1,39 @@
 import React, { PropTypes } from 'react';
 import Row from './row/Row';
 
-const Table  = ({benefs, onRowClick}) => {
+const Table  = ({userMailsBoxes, onRowClick}) => {
   return (
     <table className="table table-hover">
       <thead>
         <tr>
           <th>
-            Num. Dossier
+            Boîte mail
           </th>
 
           <th>
-            Nom
+            Mails reçus non lus
           </th>
 
-          {/* <th>
-            Nom de jeune fille
-          </th> */}
-
-          <th>
-            Prénom
-          </th>
-
-          <th>
-            <i className="fa fa-calendar" aria-hidden="true"></i>
-            &nbsp;
-            naissance
-          </th>
-
-          <th>
-            Numéro de sécu.
-          </th>
-
-          {/* <th>
-            <i className="fa fa-calendar" aria-hidden="true"></i>
-            &nbsp;
-            décès
-          </th> */}
-
-          <th>
-            Statut
-          </th>
-
-          <th>
-            Retraite
-          </th>
-
-          <th>
-            Pré-retraire
-          </th>
         </tr>
       </thead>
       <tbody>
         {
-          benefs.map(
+          userMailsBoxes.map(
             ({
               id,
-              numDossier,
-              nom,
-              nomJeuneFille,
-              prenom,
-              numss,
-              dateNaissance,
-              dateDeces,
-              statutActivite,
-              isRet,
-              isPreRet
+              name,
+              linkTo,
+              itemCount
             },
-            benefIdx) => {
+            mailBoxIdx) => {
               return (
                 <Row
-                  key={benefIdx}
+                  key={mailBoxIdx}
                   onRowClick={onRowClick}
                   id={id}
-                  numDossier={numDossier}
-                  nom={nom}
-                  nomJeuneFille={nomJeuneFille}
-                  prenom={prenom}
-                  numss={numss}
-                  dateNaissance={dateNaissance}
-                  dateDeces={dateDeces}
-                  statutActivite={statutActivite}
-                  isRet={isRet}
-                  isPreRet={isPreRet}
+                  name={name}
+                  linkTo={linkTo}
+                  unReadsCount={itemCount}
                 />
               );
             }
@@ -96,30 +47,15 @@ const Table  = ({benefs, onRowClick}) => {
 Table.propTypes = {
   onRowClick: PropTypes.func.isRequired,
 
-  benefs: PropTypes.arrayOf(
+  userMailsBoxes: PropTypes.arrayOf(
     PropTypes.shape({
       // generic
       id: PropTypes.number.isRequired,
-      numDossier: PropTypes.string.isRequired,
-      nom: PropTypes.string,
-      nomJeuneFille: PropTypes.string,
-      prenom: PropTypes.string,
-      numss: PropTypes.string,
-      dateNaissance: PropTypes.string,
-      dateDeces: PropTypes.string,
-      statutActivite: PropTypes.string,
-      // specific 1
-      isRet: PropTypes.bool.isRequired,
-      // regimeRattachement: PropTypes.string,
-      // profilFinancementRattache: PropTypes.string,
-      // specific2
-      isPreRet: PropTypes.bool.isRequired // ,
-      // dateEntreePreRet: PropTypes.string,
-      // dateSortiePreRet: PropTypes.string,
-      // dateTauxPlein: PropTypes.string,
-      // numeroEntrepriseCliente: PropTypes.string,
-      // libelleEntrepriseCliente: PropTypes.string,
-      // numMatriculeSAG: PropTypes.string
+      titre: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      faIcoName: PropTypes.string.isRequired,
+      linkTo: PropTypes.string.isRequired,
+      itemCount: PropTypes.number.isRequired
     })
   )
 };

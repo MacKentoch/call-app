@@ -42,7 +42,8 @@ class HeaderTools extends Component {
               style={{width: '250px'}}
               placeholder="Rechercher"
               value={searchValue}
-              onChange={this.handlesOnSearchChange}
+              // onChange={this.handlesOnSearchChange}
+              onInput={this.handlesOnSearchChange}
               onKeyPress={this.handlesOnSearchKeyPress}
             />
             <span className="glyphicon glyphicon-search form-control-feedback"></span>

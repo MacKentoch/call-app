@@ -59,7 +59,7 @@ const SelectMailboxList = ({
               showCheckToggle={false}
               minPage={minPage}
               maxPage={maxPage}
-              totalPages={totalBenefs}
+              totalPages={totalMailboxes}
               onPagingPreviousClick={onPagingPreviousClick}
               onPagingNextClick={onPagingNextClick}
             />
