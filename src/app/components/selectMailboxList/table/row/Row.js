@@ -19,16 +19,9 @@ class Row extends Component {
   render() {
     const {
       id,
-      numDossier,
-      nom,
-      // nomJeuneFille,
-      prenom,
-      numss,
-      dateNaissance,
-      // dateDeces,
-      statutActivite,
-      isRet,
-      isPreRet
+      mailBoxName,
+      // linkTo,
+      unReadsCount
     } = this.props;
 
     return (
@@ -37,61 +30,12 @@ class Row extends Component {
         style={{cursor: 'pointer'}}
         onClick={this.handlesOnRowClick}>
 
-        <td style={{width: '100px'}}>
-          {numDossier}
+        <td style={{width: '150px'}}>
+          {mailBoxName}
         </td>
 
         <td style={{width: '90px'}}>
-          {nom}
-        </td>
-
-        {/* <td>
-          {nomJeuneFille}
-        </td> */}
-
-        <td>
-          {prenom}
-        </td>
-
-        <td style={{width: '100px'}}>
-          {dateNaissance}
-        </td>
-
-        <td style={{width: '100px'}}>
-          {numss}
-        </td>
-
-        {/* <td>
-          {dateDeces}
-        </td> */}
-
-        <td style={{width: '80px'}}>
-          {statutActivite}
-        </td>
-
-        <td style={{width: '90px'}}>
-          <Switch
-            disabled={true}
-            checkedChildren={'O'}
-            unCheckedChildren={'N'}
-            checked={isRet === true ? true : false}
-          />
-        </td>
-
-        <td style={{width: '90px'}}>
-          <Switch
-            disabled={true}
-            checkedChildren={'O'}
-            unCheckedChildren={'N'}
-            checked={isPreRet === true ? true : false}
-          />
-        </td>
-
-        <td style={{width: '10px'}}>
-          <i
-            className="fa fa-angle-right"
-            aria-hidden="true">
-          </i>
+          {unReadsCount}
         </td>
 
       </tr>
@@ -100,35 +44,17 @@ class Row extends Component {
 
   handlesOnRowClick(event) {
     event.preventDefault();
-    const { id, onRowClick } = this.props;
-    onRowClick(id);
+    const { id, onRowClick, linkTo } = this.props;
+    onRowClick(id, linkTo); // returns mailBox id and linkTo props
   }
 }
 
 Row.propTypes = {
-  // generic
   id: PropTypes.number.isRequired,
-  numDossier: PropTypes.string.isRequired,
-  nom: PropTypes.string,
-  nomJeuneFille: PropTypes.string,
-  prenom: PropTypes.string,
-  numss: PropTypes.string,
-  dateNaissance: PropTypes.string,
-  dateDeces: PropTypes.string,
-  statutActivite: PropTypes.string,
-  // specific 1
-  isRet: PropTypes.bool.isRequired,
-  // regimeRattachement: PropTypes.string,
-  // profilFinancementRattache: PropTypes.string,
-  // specific2
-  isPreRet: PropTypes.bool.isRequired,
-  // dateEntreePreRet: PropTypes.string,
-  // dateSortiePreRet: PropTypes.string,
-  // dateTauxPlein: PropTypes.string,
-  // numeroEntrepriseCliente: PropTypes.string,
-  // libelleEntrepriseCliente: PropTypes.string,
-  // numMatriculeSAG: PropTypes.string
-  //
+  mailBoxName: PropTypes.string.isRequired,
+  linkTo: PropTypes.string.isRequired,
+  unReadsCount: PropTypes.number.isRequired,
+
   onRowClick: PropTypes.func.isRequired
 };
 

@@ -21,7 +21,8 @@ const Table  = ({userMailsBoxes, onRowClick}) => {
           userMailsBoxes.map(
             ({
               id,
-              name,
+              name, // choisir si affiche name ou titre de la boîte
+              titre,
               linkTo,
               itemCount
             },
@@ -31,7 +32,7 @@ const Table  = ({userMailsBoxes, onRowClick}) => {
                   key={mailBoxIdx}
                   onRowClick={onRowClick}
                   id={id}
-                  name={name}
+                  mailBoxName={name} // choisir si affiche name ou titre de la boîte
                   linkTo={linkTo}
                   unReadsCount={itemCount}
                 />
