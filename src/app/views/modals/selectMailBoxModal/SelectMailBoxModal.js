@@ -105,15 +105,15 @@ SelectMailBoxModal.propTypes = {
   title: PropTypes.string,
   onClose: PropTypes.func,
 
-  isFetching: PropTypes.bool.isRequired,
-  searchPayload:  PropTypes.object.isRequired,
-  searchResult:   PropTypes.arrayOf(PropTypes.object).isRequired,
-  searchError:    PropTypes.object,
-  searchTime:     PropTypes.string.isRequired,
+  isFetching:       PropTypes.bool.isRequired,
+  userMailsBoxes:   PropTypes.arrayOf(PropTypes.shape({
+    
+  })).isRequired,
+  lastRefreshTime:  PropTypes.string.isRequired,
 
   actions: PropTypes.shape({
-    hideRechercheBenefModal: PropTypes.func.isRequired,
-    postSearchIfNeeded: PropTypes.func.isRequired
+    hideSelectMailboxModal: PropTypes.func.isRequired,
+    fetchUserBoitesMailsData: PropTypes.func.isRequired
   }).isRequired
 };
 

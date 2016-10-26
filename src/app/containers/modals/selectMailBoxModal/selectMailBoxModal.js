@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
     // userBoitesMails store
     isFetching: state.userBoitesMails.isFetching,
     userMailsBoxes: state.userBoitesMails.data,
-    lastRefreshTime: state.search.time
+    lastRefreshTime: state.userBoitesMails.time
   };
 };
 
@@ -22,9 +22,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
       {
-        hideSelectBenefModal: actions.hideSelectBenefModal,
-        // search post:
-        postSearchIfNeeded: actions.postSearchIfNeeded
+        // userBoitesMails action creators:
+        fetchUserBoitesMailsData: actions.fetchUserBoitesMailsData,
+
+        // userMailBoxesModal actions creators
+        hideSelectMailboxModal: actions.hideSelectMailboxModal
       },
       dispatch)
   };
