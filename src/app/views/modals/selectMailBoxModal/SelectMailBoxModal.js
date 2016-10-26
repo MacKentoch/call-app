@@ -21,7 +21,7 @@ class SelectMailBoxModal extends Component {
     this.state = {};
 
     this.handlesOnClose = this.handlesOnClose.bind(this);
-    this.handlesOnBenefSelection = this.handlesOnBenefSelection.bind(this);
+    this.handlesOnMailboxSelection = this.handlesOnMailboxSelection.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -30,7 +30,7 @@ class SelectMailBoxModal extends Component {
 
   render() {
     const { showModal, title  } = this.props;
-    const { searchFetching, searchResult, searchTime } = this.props;
+    const { isFetching, searchResult, searchTime } = this.props;
 
     return (
       <div>
@@ -45,16 +45,16 @@ class SelectMailBoxModal extends Component {
           />
           <Modal.Body>
             {
-              searchFetching &&
+              isFetching &&
               <FetchingIndicator />
             }
             {
-              !searchFetching &&
+              !isFetching &&
               <ListUserMailboxes
-                isFetching={searchFetching}
+                isFetching={isFetching}
                 refreshTime={searchTime}
                 results={searchResult}
-                onBenefSelection={this.handlesOnBenefSelection}
+                onBenefSelection={this.handlesOnMailboxSelection}
               />
             }
           </Modal.Body>
@@ -77,15 +77,12 @@ class SelectMailBoxModal extends Component {
     onClose();
   }
 
-  handlesOnBenefSelection(id = 0) {
-    // console.log('handles benef selection, id: ', id);
+  handlesOnMailboxSelection(id = 0, linkTo = '') {
     const { contactId, typeContact } = this.props;
-    if (id > 0) {
-      // using here router from context (see https://github.com/ReactTraining/react-router/blob/master/docs/API.md#contextrouter)
-      // route to edit contact view (type send through router state)
+    if ((parseInt(id, 10) > 0) && linkTo && (linkTo.length > 0)) {
       const { router } = this.context;
       router.push({
-        pathname: `${gestContactsUrl}/${id}`, // benefId in parmater to force benefId to be defined to route to contact edit
+        pathname: `${linkTo}`,
         state: {
           contactId,
           contactCanal: typeContact
@@ -112,7 +109,7 @@ SelectMailBoxModal.propTypes = {
   title: PropTypes.string,
   onClose: PropTypes.func,
 
-  searchFetching: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired,
   searchPayload:  PropTypes.object.isRequired,
   searchResult:   PropTypes.arrayOf(PropTypes.object).isRequired,
   searchError:    PropTypes.object,
