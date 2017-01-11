@@ -3,6 +3,9 @@ Call app
 
 Credits to [web-apps.ninja](http://web-apps.ninja/director-free-responsive-admin-template/) for giving us the original template for free :clap:.
 
+## Important
+
+**Ensure to run NodeJS x4 (*tip use nvm*) with this version.**
 
 ## Content
 
