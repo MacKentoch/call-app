@@ -70,7 +70,7 @@
     "draft-js": "^0.7.0",
     "font-awesome": "4.5.0",
     "ionicons": "3.0.0",
-    "jquery": "2.2.1",
+    "jquery": "3.0.0",
     "js-base64": "2.1.9",
     "moment": "2.13.0",
     "rc-switch": "1.4.2",
